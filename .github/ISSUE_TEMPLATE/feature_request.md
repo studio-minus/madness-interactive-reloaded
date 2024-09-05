@@ -2,19 +2,16 @@
 name: Feature request
 about: Suggest an idea for this project
 title: ''
-labels: ''
+labels: 'enhancement'
 assignees: ''
 
 ---
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+**Description**
+Clearly describe what you'd like added, changed, or removed. Please consider that this might have already been considered, accepted, or rejected. Be careful.
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
-
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
+**Reasoning**
+Why should this be done? Is it worth the time and effort? 
 
 **Additional context**
 Add any other context or screenshots about the feature request here.
