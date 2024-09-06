@@ -1,0 +1,60 @@
+{
+  "Id": "usas_12",
+  "WeaponData": {
+    "Name": "Usas 12",
+    "Damage": 0.15,
+    "UseDelay": 0.13,
+    "MaxHandRangeMultiplier": 0.6,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 5,
+    "RoundsPerMagazine": 20,
+    "BurstFireCount": 0,
+    "Accuracy": 0.75,
+    "Recoil": 1.5,
+    "RotationalRecoilIntensity": 0.5,
+    "RecoilHandling": 1.0,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/shotgun_1.wav",
+      "sounds/firearms/shotgun_2.wav",
+      "sounds/firearms/shotgun_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "ShotgunShell",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/usas_12/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 323.52798,
+    "Y": 37.61263
+  },
+  "CasingEjectionPoint": {
+    "X": -7.8519783,
+    "Y": 39.977703
+  },
+  "HoldPoints": [
+    {
+      "X": 85.44237,
+      "Y": 36.257652
+    },
+    {
+      "X": 138.70612,
+      "Y": 21.789022
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

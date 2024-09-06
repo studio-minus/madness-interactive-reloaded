@@ -1,0 +1,11 @@
+0.36.2
+
+name Tricky 6 hair
+type HeadAccessory
+category Hat
+detach False
+
+left textures/bodies/hats/tricky6_hair/tricky6_hair_left.png
+right textures/bodies/hats/tricky6_hair/tricky6_hair_right.png
+
+offset -86 -21

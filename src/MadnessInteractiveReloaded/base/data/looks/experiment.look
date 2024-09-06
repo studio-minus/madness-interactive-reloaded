@@ -1,0 +1,15 @@
+﻿0.13.1
+
+name Experiment
+
+body
+   full_body_bandages1_body
+   bandages1_over
+
+head
+   experiment1_head
+   bandages1_hat
+   mouth_bandages_mouth
+
+hands default
+blood #ff0000

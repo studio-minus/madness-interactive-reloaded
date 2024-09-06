@@ -1,0 +1,59 @@
+{
+  "Id": "fbi_9",
+  "WeaponData": {
+    "Name": "FBI-9",
+    "Damage": 0.79999995,
+    "UseDelay": 0.099999994,
+    "MaxHandRangeMultiplier": 0.5,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 30,
+    "BurstFireCount": 0,
+    "Accuracy": 0.96999997,
+    "Recoil": 1.1999999,
+    "RotationalRecoilIntensity": 0.69,
+    "RecoilHandling": 1.0,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/fbi_9_1.wav",
+      "sounds/firearms/fbi_9_2.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Medium",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 320.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/fbi_9/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 196.81868,
+    "Y": 64.20969
+  },
+  "CasingEjectionPoint": {
+    "X": -71.030624,
+    "Y": 47.35509
+  },
+  "HoldPoints": [
+    {
+      "X": 137.00002,
+      "Y": 15.0
+    },
+    {
+      "X": 56.000008,
+      "Y": -10.999906
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

@@ -1,0 +1,13 @@
+﻿0.36.5
+
+name Classic Agent
+
+body
+   default_body
+
+head
+   default_head
+   glasses1_eyes
+
+hands default
+blood #ff0000

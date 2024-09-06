@@ -1,0 +1,52 @@
+{
+  "Id": "baton",
+  "WeaponData": {
+    "Name": "Baton",
+    "Damage": 0.25,
+    "UseDelay": 0.05,
+    "MaxHandRangeMultiplier": 0.25,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Melee",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 12,
+    "BurstFireCount": 0,
+    "Accuracy": 0.0,
+    "Recoil": 0.0,
+    "RotationalRecoilIntensity": 1.0,
+    "RecoilHandling": 0.0,
+    "Automatic": false,
+    "ShootSounds": null,
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Blunt",
+    "MeleeSize": "Small"
+  },
+  "BaseTexture": "textures/weapons/baton/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 0.0,
+    "Y": 0.0
+  },
+  "CasingEjectionPoint": {
+    "X": 0.0,
+    "Y": 0.0
+  },
+  "HoldPoints": [
+    {
+      "X": 43.0,
+      "Y": 130.0
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 90.0
+}

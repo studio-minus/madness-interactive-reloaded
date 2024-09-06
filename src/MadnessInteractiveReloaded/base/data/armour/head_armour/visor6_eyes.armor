@@ -1,0 +1,11 @@
+0.36.0
+
+name Visor 6
+type HeadAccessory
+left textures/bodies/eyes/visor6/visor6_left.png
+right textures/bodies/eyes/visor6/visor6_right.png
+category Eyes
+detach False
+hidden False
+offset-left 8 -5
+offset-right 7 -5

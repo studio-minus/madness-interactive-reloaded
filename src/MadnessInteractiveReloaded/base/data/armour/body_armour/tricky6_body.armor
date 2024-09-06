@@ -1,0 +1,9 @@
+0.36.3
+
+name Tricky 6
+type Body
+category All
+hidden True
+
+left textures/bodies/body1/tricky6/tricky6_left.png
+right textures/bodies/body1/tricky6/tricky6_right.png

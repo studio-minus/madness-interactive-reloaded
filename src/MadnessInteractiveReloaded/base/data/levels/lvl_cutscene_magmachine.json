@@ -1,0 +1,54 @@
+{
+  "DisplayName": "untitled",
+  "LevelType": "Campaign",
+  "ProgressionType": "BodyCount",
+  "EnemySpawnInterval": 2.0,
+  "MaxEnemyCount": 4,
+  "MaxSimultaneousAttackingEnemies": 2,
+  "BackgroundMusic": "0",
+  "WeaponChance": 0.5,
+  "LevelBounds": {
+    "MinX": -8.142871,
+    "MinY": -3.5972471,
+    "MaxX": 9.634906,
+    "MaxY": 14.18053
+  },
+  "BodyCountToWin": 1,
+  "TimeLimitInSeconds": -1.0,
+  "FullZoom": false,
+  "Thumbnail": "textures/level_thumbnails/lvl_cutscene_magmachine.qoi",
+  "OpeningTransition": false,
+  "ExitingTransition": false,
+  "EnemySpawnInstructions": [],
+  "Weapons": null,
+  "FloorLine": [],
+  "Objects": [
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerSpawn, MIR",
+      "Position": {
+        "X": 0.0,
+        "Y": 0.0
+      },
+      "SpawnWeapon": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.CutscenePlayer, MIR",
+      "CutsceneKey": "cutscene_magmachine",
+      "Position": {
+        "X": 1.0000153,
+        "Y": 8.000053
+      },
+      "ProgressLevelOnEnd": true,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": 0.74601746,
+        "Y": 5.291641
+      },
+      "TexturePath": "0",
+      "Scale": 2.222222
+    }
+  ]
+}

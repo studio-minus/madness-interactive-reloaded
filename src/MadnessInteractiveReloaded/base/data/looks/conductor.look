@@ -1,0 +1,12 @@
+0.13.1
+
+name Conductor
+
+body
+   default_body
+
+head
+   default_head
+   conductor_hat
+
+blood #ff0000

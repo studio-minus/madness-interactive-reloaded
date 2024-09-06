@@ -1,0 +1,11 @@
+0.35.1
+
+name Moustache 1
+type HeadAccessory
+left textures/bodies/mouth/moustache1/moustache1_left.png
+right textures/bodies/mouth/moustache1/moustache1_right.png
+texture-scale 1
+category Mask
+detach False
+hidden False
+offset 70 45

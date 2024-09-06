@@ -1,0 +1,11 @@
+0.36.0
+
+name Visor 2
+type HeadAccessory
+category Eyes
+
+left textures/bodies/eyes/visor2/visor2_left.png
+right textures/bodies/eyes/visor2/visor2_right.png
+
+offset-left 43 6
+offset-right 23 -14

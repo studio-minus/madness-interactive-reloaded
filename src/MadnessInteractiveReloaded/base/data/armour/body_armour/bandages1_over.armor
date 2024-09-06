@@ -1,0 +1,11 @@
+0.1.18
+
+name Bandages 1
+type BodyAccessory
+category All
+
+left textures/bodies/body2/bandages1/bandages1_left.png
+right textures/bodies/body2/bandages1/bandages1_right.png
+
+offset-left -1 21
+offset-right 0 21

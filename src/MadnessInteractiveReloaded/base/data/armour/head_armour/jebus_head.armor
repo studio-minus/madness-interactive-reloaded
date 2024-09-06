@@ -1,0 +1,10 @@
+0.36.0
+
+name Jebus
+type Head
+left textures/bodies/skin/jebus/jebus_left.png
+right textures/bodies/skin/jebus/jebus_right.png
+category All
+detach False
+hidden False
+offset 0 0

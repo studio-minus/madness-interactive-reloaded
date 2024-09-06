@@ -1,0 +1,21 @@
+﻿0.48.2
+
+name Mag Rich
+
+aiming_randomness 0
+recoil_handling 1
+dodge 0
+melee 1
+can_deflect true
+dodge_oversaturate true
+accurate_shot_chance 0.25
+head_health 300
+body_health 300
+scale 2.94
+hop_duration 0.4
+
+abilities
+	MIR.RichBossAbilityComponent
+
+agility_skill_level master
+jump_dodge_duration 0.65

@@ -1,0 +1,59 @@
+{
+  "Id": "dragon_sword",
+  "WeaponData": {
+    "Name": "Dragon Sword",
+    "Damage": 5.0,
+    "UseDelay": 0.0,
+    "MaxHandRangeMultiplier": 1.0,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 25.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [
+      {
+        "MinX": 12.000076,
+        "MinY": 9.1552734E-05,
+        "MaxX": 64.00014,
+        "MaxY": 398.00153
+      }
+    ],
+    "WeaponType": "Melee",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 12,
+    "BurstFireCount": 0,
+    "Accuracy": 0.0,
+    "Recoil": 0.0,
+    "RotationalRecoilIntensity": 1.0,
+    "RecoilHandling": 0.0,
+    "Automatic": false,
+    "ShootSounds": null,
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 542.0,
+    "CanDeflectBullets": true,
+    "SpecialMelee": true,
+    "MeleeDamageType": "Blade",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/dragon_sword/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": -15.0,
+    "Y": -15.0
+  },
+  "CasingEjectionPoint": {
+    "X": 15.0,
+    "Y": 15.0
+  },
+  "HoldPoints": [
+    {
+      "X": -1.9999695,
+      "Y": 161.99995
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 90.0
+}

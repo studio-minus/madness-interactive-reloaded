@@ -1,0 +1,12 @@
+﻿0.13.1
+
+name Cascade
+
+body
+   default_body
+
+head
+   default_head
+   eye_patch_eyes
+
+blood #ff0000

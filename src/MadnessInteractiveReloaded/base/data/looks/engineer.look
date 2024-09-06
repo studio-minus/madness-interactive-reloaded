@@ -1,0 +1,12 @@
+﻿0.13.1
+
+name Engineer
+
+body
+   engineer_suit_body
+
+head
+   default_head
+   engineer_mask_eyes
+
+blood #ffe600

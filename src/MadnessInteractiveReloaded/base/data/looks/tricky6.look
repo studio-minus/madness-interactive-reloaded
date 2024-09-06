@@ -1,0 +1,15 @@
+﻿0.36.3
+
+name Tricky6
+
+body
+   tricky6_body
+
+head
+   tricky6_head
+   tricky6_hair_hat
+   broken_iron_slab3_eyes
+
+hands classic_zed
+blood #ff0000
+jitter true

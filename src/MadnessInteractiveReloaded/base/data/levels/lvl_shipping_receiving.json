@@ -1,0 +1,524 @@
+{
+  "DisplayName": "untitled",
+  "LevelType": "Campaign",
+  "ProgressionType": "BodyCount",
+  "EnemySpawnInterval": 0.0,
+  "MaxEnemyCount": 0,
+  "MaxSimultaneousAttackingEnemies": 2,
+  "BackgroundMusic": "sounds/music/Lothyde/jazzed_madness_overture.ogg",
+  "WeaponChance": 0.5,
+  "LevelBounds": {
+    "MinX": -6988.1836,
+    "MinY": -1065.7227,
+    "MaxX": 7116.26,
+    "MaxY": 1334.2771
+  },
+  "BodyCountToWin": 11,
+  "TimeLimitInSeconds": -1.0,
+  "FullZoom": false,
+  "Thumbnail": "textures/level_thumbnails/lvl_shipping_receiving.qoi",
+  "OpeningTransition": true,
+  "ExitingTransition": true,
+  "EnemySpawnInstructions": [],
+  "Weapons": null,
+  "FloorLine": [
+    {
+      "X": -5986.977,
+      "Y": -900.47174
+    },
+    {
+      "X": 6131.023,
+      "Y": -900.47174
+    }
+  ],
+  "Objects": [
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerSpawn, MIR",
+      "Position": {
+        "X": -5618.977,
+        "Y": -514.764
+      },
+      "SpawnWeapon": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "grunt",
+        "Stats": "grunt",
+        "Faction": "civil",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": 5004.5835,
+          "Y": -870.7593
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "grunt",
+        "Stats": "grunt",
+        "Faction": "civil",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": 5551.2236,
+          "Y": -889.9236
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -6123.872,
+        "MinY": 398.2917,
+        "MaxX": -5867.872,
+        "MaxY": 1124.1892
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
+      "WeaponKey": "silenced_beretta_92",
+      "Angle": 18.06253,
+      "Ammo": 15,
+      "AttachedToWall": true,
+      "Position": {
+        "X": -2110.1807,
+        "Y": -661.3326
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "engineer",
+        "Stats": "engineer",
+        "Faction": null,
+        "Weapon": "p90",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": 3248.23,
+          "Y": -868.5489
+        },
+        "ScaleOverride": false,
+        "Scale": 0.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "grunt",
+        "Stats": "grunt",
+        "Faction": null,
+        "Weapon": "glock_18_c",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": -4288.3984,
+          "Y": -863.32825
+        },
+        "ScaleOverride": false,
+        "Scale": 0.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "grunt",
+        "Stats": "grunt",
+        "Faction": null,
+        "Weapon": "baton",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": 677.4233,
+          "Y": -861.64526
+        },
+        "ScaleOverride": false,
+        "Scale": 0.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "soldat",
+        "Stats": "soldat",
+        "Faction": null,
+        "Weapon": "aug",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": 5146.3867,
+          "Y": -862.88965
+        },
+        "ScaleOverride": false,
+        "Scale": 0.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "agent",
+        "Stats": "agent",
+        "Faction": null,
+        "Weapon": "mp5k",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": -1476.8201,
+          "Y": -871.60175
+        },
+        "ScaleOverride": false,
+        "Scale": 0.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -5864.336,
+        "MinY": 1085.694,
+        "MaxX": 5955.7524,
+        "MaxY": 1262.836
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 6019.4453,
+        "MinY": -45.784943,
+        "MaxX": 6275.4453,
+        "MaxY": 1120.6516
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -5803.3857,
+        "MinY": -984.46655,
+        "MaxX": 5926.3125,
+        "MaxY": -807.3246
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -6128.203,
+        "MinY": -74.67999,
+        "MaxX": -5872.203,
+        "MaxY": 122.27283
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": -6133.9663,
+          "Y": -901.95435
+        },
+        "FacingDirection": {
+          "X": 1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": false,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": -6185.2515,
+          "Y": -118.72935
+        },
+        "TopRight": {
+          "X": -5874.9487,
+          "Y": -104.74169
+        },
+        "BottomLeft": {
+          "X": -6187.505,
+          "Y": -927.7265
+        },
+        "BottomRight": {
+          "X": -5880.4277,
+          "Y": -876.18225
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "engineer",
+        "Stats": "engineer",
+        "Faction": null,
+        "Weapon": "mossberg_500",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": 2272.767,
+          "Y": -854.68634
+        },
+        "ScaleOverride": false,
+        "Scale": 0.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Disk, MIR",
+      "Position": {
+        "X": -4782.7935,
+        "Y": 231.24536
+      },
+      "Angle": 0.27186584,
+      "DiskId": "very_strong",
+      "RenderOrder": {
+        "Layer": -100,
+        "OrderInLayer": 0
+      },
+      "Texture": "textures/props/floppy_disk2.png",
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": -6272.589,
+        "MinY": 1164.7462,
+        "MaxX": 6399.097,
+        "MaxY": 1420.746
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": 6143.7305,
+        "MinY": -908.02405,
+        "MaxX": 6694.0977,
+        "MaxY": 1178.1666
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": -6645.605,
+        "MinY": -901.0681,
+        "MaxX": -6000.897,
+        "MaxY": 1182.6818
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": -11309.68,
+        "MinY": -2194.0435,
+        "MaxX": 10111.083,
+        "MaxY": -900.47174
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": 64.03802,
+        "Y": 134.27716
+      },
+      "TexturePath": "textures/backgrounds/background_shipping_receiving.qoi",
+      "Scale": 2.222222
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "agent",
+        "Stats": "agent",
+        "Faction": null,
+        "Weapon": "walther_ppk",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": -2083.017,
+          "Y": -868.295
+        },
+        "ScaleOverride": false,
+        "Scale": 0.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "agent",
+        "Stats": "agent",
+        "Faction": null,
+        "Weapon": "mp5k",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": -871.72516,
+          "Y": -882.62354
+        },
+        "ScaleOverride": false,
+        "Scale": 0.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "agent",
+        "Stats": "agent",
+        "Faction": null,
+        "Weapon": "switchblade",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": 1578.6099,
+          "Y": -863.385
+        },
+        "ScaleOverride": false,
+        "Scale": 0.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "engineer",
+        "Stats": "engineer",
+        "Faction": null,
+        "Weapon": "mp9",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": 3796.8472,
+          "Y": -852.70447
+        },
+        "ScaleOverride": false,
+        "Scale": 0.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "agent",
+        "Stats": "agent",
+        "Faction": null,
+        "Weapon": "walther_ppk",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": -333.96625,
+          "Y": -848.1308
+        },
+        "ScaleOverride": false,
+        "Scale": 0.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": 6262.867,
+          "Y": -902.64954
+        },
+        "FacingDirection": {
+          "X": -1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": false,
+        "IsLevelProgressionDoor": true,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": 6008.762,
+          "Y": -107.95054
+        },
+        "TopRight": {
+          "X": 6314.705,
+          "Y": -119.784676
+        },
+        "BottomLeft": {
+          "X": 6009.2974,
+          "Y": -877.5444
+        },
+        "BottomRight": {
+          "X": 6316.4375,
+          "Y": -927.7547
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "grunt",
+        "Stats": "grunt",
+        "Faction": "civil",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": 4819.328,
+          "Y": -889.0111
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "scientist1",
+        "Stats": "grunt",
+        "Faction": "civil",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": 4502.66,
+          "Y": -888.09827
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    }
+  ]
+}

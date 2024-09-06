@@ -1,0 +1,58 @@
+{
+  "Id": "galil",
+  "WeaponData": {
+    "Name": "Galil",
+    "Damage": 0.6,
+    "UseDelay": 0.092307694,
+    "MaxHandRangeMultiplier": 0.5,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 50,
+    "BurstFireCount": 0,
+    "Accuracy": 1.0,
+    "Recoil": 1.1,
+    "RotationalRecoilIntensity": 0.3,
+    "RecoilHandling": 1.4,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/galil.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "RifleCasing",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/galil/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 258.7213,
+    "Y": 43.730583
+  },
+  "CasingEjectionPoint": {
+    "X": -121.35901,
+    "Y": 67.35457
+  },
+  "HoldPoints": [
+    {
+      "X": 203.03918,
+      "Y": 7.578891
+    },
+    {
+      "X": 9.467207,
+      "Y": 23.69413
+    }
+  ],
+  "AnimatedParts": [],
+  "OnFloorAngle": 0.0
+}

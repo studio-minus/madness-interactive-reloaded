@@ -1,0 +1,10 @@
+0.36.0
+
+name Cyber mask
+type HeadAccessory
+left textures/bodies/eyes/cyber_mask/cyber_mask_left.png
+right textures/bodies/eyes/cyber_mask/cyber_mask_right.png
+category Mask
+detach False
+hidden False
+offset 0 0

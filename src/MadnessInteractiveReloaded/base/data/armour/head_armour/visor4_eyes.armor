@@ -1,0 +1,10 @@
+0.36.0
+
+name Visor 4
+type HeadAccessory
+left textures/bodies/eyes/visor4/visor4_left.png
+right textures/bodies/eyes/visor4/visor4_right.png
+category Eyes
+detach False
+hidden False
+offset 50 5

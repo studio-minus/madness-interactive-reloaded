@@ -1,0 +1,10 @@
+0.36.0
+
+name Hank 6
+type Head
+left textures/bodies/skin/hank6/hank6_left.png
+right textures/bodies/skin/hank6/hank6_right.png
+category All
+detach False
+hidden False
+offset 0 0

@@ -1,0 +1,59 @@
+{
+  "Id": "fn_fal",
+  "WeaponData": {
+    "Name": "FN FAL",
+    "Damage": 0.8,
+    "UseDelay": 0.11,
+    "MaxHandRangeMultiplier": 0.7,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 20,
+    "BurstFireCount": 0,
+    "Accuracy": 0.9,
+    "Recoil": 1.05,
+    "RotationalRecoilIntensity": 0.65,
+    "RecoilHandling": 1.25,
+    "Automatic": false,
+    "ShootSounds": [
+      "sounds/firearms/fn_fal_1.wav",
+      "sounds/firearms/fn_fal_2.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "RifleCasing",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/fn_fal/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 287.47467,
+    "Y": 43.458508
+  },
+  "CasingEjectionPoint": {
+    "X": -12.475464,
+    "Y": 55.33628
+  },
+  "HoldPoints": [
+    {
+      "X": 111.89998,
+      "Y": 16.799988
+    },
+    {
+      "X": 81.257286,
+      "Y": 35.659634
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

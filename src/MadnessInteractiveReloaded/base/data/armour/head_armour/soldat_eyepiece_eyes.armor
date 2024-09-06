@@ -1,0 +1,17 @@
+0.36.0
+
+name Soldat eyepiece
+type HeadAccessory
+category Eyes
+
+left textures/bodies/eyes/soldat_eyepiece/soldat_eyepiece_left.png
+right textures/bodies/eyes/soldat_eyepiece/soldat_eyepiece_right.png
+
+broken 
+	broken_soldat_eyepiece1_eyes
+	broken_soldat_eyepiece2_eyes
+	broken_soldat_eyepiece3_eyes
+	broken_soldat_eyepiece4_eyes
+
+offset-left 16 0
+offset-right 0 0

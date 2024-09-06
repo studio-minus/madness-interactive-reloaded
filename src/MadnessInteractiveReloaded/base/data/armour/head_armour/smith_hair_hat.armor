@@ -1,0 +1,11 @@
+0.36.0
+
+name Smith Hair
+type HeadAccessory
+category Hat
+
+left textures/bodies/hats/smith_hair/smith_hair_left.png
+right textures/bodies/hats/smith_hair/smith_hair_right.png
+
+offset-left -15 -64
+offset-right -15 -64

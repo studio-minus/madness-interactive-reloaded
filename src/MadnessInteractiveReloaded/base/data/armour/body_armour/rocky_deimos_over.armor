@@ -1,0 +1,11 @@
+0.39.2
+
+name Rocky Deimos
+type BodyAccessory
+left textures/bodies/body2/rocky_deimos/rocky_deimos_left.png
+right textures/bodies/body2/rocky_deimos/rocky_deimos_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+offset 6 12

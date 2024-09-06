@@ -1,0 +1,10 @@
+0.36.0
+
+name Halo
+type HeadAccessory
+left textures/bodies/hats/halo/halo_left.png
+right textures/bodies/hats/halo/halo_right.png
+category Hat
+detach true
+hidden False
+offset 0 -137

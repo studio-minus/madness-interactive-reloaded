@@ -1,0 +1,10 @@
+0.11.2
+
+name Power armor
+type Body
+left textures/bodies/body1/power_armor/power_armor_left.png
+right textures/bodies/body1/power_armor/power_armor_right.png
+category All
+detach False
+hidden False
+offset 0 0

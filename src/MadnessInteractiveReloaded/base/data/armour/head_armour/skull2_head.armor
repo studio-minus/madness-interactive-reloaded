@@ -1,0 +1,11 @@
+0.36.0
+
+name Skull 2
+type Head
+left textures/bodies/skin/skull2/skull2_left.png
+right textures/bodies/skin/skull2/skull2_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+offset 0 0

@@ -1,0 +1,60 @@
+{
+  "Id": "g36c",
+  "WeaponData": {
+    "Name": "G36C",
+    "Damage": 0.65,
+    "UseDelay": 0.08,
+    "MaxHandRangeMultiplier": 1.0,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 30,
+    "BurstFireCount": 0,
+    "Accuracy": 0.84999996,
+    "Recoil": 0.95,
+    "RotationalRecoilIntensity": 0.59999996,
+    "RecoilHandling": 1.1,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/g36_1.wav",
+      "sounds/firearms/g36_2.wav",
+      "sounds/firearms/g36_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "RifleCasing",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/g36c/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 248.98239,
+    "Y": 41.9069
+  },
+  "CasingEjectionPoint": {
+    "X": 32.71469,
+    "Y": 46.492847
+  },
+  "HoldPoints": [
+    {
+      "X": 41.613976,
+      "Y": 18.775928
+    },
+    {
+      "X": 123.64449,
+      "Y": 20.29329
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

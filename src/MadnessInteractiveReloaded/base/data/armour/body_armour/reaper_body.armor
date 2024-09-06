@@ -1,0 +1,11 @@
+0.26.1
+
+name Reaper
+type Body
+left textures/bodies/body1/reaper/reaper_left.png
+right textures/bodies/body1/reaper/reaper_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+offset 0 0

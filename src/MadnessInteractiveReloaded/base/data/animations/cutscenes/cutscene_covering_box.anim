@@ -1,0 +1,21 @@
+﻿fps 24
+scale 1
+speed 1
+
+BODY
+0       -35.66px  66.39px  -18.66deg constraints(PreventWalking PreventFlip PreventWorldInteraction PreventBeingMeleed PreventMelee)
+1000    -35.66px  66.39px  -18.66deg
+
+HEAD
+0       7.74px  -22.47px  19.47deg
+1000       7.74px  -22.47px  19.47deg
+
+HAND
+aim
+0       123.22px  32.91px
+1000       123.22px  32.91px
+
+HAND
+aim
+0       337.79px  218.66px 
+1000       337.79px  218.66px 

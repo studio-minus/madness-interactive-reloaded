@@ -1,0 +1,415 @@
+{
+  "DisplayName": "untitled",
+  "LevelType": "Campaign",
+  "ProgressionType": "Always",
+  "EnemySpawnInterval": 0.0,
+  "MaxEnemyCount": 0,
+  "MaxSimultaneousAttackingEnemies": 2,
+  "BackgroundMusic": "sounds/music/Lothyde/deaths_flashing_before_my_eyes_short.ogg",
+  "WeaponChance": 0.5,
+  "LevelBounds": {
+    "MinX": -4492.707,
+    "MinY": -2570.4062,
+    "MaxX": 4496.1816,
+    "MaxY": 2482.9268
+  },
+  "BodyCountToWin": 1,
+  "TimeLimitInSeconds": -1.0,
+  "FullZoom": true,
+  "Thumbnail": "textures/level_thumbnails/lvl_habitation.qoi",
+  "OpeningTransition": true,
+  "ExitingTransition": true,
+  "EnemySpawnInstructions": [],
+  "Weapons": null,
+  "FloorLine": [
+    {
+      "X": -4443.1025,
+      "Y": -1362.0518
+    },
+    {
+      "X": -3997.1023,
+      "Y": -1362.0518
+    },
+    {
+      "X": -3965.1023,
+      "Y": -1348.9323
+    },
+    {
+      "X": -1663.1023,
+      "Y": -915.89935
+    },
+    {
+      "X": -1659.1023,
+      "Y": -915.43915
+    },
+    {
+      "X": -1587.1023,
+      "Y": -917.71313
+    },
+    {
+      "X": -207.1023,
+      "Y": -1361.9283
+    },
+    {
+      "X": 4452.8975,
+      "Y": -1362.0518
+    }
+  ],
+  "Objects": [
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerSpawn, MIR",
+      "Position": {
+        "X": -1493.1023,
+        "Y": -865.507
+      },
+      "SpawnWeapon": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelProgressTrigger, MIR",
+      "Rectangle": {
+        "MinX": 3919.4534,
+        "MinY": -1419.991,
+        "MaxX": 4698.508,
+        "MaxY": -313.66425
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.CutscenePlayer, MIR",
+      "CutsceneKey": "cutscene_note",
+      "Position": {
+        "X": 1789.3713,
+        "Y": -1138.8577
+      },
+      "ProgressLevelOnEnd": false,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AnimationTrigger, MIR",
+      "Component": {
+        "WorldRect": {
+          "MinX": -1746.273,
+          "MinY": -993.6565,
+          "MaxX": -1234.2732,
+          "MaxY": -481.65656
+        },
+        "Animation": "cutscene_standing_up",
+        "StartEvent": 0,
+        "Target": 1,
+        "ExistingLerpTime": 0.0,
+        "TargetPosition": {
+          "X": -1490.2731,
+          "Y": -993.6565
+        },
+        "TargetFlipped": true,
+        "CreateNewLook": null,
+        "CreateNewStats": null,
+        "CreateNewFaction": "player",
+        "IsExpired": false,
+        "Entity": {
+          "Identity": 0
+        }
+      },
+      "Rectangle": {
+        "MinX": -1746.273,
+        "MinY": -993.6565,
+        "MaxX": -1234.2732,
+        "MaxY": -481.65656
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/storynote_side.png",
+      "Angle": 37.660202,
+      "Position": {
+        "X": 1789.3248,
+        "Y": -1345.8928
+      },
+      "Scale": 1.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": "Infinity",
+      "MaxFrames": 0,
+      "Layer": 10,
+      "AlphaClip": true,
+      "OrderInLayer": -100,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/habitationFire7_21_3x7.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": 5.8665466,
+        "Y": -75.5582
+      },
+      "Scale": 2.385535,
+      "Columns": 3,
+      "Rows": 7,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 0.875,
+      "MaxFrames": 0,
+      "Layer": 15,
+      "AlphaClip": true,
+      "OrderInLayer": -100,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/habitationFire6_12_2x6.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": 2648.579,
+        "Y": -785.83307
+      },
+      "Scale": 2.208836,
+      "Columns": 2,
+      "Rows": 6,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 0.5,
+      "MaxFrames": 0,
+      "Layer": 15,
+      "AlphaClip": true,
+      "OrderInLayer": -100,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/habitationFire5_21_3x7.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": 1460.9447,
+        "Y": 2030.877
+      },
+      "Scale": 2.208836,
+      "Columns": 3,
+      "Rows": 7,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 0.875,
+      "MaxFrames": 0,
+      "Layer": -100,
+      "AlphaClip": true,
+      "OrderInLayer": -100,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/habitationFire4_21_3x7.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": -1021.7411,
+        "Y": -487.2381
+      },
+      "Scale": 2.208836,
+      "Columns": 3,
+      "Rows": 7,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 0.875,
+      "MaxFrames": 0,
+      "Layer": 15,
+      "AlphaClip": true,
+      "OrderInLayer": -100,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/habitationFire3_21_3x7.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": 1349.6599,
+        "Y": 392.80795
+      },
+      "Scale": 2.208836,
+      "Columns": 3,
+      "Rows": 7,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 0.875,
+      "MaxFrames": 0,
+      "Layer": 15,
+      "AlphaClip": true,
+      "OrderInLayer": -100,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/habitationFire1_21_3x7.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": -47.36502,
+        "Y": 866.98676
+      },
+      "Scale": 2.0737615,
+      "Columns": 3,
+      "Rows": 7,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 0.875,
+      "MaxFrames": 0,
+      "Layer": 100,
+      "AlphaClip": true,
+      "OrderInLayer": -100,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/habitationFire2_21_3x7.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": -626.7871,
+        "Y": 751.30927
+      },
+      "Scale": 2.0737615,
+      "Columns": 3,
+      "Rows": 7,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 0.875,
+      "MaxFrames": 0,
+      "Layer": 100,
+      "AlphaClip": true,
+      "OrderInLayer": -100,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/habitationFire0_31_7x5.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": 389.1448,
+        "Y": 1259.1511
+      },
+      "Scale": 2.2268944,
+      "Columns": 7,
+      "Rows": 5,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.4583334,
+      "MaxFrames": 31,
+      "Layer": 100,
+      "AlphaClip": true,
+      "OrderInLayer": -100,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -4423.209,
+        "MinY": -1502.8485,
+        "MaxX": 4394.541,
+        "MaxY": -1246.8486
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.MovementBlocker, MIR",
+      "Rectangle": {
+        "MinX": 4491.7344,
+        "MinY": -1361.6753,
+        "MaxX": 4747.7344,
+        "MaxY": 2485.3691
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.MovementBlocker, MIR",
+      "Rectangle": {
+        "MinX": -4739.1055,
+        "MinY": -1363.1571,
+        "MaxX": -4483.1055,
+        "MaxY": 2483.887
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": -7393.6865,
+        "MinY": -2428.084,
+        "MaxX": 6797.8496,
+        "MaxY": -1362.0518
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": 1.7373657,
+        "Y": -43.739624
+      },
+      "TexturePath": "textures/backgrounds/background_habitation.qoi",
+      "Scale": 2.222222
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": -1631.0884,
+        "Y": -1169.9064
+      },
+      "B": {
+        "X": 511.29327,
+        "Y": -1863.6495
+      },
+      "Radius": 256.0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": -3883.4634,
+        "Y": -1591.5679
+      },
+      "B": {
+        "X": -1671.0337,
+        "Y": -1171.7765
+      },
+      "Radius": 256.0,
+      "Tag": null
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+0.23.2
+
+name Mag Rich Armor
+type Body
+left textures/bodies/body1/mag_rich_body/mag_rich_body_left.png
+right textures/bodies/body1/mag_rich_body/mag_rich_body_right.png
+category All
+texture-scale 0.4051172707889126
+detach False
+hidden true
+offset 0 0
+deflect-chance 0.6

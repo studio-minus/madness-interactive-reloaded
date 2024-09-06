@@ -1,0 +1,63 @@
+{
+  "Id": "auditor_sword",
+  "WeaponData": {
+    "Name": "Auditor Sword",
+    "Damage": 6.0,
+    "UseDelay": 0.0,
+    "MaxHandRangeMultiplier": 1.0,
+    "AdditionalComponents": [
+      "MIR.AuditorSwordComponent"
+    ],
+    "EnsureSystems": [
+      "MIR.AuditorSwordSystem"
+    ],
+    "ThrowableDamage": 50.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [
+      {
+        "MinX": 44.348557,
+        "MinY": 3.4268265,
+        "MaxX": 102.127396,
+        "MaxY": 440.2461
+      }
+    ],
+    "WeaponType": "Melee",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 12,
+    "BurstFireCount": 0,
+    "Accuracy": 0.0,
+    "Recoil": 0.0,
+    "RotationalRecoilIntensity": 1.0,
+    "RecoilHandling": 0.0,
+    "Automatic": false,
+    "ShootSounds": null,
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 513.0,
+    "CanDeflectBullets": true,
+    "SpecialMelee": true,
+    "MeleeDamageType": "Blade",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/auditor_sword/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": -15.0,
+    "Y": -15.0
+  },
+  "CasingEjectionPoint": {
+    "X": 15.0,
+    "Y": 15.0
+  },
+  "HoldPoints": [
+    {
+      "X": -3.818983,
+      "Y": 198.85736
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 90.0
+}

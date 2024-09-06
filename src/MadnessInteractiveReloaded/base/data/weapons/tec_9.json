@@ -1,0 +1,56 @@
+{
+  "Id": "tec_9",
+  "WeaponData": {
+    "Name": "TEC-9",
+    "Damage": 0.25,
+    "UseDelay": 0.08,
+    "MaxHandRangeMultiplier": 0.7,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 4.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 24,
+    "BurstFireCount": 3,
+    "Accuracy": 1.0,
+    "Recoil": 0.25,
+    "RotationalRecoilIntensity": 1.0,
+    "RecoilHandling": 1.5,
+    "Automatic": false,
+    "ShootSounds": [
+      "sounds/firearms/tec_9_1.wav",
+      "sounds/firearms/tec_9_2.wav",
+      "sounds/firearms/tec_9_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/tec_9/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 155.6603,
+    "Y": 44.16986
+  },
+  "CasingEjectionPoint": {
+    "X": 63.826275,
+    "Y": 53.760464
+  },
+  "HoldPoints": [
+    {
+      "X": 8.679428,
+      "Y": 11.889045
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

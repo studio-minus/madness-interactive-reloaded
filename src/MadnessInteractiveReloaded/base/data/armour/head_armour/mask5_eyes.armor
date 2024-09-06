@@ -1,0 +1,11 @@
+0.35.1
+
+name Mask 5
+type HeadAccessory
+left textures/bodies/eyes/mask5/mask5_left.png
+right textures/bodies/eyes/mask5/mask5_right.png
+texture-scale 1
+category Eyes
+detach False
+hidden False
+offset 0 0

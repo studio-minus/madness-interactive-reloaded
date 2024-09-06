@@ -1,0 +1,10 @@
+0.16.1
+
+name Bandit
+type Body
+left textures/bodies/body1/bandit/bandit_left.png
+right textures/bodies/body1/bandit/bandit_right.png
+category All
+detach False
+hidden False
+offset 0 0

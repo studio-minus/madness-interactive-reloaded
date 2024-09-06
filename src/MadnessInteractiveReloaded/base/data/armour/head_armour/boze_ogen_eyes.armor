@@ -1,0 +1,11 @@
+0.36.0
+
+name Angry eyes
+type HeadAccessory
+category Eyes
+
+left textures/bodies/eyes/boze_ogen/boze_ogen_left.png
+right textures/bodies/eyes/boze_ogen/boze_ogen_right.png
+
+offset-left 54 4
+offset-right 53 4

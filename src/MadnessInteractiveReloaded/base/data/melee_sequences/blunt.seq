@@ -1,0 +1,9 @@
+0.7.6
+
+# animation_id transition_frame [hit,frame,array]
+
+[melee_blunt_R_1,melee_blunt_L_1]   15   [13]
+[melee_blunt_R_2,melee_blunt_L_2]   9    [6]
+[melee_blunt_R_3,melee_blunt_L_3]   12   [8]
+[melee_blunt_R_4,melee_blunt_L_4]   12   [7]
+[melee_blunt_R_5,melee_blunt_L_5]   4    [8]

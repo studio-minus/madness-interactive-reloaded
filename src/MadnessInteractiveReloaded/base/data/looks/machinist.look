@@ -1,0 +1,14 @@
+﻿0.48.2
+
+name Machinist
+
+body
+   agent_suit_body
+   body_armor2_over
+
+head
+   default_head
+   visor7_eyes
+
+hands default
+blood #ff0000

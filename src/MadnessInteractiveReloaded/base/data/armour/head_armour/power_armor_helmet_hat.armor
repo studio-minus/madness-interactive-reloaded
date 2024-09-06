@@ -1,0 +1,10 @@
+0.36.0
+
+name Power armor helmet
+type HeadAccessory
+left textures/bodies/hats/power_armor_helmet/power_armor_helmet_left.png
+right textures/bodies/hats/power_armor_helmet/power_armor_helmet_right.png
+category Hat
+detach False
+hidden False
+offset -10 0

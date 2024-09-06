@@ -1,0 +1,95 @@
+{
+  "Id": "browning_hp",
+  "WeaponData": {
+    "Name": "Browning HP",
+    "Damage": 0.76,
+    "UseDelay": 0.099999994,
+    "MaxHandRangeMultiplier": 0.90000004,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 17,
+    "BurstFireCount": 0,
+    "Accuracy": 1.0,
+    "Recoil": 1.11,
+    "RotationalRecoilIntensity": 2.0,
+    "RecoilHandling": 0.98999995,
+    "Automatic": false,
+    "ShootSounds": [
+      "sounds/firearms/browning_hp_1.wav",
+      "sounds/firearms/browning_hp_2.wav",
+      "sounds/firearms/browning_hp_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/browning_hp/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 93.2171,
+    "Y": 52.600685
+  },
+  "CasingEjectionPoint": {
+    "X": -33.36383,
+    "Y": 52.616302
+  },
+  "HoldPoints": [
+    {
+      "X": 44.13002,
+      "Y": 4.469991
+    }
+  ],
+  "AnimatedParts": [
+    {
+      "OutOfAmmoKeyframeTime": 0.1,
+      "InvisbleWhenOutOfAmmo": false,
+      "Duration": 0.15,
+      "Scale": {
+        "X": 1.0,
+        "Y": 1.0
+      },
+      "Texture": "textures/weapons/browning_hp/slide.png",
+      "TranslationCurve": {
+        "MappingFunction": null,
+        "Keys": [
+          {
+            "Value": {
+              "X": 6.0,
+              "Y": 52.0
+            },
+            "Position": 0.0
+          },
+          {
+            "Value": {
+              "X": -25.0,
+              "Y": 52.0
+            },
+            "Position": 0.1
+          },
+          {
+            "Value": {
+              "X": 6.0,
+              "Y": 52.0
+            },
+            "Position": 1.0
+          }
+        ]
+      },
+      "AngleCurve": null,
+      "VisibilityCurve": null
+    }
+  ],
+  "OnFloorAngle": 0.0
+}

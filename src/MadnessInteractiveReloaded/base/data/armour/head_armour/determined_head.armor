@@ -1,0 +1,11 @@
+0.38.0
+
+name Determined
+type Head
+left textures/bodies/skin/determined/determined_left.png
+right textures/bodies/skin/determined/determined_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+offset 0 0

@@ -1,0 +1,60 @@
+{
+  "Id": "spectre_m4",
+  "WeaponData": {
+    "Name": "Spectre M4",
+    "Damage": 0.15,
+    "UseDelay": 0.09,
+    "MaxHandRangeMultiplier": 0.7,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 30,
+    "BurstFireCount": 0,
+    "Accuracy": 0.84999996,
+    "Recoil": 0.3,
+    "RotationalRecoilIntensity": 0.6,
+    "RecoilHandling": 1.0,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/mp7_1.wav",
+      "sounds/firearms/mp7_2.wav",
+      "sounds/firearms/mp7_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 399.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/spectre_m4/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 154.8768,
+    "Y": 52.721996
+  },
+  "CasingEjectionPoint": {
+    "X": 23.910675,
+    "Y": 58.00363
+  },
+  "HoldPoints": [
+    {
+      "X": 78.96001,
+      "Y": 1.2300158
+    },
+    {
+      "X": 75.08703,
+      "Y": 38.63702
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

@@ -1,0 +1,15 @@
+﻿0.48.2
+
+name Machinist
+
+aiming_randomness 0.2
+shooting_timeout 0.75
+recoil_handling 0.9
+can_deflect true
+dodge 0.2
+panic 1.25
+melee 0.35
+accurate_shot_chance 0.5
+
+agility_skill_level adept
+jump_dodge_duration 0.25

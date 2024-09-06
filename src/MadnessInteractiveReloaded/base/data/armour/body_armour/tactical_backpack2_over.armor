@@ -1,0 +1,11 @@
+0.38.1
+
+name Tactical Backpack 2
+type BodyAccessory
+left textures/bodies/body2/tactical_backpack2/tactical_backpack2_left.png
+right textures/bodies/body2/tactical_backpack2/tactical_backpack2_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+offset -151 -94

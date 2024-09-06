@@ -1,0 +1,59 @@
+{
+  "Id": "falchion",
+  "WeaponData": {
+    "Name": "Falchion",
+    "Damage": 10.0,
+    "UseDelay": 0.0,
+    "MaxHandRangeMultiplier": 1.0,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 25.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [
+      {
+        "MinX": 29.152771,
+        "MinY": -17.323296,
+        "MaxX": 79.69916,
+        "MaxY": 254.59613
+      }
+    ],
+    "WeaponType": "Melee",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 1,
+    "BurstFireCount": 0,
+    "Accuracy": 0.0,
+    "Recoil": 0.0,
+    "RotationalRecoilIntensity": 1.0,
+    "RecoilHandling": 0.0,
+    "Automatic": false,
+    "ShootSounds": null,
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "None",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 400.0,
+    "CanDeflectBullets": true,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Blade",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/falchion/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": -15.0,
+    "Y": -15.0
+  },
+  "CasingEjectionPoint": {
+    "X": 15.0,
+    "Y": 15.0
+  },
+  "HoldPoints": [
+    {
+      "X": -2.0561142,
+      "Y": 120.771126
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 90.0
+}

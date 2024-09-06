@@ -1,0 +1,8 @@
+[
+  {
+    "$type": "MIR.Cutscenes.VideoSlide, MIR",
+
+    "Video": "video/cutscene_bossbattle.mp4",
+    "Duration": 39.17
+  }
+]

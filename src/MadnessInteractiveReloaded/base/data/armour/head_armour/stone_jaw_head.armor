@@ -1,0 +1,11 @@
+0.39.2
+
+name Stone jaw
+type Head
+left textures/bodies/skin/stone_jaw/stone_jaw_left.png
+right textures/bodies/skin/stone_jaw/stone_jaw_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+offset 0 0

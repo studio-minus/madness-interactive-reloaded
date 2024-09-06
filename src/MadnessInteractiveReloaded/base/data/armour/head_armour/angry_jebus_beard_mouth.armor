@@ -1,0 +1,10 @@
+0.36.0
+
+name Angry Jebus Beard
+type HeadAccessory
+left textures/bodies/mouth/angry_jebus_beard/angry_jebus_beard_left.png
+right textures/bodies/mouth/angry_jebus_beard/angry_jebus_beard_right.png
+category Mask
+detach False
+hidden False
+offset -20 40

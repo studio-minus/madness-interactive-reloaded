@@ -1,0 +1,8 @@
+0.36.0
+
+name Zombie 1
+type Head
+category All
+
+left textures/bodies/skin/zombie_head1/zombie_head1_left.png
+right textures/bodies/skin/zombie_head1/zombie_head1_right.png

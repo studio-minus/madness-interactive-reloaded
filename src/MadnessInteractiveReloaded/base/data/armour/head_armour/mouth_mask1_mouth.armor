@@ -1,0 +1,11 @@
+0.36.0
+
+name Mouth mask
+type HeadAccessory
+category Mask
+
+left textures/bodies/mouth/mouth_mask1/mouth_mask1_left.png
+right textures/bodies/mouth/mouth_mask1/mouth_mask1_right.png
+
+offset-left -2 83
+offset-right -2 83

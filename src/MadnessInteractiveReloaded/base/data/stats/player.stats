@@ -1,0 +1,14 @@
+﻿0.48.1
+
+name Player
+
+aiming_randomness 0
+recoil_handling 1
+dodge 1
+melee 0.8
+can_deflect true
+dodge_oversaturate true
+accurate_shot_chance 0.25
+
+agility_skill_level master
+jump_dodge_duration 0.65

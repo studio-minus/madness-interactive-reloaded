@@ -1,0 +1,10 @@
+0.36.0
+
+name Glassmask
+type HeadAccessory
+left textures/bodies/eyes/glass_mask/glass_mask_left.png
+right textures/bodies/eyes/glass_mask/glass_mask_right.png
+category Eyes
+detach False
+hidden False
+offset 19 15

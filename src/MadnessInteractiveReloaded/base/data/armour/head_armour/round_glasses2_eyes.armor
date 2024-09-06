@@ -1,0 +1,12 @@
+0.36.0
+
+name Black round glasses
+type HeadAccessory
+detach true
+category Eyes
+
+left textures/bodies/eyes/round_glasses2/round_glasses2_left.png
+right textures/bodies/eyes/round_glasses2/round_glasses2_right.png
+
+offset-left 43 1
+offset-right 43 1

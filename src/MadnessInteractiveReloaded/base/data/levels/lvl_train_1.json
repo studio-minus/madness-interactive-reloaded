@@ -1,0 +1,414 @@
+{
+  "DisplayName": "untitled",
+  "LevelType": "Campaign",
+  "ProgressionType": "BodyCount",
+  "EnemySpawnInterval": 0.1,
+  "MaxEnemyCount": 2,
+  "MaxSimultaneousAttackingEnemies": 2,
+  "BackgroundMusic": "sounds/music/Lothyde/brake_breaker.ogg",
+  "WeaponChance": 0.8,
+  "LevelBounds": {
+    "MinX": -2106.2842,
+    "MinY": -645.4593,
+    "MaxX": 2113.7153,
+    "MaxY": 454.5406
+  },
+  "BodyCountToWin": 13,
+  "TimeLimitInSeconds": -1.0,
+  "FullZoom": true,
+  "Thumbnail": "textures/level_thumbnails/lvl_train_1.qoi",
+  "OpeningTransition": false,
+  "ExitingTransition": true,
+  "EnemySpawnInstructions": [
+    {
+      "StatsKey": "grunt",
+      "LookKey": "grunt"
+    },
+    {
+      "StatsKey": "agent",
+      "LookKey": "agent"
+    }
+  ],
+  "Weapons": [
+    "mac_10",
+    "mk_23",
+    "baseball_bat",
+    "iron_pipe"
+  ],
+  "FloorLine": [
+    {
+      "X": -1986.498,
+      "Y": -605.41644
+    },
+    {
+      "X": 1999.502,
+      "Y": -605.41644
+    }
+  ],
+  "Objects": [
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerSpawn, MIR",
+      "Position": {
+        "X": -1566.498,
+        "Y": -361.8918
+      },
+      "SpawnWeapon": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": -2285.0679,
+        "MinY": 445.03067,
+        "MaxX": -1789.176,
+        "MaxY": 1434.1772
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": 2148.0137,
+          "Y": -608.0361
+        },
+        "FacingDirection": {
+          "X": -1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": true,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": 2073.2014,
+          "Y": 201.89038
+        },
+        "TopRight": {
+          "X": 2021.7039,
+          "Y": 202.54889
+        },
+        "BottomLeft": {
+          "X": 2074.2598,
+          "Y": -618.60596
+        },
+        "BottomRight": {
+          "X": 2021.7676,
+          "Y": -597.4662
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Look": "agent",
+        "Stats": "agent",
+        "Weapon": "spectre_m4",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": 425.14984,
+          "Y": -600.5321
+        },
+        "ScaleOverride": false,
+        "Scale": 0.0
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -1968.1001,
+        "MinY": -659.48303,
+        "MaxX": 2001.6624,
+        "MaxY": -498.10925
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.TrainMovingBackground, MIR",
+      "Speed": 0.0,
+      "Rectangle": {
+        "MinX": 599.39276,
+        "MinY": -101.45149,
+        "MaxX": 928.3933,
+        "MaxY": 60.715286
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.TrainMovingBackground, MIR",
+      "Speed": 0.0,
+      "Rectangle": {
+        "MinX": -916.7543,
+        "MinY": -101.37436,
+        "MaxX": -587.91254,
+        "MaxY": 62.237297
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": 2043.8242,
+        "MinY": -607.819,
+        "MaxX": 2788.9219,
+        "MaxY": 449.80304
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": -2769.613,
+        "MinY": -606.9472,
+        "MaxX": -2030.7068,
+        "MaxY": 450.67496
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": 3.7156982,
+        "Y": -95.45935
+      },
+      "TexturePath": "textures/backgrounds/background_train_a.qoi",
+      "Scale": 2.222222
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": -3871.2751,
+        "MinY": -1001.78735,
+        "MaxX": 3963.6777,
+        "MaxY": -605.41644
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": -1317.7563,
+        "MinY": 442.84708,
+        "MaxX": 2308.32,
+        "MaxY": 1448.5509
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Look": "grunt",
+        "Stats": "grunt",
+        "Weapon": "switchblade",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": -50.138554,
+          "Y": -593.1321
+        },
+        "ScaleOverride": false,
+        "Scale": 0.0
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -1171.3699,
+        "MinY": 402.98615,
+        "MaxX": 1990.3058,
+        "MaxY": 564.3599
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Look": "engineer",
+        "Stats": "engineer",
+        "Weapon": "g36c",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": 1566.0955,
+          "Y": -604.8742
+        },
+        "ScaleOverride": false,
+        "Scale": 0.0
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": -2138.4263,
+          "Y": -608.73584
+        },
+        "FacingDirection": {
+          "X": 1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": -2064.28,
+          "Y": 200.42807
+        },
+        "TopRight": {
+          "X": -2008.8433,
+          "Y": 201.8691
+        },
+        "BottomLeft": {
+          "X": -2067.0754,
+          "Y": -620.5516
+        },
+        "BottomRight": {
+          "X": -2009.7769,
+          "Y": -596.92017
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 1985.0181,
+        "MinY": 217.11499,
+        "MaxX": 2241.018,
+        "MaxY": 399.98987
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -2236.8594,
+        "MinY": 216.89497,
+        "MaxX": -1980.8599,
+        "MaxY": 399.76993
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.TrainMovingBackground, MIR",
+      "Speed": 0.0,
+      "Rectangle": {
+        "MinX": -1674.6637,
+        "MinY": -103.797874,
+        "MaxX": -1348.6246,
+        "MaxY": 60.928757
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.GameSystem, MIR",
+      "Position": {
+        "X": 3.342743,
+        "Y": 315.28534
+      },
+      "SystemTypeName": "MIR.TrainShakeSystem, MIR"
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.TrainMovingBackground, MIR",
+      "Speed": 0.0,
+      "Rectangle": {
+        "MinX": -159.95738,
+        "MinY": -101.65761,
+        "MaxX": 171.21056,
+        "MaxY": 61.954063
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.TrainMovingBackground, MIR",
+      "Speed": 0.0,
+      "Rectangle": {
+        "MinX": 1360.8082,
+        "MinY": -104.75519,
+        "MaxX": 1686.6234,
+        "MaxY": 61.446365
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Look": "grunt",
+        "Stats": "grunt",
+        "Weapon": "m1911",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": -755.5816,
+          "Y": -595.6851
+        },
+        "ScaleOverride": false,
+        "Scale": 0.0
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Look": "engineer",
+        "Stats": "engineer",
+        "Weapon": "tec_9",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": 936.9942,
+          "Y": -607.318
+        },
+        "ScaleOverride": false,
+        "Scale": 0.0
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": -2284.5493,
+        "MinY": 1378.2828,
+        "MaxX": -776.1687,
+        "MaxY": 1632.2812
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AnimationTrigger, MIR",
+      "Component": {
+        "WorldRect": {
+          "MinX": -1799.7264,
+          "MinY": -610.8767,
+          "MaxX": -1287.7264,
+          "MaxY": -98.87685
+        },
+        "Animation": "spawn_jump",
+        "StartEvent": 0,
+        "Target": 1,
+        "ExistingLerpTime": 0.0,
+        "TargetPosition": {
+          "X": -1500.0,
+          "Y": -650.0
+        },
+        "TargetFlipped": false,
+        "CreateNewLook": null,
+        "CreateNewStats": null,
+        "CreateNewFaction": "player",
+        "IsExpired": false,
+        "Entity": {
+          "Identity": 0
+        }
+      },
+      "Rectangle": {
+        "MinX": -1799.7264,
+        "MinY": -610.8767,
+        "MaxX": -1287.7264,
+        "MaxY": -98.87685
+      },
+      "Tag": null
+    }
+  ]
+}

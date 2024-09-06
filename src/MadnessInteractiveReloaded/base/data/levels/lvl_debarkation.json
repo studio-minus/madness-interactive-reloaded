@@ -1,0 +1,172 @@
+{
+  "DisplayName": "untitled",
+  "LevelType": "Campaign",
+  "ProgressionType": "BodyCount",
+  "EnemySpawnInterval": 0.0,
+  "MaxEnemyCount": 0,
+  "MaxSimultaneousAttackingEnemies": 2,
+  "BackgroundMusic": "sounds/music/Lothyde/from_the_outset.ogg",
+  "WeaponChance": 0.5,
+  "LevelBounds": {
+    "MinX": -2971.433,
+    "MinY": -1678.9938,
+    "MaxX": 2973.0107,
+    "MaxY": 1663.2281
+  },
+  "BodyCountToWin": 0,
+  "TimeLimitInSeconds": -1.0,
+  "FullZoom": false,
+  "Thumbnail": "textures/level_thumbnails/lvl_debarkation.qoi",
+  "OpeningTransition": true,
+  "ExitingTransition": true,
+  "EnemySpawnInstructions": [],
+  "Weapons": null,
+  "FloorLine": [
+    {
+      "X": -2920.9119,
+      "Y": -291.7195
+    },
+    {
+      "X": 1359.0881,
+      "Y": -291.7195
+    }
+  ],
+  "Objects": [
+    {
+      "$type": "MIR.LevelEditor.Objects.GameSystem, MIR",
+      "Position": {
+        "X": -2714.9119,
+        "Y": 0.0
+      },
+      "SystemTypeName": "MIR.DebarkationLevelSystem"
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerSpawn, MIR",
+      "Position": {
+        "X": -2714.9119,
+        "Y": -35.98062
+      },
+      "SpawnWeapon": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": 0.7887573,
+        "Y": -7.882841
+      },
+      "TexturePath": "textures/backgrounds/background_debarkation.qoi",
+      "Scale": 2.222222
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": -5612.1777,
+        "MinY": -547.72,
+        "MaxX": 2990.6753,
+        "MaxY": -291.7195
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": 1395.2484,
+        "MinY": -296.74368,
+        "MaxX": 2982.1245,
+        "MaxY": 1664.9849
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.MovementBlocker, MIR",
+      "Rectangle": {
+        "MinX": -3213.117,
+        "MinY": -298.82806,
+        "MaxX": -2957.117,
+        "MaxY": 1663.6044
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -2911.466,
+        "MinY": -431.61472,
+        "MaxX": 1308.1931,
+        "MaxY": -175.61461
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 1271.8269,
+        "MinY": 447.8232,
+        "MaxX": 1527.8269,
+        "MaxY": 1611.5367
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": 1497.6066,
+          "Y": -292.71545
+        },
+        "FacingDirection": {
+          "X": -1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": false,
+        "IsLevelProgressionDoor": true,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": 1224.955,
+          "Y": 320.0428
+        },
+        "TopRight": {
+          "X": 1582.8145,
+          "Y": 314.33798
+        },
+        "BottomLeft": {
+          "X": 1219.2067,
+          "Y": -279.65155
+        },
+        "BottomRight": {
+          "X": 1576.0065,
+          "Y": -305.7794
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/debarkationFire1_16_4x4.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": -21.952637,
+        "Y": 2342.0334
+      },
+      "Scale": 3.3333333,
+      "Columns": 4,
+      "Rows": 4,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 0.6666667,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": true,
+      "OrderInLayer": 150,
+      "Tag": {
+        "Value": 5002
+      }
+    }
+  ]
+}

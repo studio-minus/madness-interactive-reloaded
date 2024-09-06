@@ -1,0 +1,14 @@
+﻿0.13.1
+
+name End Soldat
+
+body
+   soldat_suit_body
+   tactical_backpack1_over
+
+head
+   zombie_head1_head
+   soldat_eyepiece_eyes
+
+hands fingerless_gloves
+blood #ffe600

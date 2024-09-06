@@ -1,0 +1,10 @@
+0.36.2
+
+name Jebus 5
+type Head
+left textures/bodies/skin/jebus5/jebus5_left.png
+right textures/bodies/skin/jebus5/jebus5_right.png
+category All
+detach False
+hidden False
+offset 0 0

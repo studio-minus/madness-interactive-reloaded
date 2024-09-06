@@ -1,0 +1,11 @@
+0.48.2
+
+name Visor 7
+type HeadAccessory
+left textures/bodies/eyes/visor7/visor7_left.png
+right textures/bodies/eyes/visor7/visor7_right.png
+texture-scale 1
+category Eyes
+detach False
+hidden False
+offset 2 -2

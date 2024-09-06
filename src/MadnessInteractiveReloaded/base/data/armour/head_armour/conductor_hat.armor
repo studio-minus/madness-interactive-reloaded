@@ -1,0 +1,12 @@
+0.36.0
+
+name Conductor
+type HeadAccessory
+category Hat
+detach true
+
+left textures/bodies/hats/conductor/conductor_left.png
+right textures/bodies/hats/conductor/conductor_right.png
+
+offset-left 25 -89
+offset-right 25 -89

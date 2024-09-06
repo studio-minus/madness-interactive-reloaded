@@ -1,0 +1,11 @@
+0.36.0
+
+name Leon cap
+type HeadAccessory
+category Hat
+
+left textures/bodies/hats/leon_cap/leon_cap_left.png
+right textures/bodies/hats/leon_cap/leon_cap_right.png
+
+offset-left -5 -68
+offset-right -5 -68

@@ -1,0 +1,95 @@
+{
+  "Id": "micro_uzi",
+  "WeaponData": {
+    "Name": "Micro Uzi",
+    "Damage": 0.4,
+    "UseDelay": 0.05,
+    "MaxHandRangeMultiplier": 1.0,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 8.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 32,
+    "BurstFireCount": 0,
+    "Accuracy": 0.98,
+    "Recoil": 0.4,
+    "RotationalRecoilIntensity": 1.1,
+    "RecoilHandling": 0.95,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/micro_uzi_single_1.wav",
+      "sounds/firearms/micro_uzi_single_2.wav",
+      "sounds/firearms/micro_uzi_single_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/micro_uzi/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 99.0,
+    "Y": 67.0
+  },
+  "CasingEjectionPoint": {
+    "X": -16.464417,
+    "Y": 84.644135
+  },
+  "HoldPoints": [
+    {
+      "X": 16.575356,
+      "Y": -12.143829
+    }
+  ],
+  "AnimatedParts": [
+    {
+      "OutOfAmmoKeyframeTime": 0.1,
+      "InvisbleWhenOutOfAmmo": false,
+      "Duration": 0.15,
+      "Scale": {
+        "X": 1.0,
+        "Y": 1.0
+      },
+      "Texture": "textures/weapons/micro_uzi/slide.png",
+      "TranslationCurve": {
+        "MappingFunction": null,
+        "Keys": [
+          {
+            "Value": {
+              "X": 29.0,
+              "Y": 96.0
+            },
+            "Position": 0.0
+          },
+          {
+            "Value": {
+              "X": 19.0,
+              "Y": 96.0
+            },
+            "Position": 0.1
+          },
+          {
+            "Value": {
+              "X": 29.0,
+              "Y": 96.0
+            },
+            "Position": 1.0
+          }
+        ]
+      },
+      "AngleCurve": null,
+      "VisibilityCurve": null
+    }
+  ],
+  "OnFloorAngle": 0.0
+}

@@ -1,0 +1,10 @@
+0.36.0
+
+name Welding mask
+type HeadAccessory
+left textures/bodies/eyes/welding_mask/welding_mask_left.png
+right textures/bodies/eyes/welding_mask/welding_mask_right.png
+category Eyes
+detach True
+hidden False
+offset 22 19

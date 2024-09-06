@@ -1,0 +1,34 @@
+0.12.0
+
+# Panic multiplier when an NPC is shot at
+PanicMultiplier 0.2
+
+# Dodge cost multiplier when a character is shot from behind
+DodgeFromBehindCostMultiplier 1.2
+
+# Dodge cost multiplier when a character is shot from very up close
+DodgePointBlankCostMultiplier 50
+
+# Maximum distance that counts as "point blank"
+PointBlankDistance 250
+
+# Dodge cost when deflecting bullets, where this is multiplied with the weapon damage to calculate the final cost
+DeflectDodgeCost 0.025
+
+# Chance (0 to 1) of an NPC to jump-dodge when shot
+JumpDodgeChance 0.2
+
+# Distance range (min,max) for enemies to stay from their target during a melee attack
+EnemyMeleeDistance 220 700
+
+# Distance range (min,max) for enemies to stay from their target during a firearm attack
+EnemyGunDistance 1000 2000
+
+# Distance (min) for enemies to stay from their target if the target is already overwhelmed
+EnemySafeDistanceFromPlayer 1000
+
+# The minimum distance for an enemy to consider a weapon for pickup
+EnemyWeaponSearchRange 1500
+
+# This is unused :)
+InaccuracyMaxDistance 1000

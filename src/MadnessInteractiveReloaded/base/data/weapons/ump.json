@@ -1,0 +1,60 @@
+{
+  "Id": "ump",
+  "WeaponData": {
+    "Name": "UMP",
+    "Damage": 0.35,
+    "UseDelay": 0.07,
+    "MaxHandRangeMultiplier": 0.8,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 30,
+    "BurstFireCount": 0,
+    "Accuracy": 0.95,
+    "Recoil": 0.25,
+    "RotationalRecoilIntensity": 1.0,
+    "RecoilHandling": 1.1,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/muzi_1.wav",
+      "sounds/firearms/muzi_2.wav",
+      "sounds/firearms/muzi_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/ump/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 264.41077,
+    "Y": 68.821144
+  },
+  "CasingEjectionPoint": {
+    "X": 72.10614,
+    "Y": 74.72188
+  },
+  "HoldPoints": [
+    {
+      "X": 7.8476715,
+      "Y": -2.1788578
+    },
+    {
+      "X": 185.28102,
+      "Y": 55.60881
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

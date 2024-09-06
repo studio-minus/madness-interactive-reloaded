@@ -1,0 +1,10 @@
+0.11.2
+
+name Mag agent
+type Body
+left textures/bodies/body1/mag_agent/mag_agent_left.png
+right textures/bodies/body1/mag_agent/mag_agent_right.png
+category All
+detach False
+hidden False
+offset 0 0

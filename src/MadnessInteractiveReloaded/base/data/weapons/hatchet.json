@@ -1,0 +1,59 @@
+{
+  "Id": "hatchet",
+  "WeaponData": {
+    "Name": "Hatchet",
+    "Damage": 0.7,
+    "UseDelay": 0.05,
+    "MaxHandRangeMultiplier": 0.8,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 20.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [
+      {
+        "MinX": 63.0,
+        "MinY": 0.0,
+        "MaxX": 143.0,
+        "MaxY": 107.0
+      }
+    ],
+    "WeaponType": "Melee",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 12,
+    "BurstFireCount": 0,
+    "Accuracy": 0.0,
+    "Recoil": 0.0,
+    "RotationalRecoilIntensity": 1.0,
+    "RecoilHandling": 0.0,
+    "Automatic": false,
+    "ShootSounds": null,
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 445.0,
+    "CanDeflectBullets": true,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Axe",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/hatchet/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 0.0,
+    "Y": 0.0
+  },
+  "CasingEjectionPoint": {
+    "X": 0.0,
+    "Y": 0.0
+  },
+  "HoldPoints": [
+    {
+      "X": 47.0,
+      "Y": 109.0
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 90.0
+}

@@ -1,0 +1,8 @@
+0.36.0
+
+name Clown
+type Head
+category All
+
+left textures/bodies/skin/clown/clown_left.png
+right textures/bodies/skin/clown/clown_right.png

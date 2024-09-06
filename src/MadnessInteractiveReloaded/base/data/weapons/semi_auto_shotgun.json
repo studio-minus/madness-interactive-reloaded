@@ -1,0 +1,56 @@
+{
+  "Id": "semi_auto_shotgun",
+  "WeaponData": {
+    "Name": "Semi-auto shotgun",
+    "Damage": 0.15,
+    "UseDelay": 0.1,
+    "MaxHandRangeMultiplier": 0.7,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 4,
+    "RoundsPerMagazine": 10,
+    "BurstFireCount": 0,
+    "Accuracy": 0.55,
+    "Recoil": 2.0,
+    "RotationalRecoilIntensity": 1.0,
+    "RecoilHandling": 0.8,
+    "Automatic": false,
+    "ShootSounds": [
+      "sounds/firearms/shotmod_1.wav",
+      "sounds/firearms/shotmod_2.wav",
+      "sounds/firearms/shotmod_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 300.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/semi_auto_shotgun/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 219.21527,
+    "Y": 68.16781
+  },
+  "CasingEjectionPoint": {
+    "X": 8.27319,
+    "Y": 62.08763
+  },
+  "HoldPoints": [
+    {
+      "X": 107.30563,
+      "Y": 0.3233776
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

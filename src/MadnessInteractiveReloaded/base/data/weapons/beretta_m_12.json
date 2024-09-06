@@ -1,0 +1,60 @@
+{
+  "Id": "beretta_m_12",
+  "WeaponData": {
+    "Name": "Beretta M-12",
+    "Damage": 0.54,
+    "UseDelay": 0.11,
+    "MaxHandRangeMultiplier": 0.8,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 32,
+    "BurstFireCount": 0,
+    "Accuracy": 1.0,
+    "Recoil": 0.4,
+    "RotationalRecoilIntensity": 1.2,
+    "RecoilHandling": 1.0,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/cqb_1.wav",
+      "sounds/firearms/cqb_2.wav",
+      "sounds/firearms/cqb_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 300.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/beretta_m_12/base.png",
+  "HoldForGrip": true,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 172.3453,
+    "Y": 70.06989
+  },
+  "CasingEjectionPoint": {
+    "X": -23.636337,
+    "Y": 80.38456
+  },
+  "HoldPoints": [
+    {
+      "X": 97.40713,
+      "Y": -3.454939
+    },
+    {
+      "X": 89.33628,
+      "Y": 14.953243
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

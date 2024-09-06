@@ -1,0 +1,12 @@
+﻿0.13.1
+
+name Agent
+
+body
+   agent_suit_body
+
+head
+   default_head
+   agent_glasses_eyes
+
+blood #ff0000

@@ -1,0 +1,10 @@
+0.36.0
+
+name Jebus glasses
+type HeadAccessory
+left textures/bodies/eyes/jebus_glasses/jebus_glasses_left.png
+right textures/bodies/eyes/jebus_glasses/jebus_glasses_right.png
+category Eyes
+detach true
+hidden False
+offset 71 0

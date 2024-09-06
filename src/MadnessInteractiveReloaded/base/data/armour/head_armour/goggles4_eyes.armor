@@ -1,0 +1,11 @@
+0.36.5
+
+name Goggles 4
+type HeadAccessory
+left textures/bodies/eyes/goggles4/goggles4_left.png
+right textures/bodies/eyes/goggles4/goggles4_right.png
+texture-scale 1
+category Eyes
+detach False
+hidden False
+offset 9 5

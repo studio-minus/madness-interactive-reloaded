@@ -1,0 +1,11 @@
+0.36.0
+
+name Goggles 3
+type HeadAccessory
+category Eyes
+
+left textures/bodies/eyes/goggles3/goggles3_left.png
+right textures/bodies/eyes/goggles3/goggles3_right.png
+
+offset-left -24 -2
+offset-right 107 -2

@@ -1,0 +1,8 @@
+0.1.18
+
+name Combat armor
+type Body
+category All
+
+left textures/bodies/body1/combat_armor1/combat_armor1_left.png
+right textures/bodies/body1/combat_armor1/combat_armor1_right.png

@@ -1,0 +1,10 @@
+0.36.0
+
+name Jebus 5 glasses
+type HeadAccessory
+left textures/bodies/eyes/jebus5_glasses/jebus5_glasses_left.png
+right textures/bodies/eyes/jebus5_glasses/jebus5_glasses_right.png
+category Eyes
+detach true
+hidden true
+offset 13 0

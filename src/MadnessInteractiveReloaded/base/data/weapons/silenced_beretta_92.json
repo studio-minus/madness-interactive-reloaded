@@ -1,0 +1,93 @@
+{
+  "Id": "silenced_beretta_92",
+  "WeaponData": {
+    "Name": "Silenced Beretta 92",
+    "Damage": 0.3,
+    "UseDelay": 0.08,
+    "MaxHandRangeMultiplier": 1.0,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 5.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 15,
+    "BurstFireCount": 0,
+    "Accuracy": 1.0,
+    "Recoil": 0.8,
+    "RotationalRecoilIntensity": 1.0,
+    "RecoilHandling": 1.0,
+    "Automatic": false,
+    "ShootSounds": [
+      "sounds/firearms/sup_1.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/silenced_beretta_92/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 176.50638,
+    "Y": 47.19097
+  },
+  "CasingEjectionPoint": {
+    "X": -92.75617,
+    "Y": 48.49362
+  },
+  "HoldPoints": [
+    {
+      "X": 121.93436,
+      "Y": 11.697395
+    }
+  ],
+  "AnimatedParts": [
+    {
+      "OutOfAmmoKeyframeTime": 0.1,
+      "InvisbleWhenOutOfAmmo": false,
+      "Duration": 0.15,
+      "Scale": {
+        "X": 1.0,
+        "Y": 1.0
+      },
+      "Texture": "textures/weapons/silenced_beretta_92/slide.png",
+      "TranslationCurve": {
+        "MappingFunction": null,
+        "Keys": [
+          {
+            "Value": {
+              "X": -74.0,
+              "Y": 47.0
+            },
+            "Position": 0.0
+          },
+          {
+            "Value": {
+              "X": -100.0,
+              "Y": 47.0
+            },
+            "Position": 0.1
+          },
+          {
+            "Value": {
+              "X": -74.0,
+              "Y": 47.0
+            },
+            "Position": 1.0
+          }
+        ]
+      },
+      "AngleCurve": null,
+      "VisibilityCurve": null
+    }
+  ],
+  "OnFloorAngle": 0.0
+}

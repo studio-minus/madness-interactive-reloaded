@@ -1,0 +1,57 @@
+{
+  "Id": "pp2000",
+  "WeaponData": {
+    "Name": "PP2000",
+    "Damage": 0.5,
+    "UseDelay": 0.1,
+    "MaxHandRangeMultiplier": 1.0,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 20,
+    "BurstFireCount": 0,
+    "Accuracy": 0.9,
+    "Recoil": 0.4,
+    "RotationalRecoilIntensity": 1.0,
+    "RecoilHandling": 1.0,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/thompson_1.wav",
+      "sounds/firearms/thompson_2.wav",
+      "sounds/firearms/thompson_3.wav",
+      "sounds/firearms/thompson_4.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 50.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/pp2000/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 153.41978,
+    "Y": 44.336517
+  },
+  "CasingEjectionPoint": {
+    "X": -30.551239,
+    "Y": 58.15382
+  },
+  "HoldPoints": [
+    {
+      "X": 25.500029,
+      "Y": 2.850006
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

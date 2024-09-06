@@ -1,0 +1,31 @@
+0.12.0
+
+name Darkened hands
+
+Fist
+	front textures/bodies/hands/darkened/darkened_fist.png
+	back  textures/bodies/hands/darkened/darkened_fist_back.png
+	
+HoldPistol
+	front textures/bodies/hands/darkened/darkened_pistol.png
+	back  textures/bodies/hands/darkened/darkened_pistol_back.png
+	
+HoldUnderside
+	front textures/bodies/hands/darkened/darkened_underside.png
+	back  textures/bodies/hands/darkened/darkened_underside_back.png
+	
+HoldRifle
+	front textures/bodies/hands/darkened/darkened_rifle.png
+	back  textures/bodies/hands/darkened/darkened_rifle_back.png
+	
+Open
+	front textures/bodies/hands/darkened/darkened_open.png
+	back  textures/bodies/hands/darkened/darkened_open_back.png	
+
+Point
+	front textures/bodies/hands/darkened/darkened_point.png
+	back  textures/bodies/hands/darkened/darkened_point_back.png
+
+HoldStock
+	front textures/bodies/hands/darkened/darkened_stock.png
+	back  textures/bodies/hands/darkened/darkened_stock_back.png

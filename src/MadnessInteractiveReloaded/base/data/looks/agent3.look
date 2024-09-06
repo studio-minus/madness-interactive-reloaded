@@ -1,0 +1,13 @@
+﻿0.36.11
+
+name Agent 3
+
+body
+   agent_suit_body
+
+head
+   default_head
+   black_agent_glasses_eyes
+
+hands default
+blood #ff0000

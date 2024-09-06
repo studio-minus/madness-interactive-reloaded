@@ -1,0 +1,11 @@
+0.36.0
+
+name Jebus beard 1
+type HeadAccessory
+left textures/bodies/mouth/jebus_beard_classic/jebus_beard_classic_left.png
+right textures/bodies/mouth/jebus_beard_classic/jebus_beard_classic_right.png
+texture-scale 1
+category Mask
+detach False
+hidden False
+offset -19 39

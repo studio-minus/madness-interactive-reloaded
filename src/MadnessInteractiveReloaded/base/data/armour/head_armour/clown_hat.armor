@@ -1,0 +1,11 @@
+0.36.0
+
+name Clown wig
+type HeadAccessory
+category Hat
+
+left textures/bodies/hats/clown/clown_left.png
+right textures/bodies/hats/clown/clown_right.png
+
+offset-left -66 -105
+offset-right -66 -105

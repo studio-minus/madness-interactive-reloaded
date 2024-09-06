@@ -1,0 +1,60 @@
+{
+  "Id": "hk_sl8",
+  "WeaponData": {
+    "Name": "HK SL8",
+    "Damage": 0.6,
+    "UseDelay": 0.08,
+    "MaxHandRangeMultiplier": 0.8,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 30,
+    "BurstFireCount": 0,
+    "Accuracy": 0.99,
+    "Recoil": 0.8,
+    "RotationalRecoilIntensity": 0.25,
+    "RecoilHandling": 1.2,
+    "Automatic": false,
+    "ShootSounds": [
+      "sounds/firearms/g36_1.wav",
+      "sounds/firearms/g36_2.wav",
+      "sounds/firearms/g36_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "RifleCasing",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 685.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/hk_sl8/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 339.29398,
+    "Y": 18.461056
+  },
+  "CasingEjectionPoint": {
+    "X": -57.17102,
+    "Y": 20.904928
+  },
+  "HoldPoints": [
+    {
+      "X": 128.09998,
+      "Y": 37.499916
+    },
+    {
+      "X": 60.361214,
+      "Y": 2.6244574
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

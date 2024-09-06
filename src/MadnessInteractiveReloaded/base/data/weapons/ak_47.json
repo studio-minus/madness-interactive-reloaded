@@ -1,0 +1,61 @@
+{
+  "Id": "ak_47",
+  "WeaponData": {
+    "Name": "AK-47",
+    "Damage": 0.8,
+    "UseDelay": 0.1,
+    "MaxHandRangeMultiplier": 0.5,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 20,
+    "BurstFireCount": 0,
+    "Accuracy": 1.0,
+    "Recoil": 1.0,
+    "RotationalRecoilIntensity": 0.25,
+    "RecoilHandling": 1.0,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/p38_1.wav",
+      "sounds/firearms/p38_2.wav",
+      "sounds/firearms/p38_3.wav",
+      "sounds/firearms/p38_4.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "RifleCasing",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/ak_47/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 237.45193,
+    "Y": 61.86188
+  },
+  "CasingEjectionPoint": {
+    "X": -60.34028,
+    "Y": 72.93341
+  },
+  "HoldPoints": [
+    {
+      "X": 186.99997,
+      "Y": 2.0000849
+    },
+    {
+      "X": 62.000034,
+      "Y": 42.000053
+    }
+  ],
+  "AnimatedParts": [],
+  "OnFloorAngle": 0.0
+}

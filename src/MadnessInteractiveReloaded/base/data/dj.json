@@ -1,0 +1,65 @@
+[
+	{
+		"Name": "WARNING: PARTY IMMINENT",
+		"Author": "Lothyde",
+		"BPM": 140,
+		"StartOffset": 0.126,
+		"Sound": "sounds/music/Lothyde/warning_party_imminent.ogg"
+	},
+	{
+		"Name": "Emergence",
+		"Author": "Lothyde",
+		"BPM": 115,
+		"StartOffset": 7.279,
+		"Sound": "sounds/music/Lothyde/emergence.ogg"
+	},
+	{
+		"Name": "Madness 4",
+		"Author": "Cheshyre",
+		"BPM": 145,
+		"StartOffset": 0,
+		"Sound": "sounds/music/madness_4.ogg"
+	},
+	{
+		"Name": "Incident 001a",
+		"Author": "Meonly70",
+		"BPM": 160,
+		"StartOffset": 0.031,
+		"Sound": "sounds/music/incident_001a.ogg"
+	},
+	{
+		"Name": "incident_010a",
+		"Author": "Meonly70",
+		"BPM": 146,
+		"StartOffset": 16.475,
+		"Sound": "sounds/music/incident_010a.ogg"
+	},
+	{
+		"Name": "Clown song of Death",
+		"Author": "Cheshyre",
+		"BPM": 200,
+		"StartOffset": 0,
+		"Sound": "sounds/music/clown_song_of_death.ogg"
+	},
+	{
+		"Name": "Calliope",
+		"Author": "Cheshyre",
+		"BPM": 200,
+		"StartOffset": 0.04,
+		"Sound": "sounds/music/calliope.ogg"
+	},
+	{
+		"Name": "AGR3",
+		"Author": "Lothyde",
+		"BPM": 200,
+		"StartOffset": 0,
+		"Sound": "sounds/music/Lothyde/agr3.ogg"
+	},
+	{
+		"Name": "Precarious State",
+		"Author": "Lothyde",
+		"BPM": 144,
+		"StartOffset": 13.515,
+		"Sound": "sounds/music/Lothyde/precarious_state.ogg"
+	}
+]

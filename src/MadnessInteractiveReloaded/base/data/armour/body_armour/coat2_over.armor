@@ -1,0 +1,11 @@
+0.1.18
+
+name Coat 2
+type BodyAccessory
+category All
+
+left textures/bodies/body2/coat2/coat2_left.png
+right textures/bodies/body2/coat2/coat2_right.png
+
+offset-left 2 0
+offset-right 0 0

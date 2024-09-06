@@ -1,0 +1,16 @@
+﻿0.36.2
+
+name Hank 7
+
+body
+   hank_bandages_body
+   coat4_over
+
+head
+   metal_jaw2_head
+   bandana2_mouth
+   goggles4_eyes
+   ninja_bandana_hat
+
+hands fingerless_gloves
+blood #ff0000

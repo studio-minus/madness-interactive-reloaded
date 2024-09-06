@@ -1,0 +1,7 @@
+0.7.6
+
+# animation_id transition_frame [hit,frame,array]
+
+[parry_bullets_R_1,parry_bullets_L_1]   10   [4]
+[parry_bullets_R_2,parry_bullets_L_2]   7    [2]
+[parry_bullets_R_3,parry_bullets_L_3]   8   [4]

@@ -1,0 +1,32 @@
+[
+  {
+    "Enemies": [
+      {
+        "Look": "grunt",
+        "Stats": "grunt"
+      }
+    ],
+    "EnemyCount": 10,
+    "WeaponChance": 0.5,
+    "Weapons": [
+      "baseball_bat",
+      "iron_pipe"
+    ]
+  },
+  {
+    "Enemies": [
+      {
+        "Look": "grunt",
+        "Stats": "grunt"
+      }
+    ],
+    "EnemyCount": 10,
+    "WeaponChance": 0.5,
+    "Weapons": [
+      "baseball_bat",
+      "iron_pipe",
+      "iron_knife",
+      "glock_20"
+    ]
+  }
+]

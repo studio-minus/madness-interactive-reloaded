@@ -1,0 +1,60 @@
+{
+  "Id": "mg_42",
+  "WeaponData": {
+    "Name": "MG 42",
+    "Damage": 1.03,
+    "UseDelay": 0.049999997,
+    "MaxHandRangeMultiplier": 0.8,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 20.8,
+    "ThrowableHeavy": true,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 50,
+    "BurstFireCount": 0,
+    "Accuracy": 0.9,
+    "Recoil": 0.5,
+    "RotationalRecoilIntensity": 0.5,
+    "RecoilHandling": 0.59999996,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/mg_42_1.wav",
+      "sounds/firearms/mg_42_2.wav",
+      "sounds/firearms/mg_42_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "RifleCasing",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 720.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/mg_42/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 485.32465,
+    "Y": 33.949413
+  },
+  "CasingEjectionPoint": {
+    "X": -69.7384,
+    "Y": 48.98366
+  },
+  "HoldPoints": [
+    {
+      "X": 171.29997,
+      "Y": 39.30001
+    },
+    {
+      "X": 15.6763,
+      "Y": 4.8988104
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

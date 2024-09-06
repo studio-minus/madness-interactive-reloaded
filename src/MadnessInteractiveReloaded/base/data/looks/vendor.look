@@ -1,0 +1,14 @@
+﻿0.13.1
+
+name Vendor
+
+body
+   blouse1_body
+   vendor_apron_over
+
+head
+   default_head
+   vendor_hat_hat
+   
+hands darkened
+blood #ff0000

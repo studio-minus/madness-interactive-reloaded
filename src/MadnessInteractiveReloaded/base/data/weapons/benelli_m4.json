@@ -1,0 +1,60 @@
+{
+  "Id": "benelli_m4",
+  "WeaponData": {
+    "Name": "Benelli M4",
+    "Damage": 0.13,
+    "UseDelay": 0.3,
+    "MaxHandRangeMultiplier": 0.8,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 5,
+    "RoundsPerMagazine": 8,
+    "BurstFireCount": 0,
+    "Accuracy": 0.7,
+    "Recoil": 1.7,
+    "RotationalRecoilIntensity": 1.1,
+    "RecoilHandling": 0.9,
+    "Automatic": false,
+    "ShootSounds": [
+      "sounds/firearms/norinco_97k_1.wav",
+      "sounds/firearms/norinco_97k_2.wav",
+      "sounds/firearms/norinco_97k_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "ShotgunShell",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/benelli_m4/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 327.4183,
+    "Y": 54.562145
+  },
+  "CasingEjectionPoint": {
+    "X": 34.951935,
+    "Y": 51.12913
+  },
+  "HoldPoints": [
+    {
+      "X": 90.69128,
+      "Y": 15.0
+    },
+    {
+      "X": 135.88881,
+      "Y": 15.0987625
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

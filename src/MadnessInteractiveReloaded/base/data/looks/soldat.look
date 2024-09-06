@@ -1,0 +1,12 @@
+﻿0.13.1
+
+name Soldat
+
+body
+   soldat_suit_body
+
+head
+   default_head
+   soldat_eyepiece_eyes
+
+blood #ffe600

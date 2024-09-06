@@ -1,0 +1,17 @@
+0.36.0
+
+name Iron slab
+type HeadAccessory
+left textures/bodies/eyes/iron_slab/iron_slab_left.png
+right textures/bodies/eyes/iron_slab/iron_slab_right.png
+texture-scale 1
+category Eyes
+detach False
+hidden False
+
+broken
+	broken_iron_slab1_eyes
+	broken_iron_slab2_eyes
+	broken_iron_slab3_eyes
+
+offset 55 12

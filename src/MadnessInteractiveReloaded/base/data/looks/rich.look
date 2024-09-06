@@ -1,0 +1,11 @@
+﻿0.45.0
+
+name Rich
+
+body
+   rich_body
+
+head
+   default_head
+
+blood #ff0000

@@ -1,0 +1,279 @@
+{
+  "DisplayName": "untitled",
+  "LevelType": "Experiment",
+  "ProgressionType": "BodyCount",
+  "EnemySpawnInterval": 2.0,
+  "MaxEnemyCount": 4,
+  "MaxSimultaneousAttackingEnemies": 2,
+  "BackgroundMusic": "0",
+  "WeaponChance": 0.5,
+  "LevelBounds": {
+    "MinX": -6251.222,
+    "MinY": -950.597,
+    "MaxX": 6548.777,
+    "MaxY": 1449.4028
+  },
+  "BodyCountToWin": 50,
+  "TimeLimitInSeconds": -1.0,
+  "FullZoom": false,
+  "Thumbnail": "2112434135",
+  "OpeningTransition": true,
+  "ExitingTransition": true,
+  "EnemySpawnInstructions": [],
+  "Weapons": null,
+  "FloorLine": [
+    {
+      "X": -6253.1963,
+      "Y": -810.63715
+    },
+    {
+      "X": 5768.8037,
+      "Y": -810.63715
+    }
+  ],
+  "Objects": [
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerSpawn, MIR",
+      "Position": {
+        "X": -1969.196,
+        "Y": -618.1874
+      },
+      "SpawnWeapon": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": -10146.793,
+        "MinY": -1398.6434,
+        "MaxX": 9574.607,
+        "MaxY": -810.63715
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.MovementBlocker, MIR",
+      "Rectangle": {
+        "MinX": -7226.6577,
+        "MinY": -824.6572,
+        "MaxX": -6354.121,
+        "MaxY": 1517.9471
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": 5814.6846,
+        "MinY": -1230.8145,
+        "MaxX": 6572.916,
+        "MaxY": 1504.2166
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": 2077.2454,
+        "MinY": 1321.2285,
+        "MaxX": 6572.916,
+        "MaxY": 1504.2166
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": 2077.561,
+        "MinY": 1076.3049,
+        "MaxX": 2201.315,
+        "MaxY": 1476.4117
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.EnemySpawner, MIR",
+      "Position": {
+        "X": 1394.7003,
+        "Y": 1837.4307
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 5682.257,
+        "MinY": 75.50768,
+        "MaxX": 5938.257,
+        "MaxY": 1235.2977
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 4613.767,
+        "MinY": 1273.6985,
+        "MaxX": 5413.2764,
+        "MaxY": 1381.4691
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 2568.4014,
+        "MinY": 1286.0509,
+        "MaxX": 3985.5347,
+        "MaxY": 1383.5278
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 2047.7917,
+        "MinY": 1139.2123,
+        "MaxX": 2128.2488,
+        "MaxY": 1439.5935
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -6099.9775,
+        "MinY": -923.7308,
+        "MaxX": 5511.808,
+        "MaxY": -736.5598
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": 148.7774,
+        "Y": 249.4029
+      },
+      "TexturePath": "textures/backgrounds/experiment_1.qoi",
+      "Scale": 2.222222
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.EnemySpawner, MIR",
+      "Position": {
+        "X": -6454.2085,
+        "Y": -475.79578
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.EnemySpawner, MIR",
+      "Position": {
+        "X": -3855.378,
+        "Y": 1829.3076
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": 5921.801,
+          "Y": -808.29395
+        },
+        "FacingDirection": {
+          "X": -1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": true,
+        "PortalID": "portal_0",
+        "DestinationLevel": "exp_2",
+        "TopLeft": {
+          "X": 5670.7915,
+          "Y": -13.939545
+        },
+        "TopRight": {
+          "X": 5975.18,
+          "Y": -23.693794
+        },
+        "BottomLeft": {
+          "X": 5666.1846,
+          "Y": -777.9029
+        },
+        "BottomRight": {
+          "X": 5977.4175,
+          "Y": -838.68506
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": -39.69745,
+          "Y": -719.88513
+        },
+        "FacingDirection": {
+          "X": -1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": -291.39874,
+          "Y": 36.624134
+        },
+        "TopRight": {
+          "X": 188.51671,
+          "Y": -22.961773
+        },
+        "BottomLeft": {
+          "X": -379.14966,
+          "Y": -685.4473
+        },
+        "BottomRight": {
+          "X": 99.75477,
+          "Y": -754.3229
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": -6401.3877,
+          "Y": -760.73694
+        },
+        "FacingDirection": {
+          "X": 1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": false,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": true,
+        "PortalID": "exp5_1",
+        "DestinationLevel": "exp_5",
+        "TopLeft": {
+          "X": -6330.1973,
+          "Y": 588.1057
+        },
+        "TopRight": {
+          "X": -6269.404,
+          "Y": 494.99362
+        },
+        "BottomLeft": {
+          "X": -6339.7593,
+          "Y": -797.46814
+        },
+        "BottomRight": {
+          "X": -6263.0156,
+          "Y": -724.0057
+        }
+      },
+      "Tag": null
+    }
+  ]
+}

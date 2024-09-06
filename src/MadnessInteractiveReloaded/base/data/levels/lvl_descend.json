@@ -1,0 +1,545 @@
+{
+  "DisplayName": "untitled",
+  "LevelType": "Campaign",
+  "ProgressionType": "BodyCount",
+  "EnemySpawnInterval": 0.5,
+  "MaxEnemyCount": 5,
+  "MaxSimultaneousAttackingEnemies": 2,
+  "BackgroundMusic": "sounds/music/Lothyde/from_the_outset.ogg",
+  "WeaponChance": 0.75,
+  "LevelBounds": {
+    "MinX": -2918.0005,
+    "MinY": -1411.6464,
+    "MaxX": 2799.7769,
+    "MaxY": 1217.2423
+  },
+  "BodyCountToWin": 40,
+  "TimeLimitInSeconds": -1.0,
+  "FullZoom": false,
+  "Thumbnail": "textures/level_thumbnails/lvl_descend.qoi",
+  "OpeningTransition": true,
+  "ExitingTransition": true,
+  "EnemySpawnInstructions": [
+    {
+      "StatsKey": "agent",
+      "LookKey": "agent"
+    },
+    {
+      "StatsKey": "agent",
+      "LookKey": "agent"
+    },
+    {
+      "StatsKey": "agent",
+      "LookKey": "agent"
+    },
+    {
+      "StatsKey": "engineer",
+      "LookKey": "engineer"
+    },
+    {
+      "StatsKey": "engineer",
+      "LookKey": "engineer"
+    },
+    {
+      "StatsKey": "soldat",
+      "LookKey": "soldat"
+    }
+  ],
+  "Weapons": [
+    "ak_47",
+    "aug",
+    "automag",
+    "carbon_knife",
+    "glock_18_c",
+    "l85",
+    "m16a1",
+    "m1911",
+    "megachette",
+    "micro_uzi",
+    "mk_23",
+    "mossberg_500",
+    "mp9",
+    "mp5k",
+    "switchblade",
+    "ump",
+    "walther_ppk",
+    "tec_9",
+    "famas",
+    "g36c",
+    "mac_10",
+    "p90",
+    "qbz_95",
+    "l22",
+    "vigneron_m2",
+    "spectre_m4",
+    "browning_hp",
+    "glock_20"
+  ],
+  "FloorLine": [
+    {
+      "X": -2547.3027,
+      "Y": -991.8483
+    },
+    {
+      "X": -633.30273,
+      "Y": -991.4245
+    },
+    {
+      "X": -601.30273,
+      "Y": -998.7916
+    },
+    {
+      "X": -571.30273,
+      "Y": -1015.11334
+    },
+    {
+      "X": -351.30273,
+      "Y": -1231.2291
+    },
+    {
+      "X": 2432.6973,
+      "Y": -1231.2291
+    }
+  ],
+  "Objects": [
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerSpawn, MIR",
+      "Position": {
+        "X": -2161.3027,
+        "Y": -793.13
+      },
+      "SpawnWeapon": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": -2585.447,
+        "MinY": 532.22644,
+        "MaxX": -783.89075,
+        "MaxY": 1071.2878
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": 1258.1564,
+          "Y": -1087.3494
+        },
+        "FacingDirection": {
+          "X": "NaN",
+          "Y": "NaN"
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": 1008.9114,
+          "Y": -434.89215
+        },
+        "TopRight": {
+          "X": 1501.1947,
+          "Y": -435.09943
+        },
+        "BottomLeft": {
+          "X": 1013.46106,
+          "Y": -1091.1449
+        },
+        "BottomRight": {
+          "X": 1502.8517,
+          "Y": -1083.5538
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": 2545.265,
+          "Y": -1228.106
+        },
+        "FacingDirection": {
+          "X": -1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": true,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": 2518.571,
+          "Y": -493.1044
+        },
+        "TopRight": {
+          "X": 2371.1934,
+          "Y": -469.74234
+        },
+        "BottomLeft": {
+          "X": 2521.2566,
+          "Y": -1262.8246
+        },
+        "BottomRight": {
+          "X": 2369.2732,
+          "Y": -1193.3873
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": -2664.287,
+          "Y": -992.583
+        },
+        "FacingDirection": {
+          "X": 1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": -2638.2913,
+          "Y": -246.91048
+        },
+        "TopRight": {
+          "X": -2488.558,
+          "Y": -240.0545
+        },
+        "BottomLeft": {
+          "X": -2641.0017,
+          "Y": -1019.04694
+        },
+        "BottomRight": {
+          "X": -2487.5723,
+          "Y": -966.11914
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": -644.764,
+        "Y": -1114.3927
+      },
+      "B": {
+        "X": -418.69763,
+        "Y": -1338.4064
+      },
+      "Radius": 123.5,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -867.5278,
+        "MinY": 653.4983,
+        "MaxX": -731.10425,
+        "MaxY": 902.7898
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -663.5404,
+        "MinY": 934.06024,
+        "MaxX": 2205.7358,
+        "MaxY": 1190.0593
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -328.4496,
+        "MinY": -1363.5963,
+        "MaxX": 2282.337,
+        "MaxY": -1107.5967
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Look": "soldat",
+        "Stats": "soldat",
+        "Weapon": "silenced_beretta_92",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": 1830.7688,
+          "Y": -1079.9125
+        },
+        "ScaleOverride": false,
+        "Scale": 0.0
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 2315.5684,
+        "MinY": -423.37494,
+        "MaxX": 2571.5684,
+        "MaxY": 861.5975
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": 2436.7798,
+        "MinY": -1231.6725,
+        "MaxX": 2800.3232,
+        "MaxY": 1043.9609
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
+      "WeaponKey": "m16a1",
+      "Angle": -69.38949,
+      "Ammo": 20,
+      "AttachedToWall": true,
+      "Position": {
+        "X": 2193.1052,
+        "Y": -850.30334
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -2391.1182,
+        "MinY": -1127.6647,
+        "MaxX": -727.8329,
+        "MaxY": -871.6648
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Look": "grunt",
+        "Stats": "soldat",
+        "Weapon": "streetsign",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": 523.7981,
+          "Y": -1133.4053
+        },
+        "ScaleOverride": false,
+        "Scale": 0.0
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": -59.111755,
+        "Y": -97.20201
+      },
+      "TexturePath": "textures/backgrounds/background_descend.qoi",
+      "Scale": 2.222222
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Look": "agent",
+        "Stats": "agent",
+        "Weapon": "automag",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": -1133.795,
+          "Y": -872.8013
+        },
+        "ScaleOverride": false,
+        "Scale": 0.0
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerPoster, MIR",
+      "Type": 1,
+      "Angle": 0.710022,
+      "Position": {
+        "X": -516.1162,
+        "Y": -631.1374
+      },
+      "Scale": 1.5179563
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerPoster, MIR",
+      "Type": 1,
+      "Angle": -1.5385132,
+      "Position": {
+        "X": -741.57635,
+        "Y": -610.80597
+      },
+      "Scale": 1.5179563
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -2370.3506,
+        "MinY": 438.8132,
+        "MaxX": -740.61633,
+        "MaxY": 648.1982
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": -761.95667,
+        "MinY": -1487.2291,
+        "MaxX": 5732.4136,
+        "MaxY": -1231.2291
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -2680.1184,
+        "MinY": -156.02283,
+        "MaxX": -2424.1184,
+        "MaxY": 460.20868
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerPoster, MIR",
+      "Type": 1,
+      "Angle": -2.8312073,
+      "Position": {
+        "X": 1669.0392,
+        "Y": -745.8475
+      },
+      "Scale": 1.5179563
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Look": "agent",
+        "Stats": "agent",
+        "Weapon": "famas",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": -1573.7175,
+          "Y": -874.313
+        },
+        "ScaleOverride": false,
+        "Scale": 0.0
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": -5094.558,
+        "MinY": -1477.7678,
+        "MaxX": -633.2274,
+        "MaxY": -991.8483
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Look": "engineer",
+        "Stats": "engineer",
+        "Weapon": "glock_18_c",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": -438.3847,
+          "Y": -984.67175
+        },
+        "ScaleOverride": false,
+        "Scale": 0.0
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": -2595.8726,
+        "MinY": 1043.6678,
+        "MaxX": 2802.4912,
+        "MaxY": 1299.6678
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Look": "engineer",
+        "Stats": "engineer",
+        "Weapon": "l85",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": -55.90912,
+          "Y": -1102.5889
+        },
+        "ScaleOverride": false,
+        "Scale": 0.0
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerPoster, MIR",
+      "Type": 1,
+      "Angle": 0.710022,
+      "Position": {
+        "X": -291.91776,
+        "Y": -611.7794
+      },
+      "Scale": 1.5179563
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": -2915.3281,
+        "MinY": -996.4822,
+        "MaxX": -2551.7847,
+        "MaxY": 1288.8372
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
+      "WeaponKey": "m_416",
+      "Angle": -65.19553,
+      "Ammo": 30,
+      "AttachedToWall": true,
+      "Position": {
+        "X": 222.8688,
+        "Y": -851.02966
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Disk, MIR",
+      "Position": {
+        "X": 1442.7175,
+        "Y": -1093.2379
+      },
+      "Angle": -0.9838562,
+      "DiskId": "more_dodge",
+      "RenderOrder": {
+        "Layer": -100,
+        "OrderInLayer": 0
+      },
+      "Texture": "textures/props/floppy_disk3.png",
+      "Tag": null
+    }
+  ]
+}

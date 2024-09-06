@@ -1,0 +1,11 @@
+0.1.18
+
+name Coat 4
+type BodyAccessory
+category All
+
+left textures/bodies/body2/coat4/coat4_left.png
+right textures/bodies/body2/coat4/coat4_right.png
+
+offset-left 5 24
+offset-right 2 26

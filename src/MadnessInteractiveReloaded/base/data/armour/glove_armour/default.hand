@@ -1,0 +1,32 @@
+0.12.0
+
+name Default
+order -1
+
+Fist
+	front textures/bodies/default/hand_fist.png
+	back  textures/bodies/default/hand_fist_back.png
+	
+HoldPistol
+	front textures/bodies/default/hand_pistol.png
+	back  textures/bodies/default/hand_pistol_back.png
+	
+HoldUnderside
+	front textures/bodies/default/hand_underside.png
+	back  textures/bodies/default/hand_underside_back.png
+	
+HoldRifle
+	front textures/bodies/default/hand_rifle.png
+	back  textures/bodies/default/hand_rifle_back.png
+	
+Open
+	front textures/bodies/default/hand_open.png
+	back  textures/bodies/default/hand_open_back.png	
+
+Point
+	front textures/bodies/default/hand_point.png
+	back  textures/bodies/default/hand_point_back.png
+	
+HoldStock
+	front textures/bodies/default/hand_stock.png
+	back  textures/bodies/default/hand_stock_back.png

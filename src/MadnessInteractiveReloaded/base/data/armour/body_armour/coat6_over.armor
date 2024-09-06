@@ -1,0 +1,10 @@
+0.11.2
+
+name Coat 6
+type BodyAccessory
+left textures/bodies/body2/coat6/coat6_left.png
+right textures/bodies/body2/coat6/coat6_right.png
+category All
+detach False
+hidden False
+offset 10 10

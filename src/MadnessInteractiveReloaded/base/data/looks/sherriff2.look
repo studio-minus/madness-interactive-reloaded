@@ -1,0 +1,13 @@
+﻿0.13.1
+
+name Sheriff 2
+
+body
+   default_body
+
+head
+   default_head
+   sheriff_hat2_hat
+
+hands default
+blood #ff0000

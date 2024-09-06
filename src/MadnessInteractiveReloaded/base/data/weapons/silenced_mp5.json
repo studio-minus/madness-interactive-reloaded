@@ -1,0 +1,100 @@
+{
+  "Id": "silenced_mp5",
+  "WeaponData": {
+    "Name": "Silenced MP5",
+    "Damage": 0.2,
+    "UseDelay": 0.08,
+    "MaxHandRangeMultiplier": 0.7,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 20,
+    "BurstFireCount": 0,
+    "Accuracy": 0.85,
+    "Recoil": 0.35,
+    "RotationalRecoilIntensity": 1.0,
+    "RecoilHandling": 1.0,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/silenced_machinegun_1.wav",
+      "sounds/firearms/silenced_machinegun_2.wav",
+      "sounds/firearms/silenced_machinegun_3.wav",
+      "sounds/firearms/silenced_machinegun_4.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/silenced_mp5/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 266.07553,
+    "Y": 56.95684
+  },
+  "CasingEjectionPoint": {
+    "X": -33.921185,
+    "Y": 69.80331
+  },
+  "HoldPoints": [
+    {
+      "X": 106.154755,
+      "Y": 21.372383
+    },
+    {
+      "X": 83.51048,
+      "Y": 39.861904
+    }
+  ],
+  "AnimatedParts": [
+    {
+      "OutOfAmmoKeyframeTime": 0.1,
+      "InvisbleWhenOutOfAmmo": false,
+      "Duration": 0.15,
+      "Scale": {
+        "X": 1.0,
+        "Y": 1.0
+      },
+      "Texture": "textures/weapons/silenced_mp5/slide.png",
+      "TranslationCurve": {
+        "MappingFunction": null,
+        "Keys": [
+          {
+            "Value": {
+              "X": 110.0,
+              "Y": 89.0
+            },
+            "Position": 0.0
+          },
+          {
+            "Value": {
+              "X": 65.0,
+              "Y": 89.0
+            },
+            "Position": 0.1
+          },
+          {
+            "Value": {
+              "X": 110.0,
+              "Y": 89.0
+            },
+            "Position": 1.0
+          }
+        ]
+      },
+      "AngleCurve": null,
+      "VisibilityCurve": null
+    }
+  ],
+  "OnFloorAngle": 0.0
+}

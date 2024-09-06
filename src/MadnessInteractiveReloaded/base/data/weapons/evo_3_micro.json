@@ -1,0 +1,60 @@
+{
+  "Id": "evo_3_micro",
+  "WeaponData": {
+    "Name": "Evo 3 Micro",
+    "Damage": 0.25,
+    "UseDelay": 0.05,
+    "MaxHandRangeMultiplier": 0.7,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 20,
+    "BurstFireCount": 0,
+    "Accuracy": 0.96,
+    "Recoil": 0.3,
+    "RotationalRecoilIntensity": 1.3,
+    "RecoilHandling": 1.0,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/evo_3_1.wav",
+      "sounds/firearms/evo_3_2.wav",
+      "sounds/firearms/evo_3_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/evo_3_micro/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 165.95615,
+    "Y": 34.572018
+  },
+  "CasingEjectionPoint": {
+    "X": 31.038006,
+    "Y": 49.263016
+  },
+  "HoldPoints": [
+    {
+      "X": 48.72896,
+      "Y": 23.999924
+    },
+    {
+      "X": 89.099976,
+      "Y": 3.599969
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

@@ -1,0 +1,58 @@
+{
+  "Id": "oa_93",
+  "WeaponData": {
+    "Name": "OA-93",
+    "Damage": 1.03,
+    "UseDelay": 0.11,
+    "MaxHandRangeMultiplier": 0.6,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 20,
+    "BurstFireCount": 0,
+    "Accuracy": 0.9,
+    "Recoil": 0.9,
+    "RotationalRecoilIntensity": 0.79999995,
+    "RecoilHandling": 1.0,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/oa_93_1.wav"
+    ],
+    "CanBulletsBeDeflected": false,
+    "EjectionParticle": "RifleCasing",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 203.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/oa_93/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 177.78003,
+    "Y": 36.840046
+  },
+  "CasingEjectionPoint": {
+    "X": -27.929993,
+    "Y": 44.969944
+  },
+  "HoldPoints": [
+    {
+      "X": 109.04991,
+      "Y": 33.61997
+    },
+    {
+      "X": 59.939957,
+      "Y": -34.83
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

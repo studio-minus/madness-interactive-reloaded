@@ -1,0 +1,60 @@
+{
+  "Id": "bren_gun",
+  "WeaponData": {
+    "Name": "Bren gun",
+    "Damage": 1.5,
+    "UseDelay": 0.12,
+    "MaxHandRangeMultiplier": 0.7,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 35.0,
+    "ThrowableHeavy": true,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 30,
+    "BurstFireCount": 0,
+    "Accuracy": 0.98999995,
+    "Recoil": 0.7,
+    "RotationalRecoilIntensity": 0.4,
+    "RecoilHandling": 1.0,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/bren_gun_1.wav",
+      "sounds/firearms/bren_gun_2.wav",
+      "sounds/firearms/bren_gun_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "RifleCasing",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 700.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/bren_gun/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 457.1978,
+    "Y": -23.467247
+  },
+  "CasingEjectionPoint": {
+    "X": -82.87233,
+    "Y": -15.014198
+  },
+  "HoldPoints": [
+    {
+      "X": 184.51933,
+      "Y": 107.749565
+    },
+    {
+      "X": -40.41105,
+      "Y": -70.42341
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

@@ -1,0 +1,48 @@
+﻿fps 24
+scale 1
+speed 1
+smooth
+relative
+
+BODY
+0       0.0px  0.0px  0.0deg constraint(PreventDodge)
+1       -3.46px  -1.44px
+2       -11.07px  -2.89px
+3       -18.69px  -2.74px  1.05deg
+4       -22.15px  -2.21px  0.98deg
+5       -19.66px  -1.67px
+6       0.45deg
+7       -5.35px  -0.55px
+8       0.09deg
+9       -0.43px  -0.05px  0.02deg
+10      0.0px  0.0px  0.0deg
+
+HEAD
+0       -0.0px  0.0px  -0.0deg
+1       -1.88px  -0.73px
+3       -5.63px  -4.91px  15.86deg
+4       -5.39px  -7.0px  15.2deg
+5       -4.35px  -9.09px
+6       -3.31px  -9.82px
+7       -2.27px  -9.0px  6.4deg
+9       -0.86px  -4.04px  2.41deg
+11      -0.1px  -0.42px  0.28deg
+12      -0.0px  0.0px  -0.0deg
+
+HAND
+aim
+0       -98.09px  26.76px
+1       -103.5px  22.48px
+3       -131.79px  10.25px
+5       -150.09px  15.38px
+8       -106.8px  25.49px
+10      -98.09px  26.76px
+
+HAND
+aim
+0       181.63px  41.61px
+1       172.9px  39.97px
+4       125.75px  27.48px
+5       130.55px  25.84px
+8       172.25px  39.37px
+10      181.63px  41.61px

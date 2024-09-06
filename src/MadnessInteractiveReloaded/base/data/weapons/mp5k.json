@@ -1,0 +1,58 @@
+{
+  "Id": "mp5k",
+  "WeaponData": {
+    "Name": "MP5K",
+    "Damage": 0.2,
+    "UseDelay": 0.08,
+    "MaxHandRangeMultiplier": 0.7,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 30,
+    "BurstFireCount": 0,
+    "Accuracy": 0.85,
+    "Recoil": 0.35,
+    "RotationalRecoilIntensity": 1.0,
+    "RecoilHandling": 1.0,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/gun_goc.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/mp5k/base.png",
+  "HoldForGrip": true,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 158.69734,
+    "Y": 61.605278
+  },
+  "CasingEjectionPoint": {
+    "X": -16.032364,
+    "Y": 75.302635
+  },
+  "HoldPoints": [
+    {
+      "X": 96.375114,
+      "Y": 26.506374
+    },
+    {
+      "X": 77.04602,
+      "Y": 2.3026505
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

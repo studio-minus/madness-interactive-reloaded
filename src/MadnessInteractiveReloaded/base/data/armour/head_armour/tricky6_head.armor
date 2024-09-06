@@ -1,0 +1,8 @@
+0.36.0
+
+name Tricky 6
+type Head
+hidden true
+
+left textures/bodies/skin/tricky6/tricky6_left.png
+right textures/bodies/skin/tricky6/tricky6_right.png

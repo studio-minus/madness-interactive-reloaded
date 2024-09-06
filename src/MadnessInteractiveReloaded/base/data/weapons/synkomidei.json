@@ -1,0 +1,63 @@
+{
+  "Id": "synkomidei",
+  "WeaponData": {
+    "Name": "The Synkomidei",
+    "Damage": 3.0,
+    "UseDelay": 0.5,
+    "MaxHandRangeMultiplier": 1.0,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 50.0,
+    "ThrowableHeavy": true,
+    "ThrowableSharpBoxes": [
+      {
+        "MinX": 127.84791,
+        "MinY": 3.0527573,
+        "MaxX": 187.34485,
+        "MaxY": 200.1401
+      }
+    ],
+    "WeaponType": "Melee",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 12,
+    "BurstFireCount": 0,
+    "Accuracy": 0.0,
+    "Recoil": 0.0,
+    "RotationalRecoilIntensity": 1.0,
+    "RecoilHandling": 0.0,
+    "Automatic": false,
+    "ShootSounds": null,
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Axe",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/synkomidei/base.png",
+  "HoldForGrip": true,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": -15.0,
+    "Y": -15.0
+  },
+  "CasingEjectionPoint": {
+    "X": 15.0,
+    "Y": 15.0
+  },
+  "HoldPoints": [
+    {
+      "X": 24.937119,
+      "Y": 148.13187
+    },
+    {
+      "X": -24.279938,
+      "Y": -80.537605
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 90.0
+}

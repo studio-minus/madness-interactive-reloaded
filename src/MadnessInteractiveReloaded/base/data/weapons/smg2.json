@@ -1,0 +1,60 @@
+{
+  "Id": "smg2",
+  "WeaponData": {
+    "Name": "SMG2",
+    "Damage": 0.4,
+    "UseDelay": 0.08,
+    "MaxHandRangeMultiplier": 0.6,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 30,
+    "BurstFireCount": 0,
+    "Accuracy": 1.0,
+    "Recoil": 0.25,
+    "RotationalRecoilIntensity": 0.8,
+    "RecoilHandling": 1.0,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/cqb_1.wav",
+      "sounds/firearms/cqb_2.wav",
+      "sounds/firearms/cqb_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 350.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/smg2/base.png",
+  "HoldForGrip": true,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 146.07466,
+    "Y": 58.400692
+  },
+  "CasingEjectionPoint": {
+    "X": 11.045982,
+    "Y": 58.776573
+  },
+  "HoldPoints": [
+    {
+      "X": 74.10004,
+      "Y": 21.480045
+    },
+    {
+      "X": 114.63664,
+      "Y": -8.689815
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

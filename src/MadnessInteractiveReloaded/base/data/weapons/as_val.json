@@ -1,0 +1,61 @@
+{
+  "Id": "as_val",
+  "WeaponData": {
+    "Name": "AS Val",
+    "Damage": 0.45,
+    "UseDelay": 0.1,
+    "MaxHandRangeMultiplier": 0.7,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 20,
+    "BurstFireCount": 0,
+    "Accuracy": 1.0,
+    "Recoil": 0.4,
+    "RotationalRecoilIntensity": 0.25,
+    "RecoilHandling": 1.0,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/silenced_machinegun_1.wav",
+      "sounds/firearms/silenced_machinegun_2.wav",
+      "sounds/firearms/silenced_machinegun_3.wav",
+      "sounds/firearms/silenced_machinegun_4.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "RifleCasing",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/as_val/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 337.87686,
+    "Y": 60.995987
+  },
+  "CasingEjectionPoint": {
+    "X": -7.320526,
+    "Y": 62.29823
+  },
+  "HoldPoints": [
+    {
+      "X": 101.91702,
+      "Y": -4.6633406
+    },
+    {
+      "X": 55.26987,
+      "Y": 38.263744
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

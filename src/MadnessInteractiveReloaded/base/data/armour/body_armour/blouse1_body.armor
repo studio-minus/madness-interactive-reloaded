@@ -1,0 +1,8 @@
+0.1.18
+
+name Blouse 1
+type Body
+category All
+
+left textures/bodies/body1/blouse1/blouse1_left.png
+right textures/bodies/body1/blouse1/blouse1_right.png

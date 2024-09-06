@@ -1,0 +1,10 @@
+0.36.0
+
+name Goggles 1
+type HeadAccessory
+left textures/bodies/eyes/goggles1/goggles1_left.png
+right textures/bodies/eyes/goggles1/goggles1_right.png
+category Eyes
+detach False
+hidden False
+offset 25 7

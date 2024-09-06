@@ -1,0 +1,61 @@
+{
+  "Id": "mp9",
+  "WeaponData": {
+    "Name": "MP9",
+    "Damage": 0.33,
+    "UseDelay": 0.067,
+    "MaxHandRangeMultiplier": 0.8,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 30,
+    "BurstFireCount": 0,
+    "Accuracy": 0.97,
+    "Recoil": 0.3,
+    "RotationalRecoilIntensity": 1.0,
+    "RecoilHandling": 1.5,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/thompson_1.wav",
+      "sounds/firearms/thompson_2.wav",
+      "sounds/firearms/thompson_3.wav",
+      "sounds/firearms/thompson_4.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/mp9/base.png",
+  "HoldForGrip": true,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 144.13809,
+    "Y": 77.95398
+  },
+  "CasingEjectionPoint": {
+    "X": -36.919815,
+    "Y": 93.1185
+  },
+  "HoldPoints": [
+    {
+      "X": 21.835464,
+      "Y": -20.348675
+    },
+    {
+      "X": 89.39473,
+      "Y": 3.1185036
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

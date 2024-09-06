@@ -1,0 +1,76 @@
+﻿fps 24
+scale 1
+speed 1
+
+BODY
+0        0.0px  0.0px  0.0deg constraints(PreventAllMovement PreventAllAttacking PreventAiming PreventWorldInteraction PreventIronSight PreventMixTransition FaceForwards)
+2        0.0px  0.17px  0.0deg
+4        0.02deg
+5        0.0px  1.05px
+8        0.12deg
+11       0.0px  3.63px
+14       0.0px  4.52px  0.35deg
+16       0.41deg
+17       0.0px  4.96px
+19       0.0px  5.04px  0.44deg
+22       0.0px  4.99px
+23       0.43deg
+27       0.38deg
+29       0.0px  4.45px
+40       0.0px  2.35px
+42       0.13deg
+47       0.0px  0.55px  0.05deg
+51       0.0px  0.08px  0.01deg
+53       0.0px  0.0px  0.0deg
+
+HEAD
+0        0.0px  -0.0px  0.0deg
+4        -0.1px  -0.01px  -0.15deg
+14       -0.69px  -0.04px  -1.07deg
+19       -0.83px  -0.06px  -1.29deg
+23       -0.8px  -0.05px  -1.25deg
+40       -0.32px  -0.02px  -0.49deg
+53       0.0px  -0.0px  0.0deg
+
+HAND 
+0        -76.68px  96.56px  109.15deg
+1        -76.6px  96.57px
+2        -76.53px  96.62px
+3        -76.18px  96.67px
+5        -75.47px  96.83px
+7        -74.76px  97.22px
+13       -72.25px  98.33px
+17       -71.51px  98.68px
+18       -71.33px  98.7px
+22       -71.14px  98.77px  107.45deg
+28       -71.23px  98.69px
+34       -71.31px  98.32px
+36       -71.34px  98.11px
+40       -71.65px  97.7px
+42       -72.22px  97.49px
+43       -72.51px  97.4px
+48       -74.97px  96.94px
+52       -76.53px  96.57px
+53       -76.6px  96.56px  109.15deg
+
+HAND 
+0        98.88px  -63.66px  -24.58deg
+1        98.91px  -63.62px
+4        99.28px  -63.5px
+5        99.52px  -63.46px
+14       101.69px  -62.43px
+16       101.95px  -62.2px
+17       102.08px  -62.1px
+18       102.11px  -62.0px
+20       102.06px  -61.79px
+25       101.56px  -61.28px
+26       101.42px  -61.18px
+30       100.88px  -61.11px
+33       100.47px  -61.38px
+36       100.08px  -61.66px
+41       99.43px  -62.64px
+44       99.21px  -63.24px
+47       99.0px  -63.54px
+49       98.95px  -63.74px
+51       98.9px  -63.7px
+53       98.88px  -63.66px

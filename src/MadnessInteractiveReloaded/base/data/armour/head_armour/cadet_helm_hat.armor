@@ -1,0 +1,11 @@
+0.36.0
+
+name Cadet helm
+type HeadAccessory
+category Hat
+
+left textures/bodies/hats/cadet_helm/cadet_helm_left.png
+right textures/bodies/hats/cadet_helm/cadet_helm_right.png
+
+offset-left -8 -58
+offset-right -8 -58

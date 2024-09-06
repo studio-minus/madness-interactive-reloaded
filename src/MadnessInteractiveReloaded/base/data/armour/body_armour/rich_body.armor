@@ -1,0 +1,9 @@
+0.1.18
+
+name Rich's armor
+type Body
+category All
+deflect-chance 0.2
+
+left textures/bodies/body1/rich/rich_left.png
+right textures/bodies/body1/rich/rich_right.png

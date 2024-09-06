@@ -1,0 +1,195 @@
+{
+  "DisplayName": "untitled",
+  "LevelType": "Campaign",
+  "ProgressionType": "BodyCount",
+  "EnemySpawnInterval": 0.95,
+  "MaxEnemyCount": 4,
+  "MaxSimultaneousAttackingEnemies": 2,
+  "BackgroundMusic": "sounds/music/Lothyde/jazzed_madness_overture.ogg",
+  "WeaponChance": 0.5,
+  "LevelBounds": {
+    "MinX": -10262.041,
+    "MinY": -2233.062,
+    "MaxX": -5995.374,
+    "MaxY": 166.93787
+  },
+  "BodyCountToWin": 25,
+  "TimeLimitInSeconds": -1.0,
+  "FullZoom": false,
+  "Thumbnail": "textures/level_thumbnails/lvl_entrance.qoi",
+  "OpeningTransition": true,
+  "ExitingTransition": true,
+  "EnemySpawnInstructions": [
+    {
+      "StatsKey": "grunt",
+      "LookKey": "grunt"
+    }
+  ],
+  "Weapons": [
+    "walther_ppk",
+    "tec_9",
+    "m1911",
+    "mp5k",
+    "switchblade",
+    "mac_10",
+    "usp_match",
+    "browning_hp",
+    "sawed_off_shotgun"
+  ],
+  "FloorLine": [
+    {
+      "X": -10215.686,
+      "Y": -2153.2468
+    },
+    {
+      "X": -7431.6855,
+      "Y": -2153.2468
+    },
+    {
+      "X": -7429.6855,
+      "Y": -2095.456
+    },
+    {
+      "X": -6683.6855,
+      "Y": -2095.456
+    }
+  ],
+  "Objects": [
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerSpawn, MIR",
+      "Position": {
+        "X": -10051.686,
+        "Y": -1888.8469
+      },
+      "SpawnWeapon": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": -8128.7075,
+        "Y": -1033.062
+      },
+      "TexturePath": "textures/backgrounds/background_entrance.qoi",
+      "Scale": 2.222222
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": -7431.5767,
+        "MinY": -2960.906,
+        "MaxX": -4370.8813,
+        "MaxY": -2095.456
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": -13774.521,
+        "MinY": -2955.2017,
+        "MaxX": -7198.8696,
+        "MaxY": -2153.2468
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": -6644.542,
+        "MinY": -2107.9534,
+        "MaxX": -5638.447,
+        "MaxY": -538.76025
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -10227.397,
+        "MinY": -2216.648,
+        "MaxX": -6691.5215,
+        "MaxY": -2047.104
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -6755.86,
+        "MinY": -1221.3069,
+        "MaxX": -6007.9224,
+        "MaxY": -580.5236
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.EnemySpawner, MIR",
+      "Position": {
+        "X": -10264.749,
+        "Y": -1849.4625
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Look": "agent",
+        "Stats": "agent",
+        "Weapon": "deagle",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": -7084.148,
+          "Y": -1989.7769
+        },
+        "ScaleOverride": false,
+        "Scale": 0.0
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 1,
+      "Rectangle": {
+        "MinX": -10863.147,
+        "MinY": -2147.6436,
+        "MaxX": -10255.266,
+        "MaxY": 152.78918
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": -6533.7754,
+          "Y": -2085.3765
+        },
+        "FacingDirection": {
+          "X": -1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": true,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": -6715.9375,
+          "Y": -1251.9331
+        },
+        "TopRight": {
+          "X": -6550.5176,
+          "Y": -1274.4463
+        },
+        "BottomLeft": {
+          "X": -6715.5444,
+          "Y": -2028.2778
+        },
+        "BottomRight": {
+          "X": -6552.006,
+          "Y": -2142.475
+        }
+      },
+      "Tag": null
+    }
+  ]
+}

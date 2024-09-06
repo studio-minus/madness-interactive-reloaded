@@ -1,0 +1,11 @@
+0.36.0
+
+name Bandages 1
+type HeadAccessory
+category Hat
+
+left textures/bodies/hats/bandages1/bandages1_left.png
+right textures/bodies/hats/bandages1/bandages1_right.png
+
+offset-left -6 -73
+offset-right -3 -87

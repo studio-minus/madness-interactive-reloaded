@@ -1,0 +1,11 @@
+0.38.0
+
+name Bandana 1
+type HeadAccessory
+left textures/bodies/hats/bandana1/bandana1_left.png
+right textures/bodies/hats/bandana1/bandana1_right.png
+texture-scale 1
+category Hat
+detach False
+hidden False
+offset -27 12

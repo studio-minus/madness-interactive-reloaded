@@ -1,0 +1,16 @@
+﻿0.36.13
+
+name Hank 6
+
+aiming_randomness 0
+recoil_handling 2
+dodge 1.6
+melee 1
+can_deflect true
+dodge_oversaturate true
+accurate_shot_chance 0.25
+head_health 1.6
+body_health 1.6
+
+agility_skill_level master
+jump_dodge_duration 0.65

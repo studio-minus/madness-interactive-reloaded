@@ -1,0 +1,270 @@
+{
+  "DisplayName": "untitled",
+  "LevelType": "Campaign",
+  "ProgressionType": "BodyCount",
+  "EnemySpawnInterval": 0.6,
+  "MaxEnemyCount": 3,
+  "MaxSimultaneousAttackingEnemies": 2,
+  "BackgroundMusic": "sounds/music/Lothyde/come_to_blows.ogg",
+  "WeaponChance": 1.0,
+  "LevelBounds": {
+    "MinX": -2085.9443,
+    "MinY": -1189.4225,
+    "MaxX": 2841.2993,
+    "MaxY": 1645.4711
+  },
+  "BodyCountToWin": 25,
+  "TimeLimitInSeconds": -1.0,
+  "FullZoom": false,
+  "Thumbnail": "textures/level_thumbnails/lvl_destination.qoi",
+  "OpeningTransition": true,
+  "ExitingTransition": true,
+  "EnemySpawnInstructions": [
+    {
+      "StatsKey": "engineer",
+      "LookKey": "engineer",
+      "FactionKey": "aahw"
+    },
+    {
+      "StatsKey": "soldat",
+      "LookKey": "soldat",
+      "FactionKey": "aahw"
+    },
+    {
+      "StatsKey": "machinist",
+      "LookKey": "machinist",
+      "FactionKey": "aahw"
+    }
+  ],
+  "Weapons": [
+    "walther_ppk",
+    "ump",
+    "mp5",
+    "mp9",
+    "mp5k",
+    "mossberg_500",
+    "mk_23",
+    "m1911",
+    "l85",
+    "glock_18_c",
+    "deagle",
+    "sw_500",
+    "dragon_sword",
+    "fn_fal",
+    "fbi_9",
+    "p90",
+    "qbz_95",
+    "l22",
+    "m_416",
+    "vigneron_m2",
+    "tactical_deagle",
+    "glock_20"
+  ],
+  "FloorLine": [
+    {
+      "X": -1701.7098,
+      "Y": -843.67615
+    },
+    {
+      "X": 2454.29,
+      "Y": -843.67615
+    }
+  ],
+  "Objects": [
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerSpawn, MIR",
+      "Position": {
+        "X": -1587.7098,
+        "Y": -514.6708
+      },
+      "SpawnWeapon": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": -2085.916,
+        "MinY": 2011.7349,
+        "MaxX": 2839.0977,
+        "MaxY": 2267.7368
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "agent",
+        "Stats": "agent",
+        "Faction": null,
+        "Weapon": "m1911",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": -737.68463,
+          "Y": -781.5364
+        },
+        "ScaleOverride": false,
+        "Scale": 0.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "agent",
+        "Stats": "agent",
+        "Faction": null,
+        "Weapon": "l85",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": -112.299416,
+          "Y": -804.8262
+        },
+        "ScaleOverride": false,
+        "Scale": 0.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": 377.67755,
+        "Y": 228.02429
+      },
+      "TexturePath": "textures/backgrounds/background_destination.qoi",
+      "Scale": 3.00625
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": -4408.7554,
+        "MinY": -1371.84,
+        "MaxX": 5908.32,
+        "MaxY": -843.67615
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": -2086.4717,
+        "MinY": -847.2815,
+        "MaxX": -1721.5077,
+        "MaxY": 2014.2451
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": 2474.6423,
+        "MinY": -849.24524,
+        "MaxX": 2839.6067,
+        "MaxY": 2012.2849
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -1659.7584,
+        "MinY": -990.0138,
+        "MaxX": 2419.9497,
+        "MaxY": -734.0138
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -1854.083,
+        "MinY": 173.52966,
+        "MaxX": -1598.083,
+        "MaxY": 1680.8422
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 2372.748,
+        "MinY": 171.42645,
+        "MaxX": 2628.748,
+        "MaxY": 1678.7395
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": -1833.073,
+          "Y": -841.3126
+        },
+        "FacingDirection": {
+          "X": 1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": -1815.1885,
+          "Y": 72.04265
+        },
+        "TopRight": {
+          "X": -1679.5732,
+          "Y": 122.46153
+        },
+        "BottomLeft": {
+          "X": -1798.6111,
+          "Y": -893.6801
+        },
+        "BottomRight": {
+          "X": -1667.5348,
+          "Y": -788.9452
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": 2590.7964,
+          "Y": -843.9402
+        },
+        "FacingDirection": {
+          "X": -1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": true,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": 2570.7256,
+          "Y": 73.54996
+        },
+        "TopRight": {
+          "X": 2437.2407,
+          "Y": 121.86744
+        },
+        "BottomLeft": {
+          "X": 2555.9685,
+          "Y": -896.4788
+        },
+        "BottomRight": {
+          "X": 2425.6243,
+          "Y": -791.4016
+        }
+      },
+      "Tag": null
+    }
+  ]
+}

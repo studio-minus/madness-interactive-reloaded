@@ -1,0 +1,10 @@
+0.36.0
+
+name Mask 4
+type HeadAccessory
+left textures/bodies/eyes/mask4/mask4_left.png
+right textures/bodies/eyes/mask4/mask4_right.png
+category Eyes
+detach False
+hidden False
+offset 0 7

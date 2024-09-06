@@ -1,0 +1,60 @@
+{
+  "Id": "l22",
+  "WeaponData": {
+    "Name": "L22",
+    "Damage": 0.5,
+    "UseDelay": 0.089999996,
+    "MaxHandRangeMultiplier": 1.0,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 30,
+    "BurstFireCount": 0,
+    "Accuracy": 0.9,
+    "Recoil": 0.79999995,
+    "RotationalRecoilIntensity": 0.25,
+    "RecoilHandling": 0.95,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/l22_1.wav",
+      "sounds/firearms/l22_2.wav",
+      "sounds/firearms/l22_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "RifleCasing",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 142.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/l22/base.png",
+  "HoldForGrip": true,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 197.7376,
+    "Y": 57.139397
+  },
+  "CasingEjectionPoint": {
+    "X": -46.833786,
+    "Y": 64.31972
+  },
+  "HoldPoints": [
+    {
+      "X": -64.31979,
+      "Y": -0.4583969
+    },
+    {
+      "X": 155.32056,
+      "Y": 0.0
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

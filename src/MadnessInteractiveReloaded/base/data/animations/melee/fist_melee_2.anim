@@ -1,0 +1,70 @@
+﻿fps 24
+scale 1
+speed 2
+
+BODY
+3       0.0deg constraints(PreventThrowing PreventIronSight  PreventDodge)
+5       -0.2deg
+7       -1.02deg
+9       -3.13deg
+12      -7.31deg
+13      -7.9deg
+14      -7.98deg
+15      -7.51deg
+18      -3.36deg
+20      -1.12deg
+22      -0.16deg
+24      0.0deg
+
+HEAD
+0       -0.0px  0.0px  -0.0deg
+3       0.24px  -0.01px  0.09deg
+5       0.61deg
+6       1.17px  -0.05px
+7       1.43deg
+9       3.06px  -0.13px  3.35deg
+11      4.47px  -0.2px
+12      4.93px  -0.22px  7.79deg
+13      5.1px  -0.23px  8.27deg
+14      4.92px  -0.22px  8.34deg
+15      7.84deg
+16      3.64px  -0.16px
+18      3.99deg
+19      1.15px  -0.05px
+20      1.39deg
+22      0.14px  -0.01px  0.23deg
+24      -0.0px  0.0px  -0.0deg
+
+HAND 
+0       -98.09px  26.76px
+2       -72.62px  26.43px
+3       -54.01px  25.26px
+4       -47.15px  24.1px
+5       -50.58px  21.28px
+6       -69.11px  18.46px
+9       -131.06px  9.88px
+11      -153.91px  7.18px
+14      -163.47px  6.09px
+17      -154.54px  8.42px
+19      -130.63px  16.31px
+21      -105.58px  24.69px
+24      -98.09px  26.76px
+
+HAND 
+aim
+0       181.63px  41.61px
+1       181.63px  41.61px
+3       142.74px  53.89px
+4       148.85px  58.58px
+5       178.17px  63.27px
+6       244.49px  65.78px
+8       377.12px  64.27px
+10      474.31px  45.97px
+12      508.17px  33.36px
+13      515.58px  28.38px
+14      507.78px  23.41px
+16      456.18px  13.46px
+18      334.9px  11.75px
+20      232.18px  19.18px
+22      190.09px  32.32px
+24      181.63px  41.61px

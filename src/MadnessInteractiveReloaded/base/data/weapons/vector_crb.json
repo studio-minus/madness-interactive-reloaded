@@ -1,0 +1,61 @@
+{
+  "Id": "vector_crb",
+  "WeaponData": {
+    "Name": "Vector CRB",
+    "Damage": 0.5,
+    "UseDelay": 0.05,
+    "MaxHandRangeMultiplier": 0.7,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 17,
+    "BurstFireCount": 0,
+    "Accuracy": 0.98999995,
+    "Recoil": 0.25,
+    "RotationalRecoilIntensity": 1.0,
+    "RecoilHandling": 1.1,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/silenced_machinegun_1.wav",
+      "sounds/firearms/silenced_machinegun_2.wav",
+      "sounds/firearms/silenced_machinegun_3.wav",
+      "sounds/firearms/silenced_machinegun_4.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/vector_crb/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 375.42007,
+    "Y": 12.540013
+  },
+  "CasingEjectionPoint": {
+    "X": 1.2300262,
+    "Y": 35.249977
+  },
+  "HoldPoints": [
+    {
+      "X": 115.41002,
+      "Y": 6.0899773
+    },
+    {
+      "X": 58.989944,
+      "Y": -6.377237
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

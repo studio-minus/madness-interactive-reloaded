@@ -1,0 +1,10 @@
+0.36.2
+
+name Coat 8
+type BodyAccessory
+left textures/bodies/body2/coat8/coat8_left.png
+right textures/bodies/body2/coat8/coat8_right.png
+category All
+detach False
+hidden False
+offset 2 18

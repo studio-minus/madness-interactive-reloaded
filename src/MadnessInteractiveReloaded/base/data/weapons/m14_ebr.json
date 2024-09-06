@@ -1,0 +1,58 @@
+{
+  "Id": "m14_ebr",
+  "WeaponData": {
+    "Name": "M14 EBR",
+    "Damage": 1.5,
+    "UseDelay": 0.2,
+    "MaxHandRangeMultiplier": 0.7,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 10,
+    "BurstFireCount": 0,
+    "Accuracy": 0.96,
+    "Recoil": 1.5,
+    "RotationalRecoilIntensity": 0.9,
+    "RecoilHandling": 0.3,
+    "Automatic": false,
+    "ShootSounds": [
+      "sounds/firearms/gun8.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "RifleCasing",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 800.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/m14_ebr/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 371.2149,
+    "Y": 24.121578
+  },
+  "CasingEjectionPoint": {
+    "X": -135.65999,
+    "Y": 18.239971
+  },
+  "HoldPoints": [
+    {
+      "X": 190.74002,
+      "Y": 45.77993
+    },
+    {
+      "X": 10.133041,
+      "Y": -8.233112
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

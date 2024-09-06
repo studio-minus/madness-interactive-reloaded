@@ -1,0 +1,58 @@
+{
+  "Id": "m16a1",
+  "WeaponData": {
+    "Name": "M16A1",
+    "Damage": 0.7,
+    "UseDelay": 0.08,
+    "MaxHandRangeMultiplier": 0.8,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 20,
+    "BurstFireCount": 0,
+    "Accuracy": 0.98,
+    "Recoil": 0.9,
+    "RotationalRecoilIntensity": 0.25,
+    "RecoilHandling": 1.2,
+    "Automatic": false,
+    "ShootSounds": [
+      "sounds/firearms/ak_1.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "RifleCasing",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/m16a1/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 343.025,
+    "Y": 33.825066
+  },
+  "CasingEjectionPoint": {
+    "X": -54.414825,
+    "Y": 34.450325
+  },
+  "HoldPoints": [
+    {
+      "X": 133.51318,
+      "Y": 38.913853
+    },
+    {
+      "X": 86.71195,
+      "Y": 15.149008
+    }
+  ],
+  "AnimatedParts": [],
+  "OnFloorAngle": 0.0
+}

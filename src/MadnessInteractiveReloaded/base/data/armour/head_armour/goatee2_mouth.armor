@@ -1,0 +1,11 @@
+0.35.1
+
+name Goatee 2
+type HeadAccessory
+left textures/bodies/mouth/goatee2/goatee2_right.png
+right textures/bodies/mouth/goatee2/goatee2_right.png
+texture-scale 1
+category Mask
+detach False
+hidden False
+offset 70 110

@@ -1,0 +1,65 @@
+{
+  "Id": "hooked_axe",
+  "WeaponData": {
+    "Name": "Hooked Axe",
+    "Damage": 2.0,
+    "UseDelay": 0.05,
+    "MaxHandRangeMultiplier": 0.8,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 25.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [
+      {
+        "MinX": 210.66304,
+        "MinY": -45.197968,
+        "MaxX": 285.80313,
+        "MaxY": 106.43297
+      },
+      {
+        "MinX": -5.261177,
+        "MinY": -1.5821533,
+        "MaxX": 59.458908,
+        "MaxY": 40.192184
+      }
+    ],
+    "WeaponType": "Melee",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 12,
+    "BurstFireCount": 0,
+    "Accuracy": 0.0,
+    "Recoil": 0.0,
+    "RotationalRecoilIntensity": 1.0,
+    "RecoilHandling": 0.0,
+    "Automatic": false,
+    "ShootSounds": null,
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 456.0,
+    "CanDeflectBullets": true,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Axe",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/hooked_axe/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 0.0,
+    "Y": 0.0
+  },
+  "CasingEjectionPoint": {
+    "X": 0.0,
+    "Y": 0.0
+  },
+  "HoldPoints": [
+    {
+      "X": 12.232536,
+      "Y": 82.43869
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 90.0
+}

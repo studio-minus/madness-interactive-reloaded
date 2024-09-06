@@ -1,0 +1,11 @@
+0.39.2
+
+name Tactical cap 2
+type HeadAccessory
+left textures/bodies/hats/tactical_cap2/tactical_cap2_left.png
+right textures/bodies/hats/tactical_cap2/tactical_cap2_right.png
+texture-scale 1
+category Hat
+detach False
+hidden False
+offset 41 -48

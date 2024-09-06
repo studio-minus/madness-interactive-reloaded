@@ -1,0 +1,11 @@
+0.36.0
+
+name Mask 2
+type HeadAccessory
+category Eyes
+
+left textures/bodies/eyes/mask2/mask2_left.png
+right textures/bodies/eyes/mask2/mask2_right.png
+
+offset-left -5 42
+offset-right -10 42

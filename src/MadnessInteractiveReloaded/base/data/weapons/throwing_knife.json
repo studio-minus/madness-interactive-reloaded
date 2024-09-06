@@ -1,0 +1,59 @@
+{
+  "Id": "throwing_knife",
+  "WeaponData": {
+    "Name": "Throwing knife",
+    "Damage": 0.34,
+    "UseDelay": 0.0,
+    "MaxHandRangeMultiplier": 1.0,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 12.21,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [
+      {
+        "MinX": 0.62107277,
+        "MinY": -33.885136,
+        "MaxX": 56.415108,
+        "MaxY": 125.23244
+      }
+    ],
+    "WeaponType": "Melee",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 12,
+    "BurstFireCount": 0,
+    "Accuracy": 0.0,
+    "Recoil": 0.0,
+    "RotationalRecoilIntensity": 1.0,
+    "RecoilHandling": 0.0,
+    "Automatic": false,
+    "ShootSounds": null,
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 393.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Blade",
+    "MeleeSize": "Small"
+  },
+  "BaseTexture": "textures/weapons/throwing_knife/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 0.0,
+    "Y": 0.0
+  },
+  "CasingEjectionPoint": {
+    "X": 0.0,
+    "Y": 0.0
+  },
+  "HoldPoints": [
+    {
+      "X": 0.56155777,
+      "Y": 85.97527
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 90.0
+}

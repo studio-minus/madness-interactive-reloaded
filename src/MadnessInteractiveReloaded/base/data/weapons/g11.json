@@ -1,0 +1,60 @@
+{
+  "Id": "g11",
+  "WeaponData": {
+    "Name": "G11",
+    "Damage": 0.4,
+    "UseDelay": 0.028,
+    "MaxHandRangeMultiplier": 0.9,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 50,
+    "BurstFireCount": 3,
+    "Accuracy": 1.0,
+    "Recoil": 0.5,
+    "RotationalRecoilIntensity": 0.3,
+    "RecoilHandling": 1.0,
+    "Automatic": false,
+    "ShootSounds": [
+      "sounds/firearms/mac_10_1.wav",
+      "sounds/firearms/mac_10_2.wav",
+      "sounds/firearms/mac_10_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "None",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/g11/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 282.53174,
+    "Y": 14.846416
+  },
+  "CasingEjectionPoint": {
+    "X": -14.846436,
+    "Y": 3.8076248
+  },
+  "HoldPoints": [
+    {
+      "X": 19.830029,
+      "Y": 62.78999
+    },
+    {
+      "X": 93.73651,
+      "Y": -17.254944
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

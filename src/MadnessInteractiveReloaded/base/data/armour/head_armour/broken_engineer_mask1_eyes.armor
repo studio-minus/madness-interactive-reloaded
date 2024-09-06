@@ -1,0 +1,12 @@
+0.36.0
+
+name Broken engineer mask 1
+type HeadAccessory
+category Eyes
+hidden true
+
+left textures/bodies/broken/broken_engineer_mask/broken_engineer_mask1_left.png
+right textures/bodies/broken/broken_engineer_mask/broken_engineer_mask1_right.png
+
+offset-left 0 5
+offset-right 0 5

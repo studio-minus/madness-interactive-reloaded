@@ -1,0 +1,61 @@
+{
+  "Id": "aug",
+  "WeaponData": {
+    "Name": "AUG",
+    "Damage": 0.6,
+    "UseDelay": 0.08,
+    "MaxHandRangeMultiplier": 1.0,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 30,
+    "BurstFireCount": 0,
+    "Accuracy": 0.95,
+    "Recoil": 0.8,
+    "RotationalRecoilIntensity": 0.25,
+    "RecoilHandling": 1.2,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/colt_ar_1.wav",
+      "sounds/firearms/colt_ar_2.wav",
+      "sounds/firearms/colt_ar_3.wav",
+      "sounds/firearms/colt_ar_4.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "RifleCasing",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/aug/base.png",
+  "HoldForGrip": true,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 265.24072,
+    "Y": 34.80421
+  },
+  "CasingEjectionPoint": {
+    "X": -120.131584,
+    "Y": 38.41559
+  },
+  "HoldPoints": [
+    {
+      "X": 1.5648675,
+      "Y": 23.587872
+    },
+    {
+      "X": 136.8886,
+      "Y": -32.740498
+    }
+  ],
+  "AnimatedParts": [],
+  "OnFloorAngle": 0.0
+}

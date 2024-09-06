@@ -1,0 +1,60 @@
+{
+  "Id": "mat_49",
+  "WeaponData": {
+    "Name": "MAT-49",
+    "Damage": 0.4,
+    "UseDelay": 0.1,
+    "MaxHandRangeMultiplier": 0.5,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 32,
+    "BurstFireCount": 0,
+    "Accuracy": 0.95,
+    "Recoil": 0.5,
+    "RotationalRecoilIntensity": 1.2,
+    "RecoilHandling": 0.9,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/tec_9_1.wav",
+      "sounds/firearms/tec_9_2.wav",
+      "sounds/firearms/tec_9_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 300.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/mat_49/base.png",
+  "HoldForGrip": true,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 243.76062,
+    "Y": 76.159424
+  },
+  "CasingEjectionPoint": {
+    "X": 40.919975,
+    "Y": 76.55997
+  },
+  "HoldPoints": [
+    {
+      "X": 37.99999,
+      "Y": -26.000015
+    },
+    {
+      "X": 62.000717,
+      "Y": -3.8450317
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

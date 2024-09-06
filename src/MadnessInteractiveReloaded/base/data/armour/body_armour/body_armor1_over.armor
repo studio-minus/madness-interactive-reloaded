@@ -1,0 +1,11 @@
+0.1.18
+
+name Body armor
+type BodyAccessory
+category All
+
+left textures/bodies/body2/body_armor1/body_armor1_left.png
+right textures/bodies/body2/body_armor1/body_armor1_right.png
+
+offset-left -8 -20
+offset-right -8 -20

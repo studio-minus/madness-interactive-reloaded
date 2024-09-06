@@ -1,0 +1,11 @@
+0.36.0
+
+name Sheriff
+type HeadAccessory
+category Hat
+
+left textures/bodies/hats/sheriff_hat1/sheriff_hat1_left.png
+right textures/bodies/hats/sheriff_hat1/sheriff_hat1_right.png
+
+offset-left -7 -95
+offset-right -7 -95

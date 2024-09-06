@@ -1,0 +1,10 @@
+0.36.0
+
+name Gasmask 1
+type HeadAccessory
+left textures/bodies/mouth/gas_mask1/gas_mask1_left.png
+right textures/bodies/mouth/gas_mask1/gas_mask1_right.png
+category Mask
+detach False
+hidden False
+offset 12 75

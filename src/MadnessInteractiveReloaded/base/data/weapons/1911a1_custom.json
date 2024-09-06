@@ -1,0 +1,95 @@
+{
+  "Id": "1911a1_custom",
+  "WeaponData": {
+    "Name": "1911a1 Custom",
+    "Damage": 0.8,
+    "UseDelay": 0.2,
+    "MaxHandRangeMultiplier": 1.0,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 7,
+    "BurstFireCount": 0,
+    "Accuracy": 1.0,
+    "Recoil": 1.5,
+    "RotationalRecoilIntensity": 1.5,
+    "RecoilHandling": 0.5,
+    "Automatic": false,
+    "ShootSounds": [
+      "sounds/firearms/1911a1_custom_1.wav",
+      "sounds/firearms/1911a1_custom_2.wav",
+      "sounds/firearms/1911a1_custom_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 100.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/1911a1_custom/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 117.19559,
+    "Y": 50.160263
+  },
+  "CasingEjectionPoint": {
+    "X": -36.56568,
+    "Y": 51.095974
+  },
+  "HoldPoints": [
+    {
+      "X": 60.98167,
+      "Y": 1.7484722
+    }
+  ],
+  "AnimatedParts": [
+    {
+      "OutOfAmmoKeyframeTime": 0.1,
+      "InvisbleWhenOutOfAmmo": false,
+      "Duration": 0.15,
+      "Scale": {
+        "X": 1.0,
+        "Y": 1.0
+      },
+      "Texture": "textures/weapons/1911a1_custom/slide.png",
+      "TranslationCurve": {
+        "MappingFunction": null,
+        "Keys": [
+          {
+            "Value": {
+              "X": 3.0,
+              "Y": 55.0
+            },
+            "Position": 0.0
+          },
+          {
+            "Value": {
+              "X": -50.0,
+              "Y": 55.0
+            },
+            "Position": 0.2
+          },
+          {
+            "Value": {
+              "X": 3.0,
+              "Y": 55.0
+            },
+            "Position": 1.0
+          }
+        ]
+      },
+      "AngleCurve": null,
+      "VisibilityCurve": null
+    }
+  ],
+  "OnFloorAngle": 0.0
+}

@@ -1,0 +1,15 @@
+﻿0.36.13
+
+name Soldat
+
+aiming_randomness 0.1
+shooting_timeout 0.1
+recoil_handling 1
+dodge 0.5
+panic 1.1
+melee 0.5
+accurate_shot_chance 0.7
+can_deflect true
+
+agility_skill_level master
+jump_dodge_duration 0.65

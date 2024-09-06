@@ -1,0 +1,11 @@
+0.36.0
+
+name Mouth bandages
+type HeadAccessory
+category Mask
+
+left textures/bodies/mouth/mouth_bandages/mouth_bandages_left.png
+right textures/bodies/mouth/mouth_bandages/mouth_bandages_right.png
+
+offset-left -7 73
+offset-right -7 73

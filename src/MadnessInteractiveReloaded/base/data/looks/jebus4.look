@@ -1,0 +1,15 @@
+﻿0.36.3
+
+name Jebus 4
+
+body
+   default_body
+
+head
+   jebus5_head
+   halo_hat
+   jebus4_glasses_eyes
+   jebus_beard_classic_mouth
+
+hands default
+blood #ff0000

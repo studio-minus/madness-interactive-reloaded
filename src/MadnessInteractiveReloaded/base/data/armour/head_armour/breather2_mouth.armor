@@ -1,0 +1,11 @@
+0.36.0
+
+name Breather 2
+type HeadAccessory
+category Mask
+
+left textures/bodies/mouth/breather2/breather2_left.png
+right textures/bodies/mouth/breather2/breather2_right.png
+
+offset-left -1 76
+offset-right -1 76

@@ -1,0 +1,10 @@
+0.36.0
+
+name Hard hat
+type HeadAccessory
+left textures/bodies/hats/hard_hat/hard_hat_left.png
+right textures/bodies/hats/hard_hat/hard_hat_right.png
+category Hat
+detach False
+hidden False
+offset 20 -55

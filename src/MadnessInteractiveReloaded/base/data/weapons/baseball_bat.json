@@ -1,0 +1,52 @@
+{
+  "Id": "baseball_bat",
+  "WeaponData": {
+    "Name": "Baseball Bat",
+    "Damage": 0.2,
+    "UseDelay": 0.0,
+    "MaxHandRangeMultiplier": 1.0,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 21.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Melee",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 12,
+    "BurstFireCount": 0,
+    "Accuracy": 0.0,
+    "Recoil": 0.0,
+    "RotationalRecoilIntensity": 1.0,
+    "RecoilHandling": 0.0,
+    "Automatic": false,
+    "ShootSounds": null,
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 577.0,
+    "CanDeflectBullets": true,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Blunt",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/baseball_bat/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 3.3354492,
+    "Y": 0.0
+  },
+  "CasingEjectionPoint": {
+    "X": 3.3354492,
+    "Y": 0.0
+  },
+  "HoldPoints": [
+    {
+      "X": -1.1117859,
+      "Y": 173.9986
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 90.0
+}

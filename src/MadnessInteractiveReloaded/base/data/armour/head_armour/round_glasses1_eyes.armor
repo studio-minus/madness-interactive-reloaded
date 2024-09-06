@@ -1,0 +1,11 @@
+0.36.0
+
+name Round glasses
+type HeadAccessory
+left textures/bodies/eyes/round_glasses1/round_glasses1_left.png
+right textures/bodies/eyes/round_glasses1/round_glasses1_right.png
+texture-scale 1
+category Eyes
+detach True
+hidden False
+offset 50 5

@@ -1,0 +1,11 @@
+0.36.0
+
+name Vendor hat
+type HeadAccessory
+category Hat
+
+left textures/bodies/hats/vendor_hat/vendor_hat_left.png
+right textures/bodies/hats/vendor_hat/vendor_hat_right.png
+
+offset-left -5 -139
+offset-right -5 -139

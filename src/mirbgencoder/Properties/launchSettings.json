@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "mirbgencoder": {
+      "commandName": "Project",
+      "commandLineArgs": "background.qoi foreground.png decalmask.png"
+    }
+  }
+}

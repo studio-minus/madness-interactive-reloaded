@@ -1,0 +1,60 @@
+{
+  "Id": "saiga_12",
+  "WeaponData": {
+    "Name": "SAIGA-12",
+    "Damage": 0.25,
+    "UseDelay": 0.15,
+    "MaxHandRangeMultiplier": 0.7,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 6,
+    "RoundsPerMagazine": 12,
+    "BurstFireCount": 0,
+    "Accuracy": 0.6,
+    "Recoil": 2.0,
+    "RotationalRecoilIntensity": 0.35,
+    "RecoilHandling": 1.0,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/shotmod_1.wav",
+      "sounds/firearms/shotmod_2.wav",
+      "sounds/firearms/shotmod_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "ShotgunShell",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/saiga_12/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 225.30466,
+    "Y": 51.27815
+  },
+  "CasingEjectionPoint": {
+    "X": -63.223396,
+    "Y": 72.28079
+  },
+  "HoldPoints": [
+    {
+      "X": 169.86095,
+      "Y": 9.6953125
+    },
+    {
+      "X": 66.60826,
+      "Y": 31.823244
+    }
+  ],
+  "AnimatedParts": [],
+  "OnFloorAngle": 0.0
+}

@@ -1,0 +1,11 @@
+0.38.0
+
+name Bandages 2
+type HeadAccessory
+left textures/bodies/hats/bandages2/bandages2_left.png
+right textures/bodies/hats/bandages2/bandages2_right.png
+texture-scale 1
+category Hat
+detach False
+hidden False
+offset -11 -24

@@ -1,0 +1,10 @@
+0.11.2
+
+name Trench coat
+type Body
+left textures/bodies/body1/trench_coat/trench_coat_left.png
+right textures/bodies/body1/trench_coat/trench_coat_right.png
+category All
+detach False
+hidden False
+offset 0 0

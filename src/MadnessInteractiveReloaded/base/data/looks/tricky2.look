@@ -1,0 +1,14 @@
+﻿0.35.0
+
+name Tricky2
+
+body
+   default_body
+
+head
+   clown_head
+   clown_hat
+
+hands default
+blood #ff0000
+jitter true

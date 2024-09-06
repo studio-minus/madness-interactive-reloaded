@@ -1,0 +1,60 @@
+{
+  "Id": "fn_fnc",
+  "WeaponData": {
+    "Name": "FN FNC",
+    "Damage": 0.9,
+    "UseDelay": 0.13,
+    "MaxHandRangeMultiplier": 1.0,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 30,
+    "BurstFireCount": 0,
+    "Accuracy": 1.0,
+    "Recoil": 1.5,
+    "RotationalRecoilIntensity": 0.6,
+    "RecoilHandling": 1.0,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/g36_1.wav",
+      "sounds/firearms/g36_2.wav",
+      "sounds/firearms/g36_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "RifleCasing",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/fn_fnc/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 330.51334,
+    "Y": 30.253098
+  },
+  "CasingEjectionPoint": {
+    "X": -48.598927,
+    "Y": 50.46862
+  },
+  "HoldPoints": [
+    {
+      "X": 124.428345,
+      "Y": 37.015045
+    },
+    {
+      "X": 66.04503,
+      "Y": 11.619155
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

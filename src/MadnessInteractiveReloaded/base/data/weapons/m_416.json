@@ -1,0 +1,60 @@
+{
+  "Id": "m_416",
+  "WeaponData": {
+    "Name": "M-416",
+    "Damage": 0.42,
+    "UseDelay": 0.08,
+    "MaxHandRangeMultiplier": 1.0,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 30,
+    "BurstFireCount": 0,
+    "Accuracy": 1.0,
+    "Recoil": 0.7,
+    "RotationalRecoilIntensity": 0.59999996,
+    "RecoilHandling": 1.0,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/m_416_1.wav",
+      "sounds/firearms/m_416_2.wav",
+      "sounds/firearms/m_416_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "RifleCasing",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 547.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/m_416/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 307.947,
+    "Y": 50.61002
+  },
+  "CasingEjectionPoint": {
+    "X": -31.656006,
+    "Y": 62.385036
+  },
+  "HoldPoints": [
+    {
+      "X": 77.58301,
+      "Y": 19.373959
+    },
+    {
+      "X": 104.975945,
+      "Y": 32.80503
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

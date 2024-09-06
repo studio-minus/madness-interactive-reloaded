@@ -1,0 +1,54 @@
+{
+  "Id": "enfield_mk2",
+  "WeaponData": {
+    "Name": "Enfield MK2",
+    "Damage": 1.0,
+    "UseDelay": 0.02,
+    "MaxHandRangeMultiplier": 1.0,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 6,
+    "BurstFireCount": 0,
+    "Accuracy": 0.95,
+    "Recoil": 1.5,
+    "RotationalRecoilIntensity": 1.5,
+    "RecoilHandling": 1.0,
+    "Automatic": false,
+    "ShootSounds": [
+      "sounds/firearms/m_73.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "None",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 450.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/enfield_mk2/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": true,
+  "BarrelEndPoint": {
+    "X": 121.35068,
+    "Y": 45.408524
+  },
+  "CasingEjectionPoint": {
+    "X": -34.36239,
+    "Y": 46.067257
+  },
+  "HoldPoints": [
+    {
+      "X": 73.48146,
+      "Y": 1.3535442
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

@@ -1,0 +1,10 @@
+0.36.0
+
+name Masked
+type Head
+left textures/bodies/skin/masked/masked_left.png
+right textures/bodies/skin/masked/masked_right.png
+category All
+detach False
+hidden False
+offset 0 0

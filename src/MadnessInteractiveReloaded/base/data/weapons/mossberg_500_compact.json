@@ -1,0 +1,60 @@
+{
+  "Id": "mossberg_500_compact",
+  "WeaponData": {
+    "Name": "Mossberg 500 Compact",
+    "Damage": 0.07,
+    "UseDelay": 0.17,
+    "MaxHandRangeMultiplier": 0.6,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 8,
+    "RoundsPerMagazine": 7,
+    "BurstFireCount": 0,
+    "Accuracy": 0.84,
+    "Recoil": 1.2,
+    "RotationalRecoilIntensity": 1.0,
+    "RecoilHandling": 0.8,
+    "Automatic": false,
+    "ShootSounds": [
+      "sounds/firearms/shotgun_1.wav",
+      "sounds/firearms/shotgun_2.wav",
+      "sounds/firearms/shotgun_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "ShotgunShell",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/mossberg_500_compact/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 199.43602,
+    "Y": 49.81301
+  },
+  "CasingEjectionPoint": {
+    "X": -36.75662,
+    "Y": 48.634754
+  },
+  "HoldPoints": [
+    {
+      "X": 142.11882,
+      "Y": 11.420231
+    },
+    {
+      "X": 105.70505,
+      "Y": 21.140984
+    }
+  ],
+  "AnimatedParts": [],
+  "OnFloorAngle": 0.0
+}

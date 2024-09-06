@@ -1,0 +1,31 @@
+0.12.0
+
+name Armored gloves
+
+Fist
+	front textures/bodies/hands/armored_gloves/armored_gloves_fist.png
+	back  textures/bodies/hands/armored_gloves/armored_gloves_fist_back.png
+	
+HoldPistol
+	front textures/bodies/hands/armored_gloves/armored_gloves_pistol.png
+	back  textures/bodies/hands/armored_gloves/armored_gloves_pistol_back.png
+	
+HoldUnderside
+	front textures/bodies/hands/armored_gloves/armored_gloves_underside.png
+	back  textures/bodies/hands/armored_gloves/armored_gloves_underside_back.png
+	
+HoldRifle
+	front textures/bodies/hands/armored_gloves/armored_gloves_rifle.png
+	back  textures/bodies/hands/armored_gloves/armored_gloves_rifle_back.png
+	
+Open
+	front textures/bodies/hands/armored_gloves/armored_gloves_open.png
+	back  textures/bodies/hands/armored_gloves/armored_gloves_open_back.png	
+
+Point
+	front textures/bodies/hands/armored_gloves/armored_gloves_point.png
+	back  textures/bodies/hands/armored_gloves/armored_gloves_point_back.png
+
+HoldStock
+	front textures/bodies/hands/armored_gloves/armored_gloves_stock.png
+	back  textures/bodies/hands/armored_gloves/armored_gloves_stock_back.png

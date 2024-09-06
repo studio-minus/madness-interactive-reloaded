@@ -1,0 +1,59 @@
+{
+  "Id": "xm8",
+  "WeaponData": {
+    "Name": "XM8",
+    "Damage": 0.7,
+    "UseDelay": 0.08,
+    "MaxHandRangeMultiplier": 0.7,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 30,
+    "BurstFireCount": 0,
+    "Accuracy": 0.96,
+    "Recoil": 0.8,
+    "RotationalRecoilIntensity": 0.4,
+    "RecoilHandling": 1.0,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/fn_fal_1.wav",
+      "sounds/firearms/fn_fal_2.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "RifleCasing",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 400.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/xm8/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 314.5046,
+    "Y": 21.611595
+  },
+  "CasingEjectionPoint": {
+    "X": -24.189926,
+    "Y": 26.860096
+  },
+  "HoldPoints": [
+    {
+      "X": 80.3965,
+      "Y": 36.657646
+    },
+    {
+      "X": 79.27216,
+      "Y": -3.774826
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

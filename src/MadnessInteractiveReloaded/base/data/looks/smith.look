@@ -1,0 +1,13 @@
+﻿0.13.1
+
+name Smith
+
+body
+   blouse3_body
+
+head
+   default_head
+   smith_hair_hat
+
+hands default
+blood #ff0000

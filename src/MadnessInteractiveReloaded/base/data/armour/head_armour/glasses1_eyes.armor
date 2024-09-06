@@ -1,0 +1,11 @@
+0.36.0
+
+name Glasses 1
+type HeadAccessory
+left textures/bodies/eyes/glasses1/glasses1_left.png
+right textures/bodies/eyes/glasses1/glasses1_right.png
+texture-scale 1
+category Eyes
+detach True
+hidden False
+offset 12 1

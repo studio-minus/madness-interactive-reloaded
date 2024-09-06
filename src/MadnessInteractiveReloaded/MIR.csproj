@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<TargetOperatingSystem>WINDOWS</TargetOperatingSystem>
+		<DefineConstants>$(TargetOperatingSystem)</DefineConstants>
+		<ApplicationIcon>resources\textures\icon.ico</ApplicationIcon>
+		<StartupObject></StartupObject>
+		<Version>0.48.3</Version>
+		<NeutralLanguage />
+		<Company>Studio Minus</Company>
+		<Authors>Dikkiedik, zooi, Koof</Authors>
+		<RunPostBuildEvent>Always</RunPostBuildEvent>
+		<Nullable>enable</Nullable>
+		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+		<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+		<DebugType>embedded</DebugType>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<Platforms>AnyCPU;x64</Platforms>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
+		<OutputType>Exe</OutputType>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)'=='Release'">
+		<OutputType>WinExe</OutputType>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<PlatformTarget>AnyCPU</PlatformTarget>
+		<DebugType>portable</DebugType>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+		<PlatformTarget>AnyCPU</PlatformTarget>
+		<DebugType>portable</DebugType>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<DebugType>portable</DebugType>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+		<DebugType>portable</DebugType>
+	</PropertyGroup>
+	<Target Name="PostBuild" BeforeTargets="PostBuildEvent">
+		<Exec Command="MIR --mode pack --input &quot;$(ProjectDir)base&quot; --output resources/base.waa" WorkingDirectory="$(OutDir)" />
+	</Target>
+	<ItemGroup>
+		<PackageReference Include="Lib.Harmony" Version="2.3.3" />
+		<PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="4.11.0" />
+		<PackageReference Include="NativeFileDialogExtendedSharp" Version="0.1.0" />
+		<PackageReference Include="System.CommandLine.DragonFruit" Version="0.4.0-alpha.22272.1" />
+		<PackageReference Include="Walgelijk" Version="0.29.0" />
+		<PackageReference Include="Walgelijk.AssetManager" Version="0.16.8" />
+		<PackageReference Include="Walgelijk.CommonAssetDeserialisers" Version="0.8.3" />
+		<PackageReference Include="Walgelijk.Localisation" Version="1.1.21" />
+		<PackageReference Include="Walgelijk.Onion" Version="0.5.23" />
+		<PackageReference Include="Walgelijk.OpenTK" Version="0.22.1" />
+		<PackageReference Include="Walgelijk.OpenTK.MotionTK" Version="1.1.27" />
+		<PackageReference Include="Walgelijk.ParticleSystem" Version="0.2.34" />
+		<PackageReference Include="Walgelijk.Physics" Version="0.3.2" />
+		<PackageReference Include="Walgelijk.PortAudio" Version="0.2.0" />
+		<PackageReference Include="Walgelijk.SimpleDrawing" Version="1.26.4" />
+	</ItemGroup>
+	<ItemGroup>
+		<Content Include="$(ProjectDir)resources\**" CopyToOutputDirectory="Always" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="$(ProjectDir)base\**" CopyToOutputDirectory="Never" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="..\.editorconfig" Link=".editorconfig" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\BigGustave\src\BigGustave\BigGustave.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Update="avcodec-59.dll">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="avdevice-59.dll">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="avformat-59.dll">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="avutil-57.dll">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="NOTICE.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="openAL32.dll">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="nfd.dll">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="swresample-4.dll">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="swscale-6.dll">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+</Project>

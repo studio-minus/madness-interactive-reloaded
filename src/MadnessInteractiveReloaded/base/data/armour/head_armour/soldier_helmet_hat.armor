@@ -1,0 +1,11 @@
+0.36.0
+
+name Soldier Helmet
+type HeadAccessory
+category Hat
+
+left textures/bodies/hats/soldier_helmet/soldier_helmet_left.png
+right textures/bodies/hats/soldier_helmet/soldier_helmet_right.png
+
+offset-left -4 -56
+offset-right -4 -56

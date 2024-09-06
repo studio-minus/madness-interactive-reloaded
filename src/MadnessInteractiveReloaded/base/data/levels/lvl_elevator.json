@@ -1,0 +1,262 @@
+{
+  "DisplayName": "untitled",
+  "LevelType": "Campaign",
+  "ProgressionType": "BodyCount",
+  "EnemySpawnInterval": 0.5,
+  "MaxEnemyCount": 5,
+  "MaxSimultaneousAttackingEnemies": 2,
+  "BackgroundMusic": "sounds/music/Lothyde/agr3.ogg",
+  "WeaponChance": 0.75,
+  "LevelBounds": {
+    "MinX": -2027.4835,
+    "MinY": -1268.478,
+    "MaxX": 2239.183,
+    "MaxY": 1131.5217
+  },
+  "BodyCountToWin": 50,
+  "TimeLimitInSeconds": -1.0,
+  "FullZoom": false,
+  "Thumbnail": "textures/level_thumbnails/lvl_elevator.qoi",
+  "OpeningTransition": true,
+  "ExitingTransition": true,
+  "EnemySpawnInstructions": [
+    {
+      "StatsKey": "agent",
+      "LookKey": "agent",
+      "FactionKey": "aahw"
+    },
+    {
+      "StatsKey": "engineer",
+      "LookKey": "engineer",
+      "FactionKey": "aahw"
+    },
+    {
+      "StatsKey": "engineer",
+      "LookKey": "engineer",
+      "FactionKey": "aahw"
+    },
+    {
+      "StatsKey": "soldat",
+      "LookKey": "soldat",
+      "FactionKey": "aahw"
+    },
+    {
+      "StatsKey": "machinist",
+      "LookKey": "machinist",
+      "FactionKey": "aahw"
+    },
+    {
+      "StatsKey": "agent",
+      "LookKey": "agent",
+      "FactionKey": "aahw"
+    }
+  ],
+  "Weapons": [
+    "1337_sword",
+    "ak_47",
+    "aug",
+    "automag",
+    "baseball_bat",
+    "baton",
+    "carbon_knife",
+    "deagle",
+    "galil",
+    "glock_18_c",
+    "hatchet",
+    "l85",
+    "m1911",
+    "m16a1",
+    "megachette",
+    "micro_uzi",
+    "mk_23",
+    "mossberg_500",
+    "mp5k",
+    "mp9",
+    "saiga_12",
+    "silenced_beretta_92",
+    "mp5",
+    "sw_500",
+    "switchblade",
+    "tec_9",
+    "ump",
+    "walther_ppk",
+    "bowie_knife",
+    "dragon_sword",
+    "fn_fal",
+    "fbi_9",
+    "g36c",
+    "famas",
+    "mac_10",
+    "uzi",
+    "p90",
+    "qbz_95",
+    "l22",
+    "m_416",
+    "vigneron_m2",
+    "spectre_m4",
+    "usp_match",
+    "browning_hp",
+    "glock_20",
+    "tactical_deagle",
+    "enfield_mk2",
+    "hk_sl8",
+    "sawed_off_shotgun",
+    "m14_ebr"
+  ],
+  "FloorLine": [
+    {
+      "X": -1504.1847,
+      "Y": -1114.4178
+    },
+    {
+      "X": 1703.8153,
+      "Y": -1114.4178
+    }
+  ],
+  "Objects": [
+    {
+      "$type": "MIR.LevelEditor.Objects.GameSystem, MIR",
+      "Position": {
+        "X": 398.21307,
+        "Y": 1355.6226
+      },
+      "SystemTypeName": "MIR.ElevatorLevelSystem"
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerSpawn, MIR",
+      "Position": {
+        "X": -1288.1847,
+        "Y": -823.6378
+      },
+      "SpawnWeapon": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": 105.84973,
+        "Y": -68.47812
+      },
+      "TexturePath": "textures/backgrounds/background_elevator.qoi",
+      "Scale": 2.222222
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": -1558.218,
+        "MinY": -1759.8506,
+        "MaxX": 1774.184,
+        "MaxY": -1114.4178
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": -2158.062,
+        "MinY": -3117.7615,
+        "MaxX": -1844.1454,
+        "MaxY": 4750.0674
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": 2064.8828,
+        "MinY": -3480.769,
+        "MaxX": 2383.0322,
+        "MaxY": 4714.141
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.EnemySpawner, MIR",
+      "Position": {
+        "X": -1416.2623,
+        "Y": 1366.6355
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.EnemySpawner, MIR",
+      "Position": {
+        "X": 1487.3602,
+        "Y": 1423.7136
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.EnemySpawner, MIR",
+      "Position": {
+        "X": -53.746704,
+        "Y": 1410.8247
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/backgrounds/background_elevator_lamp_1x9.qoi",
+      "Angle": 0.0,
+      "Position": {
+        "X": 685.96484,
+        "Y": -349.52795
+      },
+      "Scale": 2.2220733,
+      "Columns": 9,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 4.5,
+      "MaxFrames": 9,
+      "Layer": -100,
+      "AlphaClip": false,
+      "OrderInLayer": 2,
+      "Tag": {
+        "Value": 9020
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": -2142.9294,
+        "MinY": 4433.654,
+        "MaxX": 2375.2356,
+        "MaxY": 4767.4795
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 1,
+      "Rectangle": {
+        "MinX": 1749.3269,
+        "MinY": -1371.923,
+        "MaxX": 2112.2588,
+        "MaxY": 309.838
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 1,
+      "Rectangle": {
+        "MinX": -1913.0947,
+        "MinY": -1371.9229,
+        "MaxX": -1550.1628,
+        "MaxY": 309.83792
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelProgressTrigger, MIR",
+      "Rectangle": {
+        "MinX": -2471.4185,
+        "MinY": -1442.2759,
+        "MaxX": 3059.7317,
+        "MaxY": 1204.9188
+      },
+      "Tag": null
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+0.36.0
+
+name Ninja bandana
+type HeadAccessory
+category Hat
+
+left textures/bodies/hats/ninja_bandana/ninja_bandana_left.png
+right textures/bodies/hats/ninja_bandana/ninja_bandana_right.png
+
+offset-left -28 -8
+offset-right -28 -8

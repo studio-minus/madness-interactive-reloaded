@@ -1,0 +1,10 @@
+0.36.2
+
+name Coat 9
+type BodyAccessory
+left textures/bodies/body2/coat9/coat9_left.png
+right textures/bodies/body2/coat9/coat9_right.png
+category All
+detach False
+hidden False
+offset 2 18

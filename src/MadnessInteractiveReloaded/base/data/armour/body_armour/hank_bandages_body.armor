@@ -1,0 +1,10 @@
+0.16.1
+
+name Hank Bandages
+type Body
+left textures/bodies/body1/hank_bandages/hank_bandages_left.png
+right textures/bodies/body1/hank_bandages/hank_bandages_right.png
+category All
+detach False
+hidden False
+offset 0 0

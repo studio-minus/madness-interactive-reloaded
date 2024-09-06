@@ -1,0 +1,99 @@
+{
+  "Id": "qbz_95",
+  "WeaponData": {
+    "Name": "QBZ-95",
+    "Damage": 0.34,
+    "UseDelay": 0.089999996,
+    "MaxHandRangeMultiplier": 0.90000004,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 30,
+    "BurstFireCount": 0,
+    "Accuracy": 0.95,
+    "Recoil": 0.7,
+    "RotationalRecoilIntensity": 0.25,
+    "RecoilHandling": 1.05,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/qbz_95_1.wav",
+      "sounds/firearms/qbz_95_2.wav",
+      "sounds/firearms/qbz_95_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "RifleCasing",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/qbz_95/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 271.53595,
+    "Y": 34.605366
+  },
+  "CasingEjectionPoint": {
+    "X": -127.288925,
+    "Y": 47.63512
+  },
+  "HoldPoints": [
+    {
+      "X": 16.329681,
+      "Y": 11.736519
+    },
+    {
+      "X": 100.51603,
+      "Y": 22.191818
+    }
+  ],
+  "AnimatedParts": [
+    {
+      "OutOfAmmoKeyframeTime": 0.1,
+      "InvisbleWhenOutOfAmmo": false,
+      "Duration": 0.15,
+      "Scale": {
+        "X": 1.0,
+        "Y": 1.0
+      },
+      "Texture": "textures/weapons/qbz_95/slide.png",
+      "TranslationCurve": {
+        "MappingFunction": null,
+        "Keys": [
+          {
+            "Value": {
+              "X": 17.0,
+              "Y": 70.0
+            },
+            "Position": 0.0
+          },
+          {
+            "Value": {
+              "X": -22.0,
+              "Y": 70.0
+            },
+            "Position": 0.1
+          },
+          {
+            "Value": {
+              "X": 17.0,
+              "Y": 70.0
+            },
+            "Position": 0.4
+          }
+        ]
+      },
+      "AngleCurve": null,
+      "VisibilityCurve": null
+    }
+  ],
+  "OnFloorAngle": 0.0
+}

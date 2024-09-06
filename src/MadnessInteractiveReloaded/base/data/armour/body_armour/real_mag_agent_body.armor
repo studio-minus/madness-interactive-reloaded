@@ -1,0 +1,11 @@
+0.26.1
+
+name Real mag agent
+type Body
+left textures/bodies/body1/real_mag_agent/real_mag_agent_left.png
+right textures/bodies/body1/real_mag_agent/real_mag_agent_right.png
+texture-scale 0.4051172707889126
+category All
+detach False
+hidden true
+offset 0 0

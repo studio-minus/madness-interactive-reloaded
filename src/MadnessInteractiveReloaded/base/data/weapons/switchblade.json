@@ -1,0 +1,59 @@
+{
+  "Id": "switchblade",
+  "WeaponData": {
+    "Name": "Switchblade",
+    "Damage": 0.17,
+    "UseDelay": 0.0,
+    "MaxHandRangeMultiplier": 1.0,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 12.21,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [
+      {
+        "MinX": 10.742252,
+        "MinY": 0.44922256,
+        "MaxX": 32.523422,
+        "MaxY": 81.72041
+      }
+    ],
+    "WeaponType": "Melee",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 12,
+    "BurstFireCount": 0,
+    "Accuracy": 0.0,
+    "Recoil": 0.0,
+    "RotationalRecoilIntensity": 1.0,
+    "RecoilHandling": 0.0,
+    "Automatic": false,
+    "ShootSounds": null,
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 361.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Blade",
+    "MeleeSize": "Small"
+  },
+  "BaseTexture": "textures/weapons/switchblade/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 0.0,
+    "Y": 0.0
+  },
+  "CasingEjectionPoint": {
+    "X": 0.0,
+    "Y": 0.0
+  },
+  "HoldPoints": [
+    {
+      "X": 0.2997284,
+      "Y": 43.764816
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 90.0
+}

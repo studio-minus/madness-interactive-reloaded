@@ -1,0 +1,8 @@
+0.36.0
+
+name Zombie 2
+type Head
+category All
+
+left textures/bodies/skin/zombie_head2/zombie_head2_left.png
+right textures/bodies/skin/zombie_head2/zombie_head2_right.png

@@ -1,0 +1,11 @@
+0.39.2
+
+name Bandages 4
+type HeadAccessory
+left textures/bodies/hats/bandages4/bandages4_left.png
+right textures/bodies/hats/bandages4/bandages4_right.png
+texture-scale 1
+category Hat
+detach False
+hidden False
+offset -6 -7

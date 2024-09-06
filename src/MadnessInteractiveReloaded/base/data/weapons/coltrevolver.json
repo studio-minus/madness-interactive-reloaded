@@ -1,0 +1,56 @@
+{
+  "Id": "colt_revolver",
+  "WeaponData": {
+    "Name": "Colt Revolver",
+    "Damage": 1.5,
+    "UseDelay": 0.2,
+    "MaxHandRangeMultiplier": 1.0,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 6,
+    "BurstFireCount": 0,
+    "Accuracy": 1.0,
+    "Recoil": 2.0,
+    "RotationalRecoilIntensity": 2.0,
+    "RecoilHandling": 0.2,
+    "Automatic": false,
+    "ShootSounds": [
+      "sounds/firearms/colt_revolver_1.wav",
+      "sounds/firearms/colt_revolver_2.wav",
+      "sounds/firearms/colt_revolver_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "None",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 200.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/colt_revolver/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": true,
+  "BarrelEndPoint": {
+    "X": 144.96376,
+    "Y": 42.927086
+  },
+  "CasingEjectionPoint": {
+    "X": -43.989933,
+    "Y": 36.257618
+  },
+  "HoldPoints": [
+    {
+      "X": 89.97421,
+      "Y": -2.2628474
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

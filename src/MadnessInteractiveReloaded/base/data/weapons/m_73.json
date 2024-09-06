@@ -1,0 +1,54 @@
+{
+  "Id": "m_73",
+  "WeaponData": {
+    "Name": "M.73",
+    "Damage": 1.9799999,
+    "UseDelay": 0.049999997,
+    "MaxHandRangeMultiplier": 1.0,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 6,
+    "BurstFireCount": 0,
+    "Accuracy": 1.0,
+    "Recoil": 1.77,
+    "RotationalRecoilIntensity": 1.51,
+    "RecoilHandling": 1.0799999,
+    "Automatic": false,
+    "ShootSounds": [
+      "sounds/firearms/m_73.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "None",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 450.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/m_73/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 126.22774,
+    "Y": 58.559017
+  },
+  "CasingEjectionPoint": {
+    "X": -41.7132,
+    "Y": 45.289696
+  },
+  "HoldPoints": [
+    {
+      "X": 77.369995,
+      "Y": 18.166224
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

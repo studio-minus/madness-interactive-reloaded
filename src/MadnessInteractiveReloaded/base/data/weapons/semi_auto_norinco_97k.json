@@ -1,0 +1,60 @@
+{
+  "Id": "semi_auto_norinco_97k",
+  "WeaponData": {
+    "Name": "Semi-auto Norinco 97k",
+    "Damage": 0.2,
+    "UseDelay": 0.5,
+    "MaxHandRangeMultiplier": 0.4,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 5,
+    "RoundsPerMagazine": 6,
+    "BurstFireCount": 0,
+    "Accuracy": 0.7,
+    "Recoil": 1.8,
+    "RotationalRecoilIntensity": 1.0,
+    "RecoilHandling": 0.8,
+    "Automatic": false,
+    "ShootSounds": [
+      "sounds/firearms/norinco_97k_1.wav",
+      "sounds/firearms/norinco_97k_2.wav",
+      "sounds/firearms/norinco_97k_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "ShotgunShell",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/semi_auto_norinco_97k/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 221.34839,
+    "Y": 64.99962
+  },
+  "CasingEjectionPoint": {
+    "X": -63.015686,
+    "Y": 60.471985
+  },
+  "HoldPoints": [
+    {
+      "X": 181.15372,
+      "Y": 6.9755425
+    },
+    {
+      "X": 51.709373,
+      "Y": 24.477825
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

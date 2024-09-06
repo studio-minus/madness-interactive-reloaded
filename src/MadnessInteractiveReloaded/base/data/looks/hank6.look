@@ -1,0 +1,15 @@
+﻿0.36.2
+
+name Hank 6
+
+body
+   hank_bandages_body
+   coat8_over
+
+head
+   hank6_head
+   bandana3_hat
+   round_glasses1_eyes
+
+hands default
+blood #ff0000

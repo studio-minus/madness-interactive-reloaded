@@ -1,0 +1,8 @@
+0.36.0
+
+name Robot
+type Head
+category All
+
+left textures/bodies/skin/robot/robot_left.png
+right textures/bodies/skin/robot/robot_right.png

@@ -1,0 +1,13 @@
+﻿0.13.1
+
+name Mag Rich
+
+body
+   mag_rich_body
+
+head
+   mag_rich_head
+
+head_flesh textures/bodies/gore/rich_head_flesh.png
+body_flesh textures/bodies/gore/rich_body_flesh.png
+blood #ff0000

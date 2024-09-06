@@ -1,0 +1,304 @@
+{
+  "DisplayName": "untitled",
+  "LevelType": "Experiment",
+  "ProgressionType": "BodyCount",
+  "EnemySpawnInterval": 2.0,
+  "MaxEnemyCount": 4,
+  "MaxSimultaneousAttackingEnemies": 2,
+  "BackgroundMusic": "0",
+  "WeaponChance": 0.5,
+  "LevelBounds": {
+    "MinX": -2129.629,
+    "MinY": -915.4877,
+    "MaxX": 2137.0376,
+    "MaxY": 1484.5121
+  },
+  "BodyCountToWin": 50,
+  "TimeLimitInSeconds": -1.0,
+  "FullZoom": false,
+  "Thumbnail": "0",
+  "OpeningTransition": true,
+  "ExitingTransition": true,
+  "EnemySpawnInstructions": [],
+  "Weapons": [],
+  "FloorLine": [
+    {
+      "X": -309.6173,
+      "Y": -722.2636
+    },
+    {
+      "X": 1732.3827,
+      "Y": -722.2636
+    }
+  ],
+  "Objects": [
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerSpawn, MIR",
+      "Position": {
+        "X": 1652.3827,
+        "Y": -491.47784
+      },
+      "SpawnWeapon": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/shield_exp6.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": -696.99335,
+        "Y": 284.06985
+      },
+      "Scale": 2.22251,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 12,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 1,
+      "Rectangle": {
+        "MinX": -740.6608,
+        "MinY": -758.3895,
+        "MaxX": -355.4491,
+        "MaxY": 1341.29
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": 3.7044067,
+        "Y": 284.5122
+      },
+      "TexturePath": "textures/backgrounds/experiment_6.qoi",
+      "Scale": 2.222222
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 1777.3691,
+        "MinY": -889.6378,
+        "MaxX": 2161.335,
+        "MaxY": 1477.7913
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -5067.9766,
+        "MinY": -1128.1118,
+        "MaxX": 2161.3345,
+        "MaxY": -722.2636
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -882.6642,
+        "MinY": 1280.9896,
+        "MaxX": 2165.5369,
+        "MaxY": 1686.8389
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.EnemySpawner, MIR",
+      "Position": {
+        "X": -2255.3406,
+        "Y": -556.1532
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.EnemySpawner, MIR",
+      "Position": {
+        "X": -1318.6177,
+        "Y": 1653.4635
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -2558.148,
+        "MinY": -818.8776,
+        "MaxX": -549.3313,
+        "MaxY": -666.641
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": 1913.9148,
+          "Y": -703.6743
+        },
+        "FacingDirection": {
+          "X": -1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": false,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": true,
+        "PortalID": "exp5_2",
+        "DestinationLevel": "exp_5",
+        "TopLeft": {
+          "X": 1770.9698,
+          "Y": 202.02495
+        },
+        "TopRight": {
+          "X": 1855.038,
+          "Y": 197.00232
+        },
+        "BottomLeft": {
+          "X": 1772.2988,
+          "Y": -679.73364
+        },
+        "BottomRight": {
+          "X": 1855.5309,
+          "Y": -727.615
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -324.11743,
+        "MinY": -811.91077,
+        "MaxX": 1684.7002,
+        "MaxY": -659.67413
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 1712.4308,
+        "MinY": 243.55841,
+        "MaxX": 1848.4518,
+        "MaxY": 1248.6012
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -836.2604,
+        "MinY": 1229.3115,
+        "MaxX": 1725.2328,
+        "MaxY": 1326.424
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
+      "WeaponKey": "fn_fal",
+      "Angle": -85.273026,
+      "Ammo": 20,
+      "AttachedToWall": true,
+      "Position": {
+        "X": 68.19675,
+        "Y": -242.6011
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
+      "WeaponKey": "railgun",
+      "Angle": -84.093575,
+      "Ammo": 2147483647,
+      "AttachedToWall": true,
+      "Position": {
+        "X": -213.62558,
+        "Y": -341.16672
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
+      "WeaponKey": "saiga_12",
+      "Angle": -80.640205,
+      "Ammo": 12,
+      "AttachedToWall": true,
+      "Position": {
+        "X": 1484.536,
+        "Y": -355.56134
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
+      "WeaponKey": "m14_ebr",
+      "Angle": -0.034194946,
+      "Ammo": 10,
+      "AttachedToWall": true,
+      "Position": {
+        "X": 733.87915,
+        "Y": 45.39663
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
+      "WeaponKey": "sw_500",
+      "Angle": 18.78978,
+      "Ammo": 8,
+      "AttachedToWall": true,
+      "Position": {
+        "X": 959.329,
+        "Y": -283.43857
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
+      "WeaponKey": "hk_sl8",
+      "Angle": 0.058776855,
+      "Ammo": 30,
+      "AttachedToWall": true,
+      "Position": {
+        "X": 592.78925,
+        "Y": -177.01373
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": -394.18518,
+        "Y": -1004.7727
+      },
+      "B": {
+        "X": -419.24298,
+        "Y": -643.6019
+      },
+      "Radius": 49.0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": -473.43726,
+        "Y": -1005.15704
+      },
+      "B": {
+        "X": -422.45,
+        "Y": -646.7265
+      },
+      "Radius": 49.0,
+      "Tag": null
+    }
+  ]
+}

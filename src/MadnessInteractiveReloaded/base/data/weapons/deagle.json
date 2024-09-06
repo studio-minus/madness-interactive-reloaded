@@ -1,0 +1,95 @@
+{
+  "Id": "deagle",
+  "WeaponData": {
+    "Name": "Desert Eagle",
+    "Damage": 1.0,
+    "UseDelay": 0.25,
+    "MaxHandRangeMultiplier": 1.0,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 7,
+    "BurstFireCount": 0,
+    "Accuracy": 1.0,
+    "Recoil": 2.0,
+    "RotationalRecoilIntensity": 1.5,
+    "RecoilHandling": 1.0,
+    "Automatic": false,
+    "ShootSounds": [
+      "sounds/firearms/deagle_1.wav",
+      "sounds/firearms/deagle_2.wav",
+      "sounds/firearms/deagle_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Medium",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 260.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Small"
+  },
+  "BaseTexture": "textures/weapons/deagle/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 125.0,
+    "Y": 55.0
+  },
+  "CasingEjectionPoint": {
+    "X": -34.0,
+    "Y": 64.0
+  },
+  "HoldPoints": [
+    {
+      "X": 57.02642,
+      "Y": 13.375166
+    }
+  ],
+  "AnimatedParts": [
+    {
+      "OutOfAmmoKeyframeTime": 0.1,
+      "InvisbleWhenOutOfAmmo": false,
+      "Duration": 0.15,
+      "Scale": {
+        "X": 1.0,
+        "Y": 1.0
+      },
+      "Texture": "textures/weapons/deagle/slide.png",
+      "TranslationCurve": {
+        "MappingFunction": null,
+        "Keys": [
+          {
+            "Value": {
+              "X": 4.0,
+              "Y": 48.0
+            },
+            "Position": 0.0
+          },
+          {
+            "Value": {
+              "X": -40.0,
+              "Y": 48.0
+            },
+            "Position": 0.1
+          },
+          {
+            "Value": {
+              "X": 4.0,
+              "Y": 48.0
+            },
+            "Position": 1.0
+          }
+        ]
+      },
+      "AngleCurve": null,
+      "VisibilityCurve": null
+    }
+  ],
+  "OnFloorAngle": 0.0
+}

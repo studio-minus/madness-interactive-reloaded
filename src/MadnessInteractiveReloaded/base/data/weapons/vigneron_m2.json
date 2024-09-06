@@ -1,0 +1,60 @@
+{
+  "Id": "vigneron_m2",
+  "WeaponData": {
+    "Name": "Vigneron M2",
+    "Damage": 0.31,
+    "UseDelay": 0.1,
+    "MaxHandRangeMultiplier": 0.8,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 32,
+    "BurstFireCount": 0,
+    "Accuracy": 0.9,
+    "Recoil": 0.35,
+    "RotationalRecoilIntensity": 1.0,
+    "RecoilHandling": 1.0,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/famas_1.wav",
+      "sounds/firearms/famas_2.wav",
+      "sounds/firearms/famas_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 611.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/vigneron_m2/base.png",
+  "HoldForGrip": true,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 272.228,
+    "Y": 79.75924
+  },
+  "CasingEjectionPoint": {
+    "X": 46.032364,
+    "Y": 81.24891
+  },
+  "HoldPoints": [
+    {
+      "X": 67.79996,
+      "Y": -12.899982
+    },
+    {
+      "X": 53.97048,
+      "Y": 11.38982
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

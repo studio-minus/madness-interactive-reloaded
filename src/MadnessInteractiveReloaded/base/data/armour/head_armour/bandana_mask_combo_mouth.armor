@@ -1,0 +1,11 @@
+0.36.0
+
+name Bandana + mask
+type HeadAccessory
+category Mask
+
+left textures/bodies/mouth/bandana_mask_combo/bandana_mask_combo_left.png
+right textures/bodies/mouth/bandana_mask_combo/bandana_mask_combo_right.png
+
+offset-left -2 79
+offset-right -2 79

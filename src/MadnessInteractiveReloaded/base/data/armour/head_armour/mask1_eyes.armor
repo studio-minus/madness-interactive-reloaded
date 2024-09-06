@@ -1,0 +1,10 @@
+0.36.0
+
+name Mask 1
+type HeadAccessory
+left textures/bodies/eyes/mask1/mask1_left.png
+right textures/bodies/eyes/mask1/mask1_right.png
+category Eyes
+detach False
+hidden False
+offset 0 12

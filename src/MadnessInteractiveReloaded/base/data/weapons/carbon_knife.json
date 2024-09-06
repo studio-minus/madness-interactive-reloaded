@@ -1,0 +1,59 @@
+{
+  "Id": "carbon_knife",
+  "WeaponData": {
+    "Name": "Carbon Knife",
+    "Damage": 0.1999,
+    "UseDelay": 0.0,
+    "MaxHandRangeMultiplier": 1.0,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 20.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [
+      {
+        "MinX": 14.096745,
+        "MinY": -6.5877,
+        "MaxX": 43.819683,
+        "MaxY": 110.00959
+      }
+    ],
+    "WeaponType": "Melee",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 12,
+    "BurstFireCount": 0,
+    "Accuracy": 0.0,
+    "Recoil": 0.0,
+    "RotationalRecoilIntensity": 1.0,
+    "RecoilHandling": 0.0,
+    "Automatic": false,
+    "ShootSounds": null,
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 383.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Blade",
+    "MeleeSize": "Small"
+  },
+  "BaseTexture": "textures/weapons/carbon_knife/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 1.0941772,
+    "Y": -60.180416
+  },
+  "CasingEjectionPoint": {
+    "X": 1.0941772,
+    "Y": -60.180416
+  },
+  "HoldPoints": [
+    {
+      "X": 2.1883774,
+      "Y": 59.08624
+    }
+  ],
+  "AnimatedParts": [],
+  "OnFloorAngle": 90.0
+}

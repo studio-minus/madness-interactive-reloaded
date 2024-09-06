@@ -1,0 +1,56 @@
+{
+  "Id": "mp7",
+  "WeaponData": {
+    "Name": "MP7",
+    "Damage": 0.36,
+    "UseDelay": 0.09,
+    "MaxHandRangeMultiplier": 0.8,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 30,
+    "BurstFireCount": 0,
+    "Accuracy": 1.0,
+    "Recoil": 0.5,
+    "RotationalRecoilIntensity": 1.0,
+    "RecoilHandling": 1.0,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/mp7_1.wav",
+      "sounds/firearms/mp7_2.wav",
+      "sounds/firearms/mp7_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 350.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/mp7/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 161.75136,
+    "Y": 25.143553
+  },
+  "CasingEjectionPoint": {
+    "X": -44.316536,
+    "Y": 33.57386
+  },
+  "HoldPoints": [
+    {
+      "X": 31.29852,
+      "Y": 20.446903
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

@@ -1,0 +1,56 @@
+{
+  "Id": "sw_500",
+  "WeaponData": {
+    "Name": "S&W 500",
+    "Damage": 2.0,
+    "UseDelay": 0.7,
+    "MaxHandRangeMultiplier": 0.7,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 8,
+    "BurstFireCount": 0,
+    "Accuracy": 1.0,
+    "Recoil": 1.4,
+    "RotationalRecoilIntensity": 1.4,
+    "RecoilHandling": 0.8,
+    "Automatic": false,
+    "ShootSounds": [
+      "sounds/firearms/magnum_1.wav",
+      "sounds/firearms/magnum_2.wav",
+      "sounds/firearms/magnum_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "None",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/sw_500/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 167.0,
+    "Y": 48.0
+  },
+  "CasingEjectionPoint": {
+    "X": -52.53188,
+    "Y": 37.28071
+  },
+  "HoldPoints": [
+    {
+      "X": 112.87028,
+      "Y": 28.282433
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

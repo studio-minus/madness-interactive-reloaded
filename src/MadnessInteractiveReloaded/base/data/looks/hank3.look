@@ -1,0 +1,13 @@
+﻿0.35.0
+
+name Hank3
+
+body
+   default_body
+
+head
+   default_head
+   bandages1_hat
+
+hands default
+blood #ff0000

@@ -1,0 +1,10 @@
+0.36.0
+
+name Mag agent mask
+type HeadAccessory
+left textures/bodies/eyes/mag_agent_mask/mag_agent_mask_left.png
+right textures/bodies/eyes/mag_agent_mask/mag_agent_mask_right.png
+category Eyes
+detach False
+hidden False
+offset 4 6

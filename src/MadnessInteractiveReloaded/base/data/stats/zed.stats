@@ -1,0 +1,15 @@
+﻿0.35.0
+
+name Zed
+
+aiming_randomness 1.25
+shooting_timeout 1
+recoil_handling 0.2
+dodge 0
+panic 0
+melee 0.2
+head_health 3
+body_health 3
+
+abilities
+	MIR.NoStunAbilityComponent

@@ -1,0 +1,143 @@
+{
+  "Id": "railgun",
+  "WeaponData": {
+    "Name": "RAILGUN",
+    "Damage": 10.0,
+    "UseDelay": 1.0,
+    "MaxHandRangeMultiplier": 0.4,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 20.0,
+    "ThrowableHeavy": true,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 4,
+    "BurstFireCount": 0,
+    "Accuracy": 1.0,
+    "Recoil": 4.0,
+    "RotationalRecoilIntensity": 0.2,
+    "RecoilHandling": 1.4,
+    "Automatic": false,
+    "ShootSounds": [
+      "sounds/firearms/railgun.wav"
+    ],
+    "CanBulletsBeDeflected": false,
+    "EjectionParticle": "None",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/railgun/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 225.04312,
+    "Y": 26.958847
+  },
+  "CasingEjectionPoint": {
+    "X": -184.94148,
+    "Y": 38.26378
+  },
+  "HoldPoints": [
+    {
+      "X": 165.85678,
+      "Y": 45.998753
+    },
+    {
+      "X": 123.55099,
+      "Y": -14.409233
+    }
+  ],
+  "AnimatedParts": [
+    {
+      "OutOfAmmoKeyframeTime": 0.0,
+      "InvisbleWhenOutOfAmmo": false,
+      "Duration": 0.1,
+      "Scale": {
+        "X": 10000.0,
+        "Y": 48.0
+      },
+      "Texture": "textures/white.png",
+      "TranslationCurve": {
+        "MappingFunction": null,
+        "Keys": [
+          {
+            "Value": {
+              "X": 5220.0,
+              "Y": 31.0
+            },
+            "Position": 0.0
+          }
+        ]
+      },
+      "AngleCurve": null,
+      "VisibilityCurve": {
+        "MappingFunction": null,
+        "Keys": [
+          {
+            "Value": 0.0,
+            "Position": 0.0
+          },
+          {
+            "Value": 2.0,
+            "Position": 0.01
+          },
+          {
+            "Value": 0.0,
+            "Position": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "OutOfAmmoKeyframeTime": 0.5,
+      "InvisbleWhenOutOfAmmo": true,
+      "Duration": 1.0,
+      "Scale": {
+        "X": 1.0,
+        "Y": 1.0
+      },
+      "Texture": "textures/weapons/railgun/effect.png",
+      "TranslationCurve": {
+        "MappingFunction": null,
+        "Keys": [
+          {
+            "Value": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "Position": 0.0
+          }
+        ]
+      },
+      "AngleCurve": null,
+      "VisibilityCurve": {
+        "MappingFunction": null,
+        "Keys": [
+          {
+            "Value": 1.0,
+            "Position": 0.0
+          },
+          {
+            "Value": 0.0,
+            "Position": 0.01
+          },
+          {
+            "Value": 0.0,
+            "Position": 0.99
+          },
+          {
+            "Value": 1.0,
+            "Position": 1.0
+          }
+        ]
+      }
+    }
+  ],
+  "OnFloorAngle": 0.0
+}

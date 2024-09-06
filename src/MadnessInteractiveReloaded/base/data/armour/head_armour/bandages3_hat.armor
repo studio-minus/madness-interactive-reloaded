@@ -1,0 +1,11 @@
+0.38.1
+
+name Bandages 3
+type HeadAccessory
+left textures/bodies/hats/bandages3/bandages3_left.png
+right textures/bodies/hats/bandages3/bandages3_right.png
+texture-scale 1
+category Hat
+detach False
+hidden False
+offset -10 -39

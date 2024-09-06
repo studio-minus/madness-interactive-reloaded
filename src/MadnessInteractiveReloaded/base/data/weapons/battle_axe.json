@@ -1,0 +1,65 @@
+{
+  "Id": "battle_axe",
+  "WeaponData": {
+    "Name": "Battle Axe",
+    "Damage": 2.0,
+    "UseDelay": 0.0,
+    "MaxHandRangeMultiplier": 1.0,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": true,
+    "ThrowableSharpBoxes": [
+      {
+        "MinX": 262.01794,
+        "MinY": -35.841614,
+        "MaxX": 317.1081,
+        "MaxY": 138.05103
+      },
+      {
+        "MinX": 0.9472809,
+        "MinY": -69.72473,
+        "MaxX": 64.94728,
+        "MaxY": -32.987717
+      }
+    ],
+    "WeaponType": "Melee",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 12,
+    "BurstFireCount": 0,
+    "Accuracy": 0.0,
+    "Recoil": 0.0,
+    "RotationalRecoilIntensity": 1.0,
+    "RecoilHandling": 0.0,
+    "Automatic": false,
+    "ShootSounds": null,
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 800.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Axe",
+    "MeleeSize": "Large"
+  },
+  "BaseTexture": "textures/weapons/battle_axe/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": -15.0,
+    "Y": -15.0
+  },
+  "CasingEjectionPoint": {
+    "X": 15.0,
+    "Y": 15.0
+  },
+  "HoldPoints": [
+    {
+      "X": 20.581963,
+      "Y": 192.14536
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 90.0
+}

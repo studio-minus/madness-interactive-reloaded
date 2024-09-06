@@ -1,0 +1,15 @@
+﻿0.36.2
+
+name Tricky4
+
+body
+   default_body
+
+head
+   classic_zed_head
+   clown_hat
+   iron_slab_eyes
+
+hands classic_zed
+blood #FB0700FF
+jitter true

@@ -1,0 +1,11 @@
+0.36.0
+
+name Top hat
+type HeadAccessory
+category Hat
+
+left textures/bodies/hats/hoed/hoed_left.png
+right textures/bodies/hats/hoed/hoed_right.png
+
+offset-left 0 -384
+offset-right 0 -384

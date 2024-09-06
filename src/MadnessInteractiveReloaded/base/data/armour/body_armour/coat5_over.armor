@@ -1,0 +1,10 @@
+0.11.2
+
+name Coat 5
+type BodyAccessory
+left textures/bodies/body2/coat5/coat5_left.png
+right textures/bodies/body2/coat5/coat5_right.png
+category All
+detach False
+hidden False
+offset 10 10

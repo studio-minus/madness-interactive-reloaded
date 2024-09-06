@@ -1,0 +1,10 @@
+0.36.2
+
+name Broken jetpack
+type BodyAccessory
+left textures/bodies/body2/jetpack/jetpack_left.png
+right textures/bodies/body2/jetpack/jetpack_right.png
+category All
+detach False
+hidden False
+offset -15 -46

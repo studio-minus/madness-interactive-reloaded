@@ -1,0 +1,18 @@
+0.36.0
+
+name Engineer mask
+type HeadAccessory
+category Eyes
+deflect-chance 0.15
+
+left textures/bodies/eyes/engineer_mask/engineer_mask_left.png
+right textures/bodies/eyes/engineer_mask/engineer_mask_right.png
+
+broken 
+	broken_engineer_mask1_eyes
+	broken_engineer_mask2_eyes
+	broken_engineer_mask3_eyes
+	broken_engineer_mask4_eyes
+
+offset-left 0 3
+offset-right 0 4

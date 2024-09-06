@@ -1,0 +1,11 @@
+0.38.0
+
+name Sanford
+type BodyAccessory
+left textures/bodies/body2/sanford/sanford_left.png
+right textures/bodies/body2/sanford/sanford_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+offset -20 90

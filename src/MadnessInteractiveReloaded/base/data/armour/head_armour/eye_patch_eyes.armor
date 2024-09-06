@@ -1,0 +1,11 @@
+0.36.0
+
+name Eyepatch
+type HeadAccessory
+category Eyes
+
+left textures/bodies/eyes/eye_patch/eye_patch_left.png
+right textures/bodies/eyes/eye_patch/eye_patch_right.png
+
+offset-left 8 -21
+offset-right 4 -15

@@ -1,0 +1,16 @@
+﻿0.36.3
+
+name Jebus 5
+
+body
+   full_body_bandages1_body
+   coat9_over
+
+head
+   jebus5_head
+   halo_hat
+   jebus5_glasses_eyes
+   jebus_beard_classic_mouth
+
+hands default
+blood #ff0000

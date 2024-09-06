@@ -1,0 +1,11 @@
+0.36.0
+
+name Mag Rich
+type Head
+left textures/bodies/skin/mag_rich/mag_rich_left.png
+right textures/bodies/skin/mag_rich/mag_rich_right.png
+category All
+texture-scale 0.4051172707889126
+detach False
+hidden true
+offset 0 0

@@ -1,0 +1,11 @@
+0.48.2
+
+name Glasses 2
+type HeadAccessory
+left textures/bodies/eyes/glasses2/glasses2_left.png
+right textures/bodies/eyes/glasses2/glasses2_right.png
+texture-scale 1
+category Eyes
+detach True
+hidden False
+offset 20 5

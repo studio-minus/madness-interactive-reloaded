@@ -1,0 +1,60 @@
+{
+  "Id": "l85",
+  "WeaponData": {
+    "Name": "L85",
+    "Damage": 0.5,
+    "UseDelay": 0.098,
+    "MaxHandRangeMultiplier": 0.85,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 30,
+    "BurstFireCount": 0,
+    "Accuracy": 0.95,
+    "Recoil": 0.8,
+    "RotationalRecoilIntensity": 0.25,
+    "RecoilHandling": 0.9,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/arifle_single_1.wav",
+      "sounds/firearms/arifle_single_2.wav",
+      "sounds/firearms/arifle_single_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "RifleCasing",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/l85/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 297.0,
+    "Y": 35.0
+  },
+  "CasingEjectionPoint": {
+    "X": -140.0,
+    "Y": 38.0
+  },
+  "HoldPoints": [
+    {
+      "X": 21.125805,
+      "Y": 24.900713
+    },
+    {
+      "X": 115.43046,
+      "Y": 7.264849
+    }
+  ],
+  "AnimatedParts": [],
+  "OnFloorAngle": 0.0
+}

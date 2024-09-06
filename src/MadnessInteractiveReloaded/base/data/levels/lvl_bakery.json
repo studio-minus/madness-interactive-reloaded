@@ -1,0 +1,183 @@
+{
+  "DisplayName": "untitled",
+  "LevelType": "Campaign",
+  "ProgressionType": "BodyCount",
+  "EnemySpawnInterval": 1.3,
+  "MaxEnemyCount": 4,
+  "MaxSimultaneousAttackingEnemies": 2,
+  "BackgroundMusic": "sounds/music/Lothyde/jazzed_madness_overture.ogg",
+  "WeaponChance": 0.5,
+  "LevelBounds": {
+    "MinX": -8991.02,
+    "MinY": -1928.8234,
+    "MaxX": -4724.3525,
+    "MaxY": 471.1764
+  },
+  "BodyCountToWin": 20,
+  "TimeLimitInSeconds": -1.0,
+  "FullZoom": false,
+  "Thumbnail": "textures/level_thumbnails/lvl_bakery.qoi",
+  "OpeningTransition": true,
+  "ExitingTransition": true,
+  "EnemySpawnInstructions": [
+    {
+      "StatsKey": "grunt",
+      "LookKey": "grunt"
+    }
+  ],
+  "Weapons": [
+    "walther_ppk",
+    "tec_9",
+    "switchblade",
+    "m1911",
+    "baseball_bat",
+    "baton",
+    "mac_10",
+    "browning_hp"
+  ],
+  "FloorLine": [
+    {
+      "X": -8954.135,
+      "Y": -1575.4429
+    },
+    {
+      "X": -5010.135,
+      "Y": -1575.4429
+    },
+    {
+      "X": -5008.135,
+      "Y": -1631.0165
+    },
+    {
+      "X": -4746.135,
+      "Y": -1631.0165
+    }
+  ],
+  "Objects": [
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerSpawn, MIR",
+      "Position": {
+        "X": -8786.135,
+        "Y": -1460.2927
+      },
+      "SpawnWeapon": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": -6857.686,
+        "Y": -728.8235
+      },
+      "TexturePath": "textures/backgrounds/background_bakery.qoi",
+      "Scale": 2.222222
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.EnemySpawner, MIR",
+      "Position": {
+        "X": -4510.0044,
+        "Y": -1210.095
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.EnemySpawner, MIR",
+      "Position": {
+        "X": -9204.657,
+        "Y": -1098.0364
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.EnemySpawner, MIR",
+      "Position": {
+        "X": -8154.21,
+        "Y": 1117.6809
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.EnemySpawner, MIR",
+      "Position": {
+        "X": -5675.4478,
+        "Y": 1112.8112
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Look": "grunt",
+        "Stats": "grunt",
+        "Weapon": "mp5k",
+        "Flipped": false,
+        "BottomCenter": {
+          "X": -7217.0073,
+          "Y": -1482.5535
+        },
+        "ScaleOverride": false,
+        "Scale": 0.0
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -8882.305,
+        "MinY": -1718.1829,
+        "MaxX": -4808.4946,
+        "MaxY": -1462.1829
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -5011.9106,
+        "MinY": -2282.8892,
+        "MaxX": -2602.0283,
+        "MaxY": -1631.0165
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 1,
+      "Rectangle": {
+        "MinX": -4717.954,
+        "MinY": -1672.3762,
+        "MaxX": -3638.1428,
+        "MaxY": 474.54724
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 1,
+      "Rectangle": {
+        "MinX": -10062.056,
+        "MinY": -1629.6915,
+        "MaxX": -8982.244,
+        "MaxY": 517.231
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelProgressTrigger, MIR",
+      "Rectangle": {
+        "MinX": -4924.8555,
+        "MinY": -1635.2344,
+        "MaxX": -4412.8555,
+        "MaxY": -687.1651
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -11275.862,
+        "MinY": -2282.3936,
+        "MaxX": -5009.5435,
+        "MaxY": -1575.4429
+      },
+      "Tag": null
+    }
+  ]
+}

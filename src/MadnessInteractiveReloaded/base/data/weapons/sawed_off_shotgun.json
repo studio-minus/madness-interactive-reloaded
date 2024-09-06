@@ -1,0 +1,56 @@
+{
+  "Id": "sawed_off_shotgun",
+  "WeaponData": {
+    "Name": "Sawed-off Shotgun",
+    "Damage": 0.14999999,
+    "UseDelay": 0.099999994,
+    "MaxHandRangeMultiplier": 1.0,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 8,
+    "RoundsPerMagazine": 2,
+    "BurstFireCount": 0,
+    "Accuracy": 0.59999996,
+    "Recoil": 1.4,
+    "RotationalRecoilIntensity": 1.1999999,
+    "RecoilHandling": 0.79999995,
+    "Automatic": false,
+    "ShootSounds": [
+      "sounds/firearms/shotgun_1.wav",
+      "sounds/firearms/shotgun_2.wav",
+      "sounds/firearms/shotgun_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "ShotgunShell",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 225.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/sawed_off_shotgun/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": true,
+  "BarrelEndPoint": {
+    "X": 171.59482,
+    "Y": 42.277542
+  },
+  "CasingEjectionPoint": {
+    "X": -28.105759,
+    "Y": 37.438606
+  },
+  "HoldPoints": [
+    {
+      "X": 87.65874,
+      "Y": -5.9235363
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

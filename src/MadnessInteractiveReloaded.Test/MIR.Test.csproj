@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+
+		<IsPackable>false</IsPackable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="FluentAssertions" Version="6.12.0" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.0" />
+		<PackageReference Include="xunit" Version="2.9.0" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="coverlet.collector" Version="6.0.2">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+	</ItemGroup>
+	
+	<ItemGroup>
+		<ProjectReference Include="..\MadnessInteractiveReloaded\MIR.csproj" />
+	</ItemGroup>
+
+	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+		<Exec Command="xcopy &quot;$(SolutionDir)MadnessInteractiveReloaded\resources&quot; &quot;$(OutDir)resources&quot; /I /S /E /Q /Y /K" />
+		<Exec Command="xcopy &quot;$(SolutionDir)MadnessInteractiveReloaded\base&quot; &quot;$(OutDir)base&quot; /I /S /E /Q /Y /K" />
+	</Target>
+	
+	<Target Name="PostBuild" BeforeTargets="PostBuildEvent">
+		<Exec Command="&quot;$(OutDir)MIR&quot; --mode pack --input &quot;$(OutDir)base&quot; --output &quot;$(OutDir)resources/base.waa&quot;" />
+	</Target>
+
+
+</Project>

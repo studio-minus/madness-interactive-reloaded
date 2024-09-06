@@ -1,0 +1,11 @@
+0.36.0
+
+name Visor 3
+type HeadAccessory
+category Eyes
+
+left textures/bodies/eyes/visor3/visor3_left.png
+right textures/bodies/eyes/visor3/visor3_right.png
+
+offset-left 9 12
+offset-right 9 12

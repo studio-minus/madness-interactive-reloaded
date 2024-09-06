@@ -1,0 +1,11 @@
+0.35.1
+
+name Unitech 1
+type HeadAccessory
+left textures/bodies/eyes/unitech1/unitech1_left.png
+right textures/bodies/eyes/unitech1/unitech1_right.png
+texture-scale 1
+category Eyes
+detach False
+hidden False
+offset 62 0

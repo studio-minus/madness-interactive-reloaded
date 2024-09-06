@@ -1,0 +1,18 @@
+0.36.0
+
+name Agent glasses
+type HeadAccessory
+category Eyes
+detach true
+
+left textures/bodies/eyes/agent_glasses/agent_glasses_left.png
+right textures/bodies/eyes/agent_glasses/agent_glasses_right.png
+
+broken 
+	broken_agent_glasses1_eyes
+	broken_agent_glasses2_eyes
+	broken_agent_glasses3_eyes
+	broken_agent_glasses4_eyes
+
+offset-left 76 -2
+offset-right 76 -2

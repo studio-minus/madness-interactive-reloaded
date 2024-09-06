@@ -1,0 +1,275 @@
+{
+  "DisplayName": "untitled",
+  "LevelType": "Campaign",
+  "ProgressionType": "BodyCount",
+  "EnemySpawnInterval": 0.4,
+  "MaxEnemyCount": 5,
+  "MaxSimultaneousAttackingEnemies": 2,
+  "BackgroundMusic": "sounds/music/Lothyde/jazzed_madness_overture.ogg",
+  "WeaponChance": 0.75,
+  "LevelBounds": {
+    "MinX": -2160.2842,
+    "MinY": -1416.2559,
+    "MaxX": 2106.3823,
+    "MaxY": 983.7439
+  },
+  "BodyCountToWin": 33,
+  "TimeLimitInSeconds": -1.0,
+  "FullZoom": false,
+  "Thumbnail": "textures/level_thumbnails/lvl_window.qoi",
+  "OpeningTransition": true,
+  "ExitingTransition": true,
+  "EnemySpawnInstructions": [
+    {
+      "StatsKey": "agent",
+      "LookKey": "agent",
+      "FactionKey": "aahw"
+    },
+    {
+      "StatsKey": "agent",
+      "LookKey": "agent",
+      "FactionKey": "aahw"
+    },
+    {
+      "StatsKey": "agent",
+      "LookKey": "agent",
+      "FactionKey": "aahw"
+    },
+    {
+      "StatsKey": "engineer",
+      "LookKey": "engineer",
+      "FactionKey": "aahw"
+    }
+  ],
+  "Weapons": [
+    "silenced_beretta_92",
+    "switchblade",
+    "baton",
+    "megachette",
+    "carbon_knife",
+    "baseball_bat",
+    "falchion",
+    "1337_sword",
+    "bowie_knife",
+    "scimitar"
+  ],
+  "FloorLine": [
+    {
+      "X": -1883.9113,
+      "Y": -1273.7551
+    },
+    {
+      "X": 1844.0887,
+      "Y": -1273.7551
+    }
+  ],
+  "Objects": [
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerSpawn, MIR",
+      "Position": {
+        "X": -1561.9113,
+        "Y": -1041.1327
+      },
+      "SpawnWeapon": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": -2028.8029,
+          "Y": -1269.5881
+        },
+        "FacingDirection": {
+          "X": 1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": -1986.6879,
+          "Y": -474.97128
+        },
+        "TopRight": {
+          "X": -1868.3655,
+          "Y": -461.98648
+        },
+        "BottomLeft": {
+          "X": -1987.9375,
+          "Y": -1301.0728
+        },
+        "BottomRight": {
+          "X": -1869.6682,
+          "Y": -1238.1036
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerPoster, MIR",
+      "Type": 0,
+      "Angle": 0.0,
+      "Position": {
+        "X": 1147.3186,
+        "Y": -785.6839
+      },
+      "Scale": 2.1473281
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerPoster, MIR",
+      "Type": 2,
+      "Angle": 4.3696594,
+      "Position": {
+        "X": 927.70074,
+        "Y": -434.4969
+      },
+      "Scale": 1.7756795
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerPoster, MIR",
+      "Type": 1,
+      "Angle": 7.5570984,
+      "Position": {
+        "X": 327.64017,
+        "Y": -737.3204
+      },
+      "Scale": 1.7756795
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerPoster, MIR",
+      "Type": 1,
+      "Angle": -3.029541,
+      "Position": {
+        "X": 160.02548,
+        "Y": -545.12225
+      },
+      "Scale": 1.7756795
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 1775.5756,
+        "MinY": -415.84576,
+        "MaxX": 1954.0458,
+        "MaxY": 701.09106
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": 1973.7062,
+          "Y": -1266.2704
+        },
+        "FacingDirection": {
+          "X": -1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": true,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": 1930.7307,
+          "Y": -474.09128
+        },
+        "TopRight": {
+          "X": 1816.587,
+          "Y": -460.14972
+        },
+        "BottomLeft": {
+          "X": 1930.9487,
+          "Y": -1297.8184
+        },
+        "BottomRight": {
+          "X": 1816.4636,
+          "Y": -1234.7224
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -1996.0062,
+        "MinY": -408.3786,
+        "MaxX": -1817.536,
+        "MaxY": 708.5582
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -1857.0784,
+        "MinY": -1414.2272,
+        "MaxX": 1809.8702,
+        "MaxY": -1158.2277
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": 1864.3252,
+        "MinY": -1273.5842,
+        "MaxX": 2426.8086,
+        "MaxY": 820.9812
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": -2653.3665,
+        "MinY": -1277.22,
+        "MaxX": -1903.5905,
+        "MaxY": 817.3465
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": -2159.8418,
+        "MinY": 818.27563,
+        "MaxX": 2112.0508,
+        "MaxY": 1074.2756
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": -4044.1355,
+        "MinY": -1847.5881,
+        "MaxX": 3570.6763,
+        "MaxY": -1273.7551
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": -26.950928,
+        "Y": -216.25601
+      },
+      "TexturePath": "textures/backgrounds/background_window.qoi",
+      "Scale": 2.222222
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -1854.097,
+        "MinY": 714.6381,
+        "MaxX": 1812.8517,
+        "MaxY": 970.6375
+      },
+      "Tag": null
+    }
+  ]
+}

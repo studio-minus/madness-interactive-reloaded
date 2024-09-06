@@ -1,0 +1,60 @@
+{
+  "Id": "sr_3",
+  "WeaponData": {
+    "Name": "SR-3",
+    "Damage": 0.6,
+    "UseDelay": 0.085,
+    "MaxHandRangeMultiplier": 1.0,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 20,
+    "BurstFireCount": 0,
+    "Accuracy": 1.0,
+    "Recoil": 1.0,
+    "RotationalRecoilIntensity": 0.5,
+    "RecoilHandling": 1.0,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/k6_92_1.wav",
+      "sounds/firearms/k6_92_2.wav",
+      "sounds/firearms/k6_92_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "RifleCasing",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/sr_3/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 287.79797,
+    "Y": 53.56605
+  },
+  "CasingEjectionPoint": {
+    "X": 80.15907,
+    "Y": 60.56878
+  },
+  "HoldPoints": [
+    {
+      "X": 18.218325,
+      "Y": 4.3530846
+    },
+    {
+      "X": 180.67682,
+      "Y": 26.730312
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

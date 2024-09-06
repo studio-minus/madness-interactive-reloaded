@@ -1,0 +1,11 @@
+0.38.1
+
+name Deimos' coat
+type BodyAccessory
+left textures/bodies/body2/deimos/deimos_left.png
+right textures/bodies/body2/deimos/deimos_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+offset 2 30

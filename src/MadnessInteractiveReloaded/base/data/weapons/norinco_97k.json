@@ -1,0 +1,106 @@
+{
+  "Id": "norinco_97k",
+  "WeaponData": {
+    "Name": "Norinco 97k",
+    "Damage": 0.2,
+    "UseDelay": 0.65,
+    "MaxHandRangeMultiplier": 0.5,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 7,
+    "RoundsPerMagazine": 6,
+    "BurstFireCount": 0,
+    "Accuracy": 0.75,
+    "Recoil": 1.3,
+    "RotationalRecoilIntensity": 1.0,
+    "RecoilHandling": 0.8,
+    "Automatic": false,
+    "ShootSounds": [
+      "sounds/firearms/norinco_97k_1.wav",
+      "sounds/firearms/norinco_97k_2.wav",
+      "sounds/firearms/norinco_97k_3.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "ShotgunShell",
+    "CasingSize": 1.0,
+    "IsPumpAction": true,
+    "Range": 400.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/norinco_97k/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 221.13956,
+    "Y": 65.08054
+  },
+  "CasingEjectionPoint": {
+    "X": -61.7637,
+    "Y": 61.058224
+  },
+  "HoldPoints": [
+    {
+      "X": 179.64304,
+      "Y": 6.980976
+    },
+    {
+      "X": 0.0,
+      "Y": 0.0
+    }
+  ],
+  "AnimatedParts": [
+    {
+      "OutOfAmmoKeyframeTime": 0.1,
+      "InvisbleWhenOutOfAmmo": false,
+      "Duration": 0.15,
+      "Scale": {
+        "X": 1.0,
+        "Y": 1.0
+      },
+      "Texture": "textures/weapons/norinco_97k/slide.png",
+      "TranslationCurve": {
+        "MappingFunction": null,
+        "Keys": [
+          {
+            "Value": {
+              "X": 75.0,
+              "Y": 35.0
+            },
+            "Position": 0.0
+          },
+          {
+            "Value": {
+              "X": 20.0,
+              "Y": 35.0
+            },
+            "Position": 0.2
+          },
+          {
+            "Value": {
+              "X": 20.0,
+              "Y": 35.0
+            },
+            "Position": 0.75
+          },
+          {
+            "Value": {
+              "X": 75.0,
+              "Y": 35.0
+            },
+            "Position": 1.0
+          }
+        ]
+      },
+      "AngleCurve": null,
+      "VisibilityCurve": null
+    }
+  ],
+  "OnFloorAngle": 0.0
+}

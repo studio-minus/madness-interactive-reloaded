@@ -1,0 +1,14 @@
+﻿0.48.2
+
+name Scientist 2
+
+body
+   default_body
+   coat9_over
+
+head
+   default_head
+   glasses2_eyes
+
+hands default
+blood #ff0000

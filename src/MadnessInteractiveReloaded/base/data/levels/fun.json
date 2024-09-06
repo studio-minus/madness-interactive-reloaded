@@ -1,0 +1,800 @@
+{
+  "DisplayName": "untitled",
+  "LevelType": "Campaign",
+  "ProgressionType": "BodyCount",
+  "EnemySpawnInterval": 0.0,
+  "MaxEnemyCount": 15,
+  "MaxSimultaneousAttackingEnemies": 2,
+  "BackgroundMusic": "sounds/music/Lothyde/living_on_the_edge_(feat_monocronic).ogg",
+  "WeaponChance": 0.5,
+  "LevelBounds": {
+    "MinX": -1569.5498,
+    "MinY": -1964.6522,
+    "MaxX": 2401.561,
+    "MaxY": 1395.3475
+  },
+  "BodyCountToWin": 50,
+  "TimeLimitInSeconds": -1.0,
+  "FullZoom": true,
+  "Thumbnail": "textures/error.png",
+  "OpeningTransition": true,
+  "ExitingTransition": true,
+  "EnemySpawnInstructions": [
+    {
+      "StatsKey": "grunt",
+      "LookKey": "grunt"
+    },
+    {
+      "StatsKey": "agent",
+      "LookKey": "agent"
+    }
+  ],
+  "Weapons": [],
+  "FloorLine": [
+    {
+      "X": -1570.8798,
+      "Y": 428.84558
+    },
+    {
+      "X": -862.87976,
+      "Y": 428.84558
+    },
+    {
+      "X": -860.87976,
+      "Y": 346.24747
+    },
+    {
+      "X": -748.87976,
+      "Y": 346.24747
+    },
+    {
+      "X": -746.87976,
+      "Y": 256.57794
+    },
+    {
+      "X": -636.87976,
+      "Y": 256.57794
+    },
+    {
+      "X": -634.87976,
+      "Y": 168.21829
+    },
+    {
+      "X": -540.87976,
+      "Y": 168.21829
+    }
+  ],
+  "Objects": [
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerSpawn, MIR",
+      "Position": {
+        "X": -1124.8798,
+        "Y": 609.3397
+      },
+      "SpawnWeapon": "m60"
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 251.8533,
+        "MinY": -579.58093,
+        "MaxX": 298.93814,
+        "MaxY": -474.14197
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -200.72552,
+        "MinY": -397.35388,
+        "MaxX": 11.87299,
+        "MaxY": -270.3539
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -585.4652,
+        "MinY": 118.374756,
+        "MaxX": -467.89117,
+        "MaxY": 144.78003
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -249.94164,
+        "MinY": -152.2996,
+        "MaxX": -132.3677,
+        "MaxY": -125.89435
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 1152.9896,
+        "MinY": -1321.8896,
+        "MaxX": 1876.5516,
+        "MaxY": -1216.4507
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 762.1009,
+        "MinY": -1228.4248,
+        "MaxX": 993.7857,
+        "MaxY": -1101.4258
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -482.27057,
+        "MinY": 27.586048,
+        "MaxX": -364.6966,
+        "MaxY": 53.991318
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -531.9374,
+        "MinY": -135.2379,
+        "MaxX": -309.53824,
+        "MaxY": -8.2378845
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.EnemySpawner, MIR",
+      "Position": {
+        "X": 1442.3257,
+        "Y": -1083.7937
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 446.51187,
+        "MinY": -940.0957,
+        "MaxX": 666.96936,
+        "MaxY": -813.0957
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -909.7105,
+        "MinY": 380.02673,
+        "MaxX": -792.1365,
+        "MaxY": 406.432
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 119.34296,
+        "MinY": -666.99426,
+        "MaxX": 331.94135,
+        "MaxY": -539.99426
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
+      "WeaponKey": "m60",
+      "Angle": 0.0,
+      "Ammo": 120,
+      "AttachedToWall": true,
+      "Position": {
+        "X": -1064.4128,
+        "Y": 897.5947
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -276.45673,
+        "MinY": -132.85805,
+        "MaxX": -229.37187,
+        "MaxY": -27.419067
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 1891.456,
+        "MinY": -1800.4847,
+        "MaxX": 3207.2002,
+        "MaxY": 1409.67
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 1770.5565,
+        "MinY": -483.21832,
+        "MaxX": 1998.5402,
+        "MaxY": 1322.4359
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -637.9162,
+        "MinY": -42.144745,
+        "MaxX": -415.51715,
+        "MaxY": 84.85527
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 371.55902,
+        "MinY": -670.5305,
+        "MaxX": 418.64386,
+        "MaxY": -565.09155
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
+      "WeaponKey": "m60",
+      "Angle": 0.0,
+      "Ammo": 120,
+      "AttachedToWall": true,
+      "Position": {
+        "X": -1064.4128,
+        "Y": 897.5947
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -496.47455,
+        "MinY": 43.691147,
+        "MaxX": -449.38965,
+        "MaxY": 149.13016
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 331.29205,
+        "MinY": -852.2083,
+        "MaxX": 551.7496,
+        "MaxY": -725.2083
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 54.848953,
+        "MinY": -414.2335,
+        "MaxX": 172.4231,
+        "MaxY": -387.82822
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -680.2012,
+        "MinY": 201.26884,
+        "MaxX": -562.62714,
+        "MaxY": 227.67412
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -714.8203,
+        "MinY": 214.55609,
+        "MaxX": -667.73566,
+        "MaxY": 319.99506
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 38.85744,
+        "MinY": -400.3568,
+        "MaxX": 85.942276,
+        "MaxY": -294.91785
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -39.887077,
+        "MinY": -322.317,
+        "MaxX": 77.68705,
+        "MaxY": -295.9117
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 920.6001,
+        "MinY": -1151.025,
+        "MaxX": 967.6849,
+        "MaxY": -1045.586
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -1028.5708,
+        "MinY": 219.24747,
+        "MaxX": -748.84314,
+        "MaxY": 346.24747
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -421.01447,
+        "MinY": -226.87988,
+        "MaxX": -198.61542,
+        "MaxY": -92.179436
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.EnemySpawner, MIR",
+      "Position": {
+        "X": 1644.069,
+        "Y": -1097.0955
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -798.05725,
+        "MinY": 288.11023,
+        "MaxX": -680.4832,
+        "MaxY": 314.5155
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -863.28577,
+        "MinY": 129.5779,
+        "MaxX": -635.10126,
+        "MaxY": 256.57794
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
+      "WeaponKey": "m60",
+      "Angle": 0.0,
+      "Ammo": 120,
+      "AttachedToWall": true,
+      "Position": {
+        "X": -1064.4128,
+        "Y": 897.5947
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 697.2387,
+        "MinY": -950.7355,
+        "MaxX": 744.3235,
+        "MaxY": -845.2965
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 806.2444,
+        "MinY": -1058.4037,
+        "MaxX": 853.32916,
+        "MaxY": -952.9647
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -388.4719,
+        "MinY": -46.589714,
+        "MaxX": -341.387,
+        "MaxY": 58.849266
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 480.2304,
+        "MinY": -770.5082,
+        "MaxX": 527.31525,
+        "MaxY": -665.0692
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 1034.9558,
+        "MinY": -1245.6526,
+        "MaxX": 1082.0405,
+        "MaxY": -1140.2136
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -157.17935,
+        "MinY": -238.57709,
+        "MaxX": -39.60523,
+        "MaxY": -212.17183
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 549.9774,
+        "MinY": -1030.825,
+        "MaxX": 770.43494,
+        "MaxY": -903.8256
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 162.83678,
+        "MinY": -506.99588,
+        "MaxX": 280.4109,
+        "MaxY": -480.5906
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -317.45493,
+        "MinY": -307.40756,
+        "MaxX": -95.05588,
+        "MaxY": -180.40756
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
+      "WeaponKey": "m60",
+      "Angle": 0.0,
+      "Ammo": 120,
+      "AttachedToWall": true,
+      "Position": {
+        "X": -1064.4128,
+        "Y": 897.5947
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 9.386471,
+        "MinY": -579.66797,
+        "MaxX": 221.98486,
+        "MaxY": -452.66794
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 582.21436,
+        "MinY": -859.1171,
+        "MaxX": 629.29913,
+        "MaxY": -753.67816
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 144.51944,
+        "MinY": -497.9938,
+        "MaxX": 191.60428,
+        "MaxY": -392.55484
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -168.45409,
+        "MinY": -219.79514,
+        "MaxX": -121.36923,
+        "MaxY": -114.35616
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -607.15204,
+        "MinY": 132.30019,
+        "MaxX": -560.0674,
+        "MaxY": 237.7392
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": 1393.7301,
+        "Y": -1838.5298
+      },
+      "B": {
+        "X": -1040.3176,
+        "Y": 103.011765
+      },
+      "Radius": 256.0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
+      "WeaponKey": "m60",
+      "Angle": 0.0,
+      "Ammo": 120,
+      "AttachedToWall": true,
+      "Position": {
+        "X": -1064.4128,
+        "Y": 897.5947
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 658.9511,
+        "MinY": -1132.9231,
+        "MaxX": 879.4086,
+        "MaxY": -1005.9241
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -2957.2236,
+        "MinY": -68.79083,
+        "MaxX": -861.1226,
+        "MaxY": 428.84558
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -350.88068,
+        "MinY": -62.074837,
+        "MaxX": -233.3067,
+        "MaxY": -35.669563
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -828.8417,
+        "MinY": 301.82758,
+        "MaxX": -781.757,
+        "MaxY": 407.26654
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 871.882,
+        "MinY": -1316.0658,
+        "MaxX": 1103.5674,
+        "MaxY": -1189.0668
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
+      "WeaponKey": "baton",
+      "Angle": 0.0,
+      "Ammo": 2147483647,
+      "AttachedToWall": false,
+      "Position": {
+        "X": -680.4922,
+        "Y": 481.46664
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": 416.00555,
+        "Y": -284.65237
+      },
+      "TexturePath": "textures/backgrounds/background_dangerous_stair.qoi",
+      "Scale": 2.222222
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 220.21288,
+        "MinY": -759.54846,
+        "MaxX": 445.7226,
+        "MaxY": -632.54846
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -751.52136,
+        "MinY": 41.218307,
+        "MaxX": -529.1223,
+        "MaxY": 168.21829
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
+      "WeaponKey": "m60",
+      "Angle": 0.0,
+      "Ammo": 120,
+      "AttachedToWall": true,
+      "Position": {
+        "X": -1064.4128,
+        "Y": 897.5947
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 1000.4698,
+        "MinY": -1952.9718,
+        "MaxX": 3331.9214,
+        "MaxY": -1266.4865
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
+      "WeaponKey": "m60",
+      "Angle": 0.0,
+      "Ammo": 120,
+      "AttachedToWall": true,
+      "Position": {
+        "X": -1064.4128,
+        "Y": 897.5947
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -94.72062,
+        "MinY": -486.7565,
+        "MaxX": 117.877846,
+        "MaxY": -359.75644
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.EnemySpawner, MIR",
+      "Position": {
+        "X": 1522.1362,
+        "Y": -897.5692
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.EnemySpawner, MIR",
+      "Position": {
+        "X": 1750.4825,
+        "Y": -999.5491
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 1,
+      "Rectangle": {
+        "MinX": -495.82397,
+        "MinY": -31.299866,
+        "MaxX": -239.82397,
+        "MaxY": 1432.4014
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -1628.2067,
+        "MinY": 392.1912,
+        "MaxX": -904.64465,
+        "MaxY": 497.63013
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -70.48264,
+        "MinY": -317.0978,
+        "MaxX": -23.3978,
+        "MaxY": -211.65884
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
+      "WeaponKey": "m60",
+      "Angle": 0.0,
+      "Ammo": 120,
+      "AttachedToWall": true,
+      "Position": {
+        "X": -1064.4128,
+        "Y": 897.5947
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
+      "WeaponKey": "m60",
+      "Angle": 0.0,
+      "Ammo": 120,
+      "AttachedToWall": true,
+      "Position": {
+        "X": -1064.4128,
+        "Y": 897.5947
+      }
+    }
+  ]
+}

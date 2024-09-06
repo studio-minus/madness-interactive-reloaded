@@ -1,0 +1,15 @@
+﻿0.48.2
+
+name Experiment
+
+aiming_randomness 0
+recoil_handling 2
+dodge 0.3
+melee 0.8
+can_deflect true
+dodge_oversaturate true
+accurate_shot_chance 0.7
+hop_duration 0.27
+
+agility_skill_level master
+jump_dodge_duration 0.65
