@@ -27,6 +27,8 @@ internal class DisclaimerRenderEvent : IGameLoopEvent
             {
                 Color = Colors.White.WithAlpha(0.2f),
                 Font = Font.Default,
+                HorizontalAlign = HorizontalTextAlign.Center,
+                VerticalAlign = VerticalTextAlign.Top
             };
 
             vb = new VertexBuffer(new Vertex[1024], new uint[1024]);
@@ -36,10 +38,11 @@ internal class DisclaimerRenderEvent : IGameLoopEvent
         {
             var t = graphics.CurrentTarget;
 
-            t.ViewMatrix = Matrix4x4.CreateTranslation(t.Size.X / 2 - 212, 10, 0);
+            t.ViewMatrix = Matrix4x4.CreateTranslation(t.Size.X / 2, 10, 0);
             t.ProjectionMatrix = t.OrthographicMatrix;
-            generator.Color = Colors.White.WithAlpha(0.2f);
-            graphics.DrawTextScreenspace("BETA BUILD - YOU WILL ENCOUNTER BUGS AND UNFINISHED CONTENT", default, generator, vb, Font.Default.Material!);
+
+            graphics.DrawTextScreenspace("BETA BUILD - YOU WILL ENCOUNTER BUGS AND UNFINISHED CONTENT\nPlease contribute to the repository :)", 
+                default, generator, vb, Font.Default.Material!);
         }
     }
 }
