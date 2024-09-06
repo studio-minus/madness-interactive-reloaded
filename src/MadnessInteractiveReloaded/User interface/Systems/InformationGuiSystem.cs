@@ -12,6 +12,7 @@ public class InformationGuiSystem : Walgelijk.System
 {
     private static readonly string infoText =
 $@"<color=#ff0000>Madness Interactive Reloaded v{GameVersion.Version} for {BuildInfo.Runtime}</color>
+<color=#ff0061>Studio Minus</color>
 
 Programming
 <color=#ffffff80>zooi</color>
@@ -35,7 +36,7 @@ Original soundtrack
         Ui.Layout.FitHeight().Width(Window.Width / 2).MinWidth(512).MaxWidth(1024).CenterHorizontal().VerticalLayout().Scale(0, -48).StickTop();
         Ui.StartScrollView();
         {
-            Ui.Layout.FitWidth(true).Height(256).CenterHorizontal();
+            Ui.Layout.FitWidth(true).Height(250).CenterHorizontal();
             Ui.Image(Textures.UserInterface.Logo.Value, ImageContainmentMode.Contain);
 
             Ui.Layout.PreferredSize().FitWidth(true).CenterHorizontal();
