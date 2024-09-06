@@ -147,6 +147,8 @@ void main()
         Game.Console.UI.FilterBoxColour = new(35, 0, 0);
         Game.Console.UI.BackgroundIntensity = 3;
 
+        Game.AdditionalLoopEvents.Add(new DisclaimerRenderEvent());
+
         Onion.Configuration.RenderLayer = RenderOrders.UserInterface.Layer;
         Onion.Configuration.ScrollSensitivity = 60;
         Onion.Configuration.AudioTrack = AudioTracks.UserInterface;
