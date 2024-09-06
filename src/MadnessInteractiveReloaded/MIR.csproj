@@ -7,7 +7,7 @@
 		<DefineConstants>$(TargetOperatingSystem)</DefineConstants>
 		<ApplicationIcon>resources\textures\icon.ico</ApplicationIcon>
 		<StartupObject></StartupObject>
-		<Version>0.48.3</Version>
+		<Version>0.48.4</Version>
 		<NeutralLanguage />
 		<Company>Studio Minus</Company>
 		<Authors>Dikkiedik, zooi, Koof</Authors>
