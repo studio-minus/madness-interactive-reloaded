@@ -10,6 +10,7 @@ panic 0
 melee 0.2
 head_health 3
 body_health 3
+hop_duration 0.5
 
 abilities
 	MIR.NoStunAbilityComponent
