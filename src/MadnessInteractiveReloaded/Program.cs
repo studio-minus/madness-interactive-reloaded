@@ -132,21 +132,23 @@ public static class Program
 
     private static void WriteLog(string path)
     {
-        var impl = Logger.Implementations.FirstOrDefault(a => a is DiskLogger);
-        if (impl == null || impl is not DiskLogger diskLogger)
-        {
-            File.WriteAllText(path, "Disk logger could not be found. No log was recorded. This is catastrophic.");
-            return;
-        }
-        try
-        {
-            File.Copy(diskLogger.TargetPath, path);
-        }
-        catch (Exception e)
-        {
-            File.WriteAllText(path, "Log could not be copied to target location: " + e);
-            return;
-        }
+        // Add a disk logger to the ILogger thing
+
+        //var impl = Logger.Implementations.FirstOrDefault(a => a is DiskLogger);
+        //if (impl == null || impl is not DiskLogger diskLogger)
+        //{
+        //    File.WriteAllText(path, "Disk logger could not be found. No log was recorded. This is catastrophic.");
+        //    return;
+        //}
+        //try
+        //{
+        //    File.Copy(diskLogger.TargetPath, path);
+        //}
+        //catch (Exception e)
+        //{
+        //    File.WriteAllText(path, "Log could not be copied to target location: " + e);
+        //    return;
+        //}
     }
 
     private static void WriteComponents(string path)
