@@ -165,7 +165,7 @@
 		"Author": "Mmodule",
 		"BPM": 103,
 		"StartOffset": 0,
-		"Sound": "sounds/music/splitmek"
+		"Sound": "sounds/music/splitmek.ogg"
 	},
 	{
 		"Name": "Strenuous",
