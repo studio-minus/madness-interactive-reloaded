@@ -165,7 +165,7 @@ public class VerletPhysicsSystem : Walgelijk.System
         node.Acceleration = Vector2.Zero;
 
         if (velocity.LengthSquared() < 10 && (node.PreviousVelocity - velocity).LengthSquared() > 65)
-            Audio.PlayOnce(Utilities.PickRandom(Sounds.SoftBodyImpact), new Vector3(node.Position, 0), 0.4f, 1, AudioTracks.SoundEffects);
+            Audio.PlayOnce(Utilities.PickRandom(Sounds.SoftBodyImpact), 0.4f, 1, AudioTracks.SoundEffects);
 
         node.PreviousVelocity = velocity;
     }

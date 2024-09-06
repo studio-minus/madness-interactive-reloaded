@@ -191,7 +191,7 @@ public class WeaponSystem : Walgelijk.System
                     //    Scene,
                     //    transform.Position + new Vector2(0, 90),
                     //    "Out of ammo", 1f);
-                    Audio.PlayOnce(Sounds.OutOfAmmo, new Vector3(transform.Position, 0), 1, 1);
+                    Audio.PlayOnce(Sounds.OutOfAmmo, 1, 1);
                 }
 
                 if (weapon.AnimatedParts != null && !data.IsPumpAction)
@@ -235,7 +235,7 @@ public class WeaponSystem : Walgelijk.System
         {
             var sound = Utilities.PickRandom(data.ShootSounds).Value;
 
-            Audio.PlayOnce(SoundCache.Instance.LoadSoundEffect(sound), new Vector3(transform.Position, 0), 1);
+            Audio.PlayOnce(SoundCache.Instance.LoadSoundEffect(sound), 1);
         }
 
         var muzzleFlashSize = Utilities.Clamp(data.Damage * 2.5f * Utilities.RandomFloat(0.8f, 1.2f) * data.BulletsPerShot, 1.5f, 3.3f);
@@ -378,7 +378,7 @@ public class WeaponSystem : Walgelijk.System
                                     //character.PlayAnimation(Animations.PerfectDeflect.Select(!character.Positioning.IsFlipped));
                                     Audio.PlayOnce(
                                         SoundCache.Instance.LoadSoundEffect(
-                                            Assets.Load<FixedAudioData>("sounds/deflection/perfect_deflect_1.wav")), new Vector3(hitPosOnLine, 0), 2);
+                                            Assets.Load<FixedAudioData>("sounds/deflection/perfect_deflect_1.wav")), 2);
                                     // TODO should be in a system and the sound is not very nice
                                     MadnessUtils.RoutineForSecondsPausable(0.5f, static (dt) =>
                                     {
@@ -388,7 +388,7 @@ public class WeaponSystem : Walgelijk.System
                                     MadnessUtils.DelayPausable(0.5f, static () => { Game.Main.State.Time.TimeScale = 1; });
                                 }
                                 else
-                                    Audio.PlayOnce(Utilities.PickRandom(Sounds.BulletDeflection), new Vector3(hitPosOnLine, 0), 0.5f);
+                                    Audio.PlayOnce(Utilities.PickRandom(Sounds.BulletDeflection), 0.5f);
 
                                 if (deflectingArmour && victimChar.IsAlive && victimChar.Flags.HasFlag(CharacterFlags.StunAnimationOnNonFatalShot))
                                 {
@@ -479,7 +479,7 @@ public class WeaponSystem : Walgelijk.System
                     if (victimChar.IsAlive && totalDistance < 300 && Utilities.RandomFloat() > 0.95f)
                     {
                         var splatter = SoundCache.Instance.LoadSoundEffect(Assets.Load<FixedAudioData>("sounds/splatter.wav"));
-                        Audio.PlayOnce(splatter, new Vector3(hit.Position, 0), 1, Utilities.RandomFloat(0.95f, 1.05f));
+                        Audio.PlayOnce(splatter, 1, Utilities.RandomFloat(0.95f, 1.05f));
                     }
 
                     //damage broken armour

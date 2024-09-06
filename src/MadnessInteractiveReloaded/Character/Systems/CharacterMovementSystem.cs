@@ -61,7 +61,7 @@ public class CharacterMovementSystem : Walgelijk.System
                 {
                     var audio = Utilities.PickRandom(Assets.EnumerateFolder("sounds/mag_footstep"));
                     var snd = SoundCache.Instance.LoadSoundEffect(Assets.Load<FixedAudioData>(audio));
-                    Audio.PlayOnce(snd, new Vector3(charPos.GlobalCenter, 0), 3, 1, AudioTracks.SoundEffects);
+                    Audio.PlayOnce(snd, 3, 1, AudioTracks.SoundEffects);
 
                     MadnessUtils.Shake((character.Positioning.Scale - 1) * 2);
                 }

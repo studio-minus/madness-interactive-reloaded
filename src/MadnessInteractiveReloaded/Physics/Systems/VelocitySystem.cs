@@ -102,7 +102,7 @@ public class VelocitySystem : Walgelijk.System
                     float volume = Utilities.MapRange(20, 150, 0.2f, 1, velMagnitude);
                     var snd = Utilities.PickRandom(v.CollideSounds);
                     float pitch = Utilities.RandomFloat(0.98f, 1.02f);
-                    Audio.PlayOnce(SoundCache.Instance.LoadSoundEffect(snd), new Vector3(v.Position, 0), volume, pitch);
+                    Audio.PlayOnce(SoundCache.Instance.LoadSoundEffect(snd), volume, pitch);
                 }
 
                 isOnSurface = true;
@@ -204,7 +204,7 @@ public class VelocitySystem : Walgelijk.System
                         var hitTransform = Scene.GetComponentFrom<TransformComponent>(raycastHit.Entity);
                         for (int i = 0; i < 4; i++)
                             Prefabs.CreateBloodSpurt(Scene, closestPoint, Utilities.VectorToAngle(raycastHit.Normal), character.Look.BloodColour, 1.5f);
-                        Audio.PlayOnce(Utilities.PickRandom(Sounds.LivingSwordHit), new Vector3(raycastHit.Position, 0)); //TODO should it always be LivingSwordHit? What if they are dead? 
+                        Audio.PlayOnce(Utilities.PickRandom(Sounds.LivingSwordHit)); //TODO should it always be LivingSwordHit? What if they are dead? 
                         stuckInBodyBecauseSharp = true;
                         if (Scene.TryGetComponentFrom<WeaponComponent>(ent, out var wpn))
                         {
@@ -263,7 +263,7 @@ public class VelocitySystem : Walgelijk.System
             v.RotationalVelocity *= -0.3f;
 
             if (!stuckInBodyBecauseSharp)
-                Audio.PlayOnce(Utilities.PickRandom(character.IsAlive ? Sounds.LivingPunch : Sounds.GenericPunch), new Vector3(raycastHit.Position, 0));
+                Audio.PlayOnce(Utilities.PickRandom(character.IsAlive ? Sounds.LivingPunch : Sounds.GenericPunch));
         }
 
         if (stuckInBodyBecauseSharp)

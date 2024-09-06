@@ -225,7 +225,7 @@ public class RichBossSystem : Walgelijk.System
                     rich.CurrentPhase = RichCharacterComponent.Phase.Dying;
 
                     var snd = SoundCache.Instance.LoadSoundEffect(Assets.Load<FixedAudioData>("sounds/rich_boss_battle/death.wav"));
-                    Audio.PlayOnce(snd, new Vector3(character.Positioning.GlobalCenter, 0));
+                    Audio.PlayOnce(snd);
 
                     // 3.2 is when the animation reaches the floor. yes its hardcoded lol
                     MadnessUtils.DelayPausable(3.2f, () => MadnessUtils.Shake(100));
@@ -419,7 +419,7 @@ public class RichBossSystem : Walgelijk.System
         // actually shoot
         var audio = Utilities.PickRandom(Assets.EnumerateFolder("sounds/rich_boss_battle/gun"));
         var snd = SoundCache.Instance.LoadSoundEffect(Assets.Load<FixedAudioData>(audio));
-        Audio.PlayOnce(snd, new Vector3(rich.BarrelPosition, 0), 10, 1, AudioTracks.SoundEffects);
+        Audio.PlayOnce(snd, 10, 1, AudioTracks.SoundEffects);
         Prefabs.CreateMuzzleFlash(Scene,
             rich.BarrelPosition + character.AimDirection * 300,
             float.Atan2(character.AimDirection.Y, character.AimDirection.X) * Utilities.RadToDeg,
@@ -525,7 +525,7 @@ public class RichBossSystem : Walgelijk.System
         var audio = Utilities.PickRandom(Assets.EnumerateFolder("sounds/rich_boss_battle/sword"));
         //Assets.AssignLifetime(audio, new SceneLifetimeOperator());
         var snd = SoundCache.Instance.LoadSoundEffect(Assets.Load<FixedAudioData>(audio));
-        Audio.PlayOnce(snd, new Vector3(rich.TargetPosition, 0), 2, 1, AudioTracks.SoundEffects);
+        Audio.PlayOnce(snd, 2, 1, AudioTracks.SoundEffects);
 
         MadnessUtils.Shake(120);
     }
@@ -581,7 +581,7 @@ public class RichBossSystem : Walgelijk.System
         var snd = SoundCache.Instance.LoadSoundEffect(Assets.Load<FixedAudioData>("sounds/rich_boss_battle/punch.wav"));
         //Assets.AssignLifetime("sounds/rich_boss_battle/punch.wav", new SceneLifetimeOperator());
 
-        Audio.PlayOnce(snd, new Vector3(rich.TargetPosition, 0), 2, 1, AudioTracks.SoundEffects);
+        Audio.PlayOnce(snd, 2, 1, AudioTracks.SoundEffects);
 
         MadnessUtils.Shake(20);
     }
