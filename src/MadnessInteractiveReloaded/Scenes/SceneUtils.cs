@@ -57,6 +57,7 @@ public static class SceneUtils
         scene.AttachComponent(scene.CreateEntity(), new GameModeComponent(GameMode.Unknown));
         scene.AttachComponent(scene.CreateEntity(), new PhysicsWorldComponent { ChunkSize = 1000, UpdatesPerSecond = 30, ChunkCapacity = 256 });
 
+        scene.AddSystem(new DisclaimerRenderSystem());
         scene.AddSystem(new PhysicsSystem());
         scene.AddSystem(new TransformConstraintSystem());
         scene.AddSystem(new VerletPhysicsSystem());
@@ -184,6 +185,7 @@ public static class SceneUtils
         });
         var cameraMovement = scene.AttachComponent(camera, new CameraMovementComponent());
 
+        scene.AddSystem(new DisclaimerRenderSystem());
         scene.AddSystem(new OnionSystem());
         scene.AddSystem(new AssetBrowserDialogSystem());
         scene.AddSystem(new ConfirmationDialogSystem());
