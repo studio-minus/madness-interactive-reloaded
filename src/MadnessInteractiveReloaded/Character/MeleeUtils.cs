@@ -138,7 +138,7 @@ public static class MeleeUtils
                     if (Utilities.RandomFloat() > actor.Stats.MeleeSkill)
                         actor.DropWeapon(scene);
                     actor.PlayAnimation(Registries.Animations.Get(!actor.Positioning.IsFlipped ? "melee_stun_sword_L" : "melee_stun_sword_R")); // TODO this should be in Animations.cs
-                    scene.Game.AudioRenderer.PlayOnce(Sounds.MeleeClash.Parry, new Vector3(point, 0));
+                    scene.Game.AudioRenderer.PlayOnce(Sounds.MeleeClash.Parry);
 
                     victim.Positioning.MeleeBlockImpactIntensity += Utilities.RandomFloat(-1, 1);
 
@@ -152,14 +152,14 @@ public static class MeleeUtils
                         case MeleeInteractionResponse.BlockVictim:
                             {
                                 victim.DrainDodge(damage * 0.02f); // TODO convar
-                                scene.Game.AudioRenderer.PlayOnce(Sounds.MeleeClash.GetClashFor(scene, victim.EquippedWeapon, actor.EquippedWeapon), new Vector3(point, 0));
+                                scene.Game.AudioRenderer.PlayOnce(Sounds.MeleeClash.GetClashFor(scene, victim.EquippedWeapon, actor.EquippedWeapon));
                                 victim.Positioning.MeleeBlockImpactIntensity += Utilities.RandomFloat(-1, 1);
                                 return;
                             }
                         case MeleeInteractionResponse.StunVictim:
                             {
                                 victim.DrainDodge(damage * 0.1f); // TODO convar
-                                scene.Game.AudioRenderer.PlayOnce(Sounds.MeleeClash.GetClashFor(scene, victim.EquippedWeapon, actor.EquippedWeapon), new Vector3(point, 0));
+                                scene.Game.AudioRenderer.PlayOnce(Sounds.MeleeClash.GetClashFor(scene, victim.EquippedWeapon, actor.EquippedWeapon));
                                 victim.PlayAnimation(Registries.Animations.Get(!victim.Positioning.IsFlipped ? "melee_stun_sword_L" : "melee_stun_sword_R")); // TODO this should be in Animations.cs
                                 victim.Positioning.MeleeBlockImpactIntensity += Utilities.RandomFloat(-1, 1);
                                 return;
@@ -220,10 +220,10 @@ public static class MeleeUtils
                             damagable.BloodColour, Utilities.Clamp(damage * 4, 1f, 2f));
                 }
 
-                scene.Game.AudioRenderer.PlayOnce(Utilities.PickRandom(victim.IsAlive ? Sounds.LivingSwordHit : Sounds.GenericSwordHit), new Vector3(hit.Position, 0));
+                scene.Game.AudioRenderer.PlayOnce(Utilities.PickRandom(victim.IsAlive ? Sounds.LivingSwordHit : Sounds.GenericSwordHit));
             }
             else
-                scene.Game.AudioRenderer.PlayOnce(Utilities.PickRandom(victim.IsAlive ? Sounds.LivingPunch : Sounds.GenericPunch), new Vector3(hit.Position, 0));
+                scene.Game.AudioRenderer.PlayOnce(Utilities.PickRandom(victim.IsAlive ? Sounds.LivingPunch : Sounds.GenericPunch));
 
             CharacterUtilities.UpdateAliveStatus(scene, victim);
             if (victim.IsAlive)

@@ -181,7 +181,7 @@ public class AiCharacterSystem : Walgelijk.System
                 !MadnessUtils.IsTargetedByAccurateShot(Scene, ai.KillTarget.Entity))
             {
                 if (ai.WantsToShoot.BecameTrue && !equipped.HasRoundsLeft)
-                    Audio.PlayOnce(Sounds.DryFire, new Vector3(transform.Position, 0));
+                    Audio.PlayOnce(Sounds.DryFire);
 
                 if (ai.WantsToDoAccurateShot.BecameTrue &&
                     ai.PanicLevel < 0.1f &&
@@ -675,7 +675,7 @@ public class AiCharacterSystem : Walgelijk.System
 
             var pickupAssets = Assets.EnumerateFolder("sounds/pickup");
             var data = Assets.Load<FixedAudioData>(Utilities.PickRandom(pickupAssets));
-            Audio.PlayOnce(SoundCache.Instance.LoadSoundEffect(data), new Vector3(character.Positioning.GlobalCenter, 0));
+            Audio.PlayOnce(SoundCache.Instance.LoadSoundEffect(data));
         }
     }
 }

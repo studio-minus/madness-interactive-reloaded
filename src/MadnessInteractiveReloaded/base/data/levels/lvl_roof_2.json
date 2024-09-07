@@ -2,7 +2,7 @@
   "DisplayName": "untitled",
   "LevelType": "Campaign",
   "ProgressionType": "Explicit",
-  "EnemySpawnInterval": 1.2,
+  "EnemySpawnInterval": 3,
   "MaxEnemyCount": 9,
   "MaxSimultaneousAttackingEnemies": 1,
   "BackgroundMusic": "sounds/music/Lothyde/strenuous.ogg",
@@ -38,11 +38,6 @@
     {
       "StatsKey": "engineer",
       "LookKey": "engineer",
-      "FactionKey": "aahw"
-    },
-    {
-      "StatsKey": "machinist",
-      "LookKey": "machinist",
       "FactionKey": "aahw"
     }
   ],

@@ -306,7 +306,7 @@ public static class Prefabs
         void collisionHandler(Particle p)
         {
             if (p.Velocity.LengthSquared() > 7000000) // epic trail-and-error picked number
-                Game.Main.AudioRenderer.PlayOnce(Utilities.PickRandom(floorHitSounds), new Vector3(p.Position, 0));
+                Game.Main.AudioRenderer.PlayOnce(Utilities.PickRandom(floorHitSounds));
         }
 
         return particles;

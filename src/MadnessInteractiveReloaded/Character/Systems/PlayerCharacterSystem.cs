@@ -166,7 +166,7 @@ public class PlayerCharacterSystem : Walgelijk.System
                     //    weaponPos + new Vector2(0, 90),
                     //    "Out of ammo", 0.5f);
 
-                    Audio.PlayOnce(Sounds.DryFire, new Vector3(weaponPos, 0));
+                    Audio.PlayOnce(Sounds.DryFire);
                 }
 
                 if (equipped.Data.Automatic)
@@ -299,7 +299,7 @@ public class PlayerCharacterSystem : Walgelijk.System
 
             var pickupAssets = Assets.EnumerateFolder("sounds/pickup");
             var data = Assets.Load<FixedAudioData>(Utilities.PickRandom(pickupAssets));
-            Audio.PlayOnce(SoundCache.Instance.LoadSoundEffect(data), new Vector3(character.Positioning.GlobalCenter, 0));
+            Audio.PlayOnce(SoundCache.Instance.LoadSoundEffect(data));
         }
     }
 }

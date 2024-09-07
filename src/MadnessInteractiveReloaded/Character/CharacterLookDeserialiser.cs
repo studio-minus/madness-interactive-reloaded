@@ -168,6 +168,12 @@ public static class CharacterLookDeserialiser
                 writer.WriteLine(key);
             }
 
+            // Write flesh
+            if (look.HeadFlesh.HasValue)
+                writer.WriteLine("{0} {1}", HeadFleshIdentifier, look.HeadFlesh.Value.Id);    
+            if (look.BodyFlesh.HasValue)
+                writer.WriteLine("{0} {1}", BodyFleshIdentifier, look.BodyFlesh.Value.Id);
+
             writer.Write(BloodIdentifier);
             writer.Write(" ");
             writer.WriteLine(look.BloodColour.ToHexCode());

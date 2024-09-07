@@ -9,8 +9,8 @@ melee 1
 can_deflect true
 dodge_oversaturate true
 accurate_shot_chance 0.25
-head_health 300
-body_health 300
+head_health 250
+body_health 250
 scale 2.94
 hop_duration 0.4
 

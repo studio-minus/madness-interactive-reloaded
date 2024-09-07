@@ -59,7 +59,7 @@ public class DoorComponent : Component, IDisposable
         Material.SetUniform(TimeSinceChangeUniform, scene.Game.State.Time.SecondsSinceLoad);
         IsBusyWithAnimation = true;
         MadnessUtils.DelayPausable(AnimationTime, () => IsBusyWithAnimation = false);
-        scene.Game.AudioRenderer.PlayOnce(Sounds.DoorOpen, new Vector3(Properties.SpawnPoint, 0), 0.25f);
+        scene.Game.AudioRenderer.PlayOnce(Sounds.DoorOpen, 0.25f);
     }
 
     public void Close(Scene scene)
@@ -72,7 +72,7 @@ public class DoorComponent : Component, IDisposable
         Material.SetUniform(TimeSinceChangeUniform, scene.Game.State.Time.SecondsSinceLoad);
         IsBusyWithAnimation = true;
         MadnessUtils.DelayPausable(AnimationTime, () => IsBusyWithAnimation = false);
-        scene.Game.AudioRenderer.PlayOnce(Sounds.DoorClose, new Vector3(Properties.SpawnPoint, 0), 0.25f);
+        scene.Game.AudioRenderer.PlayOnce(Sounds.DoorClose, 0.25f);
     }
 
     public void Dispose()

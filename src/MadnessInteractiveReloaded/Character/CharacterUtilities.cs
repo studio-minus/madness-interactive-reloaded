@@ -358,7 +358,7 @@ public static class CharacterUtilities
             ShouldDash = isWalking
         });
 
-        scene.Game.AudioRenderer.PlayOnce(Utilities.PickRandom(Sounds.Jump), new Vector3(character.Positioning.GlobalCenter, 0), 0.3f);
+        scene.Game.AudioRenderer.PlayOnce(Utilities.PickRandom(Sounds.Jump), 0.3f);
     }
 
     /// <summary>
@@ -625,7 +625,7 @@ public static class CharacterUtilities
             var throwSpeed = 1e4f * 0.8f;
             vel.OverrideVelocity = dir * throwSpeed;
 
-            scene.Game.AudioRenderer.PlayOnce(Utilities.PickRandom(Sounds.Swish), new Vector3(wpnTransform.Position, 0));
+            scene.Game.AudioRenderer.PlayOnce(Utilities.PickRandom(Sounds.Swish));
 
             switch (wpn.Data.WeaponType)
             {

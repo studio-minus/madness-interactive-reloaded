@@ -140,7 +140,7 @@ public class WeaponComponent : Component
     /// <param name="soundPosition"></param>
     public void PumpAction(Scene scene, Vector2 soundPosition)
     {
-        scene.Game.AudioRenderer.PlayOnce(Sounds.ShotgunCock, new Vector3(soundPosition, 0));
+        scene.Game.AudioRenderer.PlayOnce(Sounds.ShotgunCock);
         if (AnimatedParts != null)
             foreach (var animatedPart in AnimatedParts)
             {

@@ -18,23 +18,23 @@ public static class ImprobabilityDisks
     /// </summary>
     public readonly static Dictionary<string, ImprobabilityDisk> All = new()
     {
-        /*[X]*/ {"tricky", new TrickyDisk()},
-        /*[X]*/ {"fast_melee", new FastMeleeDisk()},
-        /*[X]*/ {"very_strong", new BoostMeleeDisk()},
-        /*[X]*/ {"infinite_ammo", L("FLCL.png", "FLCL", "Your weapons will never run out.")},
-        /*[X]*/ {"grunt", new GruntDisk()},
-        /*[X]*/ {"agent", new AgentDisk()},
-        /*[X]*/ {"engineer", new EngineerDisk()},
-        /*[X]*/ {"soldat", new SoldatDisk()},
-        /*[X]*/ {"more_dodge", new WickDisk()},
-        /*[X]*/ {"fast_walking", L("Gump.png", "Gump", "Increases your movement speed.")},
-        /*[X]*/ {"auditor", new AuditorDisk()},
-        /*[X]*/ {"telekinesis", new TelekinesisDisk()},
-        /*[X]*/ {"jebus", new JebusDisk()},
-        /*[X]*/ {"god", L("Willis.png", "Willis", "You will be invincible.")},
-        /*[X]*/ {"more_enemies", L("Menagerie.png", "Menagerie", "Increases enemy count.")},
-        /*[X]*/ {"fewer_enemies", L("GhostProtocol.png", "Ghost Protocol", "Decreases enemy count.")},
-        /*[X]*/ {"everyone_evil", L("STATEOFEMERGENCY.png", "STATEOFEMERGENCY", "There is no allegiance.")},
+        {"tricky", new TrickyDisk()},
+        {"fast_melee", new FastMeleeDisk()},
+        {"very_strong", new BoostMeleeDisk()},
+        {"infinite_ammo", L("FLCL.png", "FLCL", "Your weapons will never run out.")},
+        {"grunt", new GruntDisk()},
+        {"agent", new AgentDisk()},
+        {"engineer", new EngineerDisk()},
+        {"soldat", new SoldatDisk()},
+        {"more_dodge", new WickDisk()},
+        {"fast_walking", L("Gump.png", "Gump", "Increases your movement speed.")},
+        {"auditor", new AuditorDisk()},
+        {"telekinesis", new TelekinesisDisk()},
+        {"jebus", new JebusDisk()},
+        {"god", L("Willis.png", "Willis", "You will be invincible.")},
+        {"more_enemies", L("Menagerie.png", "Menagerie", "Increases enemy count.")},
+        {"fewer_enemies", L("GhostProtocol.png", "Ghost Protocol", "Decreases enemy count.")},
+        {"everyone_evil", L("STATEOFEMERGENCY.png", "STATEOFEMERGENCY", "There is no allegiance.")},
     };
 
     static ImprobabilityDisks()
@@ -90,7 +90,12 @@ public static class ImprobabilityDisks
     public static bool DisableAI = false;
     public static bool AutoSpawn = false;
 
-    public static void Unlock(string id) => UserData.Instances.UnlockedImprobabilityDisks.Add(id);
+    public static void Unlock(string id)
+    {
+        if (UserData.Instances.UnlockedImprobabilityDisks.Add(id))
+            SaveUnlocked(UserData.Instances.UnlockedImprobabilityDisks);
+    }
+
     public static bool IsUnlocked(string id) => UserData.Instances.UnlockedImprobabilityDisks.Contains(id);
 
     public static void SaveUnlocked(IEnumerable<string> unlocked)

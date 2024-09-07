@@ -24,7 +24,7 @@
     "EjectionParticle": "Small",
     "CasingSize": 1.0,
     "IsPumpAction": false,
-    "Range": 577.0,
+    "Range": 544.0,
     "CanDeflectBullets": true,
     "SpecialMelee": false,
     "MeleeDamageType": "Blunt",
