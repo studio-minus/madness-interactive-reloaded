@@ -24,13 +24,13 @@
     "EjectionParticle": "Small",
     "CasingSize": 1.0,
     "IsPumpAction": false,
-    "Range": 577.0,
+    "Range": 544.0,
     "CanDeflectBullets": true,
     "SpecialMelee": false,
     "MeleeDamageType": "Blunt",
     "MeleeSize": "Medium"
   },
-  "BaseTexture": "textures/weapons/baseball_bat/base.png",
+  "BaseTexture": "base:textures/weapons/baseball_bat/base.png",
   "HoldForGrip": false,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {

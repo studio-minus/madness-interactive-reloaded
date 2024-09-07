@@ -2,10 +2,10 @@
   "DisplayName": "untitled",
   "LevelType": "Campaign",
   "ProgressionType": "Explicit",
-  "EnemySpawnInterval": 1.2,
+  "EnemySpawnInterval": 3,
   "MaxEnemyCount": 9,
   "MaxSimultaneousAttackingEnemies": 1,
-  "BackgroundMusic": "sounds/music/Lothyde/strenuous.ogg",
+  "BackgroundMusic": "base:sounds/music/Lothyde/strenuous.ogg",
   "WeaponChance": 1.0,
   "LevelBounds": {
     "MinX": -8548.582,
@@ -16,7 +16,7 @@
   "BodyCountToWin": 40,
   "TimeLimitInSeconds": 99999.0,
   "FullZoom": false,
-  "Thumbnail": "textures/level_thumbnails/lvl_roof.qoi",
+  "Thumbnail": "base:textures/level_thumbnails/lvl_roof.qoi",
   "OpeningTransition": true,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [
@@ -38,11 +38,6 @@
     {
       "StatsKey": "engineer",
       "LookKey": "engineer",
-      "FactionKey": "aahw"
-    },
-    {
-      "StatsKey": "machinist",
-      "LookKey": "machinist",
       "FactionKey": "aahw"
     }
   ],
@@ -456,7 +451,7 @@
         "X": -15.248535,
         "Y": -89.29736
       },
-      "TexturePath": "textures/backgrounds/background_roof.qoi",
+      "TexturePath": "base:textures/backgrounds/background_roof.qoi",
       "Scale": 2.222222
     },
     {
@@ -569,7 +564,7 @@
         "Layer": -100,
         "OrderInLayer": 0
       },
-      "Texture": "textures/props/floppy_disk3.png",
+      "Texture": "base:textures/props/floppy_disk3.png",
       "Tag": null
     },
     {

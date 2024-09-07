@@ -24,13 +24,13 @@
     "EjectionParticle": "Small",
     "CasingSize": 1.0,
     "IsPumpAction": false,
-    "Range": 957.0,
+    "Range": 824.0,
     "CanDeflectBullets": true,
     "SpecialMelee": false,
     "MeleeDamageType": "Blunt",
     "MeleeSize": "Large"
   },
-  "BaseTexture": "textures/weapons/streetsign/base.png",
+  "BaseTexture": "base:textures/weapons/streetsign/base.png",
   "HoldForGrip": true,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {
