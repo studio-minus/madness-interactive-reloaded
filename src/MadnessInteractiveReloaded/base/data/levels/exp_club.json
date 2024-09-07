@@ -295,7 +295,7 @@
     },
     {
       "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/pippin_4x27.png",
+      "TexturePath": "textures/pipin_4x27.png",
       "Angle": 0.0,
       "Position": {
         "X": -130.03195,
