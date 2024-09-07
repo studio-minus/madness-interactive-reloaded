@@ -62,11 +62,6 @@ public readonly struct ThumbnailButton : IControl
         Draw.OutlineWidth = 0;
         var thumbnailRect = instance.Rects.Rendered;
         thumbnailRect.MinY += 30;
-        Draw.Colour = Colors.White;
-        anim.AnimateColour(ref Draw.Colour, t);
-        Draw.Image(ThumbnailButton.state[p.Identity].Item2,
-            thumbnailRect.Expand(-p.Theme.Padding ), ImageContainmentMode.Contain);
-        Draw.ResetTexture();
 
         Draw.Font = p.Theme.Font;
         Draw.FontSize = p.Theme.FontSize[p.Instance.State] - 2;
@@ -77,9 +72,16 @@ public readonly struct ThumbnailButton : IControl
             var textRect = instance.Rects.Rendered;
             textRect.MaxY = textRect.MinY + 30;
 
-            Draw.Text(instance.Name, textRect.GetCenter(), new Vector2(ratio), 
+            Draw.Text(instance.Name, textRect.GetCenter(), new Vector2(ratio),
                 HorizontalTextAlign.Center, VerticalTextAlign.Middle, textRect.Width);
         }
+
+        Draw.Colour = Colors.White;
+        anim.AnimateColour(ref Draw.Colour, t);
+        Draw.Image(ThumbnailButton.state[p.Identity].Item2,
+            thumbnailRect.Expand(-p.Theme.Padding ), ImageContainmentMode.Contain);
+        Draw.ResetTexture();
+
     }
 
     public void OnEnd(in ControlParams p)
