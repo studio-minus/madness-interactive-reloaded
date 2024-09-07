@@ -69,6 +69,11 @@ public class SettingsSceneSystem : Walgelijk.System
                         settings.Apply();
                     }
                 }),
+                ("settings-window-display-mode", () => {
+                    Ui.Layout.FitContainer(1,1,false);
+                    if (Ui.EnumDropdown(ref settings.Video.WindowType))
+                        settings.Apply();
+                }),   
                 ("settings-vsync", () => {
                     Ui.Layout.FitContainer(1,1,false).AspectRatio(1, AspectRatioBehaviour.Shrink);
                     if (Controls.Toggle.Start(ref settings.Video.Vsync))

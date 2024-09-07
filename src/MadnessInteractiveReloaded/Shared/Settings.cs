@@ -80,7 +80,7 @@ public class Settings
     {
         game.Window.VSync = Video.Vsync;
         game.UpdateRate = Video.FramerateCap;
-        //game.Window.WindowType = Video.WindowType;
+        game.Window.WindowType = Video.WindowType;
 
         game.AudioRenderer.Volume = Audio.MasterVolume;
         AudioTracks.Music.Volume = Audio.MusicVolume;
