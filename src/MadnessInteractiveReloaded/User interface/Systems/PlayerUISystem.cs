@@ -68,9 +68,8 @@ public class PlayerUISystem : Walgelijk.System
 
             Draw.Colour = Colors.White;
             // draw weapon silhouette
-            if (eq.RegistryKey != null)
+            if (eq.RegistryKey != null && Registries.Weapons.TryGet(eq.RegistryKey, out var wpn))
             {
-                var wpn = Registries.Weapons[eq.RegistryKey];
                 var baseTex = wpn.BaseTexture.Value;
                 var aspectRatio = baseTex.Height / (float)baseTex.Width;
 
