@@ -30,7 +30,7 @@
     "MeleeDamageType": "Blunt",
     "MeleeSize": "Large"
   },
-  "BaseTexture": "base:textures/weapons/streetsign/base.png",
+  "BaseTexture": "textures/weapons/streetsign/base.png",
   "HoldForGrip": true,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {

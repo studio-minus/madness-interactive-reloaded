@@ -30,7 +30,7 @@
     "MeleeDamageType": "Blunt",
     "MeleeSize": "Medium"
   },
-  "BaseTexture": "base:textures/weapons/baseball_bat/base.png",
+  "BaseTexture": "textures/weapons/baseball_bat/base.png",
   "HoldForGrip": false,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {

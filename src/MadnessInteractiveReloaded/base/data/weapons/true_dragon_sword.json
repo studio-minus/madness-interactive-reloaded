@@ -1,7 +1,7 @@
 {
   "Id": "true_dragon_sword",
   "WeaponData": {
-    "Name": "True dragon sword",
+    "Name": "True Dragon Sword",
     "Damage": 10.0,
     "UseDelay": 0.0,
     "MaxHandRangeMultiplier": 1.0,
