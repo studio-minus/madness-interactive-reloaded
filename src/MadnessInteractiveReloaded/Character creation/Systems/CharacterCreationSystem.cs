@@ -1,6 +1,4 @@
-﻿using MIR.Controls;
-using System;
-using System.Data;
+﻿using System;
 using System.Linq;
 using System.Numerics;
 using Walgelijk;
@@ -8,6 +6,7 @@ using Walgelijk.AssetManager;
 using Walgelijk.Localisation;
 using Walgelijk.Onion;
 using Walgelijk.Onion.Controls;
+using Walgelijk.Onion.Layout;
 using Walgelijk.SimpleDrawing;
 
 using AspectRatioBehaviour = Walgelijk.Onion.Layout.AspectRatio.Behaviour;
@@ -52,6 +51,7 @@ public class CharacterCreationSystem : Walgelijk.System
 
         DrawBackground(data);
 
+        DrawMainPanel(data, character);
 
         var s = calculatedPlayerRect.Scale(0.9f);
         s.Width *= 0.5f;
@@ -66,23 +66,219 @@ public class CharacterCreationSystem : Walgelijk.System
         ConfigurePlayer(player, character);
     }
 
+    private void DrawMainPanel(CharacterCreationComponent data, CharacterComponent character)
+    {
+        Ui.Theme.Padding(15).Push();
+
+        Ui.Layout.FitContainer(null, 1).AspectRatio(0.6f, AspectRatioBehaviour.Grow).StickLeft().StickTop();
+        Ui.Theme.ForegroundColor(Colors.Black).Once();
+        Ui.StartGroup(true);
+        {
+            const int topBarHeight = 70;
+            float cursor = topBarHeight;
+
+            var borderTex = Assets.Load<Texture>("textures/border-top-bottom.png").Value;
+            Ui.Theme.Padding(0).OutlineWidth(0).Foreground(new(new Appearance(borderTex, ImageMode.Slice))).Image(new(Colors.White.WithAlpha(0.8f), Colors.White, Colors.White.Brightness(0.7f))).Push();
+            Ui.Layout.FitWidth(false).Height(topBarHeight).HorizontalLayout();
+            // upper tab bar
+            Ui.StartGroup(false);
+            {
+                if (data.CurrentTab == CharacterCreationTab.Head)
+                    Ui.Decorate(new CrosshairDecorator());
+                Ui.Layout.FitContainer(1 / 4f, 1, false);
+                if (Ui.ImageButton(Assets.Load<Texture>("textures/ui/category_icons/skin_icon.png").Value, ImageContainmentMode.Contain))
+                    data.CurrentTab = CharacterCreationTab.Head;
+
+                if (data.CurrentTab == CharacterCreationTab.Body)
+                    Ui.Decorate(new CrosshairDecorator());
+                Ui.Layout.FitContainer(1 / 4f, 1, false);
+                if (Ui.ImageButton(Assets.Load<Texture>("textures/ui/category_icons/body_icon.png").Value, ImageContainmentMode.Contain))
+                    data.CurrentTab = CharacterCreationTab.Body;
+
+                if (data.CurrentTab == CharacterCreationTab.Hands)
+                    Ui.Decorate(new CrosshairDecorator());
+                Ui.Layout.FitContainer(1 / 4f, 1, false);
+                if (Ui.ImageButton(Assets.Load<Texture>("textures/ui/category_icons/hand_icon.png").Value, ImageContainmentMode.Contain))
+                    data.CurrentTab = CharacterCreationTab.Hands;
+
+                if (data.CurrentTab == CharacterCreationTab.Blood)
+                    Ui.Decorate(new CrosshairDecorator());
+                Ui.Layout.FitContainer(1 / 4f, 1, false);
+                if (Ui.ImageButton(Assets.Load<Texture>("textures/ui/category_icons/blood_icon.png").Value, ImageContainmentMode.Contain))
+                    data.CurrentTab = CharacterCreationTab.Blood;
+            }
+            Ui.End();
+            Ui.Theme.Pop();
+
+            // layer selector
+            if (data.CurrentTab is CharacterCreationTab.Head or CharacterCreationTab.Body)
+            {
+                const int layerBarHeight = topBarHeight + 20;
+                cursor += layerBarHeight + 20;
+                Ui.Layout.FitWidth(false).StickTop().Move(0, topBarHeight).Scale(-100, 0).CenterHorizontal().Height(layerBarHeight).EnqueueLayout(new DistributeChildrenLayout());
+                Ui.StartGroup(false);
+                {
+                    int c = data.CurrentTab == CharacterCreationTab.Head ? CharacterLook.HeadLayerCount : CharacterLook.BodyLayerCount;
+                    int layer = data.CurrentTab == CharacterCreationTab.Head ? data.SelectedHeadLayer : data.SelectedBodyLayer;
+                    for (int i = 0; i < c; i++)
+                    {
+                        if (i == layer)
+                            Ui.Theme.OutlineWidth(2).Once();
+
+                        Texture? tex = null;
+
+                        if (data.CurrentTab == CharacterCreationTab.Head)
+                        {
+                            var p = data.GetHeadPieceRef(character, i);
+                            if (p != null)
+                                tex = p.Left.Value;
+                        }
+                        else
+                        {
+                            var p = data.GetBodyPieceRef(character, i);
+                            if (p != null)
+                                tex = p.Left.Value;
+                        }
+
+                        Ui.Layout.FitHeight(false).MinWidth(10);
+                        Ui.Theme.FontSize(18).Once();
+                        if (ThumbnailButton.Click(i == 0 ? Localisation.Get("base-layer") : string.Format(Localisation.Get("frmt-layer"), i), tex, i))
+                        {
+                            switch (data.CurrentTab)
+                            {
+                                case CharacterCreationTab.Head:
+                                    data.SelectedHeadLayer = i;
+                                    break;
+                                case CharacterCreationTab.Body:
+                                    data.SelectedBodyLayer = i;
+                                    break;
+                            }
+                        }
+                    }
+                }
+                Ui.End();
+            }
+
+            // piece grid
+            Ui.Layout.FitContainer(1, 1, false).Center().Scale(0, -cursor - 5).StickBottom(false);
+            Ui.StartGroup();
+            switch (data.CurrentTab)
+            {
+                case CharacterCreationTab.Head:
+                    HeadMenu(data, character);
+                    break;
+                case CharacterCreationTab.Body:
+                    BodyMenu(data, character);
+                    break;
+                case CharacterCreationTab.Hands:
+                    HandMenu(data, character);
+                    break;
+                case CharacterCreationTab.Blood:
+                    BloodMenu(data, character);
+                    break;
+            }
+            Ui.End();
+        }
+        Ui.End();
+
+        Ui.Theme.Pop();
+    }
+
+    private void BloodMenu(CharacterCreationComponent data, CharacterComponent character)
+    {
+        var look = character.Look;
+
+        Ui.Theme.FontSize(23).Once();
+        Ui.Layout.Move(0, 5);
+        Ui.Label(Localisation.Get("blood-colour"));
+
+        Ui.Layout.FitWidth().CenterHorizontal().AspectRatio(2).Move(0, 38);
+        Ui.Theme.Padding(4).Push();
+        Ui.ColourPicker(ref look.BloodColour);
+        Ui.Theme.Pop();
+    }
+    
+    private void HandMenu(CharacterCreationComponent data, CharacterComponent character)
+    {
+        var look = character.Look;
+
+        if (PieceGrid(character, Registries.Armour.HandArmour, ref look.Hands, Registries.Armour.HandArmour.Get("default")))
+            if (Utilities.RandomFloat() > 0.9f)
+                character.PlayAnimation(Utilities.PickRandom(Animations.CharacterCreationHandsAnimations));
+    }
+
+    private void HeadMenu(CharacterCreationComponent data, CharacterComponent character)
+    {
+        var look = character.Look;
+        bool a = false;
+
+        switch (data.SelectedHeadLayer)
+        {
+            case 0:
+                a = PieceGrid(character, Registries.Armour.Head, ref look.Head, Registries.Armour.Head.Get("default_head"));
+                break;
+
+            case 1:
+                a = PieceGrid(character, Registries.Armour.HeadAccessory, ref look.HeadLayer1, null);
+                break;
+
+            case 2:
+                a = PieceGrid(character, Registries.Armour.HeadAccessory, ref look.HeadLayer2, null);
+                break;
+
+            case 3:
+                a = PieceGrid(character, Registries.Armour.HeadAccessory, ref look.HeadLayer3, null);
+                break;
+        }
+
+        if (a && Utilities.RandomFloat() > 0.9f)
+            character.PlayAnimation(Utilities.PickRandom(
+                data.SelectedHeadLayer == 0 ? Animations.CharacterCreationHeadAnimations : Animations.CharacterCreationFaceAnimations
+                ));
+    }
+
+    private void BodyMenu(CharacterCreationComponent data, CharacterComponent character)
+    {
+        var look = character.Look;
+        bool a = false;
+
+        switch (data.SelectedBodyLayer)
+        {
+            case 0:
+                a = PieceGrid(character, Registries.Armour.Body, ref look.Body, Registries.Armour.Body.Get("default_body"));
+                break;
+
+            case 1:
+                a = PieceGrid(character, Registries.Armour.BodyAccessory, ref look.BodyLayer1, null);
+                break;
+
+            case 2:
+                a = PieceGrid(character, Registries.Armour.BodyAccessory, ref look.BodyLayer2, null);
+                break;
+        }
+
+        if (a && Utilities.RandomFloat() > 0.9f)
+            character.PlayAnimation(Utilities.PickRandom(Animations.CharacterCreationBodyAnimations));
+    }
+
     private void DrawBackground(CharacterCreationComponent data)
     {
         Draw.Reset();
         Draw.Order = RenderOrders.BackgroundBehind;
         Draw.ScreenSpace = true;
+        Draw.TransformMatrix = Matrix3x2.CreateScale(1.2f, new Vector2(0, Window.Height * 0.88f));
 
         var rect = playerDrawRect = Draw.Image(data.Background.Value, new Rect(0, 0, Window.Width, Window.Height), ImageContainmentMode.Cover);
-
         calculatedPlayerRect = Draw.Image(data.PlayerDrawTarget, rect.Scale(0.4f).Translate(0, 45), ImageContainmentMode.Cover);
 
+        Draw.ClearMask();
         Draw.WriteMask();
         Draw.ResetTexture();
         Draw.Material = Materials.AlphaClipDraw;
         Draw.Image(Assets.Load<Texture>("textures/backgrounds/character_creation_mirror.qoi").Value, new Rect(0, 0, Window.Width, Window.Height), ImageContainmentMode.Cover);
 
         Draw.ResetMaterial();
-        Draw.TransformMatrix = Matrix3x2.CreateScale(-1, 1, rect.GetCenter());
+        Draw.TransformMatrix = Matrix3x2.CreateScale(-1, 1, rect.GetCenter()) * Draw.TransformMatrix;
         Draw.Colour = Colors.Gray.WithAlpha(0.2f);
 
         Draw.InsideMask();
@@ -114,132 +310,6 @@ public class CharacterCreationSystem : Walgelijk.System
             ThumbnailRenderer.ResetAllPosters();
         }
 
-        // HEAD MENU
-        Ui.Layout.FitContainer(null, 0.33f).AspectRatio(1.5f, AspectRatioBehaviour.Grow).StickLeft().StickTop();
-        Ui.StartGroup(false);
-        {
-            bool a = false;
-
-            switch (data.SelectedHeadLayer)
-            {
-                case 0:
-                    a = PieceGrid(character, Registries.Armour.Head, ref look.Head, Registries.Armour.Head.Get("default_head"));
-                    break;
-
-                case 1:
-                    a = PieceGrid(character, Registries.Armour.HeadAccessory, ref look.HeadLayer1, null);
-                    break;
-
-                case 2:
-                    a = PieceGrid(character, Registries.Armour.HeadAccessory, ref look.HeadLayer2, null);
-                    break;
-
-                case 3:
-                    a = PieceGrid(character, Registries.Armour.HeadAccessory, ref look.HeadLayer3, null);
-                    break;
-            }
-
-            if (a && Utilities.RandomFloat() > 0.9f)
-                character.PlayAnimation(Utilities.PickRandom(
-                    data.SelectedHeadLayer == 0 ? Animations.CharacterCreationHeadAnimations : Animations.CharacterCreationFaceAnimations
-                    ));
-
-            Ui.Layout.FitHeight().Width(58).StickRight(false).CenterVertical().VerticalLayout();
-            Ui.StartGroup(false);
-            {
-                for (int i = 0; i <= 3; i++)
-                {
-                    Ui.Layout.FitWidth().AspectRatio(1, AspectRatioBehaviour.Grow).StickLeft();
-                    if (data.SelectedHeadLayer == i)
-                        Ui.Decorate(new CrosshairDecorator());
-                    Ui.Decorate(new FancyButtonDecorator());
-
-                    Texture? tex = null;
-
-                    var p = data.GetHeadPieceRef(character, i);
-                    if (p != null)
-                        tex = p.Left.Value;
-
-                    Ui.Decorators.Tooltip("Layer " + i);
-                    if (ItemButton.Start(tex, identity: i))
-                        data.SelectedHeadLayer = i;
-                    if (Onion.Tree.LastNode.GetInstance().IsHover)
-                        HighlightPart(character, i == 0 ? ArmourPieceType.Head : ArmourPieceType.HeadAccessory, i - 1);
-                }
-            }
-            Ui.End();
-        }
-        Ui.End();
-
-        // BODY MENU
-        Ui.Layout.FitContainer(null, 0.33f).AspectRatio(1.5f, AspectRatioBehaviour.Grow).StickLeft().CenterVertical();
-        Ui.StartGroup(false);
-        {
-            bool a = false;
-            switch (data.SelectedBodyLayer)
-            {
-                case 0:
-                    a = PieceGrid(character, Registries.Armour.Body, ref look.Body, Registries.Armour.Body.Get("default_body"));
-                    break;
-
-                case 1:
-                    a = PieceGrid(character, Registries.Armour.BodyAccessory, ref look.BodyLayer1, null);
-                    break;
-
-                case 2:
-                    a = PieceGrid(character, Registries.Armour.BodyAccessory, ref look.BodyLayer2, null);
-                    break;
-            }
-
-            if (a && Utilities.RandomFloat() > 0.9f)
-                character.PlayAnimation(Utilities.PickRandom(Animations.CharacterCreationBodyAnimations));
-
-            Ui.Layout.FitHeight().Width(58).StickRight(false).CenterVertical().VerticalLayout();
-            Ui.StartGroup(false);
-            {
-                for (int i = 0; i <= 2; i++)
-                {
-                    Ui.Layout.FitWidth().AspectRatio(1, AspectRatioBehaviour.Grow).StickLeft();
-                    if (data.SelectedBodyLayer == i)
-                        Ui.Decorate(new CrosshairDecorator());
-                    Ui.Decorate(new FancyButtonDecorator());
-
-                    Texture? tex = null;
-
-                    var p = data.GetBodyPieceRef(character, i);
-                    if (p != null)
-                        tex = p.Left.Value;
-
-                    Ui.Decorators.Tooltip("Layer " + i);
-                    if (ItemButton.Start(tex, identity: i))
-                        data.SelectedBodyLayer = i;
-                    if (Onion.Tree.LastNode.GetInstance().IsHover)
-                        HighlightPart(character, i == 0 ? ArmourPieceType.Body : ArmourPieceType.BodyAccessory, i - 1);
-                }
-            }
-            Ui.End();
-        }
-        Ui.End();
-
-        // HAND MENU
-        Ui.Layout.FitContainer(null, 0.33f).AspectRatio(1.5f, AspectRatioBehaviour.Grow).StickLeft().StickBottom();
-        Ui.StartGroup(false);
-        {
-            if (PieceGrid(character, Registries.Armour.HandArmour, ref look.Hands, Registries.Armour.HandArmour.Get("default")))
-                if (Utilities.RandomFloat() > 0.9f)
-                    character.PlayAnimation(Utilities.PickRandom(Animations.CharacterCreationHandsAnimations));
-        }
-        Ui.End();
-
-        // BLOOD MENU
-        Ui.Layout.Size(300, 300).StickRight().StickTop();
-        Ui.StartGroup(false);
-        {
-            Ui.Layout.FitContainer(1, 1, false);
-            Ui.Theme.Foreground(default).Once();
-            Ui.ColourPicker(ref look.BloodColour);
-        }
-        Ui.End();
 
         Ui.Layout.Width(120).Height(40).CenterHorizontal().StickBottom().Move(0, -15);
         Ui.Theme.Foreground(default).Image(new(Colors.White, Colors.Red)).OutlineWidth(0).Once();
@@ -330,16 +400,21 @@ public class CharacterCreationSystem : Walgelijk.System
 
     private bool PieceGrid<T>(CharacterComponent character, Registry<T> registry, ref T? target, T? @default) where T : class, ICharacterCustomisationItem
     {
+        const int preferredColumns = 3;
+
+        Ui.Theme.Padding(5).Push();
+
+        float padding = Onion.Tree.CurrentNode!.GetInstance().Theme.Padding;
+
         bool returnValue = false;
-        Ui.Layout.FitContainer().Scale(-60, 0).StickLeft().StickBottom().VerticalLayout().Overflow(false, true);
-        Ui.Theme.ScrollbarWidth(16).ForegroundColor(Colors.Black).Once();
-        Ui.StartScrollView(true);
+        Ui.Layout.FitContainer(1, 1, false).StickLeft(false).StickBottom(false).VerticalLayout().Overflow(false, true);
+        Ui.Theme.ScrollbarWidth(24).ForegroundColor(Colors.Black).Once();
+        Ui.StartScrollView(false);
         {
-            float w = Onion.Tree.CurrentNode!.GetInstance().Rects.ComputedGlobal.Width;
+            float w = Onion.Tree.CurrentNode!.GetInstance().Rects.GetInnerContentRect().Width - padding ;
             int i = 0;
             float x = 0;
-            const int preferredColumns = 3;
-            float rowHeight = (w - Onion.Theme.Base.Padding * (2 * preferredColumns)) / preferredColumns;
+            float rowHeight = (w) / preferredColumns;
             foreach (var piece in registry.GetAllValues().OrderBy(static p => p.Order))
             {
                 if (piece.Hidden)
@@ -347,19 +422,19 @@ public class CharacterCreationSystem : Walgelijk.System
 
                 if (x > w || i == 0)
                 {
-                    x = rowHeight + Ui.Theme.Base.Padding * 2;
+                    x = rowHeight ;
 
                     // end the previous row if this isnt the first row ever made!!
                     if (i != 0)
                         Ui.End();
 
                     // start a row
-                    Ui.Layout.FitWidth().StickLeft().StickTop().Height(rowHeight).HorizontalLayout();
+                    Ui.Layout.FitWidth(true).StickLeft(true).StickTop(false).Height(rowHeight).HorizontalLayout();
                     Ui.StartGroup(false, identity: i + 428);
                 }
 
-                Ui.Layout.FitHeight().AspectRatio(0.9f, AspectRatioBehaviour.Grow).StickLeft().StickTop();
-                Ui.Theme.Padding(0).OutlineWidth(0).Once();
+                Ui.Layout.FitHeight(false).AspectRatio(1, AspectRatioBehaviour.Grow).StickLeft(false).StickTop(false);
+                Ui.Theme.Padding(0).OutlineWidth(0).FontSize(20).Once();
                 if (target == piece)
                     Ui.Decorate(new CrosshairDecorator());
                 if (ThumbnailButton.Click(piece.DisplayName, piece.Texture, identity: i++))
@@ -372,12 +447,15 @@ public class CharacterCreationSystem : Walgelijk.System
                     returnValue = true;
                 }
 
-                x += rowHeight + Ui.Theme.Base.Padding * 2;
+                x += rowHeight;
             }
 
             Ui.End(); // end the last row
         }
         Ui.End();
+
+        Ui.Theme.Pop();
+
         return returnValue;
     }
 
@@ -407,5 +485,18 @@ public class CharacterCreationSystem : Walgelijk.System
             c.SetUniform("outerBloodColour", v3);
             c.SetUniform("innerBloodColour", v3 * 0.6522f);
         }
+    }
+}
+
+public struct DistributeChildrenLayout : ILayout
+{
+    public void Apply(in ControlParams p, int index, int childId)
+    {
+        float padding = p.Theme.Padding;
+        var child = p.Tree.EnsureInstance(childId); //  - p.Theme.Padding
+        var w = (p.Instance.Rects.Rendered.Width + padding) / p.Node.Children.Count(Onion.Tree.IsAlive);
+
+        child.Rects.Intermediate.Width = (w - padding);
+        child.Rects.Intermediate = child.Rects.Intermediate.Translate(w * index, 0);
     }
 }

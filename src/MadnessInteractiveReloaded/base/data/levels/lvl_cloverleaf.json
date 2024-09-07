@@ -5,7 +5,7 @@
   "EnemySpawnInterval": 1.2,
   "MaxEnemyCount": 4,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "base:sounds/music/Lothyde/come_to_blows.ogg",
+  "BackgroundMusic": "sounds/music/Lothyde/come_to_blows.ogg",
   "WeaponChance": 0.8,
   "LevelBounds": {
     "MinX": -3291.0532,
@@ -16,7 +16,7 @@
   "BodyCountToWin": 30,
   "TimeLimitInSeconds": -1.0,
   "FullZoom": false,
-  "Thumbnail": "base:textures/level_thumbnails/lvl_cloverleaf.qoi",
+  "Thumbnail": "textures/level_thumbnails/lvl_cloverleaf.qoi",
   "OpeningTransition": true,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [
@@ -573,7 +573,7 @@
         "X": -4.3866577,
         "Y": -147.67477
       },
-      "TexturePath": "base:textures/backgrounds/background_cloverleaf.qoi",
+      "TexturePath": "textures/backgrounds/background_cloverleaf.qoi",
       "Scale": 2.222222
     },
     {

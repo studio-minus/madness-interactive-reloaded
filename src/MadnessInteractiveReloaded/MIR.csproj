@@ -7,12 +7,13 @@
 		<DefineConstants>$(TargetOperatingSystem)</DefineConstants>
 		<ApplicationIcon>resources\textures\icon.ico</ApplicationIcon>
 		<StartupObject></StartupObject>
-		<Version>0.48.4</Version>
+		<Version>0.48.5</Version>
 		<NeutralLanguage />
 		<Company>Studio Minus</Company>
 		<Authors>Dikkiedik, zooi, Koof</Authors>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Nullable>enable</Nullable>
+		<SelfContained>true</SelfContained>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 		<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
 		<DebugType>embedded</DebugType>
@@ -69,7 +70,7 @@
 		<None Include="..\.editorconfig" Link=".editorconfig" />
 	</ItemGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\BigGustave\src\BigGustave\BigGustave.csproj" />
+		<ProjectReference Include="..\BigGustave\src\BigGustave\BigGustave.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Update="avcodec-59.dll">

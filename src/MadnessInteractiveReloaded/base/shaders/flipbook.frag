@@ -22,11 +22,11 @@ void main()
     float frame = floor((frameCount == 0 ? (width * height) : frameCount) * progress);
 
     float currentColumn = mod(frame, width);
-    float currentRow = (height - 1) - floor(frame / width);
+    float currentRow = floor(frame / width);
 
-    vec2 newUv = vec2(uv.x + currentColumn, uv.y + currentRow);
-    newUv.x /= width;
-    newUv.y /= height;
+    vec2 newUv = uv;
+    newUv.x = (uv.x + currentColumn) / width;
+    newUv.y = (uv.y + (height - 1.0 - currentRow)) / height;
     
     color = vertexColor * texture(mainTex,  newUv);
     color.a = mix(color.a, color.a > 0.5? 1 : 0, alphaClip);
