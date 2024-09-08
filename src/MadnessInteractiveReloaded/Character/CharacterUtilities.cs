@@ -589,10 +589,14 @@ public static class CharacterUtilities
 
         MadnessUtils.DelayPausable(animationDuration * 0.5f, () =>
         {
-            if (!character.IsAlive)
+            if (!character.IsAlive || !character.HasWeaponEquipped)
                 return;
 
-            if (!character.HasWeaponEquipped)
+            // (duston): We do this again because of the fact this is a DelayPausable.
+            // When TryThrowWeapon is called, the currently held weapon is cached immediately,
+            // between then and when this delayed routine runs
+            // the weapon could have changed so we'd be referencing the stale WeaponComponent.
+            if (!character.EquippedWeapon.TryGet(scene, out wpn))
                 return;
 
             scene.AttachComponent(character.EquippedWeapon.Entity, new ThrowableProjectileComponent
@@ -655,8 +659,9 @@ public static class CharacterUtilities
 
                     break;
                 default:
-                    var measured = scene.GetComponentFrom<MeasuredVelocityComponent>(wpn.Entity);
-                    vel.RotationalVelocity = measured.DeltaRotation;
+                    if (scene.TryGetComponentFrom<MeasuredVelocityComponent>(wpn.Entity, out var measured))
+                        vel.RotationalVelocity = measured.DeltaRotation;
+
                     break;
             }
         });
