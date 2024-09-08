@@ -8,10 +8,8 @@ using System;
 using System.Linq;
 using static MIR.ExperimentModeComponent;
 using Walgelijk.AssetManager;
-using MIR.Controls;
 using Walgelijk.Localisation;
 using Icons = MIR.Textures.UserInterface.ExperimentMode.MusicPlayer;
-using System.Security.Cryptography;
 
 namespace MIR;
 
@@ -195,7 +193,7 @@ public class ExperimentModeSystem : Walgelijk.System
         }
         else
         {
-            Draw.Order = RenderOrders.Default; 
+            Draw.Order = RenderOrders.Default;
             Draw.Colour = obj.Disabled ? Colors.Black : (exp.SelectionManager.IsHovering(obj) ? Colors.White : Colors.Red);
             DrawCrosshairEffect(obj.BoundingBox, 3 * pixel, pixel * 15, float.Clamp(exp.TimeSinceMenuOpened * 4 - offset * 3, 0, 1), i);
         }
@@ -236,7 +234,7 @@ public class ExperimentModeSystem : Walgelijk.System
         Draw.Colour.A = 0.5f;
 
         if (i % 2 == 0)
-            Draw.Line(new Vector2(center.X, windowWorld.MaxY), new Vector2(center.X, float.Lerp(windowWorld.MaxY, r.MaxY, animationTime)), w, 0);  
+            Draw.Line(new Vector2(center.X, windowWorld.MaxY), new Vector2(center.X, float.Lerp(windowWorld.MaxY, r.MaxY, animationTime)), w, 0);
         else
             Draw.Line(new Vector2(windowWorld.MaxX, center.Y), new Vector2(float.Lerp(windowWorld.MaxX, r.MaxX, animationTime), center.Y), w, 0);
 
@@ -644,6 +642,11 @@ public class ExperimentModeSystem : Walgelijk.System
             if (Ui.FloatSlider(ref timeScale, Direction.Horizontal, (0.05f, 1), label: "{0:P0}"))
                 Time.TimeScale = timeScale;
 
+            Ui.Spacer(8);
+            Ui.Layout.Height(controlHeight).FitWidth().StickLeft();
+            if (Ui.Button(Localisation.Get("experiment-cleanup")))
+                ClearAll(exp);
+
             //Ui.Layout.Height(controlHeight).FitWidth().StickLeft();
             //if (Ui.Button("Configure improbability..."))
             //    exp.ImprobabilityDisksOpen = !exp.ImprobabilityDisksOpen;
@@ -818,5 +821,40 @@ public class ExperimentModeSystem : Walgelijk.System
         {
             cm.TransitionTo(exp.PlayerCameraTarget, 0.5f);
         }
+    }
+
+    private void ClearAll(ExperimentModeComponent exp)
+    {
+        // Clear the stamped stuff
+        if (Level.CurrentLevel != null && Scene.FindAnyComponent<StampCanvasComponent>(out var canvas))
+            canvas.Clear(Graphics);
+
+        // Delete all the other characters
+        var characters = Scene.GetAllComponentsOfType<CharacterComponent>().ToArray();
+        for (int i = 0; i < characters.Length; i++)
+        {
+            if (Scene.HasTag(characters[i].Entity, Tags.Player))
+                continue;
+
+            characters[i].Delete(Scene);
+        }
+
+        // Delete all weapons
+        var weapons = Scene.GetAllComponentsOfType<WeaponComponent>().ToArray();
+        for (int i = 0; i < weapons.Length; i++)
+        {
+            var weaponEntity = weapons[i].Entity;
+            Scene.RemoveEntity(weaponEntity);
+            if (!Scene.TryGetComponentFrom<DespawnComponent>(weaponEntity, out var despawn))
+                continue;
+
+            var alsoDelete = despawn.AlsoDelete!;
+            for (int k = 0; k < alsoDelete.Length; k++)
+                Scene.RemoveEntity(alsoDelete[k]);
+        }
+
+        // Clear decals since they stick around unlike bullet casings, which go away pretty quickly.
+        if (Scene.TryGetSystem<DecalSystem>(out var decalSystem))
+            decalSystem.RemoveAllDecals();
     }
 }
