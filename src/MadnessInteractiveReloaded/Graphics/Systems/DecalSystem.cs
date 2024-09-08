@@ -60,10 +60,7 @@ public class DecalSystem : Walgelijk.System
 #if DEBUG
         if (Input.IsKeyPressed(Key.F9))
         {
-            foreach (var item in allDecals)
-                Scene.RemoveEntity(item.Entity);
-            foreach (var renderer in decalRenderers)
-                renderer.Clear();
+            RemoveAllDecals(allDecals, decalRenderers);
             return;
         }
 #endif
@@ -105,5 +102,23 @@ public class DecalSystem : Walgelijk.System
 
             renderer.ProcessingIndex = 0;
         }
+    }
+
+    /// <summary>
+    /// Clear all decals.<br></br>The parameters are only used if you already have cached lists of <see cref="DecalComponent"/>s and <see cref="DecalRendererComponent"/>.
+    /// <br></br>
+    /// Otherwise, this method will perform a lookup anyway.
+    /// </summary>
+    /// <param name="allDecals"></param>
+    /// <param name="decalRenderers"></param>
+    public void RemoveAllDecals(IEnumerable<DecalComponent>? allDecals = null, IEnumerable<DecalRendererComponent>? decalRenderers = null)
+    {
+        allDecals ??= Scene.GetAllComponentsOfType<DecalComponent>();
+        decalRenderers ??= Scene.GetAllComponentsOfType<DecalRendererComponent>();
+
+        foreach (var item in allDecals)
+            Scene.RemoveEntity(item.Entity);
+        foreach (var renderer in decalRenderers)
+            renderer.Clear();
     }
 }

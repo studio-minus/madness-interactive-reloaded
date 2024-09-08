@@ -49,6 +49,7 @@
     "experiment-header-stngs": "Settings",
     "experiment-modifiers": "Modifiers",
     "experiment-timescale": "Timescale",
+    "experiment-cleanup": "Clean Up Everything",
     "experiment-autospawn": "Autospawn",
     "experiment-spawn-interval": "Spawn interval",
     "experiment-max-enemies": "Max. enemies",
