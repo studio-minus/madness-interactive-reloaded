@@ -63,7 +63,7 @@ public class TelekinesisAbilityComponent : CharacterAbilityComponent
     private bool IsValidWeapon(VelocityComponent n)
     {
         if (Game.Main.Scene.TryGetComponentFrom<WeaponComponent>(n.Entity, out var weapon))
-            return !weapon.IsAttachedToWall && !weapon.IsBeingWielded && weapon.HasRoundsLeft;
+            return !weapon.IsBeingWielded && weapon.HasRoundsLeft;
         return false;
     }
 
@@ -101,7 +101,7 @@ public class TelekinesisAbilityComponent : CharacterAbilityComponent
             if (time < 0)
             {
                 if (a.Character.Positioning.HandPoseFunctionOverride == PoseHand)
-                a.Character.Positioning.HandPoseFunctionOverride = null;
+                    a.Character.Positioning.HandPoseFunctionOverride = null;
                 time = 0;
                 wasUsing = false;
             }
@@ -132,85 +132,91 @@ public class TelekinesisAbilityComponent : CharacterAbilityComponent
             if (weaponIgnore[i])
                 continue;
 
-            if (!item.TryGet(a.Scene, out var n))
+            if (!item.TryGet(a.Scene, out var velocity))
                 continue;
 
-            if (!n.Enabled || a.Scene.HasComponent<ThrowableProjectileComponent>(n.Entity))
+            if (!a.Scene.TryGetComponentFrom<WeaponComponent>(item.Entity, out var weapon))
+                continue;
+
+            if (weapon.IsAttachedToWall && !velocity.Enabled)
+            {
+                weapon.IsAttachedToWall = false;
+                velocity.Enabled = true;
+            }
+
+            if (!velocity.Enabled || a.Scene.HasComponent<ThrowableProjectileComponent>(velocity.Entity))
                 continue;
 
             var targetPos = a.Character.AimTargetPosition + MadnessUtils.Noise2D(a.Time * 0.004f, i * 552.5234f) * Utilities.MapRange(0, 5, 0, 500, affectedVels.Length);
             float influence = float.Lerp(0.4f, 1f, Utilities.Hash(i * 323.5689237f));
 
-            var delta = targetPos - n.Position;
+            var delta = targetPos - velocity.Position;
             var magn = delta.Length();
             var f = 1 - float.Clamp(ForceKernel(magn * 0.02f), 0, 1);
 
-            n.Velocity = Utilities.SmoothApproach(n.Velocity, default, 12 * influence, dt);
-            n.RotationalVelocity = Utilities.SmoothApproach(n.RotationalVelocity, default, 9 * influence, dt);
-            n.Acceleration += f * (delta / magn) * 35000 * dt * influence;
-            n.Acceleration.Y += 120 * dt; // counteract gravity
+            velocity.Velocity = Utilities.SmoothApproach(velocity.Velocity, default, 12 * influence, dt);
+            velocity.RotationalVelocity = Utilities.SmoothApproach(velocity.RotationalVelocity, default, 9 * influence, dt);
+            velocity.Acceleration += f * (delta / magn) * 35000 * dt * influence;
+            velocity.Acceleration.Y += 120 * dt; // counteract gravity
 
-            if (a.Scene.TryGetComponentFrom<WeaponComponent>(n.Entity, out var weapon))
+            if (weapon.Wielder.IsValid(a.Scene))
+                continue;
+
+            var dir = Vector2.Normalize(aimPos - velocity.Position);
+
+            if (weapon.Data.MeleeDamageType != MeleeDamageType.Axe)
             {
-                if (weapon.IsAttachedToWall || weapon.Wielder.IsValid(a.Scene))
-                    continue;
+                var targetAngle = float.RadiansToDegrees(float.Atan2(dir.Y, dir.X)) + velocity.FloorAngleOffset;
+                velocity.RotationalAcceleration += Utilities.DeltaAngle(velocity.Rotation, targetAngle) * dt * 15;
+            }
+            else
+                velocity.RotationalAcceleration += 2500 * dt;
 
-                var dir = Vector2.Normalize(aimPos - n.Position);
+            if (weapon.Data.WeaponType == WeaponType.Firearm)
+            {
+                if (distanceFromFloor < 0.8f)
+                    weapon.IsFlipped = (Utilities.AngleToVector(velocity.Rotation + velocity.FloorAngleOffset).X < 0);
+            }
+            else
+                weapon.IsFlipped = true;
 
-                if (weapon.Data.MeleeDamageType != MeleeDamageType.Axe)
-                {
-                    var targetAngle = float.RadiansToDegrees(float.Atan2(dir.Y, dir.X)) + n.FloorAngleOffset;
-                    n.RotationalAcceleration += Utilities.DeltaAngle(n.Rotation, targetAngle) * dt * 15;
-                }
-                else
-                    n.RotationalAcceleration += 2500 * dt;
+            if ((a.Ai.TryGet(a.Scene, out var ai) && ai.HasKillTarget) || (a.Player.IsValid(a.Scene) && a.Input.ActionHeld(GameAction.Attack)))
+            {
+                ref var timer = ref weaponTimers[i];
+                timer += dt;
+                weapon.Timer += dt;
 
                 if (weapon.Data.WeaponType == WeaponType.Firearm)
                 {
-                    if (distanceFromFloor < 0.8f)
-                        weapon.IsFlipped = (Utilities.AngleToVector(n.Rotation + n.FloorAngleOffset).X < 0);
-                }
-                else
-                    weapon.IsFlipped = true;
-
-                if ((a.Ai.TryGet(a.Scene, out var ai) && ai.HasKillTarget) || (a.Player.IsValid(a.Scene) && a.Input.ActionHeld(GameAction.Attack)))
-                {
-                    ref var timer = ref weaponTimers[i];
-                    timer += dt;
-                    weapon.Timer += dt;
-
-                    if (weapon.Data.WeaponType == WeaponType.Firearm)
+                    var delay = 0.3f;
+                    if (timer > delay)
                     {
-                        var delay = 0.3f;
-                        if (timer > delay)
+                        if (weapon.HasRoundsLeft)
                         {
-                            if (weapon.HasRoundsLeft)
-                            {
-                                n.Acceleration += dir * -weapon.Data.Recoil * 400;
-                                n.RotationalAcceleration += -weapon.Data.RotationalRecoilIntensity * 25;
-                                a.Scene.GetSystem<WeaponSystem>().ShootWeapon(weapon, a.Character, recoilMultiplier: 0);
-                            }
-                            timer = Utilities.RandomFloat(-0.1f, 0.2f);
-                            weapon.Timer = 0;
+                            velocity.Acceleration += dir * -weapon.Data.Recoil * 400;
+                            velocity.RotationalAcceleration += -weapon.Data.RotationalRecoilIntensity * 25;
+                            a.Scene.GetSystem<WeaponSystem>().ShootWeapon(weapon, a.Character, recoilMultiplier: 0);
                         }
+                        timer = Utilities.RandomFloat(-0.1f, 0.2f);
+                        weapon.Timer = 0;
                     }
-                    else if (weapon.Data.WeaponType == WeaponType.Melee)
+                }
+                else if (weapon.Data.WeaponType == WeaponType.Melee)
+                {
+                    float m = EaseInBack(float.Clamp((timer - 0.7f) * 3, 0, 1));
+                    velocity.Acceleration += dir * m * 120000 * dt;
+                    if (m >= 0.9f)
                     {
-                        float m = EaseInBack(float.Clamp((timer - 0.7f) * 3, 0, 1));
-                        n.Acceleration += dir * m * 120000 * dt;
-                        if (m >= 0.9f)
-                        {
-                            weaponIgnore[i] = true;
-                            a.Scene.AttachComponent(n.Entity, new ThrowableProjectileComponent
-                            (
-                                weapon.Data.ThrowableDamage,
-                                weapon.Data.ThrowableHeavy,
-                                            true,
-                                CollisionLayers.BlockPhysics | a.Character.EnemyCollisionLayer,
-                                weapon.Data.ThrowableSharpBoxes, weapon.BaseSpriteEntity,
-                                new ComponentRef<CharacterComponent>(a.Character.Entity)
-                            ));
-                        }
+                        weaponIgnore[i] = true;
+                        a.Scene.AttachComponent(velocity.Entity, new ThrowableProjectileComponent
+                        (
+                            weapon.Data.ThrowableDamage,
+                            weapon.Data.ThrowableHeavy,
+                                        true,
+                            CollisionLayers.BlockPhysics | a.Character.EnemyCollisionLayer,
+                            weapon.Data.ThrowableSharpBoxes, weapon.BaseSpriteEntity,
+                            new ComponentRef<CharacterComponent>(a.Character.Entity)
+                        ));
                     }
                 }
             }
