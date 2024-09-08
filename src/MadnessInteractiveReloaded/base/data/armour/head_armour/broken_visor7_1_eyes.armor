@@ -1,0 +1,11 @@
+0.48.2
+
+name Broken Visor 7 1
+type HeadAccessory
+left textures/bodies/broken/broken_visor7/broken_visor7_1_left.png
+right textures/bodies/broken/broken_visor7/broken_visor7_1_right.png
+texture-scale 1
+category Eyes
+detach False
+hidden true
+offset 2 -2

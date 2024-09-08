@@ -3,10 +3,10 @@
 /// <summary>
 /// Which creation menu are we on?
 /// </summary>
-public enum CharacterCreationScreen
+public enum CharacterCreationTab
 {
     Head,
-    HeadAccessory,
     Body,
-    BodyAccessory
+    Hands,
+    Blood
 }

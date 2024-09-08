@@ -1,4 +1,4 @@
-0.36.0
+0.48.4
 
 name Agent glasses
 type HeadAccessory
@@ -14,5 +14,4 @@ broken
 	broken_agent_glasses3_eyes
 	broken_agent_glasses4_eyes
 
-offset-left 76 -2
-offset-right 76 -2
+offset 78 -2

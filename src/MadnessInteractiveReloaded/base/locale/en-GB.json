@@ -49,6 +49,7 @@
     "experiment-header-stngs": "Settings",
     "experiment-modifiers": "Modifiers",
     "experiment-timescale": "Timescale",
+    "experiment-cleanup": "Clean everything",
     "experiment-autospawn": "Autospawn",
     "experiment-spawn-interval": "Spawn interval",
     "experiment-max-enemies": "Max. enemies",
@@ -78,6 +79,8 @@
     "infinite-ammo": "Inf. ammo",
     "infinite": "Infinite",
     "skip": "Skip",
+    "base-layer": "Base layer",
+    "blood-colour": "Blood colour",
 
     "god-mode": "God mode",
     "inf-ammo": "Infinite ammo",
@@ -90,6 +93,7 @@
     "frmt-attempts": "{0} attempts",
     "frmt-kills": "{0} kills",
     "frmt-deaths": "{0} deaths",
-    "frmt-spent-time": "Spent {0}"
+    "frmt-spent-time": "Spent {0}",
+    "frmt-layer": "Layer {0}"
   }
 }

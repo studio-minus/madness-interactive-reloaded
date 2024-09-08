@@ -65,7 +65,8 @@ public class MachinistLevelSystem : Walgelijk.System
                     if (!Scene.HasSystem<LevelEditorTestSystem>())
                         MadnessUtils.DelayPausable(2, () =>
                         {
-                            if (Scene.HasSystem<MachinistLevelSystem>() && Scene.HasSystem<LevelProgressSystem>()) // are we still where we want to be?
+                            // (duston): Use Game.Main.Scene instead because the System's Scene reference could be stale (and *will be* like when exiting to the main menu/changing levels before the engine explodes)
+                            if (Game.Main.Scene.HasSystem<MachinistLevelSystem>() && Game.Main.Scene.HasSystem<LevelProgressSystem>()) // are we still where we want to be?
                             {
                                 var levelProgress = Scene.GetSystem<LevelProgressSystem>();
                                 levelProgress.Win();

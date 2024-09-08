@@ -16,7 +16,7 @@ public class CharacterCreationComponent : Component, IDisposable
     public AssetRef<Texture> Background;
     public RenderTexture PlayerDrawTarget = new(PlayerTargetTextureSize, PlayerTargetTextureSize, flags: RenderTargetFlags.None);
 
-    public CharacterCreationScreen SelectedBodyPart = CharacterCreationScreen.Head;
+    public CharacterCreationTab CurrentTab = default;
 
     public int SelectedHeadLayer = 0;
     public int SelectedBodyLayer = 0;

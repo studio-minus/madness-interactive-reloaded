@@ -7,7 +7,7 @@
 		<DefineConstants>$(TargetOperatingSystem)</DefineConstants>
 		<ApplicationIcon>resources\textures\icon.ico</ApplicationIcon>
 		<StartupObject></StartupObject>
-		<Version>0.48.4</Version>
+		<Version>0.48.5</Version>
 		<NeutralLanguage />
 		<Company>Studio Minus</Company>
 		<Authors>Dikkiedik, zooi, Koof</Authors>
@@ -19,6 +19,7 @@
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<Platforms>AnyCPU;x64</Platforms>
 	</PropertyGroup>
+	
 	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
 		<OutputType>Exe</OutputType>
 	</PropertyGroup>
@@ -39,9 +40,15 @@
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
 		<DebugType>portable</DebugType>
 	</PropertyGroup>
-	<Target Name="PostBuild" BeforeTargets="PostBuildEvent">
+	
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
 		<Exec Command="MIR --mode pack --input &quot;$(ProjectDir)base&quot; --output resources/base.waa" WorkingDirectory="$(OutDir)" />
 	</Target>
+	
+	<Target Name="PostPublish" AfterTargets="Publish">
+		<Exec Command="MIR --mode pack --input &quot;$(ProjectDir)base&quot; --output resources/base.waa" WorkingDirectory="$(PublishDir)" />
+	</Target>
+
 	<ItemGroup>
 		<PackageReference Include="Lib.Harmony" Version="2.3.3" />
 		<PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="4.11.0" />
@@ -59,6 +66,7 @@
 		<PackageReference Include="Walgelijk.PortAudio" Version="0.2.0" />
 		<PackageReference Include="Walgelijk.SimpleDrawing" Version="1.26.4" />
 	</ItemGroup>
+	
 	<ItemGroup>
 		<Content Include="$(ProjectDir)resources\**" CopyToOutputDirectory="Always" />
 	</ItemGroup>
@@ -68,9 +76,11 @@
 	<ItemGroup>
 		<None Include="..\.editorconfig" Link=".editorconfig" />
 	</ItemGroup>
+	
 	<ItemGroup>
-	  <ProjectReference Include="..\BigGustave\src\BigGustave\BigGustave.csproj" />
+		<ProjectReference Include="..\BigGustave\src\BigGustave\BigGustave.csproj" />
 	</ItemGroup>
+	
 	<ItemGroup>
 		<None Update="avcodec-59.dll">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>

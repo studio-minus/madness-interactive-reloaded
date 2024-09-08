@@ -12,15 +12,15 @@ using Walgelijk.AssetManager;
 /// </summary>
 public readonly struct ThumbnailButton : IControl
 {
-    private readonly static OptionalControlState<(string, IReadableTexture)> state = new();
+    private readonly static OptionalControlState<(string, IReadableTexture?)> state = new();
 
-    public static bool Hold(string label, IReadableTexture thumbnail, int identity = 0, [CallerLineNumber] int site = 0)
+    public static bool Hold(string label, IReadableTexture? thumbnail, int identity = 0, [CallerLineNumber] int site = 0)
         => CreateButton(label, thumbnail, identity, site).Held;
 
-    public static bool Click(string label, IReadableTexture thumbnail, int identity = 0, [CallerLineNumber] int site = 0)
+    public static bool Click(string label, IReadableTexture? thumbnail, int identity = 0, [CallerLineNumber] int site = 0)
         => CreateButton(label, thumbnail, identity, site).Up;
 
-    private static InteractionReport CreateButton(string label, IReadableTexture thumbnail, int identity = 0, int site = 0)
+    private static InteractionReport CreateButton(string label, IReadableTexture? thumbnail, int identity = 0, int site = 0)
     {
         var (instance, node) = Onion.Tree.Start(IdGen.Create(nameof(ThumbnailButton).GetHashCode(), identity, site), new ThumbnailButton());
         instance.RenderFocusBox = false;
@@ -54,19 +54,25 @@ public readonly struct ThumbnailButton : IControl
         anim.AnimateRect(ref instance.Rects.Rendered, t);
 
         anim.AnimateColour(ref Draw.Colour, t);
-        Draw.Colour.A *= 0.5f;
+        //Draw.Colour.A *= 0.5f;
+        Draw.ImageMode = ImageMode.Slice;
         Draw.Texture = Assets.Load<Texture>("textures/ui/item_background.png").Value;
         Draw.Quad(instance.Rects.Rendered, 0, p.Theme.Rounding);
 
-        Draw.ResetTexture();
-        Draw.OutlineWidth = 0;
-        var thumbnailRect = instance.Rects.Rendered;
-        thumbnailRect.MinY += 30;
-        Draw.Colour = Colors.White;
-        anim.AnimateColour(ref Draw.Colour, t);
-        Draw.Image(ThumbnailButton.state[p.Identity].Item2,
-            thumbnailRect.Expand(-p.Theme.Padding ), ImageContainmentMode.Contain);
-        Draw.ResetTexture();
+        var tex = ThumbnailButton.state[p.Identity].Item2;
+        if (tex != null)
+        {
+            Draw.ImageMode = default;
+            Draw.ResetTexture();
+            Draw.OutlineWidth = 0;
+            var thumbnailRect = instance.Rects.Rendered;
+            thumbnailRect.MaxY -= 30;
+            thumbnailRect = thumbnailRect.Translate(0, 5);
+            Draw.Colour = Colors.White;
+            anim.AnimateColour(ref Draw.Colour, t);
+            Draw.Image(tex, thumbnailRect.Scale(0.9f), ImageContainmentMode.Contain);
+            Draw.ResetTexture();
+        }
 
         Draw.Font = p.Theme.Font;
         Draw.FontSize = p.Theme.FontSize[p.Instance.State] - 2;
@@ -75,9 +81,9 @@ public readonly struct ThumbnailButton : IControl
         {
             var ratio = instance.Rects.Rendered.Area / instance.Rects.ComputedGlobal.Area;
             var textRect = instance.Rects.Rendered;
-            textRect.MaxY = textRect.MinY + 30;
+            textRect.MinY = textRect.MaxY - 30;
 
-            Draw.Text(instance.Name, textRect.GetCenter(), new Vector2(ratio), 
+            Draw.Text(instance.Name, textRect.GetCenter(), new Vector2(ratio),
                 HorizontalTextAlign.Center, VerticalTextAlign.Middle, textRect.Width);
         }
     }

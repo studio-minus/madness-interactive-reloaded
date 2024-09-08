@@ -37,7 +37,9 @@ public class StampCanvasComponent : Component, IDisposable
         Height = height;
         Offset = offset;
 
-        StampTexture = new RenderTexture(width, height, flags: RenderTargetFlags.None);
+        const int downsample = 2;
+
+        StampTexture = new RenderTexture(width / downsample, height / downsample, flags: RenderTargetFlags.None);
         StampTexture.ViewMatrix = Matrix4x4.CreateTranslation(-Offset.X, -Offset.Y, 0);
         StampTexture.ProjectionMatrix = Matrix4x4.CreateOrthographic(Width, Height, 0, 1);
     }

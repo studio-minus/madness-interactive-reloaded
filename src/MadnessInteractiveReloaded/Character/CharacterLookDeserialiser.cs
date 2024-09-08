@@ -1,6 +1,7 @@
 ﻿using MIR.Serialisation;
 using System;
 using System.IO;
+using System.Text;
 using Walgelijk;
 using Walgelijk.AssetManager;
 using Walgelijk.AssetManager.Deserialisers;
@@ -28,23 +29,23 @@ public static class CharacterLookDeserialiser
         deserialiser.RegisterString(NameIdentifier, static (look, name) =>
         {
             look.Name = name;
-        });       
-        
+        });
+
         deserialiser.RegisterString(BloodIdentifier, static (look, bloodColour) =>
         {
             look.BloodColour = new Color(bloodColour.Trim());
-        });     
-        
+        });
+
         deserialiser.RegisterBool(JitterIdentifier, static (look, jitterFlag) =>
         {
             look.Jitter = jitterFlag;
         });
-              
+
         deserialiser.RegisterString(HeadFleshIdentifier, static (look, id) =>
         {
             look.HeadFlesh = new AssetRef<Texture>(id);
-        });    
-        
+        });
+
         deserialiser.RegisterString(BodyFleshIdentifier, static (look, id) =>
         {
             look.BodyFlesh = new AssetRef<Texture>(id);
@@ -122,76 +123,67 @@ public static class CharacterLookDeserialiser
     /// <exception cref="IOException"></exception>
     public static void Save(CharacterLook look, string path)
     {
-        using StreamWriter writer = new(path);
-        string? key = null;
+        StringBuilder writer = new();
 
         var bodyAccessory = Registries.Armour.BodyAccessory;
         var headAccessory = Registries.Armour.HeadAccessory;
 
-        writer.WriteLine(GameVersion.Version);
-        writer.WriteLine();
-        try
+        writer.AppendLine(GameVersion.Version.ToString());
+        writer.AppendLine();
+
+        // Write body
+        writer.AppendLine(BodyIdentifier);
+        if (Registries.Armour.Body.TryGetKeyFor(look.Body, out string? key) && !string.IsNullOrWhiteSpace(key))
+            writer.AppendFormat("   {0}\n", key);
+        else
+            throw new Exceptions.SerialisationException("Attempt to save characterlook with a non-existent body");
+
+        if (look.BodyLayer1 != null && TryGetKey(bodyAccessory, look.BodyLayer1, out key))
+            writer.AppendFormat("   {0}\n", key);
+        if (look.BodyLayer2 != null && TryGetKey(bodyAccessory, look.BodyLayer2, out key))
+            writer.AppendFormat("   {0}\n", key);
+        writer.AppendLine();
+
+        // Write head
+        writer.AppendLine(HeadIdentifier);
+        if (Registries.Armour.Head.TryGetKeyFor(look.Head, out key) && !string.IsNullOrWhiteSpace(key))
+            writer.AppendFormat("   {0}\n", key);
+        else
+            throw new Exceptions.SerialisationException("Attempt to save characterlook with a non-existent head");
+
+        if (look.HeadLayer1 != null && TryGetKey(headAccessory, look.HeadLayer1, out key))
+            writer.AppendFormat("   {0}\n", key);
+        if (look.HeadLayer2 != null && TryGetKey(headAccessory, look.HeadLayer2, out key))
+            writer.AppendFormat("   {0}\n", key);
+        if (look.HeadLayer3 != null && TryGetKey(headAccessory, look.HeadLayer3, out key))
+            writer.AppendFormat("   {0}\n", key);
+        writer.AppendLine();
+
+        // Write hands
+        if (look.Hands != null && Registries.Armour.HandArmour.TryGetKeyFor(look.Hands, out key))
         {
-            // Write body
-            writer.WriteLine(BodyIdentifier);
-            if (Registries.Armour.Body.TryGetKeyFor(look.Body, out key) && !string.IsNullOrWhiteSpace(key))
-                writer.WriteLine("   {0}", key);
-            else
-                throw new Exceptions.SerialisationException("Attempt to save characterlook with a non-existent body");
-
-            if (look.BodyLayer1 != null && TryGetKey(bodyAccessory, look.BodyLayer1, out key))
-                writer.WriteLine("   {0}", key);
-            if (look.BodyLayer2 != null && TryGetKey(bodyAccessory, look.BodyLayer2, out key))
-                writer.WriteLine("   {0}", key);
-            writer.WriteLine();
-
-            // Write head
-            writer.WriteLine(HeadIdentifier);
-            if (Registries.Armour.Head.TryGetKeyFor(look.Head, out key) && !string.IsNullOrWhiteSpace(key))
-                writer.WriteLine("   {0}", key);
-            else
-                throw new Exceptions.SerialisationException("Attempt to save characterlook with a non-existent head");
-
-            if (look.HeadLayer1 != null && TryGetKey(headAccessory, look.HeadLayer1, out key))
-                writer.WriteLine("   {0}", key);
-            if (look.HeadLayer2 != null && TryGetKey(headAccessory, look.HeadLayer2, out key))
-                writer.WriteLine("   {0}", key);
-            if (look.HeadLayer3 != null && TryGetKey(headAccessory, look.HeadLayer3, out key))
-                writer.WriteLine("   {0}", key);
-            writer.WriteLine();
-
-            // Write hands
-            if (look.Hands != null && Registries.Armour.HandArmour.TryGetKeyFor(look.Hands, out key))
-            {
-                writer.Write(HandsIdentifier);
-                writer.Write(" ");
-                writer.WriteLine(key);
-            }
-
-            // Write flesh
-            if (look.HeadFlesh.HasValue)
-                writer.WriteLine("{0} {1}", HeadFleshIdentifier, look.HeadFlesh.Value.Id);    
-            if (look.BodyFlesh.HasValue)
-                writer.WriteLine("{0} {1}", BodyFleshIdentifier, look.BodyFlesh.Value.Id);
-
-            writer.Write(BloodIdentifier);
-            writer.Write(" ");
-            writer.WriteLine(look.BloodColour.ToHexCode());
-
-            if (look.BodyFlesh.HasValue && Assets.HasAsset(look.BodyFlesh.Value.Id))
-                writer.WriteLine("{0} {1}", BodyFleshIdentifier, look.BodyFlesh.Value.Id);
-
-            if (look.HeadFlesh.HasValue && Assets.HasAsset(look.HeadFlesh.Value.Id))
-                writer.WriteLine("{0} {1}", HeadFleshIdentifier, look.HeadFlesh.Value.Id);
+            writer.Append(HandsIdentifier);
+            writer.Append(' ');
+            writer.AppendLine(key);
         }
-        catch (Exception)
-        {
-            throw;
-        }
-        finally
-        {
-            writer.Dispose();
-        }
+
+        // Write flesh
+        if (look.HeadFlesh.HasValue)
+            writer.AppendFormat("{0} {1}\n", HeadFleshIdentifier, look.HeadFlesh.Value.Id);
+        if (look.BodyFlesh.HasValue)
+            writer.AppendFormat("{0} {1}\n", BodyFleshIdentifier, look.BodyFlesh.Value.Id);
+
+        writer.Append(BloodIdentifier);
+        writer.Append(' ');
+        writer.AppendLine(look.BloodColour.ToHexCode());
+
+        if (look.BodyFlesh.HasValue && Assets.HasAsset(look.BodyFlesh.Value.Id))
+            writer.AppendFormat("{0} {1}\n", BodyFleshIdentifier, look.BodyFlesh.Value.Id);
+
+        if (look.HeadFlesh.HasValue && Assets.HasAsset(look.HeadFlesh.Value.Id))
+            writer.AppendFormat("{0} {1}\n", HeadFleshIdentifier, look.HeadFlesh.Value.Id);
+
+        File.WriteAllText(path, writer.ToString());
     }
 
     private static bool TryGetKey<T2>(IRegistry<string, T2> registry, in T2 obj, out string? key) where T2 : class
@@ -224,7 +216,7 @@ public static class CharacterLookDeserialiser
             return deserialiser.Deserialise(s, assetMetadata.Path);
         }
 
-        public bool IsCandidate(in AssetMetadata assetMetadata) 
+        public bool IsCandidate(in AssetMetadata assetMetadata)
             => assetMetadata.Path.EndsWith(".look", StringComparison.InvariantCultureIgnoreCase);
     }
 }

@@ -9,7 +9,10 @@ namespace MIR;
 /// Their clothes, the color of their blood (like yellow for Soldats).
 /// </summary>
 public class CharacterLook
-{    
+{
+    public const int HeadLayerCount = 4;
+    public const int BodyLayerCount = 3;
+
     /// <summary>
     /// Display name
     /// </summary>
