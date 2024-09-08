@@ -53,7 +53,7 @@ public class BenchmarkSystem : Walgelijk.System
                 Audio.PlayOnce(Sounds.UiConfirm);
                 Logger.Log("Benchmark ended.");
 
-                ImprobabilityDisks.AutoSpawn = false;
+                AiCharacterSystem.AutoSpawn = false;
 
                 foreach (var item in Scene.GetAllComponentsOfType<CharacterComponent>())
                     if (Scene.HasTag(item.Entity, Tags.EnemyAI))

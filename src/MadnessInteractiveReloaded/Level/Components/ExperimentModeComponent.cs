@@ -23,7 +23,6 @@ public class ExperimentModeComponent : Component
     public bool ImprobabilityDisksOpen = false;
     public string WeaponFilter = string.Empty;
     public string MusicFilter = string.Empty;
-
     public PlayerTarget PlayerCameraTarget = new();
     public FreeMoveTarget FreeMoveCameraTarget = new();
 

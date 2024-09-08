@@ -35,7 +35,8 @@ public static class CampaignScene
             game.AudioRenderer.Play(l);
         }
 
-        ImprobabilityDisks.AutoSpawn = true;
+        AiCharacterSystem.DisableAI = false;
+        AiCharacterSystem.AutoSpawn = true;
 
         if (lvl.OpeningTransition)
             Prefabs.CreateSceneTransition(scene, Transition.Entry);

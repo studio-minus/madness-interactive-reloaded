@@ -35,7 +35,7 @@ public static class WeaponEditorTestScene
         scene.AddSystem(new EnemySpawningSystem());
         scene.AddSystem(new WeaponEditorTestSystem());
 
-        ImprobabilityDisks.AutoSpawn = true;
+        AiCharacterSystem.AutoSpawn = true;
 
         game.AudioRenderer.StopAll(AudioTracks.Music);
 
@@ -62,7 +62,7 @@ public static class CameraMovementTestScene
         scene.AddSystem(new EnemySpawningSystem());
         scene.AddSystem(new CameraMovementTestSystem());
 
-        ImprobabilityDisks.AutoSpawn = false;
+        AiCharacterSystem.AutoSpawn = false;
 
         game.AudioRenderer.StopAll();
 

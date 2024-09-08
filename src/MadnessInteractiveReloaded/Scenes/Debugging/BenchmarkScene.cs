@@ -16,9 +16,9 @@ public static class BenchmarkScene
 
         game.State.Time.TimeScale = 1;
         game.UpdateRate = 0;
-        ImprobabilityDisks.DisableAI = false;
+        AiCharacterSystem.DisableAI = false;
         //GameModifiers.InfiniteAmmoPlayer = true;
-        ImprobabilityDisks.AutoSpawn = true;
+        AiCharacterSystem.AutoSpawn = true;
         //GameModifiers.GodPlayer = true;
         game.DevelopmentMode = false;
 
