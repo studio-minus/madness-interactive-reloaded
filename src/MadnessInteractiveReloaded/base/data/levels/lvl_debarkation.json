@@ -15,7 +15,7 @@
   },
   "BodyCountToWin": 0,
   "TimeLimitInSeconds": -1.0,
-  "FullZoom": false,
+  "FullZoom": true,
   "Thumbnail": "textures/level_thumbnails/lvl_debarkation.qoi",
   "OpeningTransition": true,
   "ExitingTransition": true,
