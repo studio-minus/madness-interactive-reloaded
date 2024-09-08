@@ -28,23 +28,23 @@ public static class CharacterLookDeserialiser
         deserialiser.RegisterString(NameIdentifier, static (look, name) =>
         {
             look.Name = name;
-        });       
-        
+        });
+
         deserialiser.RegisterString(BloodIdentifier, static (look, bloodColour) =>
         {
             look.BloodColour = new Color(bloodColour.Trim());
-        });     
-        
+        });
+
         deserialiser.RegisterBool(JitterIdentifier, static (look, jitterFlag) =>
         {
             look.Jitter = jitterFlag;
         });
-              
+
         deserialiser.RegisterString(HeadFleshIdentifier, static (look, id) =>
         {
             look.HeadFlesh = new AssetRef<Texture>(id);
-        });    
-        
+        });
+
         deserialiser.RegisterString(BodyFleshIdentifier, static (look, id) =>
         {
             look.BodyFlesh = new AssetRef<Texture>(id);
@@ -122,7 +122,7 @@ public static class CharacterLookDeserialiser
     /// <exception cref="IOException"></exception>
     public static void Save(CharacterLook look, string path)
     {
-        using StreamWriter writer = new(path);
+        using StreamWriter writer = new(new MemoryStream());
         string? key = null;
 
         var bodyAccessory = Registries.Armour.BodyAccessory;
@@ -170,7 +170,7 @@ public static class CharacterLookDeserialiser
 
             // Write flesh
             if (look.HeadFlesh.HasValue)
-                writer.WriteLine("{0} {1}", HeadFleshIdentifier, look.HeadFlesh.Value.Id);    
+                writer.WriteLine("{0} {1}", HeadFleshIdentifier, look.HeadFlesh.Value.Id);
             if (look.BodyFlesh.HasValue)
                 writer.WriteLine("{0} {1}", BodyFleshIdentifier, look.BodyFlesh.Value.Id);
 
@@ -192,6 +192,9 @@ public static class CharacterLookDeserialiser
         {
             writer.Dispose();
         }
+
+        using var v = File.Open(path, FileMode.Create, FileAccess.ReadWrite);
+        writer.BaseStream.CopyTo(v);
     }
 
     private static bool TryGetKey<T2>(IRegistry<string, T2> registry, in T2 obj, out string? key) where T2 : class
@@ -224,7 +227,7 @@ public static class CharacterLookDeserialiser
             return deserialiser.Deserialise(s, assetMetadata.Path);
         }
 
-        public bool IsCandidate(in AssetMetadata assetMetadata) 
+        public bool IsCandidate(in AssetMetadata assetMetadata)
             => assetMetadata.Path.EndsWith(".look", StringComparison.InvariantCultureIgnoreCase);
     }
 }
