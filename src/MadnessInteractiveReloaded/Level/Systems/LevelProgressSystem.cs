@@ -25,7 +25,7 @@ public class LevelProgressSystem : Walgelijk.System
         if (!MadnessUtils.FindPlayer(Scene, out var player, out var playerCharacter))
             return;
 
-        if (!MadnessUtils.IsPaused(Scene))
+        if (MadnessUtils.IsPaused(Scene))
             return;
 
         var playerLives = playerCharacter.IsAlive && !player.IsDoingDyingSequence;
