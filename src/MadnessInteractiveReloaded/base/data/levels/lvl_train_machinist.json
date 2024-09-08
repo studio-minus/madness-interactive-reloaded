@@ -74,7 +74,7 @@
     {
       "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
       "Rectangle": {
-        "MinX": 1600.4515,
+        "MinX": 868.79675,
         "MinY": 217.36008,
         "MaxX": 1800.1963,
         "MaxY": 444.02853
