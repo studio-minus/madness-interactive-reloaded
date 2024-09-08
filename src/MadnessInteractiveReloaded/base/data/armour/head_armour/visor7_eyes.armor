@@ -8,4 +8,10 @@ texture-scale 1
 category Eyes
 detach False
 hidden False
+
+broken 
+	broken_visor7_1_eyes
+	broken_visor7_2_eyes
+	broken_visor7_3_eyes
 offset 2 -2
+
