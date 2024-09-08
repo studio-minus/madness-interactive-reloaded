@@ -53,7 +53,7 @@ public class CameraMovementSystem : Walgelijk.System
             totalWeight += state.Weight;
 
             state.Position = Utilities.NanFallback(state.Position);
-            state.OrthographicSize = float.Max(1, Utilities.NanFallback(state.OrthographicSize, 1));
+            state.OrthographicSize = float.Max(0.001f, Utilities.NanFallback(state.OrthographicSize, 1));
 
             p += state.Position * state.Weight;
             o += state.OrthographicSize * state.Weight;
@@ -104,7 +104,7 @@ public class CameraMovementSystem : Walgelijk.System
         movement.Offset = default;
 
         transform.Position = Utilities.NanFallback(movement.ComputedPosition + additionalOffset, default);
-        camera.OrthographicSize = float.Max(1, Utilities.NanFallback(movement.ComputedOrthographicSize, 1));
+        camera.OrthographicSize = float.Max(0.001f, Utilities.NanFallback(movement.ComputedOrthographicSize, 1));
 
         Audio.ListenerPosition = default; //new Vector3(transform.Position.X, transform.Position.Y, 100);
         Audio.SpatialMultiplier = 0;
