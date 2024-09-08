@@ -13,7 +13,7 @@
 		<Authors>Dikkiedik, zooi, Koof</Authors>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Nullable>enable</Nullable>
-		<SelfContained>true</SelfContained>
+		<!--<SelfContained>true</SelfContained>-->
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 		<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
 		<DebugType>embedded</DebugType>
