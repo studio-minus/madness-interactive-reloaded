@@ -9,6 +9,5 @@ public class TrainEngineComponent : Component
 {
     public HitEvent EventData;
     public bool HasExploded = false;
-
     public int Health = 4;
 }

@@ -26,7 +26,7 @@ public struct ContinuousGameplayScene
         //scene.AddSystem(new ExperimentModeSystem());
         //scene.AttachComponent(scene.CreateEntity(), new ExperimentModeComponent());
 
-        ImprobabilityDisks.AutoSpawn = false;
+        AiCharacterSystem.AutoSpawn = false;
 
         //var splitmek = SoundCache.Instance.LoadMusic(Resources.Load<AudioData>("music/apimadness.ogg"));
         //if (!game.AudioRenderer.IsPlaying(splitmek))

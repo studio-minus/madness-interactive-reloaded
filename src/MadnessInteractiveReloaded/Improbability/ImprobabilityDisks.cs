@@ -86,10 +86,6 @@ public static class ImprobabilityDisks
         .Where(p => IsEnabled(p.Key))
         .Select(p => p.Value);
 
-    // TODO put these somewhere else
-    public static bool DisableAI = false;
-    public static bool AutoSpawn = false;
-
     public static void Unlock(string id)
     {
         if (UserData.Instances.UnlockedImprobabilityDisks.Add(id))
@@ -126,13 +122,13 @@ public static class ImprobabilityDisks
         foreach (var item in All)
             b.AppendLine(item.Key);
         return b.ToString();
-    }  
- 
-    
+    }
+
+
     [Command(HelpString = "Unlock the improbability disk with the given ID, or \"all\" to unlock all disks.")]
     public static CommandResult UnlockDisk(string id)
     {
-        if (id.Equals("all",  System.StringComparison.InvariantCultureIgnoreCase))
+        if (id.Equals("all", System.StringComparison.InvariantCultureIgnoreCase))
         {
             foreach (var k in All.Keys)
                 Unlock(k);

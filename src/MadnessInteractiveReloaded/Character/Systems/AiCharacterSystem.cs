@@ -18,13 +18,16 @@ public class AiCharacterSystem : Walgelijk.System
     public const int MaxAiCount = 128;
     private readonly AiComponent[] aiBuffer = new AiComponent[MaxAiCount];
 
+    public static bool DisableAI = false;
+    public static bool AutoSpawn = false;
+
     // maak het zo dat enemies elkaar ontwijken
     // maak het zo dat enemies langzamer achteruit lopen dan vooruit
     // maak het zo dat enemies een beetje rondlopen als ze geen target hebben
 
     public override void Update()
     {
-        if (ImprobabilityDisks.DisableAI)
+        if (DisableAI)
             return;
 
         if (MadnessUtils.IsPaused(Scene) || MadnessUtils.IsCutscenePlaying(Scene))
@@ -236,7 +239,7 @@ public class AiCharacterSystem : Walgelijk.System
                 character.Positioning.HopStartingPosition = transform.Position.X;
             }
 
-            if ( !character.IsPlayingAnimation) // no need to check for animation constraint here because this wont pass if any animation is playing in the first place
+            if (!character.IsPlayingAnimation) // no need to check for animation constraint here because this wont pass if any animation is playing in the first place
                 character.Positioning.IsFlipped = !shouldBeDirectedRight;
 
             if (!Scene.HasComponent<ExitDoorComponent>(character.Entity))
@@ -328,7 +331,7 @@ public class AiCharacterSystem : Walgelijk.System
                                 if (killTargetChar.HasWeaponOfType(Scene, WeaponType.Melee))
                                     ai.WantsToIronSight.Value = Noise.GetValue(ai.Seed * 23.323f, 1, Time * 0.2f) > 0 && killTargetChar.IsPlayingAnimationGroup("melee");
                                 else
-                                    ai.WantsToIronSight.Value = Noise.GetValue(ai.Seed * -23.323f, ai.Seed, Time * 0.2f) > 0 && 
+                                    ai.WantsToIronSight.Value = Noise.GetValue(ai.Seed * -23.323f, ai.Seed, Time * 0.2f) > 0 &&
                                         (ai.PanicLevel > 0 || character.DodgeMeter < character.Stats.DodgeAbility) && equipped.Data.CanDeflectBullets;
                             }
                         }
@@ -469,7 +472,7 @@ public class AiCharacterSystem : Walgelijk.System
                             var barrel = WeaponSystem.GetBarrel(equipped, Scene.GetComponentFrom<TransformComponent>(equipped.Entity));
 
                             var lineOfSight = Scene.GetSystem<PhysicsSystem>().Raycast(
-                                barrel.position, barrel.direction, out var hit, 
+                                barrel.position, barrel.direction, out var hit,
                                 ignore: character.AttackIgnoreCollision.Concat(Scene.GetAllComponentsOfType<IgnoreLineOfSightComponent>().Select(static e => e.Entity)));
                             // TODO is this... slow?
 

@@ -47,7 +47,7 @@ public class ExperimentModeSystem : Walgelijk.System
             }
         }
 
-        ImprobabilityDisks.AutoSpawn = ExperimentModePersistentData.AutoSpawn;
+        AiCharacterSystem.AutoSpawn = ExperimentModePersistentData.AutoSpawn;
     }
 
     public override void OnDeactivate()
@@ -61,7 +61,7 @@ public class ExperimentModeSystem : Walgelijk.System
         if (Scene.FindAnyComponent<EnemySpawningComponent>(out var sp))
             ExperimentModePersistentData.SpawningComponent = sp.Clone() as EnemySpawningComponent;
 
-        ExperimentModePersistentData.AutoSpawn = ImprobabilityDisks.AutoSpawn;
+        ExperimentModePersistentData.AutoSpawn = AiCharacterSystem.AutoSpawn;
     }
 
     public override void Update()
@@ -75,6 +75,11 @@ public class ExperimentModeSystem : Walgelijk.System
         if (!Scene.FindAnyComponent<PlayerComponent>(out var player) ||
             !Scene.TryGetComponentFrom<CharacterComponent>(player.Entity, out var playerCharacter) || playerCharacter == null)
             return;
+
+        // (duston): Set this here because we want the campaign's AI disabled parameter completely split from this
+        // while also having a persistent experiment mode parameter so it's not reset every time you go back to exp mode.
+        // But it also needs to change when the persistentdata's paramter changes :)
+        AiCharacterSystem.DisableAI = ExperimentModePersistentData.AIDisabled;
 
         if (Input.IsKeyReleased(Key.Tab) && playerCharacter.IsAlive)
             if (exp.IsEditMode)
@@ -319,7 +324,7 @@ public class ExperimentModeSystem : Walgelijk.System
             }
             Ui.End();
 
-            if (ImprobabilityDisks.AutoSpawn && exp.AutoSpawnSettingsOpen && Scene.FindAnyComponent<EnemySpawningComponent>(out var spawning))
+            if (AiCharacterSystem.AutoSpawn && exp.AutoSpawnSettingsOpen && Scene.FindAnyComponent<EnemySpawningComponent>(out var spawning))
                 ProcessAutospawnWindow(exp, spawning);
 
             if (exp.ImprobabilityDisksOpen)
@@ -623,11 +628,11 @@ public class ExperimentModeSystem : Walgelijk.System
             //Ui.Checkbox(ref GameModifiers.InfiniteAmmoPlayer, "Infinite ammo");
 
             Ui.Layout.Height(controlHeight).FitWidth().StickLeft();
-            Ui.Checkbox(ref ImprobabilityDisks.DisableAI, "AI disabled");
+            Ui.Checkbox(ref ExperimentModePersistentData.AIDisabled, "AI disabled");
 
             Ui.Layout.Height(controlHeight).FitWidth().StickLeft();
-            Ui.Checkbox(ref ImprobabilityDisks.AutoSpawn, Localisation.Get("experiment-autospawn"));
-            if (ImprobabilityDisks.AutoSpawn)
+            Ui.Checkbox(ref AiCharacterSystem.AutoSpawn, Localisation.Get("experiment-autospawn"));
+            if (AiCharacterSystem.AutoSpawn)
             {
                 Ui.Layout.Height(controlHeight).FitWidth().StickLeft();
                 if (Ui.ClickButton("Configure autospawn..."))

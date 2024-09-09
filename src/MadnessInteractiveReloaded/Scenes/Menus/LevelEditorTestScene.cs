@@ -41,7 +41,7 @@ public static class LevelEditorTestScene
             scene.AddSystem(new ExperimentModeSystem());
         }
 
-        ImprobabilityDisks.AutoSpawn = true;
+        AiCharacterSystem.AutoSpawn = true;
 
         Prefabs.CreateSceneTransition(scene, Transition.Entry);
 

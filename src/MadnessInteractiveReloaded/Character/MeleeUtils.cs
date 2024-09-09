@@ -267,7 +267,7 @@ public static class MeleeUtils
                     var addedVelocity = actor.AimDirection * float.Max(0.5f, actor.Stats.MeleeKnockback);
                     addedVelocity.Y *= 1.5f;
 
-                    var handVel = actor.Positioning.Hands.First.PreviousAnimatedPosition - actor.Positioning.Hands.First.PreviousAnimatedPosition;
+                    var handVel = actor.Positioning.Hands.First.AnimationPosition - actor.Positioning.Hands.First.PreviousAnimatedPosition;
 
                     addedVelocity += handVel * 2;
                     MadnessUtils.TurnIntoRagdoll(scene, victim, addedVelocity);

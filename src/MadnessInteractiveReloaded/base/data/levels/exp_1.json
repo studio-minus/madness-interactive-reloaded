@@ -154,7 +154,7 @@
         "Y": 249.4029
       },
       "TexturePath": "textures/backgrounds/experiment_1.qoi",
-      "Scale": 2.222222
+      "Scale": 2.96295
     },
     {
       "$type": "MIR.LevelEditor.Objects.EnemySpawner, MIR",

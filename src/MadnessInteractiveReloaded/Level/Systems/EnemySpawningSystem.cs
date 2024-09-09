@@ -44,7 +44,7 @@ public class EnemySpawningSystem : Walgelijk.System
         bool hasWon = hasLevelProgress && (lvlProgress?.CanProgress ?? false);
 
         if (!hasWon &&
-            ImprobabilityDisks.AutoSpawn &&
+            AiCharacterSystem.AutoSpawn &&
             spawningComponent.SpawnTimer > spawningComponent.Interval &&
             (!hasPlayer || (playerChar != null /*&& !playerChar.IsLowOnDodge()*/ && playerChar.IsAlive)))
         {
@@ -102,7 +102,7 @@ public class EnemySpawningSystem : Walgelijk.System
         {
             var instr = GetEnemySpawnInstructions(enemies);
             if (instr != null)
-            Spawn(weaponChance, weapons, instr, spawnPoint, door);
+                Spawn(weaponChance, weapons, instr, spawnPoint, door);
 
             if (amount > 1)
                 yield return new GameSafeRoutineDelay(Utilities.RandomFloat(0.1f, .4f));
