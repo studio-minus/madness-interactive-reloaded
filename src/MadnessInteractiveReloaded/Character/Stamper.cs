@@ -37,17 +37,19 @@ public static class Stamper
 
             Array.Sort(stamps, 0, c, new StampComparer());
 
-            var graphics = scene.Game.Window.Graphics;
-            canvas.PrepareForDrawing(graphics);
+            scene.Game.RenderQueue.Add(new GroupRenderTask(stamps));
 
-            for (int i = 0; i < c; i++)
-            {
-                var stamp = stamps[i];
-                stamp.Task.Execute(graphics);
-            }
+            //var graphics = scene.Game.Window.Graphics;
+            //canvas.PrepareForDrawing(graphics);
 
-            canvas.EndDrawing(graphics);
-            ArrayPool<Stamped>.Shared.Return(stamps, true);
+            //for (int i = 0; i < c; i++)
+            //{
+            //    var stamp = stamps[i];
+            //    stamp.Task.Execute(graphics);
+            //}
+
+            //canvas.EndDrawing(graphics);
+            //ArrayPool<Stamped>.Shared.Return(stamps, true);
         }
     }
 

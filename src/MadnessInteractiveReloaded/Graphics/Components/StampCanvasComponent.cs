@@ -44,52 +44,52 @@ public class StampCanvasComponent : Component, IDisposable
         StampTexture.ProjectionMatrix = Matrix4x4.CreateOrthographic(Width, Height, 0, 1);
     }
 
-    /// <summary>
-    /// Submit things to be stamped.
-    /// </summary>
-    /// <param name="graphics"></param> 
-    public void PrepareForDrawing(IGraphics graphics)
-    {
-        // TODO this is actually completely broken!!
-        // we should never forcefully reset the renderqueue, but instead
-        // submit a new render task to the queue that does everything we want to do
+    ///// <summary>
+    ///// Submit things to be stamped.
+    ///// </summary>
+    ///// <param name="graphics"></param> 
+    //public void PrepareForDrawing(IGraphics graphics)
+    //{
+    //    // TODO this is actually completely broken!!
+    //    // we should never forcefully reset the renderqueue, but instead
+    //    // submit a new render task to the queue that does everything we want to do
 
-        Game.Main.RenderQueue.RenderAndReset(graphics);
-        Draw.Reset();
-        Draw.ScreenSpace = true;
-        graphics.CurrentTarget = StampTexture;
-    }
+    //    Game.Main.RenderQueue.RenderAndReset(graphics);
+    //    Draw.Reset();
+    //    Draw.ScreenSpace = true;
+    //    graphics.CurrentTarget = StampTexture;
+    //}
 
-    /// <summary>
-    /// End the block of stamps.
-    /// </summary>
-    /// <param name="graphics"></param>
-    public void EndDrawing(IGraphics graphics)
-    {
-        Game.Main.RenderQueue.RenderAndReset(graphics);
-        graphics.CurrentTarget = Game.Main.Window.RenderTarget;
-    }
+    ///// <summary>
+    ///// End the block of stamps.
+    ///// </summary>
+    ///// <param name="graphics"></param>
+    //public void EndDrawing(IGraphics graphics)
+    //{
+    //    Game.Main.RenderQueue.RenderAndReset(graphics);
+    //    graphics.CurrentTarget = Game.Main.Window.RenderTarget;
+    //}
 
-    public void Clear(IGraphics graphics)
-    {
-        PrepareForDrawing(graphics);
-        graphics.Clear(Colors.Transparent);
-        EndDrawing(graphics);
-    }
+    //public void Clear(IGraphics graphics)
+    //{
+    //    PrepareForDrawing(graphics);
+    //    graphics.Clear(Colors.Transparent);
+    //    EndDrawing(graphics);
+    //}
 
-    public void DrawTask(IGraphics graphics, IRenderTask task)
-    {
-        PrepareForDrawing(graphics);
-        task.Execute(graphics);
-        EndDrawing(graphics);
-    }
+    //public void DrawTask(IGraphics graphics, IRenderTask task)
+    //{
+    //    PrepareForDrawing(graphics);
+    //    task.Execute(graphics);
+    //    EndDrawing(graphics);
+    //}
 
-    public void DrawShape(IGraphics graphics, ShapeComponent shape)
-    {
-        PrepareForDrawing(graphics);
-        shape.RenderTask.Execute(graphics);
-        EndDrawing(graphics);
-    }
+    //public void DrawShape(IGraphics graphics, ShapeComponent shape)
+    //{
+    //    PrepareForDrawing(graphics);
+    //    shape.RenderTask.Execute(graphics);
+    //    EndDrawing(graphics);
+    //}
 
     public void Dispose()
     {
