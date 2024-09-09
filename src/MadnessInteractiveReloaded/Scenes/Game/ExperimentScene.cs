@@ -46,7 +46,7 @@ public static class ExperimentScene
         scene.AddSystem(new DjSystem());
         scene.AttachComponent(scene.CreateEntity(), new ExperimentModeComponent());
 
-        ImprobabilityDisks.AutoSpawn = false;
+        AiCharacterSystem.AutoSpawn = false;
         Prefabs.CreateSceneTransition(scene, Transition.Entry);
 
         return scene;
@@ -78,7 +78,7 @@ public static class ArenaScene
 
         var waves = c.Waves.Value;
 
-        ImprobabilityDisks.AutoSpawn = false;
+        AiCharacterSystem.AutoSpawn = false;
         Prefabs.CreateSceneTransition(scene, Transition.Entry);
 
         return scene;

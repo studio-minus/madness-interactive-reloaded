@@ -131,14 +131,14 @@ public static class MadnessCommands
     [Command(HelpString = "Disables the enemy AI")]
     public static CommandResult DisableAI()
     {
-        ImprobabilityDisks.DisableAI = true;
+        AiCharacterSystem.DisableAI = true;
         return "AI disabled";
     }
 
     [Command(HelpString = "Enables the enemy AI")]
     public static CommandResult EnableAI()
     {
-        ImprobabilityDisks.DisableAI = false;
+        AiCharacterSystem.DisableAI = false;
         return "AI enabled";
     }
 
@@ -176,8 +176,8 @@ public static class MadnessCommands
     [Command(HelpString = "Sets autospawn")]
     public static CommandResult Autospawn(bool enabled)
     {
-        ImprobabilityDisks.AutoSpawn = enabled;
-        return ImprobabilityDisks.AutoSpawn ? "Autospawn enabled" : "Autospawn disabled";
+        AiCharacterSystem.AutoSpawn = enabled;
+        return AiCharacterSystem.AutoSpawn ? "Autospawn enabled" : "Autospawn disabled";
     }
 
     [Command(HelpString = "Refill ammo, health, and dodge")]
@@ -325,7 +325,7 @@ public static class MadnessCommands
             weapon.Wielder = new ComponentRef<CharacterComponent>(player.Entity);
         }
 
-        game.AudioRenderer.PlayOnce(Sounds.Conjure, 0.25f, 1 , AudioTracks.UserInterface);
+        game.AudioRenderer.PlayOnce(Sounds.Conjure, 0.25f, 1, AudioTracks.UserInterface);
         return "Higher powers granted you a " + name;
     }
 
