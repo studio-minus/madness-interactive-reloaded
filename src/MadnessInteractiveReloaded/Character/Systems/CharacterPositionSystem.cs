@@ -1,5 +1,6 @@
 ﻿using System.Numerics;
 using Walgelijk;
+using Walgelijk.AssetManager;
 using Walgelijk.Physics;
 
 namespace MIR;
@@ -73,10 +74,14 @@ public class CharacterPositionSystem : Walgelijk.System
         headRenderer.RenderOrder = character.BaseRenderOrder.WithOrder(CharacterConstants.RenderOrders.HeadBaseOrder);
         if (lookUpdate)
         {
-            var tex = charPos.IsFlipped ? character.Look.Head.Left.Value : character.Look.Head.Right.Value;
-            headRenderer.Material.SetUniform(ShaderDefaults.MainTextureUniform, tex);
-            headRenderer.Color = character.Tint;
-            Scene.GetComponentFrom<TransformComponent>(headRenderer.Entity).Scale = tex.Size * charPos.Scale * character.Look.Head.TextureScale;
+            var tex = charPos.IsFlipped ? character.Look.Head.Left : character.Look.Head.Right;
+            if (tex.IsValid && Assets.HasAsset(tex.Id))
+            {
+                var v = tex.Value;
+                headRenderer.Material.SetUniform(ShaderDefaults.MainTextureUniform, v);
+                headRenderer.Color = character.Tint;
+                Scene.GetComponentFrom<TransformComponent>(headRenderer.Entity).Scale = v.Size * charPos.Scale * character.Look.Head.TextureScale;
+            }
         }
 
         // body renderer
@@ -85,10 +90,14 @@ public class CharacterPositionSystem : Walgelijk.System
         bodyRenderer.RenderOrder = character.BaseRenderOrder.WithOrder(CharacterConstants.RenderOrders.BodyBaseOrder);
         if (lookUpdate)
         {
-            var tex = charPos.IsFlipped ? character.Look.Body.Left.Value : character.Look.Body.Right.Value;
-            bodyRenderer.Material.SetUniform(ShaderDefaults.MainTextureUniform, tex);
-            bodyRenderer.Color = character.Tint;
-            Scene.GetComponentFrom<TransformComponent>(bodyRenderer.Entity).Scale = tex.Size * charPos.Scale * character.Look.Body.TextureScale;
+            var tex = charPos.IsFlipped ? character.Look.Body.Left : character.Look.Body.Right;
+            if (tex.IsValid && Assets.HasAsset(tex.Id))
+            {
+                var v = tex.Value;
+                bodyRenderer.Material.SetUniform(ShaderDefaults.MainTextureUniform, v);
+                bodyRenderer.Color = character.Tint;
+                Scene.GetComponentFrom<TransformComponent>(bodyRenderer.Entity).Scale = v.Size * charPos.Scale * character.Look.Body.TextureScale;
+            }
         }
 
         // hand renderers
