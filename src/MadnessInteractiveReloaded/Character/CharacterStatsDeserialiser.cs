@@ -78,6 +78,7 @@ public static class CharacterStatsDeserialiser
             writer.WriteLine("accurate_shot_chance {0}", stats.AccurateShotChance);
             writer.WriteLine("dodge {0}", stats.DodgeAbility);
             writer.WriteLine("melee {0}", stats.MeleeSkill);
+            writer.WriteLine("melee_knockback {0}", stats.MeleeKnockback);
             writer.WriteLine("panic {0}", stats.PanicIntensity);
             writer.WriteLine("head_health {0}", stats.HeadHealth);
             writer.WriteLine("body_health {0}", stats.BodyHealth);
