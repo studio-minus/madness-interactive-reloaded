@@ -15,7 +15,6 @@ public class MachinistLevelSystem : Walgelijk.System
 {
     public override void Initialise()
     {
-
         if (Scene.TryGetEntityWithTag(Tags.TrainEngine, out var trainEngineEntity))
         {
             var isShot = Scene.AttachComponent(trainEngineEntity, new IsShotTriggerComponent());
@@ -23,57 +22,65 @@ public class MachinistLevelSystem : Walgelijk.System
 
             isShot.Event.AddListener(OnHit);
 
+            void explode()
+            {
+                //nu is het tijd om te ontploffen
+                engine.HasExploded = true;
+                Prefabs.CreateTrainExplosion(Scene, new Vector2(883.6808f, -100.45358f));
+
+                {
+                    var overlayEntity = Scene.CreateEntity();
+                    var transform = Scene.AttachComponent(overlayEntity, new TransformComponent());
+                    var quad = Scene.AttachComponent(overlayEntity, new QuadShapeComponent(false));
+                    var tex = Assets.Load<Texture>("textures/backgrounds/background_train_machinist_b.qoi");
+                    quad.Material = SpriteMaterialCreator.Instance.Load(tex.Value); //TODO unload at some point?
+                    quad.RenderTask.Material = quad.Material;
+
+                    Assets.AssignLifetime(tex.Id, new SceneLifetimeOperator());
+                    Assets.LinkDisposal(tex.Id, quad.Material);
+
+                    quad.RenderOrder = RenderOrders.BackgroundBehind.WithOrder(1);
+
+                    transform.Position = new Vector2(-40, -632);
+                    transform.Scale = tex.Value.Size * MadnessConstants.BackgroundSizeRatio;
+                }
+
+                Prefabs.CreateFire(Scene, new Vector2(1088, -43), 0);
+                Prefabs.CreateFire(Scene, new Vector2(775, -380), 1);
+
+                var allBulletHoles = Scene.GetAllComponentsOfType<TrainEngineBulletHoleComponent>().ToArray();
+                foreach (var b in allBulletHoles)
+                    Scene.RemoveEntity(b.Entity);
+
+                if (!Scene.HasSystem<LevelEditorTestSystem>())
+                    MadnessUtils.DelayPausable(2, () =>
+                    {
+                        // (duston): Use Game.Main.Scene instead because the System's Scene reference could be stale (and *will be* like when exiting to the main menu/changing levels before the engine explodes)
+                        if (Game.Main.Scene.HasSystem<MachinistLevelSystem>() && Game.Main.Scene.HasSystem<LevelProgressSystem>()) // are we still where we want to be?
+                        {
+                            var levelProgress = Scene.GetSystem<LevelProgressSystem>();
+                            levelProgress.Win();
+                            levelProgress.TransitionToNextLevel();
+                        }
+                    });
+            }
+
             void OnHit(HitEvent e)
             {
                 if (engine.HasExploded)
                     return;
 
-                if ((e.Weapon != null && e.Weapon.Data.WeaponType is WeaponType.Firearm && e.Weapon.HasRoundsLeft))
+
+                if (e.Weapon != null && e.Weapon.Data.WeaponType is WeaponType.Firearm && e.Weapon.HasRoundsLeft)
                 {
                     Prefabs.CreateTrainEngineBulletHole(Scene, e.Point, e.Normal);
+                    engine.Health -= 1;
+
+                    if (ImprobabilityDisks.IsEnabled("infinite_ammo") && engine.Health <= 0)
+                        explode();
                 }
                 else
-                {
-                    //nu is het tijd om te ontploffen
-                    engine.HasExploded = true;
-                    Prefabs.CreateTrainExplosion(Scene, new Vector2(883.6808f, -100.45358f));
-
-                    {
-                        var overlayEntity = Scene.CreateEntity();
-                        var transform = Scene.AttachComponent(overlayEntity, new TransformComponent());
-                        var quad = Scene.AttachComponent(overlayEntity, new QuadShapeComponent(false));
-                        var tex = Assets.Load<Texture>("textures/backgrounds/background_train_machinist_b.qoi");
-                        quad.Material = SpriteMaterialCreator.Instance.Load(tex.Value); //TODO unload at some point?
-                        quad.RenderTask.Material = quad.Material;
-
-                        Assets.AssignLifetime(tex.Id, new SceneLifetimeOperator());
-                        Assets.LinkDisposal(tex.Id, quad.Material);
-
-                        quad.RenderOrder = RenderOrders.BackgroundBehind.WithOrder(1);
-
-                        transform.Position = new Vector2(-40, -632);
-                        transform.Scale = tex.Value.Size * MadnessConstants.BackgroundSizeRatio;
-                    }
-
-                    Prefabs.CreateFire(Scene, new Vector2(1088, -43), 0);
-                    Prefabs.CreateFire(Scene, new Vector2(775, -380), 1);
-
-                    var allBulletHoles = Scene.GetAllComponentsOfType<TrainEngineBulletHoleComponent>().ToArray();
-                    foreach (var b in allBulletHoles)
-                        Scene.RemoveEntity(b.Entity);
-
-                    if (!Scene.HasSystem<LevelEditorTestSystem>())
-                        MadnessUtils.DelayPausable(2, () =>
-                        {
-                            // (duston): Use Game.Main.Scene instead because the System's Scene reference could be stale (and *will be* like when exiting to the main menu/changing levels before the engine explodes)
-                            if (Game.Main.Scene.HasSystem<MachinistLevelSystem>() && Game.Main.Scene.HasSystem<LevelProgressSystem>()) // are we still where we want to be?
-                            {
-                                var levelProgress = Scene.GetSystem<LevelProgressSystem>();
-                                levelProgress.Win();
-                                levelProgress.TransitionToNextLevel();
-                            }
-                        });
-                }
+                    explode();
             }
         }
     }
