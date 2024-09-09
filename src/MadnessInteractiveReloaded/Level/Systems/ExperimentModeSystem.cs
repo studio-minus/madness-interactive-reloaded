@@ -18,7 +18,7 @@ namespace MIR;
 /// </summary>
 public class ExperimentModeSystem : Walgelijk.System
 {
-    public const float MenuWidth = 300;
+    public const float MenuWidth = 375;
     public const float TabBarHeight = 60;
     public const float ControlBlockHeight = 256;
 
@@ -558,14 +558,18 @@ public class ExperimentModeSystem : Walgelijk.System
 
                 if (spawning.WeaponsToSpawnWith != null)
                 {
-                    Ui.Layout.FitWidth().Height(35).StickLeft().StickTop();
+                    Ui.Layout.FitWidth().Height(35).StickLeft().StickTop().HorizontalLayout();
                     Ui.StartGroup();
                     {
-                        Ui.Layout.FitContainer(0.5f, 1).StickLeft().StickTop();
+                        Ui.Layout.FitContainer(0.33f, 1).StickTop();
+                        if (Ui.Button("All weapons"))
+                            spawning.WeaponsToSpawnWith = [.. Registries.Weapons.GetAllValues().Select(t => t.Id)];
+
+                        Ui.Layout.FitContainer(0.33f, 1).StickTop();
                         if (Ui.Button("Only melee"))
                             spawning.WeaponsToSpawnWith = [.. Registries.Weapons.GetAllValues().Where(t => t.WeaponData.WeaponType is WeaponType.Melee).Select(t => t.Id)];
 
-                        Ui.Layout.FitContainer(0.5f, 1).StickRight().StickTop();
+                        Ui.Layout.FitContainer(0.33f, 1).StickTop();
                         if (Ui.Button("Only firearms"))
                             spawning.WeaponsToSpawnWith = [.. Registries.Weapons.GetAllValues().Where(t => t.WeaponData.WeaponType is WeaponType.Firearm).Select(t => t.Id)];
                     }
