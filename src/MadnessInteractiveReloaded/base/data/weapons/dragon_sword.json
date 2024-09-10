@@ -2,7 +2,7 @@
   "Id": "dragon_sword",
   "WeaponData": {
     "Name": "Dragon Sword",
-    "Damage": 5.0,
+    "Damage": 1.0,
     "UseDelay": 0.0,
     "MaxHandRangeMultiplier": 1.0,
     "AdditionalComponents": null,
