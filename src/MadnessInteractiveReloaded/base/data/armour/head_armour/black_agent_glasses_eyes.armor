@@ -2,8 +2,8 @@
 
 name Agent glasses
 type HeadAccessory
-left base:textures/bodies/eyes/black_agent_glasses/black_agent_glasses_left.png
-right base:textures/bodies/eyes/black_agent_glasses/black_agent_glasses_right.png
+left textures/bodies/eyes/black_agent_glasses/black_agent_glasses_left.png
+right textures/bodies/eyes/black_agent_glasses/black_agent_glasses_right.png
 texture-scale 1
 category Eyes
 detach True

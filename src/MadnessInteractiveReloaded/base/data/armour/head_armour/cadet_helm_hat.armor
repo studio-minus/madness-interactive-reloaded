@@ -2,8 +2,8 @@
 
 name Cadet helm
 type HeadAccessory
-left base:textures/bodies/hats/cadet_helm/cadet_helm_left.png
-right base:textures/bodies/hats/cadet_helm/cadet_helm_right.png
+left textures/bodies/hats/cadet_helm/cadet_helm_left.png
+right textures/bodies/hats/cadet_helm/cadet_helm_right.png
 texture-scale 1
 category Hat
 detach False

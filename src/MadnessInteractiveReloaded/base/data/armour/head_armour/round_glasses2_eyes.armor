@@ -2,8 +2,8 @@
 
 name Black round glasses
 type HeadAccessory
-left base:textures/bodies/eyes/round_glasses2/round_glasses2_left.png
-right base:textures/bodies/eyes/round_glasses2/round_glasses2_right.png
+left textures/bodies/eyes/round_glasses2/round_glasses2_left.png
+right textures/bodies/eyes/round_glasses2/round_glasses2_right.png
 texture-scale 1
 category Eyes
 detach True
