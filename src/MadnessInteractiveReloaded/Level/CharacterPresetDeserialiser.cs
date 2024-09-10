@@ -4,6 +4,7 @@ using System;
 using System.Buffers.Text;
 using System.Globalization;
 using System.IO;
+using System.Text;
 
 namespace MIR;
 
@@ -51,26 +52,26 @@ public static class CharacterPresetDeserialiser
 
     public static void Save(string name, CharacterLook look, CharacterStats stats, string path)
     {
-        using var writer = new StreamWriter(path);
-        writer.WriteLine(GameVersion.Version.ToString());
-        writer.WriteLine("name {0}", name);
+        var writer = new StringBuilder();
+        writer.AppendLine(GameVersion.Version.ToString());
+        writer.AppendLineFormat("name {0}", name);
         if (Registries.Looks.TryGetKeyFor(look, out var k))
-            writer.WriteLine("look {0}", k);
+            writer.AppendLineFormat("look {0}", k);
         else
         {
             var f = Path.GetTempFileName();
             CharacterLookDeserialiser.Save(look, f);
-            writer.WriteLine("look {0}", dataPrefix + Convert.ToBase64String(File.ReadAllBytes(f)));
+            writer.AppendLineFormat("look {0}", dataPrefix + Convert.ToBase64String(File.ReadAllBytes(f)));
         }
 
         if (Registries.Stats.TryGetKeyFor(stats, out k))
-            writer.WriteLine("stats {0}", k);
+            writer.AppendLineFormat("stats {0}", k);
         else
         {
             var f = Path.GetTempFileName();
             CharacterStatsDeserialiser.Save(stats, f);
-            writer.WriteLine("stats {0}", dataPrefix + Convert.ToBase64String(File.ReadAllBytes(f)));
+            writer.AppendLineFormat("stats {0}", dataPrefix + Convert.ToBase64String(File.ReadAllBytes(f)));
         }
-        writer.Dispose();
+        File.WriteAllText(path, writer.ToString());
     }
 }

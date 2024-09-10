@@ -8,6 +8,7 @@ namespace MIR;
 /// <summary>
 /// The result of the performance benchmark.
 /// </summary>
+[Obsolete]
 public class BenchmarkResult
 {
     /// <summary>
