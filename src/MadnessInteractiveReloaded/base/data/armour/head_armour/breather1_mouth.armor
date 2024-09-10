@@ -1,12 +1,12 @@
-0.37.1
+0.48.5
 
 name Breather 1
 type HeadAccessory
-left textures/bodies/mouth/breather1/breather1_left.png
-right textures/bodies/mouth/breather1/breather1_right.png
+left base:textures/bodies/mouth/breather1/breather1_left.png
+right base:textures/bodies/mouth/breather1/breather1_right.png
 texture-scale 1
 category Mask
 detach False
 hidden False
-offset-left 4 62
-offset-right 9 76
+offset-left 5 62
+offset-right 11 76
