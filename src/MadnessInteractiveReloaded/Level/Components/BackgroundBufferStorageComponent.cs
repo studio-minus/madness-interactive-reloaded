@@ -15,7 +15,10 @@ public sealed class BackgroundBufferStorageComponent : Component, IDisposable
     public BackgroundBufferStorageComponent(RenderTexture buffer)
     {
         Buffer = buffer;
-        Material = new Material(new Shader(ShaderDefaults.WorldSpaceVertex, Assets.Load<string>("shaders/decal-mask.frag").Value));
+        Material = new Material(new Shader(ShaderDefaults.WorldSpaceVertex, Assets.Load<string>("shaders/decal-mask.frag").Value))
+        {
+            BlendMode = BlendMode.Overwrite,
+        };
     }
 
     public void Dispose()

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 namespace MIR.Serialisation;
 
@@ -43,18 +44,21 @@ public static class BaseDeserialiser
     /// <param name="writer"></param>
     /// <param name="lines"></param>
     /// <returns></returns>
-    public static bool Write(StreamWriter writer, IEnumerable<string> lines)
+    public static bool Write(string path, IEnumerable<string> lines)
     {
-        writer.WriteLine(GameVersion.Version);
-        writer.WriteLine();
+        var writer = new StringBuilder();
+        writer.AppendLine(GameVersion.Version.ToString());
+        writer.AppendLine();
 
         foreach (var l in lines)
         {
             if (l == null || string.IsNullOrWhiteSpace(l))
                 continue;
 
-            writer.WriteLine(l.Trim());
+            writer.AppendLineFormat(l.Trim());
         }
+
+        File.WriteAllText(path, writer.ToString());
 
         return true;
     }

@@ -180,9 +180,7 @@ public class KeyValueDeserialiser<T> where T : class, new()
         foreach (var kvp in kvps)
             lines.Add(string.Format("{0} {1}", kvp.Key, kvp.Value));
         
-        using var writer = new StreamWriter(path, false);
-        BaseDeserialiser.Write(writer, lines);
-        writer.Close();
+        BaseDeserialiser.Write(path, lines);
         return true;
     }
 
