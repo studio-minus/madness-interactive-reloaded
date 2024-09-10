@@ -143,12 +143,28 @@ public static class Sounds
     {
         SpatialSfx("sounds/sword/blade_generic_impact_1.wav"),
         SpatialSfx("sounds/sword/blade_generic_impact_2.wav"),
+        SpatialSfx("sounds/sword/blade_generic_impact_3.wav"),
+        SpatialSfx("sounds/sword/blade_generic_impact_4.wav"),
+        SpatialSfx("sounds/sword/blade_generic_impact_5.wav"),
+        SpatialSfx("sounds/sword/blade_generic_impact_6.wav"),
+        SpatialSfx("sounds/sword/blade_generic_impact_7.wav"),
+        SpatialSfx("sounds/sword/blade_generic_impact_8.wav"),
+        SpatialSfx("sounds/sword/blade_generic_impact_9.wav"),
+        SpatialSfx("sounds/sword/blade_generic_impact_10.wav"),
     };
 
     public static readonly Sound[] LivingSwordHit =
     {
         GenericSwordHit[0],
         GenericSwordHit[1],
+        GenericSwordHit[2],
+        GenericSwordHit[3],
+        GenericSwordHit[4],
+        GenericSwordHit[5],
+        GenericSwordHit[6],
+        GenericSwordHit[7],
+        GenericSwordHit[8],
+        GenericSwordHit[9],
         SpatialSfx("sounds/sword/blade_living_impact_1.wav"),
         SpatialSfx("sounds/sword/blade_living_impact_2.wav"),
     };
