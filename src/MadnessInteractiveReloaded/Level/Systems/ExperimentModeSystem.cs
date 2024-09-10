@@ -832,7 +832,7 @@ public class ExperimentModeSystem : Walgelijk.System
     {
         // Clear the stamped stuff
         if (Level.CurrentLevel != null && Scene.FindAnyComponent<StampCanvasComponent>(out var canvas))
-            canvas.Clear(Graphics);
+            canvas.Clear(RenderQueue);
 
         // Delete all the other characters
         var characters = Scene.GetAllComponentsOfType<CharacterComponent>().ToArray();

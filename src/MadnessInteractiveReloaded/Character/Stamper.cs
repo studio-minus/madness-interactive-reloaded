@@ -1,8 +1,9 @@
-﻿using System;
+﻿using SkiaSharp;
+using System;
 using System.Buffers;
 using System.Collections.Generic;
+using System.Numerics;
 using Walgelijk;
-using Walgelijk.Physics;
 using Walgelijk.SimpleDrawing;
 
 namespace MIR;
@@ -37,19 +38,11 @@ public static class Stamper
 
             Array.Sort(stamps, 0, c, new StampComparer());
 
-            scene.Game.RenderQueue.Add(new GroupRenderTask(stamps));
-
-            //var graphics = scene.Game.Window.Graphics;
-            //canvas.PrepareForDrawing(graphics);
-
-            //for (int i = 0; i < c; i++)
-            //{
-            //    var stamp = stamps[i];
-            //    stamp.Task.Execute(graphics);
-            //}
-
-            //canvas.EndDrawing(graphics);
-            //ArrayPool<Stamped>.Shared.Return(stamps, true);
+            for (int i = 0; i < c; i++)
+            {
+                var stamp = stamps[i];
+                scene.Game.RenderQueue.Add(canvas.CreateStampTask(stamp.Task), stamp.RenderOrder);
+            }
         }
     }
 
@@ -60,12 +53,8 @@ public static class Stamper
     {
         if (scene.FindAnyComponent<StampCanvasComponent>(out var canvas))
         {
-            Stamped s = new(shape);
-
-            var graphics = scene.Game.Window.Graphics;
-            canvas.PrepareForDrawing(graphics);
-            s.Task.Execute(graphics);
-            canvas.EndDrawing(graphics);
+            Stamped stamp = new(shape);
+            scene.Game.RenderQueue.Add(canvas.CreateStampTask(stamp.Task), stamp.RenderOrder);
         }
     }
 
@@ -76,12 +65,8 @@ public static class Stamper
     {
         if (scene.FindAnyComponent<StampCanvasComponent>(out var canvas))
         {
-            Stamped s = new(shape);
-
-            var graphics = scene.Game.Window.Graphics;
-            canvas.PrepareForDrawing(graphics);
-            s.Task.Execute(graphics);
-            canvas.EndDrawing(graphics);
+            Stamped stamp = new(shape);
+            scene.Game.RenderQueue.Add(canvas.CreateStampTask(stamp.Task), stamp.RenderOrder);
         }
     }
 
@@ -89,20 +74,9 @@ public static class Stamper
     {
         if (scene.FindAnyComponent<StampCanvasComponent>(out var canvas))
         {
-            // TODO improve speed and this whole concept is actually fucked up
-            Stamped s = new(new ActionRenderTask(g =>
-            {
-                Draw.Reset();
-                Draw.Order = subsprite.Order;
-                Draw.Texture = subsprite.Texture.Value;
-                Draw.TransformMatrix = subsprite.Transform;
-                Draw.Quad(subsprite.Rectangle);
-            }), subsprite.Order);
-
-            var graphics = scene.Game.Window.Graphics;
-            canvas.PrepareForDrawing(graphics);
-            s.Task.Execute(graphics);
-            canvas.EndDrawing(graphics);
+            var transform = Matrix3x2.CreateScale(subsprite.Rectangle.GetSize()) * Matrix3x2.CreateTranslation(subsprite.Rectangle.GetCenter()) * subsprite.Transform;
+            var subspriteTask = new ShapeRenderTask(PrimitiveMeshes.CenteredQuad, transform, DrawingMaterialCreator.Cache.Load(subsprite.Texture.Value));
+            scene.Game.RenderQueue.Add(canvas.CreateStampTask(subspriteTask), subsprite.Order);
         }
     }
 

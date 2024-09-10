@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SkiaSharp;
+using System;
 using System.Numerics;
 using Walgelijk;
 using Walgelijk.SimpleDrawing;
@@ -44,56 +45,42 @@ public class StampCanvasComponent : Component, IDisposable
         StampTexture.ProjectionMatrix = Matrix4x4.CreateOrthographic(Width, Height, 0, 1);
     }
 
-    ///// <summary>
-    ///// Submit things to be stamped.
-    ///// </summary>
-    ///// <param name="graphics"></param> 
-    //public void PrepareForDrawing(IGraphics graphics)
-    //{
-    //    // TODO this is actually completely broken!!
-    //    // we should never forcefully reset the renderqueue, but instead
-    //    // submit a new render task to the queue that does everything we want to do
+    public void Clear(RenderQueue queue)
+    {
+        queue.Add(CreateStampTask(g => g.Clear(Colors.Transparent)));
+    }
 
-    //    Game.Main.RenderQueue.RenderAndReset(graphics);
-    //    Draw.Reset();
-    //    Draw.ScreenSpace = true;
-    //    graphics.CurrentTarget = StampTexture;
-    //}
+    public IRenderTask CreateStampTask(Action<IGraphics> action)
+    {
+        // TODO please avoid delegates
+        return new ActionRenderTask(g =>
+        {
+            var o = g.CurrentTarget;
+            g.CurrentTarget = StampTexture;
+            action(g);
+            g.CurrentTarget = o;
+        });
+    }
 
-    ///// <summary>
-    ///// End the block of stamps.
-    ///// </summary>
-    ///// <param name="graphics"></param>
-    //public void EndDrawing(IGraphics graphics)
-    //{
-    //    Game.Main.RenderQueue.RenderAndReset(graphics);
-    //    graphics.CurrentTarget = Game.Main.Window.RenderTarget;
-    //}
-
-    //public void Clear(IGraphics graphics)
-    //{
-    //    PrepareForDrawing(graphics);
-    //    graphics.Clear(Colors.Transparent);
-    //    EndDrawing(graphics);
-    //}
-
-    //public void DrawTask(IGraphics graphics, IRenderTask task)
-    //{
-    //    PrepareForDrawing(graphics);
-    //    task.Execute(graphics);
-    //    EndDrawing(graphics);
-    //}
-
-    //public void DrawShape(IGraphics graphics, ShapeComponent shape)
-    //{
-    //    PrepareForDrawing(graphics);
-    //    shape.RenderTask.Execute(graphics);
-    //    EndDrawing(graphics);
-    //}
+    public IRenderTask CreateStampTask(IRenderTask innerTask)
+    {
+        return new StampTask(StampTexture, innerTask);
+    }
 
     public void Dispose()
     {
         StampTexture.Dispose();
         Logger.Debug("Stamp texture disposed");
+    }
+
+    private class StampTask(RenderTarget target, IRenderTask innerTask) : IRenderTask
+    {
+        public void Execute(IGraphics g)
+        {
+            var o = g.CurrentTarget;
+            g.CurrentTarget = target;
+            innerTask.Execute(g);
+            g.CurrentTarget = o;
+        }
     }
 }
