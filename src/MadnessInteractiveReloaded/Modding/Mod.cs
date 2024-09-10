@@ -191,8 +191,16 @@ public sealed class Mod : IDisposable
                 Errors.Add(new FileNotFoundException($"Binary path not found \"{BinaryPath}\""));
             else
             {
-                var assembly = global::System.Reflection.Assembly.LoadFrom(assemblyFile.FullName);
-                Assembly = new ModAssemblyWrapper(this, assembly);
+                try
+                {
+                    var assembly = global::System.Reflection.Assembly.LoadFrom(assemblyFile.FullName);
+                    Assembly = new ModAssemblyWrapper(this, assembly);
+                }
+                catch (Exception e)
+                {
+                    Errors.Add(e);
+                    Logger.Error($"Failed to load assembly for ${Id}: {e}");
+                }
                 // TODO maybe get some kind of unique ID for this assembly so that you can detect later which assembly belongs to which mod
             }
             ModType = ModType.Script;
