@@ -181,7 +181,7 @@ public static class MeleeUtils
             }
 
             {
-                if (weapon == null && /*victimIsPlayer &&*/ CharacterUtilities.CanDodge(victim))
+                if (weapon == null && victimIsPlayer && CharacterUtilities.CanDodge(victim))
                     victim.DrainDodge(damage);
                 else
                     bodyPart.Damage(damage);
