@@ -1,11 +1,11 @@
-0.36.0
+0.48.6
 
 name Mask 3
 type HeadAccessory
+left base:textures/bodies/eyes/mask3/mask3_left.png
+right base:textures/bodies/eyes/mask3/mask3_right.png
+texture-scale 1
 category Eyes
-
-left textures/bodies/eyes/mask3/mask3_left.png
-right textures/bodies/eyes/mask3/mask3_right.png
-
-offset-left 0 -1
-offset-right 0 -1
+detach False
+hidden False
+offset 1 -1

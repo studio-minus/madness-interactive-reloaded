@@ -1,12 +1,11 @@
-0.36.0
+0.48.5
 
 name Black round glasses
 type HeadAccessory
-detach true
+left base:textures/bodies/eyes/round_glasses2/round_glasses2_left.png
+right base:textures/bodies/eyes/round_glasses2/round_glasses2_right.png
+texture-scale 1
 category Eyes
-
-left textures/bodies/eyes/round_glasses2/round_glasses2_left.png
-right textures/bodies/eyes/round_glasses2/round_glasses2_right.png
-
-offset-left 43 1
-offset-right 43 1
+detach True
+hidden False
+offset 44 1

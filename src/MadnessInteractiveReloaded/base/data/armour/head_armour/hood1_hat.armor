@@ -1,10 +1,11 @@
-0.36.0
+0.48.6
 
 name Hood 1
 type HeadAccessory
-left textures/bodies/hats/hood1/hood1_left.png
-right textures/bodies/hats/hood1/hood1_right.png
+left base:textures/bodies/hats/hood1/hood1_left.png
+right base:textures/bodies/hats/hood1/hood1_right.png
+texture-scale 1
 category Hat
 detach False
 hidden False
-offset -15 -13
+offset -16 -13
