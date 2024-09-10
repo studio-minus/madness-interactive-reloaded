@@ -2,7 +2,7 @@
   "Id": "1337_sword",
   "WeaponData": {
     "Name": "1337 Sword",
-    "Damage": 0.7,
+    "Damage": 0.8,
     "UseDelay": 0.0,
     "MaxHandRangeMultiplier": 1.0,
     "AdditionalComponents": null,

@@ -2,8 +2,8 @@
 
 name Goggles 2
 type HeadAccessory
-left base:textures/bodies/eyes/goggles2/goggles2_left.png
-right base:textures/bodies/eyes/goggles2/goggles2_right.png
+left textures/bodies/eyes/goggles2/goggles2_left.png
+right textures/bodies/eyes/goggles2/goggles2_right.png
 texture-scale 1
 category Eyes
 detach False

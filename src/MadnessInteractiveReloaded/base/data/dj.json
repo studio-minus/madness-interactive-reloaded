@@ -70,6 +70,13 @@
 		"Sound": "sounds/music/Lothyde/emergence.ogg"
 	},
 	{
+		"Name": "Fancy Fiddle",
+		"Author": "Arthur Smith",
+		"BPM": 97,
+		"StartOffset": 4.755,
+		"Sound": "sounds/music/fancy_fiddle.ogg"
+	},
+	{
 		"Name": "From the Outset",
 		"Author": "Lothyde",
 		"BPM": 110,
@@ -103,6 +110,13 @@
 		"BPM": 130,
 		"StartOffset": 0,
 		"Sound": "sounds/music/Lothyde/living_on_the_edge_(feat_monocronic).ogg"
+	},
+	{
+		"Name": "Madness Combat 2",
+		"Author": "Arthur Smith",
+		"BPM": 97,
+		"StartOffset": 4.755,
+		"Sound": "sounds/music/madness_2.ogg"
 	},
 	{
 		"Name": "Madness Combat 4",
@@ -152,13 +166,6 @@
 		"BPM": 144,
 		"StartOffset": 13.515,
 		"Sound": "sounds/music/Lothyde/precarious_state.ogg"
-	},
-	{
-		"Name": "Sherrif Town",
-		"Author": "Unknown",
-		"BPM": 97,
-		"StartOffset": 0.385,
-		"Sound": "sounds/music/madness_2.ogg"
 	},
 	{
 		"Name": "Splitmek",

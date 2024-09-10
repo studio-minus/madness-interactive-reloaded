@@ -2,7 +2,7 @@
   "Id": "scimitar",
   "WeaponData": {
     "Name": "Scimitar",
-    "Damage": 10.0,
+    "Damage": 0.6,
     "UseDelay": 0.0,
     "MaxHandRangeMultiplier": 1.0,
     "AdditionalComponents": null,

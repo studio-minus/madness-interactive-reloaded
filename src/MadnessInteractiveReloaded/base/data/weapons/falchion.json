@@ -2,7 +2,7 @@
   "Id": "falchion",
   "WeaponData": {
     "Name": "Falchion",
-    "Damage": 10.0,
+    "Damage": 0.5,
     "UseDelay": 0.0,
     "MaxHandRangeMultiplier": 1.0,
     "AdditionalComponents": null,
