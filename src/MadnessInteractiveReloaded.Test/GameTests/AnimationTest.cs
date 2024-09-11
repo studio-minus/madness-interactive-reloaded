@@ -11,7 +11,7 @@ public class AnimationTest : global::System.IDisposable
 {
     public AnimationTest()
     {
-        if (!Assets.TryGetPackage("base", out _))
+        if (Assets.TryGetPackage("base", out _))
             MadnessInteractiveReloaded.PrepareResourceInitialise();
         Registries.ClearAll();
     }

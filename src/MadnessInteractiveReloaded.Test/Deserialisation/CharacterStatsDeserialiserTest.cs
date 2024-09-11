@@ -9,7 +9,7 @@ public class CharacterStatsDeserialiserTest : global::System.IDisposable
 {
     public CharacterStatsDeserialiserTest()
     {
-        if (!Assets.TryGetPackage("base", out _))
+        if (Assets.TryGetPackage("base", out _))
             MadnessInteractiveReloaded.PrepareResourceInitialise();
         Registries.ClearAll();
     }
@@ -30,9 +30,15 @@ accurate_shot_chance 0.457
 can_deflect true
 body_health 0.513
 head_health 13.23
-sword_seq sword.seq
-unarmed_seq unarmed.seq
-two_handed_seq doublo.seq
+
+sword_seq 
+    sword
+
+unarmed_seq 
+    unarmed
+
+two_handed_seq 
+    doublo
 ";
         var path = Path.GetTempFileName();
         File.WriteAllText(path, content);
@@ -50,9 +56,9 @@ two_handed_seq doublo.seq
         Assert.Equal(0.513f, stats.BodyHealth);
         Assert.Equal(13.23f, stats.HeadHealth);
 
-        Assert.Equal("unarmed.seq", stats.UnarmedSeq);
-        Assert.Equal("sword.seq", stats.SwordSeq);
-        Assert.Equal("doublo.seq", stats.TwoHandedSeq);
+        Assert.Equal((string[])["unarmed"], stats.UnarmedSeq);
+        Assert.Equal((string[])["sword"], stats.SwordSeq);
+        Assert.Equal((string[])["doublo"], stats.TwoHandedSeq);
     }
 
     [Fact]

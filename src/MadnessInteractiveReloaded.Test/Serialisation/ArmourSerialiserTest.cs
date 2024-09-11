@@ -11,7 +11,7 @@ public class ArmourSerialiserTest : global::System.IDisposable
 {
     public ArmourSerialiserTest()
     {
-        if (!Assets.TryGetPackage("base", out _))
+        if (Assets.TryGetPackage("base", out _))
             MadnessInteractiveReloaded.PrepareResourceInitialise();
         Registries.ClearAll();
     }
@@ -30,8 +30,8 @@ public class ArmourSerialiserTest : global::System.IDisposable
             Type = type,
             OffsetLeft = new Vector2(xOffset, yOffset),
             OffsetRight = new Vector2(xOffset, yOffset),
-            Left = new("base:textures/bodies/default/head_left.png"),
-            Right = new("base:textures/bodies/default/head_right.png"),
+            Left = new("textures/bodies/default/head_left.png"),
+            Right = new("textures/bodies/default/head_right.png"),
             BrokenKeys = ["broken_agent_glasses1_eyes", "broken_agent_glasses2_eyes", "broken_agent_glasses3_eyes"]
         };
 
@@ -47,8 +47,8 @@ public class ArmourSerialiserTest : global::System.IDisposable
         ((int)loaded.OffsetLeft.Y).Should().Be(yOffset);
         ((int)loaded.OffsetRight.X).Should().Be(xOffset);
         ((int)loaded.OffsetRight.Y).Should().Be(yOffset);
-        loaded.Left.Id.Should().BeEquivalentTo(new GlobalAssetId("base:textures/bodies/default/head_left.png"));
-        loaded.Right.Id.Should().BeEquivalentTo(new GlobalAssetId("base:textures/bodies/default/head_right.png"));
+        loaded.Left.Id.Should().BeEquivalentTo(new GlobalAssetId("textures/bodies/default/head_left.png"));
+        loaded.Right.Id.Should().BeEquivalentTo(new GlobalAssetId("textures/bodies/default/head_right.png"));
         loaded.BrokenKeys.Should().BeEquivalentTo(testPiece.BrokenKeys);
     }
 

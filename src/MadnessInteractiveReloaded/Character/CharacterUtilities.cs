@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Numerics;
 using Walgelijk;
+using Walgelijk.AssetManager;
 using Walgelijk.Physics;
+using static MIR.Textures;
 
 namespace MIR;
 
@@ -34,6 +36,37 @@ public static class CharacterUtilities
         {
             character.Kill();
             return;
+        }
+    }
+
+    public static void PickupWithAnimation(Scene scene, CharacterComponent character, WeaponComponent? weapon)
+    {
+        if (scene.HasComponent<CharacterPickupComponent>(character.Entity))
+            return;
+
+        if (character.HasWeaponEquipped)
+            character.DropWeapon(scene);
+
+        if (weapon != null)
+        {
+            float delay = 0;
+
+            if (!scene.HasComponent<JumpDodgeComponent>(character.Entity))
+            {
+                var d = scene.AttachComponent(character.Entity, new CharacterPickupComponent
+                {
+                    Target = new(weapon.Entity)
+                });
+                delay = d.PickupTime * d.Duration;
+            }
+
+            MadnessUtils.DelayPausable(delay, () => // TODO what if the scene changes? ideally, these routines should be erased on scene change
+            {
+                character.EquipWeapon(scene, weapon);
+                var pickupAssets = Assets.EnumerateFolder("sounds/pickup");
+                var data = Assets.Load<FixedAudioData>(Utilities.PickRandom(pickupAssets));
+                scene.Game.AudioRenderer.PlayOnce(SoundCache.Instance.LoadSoundEffect(data));
+            });
         }
     }
 

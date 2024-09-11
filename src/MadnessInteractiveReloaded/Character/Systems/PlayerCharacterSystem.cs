@@ -290,23 +290,6 @@ public class PlayerCharacterSystem : Walgelijk.System
 
     private void PickUpWeapon(CharacterComponent character, WeaponComponent? weapon)
     {
-        if (character.HasWeaponEquipped)
-            character.DropWeapon(Scene);
-
-        if (weapon != null)
-        {
-            var d = Scene.AttachComponent(character.Entity, new CharacterPickupComponent
-            {
-                Target = new(weapon.Entity)
-            });
-
-            MadnessUtils.DelayPausable(d.PickupTime * d.Duration, () => // TODO what if the scene changes? ideally, these routines should be erased on scene change
-            {
-                character.EquipWeapon(Scene, weapon);
-                var pickupAssets = Assets.EnumerateFolder("sounds/pickup");
-                var data = Assets.Load<FixedAudioData>(Utilities.PickRandom(pickupAssets));
-                Audio.PlayOnce(SoundCache.Instance.LoadSoundEffect(data));
-            });
-        }
+        CharacterUtilities.PickupWithAnimation(Scene, character, weapon);
     }
 }

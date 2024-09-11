@@ -38,10 +38,10 @@ public static class CharacterStatsDeserialiser
 
         deserialiser.RegisterString("name", (s, v) => s.Name = v);
         deserialiser.RegisterStringArray("unarmed_seq", (s, v) => s.UnarmedSeq = [..v]);
-        deserialiser.RegisterStringArray("sword_seq", (s, v) => s.SwordSeq = [.. v]);
-        deserialiser.RegisterStringArray("two_handed_seq", (s, v) => s.TwoHandedSeq = [.. v]);
-        deserialiser.RegisterStringArray("two_handed_gun_seq", (s, v) => s.TwoHandedGunSeq = [.. v]);
-        deserialiser.RegisterStringArray("blunt_seq", (s, v) => s.BluntSeq = [.. v]);
+        deserialiser.RegisterStringArray("sword_seq", (s, v) => s.SwordSeq = [..v]);
+        deserialiser.RegisterStringArray("two_handed_seq", (s, v) => s.TwoHandedSeq = [..v]);
+        deserialiser.RegisterStringArray("two_handed_gun_seq", (s, v) => s.TwoHandedGunSeq = [..v]);
+        deserialiser.RegisterStringArray("blunt_seq", (s, v) => s.BluntSeq = [..v]);
         deserialiser.RegisterString("agility_skill_level", (s, v) => s.AgilitySkillLevel = Enum.Parse<AgilitySkillLevel>(v, true));
     }
 
@@ -85,6 +85,7 @@ public static class CharacterStatsDeserialiser
         writer.AppendLineFormat("jump_dodge_duration {0}", stats.JumpDodgeDuration);
         writer.AppendLine();
 
+        writer.AppendLineFormat("name {0}", stats.Name);
         writer.AppendLineFormat("can_deflect {0}", stats.CanDeflect);
         writer.AppendLineFormat("dodge_oversaturate {0}", stats.DodgeOversaturate);
         if (stats.Abilities != null && stats.Abilities.Length > 0)
@@ -96,12 +97,12 @@ public static class CharacterStatsDeserialiser
         }
         writer.AppendLine();
 
-        writer.AppendLineFormat("name {0}", stats.Name);
-        writer.AppendLineFormat("unarmed_seq {0}", stats.UnarmedSeq);
-        writer.AppendLineFormat("sword_seq {0}", stats.SwordSeq);
-        writer.AppendLineFormat("two_handed_seq {0}", stats.TwoHandedSeq);
-        writer.AppendLineFormat("two_handed_gun_seq {0}", stats.TwoHandedGunSeq);
-        writer.AppendLineFormat("blunt_seq {0}", stats.BluntSeq);
+        writer.AppendKvStringArray("unarmed_seq", stats.UnarmedSeq);
+        writer.AppendKvStringArray("sword_seq", stats.SwordSeq);
+        writer.AppendKvStringArray("two_handed_seq", stats.TwoHandedSeq);
+        writer.AppendKvStringArray("two_handed_gun_seq", stats.TwoHandedGunSeq);
+        writer.AppendKvStringArray("blunt_seq", stats.BluntSeq);
+
         writer.AppendLineFormat("agility_skill_level {0}", stats.AgilitySkillLevel.ToString());
 
         File.WriteAllText(path, writer.ToString());
