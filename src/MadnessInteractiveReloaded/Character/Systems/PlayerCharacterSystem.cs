@@ -75,7 +75,7 @@ public class PlayerCharacterSystem : Walgelijk.System
                     {
                         item.Kill();
                         MadnessUtils.TurnIntoRagdoll(Scene, item, Utilities.RandomPointInCircle() * 140, Utilities.RandomFloat(-90, 90));
-                }
+                    }
             }
         }
 
@@ -295,11 +295,18 @@ public class PlayerCharacterSystem : Walgelijk.System
 
         if (weapon != null)
         {
-            character.EquipWeapon(Scene, weapon);
+            var d = Scene.AttachComponent(character.Entity, new CharacterPickupComponent
+            {
+                Target = new(weapon.Entity)
+            });
 
-            var pickupAssets = Assets.EnumerateFolder("sounds/pickup");
-            var data = Assets.Load<FixedAudioData>(Utilities.PickRandom(pickupAssets));
-            Audio.PlayOnce(SoundCache.Instance.LoadSoundEffect(data));
+            MadnessUtils.DelayPausable(d.PickupTime * d.Duration, () => // TODO what if the scene changes? ideally, these routines should be erased on scene change
+            {
+                character.EquipWeapon(Scene, weapon);
+                var pickupAssets = Assets.EnumerateFolder("sounds/pickup");
+                var data = Assets.Load<FixedAudioData>(Utilities.PickRandom(pickupAssets));
+                Audio.PlayOnce(SoundCache.Instance.LoadSoundEffect(data));
+            });
         }
     }
 }

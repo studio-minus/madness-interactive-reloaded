@@ -22,7 +22,7 @@ public class RichBossAbilityComponent : CharacterAbilityComponent
 
         var rich = Scene.AttachComponent(character.Entity, new RichCharacterComponent());
 
-        character.Positioning.HandPoseFunctionOverride = RichBossSystem.RichHandPose;
+        character.Positioning.HandPoseFunctionOverride.Add(RichBossSystem.RichHandPose);
         var body = Scene.GetComponentFrom<BodyPartComponent>(character.Positioning.Body.Entity);
         var head = Scene.GetComponentFrom<BodyPartComponent>(character.Positioning.Head.Entity);
 

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Numerics;
 using Walgelijk;
 
@@ -71,7 +72,7 @@ public class CharacterPositioning
     public Vector2 RecoilPositionOffset;
     public float RecoilAngleOffset;
     public bool SecondaryHandFollowsPrimary = false; // (duston): if the second hand follows the primary hand. (usually including an offset).
-    public Action<HandPoseParams>? HandPoseFunctionOverride;
+    public List<Action<HandPoseParams>> HandPoseFunctionOverride = [];
 
     public float MeleeBlockImpactIntensity = 0; // used by HandPosingFunctions
     public float SmoothedMeleeBlockImpactIntensity = 0; // used by HandPosingFunctions

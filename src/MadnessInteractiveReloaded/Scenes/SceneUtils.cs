@@ -210,6 +210,7 @@ public static class SceneUtils
         scene.AddSystem(new AiCharacterSystem());
         scene.AddSystem(new PlayerCharacterSystem());
         scene.AddSystem(new ExitDoorSystem());
+        scene.AddSystem(new CharacterPickupSystem());
         scene.AddSystem(new CharacterAbilitySystem());
         scene.AddSystem(new CharacterMovementSystem());
         scene.AddSystem(new CharacterPositionSystem());

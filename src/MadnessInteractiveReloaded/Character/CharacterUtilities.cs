@@ -69,14 +69,8 @@ public static class CharacterUtilities
     {
         // (duston): reset the flag first only here so every single positioning function doesn't need to explicitly set it to false, only the ones that set it to true should care.
         character.Positioning.SecondaryHandFollowsPrimary = false;
-
         var poseParams = new HandPoseParams(scene, character, scene.Game.State.Time.DeltaTime, equipped);
-
-        if (character.Positioning.HandPoseFunctionOverride != null)
-        {
-            character.Positioning.HandPoseFunctionOverride(poseParams);
-        }
-        else if (!character.HasWeaponEquipped || equipped == null) // fist fight
+        if (!character.HasWeaponEquipped || equipped == null) // fist fight
             HandPosingFunctions.FistFight(poseParams);
         else
             switch (equipped.Data.WeaponType)
@@ -141,6 +135,9 @@ public static class CharacterUtilities
                     }
                     break;
             }
+
+        foreach (var @override in character.Positioning.HandPoseFunctionOverride)
+            @override(poseParams);
     }
 
     /// <summary>
@@ -387,7 +384,7 @@ public static class CharacterUtilities
             /* || character.IsPlayingAnimationGroup("melee")*/)
             return;
 
-        var anim = Animations.DodgeAnimations[character.AnimationFlipFlop % Animations.DodgeAnimations.Length];
+        var anim = Animations.Dodge[character.AnimationFlipFlop % Animations.Dodge.Length];
         character.PlayAnimation(anim, 1 / float.Max(0.85f, character.Stats.DodgeAbility));
         character.AnimationFlipFlop++;
     }

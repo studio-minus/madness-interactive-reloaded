@@ -27,7 +27,7 @@ public class HolyShieldAbilityComponent : CharacterAbilityComponent, IDisposable
 
     public override void StartAbility(AbilityParams a)
     {
-        a.Character.Positioning.HandPoseFunctionOverride = PoseHand;
+        a.Character.Positioning.HandPoseFunctionOverride.Add(PoseHand);
         pOffset = default;
 
         blocker = Scene.CreateEntity();
@@ -72,8 +72,8 @@ public class HolyShieldAbilityComponent : CharacterAbilityComponent, IDisposable
 
         if (visiblity < float.Epsilon)
         {
-            if (lastVisibility >= float.Epsilon && a.Character.Positioning.HandPoseFunctionOverride == PoseHand)
-                a.Character.Positioning.HandPoseFunctionOverride = null;
+            if (lastVisibility >= float.Epsilon)
+                a.Character.Positioning.HandPoseFunctionOverride.Remove(PoseHand);
             return;
         }
 
