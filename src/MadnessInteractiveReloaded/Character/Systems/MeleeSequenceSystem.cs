@@ -89,7 +89,7 @@ public class MeleeSequenceSystem : Walgelijk.System
         var center = ch.Positioning.Head.GlobalPosition;
         var dir = ch.AimDirection;
 
-        float damageMultiplier = ch.Positioning.Scale * 15;
+        float damageMultiplier =  float.Pow(ch.Positioning.Scale, 8);
 
         if (ch.EquippedWeapon.TryGet(Scene, out var wpn))
         {
