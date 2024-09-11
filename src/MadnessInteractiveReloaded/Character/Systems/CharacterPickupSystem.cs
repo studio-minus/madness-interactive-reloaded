@@ -19,7 +19,7 @@ public class CharacterPickupSystem : Walgelijk.System
                     f = targetTransform.Position.X > ch.Positioning.GlobalCenter.X != ch.Positioning.IsFlipped;
 
                 ch.Positioning.HandPoseFunctionOverride.Add(PickupHandPose);
-                ch.PlayAnimation(Animations.Pickup.PickRandom(f), 1.7f);
+                ch.PlayAnimation(Animations.Pickup.PickRandom(f), 1.2f);
             }
 
             p.Time += Time.DeltaTime;

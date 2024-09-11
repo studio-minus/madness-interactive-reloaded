@@ -18,16 +18,12 @@ public static class Animations
     public static readonly CharacterAnimation[] Dodge ={
         Registries.Animations.Get("dodge_1"),
         Registries.Animations.Get("dodge_2"),
-        Registries.Animations.Get("dodge_3"),
-        Registries.Animations.Get("dodge_4"),
     };
 
     public static readonly DoubleSidedMultiple<CharacterAnimation> Pickup = new([
         Registries.Animations.Get("pickup_1"),
-        Registries.Animations.Get("pickup_2"),
     ], [
         Registries.Animations.Get("pickup_2"),
-        Registries.Animations.Get("pickup_3"),
     ]);
 
     public static readonly CharacterAnimation[] Dancing ={
