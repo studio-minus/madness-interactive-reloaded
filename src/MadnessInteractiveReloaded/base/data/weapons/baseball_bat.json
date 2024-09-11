@@ -2,7 +2,7 @@
   "Id": "baseball_bat",
   "WeaponData": {
     "Name": "Baseball Bat",
-    "Damage": 0.2,
+    "Damage": 0.3,
     "UseDelay": 0.0,
     "MaxHandRangeMultiplier": 1.0,
     "AdditionalComponents": null,
