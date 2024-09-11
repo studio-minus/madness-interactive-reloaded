@@ -95,32 +95,32 @@ public class CharacterStats
     /// <summary>
     /// Melee sequence ID for the unarmed attack
     /// </summary>
-    public string UnarmedSeq = "unarmed";
+    public string[] UnarmedSeq = ["unarmed"];
 
     /// <summary>
-    /// Melee sequence ID for the sword attack
+    /// Melee sequences ID for the sword attack
     /// </summary>
-    public string SwordSeq = "sword";
+    public string[] SwordSeq = ["sword_2", "sword"];
 
     /// <summary>
     /// Melee sequence ID for the two-handed melee attack
     /// </summary>
-    public string TwoHandedSeq = "twohanded_blunt";
+    public string[] TwoHandedSeq = ["twohanded_blunt"];
 
     /// <summary>
     /// Melee sequence ID for the blunt melee attack
     /// </summary>
-    public string BluntSeq = "blunt";
+    public string[] BluntSeq = ["blunt"];
 
     /// <summary>
     /// Melee sequence ID for the two-handed gun attack
     /// </summary>
-    public string TwoHandedGunSeq = "twohanded_gun";
+    public string[] TwoHandedGunSeq = ["twohanded_gun"];
 
     /// <summary>
     /// Melee sequence ID for the one-handed gun attack
     /// </summary>
-    public string OneHandedGunSeq = "onehanded_gun";
+    public string[] OneHandedGunSeq = ["onehanded_gun"];
 
     /// <summary>
     /// Character ability component types

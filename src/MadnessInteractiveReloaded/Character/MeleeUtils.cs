@@ -33,21 +33,21 @@ public static class MeleeUtils
             meleeSequenceComponent.CanContinue = true;
         else
         {
-            string meleeSeq = character.Stats.UnarmedSeq;
+            string meleeSeq = Utilities.PickRandom(character.Stats.UnarmedSeq);
             if (equipped != null)
                 switch (equipped.Data.MeleeDamageType)
                 {
                     case MeleeDamageType.Blade:
-                        meleeSeq = character.Stats.SwordSeq;
+                        meleeSeq = Utilities.PickRandom(character.Stats.SwordSeq);
                         break;
                     case MeleeDamageType.Axe:
-                        meleeSeq = character.Stats.BluntSeq;
+                        meleeSeq = Utilities.PickRandom(character.Stats.BluntSeq);
                         break;
                     case MeleeDamageType.Firearm:
-                        meleeSeq = equipped.HoldPoints.Length == 2 ? character.Stats.TwoHandedGunSeq : character.Stats.OneHandedGunSeq;
+                        meleeSeq = Utilities.PickRandom(equipped.HoldPoints.Length == 2 ? character.Stats.TwoHandedGunSeq : character.Stats.OneHandedGunSeq);
                         break;
                     case MeleeDamageType.Blunt:
-                        meleeSeq = equipped.HoldPoints.Length == 2 ? character.Stats.TwoHandedSeq : character.Stats.BluntSeq;
+                        meleeSeq = Utilities.PickRandom(equipped.HoldPoints.Length == 2 ? character.Stats.TwoHandedSeq : character.Stats.BluntSeq);
                         break;
                 }
 
@@ -99,7 +99,7 @@ public static class MeleeUtils
 
         if (scene.TryGetComponentFrom<ImpactOffsetComponent>(hit.Entity, out var impactOffset))
         {
-            if (!hasBodyPart|| bodyPart!.Character.Get(scene).HasFlag(CharacterFlags.AttackResponseMelee))
+            if (!hasBodyPart || bodyPart!.Character.Get(scene).HasFlag(CharacterFlags.AttackResponseMelee))
             {
                 float rot = 3 * actor.Stats.MeleeSkill;
                 rot *= direction.X > 0 ? 1 : -1;
