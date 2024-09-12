@@ -36,7 +36,7 @@ public enum CharacterFlags
     /// <summary>
     /// Will flinch when hit with a non-fatal shot
     /// </summary>
-    StunAnimationOnNonFatalShot = 32,
+    StunAnimationOnNonFatalAttack = 32,
 
     /// <summary>
     /// The dead ragdoll will despawn on its own
@@ -53,5 +53,5 @@ public enum CharacterFlags
         AttackResponseMelee | 
         DeleteRagdoll |
         AttackResponseBullet | 
-        StunAnimationOnNonFatalShot
+        StunAnimationOnNonFatalAttack
 }

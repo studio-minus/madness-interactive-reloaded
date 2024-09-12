@@ -5,6 +5,7 @@ using Walgelijk;
 using Walgelijk.AssetManager;
 using Walgelijk.ParticleSystem;
 using Walgelijk.Physics;
+using static MIR.Textures;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MIR;
@@ -390,7 +391,7 @@ public class WeaponSystem : Walgelijk.System
                                 else
                                     Audio.PlayOnce(Utilities.PickRandom(Sounds.BulletDeflection), 0.5f);
 
-                                if (deflectingArmour && victimChar.IsAlive && victimChar.Flags.HasFlag(CharacterFlags.StunAnimationOnNonFatalShot))
+                                if (deflectingArmour && victimChar.IsAlive && victimChar.Flags.HasFlag(CharacterFlags.StunAnimationOnNonFatalAttack))
                                 {
                                     if (bulletDirection.X < 0 == victimChar.Positioning.IsFlipped)
                                         victimChar.PlayAnimation(Registries.Animations.Get("stun_light_forwards"), 1.2f);
@@ -572,7 +573,7 @@ public class WeaponSystem : Walgelijk.System
                 }
 
                 if (victimChar != null &&
-                    victimChar.Flags.HasFlag(CharacterFlags.StunAnimationOnNonFatalShot) &&
+                    victimChar.Flags.HasFlag(CharacterFlags.StunAnimationOnNonFatalAttack) &&
                     victimChar.IsAlive && !isExitWound)
                 {
                     if (bulletDirection.X < 0 == victimChar.Positioning.IsFlipped)

@@ -876,7 +876,7 @@ public static class Prefabs
             Tag = Tags.Player
         });
 
-        character.Flags &= ~(CharacterFlags.StunAnimationOnNonFatalShot | CharacterFlags.DeleteRagdoll);
+        character.Flags &= ~(CharacterFlags.StunAnimationOnNonFatalAttack | CharacterFlags.DeleteRagdoll);
 
         CharacterUtilities.ApplyActiveModifiers(scene, character);
 

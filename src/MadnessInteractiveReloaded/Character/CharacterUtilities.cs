@@ -294,6 +294,9 @@ public static class CharacterUtilities
         if (Level.CurrentLevel == null || !Level.CurrentLevel.IsFlatAt(character.Positioning.GlobalCenter.X))
             return;
 
+        if (!character.HasFlag(CharacterFlags.StunAnimationOnNonFatalAttack))
+            return;
+
         scene.DetachComponent<MeleeSequenceComponent>(character.Entity);
         var dir = facingImpact == character.Positioning.IsFlipped ? 1 : -1;
         var o = character.Positioning.Body.ComputedVisualCenter;
