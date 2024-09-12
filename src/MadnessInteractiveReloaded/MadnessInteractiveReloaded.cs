@@ -59,6 +59,12 @@ public class MadnessInteractiveReloaded
 
         Assets.Load<FixedAudioData>("sounds/null.wav");
 
+        // set fallbacks
+
+        AssetDeserialisers.SetFallbackForType(typeof(Texture), Textures.Error);
+        AssetDeserialisers.SetFallbackForType(typeof(FixedAudioData), Assets.LoadNoCache<FixedAudioData>("sounds/error.wav"));
+        AssetDeserialisers.SetFallbackForType(typeof(StreamAudioData), Assets.LoadNoCache<StreamAudioData>("sounds/error.ogg"));
+
         // all of the following should be obsolete at some point:
 
         Resources.BasePath = "resources";
