@@ -101,7 +101,7 @@ public static class MeleeUtils
         {
             if (!hasBodyPart || bodyPart!.Character.Get(scene).HasFlag(CharacterFlags.AttackResponseMelee))
             {
-                float rot = 3 * actor.Stats.MeleeSkill;
+                float rot = 5 * actor.Stats.MeleeSkill;
                 rot *= direction.X > 0 ? 1 : -1;
 
                 if (localPoint.Y > hitTransform.LocalRotationPivot.Y)
@@ -109,7 +109,7 @@ public static class MeleeUtils
                 else
                     impactOffset.RotationOffset += rot;
 
-                impactOffset.TranslationOffset += direction * 3 * actor.Stats.MeleeSkill;
+                impactOffset.TranslationOffset += direction * 25 * actor.Stats.MeleeSkill;
             }
         }
 
@@ -180,6 +180,8 @@ public static class MeleeUtils
                 }
             }
 
+
+
             {
                 if (weapon == null && victimIsPlayer && CharacterUtilities.CanDodge(victim))
                     victim.DrainDodge(damage);
@@ -191,9 +193,9 @@ public static class MeleeUtils
                     if (victim.DodgeMeter < 0.5f)
                     {
                         if (victim.Positioning.GlobalCenter.X > actor.Positioning.GlobalCenter.X != victim.Positioning.IsFlipped)
-                            victim.PlayAnimation(Registries.Animations.Get("stun_light_forwards"));
+                            victim.PlayAnimation(Registries.Animations.Get("stun_light_forwards"), 1.2f);
                         else
-                            victim.PlayAnimation(Registries.Animations.Get(Utilities.PickRandom("stun_light_backwards", "stun_light_backwards2")));
+                            victim.PlayAnimation(Registries.Animations.Get(Utilities.PickRandom("stun_light_backwards", "stun_light_backwards2")), 1.2f);
                     }
                 }
             }

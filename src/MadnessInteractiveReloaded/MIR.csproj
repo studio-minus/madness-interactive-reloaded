@@ -55,7 +55,7 @@
 		<PackageReference Include="NativeFileDialogExtendedSharp" Version="0.1.0" />
 		<PackageReference Include="System.CommandLine.DragonFruit" Version="0.4.0-alpha.22272.1" />
 		<PackageReference Include="Walgelijk" Version="0.29.2" />
-		<PackageReference Include="Walgelijk.AssetManager" Version="0.16.12" />
+		<PackageReference Include="Walgelijk.AssetManager" Version="0.16.13" />
 		<PackageReference Include="Walgelijk.CommonAssetDeserialisers" Version="0.8.3" />
 		<PackageReference Include="Walgelijk.Localisation" Version="1.1.21" />
 		<PackageReference Include="Walgelijk.Onion" Version="0.5.24" />

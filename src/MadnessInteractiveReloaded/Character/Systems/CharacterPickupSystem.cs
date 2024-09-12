@@ -85,7 +85,7 @@ public class CharacterPickupSystem : Walgelijk.System
                 secondHand.PosePosition.X = float.Lerp(secondHand.PosePosition.X, targetPos.X, animTime * animTime * animTime);
                 secondHand.PosePosition.Y = float.Lerp(secondHand.PosePosition.Y, targetPos.Y, animTime);
             }
-            else
+            else if (wpn.HoldPoints.Length < 2 || p.Equipped == null)
             {
                 // TODO this is already done somewhere else so... its kind of ugly. but it works :)
                 var direction = p.Character.AimDirection;
