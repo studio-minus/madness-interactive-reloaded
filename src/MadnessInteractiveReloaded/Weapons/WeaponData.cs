@@ -140,6 +140,11 @@ public class WeaponData
     /// </summary>
     public bool SpecialMelee;
 
+    /// <summary>
+    /// Optional set of sounds to play when this weapon is used to hit an enemy.
+    /// </summary>
+    //public List<AssetRef<FixedAudioData>>? HitSounds; // not yet implemented
+
     [JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public MeleeDamageType MeleeDamageType = MeleeDamageType.Firearm;
 

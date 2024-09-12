@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
+using System.Linq;  
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using Walgelijk;
@@ -249,7 +249,7 @@ public class WeaponEditorSystem : Walgelijk.System
                         DrawMeleeSettings(editor, editor.Weapon);
                         break;
                     case WeaponEditorComponent.PropertyTab.SoundSettings:
-                        DrawSoundSettings(editor, editor.Weapon);
+                        DrawFirearmSoundSettings(editor, editor.Weapon);
                         break;
                     case WeaponEditorComponent.PropertyTab.AnimatedParts:
                         DrawAnimatedPartSettings(editor, editor.Weapon);
@@ -429,7 +429,7 @@ public class WeaponEditorSystem : Walgelijk.System
         Ui.EnumDropdown(ref weaponData.MeleeSize);
         Ui.Spacer(WeaponEditorComponent.ControlSpacing);
 
-        Ui.Label("Special flag");
+        Ui.Label("\"Special\" weapon");
         Ui.Layout.FitWidth().Height(WeaponEditorComponent.ControlHeight);
         Ui.Checkbox(ref weaponData.SpecialMelee);
         Ui.Spacer(WeaponEditorComponent.ControlSpacing);
@@ -456,7 +456,7 @@ public class WeaponEditorSystem : Walgelijk.System
                 if (Onion.Tree.CurrentNode != null && Onion.Tree.GetControlInstance(Onion.Tree.CurrentNode.Identity).Rects.ComputedGlobal.ContainsPoint(Input.WindowMousePosition))
                     sharpRectToHighlight = i;
                 Ui.Layout.StickTop();
-                Ui.Label($"X: {MathF.Round(c.X, 2)}, Y: {MathF.Round(c.Y, 2)}, W: {MathF.Round(rect.Width, 2)}. H: {MathF.Round(rect.Height, 2)}", HorizontalTextAlign.Center);
+                Ui.Label($"X: {MathF.Round(c.X, 2)}, Y: {MathF.Round(c.Y, 2)}, W: {MathF.Round(rect.Width, 2)}. H: {MathF.Round(rect.Height, 2)}", HorizontalTextAlign.Center, identity: i);
 
                 Ui.Layout.Height(WeaponEditorComponent.ControlHeight).FitWidth().StickBottom().CenterHorizontal();
                 if (Ui.ClickButton("Remove", identity: i))
@@ -469,7 +469,7 @@ public class WeaponEditorSystem : Walgelijk.System
         }
     }
 
-    private void DrawSoundSettings(WeaponEditorComponent editor, WeaponInstructions weapon)
+    private void DrawFirearmSoundSettings(WeaponEditorComponent editor, WeaponInstructions weapon)
     {
         var weaponData = weapon.WeaponData;
 
