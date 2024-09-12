@@ -548,7 +548,7 @@ public class CharacterPositionSystem : Walgelijk.System
             if (character.IsPlayingAnimation)
             {
                 // TODO what the fuck
-                if (character.IsPlayingAnimationGroup("dodge") && !character.IsPlayingAnimationGroup("melee"))
+                if ((character.IsPlayingAnimationGroup("dodge") || character.IsPlayingAnimationGroup("pickup")) && !character.IsPlayingAnimationGroup("melee") )
                     animatedRot = rot;
                 else
                     animatedRot = hand.AnimationAngle + (charPos.IsFlipped ? 180 : 0);

@@ -16,7 +16,10 @@ public class CharacterPickupSystem : Walgelijk.System
                 var f = false;
 
                 if (p.Target.TryGet(Scene, out var targetTransform))
+                {
                     f = targetTransform.Position.X > ch.Positioning.GlobalCenter.X != ch.Positioning.IsFlipped;
+                    p.InitialTargetRotation = targetTransform.Rotation;
+                }
 
                 ch.Positioning.HandPoseFunctionOverride.Add(PickupHandPose);
                 ch.PlayAnimation(Animations.Pickup.PickRandom(f), 1.2f);
@@ -65,9 +68,9 @@ public class CharacterPickupSystem : Walgelijk.System
                 targetPos = pickup.LastHandPosePositions[0];
 
             firstHand.PosePosition = Vector2.Lerp(firstHand.PosePosition, targetPos, animTime);
+            firstHand.PoseRotation = Utilities.LerpAngle(pickup.InitialTargetRotation, firstHand.PoseRotation, 1 - animTime);
         }
 
-        if (wpn.HoldPoints.Length > 1 && p.Equipped == null)
         {
             float t = ((pickup.Time) / pickup.Duration);
             var tEnter = Utilities.MapRange(0, midPoint, 0, 1, t);
@@ -76,9 +79,32 @@ public class CharacterPickupSystem : Walgelijk.System
             float animTime = Easings.Circ.In(isExit ? Easings.Cubic.In(tExit) : Easings.Cubic.InOut(tEnter));
 
             // this hand will follow the other if the weapon is two-handed so we dont have to do much
-            var targetPos = Vector2.Transform(wpn.HoldPoints[1], target.LocalToWorldMatrix) - charPos.GlobalCenter;
-            secondHand.PosePosition.X = float.Lerp(secondHand.PosePosition.X, targetPos.X, animTime * animTime * animTime);
-            secondHand.PosePosition.Y = float.Lerp(secondHand.PosePosition.Y, targetPos.Y, animTime );
+            if (wpn.HoldPoints.Length > 1 && p.Equipped == null)
+            {
+                var targetPos = Vector2.Transform(wpn.HoldPoints[1], target.LocalToWorldMatrix) - charPos.GlobalCenter;
+                secondHand.PosePosition.X = float.Lerp(secondHand.PosePosition.X, targetPos.X, animTime * animTime * animTime);
+                secondHand.PosePosition.Y = float.Lerp(secondHand.PosePosition.Y, targetPos.Y, animTime);
+            }
+            else
+            {
+                // TODO this is already done somewhere else so... its kind of ugly. but it works :)
+                var direction = p.Character.AimDirection;
+                float flipScaling = charPos.FlipScaling;
+                var clampedDir = Vector2.Normalize(new Vector2(
+                    float.Sign(direction.X) * float.Max(float.Abs(direction.X), 0.5f),
+                    Utilities.Clamp(direction.Y, -0.2f, 0.2f)
+                ));
+                var rad = float.Atan2(clampedDir.Y, clampedDir.X);
+                var angle = rad * Utilities.RadToDeg;
+                var rot = Matrix3x2.CreateRotation(rad);
+
+                var pos1 = Vector2.TransformNormal(CharacterConstants.HandOffset1 with { Y = CharacterConstants.HandOffset1.Y * flipScaling }, rot) * charPos.Scale;
+                var pos2 = Vector2.TransformNormal(CharacterConstants.HandOffset2 with { Y = CharacterConstants.HandOffset2.Y * flipScaling }, rot) * charPos.Scale;
+
+                var pos = flipScaling < 0 ? pos1 : pos2;
+
+                secondHand.PosePosition = Vector2.Lerp(secondHand.PosePosition, pos, Easings.Quad.InOut(tExit));
+            }
         }
     }
 }

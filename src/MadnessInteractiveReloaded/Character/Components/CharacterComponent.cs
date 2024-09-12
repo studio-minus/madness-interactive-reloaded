@@ -320,8 +320,11 @@ public class CharacterComponent : Component
     /// Equips the character with a weapon.
     /// Drops their currently <see cref="EquippedWeapon"/> if they have one equipped already.
     /// </summary>
-    public void EquipWeapon(Scene scene, WeaponComponent weapon)
+    public bool EquipWeapon(Scene scene, WeaponComponent weapon)
     {
+        if (weapon.Wielder.TryGet(scene, out _))
+            return false;
+
         if (EquippedWeapon.IsValid(scene))
             DropWeapon(scene);
 
@@ -334,6 +337,8 @@ public class CharacterComponent : Component
         weapon.Timer = float.MaxValue;
         EquippedWeapon = new ComponentRef<WeaponComponent>(weapon.Entity);
         scene.SyncBuffers(); // TODO is this necessary
+
+        return true;
     }
 
     /// <summary>

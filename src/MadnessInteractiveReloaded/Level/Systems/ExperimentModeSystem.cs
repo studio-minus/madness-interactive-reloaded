@@ -31,6 +31,12 @@ public class ExperimentModeSystem : Walgelijk.System
         {
             exp.WeaponFilter = ExperimentModePersistentData.CurrentFilter;
             exp.SelectedFaction = ExperimentModePersistentData.SelectedFaction;
+
+            //if (exp.SortedWeaponCache.Length == 0)
+            exp.SortedWeaponCache = [.. Registries.Weapons.GetAllKeys().OrderBy(key => {
+                var wpn = Registries.Weapons[key];
+                return wpn.WeaponData.WeaponType + wpn.WeaponData.Name;
+            })];
         }
 
         if (Scene.FindAnyComponent<EnemySpawningComponent>(out var sp))
@@ -772,7 +778,7 @@ public class ExperimentModeSystem : Walgelijk.System
         Ui.StartScrollView(false);
         {
             int i = 0;
-            foreach (var item in Registries.Weapons.GetAllKeys())
+            foreach (var item in exp.SortedWeaponCache)
             {
                 if (!Registries.Weapons.TryGet(item, out var wpn))
                     continue;

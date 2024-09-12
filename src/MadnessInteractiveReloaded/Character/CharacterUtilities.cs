@@ -62,10 +62,12 @@ public static class CharacterUtilities
 
             MadnessUtils.DelayPausable(delay, () => // TODO what if the scene changes? ideally, these routines should be erased on scene change
             {
-                character.EquipWeapon(scene, weapon);
-                var pickupAssets = Assets.EnumerateFolder("sounds/pickup");
-                var data = Assets.Load<FixedAudioData>(Utilities.PickRandom(pickupAssets));
-                scene.Game.AudioRenderer.PlayOnce(SoundCache.Instance.LoadSoundEffect(data));
+                if (character.EquipWeapon(scene, weapon))
+                {
+                    var pickupAssets = Assets.EnumerateFolder("sounds/pickup");
+                    var data = Assets.Load<FixedAudioData>(Utilities.PickRandom(pickupAssets));
+                    scene.Game.AudioRenderer.PlayOnce(SoundCache.Instance.LoadSoundEffect(data));
+                }
             });
         }
     }

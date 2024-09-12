@@ -26,6 +26,8 @@ public class ExperimentModeComponent : Component
     public PlayerTarget PlayerCameraTarget = new();
     public FreeMoveTarget FreeMoveCameraTarget = new();
 
+    public string[] SortedWeaponCache = [];
+
     public void CopySceneToSelectionManager(Scene scene)
     {
         SelectionManager.Selectables.Clear();
