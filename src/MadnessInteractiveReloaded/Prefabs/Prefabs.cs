@@ -852,14 +852,12 @@ public static class Prefabs
     /// </summary>
     public static PlayerComponent CreatePlayer(Scene scene, Vector2 bottom)
     {
-        bool gruntMod = ImprobabilityDisks.IsEnabled("grunt");
-
         var look = UserData.Instances.PlayerLook;
         var stats = Registries.Stats["player"];
 
         if (CampaignProgress.CurrentCampaign != null)
         {
-            if (!gruntMod && CampaignProgress.CurrentCampaign.Stats != null)
+            if (CampaignProgress.CurrentCampaign.Stats != null)
                 if (Registries.Stats.TryGet(CampaignProgress.CurrentCampaign.Stats, out var s))
                     stats = s;
 

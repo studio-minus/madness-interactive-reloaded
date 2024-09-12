@@ -14,13 +14,6 @@
 		"Sound": "sounds/music/Lothyde/agr3.ogg"
 	},
 	{
-		"Name": "API Madness",
-		"Author": "Cheshyre",
-		"BPM": 180,
-		"StartOffset": 0.754,
-		"Sound": "sounds/music/api_madness.ogg"
-	},
-	{
 		"Name": "Brake Breaker",
 		"Author": "Lothyde",
 		"BPM": 150,
@@ -131,6 +124,13 @@
 		"BPM": 170,
 		"StartOffset": 0,
 		"Sound": "sounds/music/madness_5_a.ogg"
+	},
+	{
+		"Name": "Madness Combat 6",
+		"Author": "API",
+		"BPM": 180,
+		"StartOffset": 1.095,
+		"Sound": "sounds/music/api_madness.ogg"
 	},
 	{
 		"Name": "Madness Combat 6.5",

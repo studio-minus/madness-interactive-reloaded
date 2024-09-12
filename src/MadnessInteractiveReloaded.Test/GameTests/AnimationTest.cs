@@ -11,7 +11,7 @@ public class AnimationTest : global::System.IDisposable
 {
     public AnimationTest()
     {
-        if (!Assets.TryGetPackage("base", out _))
+        if (Assets.TryGetPackage("base", out _))
             MadnessInteractiveReloaded.PrepareResourceInitialise();
         Registries.ClearAll();
     }
@@ -35,8 +35,8 @@ public class AnimationTest : global::System.IDisposable
         scene.HasEntity(character.Entity).Should().BeTrue();
 
         var bodyTransform = scene.GetComponentFrom<TransformComponent>(character.Positioning.Body.Entity);
-        character.PlayAnimation(Animations.DodgeAnimations[0]);
-        var duration = Animations.DodgeAnimations[0].TotalDuration;
+        character.PlayAnimation(Animations.Dodge[0]);
+        var duration = Animations.Dodge[0].TotalDuration;
         // play animation
 
         character.Animations.Should().ContainSingle();
@@ -87,7 +87,7 @@ public class AnimationTest : global::System.IDisposable
 
         scene.HasEntity(character.Entity).Should().BeTrue();
 
-        character.PlayAnimation(Animations.DodgeAnimations[0]);
+        character.PlayAnimation(Animations.Dodge[0]);
         // play animation
 
         character.IsPlayingAnimation.Should().BeTrue();

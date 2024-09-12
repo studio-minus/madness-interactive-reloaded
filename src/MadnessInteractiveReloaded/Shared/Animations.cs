@@ -15,10 +15,16 @@ public static class Animations
         Registries.Animations.Get("hit_enemy_2"),
     };
 
-    public static readonly CharacterAnimation[] DodgeAnimations ={
+    public static readonly CharacterAnimation[] Dodge ={
         Registries.Animations.Get("dodge_1"),
         Registries.Animations.Get("dodge_2"),
     };
+
+    public static readonly DoubleSidedMultiple<CharacterAnimation> Pickup = new([
+        Registries.Animations.Get("pickup_1"),
+    ], [
+        Registries.Animations.Get("pickup_2"),
+    ]);
 
     public static readonly CharacterAnimation[] Dancing ={
         Registries.Animations.Get("dancing_1"),

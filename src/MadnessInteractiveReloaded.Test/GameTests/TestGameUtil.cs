@@ -11,7 +11,7 @@ public struct TestGameUtil
     {
         Game game = new Game(new FakeWindow());
 
-        if (!Assets.TryGetPackage("base", out _))
+        if (Assets.TryGetPackage("base", out _))
             MadnessInteractiveReloaded.PrepareResourceInitialise();
         Resources.RegisterType(typeof(AudioData), static p => new FixedAudioData([], 256, 2, 512));
         Resources.RegisterType(typeof(FixedAudioData), static p => new FixedAudioData([], 256, 2, 512));

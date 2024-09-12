@@ -78,7 +78,7 @@ public class MeleeSequenceSystem : Walgelijk.System
                 comp.HitframesSpent = 0;
                 comp.LastAnim = ch.PlayAnimation(key.Animation.Select(!ch.Positioning.IsFlipped), comp.Speed);
                 //TODO WTF??? HIER MOET TOCH NIET !phys.IsFlipped staan wtf Oh nee
-          
+
             }
         }
     }
@@ -89,15 +89,15 @@ public class MeleeSequenceSystem : Walgelijk.System
         var center = ch.Positioning.Head.GlobalPosition;
         var dir = ch.AimDirection;
 
-        float damageMultiplier = ch.Positioning.Scale * ch.Positioning.Scale;
- 
+        float damageMultiplier =  float.Pow(ch.Positioning.Scale, 8);
+
         if (ch.EquippedWeapon.TryGet(Scene, out var wpn))
         {
             switch (wpn.Data.WeaponType)
             {
                 case WeaponType.Firearm:
                     MeleeUtils.DoMeleeHit(Scene, ch, center, dir,
-                        wpn.Data.Range,
+                        wpn.Data.Range * ch.Positioning.Scale,
                         (wpn.Data.ThrowableHeavy ? 0.25f : 0.125f) * ch.Stats.MeleeSkill * damageMultiplier, ch.EnemyCollisionLayer, wpn);
                     break;
                 case WeaponType.Melee:
@@ -106,12 +106,12 @@ public class MeleeSequenceSystem : Walgelijk.System
                         {
                             case MeleeDamageType.Axe:
                             case MeleeDamageType.Blade:
-                                MeleeUtils.DoMeleeHit(Scene, ch, center, dir, wpn.Data.Range, wpn.Data.Damage * damageMultiplier, ch.EnemyCollisionLayer, wpn);
+                                MeleeUtils.DoMeleeHit(Scene, ch, center, dir, wpn.Data.Range * ch.Positioning.Scale, wpn.Data.Damage * damageMultiplier, ch.EnemyCollisionLayer, wpn);
                                 break;
                             case MeleeDamageType.Firearm: //wtf
                             case MeleeDamageType.Blunt:
                                 MeleeUtils.DoMeleeHit(Scene, ch, center, dir,
-                                    wpn.Data.Range,
+                                    wpn.Data.Range * ch.Positioning.Scale,
                                     wpn.Data.Damage * damageMultiplier, ch.EnemyCollisionLayer, wpn);
                                 break;
                         }
@@ -121,7 +121,7 @@ public class MeleeSequenceSystem : Walgelijk.System
         }
         else
         {
-            MeleeUtils.DoMeleeHit(Scene, ch, center, dir, 256, 0.12f * ch.Stats.MeleeSkill * damageMultiplier, ch.EnemyCollisionLayer, wpn, finalAttack);
+            MeleeUtils.DoMeleeHit(Scene, ch, center, dir, 256 * ch.Positioning.Scale, 0.12f * ch.Stats.MeleeSkill * damageMultiplier, ch.EnemyCollisionLayer, wpn, finalAttack);
         }
     }
 }

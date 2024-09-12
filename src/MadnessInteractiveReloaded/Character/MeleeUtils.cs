@@ -33,21 +33,21 @@ public static class MeleeUtils
             meleeSequenceComponent.CanContinue = true;
         else
         {
-            string meleeSeq = character.Stats.UnarmedSeq;
+            string meleeSeq = Utilities.PickRandom(character.Stats.UnarmedSeq);
             if (equipped != null)
                 switch (equipped.Data.MeleeDamageType)
                 {
                     case MeleeDamageType.Blade:
-                        meleeSeq = character.Stats.SwordSeq;
+                        meleeSeq = Utilities.PickRandom(character.Stats.SwordSeq);
                         break;
                     case MeleeDamageType.Axe:
-                        meleeSeq = character.Stats.BluntSeq;
+                        meleeSeq = Utilities.PickRandom(character.Stats.BluntSeq);
                         break;
                     case MeleeDamageType.Firearm:
-                        meleeSeq = equipped.HoldPoints.Length == 2 ? character.Stats.TwoHandedGunSeq : character.Stats.OneHandedGunSeq;
+                        meleeSeq = Utilities.PickRandom(equipped.HoldPoints.Length == 2 ? character.Stats.TwoHandedGunSeq : character.Stats.OneHandedGunSeq);
                         break;
                     case MeleeDamageType.Blunt:
-                        meleeSeq = equipped.HoldPoints.Length == 2 ? character.Stats.TwoHandedSeq : character.Stats.BluntSeq;
+                        meleeSeq = Utilities.PickRandom(equipped.HoldPoints.Length == 2 ? character.Stats.TwoHandedSeq : character.Stats.BluntSeq);
                         break;
                 }
 
@@ -99,9 +99,9 @@ public static class MeleeUtils
 
         if (scene.TryGetComponentFrom<ImpactOffsetComponent>(hit.Entity, out var impactOffset))
         {
-            if (!hasBodyPart|| bodyPart!.Character.Get(scene).HasFlag(CharacterFlags.AttackResponseMelee))
+            if (!hasBodyPart || bodyPart!.Character.Get(scene).HasFlag(CharacterFlags.AttackResponseMelee))
             {
-                float rot = 3 * actor.Stats.MeleeSkill;
+                float rot = 5 * actor.Stats.MeleeSkill;
                 rot *= direction.X > 0 ? 1 : -1;
 
                 if (localPoint.Y > hitTransform.LocalRotationPivot.Y)
@@ -109,7 +109,7 @@ public static class MeleeUtils
                 else
                     impactOffset.RotationOffset += rot;
 
-                impactOffset.TranslationOffset += direction * 3 * actor.Stats.MeleeSkill;
+                impactOffset.TranslationOffset += direction * 25 * actor.Stats.MeleeSkill;
             }
         }
 
@@ -180,8 +180,10 @@ public static class MeleeUtils
                 }
             }
 
+
+
             {
-                if (weapon == null && /*victimIsPlayer &&*/ CharacterUtilities.CanDodge(victim))
+                if (weapon == null && victimIsPlayer && CharacterUtilities.CanDodge(victim))
                     victim.DrainDodge(damage);
                 else
                     bodyPart.Damage(damage);
@@ -191,9 +193,9 @@ public static class MeleeUtils
                     if (victim.DodgeMeter < 0.5f)
                     {
                         if (victim.Positioning.GlobalCenter.X > actor.Positioning.GlobalCenter.X != victim.Positioning.IsFlipped)
-                            victim.PlayAnimation(Registries.Animations.Get("stun_light_forwards"));
+                            victim.PlayAnimation(Registries.Animations.Get("stun_light_forwards"), 1.2f);
                         else
-                            victim.PlayAnimation(Registries.Animations.Get(Utilities.PickRandom("stun_light_backwards", "stun_light_backwards2")));
+                            victim.PlayAnimation(Registries.Animations.Get(Utilities.PickRandom("stun_light_backwards", "stun_light_backwards2")), 1.2f);
                     }
                 }
             }

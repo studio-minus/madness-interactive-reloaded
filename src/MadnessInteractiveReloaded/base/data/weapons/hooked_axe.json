@@ -2,7 +2,7 @@
   "Id": "hooked_axe",
   "WeaponData": {
     "Name": "Hooked Axe",
-    "Damage": 2.0,
+    "Damage": 0.8,
     "UseDelay": 0.05,
     "MaxHandRangeMultiplier": 0.8,
     "AdditionalComponents": null,

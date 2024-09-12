@@ -75,7 +75,7 @@ public class PlayerCharacterSystem : Walgelijk.System
                     {
                         item.Kill();
                         MadnessUtils.TurnIntoRagdoll(Scene, item, Utilities.RandomPointInCircle() * 140, Utilities.RandomFloat(-90, 90));
-                }
+                    }
             }
         }
 
@@ -290,16 +290,6 @@ public class PlayerCharacterSystem : Walgelijk.System
 
     private void PickUpWeapon(CharacterComponent character, WeaponComponent? weapon)
     {
-        if (character.HasWeaponEquipped)
-            character.DropWeapon(Scene);
-
-        if (weapon != null)
-        {
-            character.EquipWeapon(Scene, weapon);
-
-            var pickupAssets = Assets.EnumerateFolder("sounds/pickup");
-            var data = Assets.Load<FixedAudioData>(Utilities.PickRandom(pickupAssets));
-            Audio.PlayOnce(SoundCache.Instance.LoadSoundEffect(data));
-        }
+        CharacterUtilities.PickupWithAnimation(Scene, character, weapon);
     }
 }

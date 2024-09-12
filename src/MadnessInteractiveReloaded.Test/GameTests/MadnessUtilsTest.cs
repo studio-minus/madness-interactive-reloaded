@@ -12,7 +12,7 @@ public class MadnessUtilsTest
 {
     public MadnessUtilsTest()
     {
-        if (!Assets.TryGetPackage("base", out _))
+        if (Assets.TryGetPackage("base", out _))
             MadnessInteractiveReloaded.PrepareResourceInitialise();
         Registries.ClearAll();
     }

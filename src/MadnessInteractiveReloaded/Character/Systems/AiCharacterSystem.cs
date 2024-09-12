@@ -5,6 +5,7 @@ using System.Numerics;
 using Walgelijk;
 using Walgelijk.AssetManager;
 using Walgelijk.Physics;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace MIR;
 /// <summary>
@@ -171,10 +172,8 @@ public class AiCharacterSystem : Walgelijk.System
             }
 
             if (!experimentMode && ai.WantsToInteract.Value && !character.AnimationConstrainsAny(AnimationConstraint.PreventWorldInteraction))
-            {
                 PickupNearestWeapon(transform.Position, character, ai);
-                character.EquippedWeapon.TryGet(Scene, out equipped);
-            }
+            character.EquippedWeapon.TryGet(Scene, out equipped);
 
             if (!experimentMode && !ai.IsDocile &&
                 !ai.IsDoingAccurateShot &&
@@ -644,11 +643,11 @@ public class AiCharacterSystem : Walgelijk.System
 
     private void PickupNearestWeapon(Vector2 point, CharacterComponent character, AiComponent ai)
     {
-        if (character.HasWeaponEquipped)
-        {
-            //   character.DropWeapon(Scene);
+        if (Scene.HasComponent<CharacterPickupComponent>(character.Entity))
             return;
-        }
+
+        if (character.HasWeaponEquipped)
+            return;
 
         float minDistanceSoFar = (character.HandPickupRange * character.HandPickupRange) * character.Stats.Scale + 150;
         WeaponComponent? nearest = null;
@@ -671,14 +670,32 @@ public class AiCharacterSystem : Walgelijk.System
             }
         }
 
+
+        // TODO why not use CharacterUtilities.PickupWithAnimation? because of ai.WantsToPickupWeapon = false;
+
         if (nearest != null)
         {
-            character.EquipWeapon(Scene, nearest);
-            ai.WantsToPickupWeapon = false;
+            float delay = 0;
 
-            var pickupAssets = Assets.EnumerateFolder("sounds/pickup");
-            var data = Assets.Load<FixedAudioData>(Utilities.PickRandom(pickupAssets));
-            Audio.PlayOnce(SoundCache.Instance.LoadSoundEffect(data));
+            if (!Scene.HasComponent<JumpDodgeComponent>(character.Entity))
+            {
+                var d = Scene.AttachComponent(character.Entity, new CharacterPickupComponent
+                {
+                    Target = new(nearest.Entity)
+                });
+                delay = d.PickupTime * d.Duration;
+            }
+
+            ai.WantsToPickupWeapon = false;
+            MadnessUtils.DelayPausable(delay, () => // TODO what if the scene changes? ideally, these routines should be erased on scene change
+            {
+                if (character.EquipWeapon(Scene, nearest))
+                {
+                    var pickupAssets = Assets.EnumerateFolder("sounds/pickup");
+                    var data = Assets.Load<FixedAudioData>(Utilities.PickRandom(pickupAssets));
+                    Audio.PlayOnce(SoundCache.Instance.LoadSoundEffect(data));
+                }
+            });
         }
     }
 }

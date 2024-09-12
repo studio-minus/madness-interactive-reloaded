@@ -5,7 +5,7 @@ name End Soldat
 aiming_randomness 0.1
 shooting_timeout 0.1
 recoil_handling 1
-dodge 0.4
+dodge 0.3
 panic 1.1
 melee 0.5
 can_deflect true

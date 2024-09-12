@@ -57,7 +57,7 @@ public class TelekinesisAbilityComponent : CharacterAbilityComponent
         time = 0;
         wasUsing = true;
 
-        a.Character.Positioning.HandPoseFunctionOverride = PoseHand;
+        a.Character.Positioning.HandPoseFunctionOverride.Add(PoseHand);
     }
 
     private bool IsValidWeapon(VelocityComponent n)
@@ -100,8 +100,7 @@ public class TelekinesisAbilityComponent : CharacterAbilityComponent
 
             if (time < 0)
             {
-                if (a.Character.Positioning.HandPoseFunctionOverride == PoseHand)
-                    a.Character.Positioning.HandPoseFunctionOverride = null;
+                a.Character.Positioning.HandPoseFunctionOverride.Remove(PoseHand);
                 time = 0;
                 wasUsing = false;
             }

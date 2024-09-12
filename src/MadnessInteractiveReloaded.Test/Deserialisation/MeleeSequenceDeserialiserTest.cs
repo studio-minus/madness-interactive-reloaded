@@ -8,7 +8,7 @@ public class MeleeSequenceDeserialiserTest : global::System.IDisposable
 {
     public MeleeSequenceDeserialiserTest()
     {
-        if (!Assets.TryGetPackage("base", out _))
+        if (Assets.TryGetPackage("base", out _))
             MadnessInteractiveReloaded.PrepareResourceInitialise();
         Registries.ClearAll();
         Registries.LoadAnimations();

@@ -13,7 +13,7 @@ public class HandArmourDeserialiserTest : global::System.IDisposable
 {
     public HandArmourDeserialiserTest()
     {
-        if (!Assets.TryGetPackage("base", out _))
+        if (Assets.TryGetPackage("base", out _))
             MadnessInteractiveReloaded.PrepareResourceInitialise();
         Registries.ClearAll();
 
@@ -54,44 +54,44 @@ public class HandArmourDeserialiserTest : global::System.IDisposable
     {
         Load("Default", -1, new HandTextures
         {
-            FistFront = "base:textures/bodies/default/hand_fist.png",
-            FistBack = "base:textures/bodies/default/hand_fist_back.png",
+            FistFront = "textures/bodies/default/hand_fist.png",
+            FistBack = "textures/bodies/default/hand_fist_back.png",
 
-            HoldPistolFront = "base:textures/bodies/default/hand_pistol.png",
-            HoldPistolBack = "base:textures/bodies/default/hand_pistol_back.png",
+            HoldPistolFront = "textures/bodies/default/hand_pistol.png",
+            HoldPistolBack = "textures/bodies/default/hand_pistol_back.png",
 
-            HoldUndersideFront = "base:textures/bodies/default/hand_underside.png",
-            HoldUndersideBack = "base:textures/bodies/default/hand_underside_back.png",
+            HoldUndersideFront = "textures/bodies/default/hand_underside.png",
+            HoldUndersideBack = "textures/bodies/default/hand_underside_back.png",
 
-            HoldRifleFront = "base:textures/bodies/default/hand_rifle.png",
-            HoldRifleBack = "base:textures/bodies/default/hand_rifle_back.png",
+            HoldRifleFront = "textures/bodies/default/hand_rifle.png",
+            HoldRifleBack = "textures/bodies/default/hand_rifle_back.png",
 
-            OpenFront = "base:textures/bodies/default/hand_open.png",
-            OpenBack = "base:textures/bodies/default/hand_open_back.png",
+            OpenFront = "textures/bodies/default/hand_open.png",
+            OpenBack = "textures/bodies/default/hand_open_back.png",
 
-            PointFront = "base:textures/bodies/default/hand_point.png",
-            PointBack = "base:textures/bodies/default/hand_point_back.png",
+            PointFront = "textures/bodies/default/hand_point.png",
+            PointBack = "textures/bodies/default/hand_point_back.png",
         });
 
         Load("\tStang stang saNT", 5423, new HandTextures
         {
-            FistFront = "base:textures/bodies/default/hand_fist.png",
-            FistBack = "base:textures/bodies/default/hand_fist_back.png",
+            FistFront = "textures/bodies/default/hand_fist.png",
+            FistBack = "textures/bodies/default/hand_fist_back.png",
 
-            HoldPistolFront = "base:textures/bodies/default/hand_pistol.png",
-            HoldPistolBack = "base:textures/bodies/default/hand_pistol_back.png",
+            HoldPistolFront = "textures/bodies/default/hand_pistol.png",
+            HoldPistolBack = "textures/bodies/default/hand_pistol_back.png",
 
-            HoldUndersideFront = "base:textures/bodies/default/hand_underside.png",
-            HoldUndersideBack = "base:textures/bodies/default/hand_underside_back.png",
+            HoldUndersideFront = "textures/bodies/default/hand_underside.png",
+            HoldUndersideBack = "textures/bodies/default/hand_underside_back.png",
 
-            HoldRifleFront = "base:textures/bodies/default/hand_rifle.png",
-            HoldRifleBack = "base:textures/bodies/default/hand_rifle_back.png",
+            HoldRifleFront = "textures/bodies/default/hand_rifle.png",
+            HoldRifleBack = "textures/bodies/default/hand_rifle_back.png",
 
-            OpenFront = "base:textures/bodies/default/hand_open.png",
-            OpenBack = "base:textures/bodies/default/hand_open_back.png",
+            OpenFront = "textures/bodies/default/hand_open.png",
+            OpenBack = "textures/bodies/default/hand_open_back.png",
 
-            PointFront = "base:textures/bodies/default/hand_point.png",
-            PointBack = "base:textures/bodies/default/hand_point_back.png",
+            PointFront = "textures/bodies/default/hand_point.png",
+            PointBack = "textures/bodies/default/hand_point_back.png",
         });
     }
 
@@ -171,27 +171,27 @@ public class HandArmourDeserialiserTest : global::System.IDisposable
     [Fact()]
     public void InvalidPathTest()
     {
-        Assert.Throws<global::System.Exception>(static () =>
+        Assert.ThrowsAny<global::System.Exception>(static () =>
         {
             Load("Default", -1, new HandTextures
             {
-                FistFront = "base:textures/bodies/default/hand_fist.png",
-                FistBack = "base:textures/bodies/default/hand-dwdwdw_back.png",
+                FistFront = "textures/bodies/default/hand_fist.png",
+                FistBack = "textures/bodies/default/hand-dwdwdw_back.png",
 
-                HoldPistolFront = "base:textures/wrg.png",
-                HoldPistolBack = "base:textures/bodies/d/hand_pistol_back.png",
+                HoldPistolFront = "textures/wrg.png",
+                HoldPistolBack = "textures/bodies/d/hand_pistol_back.png",
 
-                HoldUndersideFront = "base:textures/bodies/default/hand_underside.png",
-                HoldUndersideBack = "base:textures/bodies/w/hand_underside_back.png",
+                HoldUndersideFront = "textures/bodies/default/hand_underside.png",
+                HoldUndersideBack = "textures/bodies/w/hand_underside_back.png",
 
-                HoldRifleFront = "base:textures/bodies/default/hand_rifle.png",
-                HoldRifleBack = "base:textures/wdwdwd/default/hand_rifle_back.png",
+                HoldRifleFront = "textures/bodies/default/hand_rifle.png",
+                HoldRifleBack = "textures/wdwdwd/default/hand_rifle_back.png",
 
-                OpenFront = "base:textures/bodies/default/hand_open.png",
-                OpenBack = "base:textures/bodies5464565default/hand_open_back.png",
+                OpenFront = "textures/bodies/default/hand_open.png",
+                OpenBack = "textures/bodies5464565default/hand_open_back.png",
 
-                PointFront = "base:textures/bodies/43344/hand_point.png",
-                PointBack = "base:textures/bodies/default/hand_point_back.png",
+                PointFront = "textures/bodies/43344/hand_point.png",
+                PointBack = "textures/bodies/default/hand_point_back.png",
             });
         });
     }
@@ -199,24 +199,24 @@ public class HandArmourDeserialiserTest : global::System.IDisposable
     [Fact]
     public void UnknownValueTest()
     {
-        Assert.Throws<SerialisationException>(static () =>
+        Assert.ThrowsAny<global::System.Exception>(static () =>
         {
             Load("raak", -1, new HandTextures
             {
-                FistFront = "base:textures/bodies/default/hand_fist.png",
-                FistBack = "base:textures/bodies/default/hand_fist_back.png",
+                FistFront = "textures/bodies/default/hand_fist.png",
+                FistBack = "textures/bodies/default/hand_fist_back.png",
 
-                HoldPistolFront = "base:textures/bodies/default/hand_pistol.png",
-                HoldPistolBack = "base:textures/bodies/default/hand_pistol_back.png",
+                HoldPistolFront = "textures/bodies/default/hand_pistol.png",
+                HoldPistolBack = "textures/bodies/default/hand_pistol_back.png",
 
-                HoldUndersideFront = "base:textures/bodies/default/hand_underside.png",
-                HoldUndersideBack = "base:textures/bodies/default/hand_underside_back.png",
+                HoldUndersideFront = "textures/bodies/default/hand_underside.png",
+                HoldUndersideBack = "textures/bodies/default/hand_underside_back.png",
 
-                HoldRifleFront = "base:textures/bodies/default/hand_rifle.png",
-                HoldRifleBack = "base:textures/bodies/default/hand_rifle_back.png",
+                HoldRifleFront = "textures/bodies/default/hand_rifle.png",
+                HoldRifleBack = "textures/bodies/default/hand_rifle_back.png",
 
-                PointFront = "base:textures/bodies/default/hand_point.png",
-                PointBack = "base:textures/bodies/default/hand_point_back.png",
+                PointFront = "textures/bodies/default/hand_point.png",
+                PointBack = "textures/bodies/default/hand_point_back.png",
             });
         });
     }

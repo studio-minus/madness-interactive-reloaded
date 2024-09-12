@@ -12,7 +12,7 @@ public class ArmourDeserialiserTest : global::System.IDisposable
 {
     public ArmourDeserialiserTest()
     {
-        if (!Assets.TryGetPackage("base", out _))
+        if (Assets.TryGetPackage("base", out _))
             MadnessInteractiveReloaded.PrepareResourceInitialise();
         Registries.ClearAll();
     }
@@ -31,8 +31,8 @@ name {name}
 order {order}
 type {type}
 
-left base:textures/bodies/default/head_left.png
-right base:textures/bodies/default/head_right.png
+left textures/bodies/default/head_left.png
+right textures/bodies/default/head_right.png
 offset {xOffset} {yOffset}
 ";
         var path = Path.GetTempFileName();
@@ -47,8 +47,8 @@ offset {xOffset} {yOffset}
         ((int)result.OffsetLeft.Y).Should().Be(yOffset);
         ((int)result.OffsetRight.X).Should().Be(xOffset);
         ((int)result.OffsetRight.Y).Should().Be(yOffset);
-        result.Left.Should().BeEquivalentTo(new AssetRef<Texture>("base:textures/bodies/default/head_left.png"));
-        result.Right.Should().BeEquivalentTo(new AssetRef<Texture>("base:textures/bodies/default/head_right.png"));
+        result.Left.Should().BeEquivalentTo(new AssetRef<Texture>("textures/bodies/default/head_left.png"));
+        result.Right.Should().BeEquivalentTo(new AssetRef<Texture>("textures/bodies/default/head_right.png"));
     }
 
     [Fact]
@@ -60,8 +60,8 @@ $@"{GameVersion.Version}
 name does not matter here
 type Head
 
-left base:textures/bodies/default/head_left.png
-right base:textures/bodies/default/head_right.png
+left textures/bodies/default/head_left.png
+right textures/bodies/default/head_right.png
 offset 4 -3
 broken
     test54
@@ -85,8 +85,8 @@ $@"{GameVersion.Version}
 name Hoe is het
 type IkBestaNietNooitNooitKijkMaar
 
-left base:textures/bodies/default/head_left.png
-right base:textures/bodies/default/head_right.png
+left textures/bodies/default/head_left.png
+right textures/bodies/default/head_right.png
 ";
         var path = Path.GetTempFileName();
         File.WriteAllText(path, content);
@@ -101,8 +101,8 @@ right base:textures/bodies/default/head_right.png
             ((int)result.OffsetLeft.Y).Should().Be(default);
             ((int)result.OffsetRight.X).Should().Be(default);
             ((int)result.OffsetRight.Y).Should().Be(default);
-            result.Left.Should().BeEquivalentTo(new AssetRef<Texture>("base:textures/bodies/default/head_left.png"));
-            result.Right.Should().BeEquivalentTo(new AssetRef<Texture>("base:textures/bodies/default/head_right.png"));
+            result.Left.Should().BeEquivalentTo(new AssetRef<Texture>("textures/bodies/default/head_left.png"));
+            result.Right.Should().BeEquivalentTo(new AssetRef<Texture>("textures/bodies/default/head_right.png"));
         });
     }
 
@@ -116,8 +116,8 @@ name Head again
 type Head
 coolness 500
 
-left base:textures/bodies/default/head_left.png
-right base:textures/bodies/default/head_right.png
+left textures/bodies/default/head_left.png
+right textures/bodies/default/head_right.png
 ";
         var path = Path.GetTempFileName();
         File.WriteAllText(path, content);

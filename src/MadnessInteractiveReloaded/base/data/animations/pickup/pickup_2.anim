@@ -1,0 +1,47 @@
+﻿fps 24
+scale 1
+speed 1
+relative
+
+BODY
+0       0.0px  0.0px  0.0deg
+1       -10.33px  -1.1px  1.15deg
+2       -28.35px  -6.42px  3.4deg
+3       -46.38px  -16.61px  5.18deg
+4       -55.66px  -22.02px  5.78deg
+5       -59.28px  -21.31px  5.87deg
+6       -60.13px  -17.49px  5.41deg
+7       -60.98px  -10.03px
+8       -56.04px  -0.63px  1.3deg
+9       -46.25px  4.48px  0.57deg
+10      -30.11px  5.65px  0.2deg
+11      -13.97px  4.11px  0.06deg
+12      -3.31px  1.86px
+13      -1.39px  0.78px
+15      -0.05px  0.03px  0.0deg
+16      0.0px  0.0px  0.0deg
+
+HEAD
+0       0.0px  0.0px  0.0deg
+1       -0.31px  1.76px  -0.92deg
+2       -2.48px  3.51px
+3       -5.52deg
+4       -20.68px  -9.5px  -6.69deg
+5       -22.91px  -9.3px  -6.11deg
+6       -23.23px  -7.91px  -4.7deg
+7       -19.24px  -4.34px
+8       -12.32px  -0.77px  -1.22deg
+9       -8.41px  1.34px  -0.04deg
+10      -7.19px  1.9px  0.39deg
+11      -5.97px  1.39px
+12      -4.6px  0.64px  -0.01deg
+13      -3.24px  0.27px
+14      -1.88px  0.08px
+15      -0.51px  0.01px  -0.0deg
+16      0.0px  0.0px  0.0deg
+
+HAND 
+0       -98.09px  26.76px
+
+HAND
+0       181.63px  41.61px

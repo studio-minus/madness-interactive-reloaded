@@ -7,7 +7,7 @@
 		<DefineConstants>$(TargetOperatingSystem)</DefineConstants>
 		<ApplicationIcon>resources\textures\icon.ico</ApplicationIcon>
 		<StartupObject></StartupObject>
-		<Version>0.48.7</Version>
+		<Version>0.48.8</Version>
 		<NeutralLanguage />
 		<Company>Studio Minus</Company>
 		<Authors>Dikkiedik, zooi, Koof</Authors>
@@ -54,8 +54,8 @@
 		<PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="4.11.0" />
 		<PackageReference Include="NativeFileDialogExtendedSharp" Version="0.1.0" />
 		<PackageReference Include="System.CommandLine.DragonFruit" Version="0.4.0-alpha.22272.1" />
-		<PackageReference Include="Walgelijk" Version="0.29.1" />
-		<PackageReference Include="Walgelijk.AssetManager" Version="0.16.11" />
+		<PackageReference Include="Walgelijk" Version="0.29.2" />
+		<PackageReference Include="Walgelijk.AssetManager" Version="0.16.13" />
 		<PackageReference Include="Walgelijk.CommonAssetDeserialisers" Version="0.8.3" />
 		<PackageReference Include="Walgelijk.Localisation" Version="1.1.21" />
 		<PackageReference Include="Walgelijk.Onion" Version="0.5.24" />
@@ -72,6 +72,14 @@
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="$(ProjectDir)base\**" CopyToOutputDirectory="Never" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Remove="resources\error.wav" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Content Include="C:\Projects\madness-interactive-reloaded\src\MadnessInteractiveReloaded\base\sounds\error.ogg" />
+	  <Content Include="C:\Projects\madness-interactive-reloaded\src\MadnessInteractiveReloaded\base\sounds\error.wav" />
+	  <Content Include="base\sounds\error.wav" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Include="..\.editorconfig" Link=".editorconfig" />
