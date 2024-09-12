@@ -145,6 +145,7 @@ public class ExperimentModeSystem : Walgelijk.System
         else
         {
             exp.TimeSinceMenuOpened = 0;
+            exp.CurrentlyPlacing = null;
             if (Input.IsKeyReleased(Key.R) && !playerCharacter.IsAlive)
                 MadnessCommands.Revive();
         }
