@@ -5,20 +5,20 @@ relative
 
 BODY
 0       0.0px  0.0px  0.0deg
-1       -10.33px  -1.87px  1.15deg
-2       -28.35px  -10.94px  3.4deg
-3       -46.38px  -28.33px  5.18deg
-4       -55.66px  -37.55px  5.78deg
-5       -59.28px  -36.34px  5.87deg
-6       -60.13px  -29.82px  5.41deg
-7       -60.98px  -17.1px
-8       -56.04px  -1.07px  1.3deg
-9       -46.25px  7.64px  0.57deg
-10      -30.11px  9.64px  0.2deg
-11      -13.97px  7.0px  0.06deg
-12      -3.31px  3.17px
-13      -1.39px  1.34px
-15      -0.05px  0.05px  0.0deg
+1       -10.33px  -1.1px  1.15deg
+2       -28.35px  -6.42px  3.4deg
+3       -46.38px  -16.61px  5.18deg
+4       -55.66px  -22.02px  5.78deg
+5       -59.28px  -21.31px  5.87deg
+6       -60.13px  -17.49px  5.41deg
+7       -60.98px  -10.03px
+8       -56.04px  -0.63px  1.3deg
+9       -46.25px  4.48px  0.57deg
+10      -30.11px  5.65px  0.2deg
+11      -13.97px  4.11px  0.06deg
+12      -3.31px  1.86px
+13      -1.39px  0.78px
+15      -0.05px  0.03px  0.0deg
 16      0.0px  0.0px  0.0deg
 
 HEAD
