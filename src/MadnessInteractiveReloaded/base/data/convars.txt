@@ -13,7 +13,7 @@ DodgePointBlankCostMultiplier 50
 PointBlankDistance 250
 
 # Dodge cost when deflecting bullets, where this is multiplied with the weapon damage to calculate the final cost
-DeflectDodgeCost 0.025
+DeflectDodgeCost 0.1
 
 # Chance (0 to 1) of an NPC to jump-dodge when shot
 JumpDodgeChance 0.2

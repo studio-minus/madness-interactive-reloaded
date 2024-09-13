@@ -173,14 +173,13 @@ public static class MeleeUtils
 
             if (victimIsPlayer && actor.HasWeaponEquipped && CharacterUtilities.CanDodge(victim))
             {
-                victim.DrainDodge(damage);
+                victim.DrainDodge(damage * 1.5f);
                 if (victim.DodgeMeter > 0 || victim.Stats.DodgeOversaturate)
                 {
                     CharacterUtilities.TryDodgeAnimation(victim);
                     return;
                 }
             }
-
 
 
             {

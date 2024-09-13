@@ -328,9 +328,9 @@ public class AiCharacterSystem : Walgelijk.System
                             if (!ai.IsDoingAccurateShot && character.Stats.CanDeflect)
                             {
                                 if (killTargetChar.HasWeaponOfType(Scene, WeaponType.Melee))
-                                    ai.WantsToIronSight.Value = Noise.GetValue(ai.Seed * 23.323f, 1, Time * 0.2f) > 0 && killTargetChar.IsPlayingAnimationGroup("melee");
+                                    ai.WantsToIronSight.Value = Noise.GetValue(ai.Seed * 23.323f, 1, Time * 0.2f) < 0.5f && killTargetChar.IsPlayingAnimationGroup("melee");
                                 else
-                                    ai.WantsToIronSight.Value = Noise.GetValue(ai.Seed * -23.323f, ai.Seed, Time * 0.2f) > 0 &&
+                                    ai.WantsToIronSight.Value = Noise.GetValue(ai.Seed * -23.323f, ai.Seed, Time * 0.2f) < 0.5f &&
                                         (ai.PanicLevel > 0 || character.DodgeMeter < character.Stats.DodgeAbility) && equipped.Data.CanDeflectBullets;
                             }
                         }
