@@ -3,7 +3,7 @@ scale 1
 speed 1
 
 BODY
-0       0.0px  0.0px  -0.0deg constraints(PreventAll PreventAllDamage PreventAllMovement PreventAllAttacking PreventAiming PreventWorldInteraction PreventIronSight PreventMixTransition FaceForwards)
+0       0.0px  0.0px  -0.0deg constraints(PreventAll PreventDodge PreventAllDamage PreventAllMovement PreventAllAttacking PreventAiming PreventWorldInteraction PreventIronSight PreventMixTransition FaceForwards)
 1       -0.19px  -0.52px  -0.27deg
 2       -2.22px  -3.1px  -1.63deg
 3       -7.26px  -9.64px  -4.91deg
