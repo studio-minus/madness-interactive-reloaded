@@ -4,20 +4,30 @@ namespace MIR;
 
 public class LevelProgressComponent : Component
 {
-    /// <summary>
-    /// Only applicable if the level has ProgressionType.BodyCount
-    /// </summary>
-    public int CurrentBodyCount;
+    public struct BodyCountGoal
+    {
+        public int Current;
+        public int Target;
+    }
+
+    public struct TimedGoal
+    {
+        public float Time;
+    }
 
     /// <summary>
-    /// Only applicable if the level has ProgressionType.BodyCount
+    /// Only applicable if the level has <see cref="ProgressionType.BodyCount"/>
     /// </summary>
-    public int BodyCountToWin;
+    public BodyCountGoal BodyCount;
 
     /// <summary>
-    /// Get level win state. Use <see cref="LevelProgressSystem.Win"/> to force win
+    /// Only applicable if the level has <see cref="ProgressionType.Time"/>
     /// </summary>
-    public bool CanProgress;
+    public TimedGoal Timed;
 
-    public float TimeTracker;
+    /// <summary>
+    /// True is the level goal is reached. It is now possible to progress to the next level.
+    /// </summary>
+    public bool GoalReached;
 }
+

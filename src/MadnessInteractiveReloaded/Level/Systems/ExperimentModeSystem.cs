@@ -868,5 +868,8 @@ public class ExperimentModeSystem : Walgelijk.System
         // Clear decals since they stick around unlike bullet casings, which go away pretty quickly.
         if (Scene.TryGetSystem<DecalSystem>(out var decalSystem))
             decalSystem.RemoveAllDecals();
+
+        exp.SelectionManager.DeselectAll();
+        exp.CopySceneToSelectionManager(Scene);
     }
 }

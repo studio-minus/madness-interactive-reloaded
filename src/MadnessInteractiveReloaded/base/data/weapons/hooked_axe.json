@@ -7,7 +7,7 @@
     "MaxHandRangeMultiplier": 0.8,
     "AdditionalComponents": null,
     "EnsureSystems": null,
-    "ThrowableDamage": 25.0,
+    "ThrowableDamage": 1.0,
     "ThrowableHeavy": false,
     "ThrowableSharpBoxes": [
       {

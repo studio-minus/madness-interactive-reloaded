@@ -52,6 +52,9 @@ public static class HandPosingFunctions
         var deflectionProgressFactor = Easings.Cubic.InOut(pos.MeleeBlockProgress);
         position = Utilities.Lerp(position, deflectPosition, deflectionProgressFactor);
         angle = Utilities.LerpAngle(angle, deflectAngle, deflectionProgressFactor);
+
+        if (deflectionProgressFactor > 0.5f)
+            pos.Hands.Second.Look = HandLook.Open;
     }
 
     public static void UnarmedProtective(in HandPoseParams poseParams, ref Vector2 position, ref float angle, int index)

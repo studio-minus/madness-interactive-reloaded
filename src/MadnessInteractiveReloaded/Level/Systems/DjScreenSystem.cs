@@ -47,7 +47,7 @@ public class DjScreenSystem : Walgelijk.System
     public override void Render()
     {
         Draw.Reset();
-        Draw.Order = RenderOrders.Effects;
+        Draw.Order = RenderOrders.BackgroundDecals;
         foreach (var comp in Scene.GetAllComponentsOfType<DjScreenComponent>())
         {
             if (Scene.FindAnyComponent<DjComponent>(out var dj)

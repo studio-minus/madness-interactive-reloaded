@@ -35,7 +35,7 @@ public class RichBossAbilityComponent : CharacterAbilityComponent
             CharacterFlags.AttackResponseMelee |
             CharacterFlags.AttackResponseThrownProjectile |
             CharacterFlags.DeleteRagdoll |
-            CharacterFlags.StunAnimationOnNonFatalShot);
+            CharacterFlags.StunAnimationOnNonFatalAttack);
 
         character.Flags |= CharacterFlags.NoRagdoll;
 

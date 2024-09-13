@@ -31,29 +31,12 @@ public class CutsceneSystem : Walgelijk.System
         {
             component.CurrentSlideIsUninitialised = false;
             slide.OnStart();
-            //if (slide.Music != null)
-            //{
-            //    if (PersistentSoundHandles.MainMenuMusic != null)
-            //        Audio.Stop(PersistentSoundHandles.MainMenuMusic);
-            //    if (PersistentSoundHandles.PauseMusic != null)
-            //        Audio.Stop(PersistentSoundHandles.PauseMusic);
-
-            //    if (PersistentSoundHandles.LevelMusic != slide.Music)
-            //    {
-            //        if (PersistentSoundHandles.LevelMusic != null)
-            //            Audio.Stop(PersistentSoundHandles.LevelMusic);
-            //        PersistentSoundHandles.LevelMusic = slide.Music;
-            //    }
-            //    Audio.Play(slide.Music);
-            //}
         }
 
         if (component.Time >= slide.Duration)
         {
             component.Time = 0;
             slide.OnStop();
-            //if (slide.Music != null)
-            //    Audio.Pause(slide.Music);
             component.Index++;
             if (component.Index >= component.Cutscene.Slides.Length)
                 component.IsComplete = true;

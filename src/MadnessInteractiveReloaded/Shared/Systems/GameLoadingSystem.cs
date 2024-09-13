@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Numerics;
 using Walgelijk;
 using Walgelijk.AssetManager;
@@ -53,8 +54,29 @@ public class GameLoadingSystem : Walgelijk.System
         Draw.TransformMatrix = Matrix3x2.CreateRotation(Time * 0.2f, Window.Size);
         Draw.Colour = Colors.Red.WithAlpha(0.05f);
         Draw.Image(
-            Assets.Load<Texture>("textures/loading_gear.png").Value, 
-            new Rect(Window.Size, new Vector2(Window.Height * 2)), 
-            ImageContainmentMode.Stretch);     
+            Assets.Load<Texture>("textures/loading_gear.png").Value,
+            new Rect(Window.Size, new Vector2(Window.Height * 2)),
+            ImageContainmentMode.Stretch);
+
+        {
+            int i = 0;
+            Draw.ResetTransformation();
+            Draw.Font = Fonts.CascadiaMono;
+            Draw.FontSize = 18;
+            foreach (var m in ModLoader.Mods)
+            {
+                Vector2 f = new Vector2(Window.Width - padding, padding + 18 * i);
+                Draw.Colour = Colors.Red;
+
+                if (!m.Errors.IsEmpty)
+                {
+                    Draw.Colour = Colors.Red.WithAlpha(Utilities.RandomFloat());
+                    f += Utilities.RandomPointInCircle(0, 3);
+                }
+
+                Draw.Text(m.Id, f, Vector2.One, HorizontalTextAlign.Right, VerticalTextAlign.Top);
+                i++;
+            }
+        }
     }
 }

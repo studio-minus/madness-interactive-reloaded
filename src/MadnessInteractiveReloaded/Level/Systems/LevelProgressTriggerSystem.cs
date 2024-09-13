@@ -11,7 +11,7 @@ public class LevelProgressTriggerSystem : Walgelijk.System
     {
         if (!MadnessUtils.FindPlayer(Scene, out var player, out var character) ||
             !Scene.FindAnyComponent<LevelProgressComponent>(out var progress) ||
-            !progress.CanProgress)
+            !progress.GoalReached)
             return;
 
         var playerBounds = character.GetBoundingBox(Scene);

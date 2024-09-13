@@ -1,0 +1,59 @@
+{
+  "Id": "trench_knife",
+  "WeaponData": {
+    "Name": "Trench Knife",
+    "Damage": 0.25,
+    "UseDelay": 0.0,
+    "MaxHandRangeMultiplier": 1.0,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 1.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [
+      {
+        "MinX": 9.00602,
+        "MinY": 3.7075024,
+        "MaxX": 57.509216,
+        "MaxY": 167.14558
+      }
+    ],
+    "WeaponType": "Melee",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 12,
+    "BurstFireCount": 0,
+    "Accuracy": 0.0,
+    "Recoil": 0.0,
+    "RotationalRecoilIntensity": 1.0,
+    "RecoilHandling": 0.0,
+    "Automatic": false,
+    "ShootSounds": null,
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 350.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Blade",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/trench_knife/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": -15.0,
+    "Y": -15.0
+  },
+  "CasingEjectionPoint": {
+    "X": 15.0,
+    "Y": 15.0
+  },
+  "HoldPoints": [
+    {
+      "X": 20.720993,
+      "Y": 68.94598
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 90.0
+}

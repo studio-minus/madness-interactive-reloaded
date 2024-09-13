@@ -9,9 +9,9 @@
   "WeaponChance": 1.0,
   "LevelBounds": {
     "MinX": -892.11316,
-    "MinY": -894.1282,
+    "MinY": -1132.8851,
     "MaxX": 661.2201,
-    "MaxY": 356.9829
+    "MaxY": 552.8986
   },
   "BodyCountToWin": 1,
   "TimeLimitInSeconds": -1.0,
@@ -22,7 +22,8 @@
   "EnemySpawnInstructions": [
     {
       "StatsKey": "engineer",
-      "LookKey": "engineer"
+      "LookKey": "engineer",
+      "FactionKey": "aahw"
     }
   ],
   "Weapons": [
@@ -30,11 +31,11 @@
   ],
   "FloorLine": [
     {
-      "X": -782.35925,
+      "X": -796.35925,
       "Y": -812.3129
     },
     {
-      "X": 551.64075,
+      "X": 565.64075,
       "Y": -812.3129
     }
   ],
@@ -205,6 +206,24 @@
         }
       },
       "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": -166.12828,
+        "Y": 548.45416
+      },
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Scale": 2.222222
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": -119.31133,
+        "Y": -1128.4407
+      },
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Scale": 2.222222
     }
   ]
 }

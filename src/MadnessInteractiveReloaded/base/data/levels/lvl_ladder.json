@@ -58,9 +58,7 @@
     "baton",
     "baseball_bat",
     "hatchet",
-    "qbz_95",
-    "micro_uzi",
-    "fn_fnc"
+    "micro_uzi"
   ],
   "FloorLine": [
     {
@@ -80,6 +78,254 @@
         "Y": -1027.6055
       },
       "SpawnWeapon": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "scientist2",
+        "Stats": "grunt",
+        "Faction": "aahw",
+        "Weapon": "bowie_knife",
+        "Flipped": false,
+        "BottomCenter": {
+          "X": -132.42596,
+          "Y": -1149.0796
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "scientist2",
+        "Stats": "grunt",
+        "Faction": "aahw",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": 287.4945,
+          "Y": -1176.0924
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerPoster, MIR",
+      "Type": 1,
+      "Angle": 5.597336,
+      "Position": {
+        "X": 378.8532,
+        "Y": -702.41595
+      },
+      "Scale": 1.8185204
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AnimationTrigger, MIR",
+      "Component": {
+        "WorldRect": {
+          "MinX": 1989.1893,
+          "MinY": -1213.8567,
+          "MaxX": 2501.1895,
+          "MaxY": 943.8384
+        },
+        "Animation": "cutscene_climbing_ladder",
+        "StartEvent": 1,
+        "Target": 0,
+        "ExistingLerpTime": 0.0,
+        "TargetPosition": {
+          "X": 2085.0,
+          "Y": -1200.0
+        },
+        "TargetFlipped": false,
+        "CreateNewLook": null,
+        "CreateNewStats": null,
+        "CreateNewFaction": "player",
+        "IsExpired": false,
+        "Entity": {
+          "Identity": 0
+        }
+      },
+      "Rectangle": {
+        "MinX": 1989.1893,
+        "MinY": -1213.8567,
+        "MaxX": 2501.1895,
+        "MaxY": 943.8384
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelProgressTrigger, MIR",
+      "Rectangle": {
+        "MinX": 2018.9104,
+        "MinY": 1343.2474,
+        "MaxX": 2480.033,
+        "MaxY": 3050.979
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -2476.746,
+        "MinY": 508.372,
+        "MaxX": -2117.4185,
+        "MaxY": 882.4605
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": 1172.7742,
+          "Y": -1087.7869
+        },
+        "FacingDirection": {
+          "X": "NaN",
+          "Y": "NaN"
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": 920.8174,
+          "Y": -354.3262
+        },
+        "TopRight": {
+          "X": 1427.291,
+          "Y": -355.01608
+        },
+        "BottomLeft": {
+          "X": 919.5259,
+          "Y": -1086.2676
+        },
+        "BottomRight": {
+          "X": 1426.0226,
+          "Y": -1089.3063
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": 2490.9143,
+        "MinY": -1198.4471,
+        "MaxX": 2837.2664,
+        "MaxY": 1170.79
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerPoster, MIR",
+      "Type": 1,
+      "Angle": -2.5897522,
+      "Position": {
+        "X": 1648.31,
+        "Y": -705.2751
+      },
+      "Scale": 1.8185204
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 2395.7466,
+        "MinY": -1030.7148,
+        "MaxX": 2612.1172,
+        "MaxY": 804.09644
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": 1756.0826,
+        "MinY": 3106.3293,
+        "MaxX": 2746.6865,
+        "MaxY": 3359.9912
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": 2490.6748,
+        "MinY": 1170.6532,
+        "MaxX": 2746.6753,
+        "MaxY": 3106.7578
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": 1756.7229,
+        "MinY": 1167.1536,
+        "MaxX": 2012.7233,
+        "MaxY": 3106.243
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "scientist1",
+        "Stats": "grunt",
+        "Faction": "aahw",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": 475.9381,
+          "Y": -1157.7483
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerPoster, MIR",
+      "Type": 1,
+      "Angle": 0.8334656,
+      "Position": {
+        "X": 1972.822,
+        "Y": -709.56354
+      },
+      "Scale": 1.8185204
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Disk, MIR",
+      "Position": {
+        "X": 979.064,
+        "Y": -1028.9248
+      },
+      "Angle": 0.0,
+      "DiskId": "very_strong",
+      "RenderOrder": {
+        "Layer": -100,
+        "OrderInLayer": 0
+      },
+      "Texture": "textures/props/floppy_disk1.png",
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.EnemySpawner, MIR",
+      "Position": {
+        "X": 2258.8044,
+        "Y": 2036.4714
+      }
     },
     {
       "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
@@ -141,6 +387,25 @@
       "Scale": 1.8185204
     },
     {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "experiment",
+        "Stats": "experiment",
+        "Faction": "rogue",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": 1847.5116,
+          "Y": -1159.2554
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
       "$type": "MIR.LevelEditor.Objects.Door, MIR",
       "Properties": {
         "SpawnPoint": {
@@ -176,24 +441,10 @@
       "Tag": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
-      "BlockerType": 0,
-      "A": {
-        "X": -2642.067,
-        "Y": 556.6947
-      },
-      "B": {
-        "X": -2210.7764,
-        "Y": 987.98334
-      },
-      "Radius": 145.16666,
-      "Tag": null
-    },
-    {
       "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
-      "WeaponKey": "oa_93",
+      "WeaponKey": "colt_revolver",
       "Angle": -26.640335,
-      "Ammo": 20,
+      "Ammo": 6,
       "AttachedToWall": false,
       "Position": {
         "X": 2253.6812,
@@ -278,271 +529,18 @@
       "StartAnimation": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.EnemySpawner, MIR",
-      "Position": {
-        "X": 2258.8044,
-        "Y": 2036.4714
-      }
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.Disk, MIR",
-      "Position": {
-        "X": 979.064,
-        "Y": -1028.9248
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": -2642.067,
+        "Y": 556.6947
       },
-      "Angle": 0.0,
-      "DiskId": "very_strong",
-      "RenderOrder": {
-        "Layer": -100,
-        "OrderInLayer": 0
+      "B": {
+        "X": -2210.7764,
+        "Y": 987.98334
       },
-      "Texture": "textures/props/floppy_disk1.png",
+      "Radius": 145.16666,
       "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.PlayerPoster, MIR",
-      "Type": 1,
-      "Angle": 0.8334656,
-      "Position": {
-        "X": 1972.822,
-        "Y": -709.56354
-      },
-      "Scale": 1.8185204
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "scientist1",
-        "Stats": "grunt",
-        "Faction": "aahw",
-        "Weapon": null,
-        "Flipped": false,
-        "BottomCenter": {
-          "X": 475.9381,
-          "Y": -1157.7483
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
-      "Rectangle": {
-        "MinX": 1756.7229,
-        "MinY": 1167.1536,
-        "MaxX": 2012.7233,
-        "MaxY": 3106.243
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
-      "Rectangle": {
-        "MinX": 2490.6748,
-        "MinY": 1170.6532,
-        "MaxX": 2746.6753,
-        "MaxY": 3106.7578
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
-      "Rectangle": {
-        "MinX": 1756.0826,
-        "MinY": 3106.3293,
-        "MaxX": 2746.6865,
-        "MaxY": 3359.9912
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
-      "Rectangle": {
-        "MinX": 2395.7466,
-        "MinY": -1030.7148,
-        "MaxX": 2612.1172,
-        "MaxY": 804.09644
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.PlayerPoster, MIR",
-      "Type": 1,
-      "Angle": -2.5897522,
-      "Position": {
-        "X": 1648.31,
-        "Y": -705.2751
-      },
-      "Scale": 1.8185204
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
-      "Rectangle": {
-        "MinX": 2490.9143,
-        "MinY": -1198.4471,
-        "MaxX": 2837.2664,
-        "MaxY": 1170.79
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.Door, MIR",
-      "Properties": {
-        "SpawnPoint": {
-          "X": 1172.7742,
-          "Y": -1087.7869
-        },
-        "FacingDirection": {
-          "X": "NaN",
-          "Y": "NaN"
-        },
-        "EnemySpawnerDoor": true,
-        "IsLevelProgressionDoor": false,
-        "IsPortal": false,
-        "PortalID": null,
-        "DestinationLevel": null,
-        "TopLeft": {
-          "X": 920.8174,
-          "Y": -354.3262
-        },
-        "TopRight": {
-          "X": 1427.291,
-          "Y": -355.01608
-        },
-        "BottomLeft": {
-          "X": 919.5259,
-          "Y": -1086.2676
-        },
-        "BottomRight": {
-          "X": 1426.0226,
-          "Y": -1089.3063
-        }
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
-      "Rectangle": {
-        "MinX": -2476.746,
-        "MinY": 508.372,
-        "MaxX": -2117.4185,
-        "MaxY": 882.4605
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.LevelProgressTrigger, MIR",
-      "Rectangle": {
-        "MinX": 2018.9104,
-        "MinY": 1343.2474,
-        "MaxX": 2480.033,
-        "MaxY": 3050.979
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.AnimationTrigger, MIR",
-      "Component": {
-        "WorldRect": {
-          "MinX": 1989.1893,
-          "MinY": -1213.8567,
-          "MaxX": 2501.1895,
-          "MaxY": 943.8384
-        },
-        "Animation": "cutscene_climbing_ladder",
-        "StartEvent": 1,
-        "Target": 0,
-        "ExistingLerpTime": 0.0,
-        "TargetPosition": {
-          "X": 2085.0,
-          "Y": -1200.0
-        },
-        "TargetFlipped": false,
-        "CreateNewLook": null,
-        "CreateNewStats": null,
-        "CreateNewFaction": "player",
-        "IsExpired": false,
-        "Entity": {
-          "Identity": 0
-        }
-      },
-      "Rectangle": {
-        "MinX": 1989.1893,
-        "MinY": -1213.8567,
-        "MaxX": 2501.1895,
-        "MaxY": 943.8384
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.PlayerPoster, MIR",
-      "Type": 1,
-      "Angle": 5.597336,
-      "Position": {
-        "X": 378.8532,
-        "Y": -702.41595
-      },
-      "Scale": 1.8185204
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "scientist2",
-        "Stats": "grunt",
-        "Faction": "aahw",
-        "Weapon": null,
-        "Flipped": false,
-        "BottomCenter": {
-          "X": 287.4945,
-          "Y": -1176.0924
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "scientist2",
-        "Stats": "grunt",
-        "Faction": "aahw",
-        "Weapon": "bowie_knife",
-        "Flipped": false,
-        "BottomCenter": {
-          "X": -132.42596,
-          "Y": -1149.0796
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "experiment",
-        "Stats": "experiment",
-        "Faction": "rogue",
-        "Weapon": null,
-        "Flipped": false,
-        "BottomCenter": {
-          "X": 1847.5116,
-          "Y": -1159.2554
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
     },
     {
       "$type": "MIR.LevelEditor.Objects.NPC, MIR",

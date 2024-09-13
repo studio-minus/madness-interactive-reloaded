@@ -5,6 +5,7 @@ using Walgelijk;
 using Walgelijk.AssetManager;
 using Walgelijk.ParticleSystem;
 using Walgelijk.Physics;
+using static MIR.Textures;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MIR;
@@ -64,7 +65,10 @@ public class WeaponSystem : Walgelijk.System
                 var param = weapon.StuckInsideParams.Value;
 
                 if (!Scene.HasEntity(param.Entity))
+                {
                     weapon.StuckInsideParams = null;
+                    weapon.IsAttachedToWall = true;
+                }
                 else
                 {
                     var attachedTransform = Scene.GetComponentFrom<TransformComponent>(param.Entity);
@@ -374,23 +378,23 @@ public class WeaponSystem : Walgelijk.System
                                     victimChar.Positioning.MeleeBlockProgress = 1;
                                     victimChar.Positioning.MeleeBlockImpactIntensity += 1;
                                     victimChar.Positioning.CurrentRecoil += 2;
-                                    //character.AnimationMixProgress = 1;
-                                    //character.PlayAnimation(Animations.PerfectDeflect.Select(!character.Positioning.IsFlipped));
+
+                                    // TODO should be in a system and the sound is not very nice
                                     Audio.PlayOnce(
                                         SoundCache.Instance.LoadSoundEffect(
                                             Assets.Load<FixedAudioData>("sounds/deflection/perfect_deflect_1.wav")), 2);
-                                    // TODO should be in a system and the sound is not very nice
-                                    MadnessUtils.RoutineForSecondsPausable(0.5f, static (dt) =>
+                                    const float d = 0.5f;
+                                    MadnessUtils.RoutineForSecondsPausable(d, static (dt) =>
                                     {
                                         Game.Main.State.Time.TimeScale = Utilities.SmoothApproach(Game.Main.State.Time.TimeScale, 1, 1, dt);
                                     });
                                     MadnessUtils.DelayPausable(0.05f, static () => { Game.Main.State.Time.TimeScale = 0.2f; });
-                                    MadnessUtils.DelayPausable(0.5f, static () => { Game.Main.State.Time.TimeScale = 1; });
+                                    MadnessUtils.DelayPausable(d, static () => { Game.Main.State.Time.TimeScale = 1; });
                                 }
                                 else
                                     Audio.PlayOnce(Utilities.PickRandom(Sounds.BulletDeflection), 0.5f);
 
-                                if (deflectingArmour && victimChar.IsAlive && victimChar.Flags.HasFlag(CharacterFlags.StunAnimationOnNonFatalShot))
+                                if (deflectingArmour && victimChar.IsAlive && victimChar.Flags.HasFlag(CharacterFlags.StunAnimationOnNonFatalAttack))
                                 {
                                     if (bulletDirection.X < 0 == victimChar.Positioning.IsFlipped)
                                         victimChar.PlayAnimation(Registries.Animations.Get("stun_light_forwards"), 1.2f);
@@ -414,7 +418,7 @@ public class WeaponSystem : Walgelijk.System
                     else if (canDodge)
                     {
                         var bulletIsComingFromFacingDirection = bulletDirection.X > 0 == victimChar.Positioning.IsFlipped;
-                        var dodgeCost = MathF.Max(weapon.Data.Damage, 0.4f) / 1.5f * (victimChar.Stats.DodgeOversaturate ? 1 : weapon.Data.BulletsPerShot);
+                        var dodgeCost = float.Max(weapon.Data.Damage, 0.4f) / 1.5f * (victimChar.Stats.DodgeOversaturate ? 1 : weapon.Data.BulletsPerShot);
 
                         if (!bulletIsComingFromFacingDirection)
                             dodgeCost *= ConVars.Instance.DodgeFromBehindCostMultiplier;
@@ -572,7 +576,7 @@ public class WeaponSystem : Walgelijk.System
                 }
 
                 if (victimChar != null &&
-                    victimChar.Flags.HasFlag(CharacterFlags.StunAnimationOnNonFatalShot) &&
+                    victimChar.Flags.HasFlag(CharacterFlags.StunAnimationOnNonFatalAttack) &&
                     victimChar.IsAlive && !isExitWound)
                 {
                     if (bulletDirection.X < 0 == victimChar.Positioning.IsFlipped)

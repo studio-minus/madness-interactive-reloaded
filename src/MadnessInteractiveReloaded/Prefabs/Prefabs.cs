@@ -836,12 +836,14 @@ public static class Prefabs
             ScaleOverride = scaleOverride
         });
         scene.AttachComponent(character.Entity, new AiComponent());
+        var c = scene.Id;
 
-        character.OnDeath.AddListener(static e =>
+        character.OnDeath.AddListener(e =>
         {
-            if (Level.CurrentLevel != null &&
-                Game.Main.Scene.FindAnyComponent<LevelProgressComponent>(out var progress))
-                progress.CurrentBodyCount++;
+            if (Level.CurrentLevel != null 
+                && Game.Main.Scene.Id == c 
+                && Game.Main.Scene.FindAnyComponent<LevelProgressComponent>(out var progress))
+                    progress.BodyCount.Current++;
         });
 
         return character;
@@ -876,7 +878,7 @@ public static class Prefabs
             Tag = Tags.Player
         });
 
-        character.Flags &= ~(CharacterFlags.StunAnimationOnNonFatalShot | CharacterFlags.DeleteRagdoll);
+        character.Flags &= ~(CharacterFlags.StunAnimationOnNonFatalAttack | CharacterFlags.DeleteRagdoll);
 
         CharacterUtilities.ApplyActiveModifiers(scene, character);
 

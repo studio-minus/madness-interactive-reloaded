@@ -55,12 +55,12 @@ public static class CharacterUtilities
             {
                 var d = scene.AttachComponent(character.Entity, new CharacterPickupComponent
                 {
-                    Target = new(weapon.Entity)
+                    Target = new(weapon.Entity),
                 });
                 delay = d.PickupTime * d.Duration;
             }
 
-            MadnessUtils.DelayPausable(delay, () => // TODO what if the scene changes? ideally, these routines should be erased on scene change
+            MadnessUtils.DelayPausable(delay, () => 
             {
                 if (character.EquipWeapon(scene, weapon))
                 {
@@ -292,6 +292,9 @@ public static class CharacterUtilities
             return;
 
         if (Level.CurrentLevel == null || !Level.CurrentLevel.IsFlatAt(character.Positioning.GlobalCenter.X))
+            return;
+
+        if (!character.HasFlag(CharacterFlags.StunAnimationOnNonFatalAttack))
             return;
 
         scene.DetachComponent<MeleeSequenceComponent>(character.Entity);

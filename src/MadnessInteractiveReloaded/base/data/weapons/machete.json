@@ -1,0 +1,59 @@
+{
+  "Id": "machete",
+  "WeaponData": {
+    "Name": "Machete",
+    "Damage": 0.5,
+    "UseDelay": 0.0,
+    "MaxHandRangeMultiplier": 1.0,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 1.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [
+      {
+        "MinX": -1.2758408,
+        "MinY": 2.0069427,
+        "MaxX": 58.958427,
+        "MaxY": 261.0086
+      }
+    ],
+    "WeaponType": "Melee",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 12,
+    "BurstFireCount": 0,
+    "Accuracy": 0.0,
+    "Recoil": 0.0,
+    "RotationalRecoilIntensity": 1.0,
+    "RecoilHandling": 0.0,
+    "Automatic": false,
+    "ShootSounds": null,
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 400.0,
+    "CanDeflectBullets": true,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Blade",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/machete/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": -15.0,
+    "Y": -15.0
+  },
+  "CasingEjectionPoint": {
+    "X": 15.0,
+    "Y": 15.0
+  },
+  "HoldPoints": [
+    {
+      "X": -3.714323,
+      "Y": 112.621155
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 90.0
+}

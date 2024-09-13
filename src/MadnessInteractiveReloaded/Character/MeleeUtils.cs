@@ -2,6 +2,7 @@
 using System.Numerics;
 using Walgelijk;
 using Walgelijk.Physics;
+using static MIR.Textures;
 
 namespace MIR;
 
@@ -172,14 +173,13 @@ public static class MeleeUtils
 
             if (victimIsPlayer && actor.HasWeaponEquipped && CharacterUtilities.CanDodge(victim))
             {
-                victim.DrainDodge(damage);
+                victim.DrainDodge(damage * 1.5f);
                 if (victim.DodgeMeter > 0 || victim.Stats.DodgeOversaturate)
                 {
                     CharacterUtilities.TryDodgeAnimation(victim);
                     return;
                 }
             }
-
 
 
             {
@@ -190,7 +190,7 @@ public static class MeleeUtils
 
                 if (!victimIsPlayer && !finalAttack)  // TODO convar
                 {
-                    if (victim.DodgeMeter < 0.5f)
+                    if (victim.HasFlag(CharacterFlags.StunAnimationOnNonFatalAttack) && victim.DodgeMeter < 0.5f)
                     {
                         if (victim.Positioning.GlobalCenter.X > actor.Positioning.GlobalCenter.X != victim.Positioning.IsFlipped)
                             victim.PlayAnimation(Registries.Animations.Get("stun_light_forwards"), 1.2f);

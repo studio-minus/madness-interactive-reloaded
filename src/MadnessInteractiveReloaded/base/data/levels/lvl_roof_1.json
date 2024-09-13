@@ -348,7 +348,7 @@
         "Y": 1416.1931
       },
       "Name": "untitled",
-      "Code": "float acc = 0;\r\n\r\nvoid Update()\r\n{\r\n\tif (Scene.FindAnyComponent<LevelProgressComponent>(out var progress))\r\n\t{\r\n\t\tif (progress.TimeTracker >= 93 - 5)\r\n\t\t{\r\n\t\t\tacc += Time.DeltaTime;\r\n\t\t\t\r\n\t\t\tif (acc > 0.8f)\r\n\t\t\t{\r\n\t\t\t\tacc = 0;\r\n\t\t\t\tMadnessUtils.Shake(120);\r\n\t\t\t\tvar audio = Utilities.PickRandom(Assets.EnumerateFolder(\"sounds\/mag_footstep\"));\r\n\t\t\t\tvar snd = SoundCache.Instance.LoadSoundEffect(Assets.Load<FixedAudioData>(audio));\r\n\t\t\t\tAudio.PlayOnce(snd, 1, 1, AudioTracks.SoundEffects);\r\n\t\t\t}\r\n\t\t}\r\n\t}\r\n}",
+      "Code": "float acc = 0;\r\n\r\nvoid Update()\r\n{\r\n\tif (Scene.FindAnyComponent<LevelProgressComponent>(out var progress))\r\n\t{\r\n\t\tif (progress.Timed.Time >= 93 - 5)\r\n\t\t{\r\n\t\t\tacc += Time.DeltaTime;\r\n\t\t\t\r\n\t\t\tif (acc > 0.8f)\r\n\t\t\t{\r\n\t\t\t\tacc = 0;\r\n\t\t\t\tMadnessUtils.Shake(120);\r\n\t\t\t\tvar audio = Utilities.PickRandom(Assets.EnumerateFolder(\"sounds\/mag_footstep\"));\r\n\t\t\t\tvar snd = SoundCache.Instance.LoadSoundEffect(Assets.Load<FixedAudioData>(audio));\r\n\t\t\t\tAudio.PlayOnce(snd, 1, 1, AudioTracks.SoundEffects);\r\n\t\t\t}\r\n\t\t}\r\n\t}\r\n}",
       "Tag": null
     },
     {

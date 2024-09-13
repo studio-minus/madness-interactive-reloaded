@@ -338,10 +338,8 @@ public static class SceneUtils
             if (mode == GameMode.Campaign)
             {
                 scene.AddSystem(new LevelProgressSystem());
-                var p = scene.AttachComponent(scene.CreateEntity(), new LevelProgressComponent
-                {
-                    BodyCountToWin = level.ProgressionType is ProgressionType.BodyCount ? level.BodyCountToWin : int.MaxValue
-                });
+                var p = scene.AttachComponent(scene.CreateEntity(), new LevelProgressComponent());
+                p.BodyCount.Target = level.ProgressionType is ProgressionType.BodyCount ? level.BodyCountToWin : int.MaxValue;
 
                 if (level.EnemySpawnInstructions.Count > 0)
                 {
@@ -353,8 +351,8 @@ public static class SceneUtils
                                 level.MaxEnemyCount--;
                         }
                         spawner.Interval *= 1.4f;
-                        if (p.BodyCountToWin > 5)
-                            p.BodyCountToWin /= 2;
+                        if (level.ProgressionType is ProgressionType.BodyCount && p.BodyCount.Target > 5)
+                            p.BodyCount.Target /= 2;
                     }
 
                     if (ImprobabilityDisks.IsEnabled("more_enemies"))
@@ -365,8 +363,8 @@ public static class SceneUtils
                                 level.MaxEnemyCount += 4;
                         }
                         spawner.Interval *= 0.1f;
-                        if (p.BodyCountToWin > 1)
-                            p.BodyCountToWin *= 2;
+                        if (level.ProgressionType is ProgressionType.BodyCount && p.BodyCount.Target > 1)
+                            p.BodyCount.Target *= 2;
                     }
                 }
             }

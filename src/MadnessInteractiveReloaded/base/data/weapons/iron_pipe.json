@@ -2,7 +2,7 @@
   "Id": "iron_pipe",
   "WeaponData": {
     "Name": "Iron Pipe",
-    "Damage": 0.199,
+    "Damage": 0.2,
     "UseDelay": 0.05,
     "MaxHandRangeMultiplier": 0.25,
     "AdditionalComponents": null,

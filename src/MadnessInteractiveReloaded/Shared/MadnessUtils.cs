@@ -384,17 +384,21 @@ public static class MadnessUtils
 
     public static Routine DelayPausable(float seconds, Action action)
     {
+        var sceneOnStart = Game.Main.Scene.Id;
+
         return RoutineScheduler.Start(delay());
 
         IEnumerator<IRoutineCommand> delay()
         {
             yield return new GameSafeRoutineDelay(seconds);
-            action?.Invoke();
+            if (Game.Main.Scene.Id == sceneOnStart)
+                action?.Invoke();
         }
     }
 
     public static Routine RoutineForSecondsPausable(float seconds, DeltaTimeAction action)
     {
+        var sceneOnStart = Game.Main.Scene.Id;
         return RoutineScheduler.Start(repeatForSeconds());
 
         IEnumerator<IRoutineCommand> repeatForSeconds()
@@ -402,6 +406,9 @@ public static class MadnessUtils
             float t = 0;
             while (t < seconds)
             {
+                if (Game.Main.Scene.Id != sceneOnStart)
+                    yield break;
+
                 t += Game.Main.State.Time.DeltaTime;
                 action?.Invoke(Game.Main.State.Time.DeltaTime);
                 yield return new GameSafeRoutineDelay();
@@ -411,12 +418,16 @@ public static class MadnessUtils
 
     public static Routine RoutineWhilePausable(Func<bool> condition, DeltaTimeAction action)
     {
+        var sceneOnStart = Game.Main.Scene.Id;
         return RoutineScheduler.Start(routineUntil());
 
         IEnumerator<IRoutineCommand> routineUntil()
         {
             while (condition())
             {
+                if (Game.Main.Scene.Id != sceneOnStart)
+                    yield break;
+
                 action?.Invoke(Game.Main.State.Time.DeltaTime);
                 yield return new GameSafeRoutineDelay();
             }

@@ -25,6 +25,4 @@ public class MemoryModCollectionSource : IModCollectionSource, IDisposable
     }
 
     public IEnumerable<Mod> ReadAll() => Mods.Values;
-
-    public bool TryRead(ModID id, [NotNullWhen(true)] out Mod? mod) => Mods.TryGetValue(id, out mod);
 }

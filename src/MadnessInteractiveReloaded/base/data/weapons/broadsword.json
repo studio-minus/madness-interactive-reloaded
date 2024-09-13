@@ -1,0 +1,59 @@
+{
+  "Id": "broadsword",
+  "WeaponData": {
+    "Name": "Broadsword",
+    "Damage": 0.65,
+    "UseDelay": 0.0,
+    "MaxHandRangeMultiplier": 1.0,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 1.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [
+      {
+        "MinX": 35.47428,
+        "MinY": 2.117218,
+        "MaxX": 89.38953,
+        "MaxY": 300.8299
+      }
+    ],
+    "WeaponType": "Melee",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 12,
+    "BurstFireCount": 0,
+    "Accuracy": 0.0,
+    "Recoil": 0.0,
+    "RotationalRecoilIntensity": 1.0,
+    "RecoilHandling": 0.0,
+    "Automatic": false,
+    "ShootSounds": null,
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": true,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Blade",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/broadsword/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": -15.0,
+    "Y": -15.0
+  },
+  "CasingEjectionPoint": {
+    "X": 15.0,
+    "Y": 15.0
+  },
+  "HoldPoints": [
+    {
+      "X": -3.6600266,
+      "Y": 113.00998
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 90.0
+}

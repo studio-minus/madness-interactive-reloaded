@@ -165,20 +165,20 @@ public class PlayerUISystem : Walgelijk.System
                 case ProgressionType.Always:
                     break;
                 case ProgressionType.BodyCount:
-                    if (lastProgressIndex != progress.CurrentBodyCount)
+                    if (lastProgressIndex != progress.BodyCount.Current)
                     {
                         lastProgressIndexFlashCounter = 0;
-                        lastProgressIndex = progress.CurrentBodyCount;
+                        lastProgressIndex = progress.BodyCount.Current;
                     }
 
                     Draw.FontSize = 48;
 
-                    if (progress.CurrentBodyCount == progress.BodyCountToWin)
+                    if (progress.BodyCount.Current == progress.BodyCount.Target)
                         Draw.Colour = Utilities.Lerp(Colors.White, Colors.White.WithAlpha(0.5f), Utilities.MapRange(-1, 1, 0, 0.5f, float.Sin(Time.SecondsSinceLoadUnscaled * 12)));
                     else
                         Draw.Colour = Utilities.Lerp(Colors.Red, Colors.White, Easings.Cubic.Out(float.Clamp(lastProgressIndexFlashCounter * 2f, 0, 1)));
 
-                    DrawCounter(new Vector2(Window.Width - padding, padding), progress.CurrentBodyCount, progress.BodyCountToWin, HorizontalTextAlign.Right);
+                    DrawCounter(new Vector2(Window.Width - padding, padding), progress.BodyCount.Current, progress.BodyCount.Target, HorizontalTextAlign.Right);
                     var ir = new Rect(default, new Vector2(60, 60)).Translate(Window.Width - 235, 46);
                     Draw.Image(Assets.Load<Texture>("textures/ui/kills_icon.png").Value, ir, ImageContainmentMode.Contain);
                     break;

@@ -80,8 +80,7 @@ public class DoorSystem : Walgelijk.System
         }
         else if (door.Properties.IsLevelProgressionDoor && door.IsOpen)
         {
-            if (Scene.FindAnyComponent<LevelProgressComponent>(out var progress)
-                && progress.CanProgress && wantsToPassThrough)
+            if (Scene.FindAnyComponent<LevelProgressComponent>(out var progress) && progress.GoalReached && wantsToPassThrough)
             {
                 Scene.GetSystem<LevelProgressSystem>().TransitionToNextLevel();
                 door.Properties.IsLevelProgressionDoor = false;

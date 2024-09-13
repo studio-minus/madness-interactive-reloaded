@@ -146,10 +146,9 @@ public static class Registries
             try
             {
                 var metadata = Assets.GetMetadata(asset);
-                Cutscenes.Register(
-                    Path.GetFileNameWithoutExtension(metadata.Path),
-                    Assets.Load<Cutscene>(asset)
-                );
+                var cutscene = Assets.Load<Cutscene>(asset);
+
+                Cutscenes.Register(Path.GetFileNameWithoutExtension(metadata.Path),cutscene);
             }
             catch (Exception e)
             {

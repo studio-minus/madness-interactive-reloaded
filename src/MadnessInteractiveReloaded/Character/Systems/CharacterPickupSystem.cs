@@ -39,9 +39,8 @@ public class CharacterPickupSystem : Walgelijk.System
         if (!p.Scene.TryGetComponentFrom<CharacterPickupComponent>(p.Character.Entity, out var pickup))
             return;
 
-        var target = pickup.Target.Get(p.Scene);
-
-        if (!p.Scene.TryGetComponentFrom<WeaponComponent>(target.Entity, out var wpn))
+        if (!pickup.Target.TryGet(p.Scene, out var target) || 
+            !p.Scene.TryGetComponentFrom<WeaponComponent>(target.Entity, out var wpn))
             return;
 
         float midPoint = pickup.PickupTime;

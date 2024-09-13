@@ -210,7 +210,7 @@ public class RichBossSystem : Walgelijk.System
                 if (rich.CurrentPhase != RichCharacterComponent.Phase.Dying)
                 {
                     if (Scene.TryGetSystem<LevelProgressSystem>(out var lps))
-                        lps.Win();
+                        lps.ForceReachGoal();
 
                     character.StopAllAnimations();
 

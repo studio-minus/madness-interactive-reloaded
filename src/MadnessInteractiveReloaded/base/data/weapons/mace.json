@@ -1,0 +1,52 @@
+{
+  "Id": "mace",
+  "WeaponData": {
+    "Name": "Mace",
+    "Damage": 0.8,
+    "UseDelay": 0.5,
+    "MaxHandRangeMultiplier": 1.0,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Melee",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 12,
+    "BurstFireCount": 0,
+    "Accuracy": 0.0,
+    "Recoil": 0.0,
+    "RotationalRecoilIntensity": 1.0,
+    "RecoilHandling": 0.0,
+    "Automatic": false,
+    "ShootSounds": null,
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Blunt",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/mace/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": -15.0,
+    "Y": -15.0
+  },
+  "CasingEjectionPoint": {
+    "X": 15.0,
+    "Y": 15.0
+  },
+  "HoldPoints": [
+    {
+      "X": 0.2356987,
+      "Y": 127.85693
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 90.0
+}
