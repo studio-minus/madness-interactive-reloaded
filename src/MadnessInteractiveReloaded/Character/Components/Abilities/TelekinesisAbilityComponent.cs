@@ -57,13 +57,14 @@ public class TelekinesisAbilityComponent : CharacterAbilityComponent
         time = 0;
         wasUsing = true;
 
-        a.Character.Positioning.HandPoseFunctionOverride.Add(PoseHand);
+        if (!a.Character.Positioning.HandPoseFunctionOverride.Contains(PoseHand))
+            a.Character.Positioning.HandPoseFunctionOverride.Add(PoseHand);
     }
 
     private bool IsValidWeapon(VelocityComponent n)
     {
         if (Game.Main.Scene.TryGetComponentFrom<WeaponComponent>(n.Entity, out var weapon))
-            return !weapon.IsBeingWielded && weapon.HasRoundsLeft;
+            return !weapon.Wielder.IsValid(Scene) && weapon.HasRoundsLeft;
         return false;
     }
 
