@@ -71,6 +71,9 @@ public class ExperimentSelectableCharacter : ExperimentModeComponent.IExperiment
 
     public void ProcessUi(Scene scene, ExperimentModeComponent exp)
     {
+        if (!scene.HasEntity(Component.Entity))
+            return;
+
         if (Component.Stats.DodgeAbility >= float.Epsilon)
         {
             Ui.Layout.FitWidth().Height(32).StickLeft();
