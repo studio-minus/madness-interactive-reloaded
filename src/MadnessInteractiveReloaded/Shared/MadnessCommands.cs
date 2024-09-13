@@ -67,7 +67,7 @@ public static class MadnessCommands
         if (!scene.FindAnyComponent<LevelProgressComponent>(out var lvlProgress) || Level.CurrentLevel == null || !isInLevel)
             return CommandResult.Error("This is not a story level so it can't be won");
         else
-            scene.GetSystem<LevelProgressSystem>().Win();
+            scene.GetSystem<LevelProgressSystem>().ForceReachGoal();
 
         MadnessUtils.Delay(1, () =>
         {

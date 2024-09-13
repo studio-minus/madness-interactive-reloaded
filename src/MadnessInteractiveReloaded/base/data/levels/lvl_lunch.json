@@ -5,7 +5,7 @@
   "EnemySpawnInterval": 0.8,
   "MaxEnemyCount": 3,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "base:sounds/music/Lothyde/come_to_blows.ogg",
+  "BackgroundMusic": "sounds/music/Lothyde/come_to_blows.ogg",
   "WeaponChance": 1.0,
   "LevelBounds": {
     "MinX": -4212.9004,
@@ -16,7 +16,7 @@
   "BodyCountToWin": 20,
   "TimeLimitInSeconds": -1.0,
   "FullZoom": false,
-  "Thumbnail": "base:textures/level_thumbnails/lvl_lunch.qoi",
+  "Thumbnail": "textures/level_thumbnails/lvl_lunch.qoi",
   "OpeningTransition": true,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [
@@ -181,7 +181,7 @@
     },
     {
       "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "base:textures/props/lunch_poster.png",
+      "TexturePath": "textures/props/lunch_poster.png",
       "Angle": 1.5056915,
       "Position": {
         "X": 2584.3604,
@@ -244,7 +244,7 @@
         "Layer": -100,
         "OrderInLayer": 0
       },
-      "Texture": "base:textures/props/floppy_disk3.png",
+      "Texture": "textures/props/floppy_disk3.png",
       "Tag": null
     },
     {
@@ -308,7 +308,7 @@
         "X": 1.5440674,
         "Y": -114.44144
       },
-      "TexturePath": "base:textures/backgrounds/background_lunch.qoi",
+      "TexturePath": "textures/backgrounds/background_lunch.qoi",
       "Scale": 2.222222
     },
     {
@@ -466,7 +466,7 @@
         "X": -171.08775,
         "Y": 1052.1968
       },
-      "TexturePath": "base:textures/black-transparent-gradient.png",
+      "TexturePath": "textures/black-transparent-gradient.png",
       "Scale": 2.222222
     },
     {
@@ -475,7 +475,7 @@
         "X": -107.10722,
         "Y": -1270.9487
       },
-      "TexturePath": "base:textures/black-transparent-gradient.png",
+      "TexturePath": "textures/black-transparent-gradient.png",
       "Scale": 2.222222
     }
   ]

@@ -41,7 +41,7 @@ public class EnemySpawningSystem : Walgelijk.System
         if (Time.SecondsSinceSceneChange > 1) // just to give the player some time to adjust
             spawningComponent.SpawnTimer += Time.DeltaTime;
 
-        bool hasWon = hasLevelProgress && (lvlProgress?.CanProgress ?? false);
+        bool hasWon = hasLevelProgress && (lvlProgress?.GoalReached ?? false);
 
         if (!hasWon &&
             AiCharacterSystem.AutoSpawn &&
@@ -129,10 +129,10 @@ public class EnemySpawningSystem : Walgelijk.System
 
     private int GetMaxEnemyCount(EnemySpawningComponent spawningComponent, int liveEnemyCount, LevelProgressComponent? lvlProgress)
     {
-        return lvlProgress != null ?
-            int.Min(spawningComponent.MaxEnemyCount,
-            lvlProgress.BodyCountToWin - lvlProgress.CurrentBodyCount - liveEnemyCount) :
-            spawningComponent.MaxEnemyCount;
+        if (lvlProgress != null && Level.CurrentLevel?.ProgressionType == ProgressionType.BodyCount)
+            return int.Min(spawningComponent.MaxEnemyCount, lvlProgress.BodyCount.Target - lvlProgress.BodyCount.Current- liveEnemyCount);
+        else
+            return spawningComponent.MaxEnemyCount;
     }
 
     private int GetOpenDoorCount()

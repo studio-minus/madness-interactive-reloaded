@@ -37,7 +37,7 @@
     "MeleeDamageType": "Blade",
     "MeleeSize": "Medium"
   },
-  "BaseTexture": "base:textures/weapons/trench_knife/base.png",
+  "BaseTexture": "textures/weapons/trench_knife/base.png",
   "HoldForGrip": false,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {

@@ -59,7 +59,7 @@ public class MachinistLevelSystem : Walgelijk.System
                         if (Game.Main.Scene.HasSystem<MachinistLevelSystem>() && Game.Main.Scene.HasSystem<LevelProgressSystem>()) // are we still where we want to be?
                         {
                             var levelProgress = Scene.GetSystem<LevelProgressSystem>();
-                            levelProgress.Win();
+                            levelProgress.ForceReachGoal();
                             levelProgress.TransitionToNextLevel();
                         }
                     });

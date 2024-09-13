@@ -27,7 +27,7 @@ public class CutscenePlayerSystem : Walgelijk.System
                 if (item.ProgressLevelOnEnd && Scene.TryGetSystem<LevelProgressSystem>(out var s))
                     MadnessUtils.WaitUntil(() => (!MadnessUtils.IsCutscenePlaying(Scene)), () =>
                     {
-                        s.Win();
+                        s.ForceReachGoal();
                         s.TransitionToNextLevel();
                     });
                 return;

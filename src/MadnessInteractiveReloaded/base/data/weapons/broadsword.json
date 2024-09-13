@@ -37,7 +37,7 @@
     "MeleeDamageType": "Blade",
     "MeleeSize": "Medium"
   },
-  "BaseTexture": "base:textures/weapons/broadsword/base.png",
+  "BaseTexture": "textures/weapons/broadsword/base.png",
   "HoldForGrip": false,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {

@@ -23,7 +23,7 @@ public class AnimationTriggerSystem : Walgelijk.System
         {
             if (trigger.StartEvent == TriggerType.LevelComplete)
             {
-                if (!Scene.FindAnyComponent<LevelProgressComponent>(out var progress) || !progress.CanProgress)
+                if (!Scene.FindAnyComponent<LevelProgressComponent>(out var progress) || !progress.GoalReached)
                     continue;
             }
 
@@ -60,12 +60,13 @@ public class AnimationTriggerSystem : Walgelijk.System
                             {
                                 // TODO duplicate of Prefabs.CreateEnemy
                                 Scene.AttachComponent(ch.Entity, new AiComponent());
-
-                                ch.OnDeath.AddListener(static e =>
+                                var c = Scene.Id;
+                                ch.OnDeath.AddListener(e =>
                                 {
-                                    if (Level.CurrentLevel != null &&
-                                        Game.Main.Scene.FindAnyComponent<LevelProgressComponent>(out var progress))
-                                        progress.CurrentBodyCount++;
+                                    if (Level.CurrentLevel != null 
+                                        && Game.Main.Scene.Id == c 
+                                        && Game.Main.Scene.FindAnyComponent<LevelProgressComponent>(out var progress))
+                                            progress.BodyCount.Current++;
                                 });
                             }
 

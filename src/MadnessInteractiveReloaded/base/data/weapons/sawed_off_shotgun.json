@@ -20,9 +20,9 @@
     "RecoilHandling": 0.8,
     "Automatic": false,
     "ShootSounds": [
-      "base:sounds/firearms/shotgun_1.wav",
-      "base:sounds/firearms/shotgun_2.wav",
-      "base:sounds/firearms/shotgun_3.wav"
+      "sounds/firearms/shotgun_1.wav",
+      "sounds/firearms/shotgun_2.wav",
+      "sounds/firearms/shotgun_3.wav"
     ],
     "CanBulletsBeDeflected": true,
     "EjectionParticle": "None",
@@ -34,7 +34,7 @@
     "MeleeDamageType": "Firearm",
     "MeleeSize": "Medium"
   },
-  "BaseTexture": "base:textures/weapons/sawed_off_shotgun/base.png",
+  "BaseTexture": "textures/weapons/sawed_off_shotgun/base.png",
   "HoldForGrip": false,
   "HoldStockHandPose": true,
   "BarrelEndPoint": {
