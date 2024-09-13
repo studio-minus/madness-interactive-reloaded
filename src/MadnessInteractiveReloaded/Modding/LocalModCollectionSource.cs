@@ -1,12 +1,9 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.Collections.ObjectModel;
-using System.CommandLine.Help;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Walgelijk;
 
 namespace MIR;
@@ -39,72 +36,28 @@ public class LocalModCollectionSource : IModCollectionSource
 
     public IEnumerable<Mod> ReadAll()
     {
-        foreach (var dir in Directory.GetDirectories("*", SearchOption.TopDirectoryOnly))
-            yield return LoadModFromDirectory(dir);
+        foreach (var file in Directory.GetFiles("meta.json", SearchOption.AllDirectories))
+        {
+            if (file.Directory == null)
+                continue;
+
+            Mod? m = null;
+            try
+            {
+                m = LoadModFromDirectory(file.Directory);
+            }
+            catch (System.Exception e)
+            {
+                Logger.Error($"Failed to load mod at {file.FullName}: {e}");
+                m?.Dispose();
+            }
+
+            if (m != null)
+                yield return m;
+        }
 
         foreach (var file in Directory.GetFiles("*.zip"))
             yield return LoadModFromFile(file);
-    }
-
-    /// <summary>
-    /// Tries to find the mod with the given ID in this source. Returns true if found. The found mod is assigned to the <paramref name="mod"/> parameter. This method is quite expensive.
-    /// </summary>
-    public bool TryRead(ModID id, [NotNullWhen(true)] out Mod? mod)
-    {
-        // TODO find a way to optimise this. Maybe by making it impossible to get a mod 
-
-        var files = Directory.GetFiles("meta.json", SearchOption.AllDirectories);
-        foreach (var metajson in files)
-        {
-            if (metajson.Directory != null)
-                try
-                {
-                    var json = File.ReadAllText(metajson.FullName);
-                    var m = new
-                    {
-                        id = string.Empty
-                    };
-                    var meta = JsonConvert.DeserializeAnonymousType(json, m);
-
-                    if ((meta?.id ?? string.Empty) == id)
-                    {
-                        mod = LoadModFromDirectory(metajson.Directory);
-                        return true;
-                    }
-                }
-                catch (System.Exception e)
-                {
-                    Logger.Error("Failed to read mod meta: " + e.Message);
-                }
-        }
-
-        files = Directory.GetFiles("*.zip");
-        foreach (var file in files)
-        {
-            using var zip = new ZipArchive(file.Open(FileMode.Open));
-            if (zip.TryGetEntry("meta.json", out var metaEntry))
-            {
-                using var stream = metaEntry.Open();
-                using var json = new StreamReader(stream);
-                var m = new
-                {
-                    id = string.Empty
-                };
-                var meta = JsonConvert.DeserializeAnonymousType(json.ReadToEnd(), m);
-
-                if ((meta?.id ?? string.Empty) == id)
-                {
-                    stream.Dispose();
-                    json.Dispose();
-                    mod = new Mod(zip);
-                    //mod = LoadModFromFile(file);
-                    return true;
-                }
-            }
-        }
-
-        mod = null;
-        return false;
     }
 
     private Mod LoadModFromFile(FileInfo file)

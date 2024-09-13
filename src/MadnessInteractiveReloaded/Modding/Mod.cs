@@ -104,7 +104,7 @@ public sealed class Mod : IDisposable
         ZipArchive = zipArchive;
 
         var metaJson = zipArchive.GetEntry("meta.json") ?? throw new System.Exception("Mod contains no \"meta.json\"");
-        var thumbnail = zipArchive.GetEntry("thumb.png") ?? throw new System.Exception("Mod contains no \"thumb.png\"");
+        var thumbnail = zipArchive.GetEntry("thumb.png");
 
         // read metadata
         using (var s = metaJson.Open())
@@ -144,9 +144,16 @@ public sealed class Mod : IDisposable
         }
 
         // read thumbnail
-        using (var s = thumbnail.Open())
+        if (thumbnail == null)
         {
+            Thumbnail = Textures.Black;
+            Errors.Add(new Exception($"No thumbnail for {Id}"));
+        }
+        else
+        {
+            using var s = thumbnail.Open();
             using var m = new MemoryStream();
+
             s.CopyTo(m);
             try
             {
@@ -155,7 +162,7 @@ public sealed class Mod : IDisposable
             catch (Exception e)
             {
                 Errors.Add(e);
-                Logger.Error($"Failed to load thumbnail for ${Id}: {e}");
+                Logger.Error($"Failed to load thumbnail for {Id}: {e}");
             }
         }
 
