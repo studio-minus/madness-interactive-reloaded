@@ -65,7 +65,10 @@ public class WeaponSystem : Walgelijk.System
                 var param = weapon.StuckInsideParams.Value;
 
                 if (!Scene.HasEntity(param.Entity))
+                {
                     weapon.StuckInsideParams = null;
+                    weapon.IsAttachedToWall = true;
+                }
                 else
                 {
                     var attachedTransform = Scene.GetComponentFrom<TransformComponent>(param.Entity);
