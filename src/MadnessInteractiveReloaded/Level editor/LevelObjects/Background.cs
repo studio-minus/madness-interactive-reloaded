@@ -106,7 +106,7 @@ public class Background : LevelObject
                 TexturePath = new(c);
                 Editor.UpdateLevelBounds();
             },
-            static c => c.MimeType == "image/qoi");
+            static c => c.MimeType.StartsWith("image"));
 
         Ui.Layout.FitWidth(false).Height(32);
         Ui.FloatSlider(ref Scale, Walgelijk.Onion.Controls.Direction.Horizontal, (0.2775f, 4.44f), 0.01f, "{0:0.##}");

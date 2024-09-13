@@ -2,27 +2,28 @@
   "DisplayName": "untitled",
   "LevelType": "Campaign",
   "ProgressionType": "BodyCount",
-  "EnemySpawnInterval": 1.7,
-  "MaxEnemyCount": 2,
+  "EnemySpawnInterval": 0.8,
+  "MaxEnemyCount": 3,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "sounds/music/Lothyde/come_to_blows.ogg",
+  "BackgroundMusic": "base:sounds/music/Lothyde/come_to_blows.ogg",
   "WeaponChance": 1.0,
   "LevelBounds": {
     "MinX": -4212.9004,
-    "MinY": -908.88586,
+    "MinY": -1275.3932,
     "MaxX": 4215.9883,
-    "MaxY": 680.0029
+    "MaxY": 1056.6412
   },
-  "BodyCountToWin": 10,
+  "BodyCountToWin": 20,
   "TimeLimitInSeconds": -1.0,
-  "FullZoom": true,
-  "Thumbnail": "textures/level_thumbnails/lvl_lunch.qoi",
+  "FullZoom": false,
+  "Thumbnail": "base:textures/level_thumbnails/lvl_lunch.qoi",
   "OpeningTransition": true,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [
     {
       "StatsKey": "soldat",
-      "LookKey": "soldat"
+      "LookKey": "soldat",
+      "FactionKey": "aahw"
     }
   ],
   "Weapons": [
@@ -35,11 +36,11 @@
   ],
   "FloorLine": [
     {
-      "X": -3724.5173,
+      "X": -3694.5173,
       "Y": -810.1234
     },
     {
-      "X": 3725.4827,
+      "X": 3695.4827,
       "Y": -810.1234
     }
   ],
@@ -51,6 +52,20 @@
         "Y": -569.1526
       },
       "SpawnWeapon": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": -3729.467,
+        "Y": 378.03677
+      },
+      "B": {
+        "X": -3729.4124,
+        "Y": 378.0911
+      },
+      "Radius": 36.0,
+      "Tag": null
     },
     {
       "$type": "MIR.LevelEditor.Objects.Door, MIR",
@@ -90,8 +105,10 @@
     {
       "$type": "MIR.LevelEditor.Objects.NPC, MIR",
       "Instructions": {
+        "Name": "Unnamed NPC",
         "Look": "soldat",
         "Stats": "soldat",
+        "Faction": null,
         "Weapon": "qbz_95",
         "Flipped": false,
         "BottomCenter": {
@@ -99,15 +116,18 @@
           "Y": -754.7987
         },
         "ScaleOverride": false,
-        "Scale": 0.0
+        "Scale": 0.0,
+        "IsProgressionRequirement": false
       },
       "StartAnimation": null
     },
     {
       "$type": "MIR.LevelEditor.Objects.NPC, MIR",
       "Instructions": {
+        "Name": "Unnamed NPC",
         "Look": "soldat",
         "Stats": "soldat",
+        "Faction": null,
         "Weapon": "silenced_beretta_92",
         "Flipped": false,
         "BottomCenter": {
@@ -115,15 +135,18 @@
           "Y": -731.6467
         },
         "ScaleOverride": false,
-        "Scale": 0.0
+        "Scale": 0.0,
+        "IsProgressionRequirement": false
       },
       "StartAnimation": null
     },
     {
       "$type": "MIR.LevelEditor.Objects.NPC, MIR",
       "Instructions": {
+        "Name": "Unnamed NPC",
         "Look": "soldat",
         "Stats": "soldat",
+        "Faction": null,
         "Weapon": "dragon_sword",
         "Flipped": false,
         "BottomCenter": {
@@ -131,7 +154,8 @@
           "Y": -725.0132
         },
         "ScaleOverride": false,
-        "Scale": 0.0
+        "Scale": 0.0,
+        "IsProgressionRequirement": false
       },
       "StartAnimation": null
     },
@@ -157,7 +181,7 @@
     },
     {
       "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/props/lunch_poster.png",
+      "TexturePath": "base:textures/props/lunch_poster.png",
       "Angle": 1.5056915,
       "Position": {
         "X": 2584.3604,
@@ -182,8 +206,10 @@
     {
       "$type": "MIR.LevelEditor.Objects.NPC, MIR",
       "Instructions": {
+        "Name": "Unnamed NPC",
         "Look": "soldat",
         "Stats": "soldat",
+        "Faction": null,
         "Weapon": null,
         "Flipped": false,
         "BottomCenter": {
@@ -191,7 +217,8 @@
           "Y": -721.2224
         },
         "ScaleOverride": false,
-        "Scale": 0.0
+        "Scale": 0.0,
+        "IsProgressionRequirement": false
       },
       "StartAnimation": null
     },
@@ -203,6 +230,21 @@
         "MaxX": 3668.368,
         "MaxY": -688.17786
       },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Disk, MIR",
+      "Position": {
+        "X": 2818.3372,
+        "Y": -455.52188
+      },
+      "Angle": -0.9929657,
+      "DiskId": "infinite_ammo",
+      "RenderOrder": {
+        "Layer": -100,
+        "OrderInLayer": 0
+      },
+      "Texture": "base:textures/props/floppy_disk3.png",
       "Tag": null
     },
     {
@@ -243,16 +285,6 @@
     {
       "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
       "Rectangle": {
-        "MinX": 3730.839,
-        "MinY": -810.8386,
-        "MaxX": 4214.0527,
-        "MaxY": 598.75995
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
-      "Rectangle": {
         "MinX": -4215.0005,
         "MinY": 595.49347,
         "MaxX": 4213.0835,
@@ -276,7 +308,7 @@
         "X": 1.5440674,
         "Y": -114.44144
       },
-      "TexturePath": "textures/backgrounds/background_lunch.qoi",
+      "TexturePath": "base:textures/backgrounds/background_lunch.qoi",
       "Scale": 2.222222
     },
     {
@@ -292,8 +324,10 @@
     {
       "$type": "MIR.LevelEditor.Objects.NPC, MIR",
       "Instructions": {
+        "Name": "Unnamed NPC",
         "Look": "soldat",
         "Stats": "soldat",
+        "Faction": null,
         "Weapon": "mp9",
         "Flipped": false,
         "BottomCenter": {
@@ -301,15 +335,18 @@
           "Y": -736.48456
         },
         "ScaleOverride": false,
-        "Scale": 0.0
+        "Scale": 0.0,
+        "IsProgressionRequirement": false
       },
       "StartAnimation": null
     },
     {
       "$type": "MIR.LevelEditor.Objects.NPC, MIR",
       "Instructions": {
+        "Name": "Unnamed NPC",
         "Look": "soldat",
         "Stats": "soldat",
+        "Faction": null,
         "Weapon": "automag",
         "Flipped": true,
         "BottomCenter": {
@@ -317,7 +354,8 @@
           "Y": -752.80994
         },
         "ScaleOverride": false,
-        "Scale": 0.0
+        "Scale": 0.0,
+        "IsProgressionRequirement": false
       },
       "StartAnimation": null
     },
@@ -413,33 +451,32 @@
       "Tag": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
-      "BlockerType": 0,
-      "A": {
-        "X": -3729.467,
-        "Y": 378.03677
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": 3730.839,
+        "MinY": -810.8386,
+        "MaxX": 4214.0527,
+        "MaxY": 598.75995
       },
-      "B": {
-        "X": -3729.4124,
-        "Y": 378.0911
-      },
-      "Radius": 36.0,
       "Tag": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.Disk, MIR",
-      "Position": {
-        "X": 2818.3372,
-        "Y": -455.52188
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": -171.08775,
+        "Y": 1052.1968
       },
-      "Angle": -0.9929657,
-      "DiskId": "infinite_ammo",
-      "RenderOrder": {
-        "Layer": -100,
-        "OrderInLayer": 0
+      "TexturePath": "base:textures/black-transparent-gradient.png",
+      "Scale": 2.222222
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": -107.10722,
+        "Y": -1270.9487
       },
-      "Texture": "textures/props/floppy_disk3.png",
-      "Tag": null
+      "TexturePath": "base:textures/black-transparent-gradient.png",
+      "Scale": 2.222222
     }
   ]
 }

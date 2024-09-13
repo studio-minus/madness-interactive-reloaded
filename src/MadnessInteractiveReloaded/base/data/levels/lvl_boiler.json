@@ -5,24 +5,25 @@
   "EnemySpawnInterval": 2.0,
   "MaxEnemyCount": 1,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "sounds/music/Lothyde/from_the_outset.ogg",
+  "BackgroundMusic": "base:sounds/music/Lothyde/from_the_outset.ogg",
   "WeaponChance": 1.0,
   "LevelBounds": {
     "MinX": -892.11316,
-    "MinY": -894.1282,
+    "MinY": -1132.8851,
     "MaxX": 661.2201,
-    "MaxY": 356.9829
+    "MaxY": 552.8986
   },
   "BodyCountToWin": 1,
   "TimeLimitInSeconds": -1.0,
   "FullZoom": true,
-  "Thumbnail": "textures/level_thumbnails/lvl_boiler.qoi",
+  "Thumbnail": "base:textures/level_thumbnails/lvl_boiler.qoi",
   "OpeningTransition": true,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [
     {
       "StatsKey": "engineer",
-      "LookKey": "engineer"
+      "LookKey": "engineer",
+      "FactionKey": "aahw"
     }
   ],
   "Weapons": [
@@ -30,11 +31,11 @@
   ],
   "FloorLine": [
     {
-      "X": -782.35925,
+      "X": -796.35925,
       "Y": -812.3129
     },
     {
-      "X": 551.64075,
+      "X": 565.64075,
       "Y": -812.3129
     }
   ],
@@ -53,7 +54,7 @@
         "X": -115.44653,
         "Y": -268.57263
       },
-      "TexturePath": "textures/backgrounds/background_boiler.qoi",
+      "TexturePath": "base:textures/backgrounds/background_boiler.qoi",
       "Scale": 2.222222
     },
     {
@@ -205,6 +206,24 @@
         }
       },
       "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": -166.12828,
+        "Y": 548.45416
+      },
+      "TexturePath": "base:textures/black-transparent-gradient.png",
+      "Scale": 2.222222
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": -119.31133,
+        "Y": -1128.4407
+      },
+      "TexturePath": "base:textures/black-transparent-gradient.png",
+      "Scale": 2.222222
     }
   ]
 }
