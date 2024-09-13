@@ -1,15 +1,22 @@
 {
-  "Id": "iron_pipe",
+  "Id": "machete",
   "WeaponData": {
-    "Name": "Iron Pipe",
-    "Damage": 0.2,
-    "UseDelay": 0.05,
-    "MaxHandRangeMultiplier": 0.25,
+    "Name": "Machete",
+    "Damage": 0.5,
+    "UseDelay": 0.0,
+    "MaxHandRangeMultiplier": 1.0,
     "AdditionalComponents": null,
     "EnsureSystems": null,
-    "ThrowableDamage": 5.0,
+    "ThrowableDamage": 15.0,
     "ThrowableHeavy": false,
-    "ThrowableSharpBoxes": [],
+    "ThrowableSharpBoxes": [
+      {
+        "MinX": -1.2758408,
+        "MinY": 2.0069427,
+        "MaxX": 58.958427,
+        "MaxY": 261.0086
+      }
+    ],
     "WeaponType": "Melee",
     "BulletsPerShot": 1,
     "RoundsPerMagazine": 12,
@@ -24,27 +31,27 @@
     "EjectionParticle": "Small",
     "CasingSize": 1.0,
     "IsPumpAction": false,
-    "Range": 600.0,
+    "Range": 400.0,
     "CanDeflectBullets": true,
     "SpecialMelee": false,
-    "MeleeDamageType": "Blunt",
+    "MeleeDamageType": "Blade",
     "MeleeSize": "Medium"
   },
-  "BaseTexture": "textures/weapons/iron_pipe/base.png",
+  "BaseTexture": "base:textures/weapons/machete/base.png",
   "HoldForGrip": false,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {
-    "X": 0.0,
-    "Y": 0.0
+    "X": -15.0,
+    "Y": -15.0
   },
   "CasingEjectionPoint": {
-    "X": 0.0,
-    "Y": 0.0
+    "X": 15.0,
+    "Y": 15.0
   },
   "HoldPoints": [
     {
-      "X": 16.563774,
-      "Y": 132.85796
+      "X": -3.714323,
+      "Y": 112.621155
     }
   ],
   "AnimatedParts": null,

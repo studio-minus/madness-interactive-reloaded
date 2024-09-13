@@ -1,13 +1,13 @@
 {
-  "Id": "iron_pipe",
+  "Id": "billy_club",
   "WeaponData": {
-    "Name": "Iron Pipe",
-    "Damage": 0.2,
-    "UseDelay": 0.05,
-    "MaxHandRangeMultiplier": 0.25,
+    "Name": "Billy Club",
+    "Damage": 0.25,
+    "UseDelay": 0.0,
+    "MaxHandRangeMultiplier": 1.0,
     "AdditionalComponents": null,
     "EnsureSystems": null,
-    "ThrowableDamage": 5.0,
+    "ThrowableDamage": 15.0,
     "ThrowableHeavy": false,
     "ThrowableSharpBoxes": [],
     "WeaponType": "Melee",
@@ -24,27 +24,27 @@
     "EjectionParticle": "Small",
     "CasingSize": 1.0,
     "IsPumpAction": false,
-    "Range": 600.0,
-    "CanDeflectBullets": true,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
     "SpecialMelee": false,
     "MeleeDamageType": "Blunt",
     "MeleeSize": "Medium"
   },
-  "BaseTexture": "textures/weapons/iron_pipe/base.png",
+  "BaseTexture": "base:textures/weapons/billy_club/base.png",
   "HoldForGrip": false,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {
-    "X": 0.0,
-    "Y": 0.0
+    "X": -15.0,
+    "Y": -15.0
   },
   "CasingEjectionPoint": {
-    "X": 0.0,
-    "Y": 0.0
+    "X": 15.0,
+    "Y": 15.0
   },
   "HoldPoints": [
     {
-      "X": 16.563774,
-      "Y": 132.85796
+      "X": -0.42001343,
+      "Y": 136.01396
     }
   ],
   "AnimatedParts": null,

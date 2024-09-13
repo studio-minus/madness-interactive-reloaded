@@ -2,7 +2,7 @@
   "Id": "carbon_knife",
   "WeaponData": {
     "Name": "Carbon Knife",
-    "Damage": 0.1999,
+    "Damage": 0.3,
     "UseDelay": 0.0,
     "MaxHandRangeMultiplier": 1.0,
     "AdditionalComponents": null,

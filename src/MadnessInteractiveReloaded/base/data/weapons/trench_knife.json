@@ -1,15 +1,22 @@
 {
-  "Id": "iron_pipe",
+  "Id": "trench_knife",
   "WeaponData": {
-    "Name": "Iron Pipe",
-    "Damage": 0.2,
-    "UseDelay": 0.05,
-    "MaxHandRangeMultiplier": 0.25,
+    "Name": "Trench Knife",
+    "Damage": 0.25,
+    "UseDelay": 0.0,
+    "MaxHandRangeMultiplier": 1.0,
     "AdditionalComponents": null,
     "EnsureSystems": null,
-    "ThrowableDamage": 5.0,
+    "ThrowableDamage": 15.0,
     "ThrowableHeavy": false,
-    "ThrowableSharpBoxes": [],
+    "ThrowableSharpBoxes": [
+      {
+        "MinX": 9.00602,
+        "MinY": 3.7075024,
+        "MaxX": 57.509216,
+        "MaxY": 167.14558
+      }
+    ],
     "WeaponType": "Melee",
     "BulletsPerShot": 1,
     "RoundsPerMagazine": 12,
@@ -24,27 +31,27 @@
     "EjectionParticle": "Small",
     "CasingSize": 1.0,
     "IsPumpAction": false,
-    "Range": 600.0,
-    "CanDeflectBullets": true,
+    "Range": 350.0,
+    "CanDeflectBullets": false,
     "SpecialMelee": false,
-    "MeleeDamageType": "Blunt",
+    "MeleeDamageType": "Blade",
     "MeleeSize": "Medium"
   },
-  "BaseTexture": "textures/weapons/iron_pipe/base.png",
+  "BaseTexture": "base:textures/weapons/trench_knife/base.png",
   "HoldForGrip": false,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {
-    "X": 0.0,
-    "Y": 0.0
+    "X": -15.0,
+    "Y": -15.0
   },
   "CasingEjectionPoint": {
-    "X": 0.0,
-    "Y": 0.0
+    "X": 15.0,
+    "Y": 15.0
   },
   "HoldPoints": [
     {
-      "X": 16.563774,
-      "Y": 132.85796
+      "X": 20.720993,
+      "Y": 68.94598
     }
   ],
   "AnimatedParts": null,

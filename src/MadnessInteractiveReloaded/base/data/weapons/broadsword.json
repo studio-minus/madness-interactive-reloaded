@@ -1,15 +1,22 @@
 {
-  "Id": "iron_pipe",
+  "Id": "broadsword",
   "WeaponData": {
-    "Name": "Iron Pipe",
-    "Damage": 0.2,
-    "UseDelay": 0.05,
-    "MaxHandRangeMultiplier": 0.25,
+    "Name": "Broadsword",
+    "Damage": 0.65,
+    "UseDelay": 0.0,
+    "MaxHandRangeMultiplier": 1.0,
     "AdditionalComponents": null,
     "EnsureSystems": null,
-    "ThrowableDamage": 5.0,
+    "ThrowableDamage": 15.0,
     "ThrowableHeavy": false,
-    "ThrowableSharpBoxes": [],
+    "ThrowableSharpBoxes": [
+      {
+        "MinX": 35.47428,
+        "MinY": 2.117218,
+        "MaxX": 89.38953,
+        "MaxY": 300.8299
+      }
+    ],
     "WeaponType": "Melee",
     "BulletsPerShot": 1,
     "RoundsPerMagazine": 12,
@@ -24,27 +31,27 @@
     "EjectionParticle": "Small",
     "CasingSize": 1.0,
     "IsPumpAction": false,
-    "Range": 600.0,
+    "Range": 500.0,
     "CanDeflectBullets": true,
     "SpecialMelee": false,
-    "MeleeDamageType": "Blunt",
+    "MeleeDamageType": "Blade",
     "MeleeSize": "Medium"
   },
-  "BaseTexture": "textures/weapons/iron_pipe/base.png",
+  "BaseTexture": "base:textures/weapons/broadsword/base.png",
   "HoldForGrip": false,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {
-    "X": 0.0,
-    "Y": 0.0
+    "X": -15.0,
+    "Y": -15.0
   },
   "CasingEjectionPoint": {
-    "X": 0.0,
-    "Y": 0.0
+    "X": 15.0,
+    "Y": 15.0
   },
   "HoldPoints": [
     {
-      "X": 16.563774,
-      "Y": 132.85796
+      "X": -3.6600266,
+      "Y": 113.00998
     }
   ],
   "AnimatedParts": null,

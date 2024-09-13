@@ -1,13 +1,13 @@
 {
-  "Id": "iron_pipe",
+  "Id": "hammer",
   "WeaponData": {
-    "Name": "Iron Pipe",
-    "Damage": 0.2,
-    "UseDelay": 0.05,
-    "MaxHandRangeMultiplier": 0.25,
+    "Name": "Hammer",
+    "Damage": 0.4,
+    "UseDelay": 0.0,
+    "MaxHandRangeMultiplier": 1.0,
     "AdditionalComponents": null,
     "EnsureSystems": null,
-    "ThrowableDamage": 5.0,
+    "ThrowableDamage": 15.0,
     "ThrowableHeavy": false,
     "ThrowableSharpBoxes": [],
     "WeaponType": "Melee",
@@ -24,27 +24,27 @@
     "EjectionParticle": "Small",
     "CasingSize": 1.0,
     "IsPumpAction": false,
-    "Range": 600.0,
-    "CanDeflectBullets": true,
+    "Range": 400.0,
+    "CanDeflectBullets": false,
     "SpecialMelee": false,
     "MeleeDamageType": "Blunt",
     "MeleeSize": "Medium"
   },
-  "BaseTexture": "textures/weapons/iron_pipe/base.png",
+  "BaseTexture": "base:textures/weapons/hammer/base.png",
   "HoldForGrip": false,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {
-    "X": 0.0,
-    "Y": 0.0
+    "X": -15.0,
+    "Y": -15.0
   },
   "CasingEjectionPoint": {
-    "X": 0.0,
-    "Y": 0.0
+    "X": 15.0,
+    "Y": 15.0
   },
   "HoldPoints": [
     {
-      "X": 16.563774,
-      "Y": 132.85796
+      "X": 1.9285355,
+      "Y": 52.807003
     }
   ],
   "AnimatedParts": null,
