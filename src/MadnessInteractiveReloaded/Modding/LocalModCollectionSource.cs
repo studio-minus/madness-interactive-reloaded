@@ -53,14 +53,13 @@ public class LocalModCollectionSource : IModCollectionSource
     {
         // TODO find a way to optimise this. Maybe by making it impossible to get a mod 
 
-        var dirs = Directory.GetDirectories("*", SearchOption.TopDirectoryOnly);
-        foreach (var dir in dirs)
+        var files = Directory.GetFiles("meta.json", SearchOption.AllDirectories);
+        foreach (var metajson in files)
         {
-            if (dir.TryGetFile("meta.json", out var p))
-            {
+            if (metajson.Directory != null)
                 try
                 {
-                    var json = File.ReadAllText(p.FullName);
+                    var json = File.ReadAllText(metajson.FullName);
                     var m = new
                     {
                         id = string.Empty
@@ -69,7 +68,7 @@ public class LocalModCollectionSource : IModCollectionSource
 
                     if ((meta?.id ?? string.Empty) == id)
                     {
-                        mod = LoadModFromDirectory(dir);
+                        mod = LoadModFromDirectory(metajson.Directory);
                         return true;
                     }
                 }
@@ -77,10 +76,9 @@ public class LocalModCollectionSource : IModCollectionSource
                 {
                     Logger.Error("Failed to read mod meta: " + e.Message);
                 }
-            }
         }
 
-        var files = Directory.GetFiles("*.zip");
+        files = Directory.GetFiles("*.zip");
         foreach (var file in files)
         {
             using var zip = new ZipArchive(file.Open(FileMode.Open));
