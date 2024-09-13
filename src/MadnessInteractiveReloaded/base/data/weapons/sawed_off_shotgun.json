@@ -2,8 +2,8 @@
   "Id": "sawed_off_shotgun",
   "WeaponData": {
     "Name": "Sawed-off Shotgun",
-    "Damage": 0.14999999,
-    "UseDelay": 0.099999994,
+    "Damage": 0.15,
+    "UseDelay": 0.09,
     "MaxHandRangeMultiplier": 1.0,
     "AdditionalComponents": null,
     "EnsureSystems": null,
@@ -16,16 +16,16 @@
     "BurstFireCount": 0,
     "Accuracy": 0.59999996,
     "Recoil": 1.4,
-    "RotationalRecoilIntensity": 1.1999999,
-    "RecoilHandling": 0.79999995,
+    "RotationalRecoilIntensity": 1.2,
+    "RecoilHandling": 0.8,
     "Automatic": false,
     "ShootSounds": [
-      "sounds/firearms/shotgun_1.wav",
-      "sounds/firearms/shotgun_2.wav",
-      "sounds/firearms/shotgun_3.wav"
+      "base:sounds/firearms/shotgun_1.wav",
+      "base:sounds/firearms/shotgun_2.wav",
+      "base:sounds/firearms/shotgun_3.wav"
     ],
     "CanBulletsBeDeflected": true,
-    "EjectionParticle": "ShotgunShell",
+    "EjectionParticle": "None",
     "CasingSize": 1.0,
     "IsPumpAction": false,
     "Range": 225.0,
@@ -34,7 +34,7 @@
     "MeleeDamageType": "Firearm",
     "MeleeSize": "Medium"
   },
-  "BaseTexture": "textures/weapons/sawed_off_shotgun/base.png",
+  "BaseTexture": "base:textures/weapons/sawed_off_shotgun/base.png",
   "HoldForGrip": false,
   "HoldStockHandPose": true,
   "BarrelEndPoint": {
