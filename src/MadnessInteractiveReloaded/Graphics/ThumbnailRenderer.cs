@@ -89,14 +89,26 @@ public static class ThumbnailRenderer
         var scaling = (float)targetHeadHeight / headTexture.Height;
         var bodyOffset = new Vector2(101, 260);
 
-        Draw.Material = BodyPartMaterialPool.Instance.RequestObject((look.Body.Right.Value, Textures.Character.FleshBody, look.BloodColour, 1));
+        Draw.Material = BodyPartMaterialPool.Instance.RequestObject(new BodyPartMaterialParams
+        {
+            SkinTexture = look.Body.Right.Value,
+            FleshTexture = Textures.Character.FleshBody,
+            BloodColour = look.BloodColour,
+            Scale = 1,
+        });
         drawBodyLayer(look.Body);
 
         Draw.ResetMaterial();
         drawBodyLayer(look.BodyLayer1);
         drawBodyLayer(look.BodyLayer2);
 
-        Draw.Material = BodyPartMaterialPool.Instance.RequestObject((look.Head.Right.Value, Textures.Character.FleshHead, look.BloodColour, 1));
+        Draw.Material = BodyPartMaterialPool.Instance.RequestObject(new BodyPartMaterialParams
+        {
+            SkinTexture = look.Head.Right.Value,
+            FleshTexture = Textures.Character.FleshHead,
+            BloodColour = look.BloodColour,
+            Scale = 1,
+        });
         drawHeadLayer(look.Head);
 
         Draw.ResetMaterial();

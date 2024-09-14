@@ -6,7 +6,7 @@ namespace MIR;
 /// <summary>
 /// A re-usable pool for body part materials instead of creating more and more.
 /// </summary>
-public class BodyPartMaterialPool : Pool<Material, (Texture skin, Texture flesh, Color bloodColour, float scale)>
+public class BodyPartMaterialPool : Pool<Material, BodyPartMaterialParams>
 {
     private static readonly GlobalAssetId[] slashTextures = [.. Assets.EnumerateFolder("textures/blade_impact")];
 
@@ -28,19 +28,27 @@ public class BodyPartMaterialPool : Pool<Material, (Texture skin, Texture flesh,
         return fallback;
     }
 
-    protected override void ResetObjectForNextUse(Material c, (Texture skin, Texture flesh, Color bloodColour, float scale) initialiser)
+    protected override void ResetObjectForNextUse(Material c, BodyPartMaterialParams initialiser)
     {
         DestructibleBodyPartSystem.ResetMaterial(c);
-        var v3 = initialiser.bloodColour.RGB;
+        var v3 = initialiser.BloodColour.RGB;
 
         var slashTexture = Assets.Load<Texture>(Utilities.PickRandom(slashTextures)).Value;
         slashTexture.WrapMode = WrapMode.Clamp;
 
         c.SetUniform("slashTex", slashTexture);
-        c.SetUniform(ShaderDefaults.MainTextureUniform, initialiser.skin);
-        c.SetUniform("scale", initialiser.scale);
-        c.SetUniform("fleshTex", initialiser.flesh);
+        c.SetUniform(ShaderDefaults.MainTextureUniform, initialiser.SkinTexture);
+        c.SetUniform("scale", initialiser.Scale);
+        c.SetUniform("fleshTex", initialiser.FleshTexture);
         c.SetUniform("outerBloodColour", v3);
         c.SetUniform("innerBloodColour", v3 * 0.8f);
     }
+}
+
+public struct BodyPartMaterialParams
+{
+    public Texture SkinTexture;
+    public Texture FleshTexture;
+    public Color BloodColour;
+    public float Scale;
 }

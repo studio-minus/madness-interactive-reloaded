@@ -240,8 +240,13 @@ public static class Prefabs
 
         var c = scene.AttachComponent(ent, new BodyPartShapeComponent(true)
         {
-            Material = BodyPartMaterialPool.Instance.RequestObject((skin, flesh, bloodColour, scale)) ??
-                       throw new Exception("Too many body parts!"),
+            Material = BodyPartMaterialPool.Instance.RequestObject(new BodyPartMaterialParams
+            {
+                Scale = scale,
+                BloodColour = bloodColour,
+                FleshTexture = flesh,
+                SkinTexture = skin,
+            }) ?? throw new Exception("Too many body parts!"),
             RenderOrder = renderOrder,
             BloodColour = bloodColour
         });
