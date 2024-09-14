@@ -110,13 +110,15 @@ void main()
     float minHoleDistance = FLOAT_MAX;
     float minInnerCutoutHoleDistance = FLOAT_MAX;
 
-//    float smallNoise = (snoise(obj * 16 * scl) * 2.0 - 1.0) * 0.02;
-//    float largeNoise = (voronoi2d(obj * 8 * scl)) * 0.15 - 0.1;
-//    float largeSimplexNoise = (snoise(obj * 7 * scl) * 2.0 - 1.0) * 0.015;
+    float smallNoise = (snoise(obj * 16 * scl) * 2.0 - 1.0) * 0.02;
+    float largeNoise = (voronoi2d(obj * 8 * scl)) * 0.15 - 0.1;
+    float largeSimplexNoise = (snoise(obj * 7 * scl) * 2.0 - 1.0) * 0.015;
 
     vec4 skin = texture(mainTex, uv);
     vec4 gore = texture(goreTex, uv);
     vec4 flesh = texture(fleshTex, uv);
+
+    float bloodStain = 0;
 
     flesh.rgb *= innerBloodColour;
     gore.a *= skin.a;
@@ -126,7 +128,7 @@ void main()
     {
         vec3 innerHole = innerCutoutHoles[i];
         vec2 holePos = innerHole.xy * aspectRatio;
-        float depth = innerHole.z;
+        float depth = innerHole.z - largeNoise + largeSimplexNoise - smallNoise * 0.1;
 
         float d = length(holePos - obj) * scl - depth + THRESHOLD;
 
@@ -137,23 +139,43 @@ void main()
     {
         vec3 hole = holes[i];
         vec2 holePos = hole.xy * aspectRatio;
-        float depth = hole.z;
-
-        float d = length(holePos - obj) * scl - depth + THRESHOLD;
+        vec2 delta = holePos - obj;
+        float depth = hole.z + smallNoise * 0.3 + largeSimplexNoise * 0.5 + largeNoise * 0.5;
+        float magn = length(delta);
+        float d = magn * scl - depth + THRESHOLD;
 
         minHoleDistance = min(d, minHoleDistance);
+
+        float polar = atan(delta.y, delta.x);
+        float star = (snoise(vec2(polar * 6, 0))) * 0.5 * depth / max(1, magn * 4) * 3;
+//        float star = (sin(polar * 12) * 0.5 + 0.5) * 0.5 * depth / max(1, magn * 4);
+
+        bloodStain = max(bloodStain, star);
      }
+
+     const float SMOOTH_EDGE = 0.0025;
+
+     // set skin blood rim
+     float verySmallNoise = (1 - voronoi2d(obj * 38.0 + 0.1 * snoise(obj * 5 * scl + vec2(-7.423, 30.523)))) * 0.35;
+     verySmallNoise *= verySmallNoise;
+     skin.rgb = mix(outerBloodColour, skin.rgb, 
+        smoothstep(THRESHOLD, THRESHOLD + SMOOTH_EDGE, minHoleDistance - verySmallNoise - bloodStain));
 
      vec4 finalCol = skin;
 
-     flesh.a *= smoothstep(0, 0.01, minInnerCutoutHoleDistance + .06);
+     // cut out back layer
+     flesh.a *= smoothstep(0, SMOOTH_EDGE, minInnerCutoutHoleDistance + .06);
 
-     if (seed < 0.5)
-        gore.a *= smoothstep(THRESHOLD, THRESHOLD + 0.01, minHoleDistance + mix(0.02, 0.3, seed));
+     // cut out gore
+     if (seed < 0.95)
+     {
+        gore.a *= smoothstep(THRESHOLD, THRESHOLD + SMOOTH_EDGE, minHoleDistance + largeNoise * 0.2 + mix(0.02, 0.2, seed));
+     }
 
+     // cut out skin layer
      vec4 goreBehind = mix(flesh, gore, gore.a);
-
-     finalCol = mix(goreBehind, finalCol, smoothstep(THRESHOLD, THRESHOLD + 0.01, minHoleDistance));
+//     goreBehind.rgb = mix(innerBloodColour, goreBehind.rgb, smoothstep(THRESHOLD, THRESHOLD + SMOOTH_EDGE, minHoleDistance) + 0.02);
+     finalCol = mix(goreBehind, finalCol, smoothstep(THRESHOLD, THRESHOLD + SMOOTH_EDGE, minHoleDistance));
 
      finalCol *= vertexColor;
      finalCol *= tint;
