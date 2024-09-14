@@ -41,7 +41,7 @@ public class Settings
     {
         public string Language = "en-GB";
         public float Screenshake = 1;
-        public bool weaponHighlights = true;
+        public bool WeaponHighlights = true;
     }
 
     public class VideoSettings

@@ -57,7 +57,7 @@ public class SettingsSceneSystem : Walgelijk.System
                 }),
                 ("settings-weapon-highlights", () => {
                     Ui.Layout.FitContainer(1, 1, false).AspectRatio(1, AspectRatioBehaviour.Shrink);
-                    if (Controls.Toggle.Start(ref settings.General.weaponHighlights))
+                    if (Controls.Toggle.Start(ref settings.General.WeaponHighlights))
                         settings.Apply();
                 })
             ]},

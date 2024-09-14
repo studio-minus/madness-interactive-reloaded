@@ -194,7 +194,7 @@ public class PlayerUISystem : Walgelijk.System
 
         // weapon highlights
         // check if the highlights setting is on, if there is a weapon entity we are hovering over and if the weapon entity has a weapon component attached to it
-        if (UserData.Instances.Settings.General.weaponHighlights && player.LastWeaponHoveredOver != null && Scene.TryGetComponentFrom(player.LastWeaponHoveredOver.Value, out WeaponComponent? nearestWeapon) && nearestWeapon != null)
+        if (UserData.Instances.Settings.General.WeaponHighlights && player.LastWeaponHoveredOver != null && Scene.TryGetComponentFrom(player.LastWeaponHoveredOver.Value, out WeaponComponent? nearestWeapon) && nearestWeapon != null)
         {
             Draw.ScreenSpace = false;
             //TODO: when melee durability is added, edit this line to account for it
