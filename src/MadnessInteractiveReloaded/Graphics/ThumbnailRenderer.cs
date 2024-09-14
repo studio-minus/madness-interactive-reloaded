@@ -93,6 +93,7 @@ public static class ThumbnailRenderer
         {
             SkinTexture = look.Body.Right.Value,
             FleshTexture = Textures.Character.FleshBody,
+            GoreTexture = Texture.White,
             BloodColour = look.BloodColour,
             Scale = 1,
         });
@@ -106,6 +107,7 @@ public static class ThumbnailRenderer
         {
             SkinTexture = look.Head.Right.Value,
             FleshTexture = Textures.Character.FleshHead,
+            GoreTexture = Texture.White,
             BloodColour = look.BloodColour,
             Scale = 1,
         });

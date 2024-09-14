@@ -26,8 +26,22 @@ public static class GoreTestScene
         if (scene.FindAnyComponent<CameraMovementComponent>(out var cam))
             cam.Targets = [new FreeMoveTarget()];
 
-        var body = Prefabs.CreateBodypartSprite(scene, Registries.Armour.Body["default_body"].Left.Value, Textures.Character.FleshBody, Colors.Red);
-        var head = Prefabs.CreateBodypartSprite(scene, Registries.Armour.Head["default_head"].Left.Value, Textures.Character.FleshHead, Colors.Red);
+        var body = Prefabs.CreateBodypartSprite(scene, new BodyPartMaterialParams
+        {
+            SkinTexture = Registries.Armour.Body["default_body"].Left,
+            FleshTexture = Textures.Character.FleshBody,
+            GoreTexture = Textures.Character.GoreBody,
+            BloodColour = Colors.Red,
+            Scale = 1
+        });
+        var head = Prefabs.CreateBodypartSprite(scene, new BodyPartMaterialParams
+        {
+            SkinTexture = Registries.Armour.Head["default_head"].Left,
+            FleshTexture = Textures.Character.FleshHead,
+            GoreTexture = Textures.Character.GoreHead,
+            BloodColour = Colors.Red,
+            Scale = 1
+        });
 
         scene.GetComponentFrom<TransformComponent>(head).Position = new Vector2(50, 200);
 

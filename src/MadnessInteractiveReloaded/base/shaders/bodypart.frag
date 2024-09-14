@@ -15,7 +15,9 @@ out vec4 color;
 
 uniform vec4 tint = vec4(1,1,1,1);
 uniform sampler2D mainTex;
+uniform sampler2D goreTex;
 uniform sampler2D fleshTex;
+
 uniform sampler2D slashTex;
 
 uniform float scale = 1;
@@ -111,7 +113,9 @@ void main()
     float largeSimplexNoise = (snoise(correctedObjUv * 7 * correctScale) * 2.0 - 1.0) * 0.015;
 
     vec4 skin = texture(mainTex, uv);
+    vec4 gore = texture(goreTex, uv);
     vec4 flesh = texture(fleshTex, uv);
+
     float slashDepth = 0;
 
     for (int i = 0; i < slashesCount; i++)

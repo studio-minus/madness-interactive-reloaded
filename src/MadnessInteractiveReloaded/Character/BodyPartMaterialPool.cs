@@ -40,6 +40,7 @@ public class BodyPartMaterialPool : Pool<Material, BodyPartMaterialParams>
         c.SetUniform(ShaderDefaults.MainTextureUniform, initialiser.SkinTexture);
         c.SetUniform("scale", initialiser.Scale);
         c.SetUniform("fleshTex", initialiser.FleshTexture);
+        c.SetUniform("goreTex", initialiser.GoreTexture);
         c.SetUniform("outerBloodColour", v3);
         c.SetUniform("innerBloodColour", v3 * 0.8f);
     }
@@ -48,6 +49,7 @@ public class BodyPartMaterialPool : Pool<Material, BodyPartMaterialParams>
 public struct BodyPartMaterialParams
 {
     public Texture SkinTexture;
+    public Texture GoreTexture;
     public Texture FleshTexture;
     public Color BloodColour;
     public float Scale;
