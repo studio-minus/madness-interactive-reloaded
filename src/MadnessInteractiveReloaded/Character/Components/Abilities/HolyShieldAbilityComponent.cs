@@ -103,9 +103,9 @@ public class HolyShieldAbilityComponent : CharacterAbilityComponent, IDisposable
         Draw.Texture = glow;
         Draw.Quad(new Rect(default, glow.Size));
 
-        Draw.Colour = Colors.Black.WithAlpha(visiblity * visiblity);
+        Draw.Colour = Colors.White.WithAlpha(visiblity * visiblity);
         Draw.BlendMode = BlendMode.AlphaBlend;
-        Draw.Colour = Utilities.Lerp(Draw.Colour, Colors.White, Easings.Cubic.In(flashTimer));
+        Draw.Colour = Utilities.Lerp(Draw.Colour, Colors.Red, Easings.Cubic.In(flashTimer));
         Draw.Texture = texture;
         Draw.Quad(new Rect(default, texture.Size));
 
