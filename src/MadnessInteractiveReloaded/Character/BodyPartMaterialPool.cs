@@ -43,6 +43,7 @@ public class BodyPartMaterialPool : Pool<Material, BodyPartMaterialParams>
         c.SetUniform("goreTex", initialiser.GoreTexture);
         c.SetUniform("outerBloodColour", v3);
         c.SetUniform("innerBloodColour", v3 * 0.8f);
+        c.SetUniform("seed", Utilities.RandomFloat());
     }
 }
 

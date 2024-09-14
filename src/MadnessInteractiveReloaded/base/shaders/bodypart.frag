@@ -20,6 +20,7 @@ uniform sampler2D fleshTex;
 
 uniform sampler2D slashTex;
 
+uniform float seed;
 uniform float scale = 1;
 
 uniform vec3 outerBloodColour = vec3(0.93, 0.08, 0);
@@ -103,49 +104,33 @@ void main()
     ivec2 texSize = textureSize(mainTex, 0).xy;
     vec2 aspectRatio = vec2(texSize.x / float(texSize.y), 1);
 
-    vec2 correctedObjUv = object.xy * aspectRatio;
-    float correctScale = scale;
+    vec2 obj = object.xy * aspectRatio;
+    float scl = scale;
 
     float minHoleDistance = FLOAT_MAX;
     float minInnerCutoutHoleDistance = FLOAT_MAX;
-    float smallNoise = (snoise(correctedObjUv * 16 * correctScale) * 2.0 - 1.0) * 0.02;
-    float largeNoise = (voronoi2d(correctedObjUv * 8 * correctScale)) * 0.15 - 0.1;
-    float largeSimplexNoise = (snoise(correctedObjUv * 7 * correctScale) * 2.0 - 1.0) * 0.015;
+
+//    float smallNoise = (snoise(obj * 16 * scl) * 2.0 - 1.0) * 0.02;
+//    float largeNoise = (voronoi2d(obj * 8 * scl)) * 0.15 - 0.1;
+//    float largeSimplexNoise = (snoise(obj * 7 * scl) * 2.0 - 1.0) * 0.015;
 
     vec4 skin = texture(mainTex, uv);
     vec4 gore = texture(goreTex, uv);
     vec4 flesh = texture(fleshTex, uv);
 
-    float slashDepth = 0;
-
-    for (int i = 0; i < slashesCount; i++)
-    {
-        vec3 slash = slashes[i];
-        vec2 pos = slash.xy * aspectRatio;
-        float th = slash.z; // rads
-        float cosTh = cos(th);
-        float sinTh = sin(th);
-        mat2 rotation = mat2(
-          cosTh, -sinTh,
-          sinTh, cosTh
-        );
-
-        vec2 slashUv = ((correctedObjUv * correctScale * 0.8 - pos) * rotation) + vec2(0.5, 0.5);
-
-        vec4 sampled = texture(slashTex, slashUv);
-        slashDepth += sampled.a * 1.1;
-    }
+    flesh.rgb *= innerBloodColour;
+    gore.a *= skin.a;
+    flesh.a *= skin.a;
 
     for (int i = 0; i < innerCutoutHolesCount; i++)
     {
         vec3 innerHole = innerCutoutHoles[i];
         vec2 holePos = innerHole.xy * aspectRatio;
-        float depth = innerHole.z + largeSimplexNoise * 0.15;
+        float depth = innerHole.z;
 
-        float d = length(holePos - correctedObjUv) * correctScale - depth + THRESHOLD;
+        float d = length(holePos - obj) * scl - depth + THRESHOLD;
 
-        if (d < minInnerCutoutHoleDistance)
-            minInnerCutoutHoleDistance = d;
+        minInnerCutoutHoleDistance = min(d, minInnerCutoutHoleDistance);
     }
 
     for (int i = 0; i < holesCount; i++)
@@ -154,49 +139,24 @@ void main()
         vec2 holePos = hole.xy * aspectRatio;
         float depth = hole.z;
 
-        float largeStar = saw(atan(holePos.y - correctedObjUv.y, holePos.x - correctedObjUv.x) * 9) * 0.02 * depth;
-        float d = length(holePos - correctedObjUv) * correctScale - depth + largeNoise + THRESHOLD + largeStar;
+        float d = length(holePos - obj) * scl - depth + THRESHOLD;
 
-        if (d < DISCARD_THRESHOLD)
-        {
-            if (minInnerCutoutHoleDistance > 0)
-            {
-                color.rgb = (minInnerCutoutHoleDistance < mix(smallNoise, 0.01, 0.8)) ? outerBloodColour : flesh.rgb * outerBloodColour;
-                color.a = skin.a;
-                return;
-            }
-            else discard;
-        }
-
-        float smallStar = saw(atan(holePos.y - correctedObjUv.y, holePos.x - correctedObjUv.x) * 16) * 0.02;
-        d -= smallStar + smallNoise;
-
-        if (d < minHoleDistance)
-            minHoleDistance = d;
+        minHoleDistance = min(d, minHoleDistance);
      }
 
-    if (skin.a < 0.9 && skin.r > max(skin.g, skin.b))
-    {
-        skin.rgb = mix(clamp(skin.r * 1.2, 0, 1) * innerBloodColour, vec3(1,1,1), (skin.g + skin.b) / 2.5);
-        skin.a = 1;
-    }
+     vec4 finalCol = skin;
 
-    vec4 c = skin;
+     flesh.a *= smoothstep(0, 0.01, minInnerCutoutHoleDistance + .06);
 
-    float verySmallNoise = (1 - voronoi2d(correctedObjUv * 32.0)) * 0.35;
-    verySmallNoise *= verySmallNoise;
+     if (seed < 0.5)
+        gore.a *= smoothstep(THRESHOLD, THRESHOLD + 0.01, minHoleDistance + mix(0.02, 0.3, seed));
 
-     if (minHoleDistance < THRESHOLD - 0.09)
-         c = vec4(innerBloodColour, skin.a);
-     else if (minHoleDistance < THRESHOLD + verySmallNoise)
-         c = vec4(outerBloodColour, skin.a);
+     vec4 goreBehind = mix(flesh, gore, gore.a);
 
-    // slash damage
-     c.rgb = mix(c.rgb, outerBloodColour, smoothstep(0.23, 0.25, min(slashDepth, 1)));
-     c.rgb = mix(c.rgb, flesh.rgb * innerBloodColour, smoothstep(0.88, .95, min(slashDepth, 1)));
+     finalCol = mix(goreBehind, finalCol, smoothstep(THRESHOLD, THRESHOLD + 0.01, minHoleDistance));
 
-     color = vertexColor * c;
-     color *= tint;
-     color.rgb *= color.a;
+     finalCol *= vertexColor;
+     finalCol *= tint;
 
+     color = finalCol;
 }

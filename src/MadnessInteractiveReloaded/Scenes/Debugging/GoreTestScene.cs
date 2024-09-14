@@ -50,7 +50,7 @@ public static class GoreTestScene
 
     public class GoreTestSystem : Walgelijk.System
     {
-        public float Damage = 1;
+        public float Damage = 0.25f;
 
         public override void Update()
         {
@@ -67,7 +67,7 @@ public static class GoreTestScene
 
                         if (Damage > 0.2f)
                         {
-                            localMouse += Utilities.RandomPointInCircle() * 0.4f;
+                            localMouse += Utilities.RandomPointInCircle() * 0.2f;
                             body.TryAddInnerCutoutHole(localMouse.X, localMouse.Y, Damage + 1);
                         }
                     }
