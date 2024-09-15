@@ -141,8 +141,9 @@ public static class MeleeUtils
                     actor.PlayAnimation(Registries.Animations.Get(!actor.Positioning.IsFlipped ? "melee_stun_sword_L" : "melee_stun_sword_R")); // TODO this should be in Animations.cs
                     scene.Game.AudioRenderer.PlayOnce(Sounds.MeleeClash.Parry);
 
-                    victim.Positioning.MeleeBlockImpactIntensity += Utilities.RandomFloat(-1, 1);
-
+                    victim.Positioning.MeleeBlockImpactIntensity -= 3;
+                    victim.Positioning.MeleeBlockProgress = float.Lerp(victim.Positioning.MeleeBlockProgress, 1f, 0.8f);
+                    victim.Positioning.TiltIntensity -= 7;
                     //  Prefabs.CreateDeflectionSpark(scene, hitPosOnLine, Utilities.VectorToAngle(returnDir), 1);
                     return;
                 }
@@ -155,6 +156,7 @@ public static class MeleeUtils
                                 victim.DrainDodge(damage * 0.02f); // TODO convar
                                 scene.Game.AudioRenderer.PlayOnce(Sounds.MeleeClash.GetClashFor(scene, victim.EquippedWeapon, actor.EquippedWeapon));
                                 victim.Positioning.MeleeBlockImpactIntensity += Utilities.RandomFloat(-1, 1);
+                                victim.Positioning.TiltIntensity += 4;
                                 return;
                             }
                         case MeleeInteractionResponse.StunVictim:
@@ -177,6 +179,7 @@ public static class MeleeUtils
                 if (victim.DodgeMeter > 0 || victim.Stats.DodgeOversaturate)
                 {
                     CharacterUtilities.TryDodgeAnimation(victim);
+                    scene.Game.AudioRenderer.PlayOnce(Utilities.PickRandom(Sounds.MeleeDodge), 1f, Utilities.RandomFloat(0.9f, 1.1f), AudioTracks.SoundEffects);
                     return;
                 }
             }
