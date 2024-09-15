@@ -99,6 +99,46 @@ float saw(float x){
     return abs(mod(x / PI - 0.5, 2) - 1) * 2 - 1;
 }
 
+// helper function to convert RGB to HSV
+vec3 rgb2hsv(vec3 rgb) {
+    vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
+    vec4 p = mix(vec4(rgb.bg, K.wz), vec4(rgb.gb, K.xy), step(rgb.b, rgb.g));
+    vec4 q = mix(vec4(p.xyw, rgb.r), vec4(rgb.r, p.yzx), step(p.x, rgb.r));
+
+    float d = q.x - min(q.w, q.y);
+    float e = 1.0e-10;
+    return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
+}
+
+// helper function to convert HSV to RGB
+vec3 hsv2rgb(vec3 hsv) {
+    vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+    vec3 p = abs(fract(hsv.xxx + K.xyz) * 6.0 - K.www);
+    return hsv.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), hsv.y);
+}
+
+vec3 hueShift(in vec3 rgb, float shift) {
+    // Convert RGB to HSV
+    vec4 hsv = vec4(0.0);
+    hsv.xyz = rgb2hsv(rgb);
+    
+    // Shift the hue
+    hsv.x = fract(hsv.x + shift);
+    
+    // Convert HSV back to RGB
+    vec3 shiftedRGB = hsv2rgb(hsv.xyz);
+    
+    return shiftedRGB;
+}
+
+vec3 setHue(in vec3 o, in vec3 dst) {
+    vec3 oHSV = rgb2hsv(o);
+    vec3 dstHSV = rgb2hsv(dst);
+    oHSV.x = dstHSV.x;
+    vec3 result = hsv2rgb(oHSV);
+    return result;
+}
+
 void main()
 {
     ivec2 texSize = textureSize(mainTex, 0).xy;
@@ -122,6 +162,7 @@ void main()
     float slashDepth = 0;
 
     flesh.rgb *= innerBloodColour;
+    gore.rgb = setHue(gore.rgb, innerBloodColour); // the gore layer is red by default (because gray and multiply is ugly), so we hue shift to the blood colour (it looks nicer)
     gore.a *= skin.a;
     flesh.a *= skin.a;
 
@@ -186,13 +227,14 @@ void main()
 
      // cut out gore
      if (seed < 0.95)
-     {
-        gore.a *= smoothstep(THRESHOLD, THRESHOLD + SMOOTH_EDGE, minHoleDistance + largeNoise * 0.2 + mix(0.02, 0.1, seed));
+     { 
+        float gc = minHoleDistance + largeNoise * 0.2 + mix(0.02, 0.1, seed);
+        gore.rgb = mix(innerBloodColour, gore.rgb, smoothstep(THRESHOLD, THRESHOLD + SMOOTH_EDGE, gc - 0.2 * verySmallNoise));
+        gore.a *= smoothstep(THRESHOLD, THRESHOLD + SMOOTH_EDGE, gc);
      }
 
      // cut out skin layer
      vec4 goreBehind = mix(flesh, gore, gore.a);
-//   goreBehind.rgb = mix(innerBloodColour, goreBehind.rgb, smoothstep(THRESHOLD, THRESHOLD + SMOOTH_EDGE, minHoleDistance) + 0.02);
      finalCol.rgb = mix(finalCol.rgb, outerBloodColour, smoothstep(0.23, 0.23 + + SMOOTH_EDGE, min(slashDepth, 1)));
      float d = min(1 - smoothstep(0.88, .95, min(slashDepth, 1)), smoothstep(THRESHOLD, THRESHOLD + SMOOTH_EDGE, minHoleDistance));
      finalCol = mix(goreBehind, finalCol, d);
