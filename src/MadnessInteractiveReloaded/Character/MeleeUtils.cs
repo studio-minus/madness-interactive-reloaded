@@ -208,8 +208,9 @@ public static class MeleeUtils
                     if (damagable.HorizontalFlip)
                         localPos.X *= -1;
 
-                    localPos.X = float.Lerp(float.Clamp(localPos.X, 0, 1), 0.5f, 0.2f);
-                    localPos.Y = float.Lerp(float.Clamp(localPos.Y, 0, 1), 0.5f, 0.2f);
+                    //localPos.X = float.Lerp(float.Clamp(localPos.X, 0, 1), 0.5f, 0.2f);
+                    //localPos.Y = float.Lerp(float.Clamp(localPos.Y, 0, 1), 0.5f, 0.2f);
+                    localPos += hit.Normal * -0.1f;
 
                     damagable.AddSlash(localPos, Utilities.RandomFloat(0, float.Tau));
 

@@ -7,7 +7,7 @@ PanicMultiplier 0.2
 DodgeFromBehindCostMultiplier 1.2
 
 # Dodge cost multiplier when a character is shot from very up close
-DodgePointBlankCostMultiplier 50
+DodgePointBlankCostMultiplier 80
 
 # Maximum distance that counts as "point blank"
 PointBlankDistance 250
