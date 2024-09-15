@@ -105,7 +105,7 @@ void main()
     vec2 aspectRatio = vec2(texSize.x / float(texSize.y), 1);
 
     vec2 obj = object.xy * aspectRatio;
-    float scl = scale;
+    float scl = scale / aspectRatio.x;
 
     float minHoleDistance = FLOAT_MAX;
     float minInnerCutoutHoleDistance = FLOAT_MAX;
@@ -119,10 +119,29 @@ void main()
     vec4 flesh = texture(fleshTex, uv);
 
     float bloodStain = 0;
+    float slashDepth = 0;
 
     flesh.rgb *= innerBloodColour;
     gore.a *= skin.a;
     flesh.a *= skin.a;
+
+    for (int i = 0; i < slashesCount; i++)
+    {
+        vec3 slash = slashes[i];
+        vec2 pos = slash.xy * aspectRatio;
+        float th = slash.z; // rads
+        float cosTh = cos(th);
+        float sinTh = sin(th);
+        mat2 rotation = mat2(
+          cosTh, -sinTh,
+          sinTh, cosTh
+        );
+
+        vec2 slashUv = ((obj * scl * 0.7 - pos) * rotation) + vec2(0.5, 0.5);
+
+        vec4 sampled = texture(slashTex, slashUv);
+        slashDepth += sampled.a * 1.1;
+    }
 
     for (int i = 0; i < innerCutoutHolesCount; i++)
     {
@@ -148,7 +167,6 @@ void main()
 
         float polar = atan(delta.y, delta.x);
         float star = (snoise(vec2(polar * 6, 0))) * 0.5 * depth / max(1, magn * 4) * 3;
-//        float star = (sin(polar * 12) * 0.5 + 0.5) * 0.5 * depth / max(1, magn * 4);
 
         bloodStain = max(bloodStain, star);
      }
@@ -169,13 +187,15 @@ void main()
      // cut out gore
      if (seed < 0.95)
      {
-        gore.a *= smoothstep(THRESHOLD, THRESHOLD + SMOOTH_EDGE, minHoleDistance + largeNoise * 0.2 + mix(0.02, 0.2, seed));
+        gore.a *= smoothstep(THRESHOLD, THRESHOLD + SMOOTH_EDGE, minHoleDistance + largeNoise * 0.2 + mix(0.02, 0.1, seed));
      }
 
      // cut out skin layer
      vec4 goreBehind = mix(flesh, gore, gore.a);
-//     goreBehind.rgb = mix(innerBloodColour, goreBehind.rgb, smoothstep(THRESHOLD, THRESHOLD + SMOOTH_EDGE, minHoleDistance) + 0.02);
-     finalCol = mix(goreBehind, finalCol, smoothstep(THRESHOLD, THRESHOLD + SMOOTH_EDGE, minHoleDistance));
+//   goreBehind.rgb = mix(innerBloodColour, goreBehind.rgb, smoothstep(THRESHOLD, THRESHOLD + SMOOTH_EDGE, minHoleDistance) + 0.02);
+     finalCol.rgb = mix(finalCol.rgb, outerBloodColour, smoothstep(0.23, 0.23 + + SMOOTH_EDGE, min(slashDepth, 1)));
+     float d = min(1 - smoothstep(0.88, .95, min(slashDepth, 1)), smoothstep(THRESHOLD, THRESHOLD + SMOOTH_EDGE, minHoleDistance));
+     finalCol = mix(goreBehind, finalCol, d);
 
      finalCol *= vertexColor;
      finalCol *= tint;
