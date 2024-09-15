@@ -4,6 +4,7 @@ using Walgelijk;
 using Walgelijk.AssetManager;
 using Walgelijk.Physics;
 using Walgelijk.SimpleDrawing;
+using static MIR.Textures;
 
 namespace MIR;
 
@@ -79,7 +80,6 @@ public class HolyShieldAbilityComponent : CharacterAbilityComponent, IDisposable
             return;
         }
 
-
         var p = a.Character.Positioning.Body.ComputedVisualCenter;
         p += pOffset = Utilities.SmoothApproach(pOffset, a.Character.AimDirection * 400 * a.Character.Positioning.Scale, 12, Time.DeltaTime);
         p.Y += 50;
@@ -129,12 +129,12 @@ public class HolyShieldAbilityComponent : CharacterAbilityComponent, IDisposable
     {
         float animTime = Easings.Cubic.InOut(visiblity);
 
-        HandPosingFunctions.FistFight(p);
-
         var charPos = p.Character.Positioning;
         var secondHand = charPos.Hands.Second;
         var firstHand = charPos.Hands.First;
         bool isHoldingTwoHanded = false;
+
+        charPos.SecondaryHandFollowsPrimary = false;
 
         if (p.Character.HasWeaponEquipped && p.Character.EquippedWeapon.TryGet(p.Scene, out var equipped))
         {

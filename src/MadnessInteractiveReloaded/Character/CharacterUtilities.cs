@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Numerics;
 using Walgelijk;
 using Walgelijk.AssetManager;
@@ -105,6 +106,13 @@ public static class CharacterUtilities
         // (duston): reset the flag first only here so every single positioning function doesn't need to explicitly set it to false, only the ones that set it to true should care.
         character.Positioning.SecondaryHandFollowsPrimary = false;
         var poseParams = new HandPoseParams(scene, character, scene.Game.State.Time.DeltaTime, equipped);
+
+        if (character.Positioning.HandPoseFunctionOverride.Count != 0)
+        {
+            character.Positioning.HandPoseFunctionOverride[0](poseParams);
+            return;
+        }
+
         if (!character.HasWeaponEquipped || equipped == null) // fist fight
             HandPosingFunctions.FistFight(poseParams);
         else
