@@ -341,8 +341,8 @@ public class CharacterComponent : Component
                 TransformComponent transform = scene.GetComponentFrom<TransformComponent>(weapon.Entity);
                 Color bloodColor = bodypart.Character.Get(scene).Look.BloodColour;
                 Vector2 midPoint = Vector2.Lerp(transform.Position, scene.GetComponentFrom<TransformComponent>(weapon.StuckInsideParams.Value.Entity).Position, 0.5f);
-                Prefabs.CreateBloodSpurt(scene, midPoint, 0f, bloodColor, 0.7f);
-                Prefabs.CreateBloodSplat(scene, midPoint, 0f, bloodColor, Utilities.RandomFloat(150, 250));
+                Prefabs.CreateBloodSpurt(scene, midPoint, Utilities.RandomFloat(0, 360), bloodColor, 0.7f);
+                Prefabs.CreateBloodSplat(scene, midPoint, Utilities.RandomFloat(0, 360), bloodColor, Utilities.RandomFloat(150, 250));
                 scene.Game.AudioRenderer.PlayOnce(Sounds.FleshPull);
             }
         }
