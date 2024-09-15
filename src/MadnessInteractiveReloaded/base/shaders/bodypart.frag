@@ -166,6 +166,13 @@ void main()
     gore.a *= skin.a;
     flesh.a *= skin.a;
 
+    // set skin "blood" mask
+    if (skin.a < 0.9 && skin.r > max(skin.g, skin.b))
+    {
+        skin.rgb = mix(clamp(skin.r * 1.2, 0, 1) * innerBloodColour, vec3(1,1,1), (skin.g + skin.b) / 2.5);
+        skin.a = 1;
+    }
+
     for (int i = 0; i < slashesCount; i++)
     {
         vec3 slash = slashes[i];
