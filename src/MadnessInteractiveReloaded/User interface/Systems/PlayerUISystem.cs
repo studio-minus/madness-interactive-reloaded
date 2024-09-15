@@ -199,7 +199,7 @@ public class PlayerUISystem : Walgelijk.System
             Draw.ScreenSpace = false;
             //TODO: when melee durability is added, edit this line to account for it
             float normAmt = nearestWeapon.Data.WeaponType == WeaponType.Firearm ? (float)nearestWeapon.RemainingRounds / (float)nearestWeapon.Data.RoundsPerMagazine : 1f;
-            Draw.Colour = Utilities.Lerp(Colors.Red, Colors.White, normAmt);
+            Draw.Colour = nearestWeapon.InfiniteAmmo ? Color.FromHsv(Time, 0.2f, 1) : Utilities.Lerp(Colors.Red, Colors.White, normAmt);
             Draw.Colour.A = 0.75f;
             Draw.Order = RenderOrders.Effects;
             Draw.Material = Materials.BlackToWhiteOutline;
