@@ -9,9 +9,10 @@ public class AnimationSystem : Walgelijk.System
 {
     public override void Update()
     {
-        if (MadnessUtils.IsPaused(Scene) || MadnessUtils.EditingInExperimentMode(Scene) || MadnessUtils.IsCutscenePlaying(Scene))
+        if (MadnessUtils.EditingInExperimentMode(Scene) || MadnessUtils.IsCutscenePlaying(Scene))
             return;
 
+        if(!MadnessUtils.IsPaused(Scene))
         foreach (var animation in Scene.GetAllComponentsOfType<AnimationComponent>())
         {
             var transform = Scene.GetComponentFrom<TransformComponent>(animation.Entity);
@@ -77,6 +78,8 @@ public class AnimationSystem : Walgelijk.System
 
         foreach (var animation in Scene.GetAllComponentsOfType<BackgroundOffsetAnimationComponent>())
         {
+            if (MadnessUtils.IsPaused(Scene) && animation.AffectedByTimeScale)
+                continue;
             var background = Scene.GetComponentFrom<Background.BackgroundComponent>(animation.Entity);
             var t = Utilities.Clamp(animation.CurrentPlaybackTime / animation.Duration);
 
@@ -96,7 +99,7 @@ public class AnimationSystem : Walgelijk.System
                 background.Offset = animation.OffsetCurve.Evaluate(t);
 
             if (animation.IsPlaying)
-                animation.CurrentPlaybackTime += Time.DeltaTime;
+                animation.CurrentPlaybackTime += animation.AffectedByTimeScale ? Time.DeltaTime : Time.DeltaTimeUnscaled;
         }
     }
 }

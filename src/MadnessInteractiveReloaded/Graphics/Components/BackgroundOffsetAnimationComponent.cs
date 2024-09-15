@@ -29,6 +29,11 @@ public class BackgroundOffsetAnimationComponent : Component
     public bool FillForwards = true;
 
     /// <summary>
+    /// If the animation speed is affected by the <see cref="Time.TimeScale"/>. If off, also plays while the scene is paused.
+    /// </summary>
+    public bool AffectedByTimeScale = true;
+
+    /// <summary>
     /// How long the animation has played.
     /// </summary>
     public float CurrentPlaybackTime;
