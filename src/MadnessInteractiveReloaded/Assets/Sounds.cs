@@ -114,9 +114,9 @@ public static class Sounds
     };
     public static readonly Sound[] MeleeDodge =
     {
-        SpatialSfx("sounds/meleedodge/meleedodge-1.wav"),
-        SpatialSfx("sounds/meleedodge/meleedodge-2.wav"),
-        SpatialSfx("sounds/meleedodge/meleedodge-3.wav"),
+        SpatialSfx("sounds/melee_dodge/melee_dodge_1.wav"),
+        SpatialSfx("sounds/melee_dodge/melee_dodge_2.wav"),
+        SpatialSfx("sounds/melee_dodge/melee_dodge_3.wav"),
     };
 
     public static readonly Sound[] SoftBodyImpact =
