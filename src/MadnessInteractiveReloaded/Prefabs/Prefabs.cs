@@ -1010,6 +1010,7 @@ public static class Prefabs
         {
             IsPlaying = true,
             Duration = duration,
+            AffectedByTimeScale = false,
             OffsetCurve =
                 type == Transition.Entry
                     ? new Vec2Curve(
