@@ -112,6 +112,12 @@ public static class Sounds
         SpatialSfx("sounds/jump/jump-2.wav"),
         SpatialSfx("sounds/jump/jump-3.wav"),
     };
+    public static readonly Sound[] MeleeDodge =
+    {
+        SpatialSfx("sounds/melee_dodge/melee_dodge_1.wav"),
+        SpatialSfx("sounds/melee_dodge/melee_dodge_2.wav"),
+        SpatialSfx("sounds/melee_dodge/melee_dodge_3.wav"),
+    };
 
     public static readonly Sound[] SoftBodyImpact =
     {
