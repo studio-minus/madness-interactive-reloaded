@@ -236,7 +236,7 @@ public class PlayerCharacterSystem : Walgelijk.System
             }
 
             //dit moet hier beneden zijn want Acceleration moet al aangepast zijn door de controls :)
-            if (Input.ActionPressed(GameAction.JumpDodge) && character.HasDodge())
+            if (Input.ActionPressed(GameAction.JumpDodge))
                 CharacterUtilities.TryJumpDodge(Scene, character);
         }
 
