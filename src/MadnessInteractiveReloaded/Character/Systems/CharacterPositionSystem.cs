@@ -49,7 +49,7 @@ public class CharacterPositionSystem : Walgelijk.System
             PositionHands(c, equipped);
             PositionFeet(c);
 
-            if (equipped != null)
+            if (equipped != null && Scene.HasEntity(equipped.Entity))
                 ApplyWeaponPosition(c, equipped);
 
             if (c.IsPlayingAnimationGroup("deaths") && !c.AnimationConstrainsAny(AnimationConstraint.PreventRagdoll))
@@ -206,10 +206,13 @@ public class CharacterPositionSystem : Walgelijk.System
 
     private void ApplyWeaponPosition(CharacterComponent character, WeaponComponent weapon)
     {
+        if (!Scene.TryGetComponentFrom<TransformComponent>(weapon.Entity, out var wpnTransform))
+            return;
+
         var hand = character.Positioning.Hands.First;
-        var weaponTransform = Scene.GetComponentFrom<TransformComponent>(character.EquippedWeapon.Entity);
-        var velocityComponent = Scene.GetComponentFrom<VelocityComponent>(character.EquippedWeapon.Entity);
-        var measured = Scene.GetComponentFrom<MeasuredVelocityComponent>(character.EquippedWeapon.Entity);
+        var weaponTransform = Scene.GetComponentFrom<TransformComponent>(weapon.Entity);
+        var velocityComponent = Scene.GetComponentFrom<VelocityComponent>(weapon.Entity);
+        var measured = Scene.GetComponentFrom<MeasuredVelocityComponent>(weapon.Entity);
 
         weaponTransform.LocalPivot = -weapon.HoldPoints[0];
         weaponTransform.Rotation = hand.GlobalRotation;
