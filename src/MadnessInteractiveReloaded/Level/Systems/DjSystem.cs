@@ -90,6 +90,7 @@ public class DjSystem : Walgelijk.System
         var speed = (track.BPM) / 60 / 6;
         DjComponent.CalculatedAnimationSpeed = speed;
         DjComponent.Time = (Audio.GetTime(PersistentSoundHandles.DjMusic!) * speed) + track.StartOffset;
+
         foreach (var character in Scene.GetAllComponentsOfType<CharacterComponent>())
         {
             if (character.Entity % 2 == 0) // only some of them
@@ -105,6 +106,11 @@ public class DjSystem : Walgelijk.System
             {
                 Scene.AttachComponent(character.Entity, new DancingCharacterComponent(Utilities.PickRandom(Animations.Dancing)));
             });
+        }
+
+        if (Scene.TryGetEntityWithTag(new(123), out var pipin) && Scene.TryGetComponentFrom<FlipbookComponent>(pipin, out var pipinAnim))
+        {
+            pipinAnim.Duration = 120 / track.BPM;
         }
     }
 }

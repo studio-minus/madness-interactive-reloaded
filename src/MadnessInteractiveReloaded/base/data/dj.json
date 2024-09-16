@@ -2,8 +2,8 @@
 	{
 		"Name": "A Casual Trip Through Hell",
 		"Author": "Lothyde",
-		"BPM": 127,
-		"StartOffset": 0,
+		"BPM": 128,
+		"StartOffset": 15.1,
 		"Sound": "sounds/music/Lothyde/a_casual_trip_through_hell.ogg"
 	},
 	{
@@ -30,8 +30,8 @@
 	{
 		"Name": "Chicken Dance",
 		"Author": "DJ Birdie",
-		"BPM": 140,
-		"StartOffset": 0,
+		"BPM": 139,
+		"StartOffset": 0.163,
 		"Sound": "sounds/music/madness_1.ogg"
 	},
 	{
@@ -45,14 +45,14 @@
 		"Name": "Come to Blows",
 		"Author": "Lothyde",
 		"BPM": 100,
-		"StartOffset": 0,
+		"StartOffset": 0.056,
 		"Sound": "sounds/music/Lothyde/come_to_blows.ogg"
 	},
 	{
 		"Name": "Deaths Flashing Before My Eyes",
 		"Author": "Lothyde",
-		"BPM": 140,
-		"StartOffset": 0,
+		"BPM": 143,
+		"StartOffset": 0.103,
 		"Sound": "sounds/music/Lothyde/deaths_flashing_before_my_eyes.ogg"
 	},
 	{
@@ -65,15 +65,15 @@
 	{
 		"Name": "Fancy Fiddle",
 		"Author": "Arthur Smith",
-		"BPM": 97,
+		"BPM": 96.5,
 		"StartOffset": 4.755,
 		"Sound": "sounds/music/fancy_fiddle.ogg"
-	},
+	}, 
 	{
 		"Name": "From the Outset",
 		"Author": "Lothyde",
 		"BPM": 110,
-		"StartOffset": 0,
+		"StartOffset": 26.258,
 		"Sound": "sounds/music/Lothyde/from_the_outset.ogg"
 	},
 	{
@@ -101,15 +101,8 @@
 		"Name": "Living on the Edge (feat. MonoCronic)",
 		"Author": "Lothyde & MonoCronic",
 		"BPM": 130,
-		"StartOffset": 0,
+		"StartOffset": 73.966,
 		"Sound": "sounds/music/Lothyde/living_on_the_edge_(feat_monocronic).ogg"
-	},
-	{
-		"Name": "Madness Combat 2",
-		"Author": "Arthur Smith",
-		"BPM": 97,
-		"StartOffset": 4.755,
-		"Sound": "sounds/music/madness_2.ogg"
 	},
 	{
 		"Name": "Madness Combat 4",
@@ -122,7 +115,7 @@
 		"Name": "Madness Combat 5",
 		"Author": "Cheshyre",
 		"BPM": 170,
-		"StartOffset": 0,
+		"StartOffset": 0.031,
 		"Sound": "sounds/music/madness_5_a.ogg"
 	},
 	{
@@ -208,5 +201,5 @@
 		"BPM": 140,
 		"StartOffset": 0.126,
 		"Sound": "sounds/music/Lothyde/warning_party_imminent.ogg"
-	},
+	}
 ]
