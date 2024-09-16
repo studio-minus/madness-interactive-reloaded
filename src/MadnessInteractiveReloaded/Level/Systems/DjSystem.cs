@@ -111,6 +111,8 @@ public class DjSystem : Walgelijk.System
         if (Scene.TryGetEntityWithTag(new(123), out var pipin) && Scene.TryGetComponentFrom<FlipbookComponent>(pipin, out var pipinAnim))
         {
             pipinAnim.Duration = 120 / track.BPM;
+            while (pipinAnim.Duration > 2)
+                pipinAnim.Duration *= 0.5f;
         }
     }
 }
