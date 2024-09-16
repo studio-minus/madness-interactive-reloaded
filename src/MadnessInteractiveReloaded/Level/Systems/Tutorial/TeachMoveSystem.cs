@@ -35,6 +35,8 @@ public class TeachPickupShootSystem : TeachSystem
             return;
 
         var interact = ControlScheme.ActiveControlScheme.InputMap[GameAction.Interact];
+        var aim = ControlScheme.ActiveControlScheme.InputMap[GameAction.BlockAim];
+        var attack = ControlScheme.ActiveControlScheme.InputMap[GameAction.Attack];
 
         if (!playerChar.EquippedWeapon.IsValid(Scene))
             Instructions(new Instruction
@@ -42,6 +44,12 @@ public class TeachPickupShootSystem : TeachSystem
                 Text = $"Approach and use <color=#ffffff>[{interact}]</color> to pick up.",
                 Target = Target.Weapon
             });
+
+        Instructions(new Instruction
+        {
+            Text = $"Focus your aim with <color=#ffffff>[{aim}]</color> and shoot with <color=#ffffff>[{attack}]</color>",
+            Target = Target.NPC
+        });
     }
 }
 
@@ -98,6 +106,7 @@ public abstract class TeachSystem : Walgelijk.System
                         var c = Window.WorldToWindowPoint(p) - r.GetSize() * 0.5f;
                         r = r.Translate(c);
                     }
+                    else return;
                 }
                 break;   
             case Target.NPC:
@@ -111,6 +120,7 @@ public abstract class TeachSystem : Walgelijk.System
                         var c = Window.WorldToWindowPoint(p) - r.GetSize() * 0.5f;
                         r = r.Translate(c);
                     }
+                    else return;
                 }
                 break;
             case Target.Weapon:
