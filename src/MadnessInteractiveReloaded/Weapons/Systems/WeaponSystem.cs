@@ -238,8 +238,21 @@ public class WeaponSystem : Walgelijk.System
         if (data.ShootSounds != null && data.ShootSounds.Count > 0)
         {
             var sound = Utilities.PickRandom(data.ShootSounds).Value;
+            float volume = 1;
 
-            Audio.PlayOnce(SoundCache.Instance.LoadSoundEffect(sound), 1);
+            if (!infiniteAmmo)
+            {
+                const float percentageThreshold = 0.5f;
+                float r = (weapon.RemainingRounds / (float)weapon.Data.RoundsPerMagazine) / percentageThreshold;
+                if (r < 1)
+                {
+                    Audio.PlayOnce(SoundCache.Instance.LoadSoundEffect(
+                        Assets.Load<FixedAudioData>("sounds/low_ammo_warn.wav")), (1 - r) * 0.8f);
+                    volume = float.Lerp(r, 1, 0.9f);
+                }
+            }
+
+            Audio.PlayOnce(SoundCache.Instance.LoadSoundEffect(sound), volume);
         }
 
         var muzzleFlashSize = Utilities.Clamp(data.Damage * 2.5f * Utilities.RandomFloat(0.8f, 1.2f) * data.BulletsPerShot, 1.5f, 3.3f);
