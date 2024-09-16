@@ -33,8 +33,13 @@ public class DjScreenSystem : Walgelijk.System
                             int freqIndex = i % bars.Length;
                             if (i < bars.Length)
                                 freqIndex = bars.Length - freqIndex;
-                            freqIndex = Math.Clamp(freqIndex, 0, bars.Length - 1);
-                            var r = new Rect(x, (1 - bars[freqIndex]) * comp.Target.Height, x + 5, comp.Target.Height);
+                            freqIndex = int.Clamp(freqIndex, 0, bars.Length - 1);
+
+                            var b = bars[freqIndex];
+                            //b = (float.Log2P1(b) * 0.8f );
+                            //b *= b * 2;
+
+                            var r = new Rect(x, (1 - b) * comp.Target.Height, x + 2, comp.Target.Height);
                             Graphics.DrawQuadScreenspace(r, comp.BarMaterial);
                         }
                     }
@@ -54,19 +59,26 @@ public class DjScreenSystem : Walgelijk.System
                 && DjComponent.CurrentMusic != null
                 && DjComponent.PlaybackState == DjComponent.State.Playing)
             {
+#if DEBUG
+                if (Input.IsKeyPressed(Key.F2))
+                {
+                    comp.Visualiser = null;
+                }
+#endif
+
                 if (comp.Visualiser == null || comp.Visualiser.Sound.Data != DjComponent.CurrentMusic.Sound.Value)
-                    comp.Visualiser = new AudioVisualiser(PersistentSoundHandles.DjMusic!, 512, 256, 16)
+                    comp.Visualiser = new AudioVisualiser(PersistentSoundHandles.DjMusic!, 1024, 512, 32)
                     {
-                        MinFreq = 100,
-                        MaxFreq = 16000,
-                        OutputBlurIterations = 1,
-                        OutputBlurIntensity = 0.2f,
-                        Smoothing = 0,
+                        MinFreq = 50,
+                        MaxFreq = 15000,
+                        OutputBlurIterations = 0,
+                        OutputBlurIntensity = 0,
+                        Smoothing = 0.5f,
                         MinDb = -20,
-                        MaxDb = 90,
+                        MaxDb = 100,
                         InputBlurIntensity = 0,
                         InputBlurIterations = 0,
-                        OverlapWindow = true,
+                        OverlapWindow = false,
                     };
 
                 if (!MadnessUtils.IsPaused(Scene))

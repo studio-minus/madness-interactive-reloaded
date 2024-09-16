@@ -1,4 +1,5 @@
 ﻿using OpenTK.Windowing.Common.Input;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Numerics;
@@ -42,9 +43,10 @@ public class DjSystem : Walgelijk.System
                     {
                         case DjComponent.Mode.RepeatTrack:
                             {
-                                var track = DjComponent.CurrentMusic!;
-                                dj.Stop(Audio);
-                                dj.Play(track, Audio);
+                                //var track = DjComponent.CurrentMusic!;
+                                //var m = PersistentSoundHandles.DjMusic;
+                                //Audio.SetTime(m, 0);
+                                //Audio.Play(m);
                             }
                             break;
                         case DjComponent.Mode.Autoplay:
@@ -66,8 +68,7 @@ public class DjSystem : Walgelijk.System
                             break;
                     }
                 }
-
-                if (DjComponent.CurrentMusic != null)
+                else if (DjComponent.CurrentMusic != null)
                     ProcessSpeed(dj, DjComponent.CurrentMusic);
             }
         }

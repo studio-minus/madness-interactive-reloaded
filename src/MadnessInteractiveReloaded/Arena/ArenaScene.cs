@@ -22,7 +22,7 @@ public static class ArenaScene
 
         scene.AddSystem(new EnemySpawningSystem());
         scene.AddSystem(new ArenaModeSystem());
-        var c = scene.AttachComponent(scene.CreateEntity(), new ArenaModeComponent());
+        var c = scene.AttachComponent(scene.CreateEntity(), new ArenaModeComponent());//🎈
 
         var waves = c.Waves.Value;
 
