@@ -107,12 +107,6 @@ public static class CharacterUtilities
         character.Positioning.SecondaryHandFollowsPrimary = false;
         var poseParams = new HandPoseParams(scene, character, scene.Game.State.Time.DeltaTime, equipped);
 
-        if (character.Positioning.HandPoseFunctionOverride.Count != 0)
-        {
-            character.Positioning.HandPoseFunctionOverride[0](poseParams);
-            return;
-        }
-
         if (!character.HasWeaponEquipped || equipped == null) // fist fight
             HandPosingFunctions.FistFight(poseParams);
         else
