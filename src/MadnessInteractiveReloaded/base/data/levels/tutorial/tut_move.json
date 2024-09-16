@@ -16,18 +16,18 @@
   "BodyCountToWin": 50,
   "TimeLimitInSeconds": -1.0,
   "FullZoom": false,
-  "Thumbnail": "0",
+  "Thumbnail": "base:textures/level_thumbnails/tutorial/tut_move.qoi",
   "OpeningTransition": true,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [],
   "Weapons": [],
   "FloorLine": [
     {
-      "X": -2070.9111,
+      "X": -2076.9111,
       "Y": -634.8619
     },
     {
-      "X": 2089.0889,
+      "X": 2095.0889,
       "Y": -634.8619
     }
   ],
@@ -220,6 +220,16 @@
         "MaxY": 667.6443
       },
       "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerPoster, MIR",
+      "Type": 0,
+      "Angle": 4.0266876,
+      "Position": {
+        "X": 330.68912,
+        "Y": -39.62743
+      },
+      "Scale": 2.2458014
     }
   ]
 }
