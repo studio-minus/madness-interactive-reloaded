@@ -1,5 +1,4 @@
 ﻿using System;
-using System.CommandLine;
 using System.Numerics;
 using Walgelijk;
 using Walgelijk.AssetManager;
@@ -83,6 +82,8 @@ public class PlayerUISystem : Walgelijk.System
 
                 wpnRect = wpnRect.Translate(0, c.Y);
 
+                wpnRect = wpnRect.Translate(Utilities.RandomPointInCircle() * 10 * (1 - float.Clamp(lastAmmoFlashCounter * 4f, 0, 1)));
+
                 Draw.Material = Materials.BlackToWhiteOutline;
                 if (flipped)
                 {
@@ -91,6 +92,7 @@ public class PlayerUISystem : Walgelijk.System
                 }
 ;
                 Draw.Image(baseTex, wpnRect, ImageContainmentMode.Stretch);
+                int i = 0;
                 if (wpn.AnimatedParts != null)
                 {
                     float wS = wpnRect.Width / baseTex.Width;
@@ -100,7 +102,16 @@ public class PlayerUISystem : Walgelijk.System
                         var rect = new Rect(wpnRect.GetCenter(), part.Texture.Value.Size).Scale(wS, hS);
                         if (part.TranslationCurve != null)
                         {
-                            var n = part.TranslationCurve.Evaluate(0);
+                            float s = 0;
+
+                            if (eq.AnimatedParts != null
+                                && eq.AnimatedParts.Length > i
+                                && Scene.TryGetComponentFrom<WeaponPartAnimationComponent>(eq.AnimatedParts[i++], out var comp))
+                            {
+                                s = comp.CurrentPlaybackTime / part.Duration;
+                            }
+
+                            var n = part.TranslationCurve.Evaluate(s);
                             n.X *= wS;
                             n.Y *= -hS;
                             rect = rect.Translate(n);
@@ -139,11 +150,15 @@ public class PlayerUISystem : Walgelijk.System
                     else
                     {
                         if (!eq.HasRoundsLeft)
-                            Draw.Colour = float.Sin(Time.SecondsSinceLoadUnscaled * 8f) > 0 ? Colors.Red : Colors.White;
+                        {
+                            Draw.Colour = float.Sin(Time.SecondsSinceLoadUnscaled * 24f) > 0 ? Colors.Red : Colors.White;
+                            Draw.Text("Empty", c, new Vector2(1), HorizontalTextAlign.Left, VerticalTextAlign.Top);
+                        }
                         else
+                        {
                             Draw.Colour = Vector4.Lerp(Colors.Red, Colors.White, float.Clamp(lastAmmoFlashCounter * 8f, 0, 1));
-
-                        DrawCounter(c, eq.RemainingRounds, eq.Data.RoundsPerMagazine);
+                            DrawCounter(c, eq.RemainingRounds, eq.Data.RoundsPerMagazine);
+                        }
                     }
                     c.Y += 40;
                     break;

@@ -228,7 +228,7 @@ public class WeaponSystem : Walgelijk.System
             return;
 
         if (infiniteAmmo)
-            weapon.RemainingRounds = weapon.Data.RoundsPerMagazine;
+            weapon.RemainingRounds++; // we do ++ so that we can still detect that the weapon has been used
         else
             weapon.RemainingRounds--;
 
