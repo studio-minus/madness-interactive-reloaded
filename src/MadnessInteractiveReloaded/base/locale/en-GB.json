@@ -94,6 +94,8 @@
     "frmt-kills": "{0} kills",
     "frmt-deaths": "{0} deaths",
     "frmt-spent-time": "Spent {0}",
-    "frmt-layer": "Layer {0}"
+    "frmt-layer": "Layer {0}",
+
+    "tut-move":  "Use {0} and {1} to move around"
   }
 }

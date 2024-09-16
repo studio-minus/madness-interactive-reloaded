@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using Walgelijk;
+using Walgelijk.Onion;
 
 namespace MIR;
 
@@ -201,6 +202,11 @@ public struct UserInput : IEquatable<UserInput>
     {
         Key,
         Button
+    }
+
+    public override string ToString()
+    {
+        return string.Join('+', Inputs);
     }
 
     public static bool operator ==(UserInput left, UserInput right)
