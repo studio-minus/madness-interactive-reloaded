@@ -1,7 +1,6 @@
 ﻿#version 330
 
-#define FLOAT_MAX 3.402823466e+38
-#define FLOAT_MIN 1.175494351e-38
+
 #define HOLE_MAX_COUNT 32
 #define THRESHOLD 1
 #define DISCARD_THRESHOLD .9
@@ -147,8 +146,8 @@ void main()
     vec2 obj = object.xy * aspectRatio;
     float scl = scale / aspectRatio.x;
 
-    float minHoleDistance = FLOAT_MAX;
-    float minInnerCutoutHoleDistance = FLOAT_MAX;
+    float minHoleDistance = 100000;
+    float minInnerCutoutHoleDistance = 100000;
 
     float smallNoise = (snoise(obj * 16 * scl) * 2.0 - 1.0) * 0.02;
     float largeNoise = (voronoi2d(obj * 8 * scl)) * 0.15 - 0.1;
@@ -214,7 +213,7 @@ void main()
         minHoleDistance = min(d, minHoleDistance);
 
         float polar = atan(delta.y, delta.x);
-        float star = (snoise(vec2(polar * 6, 0))) * 0.5 * depth / max(1, magn * 4) * 3;
+        float star = (snoise(vec2(polar * 4, 0))) * 0.5 * depth / max(1, magn * 4) * 3;
 
         bloodStain = max(bloodStain, star);
      }
@@ -236,7 +235,7 @@ void main()
      if (seed < 0.95)
      { 
         float gc = minHoleDistance + largeNoise * 0.2 + mix(0.02, 0.1, seed);
-        gore.rgb = mix(innerBloodColour, gore.rgb, smoothstep(THRESHOLD, THRESHOLD + SMOOTH_EDGE, gc - 0.2 * verySmallNoise));
+        gore.rgb = mix(outerBloodColour, gore.rgb, smoothstep(THRESHOLD, THRESHOLD + SMOOTH_EDGE, gc - 0.2 * verySmallNoise));
         gore.a *= smoothstep(THRESHOLD, THRESHOLD + SMOOTH_EDGE, gc);
      }
 
