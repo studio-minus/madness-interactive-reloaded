@@ -240,15 +240,15 @@ public class WeaponSystem : Walgelijk.System
             var sound = Utilities.PickRandom(data.ShootSounds).Value;
             float volume = 1;
 
-            if (!infiniteAmmo)
+            if (!infiniteAmmo && isPlayer)
             {
                 const float percentageThreshold = 0.5f;
                 float r = (weapon.RemainingRounds / (float)weapon.Data.RoundsPerMagazine) / percentageThreshold;
                 if (r < 1)
                 {
                     Audio.PlayOnce(SoundCache.Instance.LoadSoundEffect(
-                        Assets.Load<FixedAudioData>("sounds/low_ammo_warn.wav")), (1 - r) * 0.8f);
-                    volume = float.Lerp(r, 1, 0.9f);
+                        Assets.Load<FixedAudioData>("sounds/low_ammo_warn.wav")), (1 - r) * 0.9f);
+                    volume = float.Lerp(r, 1, 0.8f);
                 }
             }
 
