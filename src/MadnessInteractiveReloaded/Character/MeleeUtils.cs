@@ -32,7 +32,7 @@ public static class MeleeUtils
 
         if (scene.TryGetComponentFrom<MeleeSequenceComponent>(character.Entity, out var meleeSequenceComponent))
             meleeSequenceComponent.CanContinue = true;
-        else
+        else if (character.Stats.UnarmedSeq.Length > 0)
         {
             string meleeSeq = Utilities.PickRandom(character.Stats.UnarmedSeq);
             if (equipped != null)
@@ -59,12 +59,12 @@ public static class MeleeUtils
 
     /*                                            Welcome to hell
      *                                      
-     * This code was written to match the information found in "MIR Melee Corollarium.pdf, which is why
-     * it looks like such a mess. If you could rewrite this in cleaner, simpler, shorter way then go ahead.
-     * Make sure it stays functional and still follows the document. Especially those matrix diagrams!
+     * ~~This code was written to match the information found in "MIR Melee Corollarium.pdf, which is why~~
+     * ~~it looks like such a mess. If you could rewrite this in cleaner, simpler, shorter way then go ahead.~~
+     * ~~Make sure it stays functional and still follows the document. Especially those matrix diagrams!~~
      * ---
-     * UPDATE: The PDF is obsolete because it wasn't fun to play. Ignore it. 
-     * So I'm not sure what this code does now. Good luck lmfao.
+     *  >>> UPDATE: The PDF is obsolete because it wasn't fun to play. Ignore it. <<<
+     *              So I'm not sure what this code does now. Good luck lmfao.
      */
 
     /// <summary>
