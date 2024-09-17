@@ -62,6 +62,13 @@ public class PlayerUISystem : Walgelijk.System
         //if (gameMode == GameMode.Experiment)
         //    c.Y += 32;
 
+        Window.CursorAppearance = DefaultCursor.Invisible;
+        Window.CursorStack.SetCursor(DefaultCursor.Invisible); // TODO when i get a way to actually disable the cursor, do that
+        float targetCrosshairSize = 20f; //default for unarmed, melee and accurate guns
+        bool firearmEmpty = false;
+        float normalizedAmmoCount = 1f;
+        Vector2 worldCenter = character.AimTargetPosition;
+
         if (character.EquippedWeapon.TryGet(Scene, out var eq))
         {
             const float wpnHeight = 60;
@@ -163,6 +170,8 @@ public class PlayerUISystem : Walgelijk.System
                         lastAmmoCounter = eq.RemainingRounds;
                     }
 
+                    normalizedAmmoCount = (float)eq.RemainingRounds / eq.Data.RoundsPerMagazine;
+
                     if (eq.InfiniteAmmo)
                     {
                         Draw.Colour = Color.FromHsv(Time, 0.2f, 1);
@@ -174,6 +183,7 @@ public class PlayerUISystem : Walgelijk.System
                         {
                             Draw.Colour = float.Sin(Time.SecondsSinceLoadUnscaled * 24f) > 0 ? Colors.Red : Colors.White;
                             Draw.Text(Localisation.Get("empty"), c, new Vector2(1), HorizontalTextAlign.Left, VerticalTextAlign.Top);
+                            firearmEmpty = true;
                         }
                         else
                         {
@@ -182,6 +192,17 @@ public class PlayerUISystem : Walgelijk.System
                         }
                     }
                     c.Y += 40;
+
+                    var transform = Scene.GetComponentFrom<TransformComponent>(eq.Entity);
+                    var barrel = WeaponSystem.GetBarrel(eq, transform);
+
+                    worldCenter += character.Positioning.RecoilPositionOffset * 0.5f;
+                    worldCenter = RotateAboutOrigin(worldCenter, barrel.position, character.Positioning.RecoilAngleOffset * (MathF.PI / 180f) * 0.4f);
+
+                    float dist = Vector2.Distance(barrel.position, worldCenter);
+                    float spread = (1 - eq.Data.Accuracy) * dist;
+                    Rect size = new Rect(Vector2.Zero, Vector2.One * spread);
+                    targetCrosshairSize = MathF.Max(Window.WorldToWindowRect(new Rect(Vector2.Zero, Vector2.One * spread)).GetSize().X * 0.5f, 20f);
                     break;
                 default:
                     break;
@@ -227,6 +248,20 @@ public class PlayerUISystem : Walgelijk.System
             }
 
         }
+
+        // crosshair rendering
+        Draw.ResetMaterial();
+        Draw.ResetTexture();
+        Color desiredCrosshairColor = firearmEmpty ? (float.Sin(Time.SecondsSinceLoadUnscaled * 24f) > 0 ? Colors.Red : Colors.White) : Utilities.Lerp(Utilities.Lerp(Color.Red, Color.White, normalizedAmmoCount), Color.White, lastAmmoFlashCounter * 8f); // not very readable but it sure is concise!
+        Draw.Colour = desiredCrosshairColor;
+        Draw.OutlineColour = desiredCrosshairColor;
+        Draw.OutlineColour.A = Math.Max(1f - (targetCrosshairSize - 20f) * 0.0085f, 0.2f);
+        Draw.OutlineWidth = 0;
+
+        Draw.Circle(Window.WorldToWindowPoint(worldCenter), Vector2.One * 5f);
+        Draw.Colour.A = 0f;
+        Draw.OutlineWidth = 5f;
+        Draw.Circle(Window.WorldToWindowPoint(worldCenter), Vector2.One * targetCrosshairSize);
     }
 
     private static void DrawCounter(Vector2 p, int c, int max, HorizontalTextAlign alignment = HorizontalTextAlign.Left)
@@ -287,5 +322,10 @@ public class PlayerUISystem : Walgelijk.System
         Draw.Line(character.AimTargetPosition - new Vector2(0, minSize), character.AimTargetPosition - new Vector2(0, maxSize), o, 0);
         Draw.Line(character.AimTargetPosition - new Vector2(minSize, 0), character.AimTargetPosition - new Vector2(maxSize, 0), o, 0);
         Draw.ScreenSpace = true;
+    }
+
+    private static Vector2 RotateAboutOrigin(Vector2 point, Vector2 origin, float rotation)
+    {
+        return Vector2.Transform(point - origin, Matrix4x4.CreateRotationZ(rotation)) + origin;
     }
 }
