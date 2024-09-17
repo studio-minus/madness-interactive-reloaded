@@ -2,6 +2,7 @@
 using System.Numerics;
 using Walgelijk;
 using Walgelijk.AssetManager;
+using Walgelijk.Localisation;
 using Walgelijk.SimpleDrawing;
 
 namespace MIR;
@@ -86,7 +87,7 @@ public class PlayerUISystem : Walgelijk.System
                     // TODO this is so ugly please make it more elegant and nice
                     if (flipped)
                     {
-                        wpnRect.Height= maxWpnWidth;
+                        wpnRect.Height = maxWpnWidth;
                         wpnRect.Width = maxWpnWidth * aspectRatio;
                     }
                     else
@@ -96,8 +97,11 @@ public class PlayerUISystem : Walgelijk.System
                     }
                 }
 
+                float recoilEffect = 1 - float.Clamp(lastAmmoFlashCounter * 4f, 0, 1);
+                float rot = recoilEffect * -0.05f * (Noise.GetSimplex(Time * 2, 452.123f, 0) ) * wpn.WeaponData.Recoil;
+
                 wpnRect = wpnRect.Translate(0, c.Y);
-                wpnRect = wpnRect.Translate(Utilities.RandomPointInCircle() * 10 * (1 - float.Clamp(lastAmmoFlashCounter * 4f, 0, 1)));
+                wpnRect = wpnRect.Translate((MadnessUtils.Noise2D(Time * 2, 452.123f) + new Vector2(-0.5f, 0)) * 15 * recoilEffect);
 
                 Draw.Material = Materials.BlackToWhiteOutline;
                 if (flipped)
@@ -105,6 +109,8 @@ public class PlayerUISystem : Walgelijk.System
                     Draw.TransformMatrix = Matrix3x2.CreateRotation(float.Pi / 2, wpnRect.BottomLeft);
                     wpnRect = wpnRect.Translate(0, -wpnRect.Height);
                 }
+
+                Draw.TransformMatrix *= Matrix3x2.CreateRotation(rot, wpnRect.GetCenter() with { X = wpnRect.MinX });
 
                 Draw.Image(baseTex, wpnRect, ImageContainmentMode.Stretch);
                 int i = 0;
@@ -160,14 +166,14 @@ public class PlayerUISystem : Walgelijk.System
                     if (eq.InfiniteAmmo)
                     {
                         Draw.Colour = Color.FromHsv(Time, 0.2f, 1);
-                        Draw.Text("Inf. ammo", c, new Vector2(1), HorizontalTextAlign.Left, VerticalTextAlign.Top);
+                        Draw.Text(Localisation.Get("infinite-ammo"), c, new Vector2(1), HorizontalTextAlign.Left, VerticalTextAlign.Top);
                     }
                     else
                     {
                         if (!eq.HasRoundsLeft)
                         {
                             Draw.Colour = float.Sin(Time.SecondsSinceLoadUnscaled * 24f) > 0 ? Colors.Red : Colors.White;
-                            Draw.Text("Empty", c, new Vector2(1), HorizontalTextAlign.Left, VerticalTextAlign.Top);
+                            Draw.Text(Localisation.Get("empty"), c, new Vector2(1), HorizontalTextAlign.Left, VerticalTextAlign.Top);
                         }
                         else
                         {
