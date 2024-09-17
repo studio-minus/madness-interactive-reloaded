@@ -10,7 +10,7 @@
 		"Name": "AGR3",
 		"Author": "Lothyde",
 		"BPM": 200,
-		"StartOffset": 0,
+		"StartOffset": 5.486,
 		"Sound": "sounds/music/Lothyde/agr3.ogg"
 	},
 	{

@@ -67,7 +67,7 @@ public class DjScreenSystem : Walgelijk.System
 #endif
 
                 if (comp.Visualiser == null || comp.Visualiser.Sound.Data != DjComponent.CurrentMusic.Sound.Value)
-                    comp.Visualiser = new AudioVisualiser(PersistentSoundHandles.DjMusic!, 1024, 512, 32)
+                    comp.Visualiser = new AudioVisualiser(PersistentSoundHandles.DjMusic!, 1024, 1024, 32)
                     {
                         MinFreq = 50,
                         MaxFreq = 15000,

@@ -34,19 +34,17 @@ public class DjSystem : Walgelijk.System
             }
             else
             {
+                PersistentSoundHandles.DjMusic.Looping = DjComponent.PlaybackMode is DjComponent.Mode.RepeatTrack;
+                PersistentSoundHandles.DjMusic.ForceUpdate();
+
                 if (PersistentSoundHandles.DjMusic.State == SoundState.Paused) // we resume when paused because it can only pause when the pause menu is open
                     Audio.Play(PersistentSoundHandles.DjMusic);
-
-                if (PersistentSoundHandles.DjMusic.State == SoundState.Stopped)
+                else if (PersistentSoundHandles.DjMusic.State == SoundState.Stopped)
                 {
                     switch (DjComponent.PlaybackMode)
                     {
                         case DjComponent.Mode.RepeatTrack:
                             {
-                                //var track = DjComponent.CurrentMusic!;
-                                //var m = PersistentSoundHandles.DjMusic;
-                                //Audio.SetTime(m, 0);
-                                //Audio.Play(m);
                             }
                             break;
                         case DjComponent.Mode.Autoplay:
