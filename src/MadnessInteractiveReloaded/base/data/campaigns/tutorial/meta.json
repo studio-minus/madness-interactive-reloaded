@@ -6,6 +6,7 @@
   "description": "Tutorial",
   "levels": [
     "tut_move",
-    "tut_pickupshoot"
+    "tut_pickupshoot",
+    "tut_dodging"
   ]
 }
