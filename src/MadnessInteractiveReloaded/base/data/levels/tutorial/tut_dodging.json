@@ -16,7 +16,7 @@
   "BodyCountToWin": 50,
   "TimeLimitInSeconds": -1.0,
   "FullZoom": false,
-  "Thumbnail": "base:textures/level_thumbnails/tutorial/tut_dodging.qoi",
+  "Thumbnail": "textures/level_thumbnails/tutorial/tut_dodging.qoi",
   "OpeningTransition": true,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [],
@@ -250,7 +250,7 @@
         "X": 12.415314,
         "Y": 38.9774
       },
-      "TexturePath": "base:textures/backgrounds/tutorial/tut_dodging.qoi",
+      "TexturePath": "textures/backgrounds/tutorial/tut_dodging.qoi",
       "Scale": 2.222222
     },
     {
@@ -259,7 +259,7 @@
         "X": 263.05502,
         "Y": -901.7747
       },
-      "TexturePath": "base:textures/black-transparent-gradient.png",
+      "TexturePath": "textures/black-transparent-gradient.png",
       "Scale": 2.222222
     },
     {
@@ -268,12 +268,12 @@
         "X": 232.3479,
         "Y": 989.1337
       },
-      "TexturePath": "base:textures/black-transparent-gradient.png",
+      "TexturePath": "textures/black-transparent-gradient.png",
       "Scale": 2.222222
     },
     {
       "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "base:textures/tut_dodging_shield.png",
+      "TexturePath": "textures/tut_dodging_shield.png",
       "Angle": 0.0,
       "Position": {
         "X": 351.5824,

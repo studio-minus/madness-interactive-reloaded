@@ -16,7 +16,7 @@
   "BodyCountToWin": 50,
   "TimeLimitInSeconds": -1.0,
   "FullZoom": false,
-  "Thumbnail": "base:textures/level_thumbnails/tutorial/tut_move.qoi",
+  "Thumbnail": "textures/level_thumbnails/tutorial/tut_move.qoi",
   "OpeningTransition": true,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [],
@@ -54,7 +54,7 @@
         "X": 12.415314,
         "Y": 38.9774
       },
-      "TexturePath": "base:textures/backgrounds/tutorial/tut_move.qoi",
+      "TexturePath": "textures/backgrounds/tutorial/tut_move.qoi",
       "Scale": 2.222222
     },
     {
@@ -107,7 +107,7 @@
         "X": 232.3479,
         "Y": 989.1337
       },
-      "TexturePath": "base:textures/black-transparent-gradient.png",
+      "TexturePath": "textures/black-transparent-gradient.png",
       "Scale": 2.222222
     },
     {
@@ -116,7 +116,7 @@
         "X": 263.05502,
         "Y": -901.7747
       },
-      "TexturePath": "base:textures/black-transparent-gradient.png",
+      "TexturePath": "textures/black-transparent-gradient.png",
       "Scale": 2.222222
     },
     {

@@ -60,7 +60,7 @@
     {
       "OutOfAmmoKeyframeTime": 0.1,
       "InvisbleWhenOutOfAmmo": false,
-      "Duration": 0.15,
+      "Duration": 1.0,
       "Scale": {
         "X": 1.0,
         "Y": 1.0
@@ -96,14 +96,21 @@
           {
             "Value": {
               "X": -148.0,
-              "Y": 15.0
+              "Y": 14.0
             },
             "Position": 0.0
           },
           {
             "Value": {
               "X": -148.0,
-              "Y": 26.0
+              "Y": 2.0
+            },
+            "Position": 0.0
+          },
+          {
+            "Value": {
+              "X": -148.0,
+              "Y": 14.0
             },
             "Position": 1.0
           }
@@ -115,7 +122,7 @@
     {
       "OutOfAmmoKeyframeTime": 0.1,
       "InvisbleWhenOutOfAmmo": false,
-      "Duration": 0.15,
+      "Duration": 1.0,
       "Scale": {
         "X": 1.0,
         "Y": 1.0

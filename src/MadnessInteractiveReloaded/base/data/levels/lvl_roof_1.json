@@ -5,7 +5,7 @@
   "EnemySpawnInterval": 0.6,
   "MaxEnemyCount": 6,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "base:sounds/music/Lothyde/strenuous.ogg",
+  "BackgroundMusic": "sounds/music/Lothyde/strenuous.ogg",
   "WeaponChance": 0.5,
   "LevelBounds": {
     "MinX": -8548.545,
@@ -16,7 +16,7 @@
   "BodyCountToWin": 40,
   "TimeLimitInSeconds": 93.0,
   "FullZoom": false,
-  "Thumbnail": "base:textures/level_thumbnails/lvl_roof_1.qoi",
+  "Thumbnail": "textures/level_thumbnails/lvl_roof_1.qoi",
   "OpeningTransition": true,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [
@@ -512,7 +512,7 @@
         "X": -15.248535,
         "Y": -89.29736
       },
-      "TexturePath": "base:textures/backgrounds/background_roof.qoi",
+      "TexturePath": "textures/backgrounds/background_roof.qoi",
       "Scale": 2.96295
     },
     {
@@ -548,7 +548,7 @@
         "Layer": -100,
         "OrderInLayer": 0
       },
-      "Texture": "base:textures/props/floppy_disk3.png",
+      "Texture": "textures/props/floppy_disk3.png",
       "Tag": null
     }
   ]
