@@ -10,18 +10,21 @@ public class TeachMoveSystem : TeachSystem
 {
     public override void Update()
     {
+        if (MadnessUtils.IsPaused(Scene) || MadnessUtils.IsCutscenePlaying(Scene))
+            return;
+
         var left = ControlScheme.ActiveControlScheme.InputMap[GameAction.Left];
         var right = ControlScheme.ActiveControlScheme.InputMap[GameAction.Right];
 
         Instructions(new Instruction
         {
-            Text = $"Use <color=#ffffff>[{left}]</color> and <color=#ffffff>[{right}]</color> to move around.",
+            Text = string.Format(Localisation.Get("tut-move"), left, right),
             Target = Target.Player
         });
 
         Instructions(new Instruction
         {
-            Text = $"Get to the right side of the room to proceed.",
+            Text = Localisation.Get("tut-proceed"),
             Target = Target.Right
         });
     }
@@ -31,6 +34,9 @@ public class TeachPickupShootSystem : TeachSystem
 {
     public override void Update()
     {
+        if (MadnessUtils.IsPaused(Scene) || MadnessUtils.IsCutscenePlaying(Scene))
+            return;
+
         if (!MadnessUtils.FindPlayer(Scene, out var _, out var playerChar))
             return;
 
@@ -39,17 +45,26 @@ public class TeachPickupShootSystem : TeachSystem
         var attack = ControlScheme.ActiveControlScheme.InputMap[GameAction.Attack];
 
         if (!playerChar.EquippedWeapon.IsValid(Scene))
+        {
             Instructions(new Instruction
             {
-                Text = $"Approach and use <color=#ffffff>[{interact}]</color> to pick up.",
+                Text = string.Format(Localisation.Get("tut-pickup"), interact),
                 Target = Target.Weapon
             });
-
-        Instructions(new Instruction
+        }
+        else
         {
-            Text = $"Focus your aim with <color=#ffffff>[{aim}]</color> and shoot with <color=#ffffff>[{attack}]</color>",
-            Target = Target.NPC
-        });
+            Instructions(new Instruction
+            {
+                Text = string.Format(Localisation.Get("tut-aim-shoot"), aim, attack),
+                Target = Target.NPC
+            });
+        }
+
+        foreach (var wpn in Scene.GetAllComponentsOfType<WeaponComponent>())
+        {
+            wpn.InfiniteAmmo = true;
+        }
     }
 }
 
@@ -108,7 +123,7 @@ public abstract class TeachSystem : Walgelijk.System
                     }
                     else return;
                 }
-                break;   
+                break;
             case Target.NPC:
                 {
                     if (Scene.FindAnyComponent<AiComponent>(out var ai))
@@ -164,7 +179,7 @@ public abstract class TeachSystem : Walgelijk.System
         }
 
         var rr = r.Expand(pad);
-        Draw.Colour = Colors.Black.WithAlpha(0.6f);
+        Draw.Colour = Colors.Black.WithAlpha(0.8f);
         Draw.Quad(rr);
 
         Draw.Colour = Colors.Red;

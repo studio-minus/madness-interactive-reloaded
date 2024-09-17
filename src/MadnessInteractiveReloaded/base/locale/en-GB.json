@@ -97,6 +97,9 @@
     "frmt-spent-time": "Spent {0}",
     "frmt-layer": "Layer {0}",
 
-    "tut-move":  "Use {0} and {1} to move around"
+    "tut-move": "Hold <color=#ffffff>[{0}]</color> or <color=#ffffff>[{1}]</color> to move around",
+    "tut-proceed": "Get to the right side of the room to proceed.",
+    "tut-pickup": "Approach and use <color=#ffffff>[{0}]</color> to pick up.",
+    "tut-aim-shoot": "Focus your aim with <color=#ffffff>[{0}]</color> and shoot with <color=#ffffff>[{1}]</color>."
   }
 }
