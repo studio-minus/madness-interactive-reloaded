@@ -7,6 +7,7 @@
   "levels": [
     "tut_move",
     "tut_pickupshoot",
-    "tut_dodging"
+    "tut_dodging",
+    "tut_melee"
   ]
 }
