@@ -1,12 +1,9 @@
-﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System;
+﻿using System;
 using System.Numerics;
 using Walgelijk;
 using Walgelijk.AssetManager;
 using Walgelijk.ParticleSystem;
 using Walgelijk.Physics;
-using static MIR.Textures;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MIR;
 

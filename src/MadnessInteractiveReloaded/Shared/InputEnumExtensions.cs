@@ -18,6 +18,15 @@ public static class InputEnumExtensions
             Key.D7 => "7",
             Key.D8 => "8",
             Key.D9 => "9",
+
+            Key.LeftAlt => "LAlt",
+            Key.LeftControl => "LCtrl",
+            Key.LeftShift => "LShift",
+
+            Key.RightAlt => "RAlt",
+            Key.RightControl => "RCtrl",
+            Key.RightShift => "RShift",
+
             _ => key.ToString(),
         };
     }
