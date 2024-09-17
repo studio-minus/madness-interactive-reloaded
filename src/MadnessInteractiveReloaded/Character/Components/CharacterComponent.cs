@@ -334,6 +334,18 @@ public class CharacterComponent : Component
             scene.DetachComponent<ThrowableProjectileComponent>(weapon.Entity);
 
         weapon.IsAttachedToWall = false;
+        if (weapon.StuckInsideParams != null) // blood splat and sound if we are pulling a weapon from a body
+        {
+            if(scene.TryGetComponentFrom<BodyPartComponent>(weapon.StuckInsideParams.Value.Entity, out var bodypart))
+            {
+                TransformComponent transform = scene.GetComponentFrom<TransformComponent>(weapon.Entity);
+                Color bloodColor = bodypart.Character.Get(scene).Look.BloodColour;
+                Vector2 midPoint = Vector2.Lerp(transform.Position, scene.GetComponentFrom<TransformComponent>(weapon.StuckInsideParams.Value.Entity).Position, 0.5f);
+                Prefabs.CreateBloodSpurt(scene, midPoint, Utilities.RandomFloat(0, 360), bloodColor, 0.7f);
+                Prefabs.CreateBloodSplat(scene, midPoint, Utilities.RandomFloat(0, 360), bloodColor, Utilities.RandomFloat(150, 250));
+                scene.Game.AudioRenderer.PlayOnce(Sounds.FleshPull);
+            }
+        }
         weapon.StuckInsideParams = null;
         weapon.Wielder = new ComponentRef<CharacterComponent>(Entity);
         weapon.Timer = float.MaxValue;

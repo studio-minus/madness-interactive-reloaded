@@ -54,6 +54,11 @@ public class SettingsSceneSystem : Walgelijk.System
                     Ui.Layout.FitContainer(1,1,false);
                      if (Ui.FloatSlider(ref settings.General.Screenshake, Direction.Horizontal, (0,2), 0.1f, "{0:P0}"))
                         settings.Apply();
+                }),
+                ("settings-weapon-highlights", () => {
+                    Ui.Layout.FitContainer(1, 1, false).AspectRatio(1, AspectRatioBehaviour.Shrink);
+                    if (Controls.Toggle.Start(ref settings.General.WeaponHighlights))
+                        settings.Apply();
                 })
             ]},
 

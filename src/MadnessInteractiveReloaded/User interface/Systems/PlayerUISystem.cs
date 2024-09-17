@@ -185,7 +185,7 @@ public class PlayerUISystem : Walgelijk.System
                     break;
                 default:
                     break;
-            }
+            }        
         }
 
         //DrawLine(Textures.UserInterface.HatCategoryIcon.Value, weaponStr, ref c);
@@ -226,6 +226,28 @@ public class PlayerUISystem : Walgelijk.System
                     break;
             }
 
+        }
+
+        // weapon highlights
+        // check if the highlights setting is on, if there is a weapon entity we are hovering over and if the weapon entity has a weapon component attached to it
+        if (UserData.Instances.Settings.General.WeaponHighlights && player.LastWeaponHoveredOver != null && Scene.TryGetComponentFrom(player.LastWeaponHoveredOver.Value, out WeaponComponent? nearestWeapon) && nearestWeapon != null)
+        {
+            Draw.ScreenSpace = false;
+            //TODO: when melee durability is added, edit this line to account for it
+            float normAmt = nearestWeapon.Data.WeaponType == WeaponType.Firearm ? (float)nearestWeapon.RemainingRounds / (float)nearestWeapon.Data.RoundsPerMagazine : 1f;
+            Draw.Colour = nearestWeapon.InfiniteAmmo ? Color.FromHsv(Time, 0.2f, 1) : Utilities.Lerp(Colors.Red, Colors.White, normAmt);
+            Draw.Colour.A = 0.75f;
+            Draw.Order = RenderOrders.Effects;
+            Draw.Material = Materials.BlackToWhiteOutline;
+            var tr = Scene.GetComponentFrom<TransformComponent>(player.LastWeaponHoveredOver.Value);
+            if (nearestWeapon.Texture != null)
+            {
+                Texture tex = nearestWeapon.Texture;
+                Draw.Texture = tex;
+                Draw.TransformMatrix = tr.LocalToWorldMatrix;
+
+                Draw.Quad(new Rect(Vector2.Zero, new Vector2(tex.Width, tex.Height)), 0f);
+            }
         }
     }
 

@@ -131,6 +131,10 @@ public class PlayerCharacterSystem : Walgelijk.System
                     //     nearestWeapon.Stats.Name, 0.4f);
                 }
             }
+            else
+            {
+                player.LastWeaponHoveredOver = null;
+            }
 
             if (Input.IsKeyHeld(Key.LeftControl) && MathF.Abs(Input.MouseScrollDelta) > float.Epsilon)
             {

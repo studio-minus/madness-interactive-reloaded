@@ -49,6 +49,7 @@ public static class Sounds
     /// Bad thing happened noise
     /// </summary>
     public static readonly Sound UiBad = new(Assets.Load<FixedAudioData>("sounds/ui/bad.wav").Value, spatialParams: null, track: AudioTracks.UserInterface);
+    public static readonly Sound FleshPull = new(Assets.Load<FixedAudioData>("sounds/fleshpull.wav").Value, spatialParams: null, track: AudioTracks.SoundEffects);
 
     public static readonly Sound DeathMusic = new(Assets.Load<StreamAudioData>("sounds/music/death.ogg").Value, false, spatialParams: null, track: AudioTracks.Music);
 
