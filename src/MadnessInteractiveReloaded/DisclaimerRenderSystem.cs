@@ -9,7 +9,6 @@ internal class DisclaimerRenderSystem : Walgelijk.System
 {
     public override void Update()
     {
-        return;
         Draw.Reset();
         Draw.Font = Fonts.Oxanium;
         Draw.Order = RenderOrders.UserInterfaceTop;
