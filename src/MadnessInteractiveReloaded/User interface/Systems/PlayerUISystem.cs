@@ -64,6 +64,7 @@ public class PlayerUISystem : Walgelijk.System
         if (character.EquippedWeapon.TryGet(Scene, out var eq))
         {
             const float wpnHeight = 60;
+            const float maxWpnWidth = 370;
 
             Draw.Colour = Colors.White;
             // draw weapon silhouette
@@ -80,8 +81,22 @@ public class PlayerUISystem : Walgelijk.System
                     new Rect(0, 0, wpnHeight, wpnHeight / aspectRatio).Translate(padding, padding) :
                     new Rect(0, 0, wpnHeight / aspectRatio, wpnHeight).Translate(padding, padding);
 
-                wpnRect = wpnRect.Translate(0, c.Y);
+                if ((flipped ? wpnRect.Height : wpnRect.Width) > maxWpnWidth)
+                {
+                    // TODO this is so ugly please make it more elegant and nice
+                    if (flipped)
+                    {
+                        wpnRect.Height= maxWpnWidth;
+                        wpnRect.Width = maxWpnWidth * aspectRatio;
+                    }
+                    else
+                    {
+                        wpnRect.Width = maxWpnWidth;
+                        wpnRect.Height = maxWpnWidth * aspectRatio;
+                    }
+                }
 
+                wpnRect = wpnRect.Translate(0, c.Y);
                 wpnRect = wpnRect.Translate(Utilities.RandomPointInCircle() * 10 * (1 - float.Clamp(lastAmmoFlashCounter * 4f, 0, 1)));
 
                 Draw.Material = Materials.BlackToWhiteOutline;
@@ -90,7 +105,7 @@ public class PlayerUISystem : Walgelijk.System
                     Draw.TransformMatrix = Matrix3x2.CreateRotation(float.Pi / 2, wpnRect.BottomLeft);
                     wpnRect = wpnRect.Translate(0, -wpnRect.Height);
                 }
-;
+
                 Draw.Image(baseTex, wpnRect, ImageContainmentMode.Stretch);
                 int i = 0;
                 if (wpn.AnimatedParts != null)
