@@ -33,6 +33,14 @@
   ],
   "Objects": [
     {
+      "$type": "MIR.LevelEditor.Objects.GameSystem, MIR",
+      "Position": {
+        "X": -78.80333,
+        "Y": 825.2337
+      },
+      "SystemTypeName": "MIR.Tutorials.TeachDodgeSystem"
+    },
+    {
       "$type": "MIR.LevelEditor.Objects.Door, MIR",
       "Properties": {
         "SpawnPoint": {

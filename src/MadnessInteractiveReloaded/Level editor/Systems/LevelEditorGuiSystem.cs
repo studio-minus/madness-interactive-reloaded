@@ -140,7 +140,7 @@ public class LevelEditorGuiSystem : Walgelijk.System
             if (editor.Level != null)
             {
                 Ui.Layout.FitHeight(true).Width(150).StickTop();
-                if (Ui.Button("Save"))
+                if (Ui.Button(Input.IsKeyHeld(Key.LeftShift) ? "Save as..." : "Save"))
                     try
                     {
                         ExportLevel(editor);

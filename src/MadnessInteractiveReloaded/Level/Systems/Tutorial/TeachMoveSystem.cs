@@ -13,6 +13,9 @@ public class TeachMoveSystem : TeachSystem
         if (MadnessUtils.IsPaused(Scene) || MadnessUtils.IsCutscenePlaying(Scene))
             return;
 
+        if (!MadnessUtils.FindPlayer(Scene, out var _, out var playerChar) || !playerChar.IsAlive)
+            return;
+
         var left = ControlScheme.ActiveControlScheme.InputMap[GameAction.Left];
         var right = ControlScheme.ActiveControlScheme.InputMap[GameAction.Right];
 
@@ -37,7 +40,7 @@ public class TeachPickupShootSystem : TeachSystem
         if (MadnessUtils.IsPaused(Scene) || MadnessUtils.IsCutscenePlaying(Scene))
             return;
 
-        if (!MadnessUtils.FindPlayer(Scene, out var _, out var playerChar))
+        if (!MadnessUtils.FindPlayer(Scene, out var _, out var playerChar) || !playerChar.IsAlive)
             return;
 
         var interact = ControlScheme.ActiveControlScheme.InputMap[GameAction.Interact];
@@ -64,6 +67,90 @@ public class TeachPickupShootSystem : TeachSystem
         foreach (var wpn in Scene.GetAllComponentsOfType<WeaponComponent>())
         {
             wpn.InfiniteAmmo = true;
+        }
+    }
+}
+
+public class TeachDodgeSystem : TeachSystem
+{
+    public override void Update()
+    {
+        if (MadnessUtils.IsPaused(Scene) || MadnessUtils.IsCutscenePlaying(Scene))
+            return;
+
+        if (!MadnessUtils.FindPlayer(Scene, out var player, out var playerChar) || !playerChar.IsAlive)
+            return;
+
+        if (!Scene.TryGetSystem<LevelProgressSystem>(out var lvlProgressSys) 
+            || !Scene.FindAnyComponent<LevelProgressComponent>(out var lvlProgress))
+            return;
+
+        var jumpDodge = ControlScheme.ActiveControlScheme.InputMap[GameAction.JumpDodge];
+
+        if (playerChar.EquippedWeapon.IsValid(Scene))
+            playerChar.DeleteHeldWeapon(Scene);
+
+        if (lvlProgress.GoalReached)
+        {
+            foreach (var ai in Scene.GetAllComponentsOfType<AiComponent>())
+            {
+                var ch = Scene.GetComponentFrom<CharacterComponent>(ai.Entity);
+                ch.AllowWalking = false;
+                ai.IsDocile = true;
+            }
+        }
+        else
+        {
+            Instructions(new Instruction
+            {
+                Text = "Some enemies will target you with perfect accuracy.\nYour timing is essential.",
+                Target = Target.Top
+            });
+
+            Instructions(new Instruction
+            {
+                Text = string.Format("Press <color=#ffffff>[{0}]</color> to jump-dodge.", jumpDodge),
+                Target = Target.Player
+            });
+
+            foreach (var wpn in Scene.GetAllComponentsOfType<WeaponComponent>())
+            {
+                wpn.RemainingRounds = 2000;
+                wpn.InfiniteAmmo = true;
+            }
+
+            bool weDidIt = false;
+            //if (Scene.HasComponent<JumpDodgeComponent>(playerChar.Entity) && Scene.FindAnyComponent<AccurateShotComponent>(out _))
+            //    if (playerChar.IsAlive && !player.IsDoingDyingSequence)
+            //        weDidIt = true;
+
+            foreach (var ai in Scene.GetAllComponentsOfType<AiComponent>())
+            {
+                var ch = Scene.GetComponentFrom<CharacterComponent>(ai.Entity);
+                
+
+                if (weDidIt)
+                {
+                    lvlProgressSys.ForceReachGoal();
+                    ai.WantsToShoot.SetBoth(false);
+                }
+                else
+                {
+                    ch.AllowWalking = false;
+
+                    if (ch.Stats.AccurateShotChance < 100)
+                        ch.Stats = new(ch.Stats)
+                        {
+                            AccurateShotChance = 200,
+                        };
+
+                    if (Time.SecondsSinceLoad - AiComponent.LastAccurateShotTime > 5)
+                    {
+                        ai.WantsToDoAccurateShot.PreviousValue = false;
+                        ai.WantsToDoAccurateShot.Value = true;
+                    }
+                }
+            }
         }
     }
 }
