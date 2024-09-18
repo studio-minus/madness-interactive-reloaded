@@ -85,6 +85,8 @@ public struct UserInput : IEquatable<UserInput>
         Valid = k.Length <= keys.Length && k.Length > 0;
         Inputs = k.Select(k => k.ToString()).ToArray();
         keys = k;
+
+        FriendlyName = string.Join('+', keys.Select(k => k.ToDisplayString()));
     }
 
     public UserInput(params MouseButton[] m)
@@ -93,6 +95,8 @@ public struct UserInput : IEquatable<UserInput>
         Valid = m.Length <= buttons.Length && buttons.Length > 0;
         Inputs = m.Select(m => m.ToString()).ToArray();
         buttons = m;
+
+        FriendlyName = string.Join('+', buttons.Select(b => b.ToDisplayString()));
     }
 
     public readonly bool Held(in InputState input)

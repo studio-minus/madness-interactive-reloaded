@@ -3,17 +3,17 @@
   "LevelType": "Campaign",
   "ProgressionType": "BodyCount",
   "EnemySpawnInterval": 1.2,
-  "MaxEnemyCount": 4,
+  "MaxEnemyCount": 2,
   "MaxSimultaneousAttackingEnemies": 2,
   "BackgroundMusic": "sounds/music/Lothyde/come_to_blows.ogg",
-  "WeaponChance": 0.8,
+  "WeaponChance": 1.0,
   "LevelBounds": {
     "MinX": -3291.0532,
     "MinY": -1875.4525,
     "MaxX": 3282.2798,
     "MaxY": 1580.1029
   },
-  "BodyCountToWin": 30,
+  "BodyCountToWin": 21,
   "TimeLimitInSeconds": -1.0,
   "FullZoom": false,
   "Thumbnail": "textures/level_thumbnails/lvl_cloverleaf.qoi",
@@ -71,7 +71,7 @@
   ],
   "FloorLine": [
     {
-      "X": -2864.6987,
+      "X": -2876.6987,
       "Y": -1624.4508
     },
     {
@@ -95,7 +95,7 @@
       "Y": -517.52423
     },
     {
-      "X": 2845.3013,
+      "X": 2857.3013,
       "Y": -517.52423
     }
   ],
@@ -141,7 +141,7 @@
           "Y": -472.38504
         },
         "ScaleOverride": true,
-        "Scale": 1.2,
+        "Scale": 1.3,
         "IsProgressionRequirement": true
       },
       "StartAnimation": null
@@ -205,22 +205,22 @@
       "StartAnimation": null
     },
     {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": 1073.5974,
+        "MinY": -773.5246,
+        "MaxX": 5072.409,
+        "MaxY": -517.52423
+      },
+      "Tag": null
+    },
+    {
       "$type": "MIR.LevelEditor.Objects.PlayerPoster, MIR",
       "Type": 0,
       "Angle": 0.0,
       "Position": {
         "X": 1013.821,
         "Y": -232.93878
-      },
-      "Scale": 1.7438207
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.PlayerPoster, MIR",
-      "Type": 1,
-      "Angle": -1.4044495,
-      "Position": {
-        "X": 543.2108,
-        "Y": -404.8677
       },
       "Scale": 1.7438207
     },
@@ -243,25 +243,6 @@
         "MaxY": 676.4894
       },
       "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "soldat",
-        "Stats": "soldat",
-        "Faction": "aahw",
-        "Weapon": "smg2",
-        "Flipped": true,
-        "BottomCenter": {
-          "X": 1651.8751,
-          "Y": -450.83914
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
     },
     {
       "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
@@ -308,14 +289,33 @@
       "Tag": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
-      "Rectangle": {
-        "MinX": 1073.5974,
-        "MinY": -773.5246,
-        "MaxX": 5072.409,
-        "MaxY": -517.52423
+      "$type": "MIR.LevelEditor.Objects.PlayerPoster, MIR",
+      "Type": 1,
+      "Angle": -1.4044495,
+      "Position": {
+        "X": 543.2108,
+        "Y": -404.8677
       },
-      "Tag": null
+      "Scale": 1.7438207
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "soldat",
+        "Stats": "soldat",
+        "Faction": "aahw",
+        "Weapon": "smg2",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": 2507.6997,
+          "Y": -469.72977
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
     },
     {
       "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
@@ -330,53 +330,18 @@
     {
       "$type": "MIR.LevelEditor.Objects.PlayerPoster, MIR",
       "Type": 2,
-      "Angle": -9.789993,
+      "Angle": 1.7780457,
       "Position": {
-        "X": 2230.6392,
-        "Y": -98.83566
+        "X": 1790.3883,
+        "Y": -130.07927
       },
       "Scale": 1.7438207
     },
     {
-      "$type": "MIR.LevelEditor.Objects.Door, MIR",
-      "Properties": {
-        "SpawnPoint": {
-          "X": -1510.1262,
-          "Y": -1067.5748
-        },
-        "FacingDirection": {
-          "X": "NaN",
-          "Y": "NaN"
-        },
-        "EnemySpawnerDoor": false,
-        "IsLevelProgressionDoor": false,
-        "IsPortal": false,
-        "PortalID": null,
-        "DestinationLevel": null,
-        "TopLeft": {
-          "X": -1698.1401,
-          "Y": -521.6934
-        },
-        "TopRight": {
-          "X": -1321.4086,
-          "Y": -521.1471
-        },
-        "BottomLeft": {
-          "X": -1697.741,
-          "Y": -1066.9697
-        },
-        "BottomRight": {
-          "X": -1322.5114,
-          "Y": -1068.1799
-        }
-      },
-      "Tag": null
-    },
-    {
       "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
-      "WeaponKey": "m1911",
+      "WeaponKey": "enfield_mk2",
       "Angle": 22.656128,
-      "Ammo": 8,
+      "Ammo": 6,
       "AttachedToWall": true,
       "Position": {
         "X": -2088.706,
@@ -484,28 +449,49 @@
       "Tag": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
-      "BlockerType": 0,
-      "A": {
-        "X": 140.16711,
-        "Y": -1714.7426
-      },
-      "B": {
-        "X": 1079.6155,
-        "Y": -622.0156
-      },
-      "Radius": 103.5,
-      "Tag": null
-    },
-    {
       "$type": "MIR.LevelEditor.Objects.PlayerPoster, MIR",
       "Type": 2,
-      "Angle": 1.7780457,
+      "Angle": -9.789993,
       "Position": {
-        "X": 1790.3883,
-        "Y": -130.07927
+        "X": 2230.6392,
+        "Y": -98.83566
       },
       "Scale": 1.7438207
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": -1510.1262,
+          "Y": -1067.5748
+        },
+        "FacingDirection": {
+          "X": "NaN",
+          "Y": "NaN"
+        },
+        "EnemySpawnerDoor": false,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": -1698.1401,
+          "Y": -521.6934
+        },
+        "TopRight": {
+          "X": -1321.4086,
+          "Y": -521.1471
+        },
+        "BottomLeft": {
+          "X": -1697.741,
+          "Y": -1066.9697
+        },
+        "BottomRight": {
+          "X": -1322.5114,
+          "Y": -1068.1799
+        }
+      },
+      "Tag": null
     },
     {
       "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
@@ -544,11 +530,11 @@
         "Look": "agent",
         "Stats": "agent",
         "Faction": null,
-        "Weapon": "m_73",
+        "Weapon": "g36c",
         "Flipped": false,
         "BottomCenter": {
-          "X": -1421.0995,
-          "Y": -1529.6836
+          "X": -1817.6636,
+          "Y": -1531.827
         },
         "ScaleOverride": false,
         "Scale": 0.0,
@@ -577,23 +563,18 @@
       "Scale": 2.222222
     },
     {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "soldat",
-        "Stats": "soldat",
-        "Faction": "aahw",
-        "Weapon": "smg2",
-        "Flipped": true,
-        "BottomCenter": {
-          "X": 2507.6997,
-          "Y": -469.72977
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": 140.16711,
+        "Y": -1714.7426
       },
-      "StartAnimation": null
+      "B": {
+        "X": 1079.6155,
+        "Y": -622.0156
+      },
+      "Radius": 103.5,
+      "Tag": null
     },
     {
       "$type": "MIR.LevelEditor.Objects.LineWall, MIR",

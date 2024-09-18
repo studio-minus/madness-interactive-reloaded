@@ -2,8 +2,8 @@
   "DisplayName": "untitled",
   "LevelType": "Campaign",
   "ProgressionType": "BodyCount",
-  "EnemySpawnInterval": 0.4,
-  "MaxEnemyCount": 5,
+  "EnemySpawnInterval": 0.90000004,
+  "MaxEnemyCount": 2,
   "MaxSimultaneousAttackingEnemies": 2,
   "BackgroundMusic": "sounds/music/Lothyde/jazzed_madness_overture.ogg",
   "WeaponChance": 0.75,
@@ -42,7 +42,6 @@
     }
   ],
   "Weapons": [
-    "silenced_beretta_92",
     "switchblade",
     "baton",
     "megachette",
@@ -55,11 +54,11 @@
   ],
   "FloorLine": [
     {
-      "X": -1883.9113,
+      "X": -1861.9113,
       "Y": -1273.7551
     },
     {
-      "X": 1844.0887,
+      "X": 1822.0887,
       "Y": -1273.7551
     }
   ],
