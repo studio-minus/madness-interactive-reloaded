@@ -1,6 +1,6 @@
-﻿using System.Numerics;
+﻿using System.Linq;
+using System.Numerics;
 using Walgelijk;
-using Walgelijk.AssetManager;
 using Walgelijk.Localisation;
 using Walgelijk.SimpleDrawing;
 
@@ -73,6 +73,9 @@ public class TeachPickupShootSystem : TeachSystem
 
 public class TeachDodgeSystem : TeachSystem
 {
+    private int jumpsDodged = 0;
+    private const int jumpsNeeded = 2;
+
     public override void Update()
     {
         if (MadnessUtils.IsPaused(Scene) || MadnessUtils.IsCutscenePlaying(Scene))
@@ -81,37 +84,70 @@ public class TeachDodgeSystem : TeachSystem
         if (!MadnessUtils.FindPlayer(Scene, out var player, out var playerChar) || !playerChar.IsAlive)
             return;
 
-        if (!Scene.TryGetSystem<LevelProgressSystem>(out var lvlProgressSys) 
+        if (!Scene.TryGetSystem<LevelProgressSystem>(out var lvlProgressSys)
             || !Scene.FindAnyComponent<LevelProgressComponent>(out var lvlProgress))
             return;
 
         var jumpDodge = ControlScheme.ActiveControlScheme.InputMap[GameAction.JumpDodge];
-
-        if (playerChar.EquippedWeapon.IsValid(Scene))
-            playerChar.DeleteHeldWeapon(Scene);
+        var block = ControlScheme.ActiveControlScheme.InputMap[GameAction.BlockAim];
 
         if (lvlProgress.GoalReached)
         {
+            foreach (var item in Scene.GetEntitiesWithTag(new Tag(9005)))
+                Scene.RemoveEntity(item);
+
+            foreach (var wpn in Scene.GetAllComponentsOfType<WeaponComponent>())
+            {
+                if (wpn.Data.WeaponType is not WeaponType.Melee)
+                {
+                    wpn.InfiniteAmmo = false;
+                    wpn.RemainingRounds = 0;
+                }
+            }
+        }
+        else if (jumpsDodged >= jumpsNeeded)
+        {
+            if (!playerChar.EquippedWeapon.IsValid(Scene))
+                playerChar.EquipWeapon(Scene,
+                    Prefabs.CreateWeapon(Scene, default, Registries.Weapons["baseball_bat"]));
+
+            Instructions(new Instruction
+            {
+                Text = string.Format(Localisation.Get("tut-perfect-deflect"), block),
+                Target = Target.Top
+            });
+
             foreach (var ai in Scene.GetAllComponentsOfType<AiComponent>())
             {
                 var ch = Scene.GetComponentFrom<CharacterComponent>(ai.Entity);
                 ch.AllowWalking = false;
-                ai.IsDocile = true;
+                if (Time.SecondsSinceLoad - AiComponent.LastAccurateShotTime > 10)
+                {
+                    ai.WantsToDoAccurateShot.PreviousValue = false;
+                    ai.WantsToDoAccurateShot.Value = true;
+                }
+
+                if (!ch.IsAlive)
+                    lvlProgressSys.ForceReachGoal();
             }
         }
         else
         {
-            Instructions(new Instruction
-            {
-                Text = "Some enemies will target you with perfect accuracy.\nYour timing is essential.",
-                Target = Target.Top
-            });
+            if (playerChar.EquippedWeapon.IsValid(Scene))
+                playerChar.DeleteHeldWeapon(Scene);
 
             Instructions(new Instruction
             {
-                Text = string.Format("Press <color=#ffffff>[{0}]</color> to jump-dodge.", jumpDodge),
-                Target = Target.Player
+                Text = Localisation.Get("tut-perfect-shot"),
+                Target = Target.Top
             });
+
+            if (jumpsDodged == 0)
+                Instructions(new Instruction
+                {
+                    Text = string.Format(Localisation.Get("tut-jump-dodge"), jumpDodge),
+                    Target = Target.Player
+                });
 
             foreach (var wpn in Scene.GetAllComponentsOfType<WeaponComponent>())
             {
@@ -119,37 +155,138 @@ public class TeachDodgeSystem : TeachSystem
                 wpn.InfiniteAmmo = true;
             }
 
-            bool weDidIt = false;
-            //if (Scene.HasComponent<JumpDodgeComponent>(playerChar.Entity) && Scene.FindAnyComponent<AccurateShotComponent>(out _))
-            //    if (playerChar.IsAlive && !player.IsDoingDyingSequence)
-            //        weDidIt = true;
+            {
+                if (Scene.HasComponent<JumpDodgeComponent>(playerChar.Entity)
+                    && Scene.FindAnyComponent<AccurateShotComponent>(out var s))
+                    if (playerChar.IsAlive && !player.IsDoingDyingSequence && s.Finished)
+                        jumpsDodged++;
+            }
+
+            bool timePassed = Time.SecondsSinceSceneChange > 5;
 
             foreach (var ai in Scene.GetAllComponentsOfType<AiComponent>())
             {
                 var ch = Scene.GetComponentFrom<CharacterComponent>(ai.Entity);
-                
 
-                if (weDidIt)
-                {
-                    lvlProgressSys.ForceReachGoal();
-                    ai.WantsToShoot.SetBoth(false);
-                }
-                else
-                {
-                    ch.AllowWalking = false;
+                ch.AllowWalking = false;
 
-                    if (ch.Stats.AccurateShotChance < 100)
-                        ch.Stats = new(ch.Stats)
-                        {
-                            AccurateShotChance = 200,
-                        };
-
-                    if (Time.SecondsSinceLoad - AiComponent.LastAccurateShotTime > 5)
+                if (ch.Stats.AccurateShotChance < 100)
+                    ch.Stats = new(ch.Stats)
                     {
-                        ai.WantsToDoAccurateShot.PreviousValue = false;
-                        ai.WantsToDoAccurateShot.Value = true;
-                    }
+                        AccurateShotChance = 200,
+                    };
+
+                if (Time.SecondsSinceLoad - AiComponent.LastAccurateShotTime > 5)
+                {
+                    ai.WantsToDoAccurateShot.PreviousValue = false;
+                    ai.WantsToDoAccurateShot.Value = timePassed;
                 }
+            }
+
+            Draw.Reset();
+            Draw.ScreenSpace = true;
+            Draw.Font = Fonts.Toxigenesis;
+            Draw.Colour = Colors.Red.WithAlpha(0.2f);
+            Draw.BlendMode = BlendMode.Addition;
+            Draw.FontSize = Utilities.MapRange(0, jumpsNeeded, 48, 100, jumpsDodged);
+            Draw.Text($"{jumpsDodged} / {jumpsNeeded}", (Window.Size * 0.5f), Vector2.One, HorizontalTextAlign.Center, VerticalTextAlign.Middle);
+        }
+    }
+}
+
+public class TeachMeleeSystem : TeachSystem
+{
+    private float timeMeleeBattle = 0;
+    private Entity lastParried;
+
+    public override void Update()
+    {
+        if (MadnessUtils.IsPaused(Scene) || MadnessUtils.IsCutscenePlaying(Scene))
+            return;
+
+        if (!MadnessUtils.FindPlayer(Scene, out var player, out var playerChar) || !playerChar.IsAlive)
+            return;
+
+        if (!Scene.TryGetSystem<LevelProgressSystem>(out var lvlProgressSys)
+            || !Scene.FindAnyComponent<LevelProgressComponent>(out var lvlProgress))
+            return;
+
+        var @throw = ControlScheme.ActiveControlScheme.InputMap[GameAction.Throw];
+        var attack = ControlScheme.ActiveControlScheme.InputMap[GameAction.Attack];
+        var block = ControlScheme.ActiveControlScheme.InputMap[GameAction.BlockAim];
+
+        if (lvlProgress.GoalReached)
+        {
+            Instructions(new Instruction
+            {
+                Text = Localisation.Get("tut-finish"),
+                Target = Target.Top
+            });
+        }
+        else if (lvlProgress.BodyCount.Current == 0)
+        {
+            foreach (var ai in Scene.GetAllComponentsOfType<AiComponent>())
+            {
+                var ch = Scene.GetComponentFrom<CharacterComponent>(ai.Entity);
+
+                if (ch.Name == "victim")
+                {
+                    ai.IsDocile = true;
+                    ch.AllowWalking = false;
+                    if (Scene.TryGetComponentFrom<BodyPartComponent>(ch.Positioning.Head.Entity, out var head))
+                        head.Health = 0.01f;
+                    if (Scene.TryGetComponentFrom<BodyPartComponent>(ch.Positioning.Body.Entity, out var body))
+                        body.Health = 0.01f;
+                }
+            }
+
+            // the Infinite Weapon
+            if (!Scene.GetAllComponentsOfType<WeaponComponent>().Any(d => d.IsAttachedToWall))
+            {
+                var wpn = Prefabs.CreateWeapon(Scene, new Vector2(-1450, -282), Registries.Weapons.Get("baseball_bat"));
+                wpn.IsAttachedToWall = true;
+                if (Scene.TryGetComponentFrom<TransformComponent>(wpn.Entity, out var wpnT))
+                {
+                    wpnT.Rotation = -11;
+                }
+            }
+
+            Instructions(new Instruction
+            {
+                Text = Localisation.Get("tut-throw-1"),
+                Target = Target.Top
+            });
+
+            Instructions(new Instruction
+            {
+                Text = string.Format(Localisation.Get("tut-throw-2"), @throw),
+                Target = Target.NPC
+            });
+        }
+        else
+        {
+            timeMeleeBattle += Time.DeltaTime;
+
+            if (Scene.TryGetSystem<EnemySpawningSystem>(out var s))
+                s.Enabled = timeMeleeBattle > 5;
+
+            Instructions(new Instruction
+            {
+                Text = string.Format(Localisation.Get("tut-melee"), attack, block),
+                Target = Target.Top
+            });
+
+            foreach (var ai in Scene.GetAllComponentsOfType<AiComponent>())
+            {
+                var ch = Scene.GetComponentFrom<CharacterComponent>(ai.Entity);
+
+                if (ch.Animations.Any(d => d.Animation.Name.Contains("melee_stun_sword"))) // yes, it's fucked up. 
+                    lastParried = ch.Entity;
+                else if (ch.Entity == lastParried)
+                    lastParried = Entity.None;
+
+                if (ch.Entity == lastParried && !ch.IsAlive)
+                    lvlProgressSys.ForceReachGoal();
             }
         }
     }
@@ -180,13 +317,13 @@ public abstract class TeachSystem : Walgelijk.System
         Draw.Order = RenderOrders.UserInterface;
 
         Draw.Font = Fonts.Oxanium;
-        Draw.FontSize = 20;
+        Draw.FontSize = instr.Target is Target.Top ? 20 : 20;
 
         const float pad = 10;
 
         var m = Localisation.Get(instr.Text);
 
-        float w = float.Clamp(Draw.CalculateTextWidth(m) + 10, 100, int.Min(Window.Width, 300));
+        float w = float.Clamp(Draw.CalculateTextWidth(m) + 10, 100, int.Min(Window.Width, 600));
         float h = Draw.CalculateTextHeight(m, w);
         var r = new Rect(0, 0, w, h);
 
@@ -272,6 +409,6 @@ public abstract class TeachSystem : Walgelijk.System
         Draw.Colour = Colors.Red;
         const int width = 2;
         Draw.Line(rr.Expand(-width).TopLeft, rr.Expand(-width).TopRight, width, 0);
-        Draw.Text(m, r.BottomLeft, Vector2.One, HorizontalTextAlign.Left, VerticalTextAlign.Top, w);
+        Draw.Text(m, r.GetCenter() + new Vector2(0, -2), Vector2.One, HorizontalTextAlign.Center, VerticalTextAlign.Middle, w);
     }
 }

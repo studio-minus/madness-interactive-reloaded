@@ -27,6 +27,11 @@ public class AccurateShotComponent : Component
     /// </summary>
     public ComponentRef<CharacterComponent> TargetCharacter;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    public bool Finished;
+
     public AccurateShotComponent(ComponentRef<CharacterComponent> originCharacter, ComponentRef<CharacterComponent> targetCharacter, float lifespan = CharacterConstants.AccurateShotWarningDuration)
     {
         Lifespan = lifespan;

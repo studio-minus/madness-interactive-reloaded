@@ -16,18 +16,18 @@
   "BodyCountToWin": 50,
   "TimeLimitInSeconds": -1.0,
   "FullZoom": false,
-  "Thumbnail": "textures/level_thumbnails/tutorial/tut_dodging.qoi",
+  "Thumbnail": "base:textures/level_thumbnails/tutorial/tut_dodging.qoi",
   "OpeningTransition": true,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [],
   "Weapons": [],
   "FloorLine": [
     {
-      "X": -2076.2134,
+      "X": -2062.2134,
       "Y": -634.8619
     },
     {
-      "X": 171.78662,
+      "X": 157.78662,
       "Y": -634.8619
     }
   ],
@@ -39,6 +39,223 @@
         "Y": 825.2337
       },
       "SystemTypeName": "MIR.Tutorials.TeachDodgeSystem"
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 329.02536,
+        "MinY": 654.8466,
+        "MaxX": 374.66098,
+        "MaxY": 723.23004
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "base:textures/tut_dodging_shield.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": 351.5824,
+        "Y": 34.571373
+      },
+      "Scale": 2.200654,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": {
+        "Value": 9005
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": 232.3479,
+        "Y": 989.1337
+      },
+      "TexturePath": "base:textures/black-transparent-gradient.png",
+      "Scale": 2.222222
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": 263.05502,
+        "Y": -901.7747
+      },
+      "TexturePath": "base:textures/black-transparent-gradient.png",
+      "Scale": 2.222222
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": 12.415314,
+        "Y": 38.9774
+      },
+      "TexturePath": "base:textures/backgrounds/tutorial/tut_dodging.qoi",
+      "Scale": 2.222222
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -2483.4272,
+        "MinY": 705.1888,
+        "MaxX": 2359.5159,
+        "MaxY": 948.4765
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 2103.5156,
+        "MinY": -833.6581,
+        "MaxX": 2495.8406,
+        "MaxY": 828.17444
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 451.49066,
+        "MinY": 625.5541,
+        "MaxX": 2040.9592,
+        "MaxY": 756.1698
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 329.02536,
+        "MinY": -661.19653,
+        "MaxX": 374.66098,
+        "MaxY": -589.75604
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerSpawn, MIR",
+      "Position": {
+        "X": -2056.2134,
+        "Y": -370.33478
+      },
+      "SpawnWeapon": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Bipsg",
+        "Look": "soldat",
+        "Stats": "soldat",
+        "Faction": "aahw",
+        "Weapon": "colt_revolver",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": 1102.3523,
+          "Y": -637.4226
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -2007.8323,
+        "MinY": -705.6543,
+        "MaxX": 254.16968,
+        "MaxY": -575.0385
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -2007.8322,
+        "MinY": 674.07385,
+        "MaxX": 257.224,
+        "MaxY": 756.1698
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -2128.0671,
+        "MinY": 483.7362,
+        "MaxX": -2039.9272,
+        "MaxY": 670.1979
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 2065.1633,
+        "MinY": 495.73227,
+        "MaxX": 2149.7383,
+        "MaxY": 667.6443
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -2477.4138,
+        "MinY": -833.6581,
+        "MaxX": -2085.0886,
+        "MaxY": 828.17444
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -2483.4272,
+        "MinY": -878.14966,
+        "MaxX": 2359.5156,
+        "MaxY": -634.8619
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 451.49066,
+        "MinY": -702.69446,
+        "MaxX": 2040.9592,
+        "MaxY": -572.07874
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
+      "WeaponKey": "iron_pipe",
+      "Angle": 10.159088,
+      "Ammo": 12,
+      "AttachedToWall": true,
+      "Position": {
+        "X": 1780.4547,
+        "Y": -285.07684
+      }
     },
     {
       "$type": "MIR.LevelEditor.Objects.Door, MIR",
@@ -76,95 +293,27 @@
       "Tag": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
-      "WeaponKey": "iron_pipe",
-      "Angle": 10.159088,
-      "Ammo": 12,
-      "AttachedToWall": true,
-      "Position": {
-        "X": 1780.4547,
-        "Y": -285.07684
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 1,
+      "Rectangle": {
+        "MinX": 181.25073,
+        "MinY": -776.6915,
+        "MaxX": 391.4652,
+        "MaxY": 856.8956
+      },
+      "Tag": {
+        "Value": 9005
       }
     },
     {
-      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
-      "Rectangle": {
-        "MinX": 451.49066,
-        "MinY": -702.69446,
-        "MaxX": 2040.9592,
-        "MaxY": -572.07874
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
-      "BlockerType": 0,
-      "Rectangle": {
-        "MinX": -2483.4272,
-        "MinY": -878.14966,
-        "MaxX": 2359.5156,
-        "MaxY": -634.8619
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
-      "BlockerType": 0,
-      "Rectangle": {
-        "MinX": -2477.4138,
-        "MinY": -833.6581,
-        "MaxX": -2085.0886,
-        "MaxY": 828.17444
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
-      "Rectangle": {
-        "MinX": 2065.1633,
-        "MinY": 495.73227,
-        "MaxX": 2149.7383,
-        "MaxY": 667.6443
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
-      "Rectangle": {
-        "MinX": -2128.0671,
-        "MinY": 483.7362,
-        "MaxX": -2039.9272,
-        "MaxY": 670.1979
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
-      "Rectangle": {
-        "MinX": -2007.8322,
-        "MinY": 674.07385,
-        "MaxX": 257.224,
-        "MaxY": 756.1698
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
-      "Rectangle": {
-        "MinX": -2007.8323,
-        "MinY": -705.6543,
-        "MaxX": 254.16968,
-        "MaxY": -575.0385
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.PlayerSpawn, MIR",
+      "$type": "MIR.LevelEditor.Objects.PlayerPoster, MIR",
+      "Type": 1,
+      "Angle": 10.910385,
       "Position": {
-        "X": -2056.2134,
-        "Y": -370.33478
+        "X": -7.5651245,
+        "Y": -182.22289
       },
-      "SpawnWeapon": null
+      "Scale": 1.3256726
     },
     {
       "$type": "MIR.LevelEditor.Objects.Door, MIR",
@@ -200,151 +349,6 @@
         }
       },
       "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
-      "BlockerType": 0,
-      "Rectangle": {
-        "MinX": 329.02536,
-        "MinY": -661.19653,
-        "MaxX": 374.66098,
-        "MaxY": -589.75604
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
-      "Rectangle": {
-        "MinX": 451.49066,
-        "MinY": 625.5541,
-        "MaxX": 2040.9592,
-        "MaxY": 756.1698
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
-      "BlockerType": 0,
-      "Rectangle": {
-        "MinX": 2103.5156,
-        "MinY": -833.6581,
-        "MaxX": 2495.8406,
-        "MaxY": 828.17444
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
-      "BlockerType": 0,
-      "Rectangle": {
-        "MinX": -2483.4272,
-        "MinY": 705.1888,
-        "MaxX": 2359.5159,
-        "MaxY": 948.4765
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.Background, MIR",
-      "Center": {
-        "X": 12.415314,
-        "Y": 38.9774
-      },
-      "TexturePath": "textures/backgrounds/tutorial/tut_dodging.qoi",
-      "Scale": 2.222222
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.Background, MIR",
-      "Center": {
-        "X": 263.05502,
-        "Y": -901.7747
-      },
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Scale": 2.222222
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.Background, MIR",
-      "Center": {
-        "X": 232.3479,
-        "Y": 989.1337
-      },
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Scale": 2.222222
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/tut_dodging_shield.png",
-      "Angle": 0.0,
-      "Position": {
-        "X": 351.5824,
-        "Y": 34.571373
-      },
-      "Scale": 2.200654,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
-      "BlockerType": 0,
-      "Rectangle": {
-        "MinX": 329.02536,
-        "MinY": 654.8466,
-        "MaxX": 374.66098,
-        "MaxY": 723.23004
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.PlayerPoster, MIR",
-      "Type": 1,
-      "Angle": 10.910385,
-      "Position": {
-        "X": -7.5651245,
-        "Y": -182.22289
-      },
-      "Scale": 1.3256726
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
-      "BlockerType": 1,
-      "Rectangle": {
-        "MinX": 181.25073,
-        "MinY": -776.6915,
-        "MaxX": 391.4652,
-        "MaxY": 856.8956
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Bipsg",
-        "Look": "soldat",
-        "Stats": "soldat",
-        "Faction": "aahw",
-        "Weapon": "colt_revolver",
-        "Flipped": true,
-        "BottomCenter": {
-          "X": 1102.3523,
-          "Y": -637.4226
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
     }
   ]
 }
