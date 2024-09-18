@@ -116,7 +116,7 @@ public class HolyShieldAbilityComponent : CharacterAbilityComponent, IDisposable
 
         if(lastVisibility == 0f && visiblity > 0f)
         {
-            Audio.Play(Sounds.HolyShield, 0.6f);
+            Audio.PlayOnce(Sounds.HolyShield, 0.6f, 1f, AudioTracks.SoundEffects);
         }
 
         // from the mind of Freya Holmér

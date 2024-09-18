@@ -18,6 +18,7 @@ public static class Sounds
     public static readonly Sound ShotgunCock = SpatialSfx("sounds/firearms/shotgun_cock.wav");
     public static readonly Sound Conjure = new(Assets.Load<FixedAudioData>("sounds/conjure.wav").Value, spatialParams: null, track: AudioTracks.SoundEffects);
     public static readonly Sound HolyShield = new(Assets.Load<FixedAudioData>("sounds/holy_shield.wav").Value, spatialParams: null, track: AudioTracks.SoundEffects);
+    public static readonly Sound TrickyTeleport = new(Assets.Load<FixedAudioData>("sounds/tricky_teleport.wav").Value, spatialParams: null, track: AudioTracks.SoundEffects);
     public static readonly Sound HigherPowers = new(Assets.Load<FixedAudioData>("sounds/higher_powers.wav").Value, spatialParams: null, track: AudioTracks.SoundEffects);
     public static readonly Sound Scenesweep = new(Assets.Load<FixedAudioData>("sounds/ui/scenesweep.wav").Value, spatialParams: null, track: AudioTracks.UserInterface);
     public static readonly Sound AccurateShotWarning = new(Assets.Load<FixedAudioData>("sounds/accurate_shot_warning_alt.wav").Value, spatialParams: null, track: AudioTracks.SoundEffects);
