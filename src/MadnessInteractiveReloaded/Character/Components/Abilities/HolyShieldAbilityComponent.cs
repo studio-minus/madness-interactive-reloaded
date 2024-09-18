@@ -114,6 +114,11 @@ public class HolyShieldAbilityComponent : CharacterAbilityComponent, IDisposable
             blockerTransform.Position = p;
         }
 
+        if(lastVisibility == 0f && visiblity > 0f)
+        {
+            Audio.Play(Sounds.HolyShield, 0.6f);
+        }
+
         // from the mind of Freya Holmér
         static float decay(float a, float b, float decay, float dt) => b + (a - b) * float.Exp(-decay * dt);
         static Matrix3x2 decayMatrix(Matrix3x2 a, Matrix3x2 b, float decay, float dt) => b + (a - b) * float.Exp(-decay * dt);
