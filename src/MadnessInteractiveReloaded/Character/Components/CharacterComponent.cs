@@ -292,7 +292,6 @@ public class CharacterComponent : Component
         IsAlive = false;
     }
 
-
     /// <summary>
     /// Delete this entity.
     /// </summary>
@@ -323,6 +322,9 @@ public class CharacterComponent : Component
     public bool EquipWeapon(Scene scene, WeaponComponent weapon)
     {
         if (weapon.Wielder.TryGet(scene, out _))
+            return false;
+
+        if (!IsAlive)
             return false;
 
         if (EquippedWeapon.IsValid(scene))

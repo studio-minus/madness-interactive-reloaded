@@ -15,10 +15,10 @@ namespace MIR;
 /// </summary>
 public static class Fonts
 {
-    public static readonly AssetRef<Font> Inter = Assets.Load<Font>("fonts/inter.wf");
-    public static readonly AssetRef<Font> Impact = Assets.Load<Font>("fonts/impact.wf");
-    public static readonly AssetRef<Font> Tipografia = Assets.Load<Font>("fonts/tipografia.wf");
-    public static readonly AssetRef<Font> Toxigenesis = Assets.Load<Font>("fonts/toxigenesis.wf");
-    public static readonly AssetRef<Font> Oxanium = Assets.Load<Font>("fonts/oxanium.wf");
-    public static readonly AssetRef<Font> CascadiaMono = Assets.Load<Font>("fonts/cascadia-mono.wf");
+    public static AssetRef<Font> Inter => Assets.Load<Font>("fonts/inter.wf");
+    public static AssetRef<Font> Impact => Assets.Load<Font>("fonts/impact.wf");
+    public static AssetRef<Font> Tipografia => Assets.Load<Font>("fonts/tipografia.wf");
+    public static AssetRef<Font> Toxigenesis => Assets.Load<Font>("fonts/toxigenesis.wf");
+    public static AssetRef<Font> Oxanium => Assets.Load<Font>("fonts/oxanium.wf");
+    public static AssetRef<Font> CascadiaMono => Assets.Load<Font>("fonts/cascadia-mono.wf");
 }

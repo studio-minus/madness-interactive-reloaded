@@ -10,5 +10,5 @@ public static class GameVersion
     /// <summary>
     /// Current game version
     /// </summary>
-    public static readonly Version Version = new("0.49.0");
+    public static readonly Version Version = new("0.49.1");
 }

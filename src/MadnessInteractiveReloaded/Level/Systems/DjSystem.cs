@@ -1,4 +1,5 @@
 ﻿using OpenTK.Windowing.Common.Input;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Numerics;
@@ -33,18 +34,17 @@ public class DjSystem : Walgelijk.System
             }
             else
             {
+                PersistentSoundHandles.DjMusic.Looping = DjComponent.PlaybackMode is DjComponent.Mode.RepeatTrack;
+                PersistentSoundHandles.DjMusic.ForceUpdate();
+
                 if (PersistentSoundHandles.DjMusic.State == SoundState.Paused) // we resume when paused because it can only pause when the pause menu is open
                     Audio.Play(PersistentSoundHandles.DjMusic);
-
-                if (PersistentSoundHandles.DjMusic.State == SoundState.Stopped)
+                else if (PersistentSoundHandles.DjMusic.State == SoundState.Stopped)
                 {
                     switch (DjComponent.PlaybackMode)
                     {
                         case DjComponent.Mode.RepeatTrack:
                             {
-                                var track = DjComponent.CurrentMusic!;
-                                dj.Stop(Audio);
-                                dj.Play(track, Audio);
                             }
                             break;
                         case DjComponent.Mode.Autoplay:
@@ -66,8 +66,7 @@ public class DjSystem : Walgelijk.System
                             break;
                     }
                 }
-
-                if (DjComponent.CurrentMusic != null)
+                else if (DjComponent.CurrentMusic != null)
                     ProcessSpeed(dj, DjComponent.CurrentMusic);
             }
         }
@@ -90,6 +89,7 @@ public class DjSystem : Walgelijk.System
         var speed = (track.BPM) / 60 / 6;
         DjComponent.CalculatedAnimationSpeed = speed;
         DjComponent.Time = (Audio.GetTime(PersistentSoundHandles.DjMusic!) * speed) + track.StartOffset;
+
         foreach (var character in Scene.GetAllComponentsOfType<CharacterComponent>())
         {
             if (character.Entity % 2 == 0) // only some of them
@@ -105,6 +105,13 @@ public class DjSystem : Walgelijk.System
             {
                 Scene.AttachComponent(character.Entity, new DancingCharacterComponent(Utilities.PickRandom(Animations.Dancing)));
             });
+        }
+
+        if (Scene.TryGetEntityWithTag(new(123), out var pipin) && Scene.TryGetComponentFrom<FlipbookComponent>(pipin, out var pipinAnim))
+        {
+            pipinAnim.Duration = 120 / track.BPM;
+            while (pipinAnim.Duration > 2)
+                pipinAnim.Duration *= 0.5f;
         }
     }
 }

@@ -140,7 +140,7 @@ public class LevelEditorGuiSystem : Walgelijk.System
             if (editor.Level != null)
             {
                 Ui.Layout.FitHeight(true).Width(150).StickTop();
-                if (Ui.Button("Save"))
+                if (Ui.Button(Input.IsKeyHeld(Key.LeftShift) ? "Save as..." : "Save"))
                     try
                     {
                         ExportLevel(editor);
@@ -255,7 +255,7 @@ public class LevelEditorGuiSystem : Walgelijk.System
                 {
                     Ui.Label("Enemy spawn interval");
                     Ui.Layout.FitWidth().Height(32).StickLeft();
-                    Ui.FloatSlider(ref editor.Level.EnemySpawnInterval, Direction.Horizontal, (0, 2), 0.1f, "{0:0.#} seconds");
+                    Ui.FloatSlider(ref editor.Level.EnemySpawnInterval, Direction.Horizontal, (0, 10), 0.1f, "{0:0.0} seconds");
 
                     Ui.Label("Max enemy count");
                     Ui.Layout.FitWidth().Height(32).StickLeft();

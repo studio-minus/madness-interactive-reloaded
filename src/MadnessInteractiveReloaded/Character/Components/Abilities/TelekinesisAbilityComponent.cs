@@ -72,12 +72,14 @@ public class TelekinesisAbilityComponent : CharacterAbilityComponent
     {
         float animTime = Easings.Cubic.InOut(float.Clamp(time * 4, 0, 1));
 
-        HandPosingFunctions.FistFight(p);
+        //HandPosingFunctions.FistFight(p);
 
         var charPos = p.Character.Positioning;
         var secondHand = charPos.Hands.Second;
         var firstHand = charPos.Hands.First;
         bool isHoldingTwoHanded = false;
+
+        charPos.SecondaryHandFollowsPrimary = false;
 
         if (p.Character.HasWeaponEquipped && p.Character.EquippedWeapon.TryGet(p.Scene, out var equipped))
         {

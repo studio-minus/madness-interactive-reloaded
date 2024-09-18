@@ -32,7 +32,7 @@ public static class MeleeUtils
 
         if (scene.TryGetComponentFrom<MeleeSequenceComponent>(character.Entity, out var meleeSequenceComponent))
             meleeSequenceComponent.CanContinue = true;
-        else
+        else if (character.Stats.UnarmedSeq.Length > 0)
         {
             string meleeSeq = Utilities.PickRandom(character.Stats.UnarmedSeq);
             if (equipped != null)
@@ -59,12 +59,12 @@ public static class MeleeUtils
 
     /*                                            Welcome to hell
      *                                      
-     * This code was written to match the information found in "MIR Melee Corollarium.pdf, which is why
-     * it looks like such a mess. If you could rewrite this in cleaner, simpler, shorter way then go ahead.
-     * Make sure it stays functional and still follows the document. Especially those matrix diagrams!
+     * ~~This code was written to match the information found in "MIR Melee Corollarium.pdf, which is why~~
+     * ~~it looks like such a mess. If you could rewrite this in cleaner, simpler, shorter way then go ahead.~~
+     * ~~Make sure it stays functional and still follows the document. Especially those matrix diagrams!~~
      * ---
-     * UPDATE: The PDF is obsolete because it wasn't fun to play. Ignore it. 
-     * So I'm not sure what this code does now. Good luck lmfao.
+     *  >>> UPDATE: The PDF is obsolete because it wasn't fun to play. Ignore it. <<<
+     *              So I'm not sure what this code does now. Good luck lmfao.
      */
 
     /// <summary>
@@ -141,8 +141,9 @@ public static class MeleeUtils
                     actor.PlayAnimation(Registries.Animations.Get(!actor.Positioning.IsFlipped ? "melee_stun_sword_L" : "melee_stun_sword_R")); // TODO this should be in Animations.cs
                     scene.Game.AudioRenderer.PlayOnce(Sounds.MeleeClash.Parry);
 
-                    victim.Positioning.MeleeBlockImpactIntensity += Utilities.RandomFloat(-1, 1);
-
+                    victim.Positioning.MeleeBlockImpactIntensity -= 3;
+                    victim.Positioning.MeleeBlockProgress = float.Lerp(victim.Positioning.MeleeBlockProgress, 1f, 0.8f);
+                    victim.Positioning.TiltIntensity -= 7;
                     //  Prefabs.CreateDeflectionSpark(scene, hitPosOnLine, Utilities.VectorToAngle(returnDir), 1);
                     return;
                 }
@@ -155,6 +156,7 @@ public static class MeleeUtils
                                 victim.DrainDodge(damage * 0.02f); // TODO convar
                                 scene.Game.AudioRenderer.PlayOnce(Sounds.MeleeClash.GetClashFor(scene, victim.EquippedWeapon, actor.EquippedWeapon));
                                 victim.Positioning.MeleeBlockImpactIntensity += Utilities.RandomFloat(-1, 1);
+                                victim.Positioning.TiltIntensity += 4;
                                 return;
                             }
                         case MeleeInteractionResponse.StunVictim:
@@ -177,6 +179,7 @@ public static class MeleeUtils
                 if (victim.DodgeMeter > 0 || victim.Stats.DodgeOversaturate)
                 {
                     CharacterUtilities.TryDodgeAnimation(victim);
+                    scene.Game.AudioRenderer.PlayOnce(Utilities.PickRandom(Sounds.MeleeDodge), 1f, Utilities.RandomFloat(0.9f, 1.1f), AudioTracks.SoundEffects);
                     return;
                 }
             }
@@ -208,8 +211,9 @@ public static class MeleeUtils
                     if (damagable.HorizontalFlip)
                         localPos.X *= -1;
 
-                    localPos.X = float.Lerp(float.Clamp(localPos.X, 0, 1), 0.5f, 0.2f);
-                    localPos.Y = float.Lerp(float.Clamp(localPos.Y, 0, 1), 0.5f, 0.2f);
+                    //localPos.X = float.Lerp(float.Clamp(localPos.X, 0, 1), 0.5f, 0.2f);
+                    //localPos.Y = float.Lerp(float.Clamp(localPos.Y, 0, 1), 0.5f, 0.2f);
+                    localPos += hit.Normal * -0.1f;
 
                     damagable.AddSlash(localPos, Utilities.RandomFloat(0, float.Tau));
 

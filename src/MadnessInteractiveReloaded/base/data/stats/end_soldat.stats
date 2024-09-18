@@ -5,16 +5,16 @@ name End Soldat
 aiming_randomness 0.1
 shooting_timeout 0.1
 recoil_handling 1
-dodge 0.3
+dodge 0.0
 panic 1.1
-melee 0.5
+melee 0.2
 can_deflect true
 dodge_oversaturate true
-accurate_shot_chance 0.7
-head_health 15
-body_health 22
-scale 1.2
-hop_duration 0.39
+accurate_shot_chance 0.9
+head_health 16
+body_health 21
+scale 1.3
+hop_duration 0.5
 
 agility_skill_level master
 jump_dodge_duration 0.65

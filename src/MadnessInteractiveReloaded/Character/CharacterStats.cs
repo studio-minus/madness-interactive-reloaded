@@ -150,10 +150,10 @@ public class CharacterStats
         DodgeOversaturate = stats.DodgeOversaturate;
         HeadHealth = stats.HeadHealth;
         BodyHealth = stats.BodyHealth;
-        UnarmedSeq = stats.UnarmedSeq;
-        SwordSeq = stats.SwordSeq;
-        TwoHandedSeq = stats.TwoHandedSeq;
-        BluntSeq = stats.BluntSeq;
-        TwoHandedGunSeq = stats.TwoHandedGunSeq;
+        UnarmedSeq = [..stats.UnarmedSeq];
+        SwordSeq = [.. stats.SwordSeq];
+        TwoHandedSeq = [.. stats.TwoHandedSeq];
+        BluntSeq = [.. stats.BluntSeq];
+        TwoHandedGunSeq = [.. stats.TwoHandedGunSeq];
     }
 }

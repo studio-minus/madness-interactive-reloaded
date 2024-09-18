@@ -1,8 +1,8 @@
 ﻿using System;
-using System.CommandLine;
 using System.Numerics;
 using Walgelijk;
 using Walgelijk.AssetManager;
+using Walgelijk.Localisation;
 using Walgelijk.SimpleDrawing;
 
 namespace MIR;
@@ -55,21 +55,22 @@ public class PlayerUISystem : Walgelijk.System
 
         const float padding = 25;
         const float iconSize = 40;
+        const float wpnHeight = 60;
+        const float maxWpnWidth = 370;
 
         var c = new Vector2(padding, 0);
+        bool hasWeapon = false;
         Draw.FontSize = iconSize;
-
-        //if (gameMode == GameMode.Experiment)
-        //    c.Y += 32;
 
         if (character.EquippedWeapon.TryGet(Scene, out var eq))
         {
-            const float wpnHeight = 60;
 
             Draw.Colour = Colors.White;
             // draw weapon silhouette
             if (eq.RegistryKey != null && Registries.Weapons.TryGet(eq.RegistryKey, out var wpn))
             {
+                hasWeapon = true;
+
                 var baseTex = wpn.BaseTexture.Value;
                 var aspectRatio = baseTex.Height / (float)baseTex.Width;
 
@@ -81,7 +82,26 @@ public class PlayerUISystem : Walgelijk.System
                     new Rect(0, 0, wpnHeight, wpnHeight / aspectRatio).Translate(padding, padding) :
                     new Rect(0, 0, wpnHeight / aspectRatio, wpnHeight).Translate(padding, padding);
 
+                if ((flipped ? wpnRect.Height : wpnRect.Width) > maxWpnWidth)
+                {
+                    // TODO this is so ugly please make it more elegant and nice
+                    if (flipped)
+                    {
+                        wpnRect.Height = maxWpnWidth;
+                        wpnRect.Width = maxWpnWidth * aspectRatio;
+                    }
+                    else
+                    {
+                        wpnRect.Width = maxWpnWidth;
+                        wpnRect.Height = maxWpnWidth * aspectRatio;
+                    }
+                }
+
+                float recoilEffect = 1 - float.Clamp(lastAmmoFlashCounter * 4f, 0, 1);
+                float rot = recoilEffect * -0.05f * (Noise.GetSimplex(Time * 2, 452.123f, 0)) * wpn.WeaponData.Recoil;
+
                 wpnRect = wpnRect.Translate(0, c.Y);
+                wpnRect = wpnRect.Translate((MadnessUtils.Noise2D(Time * 2, 452.123f) + new Vector2(-0.5f, 0)) * 15 * recoilEffect);
 
                 Draw.Material = Materials.BlackToWhiteOutline;
                 if (flipped)
@@ -89,8 +109,11 @@ public class PlayerUISystem : Walgelijk.System
                     Draw.TransformMatrix = Matrix3x2.CreateRotation(float.Pi / 2, wpnRect.BottomLeft);
                     wpnRect = wpnRect.Translate(0, -wpnRect.Height);
                 }
-;
+
+                Draw.TransformMatrix *= Matrix3x2.CreateRotation(rot, wpnRect.GetCenter() with { X = wpnRect.MinX });
+
                 Draw.Image(baseTex, wpnRect, ImageContainmentMode.Stretch);
+                int i = 0;
                 if (wpn.AnimatedParts != null)
                 {
                     float wS = wpnRect.Width / baseTex.Width;
@@ -100,7 +123,16 @@ public class PlayerUISystem : Walgelijk.System
                         var rect = new Rect(wpnRect.GetCenter(), part.Texture.Value.Size).Scale(wS, hS);
                         if (part.TranslationCurve != null)
                         {
-                            var n = part.TranslationCurve.Evaluate(0);
+                            float s = 0;
+
+                            if (eq.AnimatedParts != null
+                                && eq.AnimatedParts.Length > i
+                                && Scene.TryGetComponentFrom<WeaponPartAnimationComponent>(eq.AnimatedParts[i++], out var comp))
+                            {
+                                s = comp.CurrentPlaybackTime / part.Duration;
+                            }
+
+                            var n = part.TranslationCurve.Evaluate(s);
                             n.X *= wS;
                             n.Y *= -hS;
                             rect = rect.Translate(n);
@@ -134,16 +166,20 @@ public class PlayerUISystem : Walgelijk.System
                     if (eq.InfiniteAmmo)
                     {
                         Draw.Colour = Color.FromHsv(Time, 0.2f, 1);
-                        Draw.Text("Inf. ammo", c, new Vector2(1), HorizontalTextAlign.Left, VerticalTextAlign.Top);
+                        Draw.Text(Localisation.Get("infinite-ammo"), c, new Vector2(1), HorizontalTextAlign.Left, VerticalTextAlign.Top);
                     }
                     else
                     {
                         if (!eq.HasRoundsLeft)
-                            Draw.Colour = float.Sin(Time.SecondsSinceLoadUnscaled * 8f) > 0 ? Colors.Red : Colors.White;
+                        {
+                            Draw.Colour = float.Sin(Time.SecondsSinceLoadUnscaled * 24f) > 0 ? Colors.Red : Colors.White;
+                            Draw.Text(Localisation.Get("empty"), c, new Vector2(1), HorizontalTextAlign.Left, VerticalTextAlign.Top);
+                        }
                         else
+                        {
                             Draw.Colour = Vector4.Lerp(Colors.Red, Colors.White, float.Clamp(lastAmmoFlashCounter * 8f, 0, 1));
-
-                        DrawCounter(c, eq.RemainingRounds, eq.Data.RoundsPerMagazine);
+                            DrawCounter(c, eq.RemainingRounds, eq.Data.RoundsPerMagazine);
+                        }
                     }
                     c.Y += 40;
                     break;
@@ -152,11 +188,7 @@ public class PlayerUISystem : Walgelijk.System
             }
         }
 
-        //DrawLine(Textures.UserInterface.HatCategoryIcon.Value, weaponStr, ref c);
-
         Draw.Colour = Colors.White;
-        //if (gameMode == GameMode.Experiment)
-        //    DrawLine(Textures.UserInterface.ExperimentMode.SettingsIcon.Value, "[<color=#ff0000> TAB </color>]", ref c);
 
         if (Level.CurrentLevel != null && Scene.FindAnyComponent<LevelProgressComponent>(out var progress))
         {
@@ -190,6 +222,44 @@ public class PlayerUISystem : Walgelijk.System
                     break;
             }
 
+        }
+
+        Draw.Font = Fonts.CascadiaMono;
+        Draw.FontSize = 18;
+        int abilityCursor = 0;
+        var abilityColour = Colors.White.WithAlpha(0.7f);
+        foreach (var item in Scene.GetAllComponentsFrom(character.Entity))
+        {
+            if (item is CharacterAbilityComponent characterAbility && characterAbility.Behaviour is not AbilityBehaviour.Always)
+            {
+                Draw.FontSize = 18;
+
+                var col = abilityColour;
+                var action = characterAbility.Slot.AsAction();
+                var input = ControlScheme.ActiveControlScheme.InputMap[action].ToString();
+                var inputWidth = Draw.CalculateTextWidth(input);
+                var inputHeight = Draw.FontSize;
+
+                const float horizontalExpansion = 5;
+                var pos = new Vector2(padding, (abilityCursor++) * 40 + padding + (hasWeapon ? (c.Y) : 0));
+                if (characterAbility.IsUsing)
+                    col.A = 1;
+
+                var rect = new Rect(pos.X, pos.Y, inputWidth + pos.X + horizontalExpansion, inputHeight + pos.Y).Expand(5).Translate(0, -2);
+                pos.X += horizontalExpansion * 0.5f;
+
+                Draw.Colour = col with { A = abilityColour.A * 0.1f };
+                Draw.OutlineColour = col;
+                Draw.OutlineWidth = 4;
+                Draw.Quad(rect, roundness: 5);
+
+                Draw.Colour = col;
+                Draw.Text(input, pos, Vector2.One, HorizontalTextAlign.Left, VerticalTextAlign.Top);
+
+                Draw.FontSize = 16;
+                Draw.Colour = col;
+                Draw.Text(characterAbility.DisplayName, pos + new Vector2(inputWidth + 20, 0), Vector2.One, HorizontalTextAlign.Left, VerticalTextAlign.Top);
+            }
         }
     }
 

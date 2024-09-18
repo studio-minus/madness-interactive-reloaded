@@ -492,7 +492,7 @@ public class ExperimentModeSystem : Walgelijk.System
                     Ui.Layout.StickLeft().Height(h).FitWidth().StickTop().Move(bh - padding, padding);
                     Ui.Label(track.Name);
 
-                    Ui.Theme.FontSize(12).Text(Colors.White.WithAlpha(0.5f)).Once();
+                    Ui.Theme.FontSize(14).Text(Colors.White.WithAlpha(0.5f)).Once();
                     Ui.Layout.StickLeft().Height(h).FitWidth().StickBottom().Move(bh - padding, padding);
                     Ui.Label(track.Author);
                 }

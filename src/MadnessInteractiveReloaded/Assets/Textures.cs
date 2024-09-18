@@ -190,8 +190,11 @@ public static class Textures
 
         public static AssetRef<Texture> DefaultFoot => Assets.Load<Texture>("textures/bodies/default/foot.png");
 
-        public static AssetRef<Texture> FleshHead => Assets.Load<Texture>("textures/bodies/gore/head_flesh.png");
-        public static AssetRef<Texture> FleshBody => Assets.Load<Texture>("textures/bodies/gore/body_flesh.png");
+        public static AssetRef<Texture> FleshHead => Assets.Load<Texture>("textures/bodies/gore/flesh_head.png");
+        public static AssetRef<Texture> FleshBody => Assets.Load<Texture>("textures/bodies/gore/flesh_body.png");    
+        
+        public static AssetRef<Texture> GoreHead => Assets.Load<Texture>("textures/bodies/gore/gore_head.png");
+        public static AssetRef<Texture> GoreBody => Assets.Load<Texture>("textures/bodies/gore/gore_body.png");
 
         public static Material GetMaterialForHandLook(HandArmourPiece? gloves, HandLook look, bool back, WeaponType weaponType)
             => SpriteMaterialCreator.Instance.Load(GetTextureForHandLook(gloves, look, back, weaponType));

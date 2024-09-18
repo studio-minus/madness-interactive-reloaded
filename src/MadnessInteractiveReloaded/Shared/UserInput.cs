@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using MIR.Tutorials;
+using Newtonsoft.Json;
 using System;
 using System.Linq;
 using Walgelijk;
+using Walgelijk.Onion;
 
 namespace MIR;
 
@@ -15,6 +17,8 @@ public struct UserInput : IEquatable<UserInput>
 
     private readonly Key[] keys = new Key[3];
     private readonly MouseButton[] buttons = new MouseButton[1];
+
+    private readonly string FriendlyName;
 
     public UserInput(string[] names, UserInputType type)
     {
@@ -66,9 +70,11 @@ public struct UserInput : IEquatable<UserInput>
         {
             case UserInputType.Key:
                 Array.Resize(ref keys, Inputs.Length);
+                FriendlyName = string.Join('+', keys.Select(k => k.ToDisplayString()));
                 break;
             case UserInputType.Button:
                 Array.Resize(ref buttons, Inputs.Length);
+                FriendlyName = string.Join('+', buttons.Select(k => k.ToDisplayString()));
                 break;
         }
     }
@@ -201,6 +207,11 @@ public struct UserInput : IEquatable<UserInput>
     {
         Key,
         Button
+    }
+
+    public override string ToString()
+    {
+        return FriendlyName;
     }
 
     public static bool operator ==(UserInput left, UserInput right)

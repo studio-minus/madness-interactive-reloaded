@@ -63,6 +63,7 @@ public class CharacterLook
         BodyLayer2 = toCopy.BodyLayer2;
 
         Hands = toCopy.Hands;
+        Cosmetic = toCopy.Cosmetic;
 
         BloodColour = toCopy.BloodColour;
         Jitter = toCopy.Jitter;
@@ -81,6 +82,7 @@ public class CharacterLook
         target.BodyLayer2 = BodyLayer2;
 
         target.Hands = Hands;
+        target.Cosmetic = Cosmetic;
 
         target.BloodColour = BloodColour;
         target.Jitter = Jitter;

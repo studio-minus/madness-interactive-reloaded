@@ -8,15 +8,15 @@
   "BackgroundMusic": "sounds/music/Lothyde/strenuous.ogg",
   "WeaponChance": 0.5,
   "LevelBounds": {
-    "MinX": -8548.582,
-    "MinY": -1289.2972,
-    "MaxX": 8518.084,
-    "MaxY": 1110.7025
+    "MinX": -8548.545,
+    "MinY": -1289.2921,
+    "MaxX": 8518.047,
+    "MaxY": 1110.6974
   },
   "BodyCountToWin": 40,
   "TimeLimitInSeconds": 93.0,
   "FullZoom": false,
-  "Thumbnail": "textures/level_thumbnails/lvl_roof.qoi",
+  "Thumbnail": "textures/level_thumbnails/lvl_roof_1.qoi",
   "OpeningTransition": true,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [
@@ -96,11 +96,11 @@
   ],
   "FloorLine": [
     {
-      "X": -7545.0767,
+      "X": -7559.0767,
       "Y": -1148.3658
     },
     {
-      "X": 6632.9233,
+      "X": 6646.9233,
       "Y": -1148.3658
     }
   ],
@@ -114,24 +114,157 @@
       "SpawnWeapon": null
     },
     {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -7246.1353,
+        "MinY": -1281.2136,
+        "MaxX": 6569.3823,
+        "MaxY": -1025.2136
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": 5085.477,
+          "Y": -941.8009
+        },
+        "FacingDirection": {
+          "X": "NaN",
+          "Y": "NaN"
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": 4902.0005,
+          "Y": -330.2074
+        },
+        "TopRight": {
+          "X": 5269.3706,
+          "Y": -330.79657
+        },
+        "BottomLeft": {
+          "X": 4901.205,
+          "Y": -941.8397
+        },
+        "BottomRight": {
+          "X": 5269.749,
+          "Y": -941.7621
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": -7575.9453,
+        "MinY": -2085.1768,
+        "MaxX": 6661.144,
+        "MaxY": -1148.3658
+      },
+      "Tag": null
+    },
+    {
       "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
-      "WeaponKey": "m14_ebr",
-      "Angle": 8.519501,
-      "Ammo": 10,
+      "WeaponKey": "luger",
+      "Angle": -31.097366,
+      "Ammo": 8,
       "AttachedToWall": true,
       "Position": {
-        "X": 6132.523,
-        "Y": -1019.79114
+        "X": 4381.1763,
+        "Y": -899.44977
       }
     },
     {
-      "$type": "MIR.LevelEditor.Objects.Background, MIR",
-      "Center": {
-        "X": -15.248535,
-        "Y": -89.29736
+      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
+      "WeaponKey": "dragon_sword",
+      "Angle": -29.520676,
+      "Ammo": 12,
+      "AttachedToWall": true,
+      "Position": {
+        "X": -6444.5913,
+        "Y": -787.62494
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "agent",
+        "Stats": "agent",
+        "Faction": null,
+        "Weapon": "deagle",
+        "Flipped": false,
+        "BottomCenter": {
+          "X": -1810.4172,
+          "Y": -1065.2416
+        },
+        "ScaleOverride": false,
+        "Scale": 0.0,
+        "IsProgressionRequirement": false
       },
-      "TexturePath": "textures/backgrounds/background_roof.qoi",
-      "Scale": 2.96295
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "agent",
+        "Stats": "agent",
+        "Faction": null,
+        "Weapon": "deagle",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": 2314.6758,
+          "Y": -1042.8463
+        },
+        "ScaleOverride": false,
+        "Scale": 0.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "agent",
+        "Stats": "agent",
+        "Faction": null,
+        "Weapon": "deagle",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": 1842.6503,
+          "Y": -1058.429
+        },
+        "ScaleOverride": false,
+        "Scale": 0.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "agent",
+        "Stats": "agent",
+        "Faction": null,
+        "Weapon": "deagle",
+        "Flipped": false,
+        "BottomCenter": {
+          "X": -2197.7192,
+          "Y": -1061.6272
+        },
+        "ScaleOverride": false,
+        "Scale": 0.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
     },
     {
       "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
@@ -140,27 +273,48 @@
       "Ammo": 20,
       "AttachedToWall": true,
       "Position": {
-        "X": -3185.1562,
-        "Y": -765.6687
+        "X": -3010.1797,
+        "Y": -755.09973
       }
     },
     {
       "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
       "BlockerType": 1,
       "Rectangle": {
-        "MinX": -8344.606,
-        "MinY": -1351.0258,
-        "MaxX": -7567.78,
-        "MaxY": 1117.5883
+        "MinX": 6655.973,
+        "MinY": -1316.8279,
+        "MaxX": 7432.797,
+        "MaxY": 1151.7859
       },
       "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelProgressTrigger, MIR",
+      "Rectangle": {
+        "MinX": -8236.562,
+        "MinY": -1543.1174,
+        "MaxX": 8027.9365,
+        "MaxY": 1445.9747
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
+      "WeaponKey": "mossberg_500",
+      "Angle": -126.50197,
+      "Ammo": 8,
+      "AttachedToWall": true,
+      "Position": {
+        "X": -4388.0815,
+        "Y": -770.7287
+      }
     },
     {
       "$type": "MIR.LevelEditor.Objects.Door, MIR",
       "Properties": {
         "SpawnPoint": {
-          "X": 3764.7178,
-          "Y": -941.69885
+          "X": -2391.1606,
+          "Y": -941.4914
         },
         "FacingDirection": {
           "X": "NaN",
@@ -172,90 +326,20 @@
         "PortalID": null,
         "DestinationLevel": null,
         "TopLeft": {
-          "X": 3578.769,
-          "Y": -329.585
+          "X": -2580.2632,
+          "Y": -330.86465
         },
         "TopRight": {
-          "X": 3951.053,
-          "Y": -330.17416
+          "X": -2202.9275,
+          "Y": -329.66357
         },
         "BottomLeft": {
-          "X": 3577.9739,
-          "Y": -941.2173
+          "X": -2580.604,
+          "Y": -940.334
         },
         "BottomRight": {
-          "X": 3951.462,
-          "Y": -942.1805
-        }
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.Door, MIR",
-      "Properties": {
-        "SpawnPoint": {
-          "X": 2367.4062,
-          "Y": -942.89075
-        },
-        "FacingDirection": {
-          "X": "NaN",
-          "Y": "NaN"
-        },
-        "EnemySpawnerDoor": true,
-        "IsLevelProgressionDoor": false,
-        "IsPortal": false,
-        "PortalID": null,
-        "DestinationLevel": null,
-        "TopLeft": {
-          "X": 2178.8174,
-          "Y": -330.5606
-        },
-        "TopRight": {
-          "X": 2554.936,
-          "Y": -331.14978
-        },
-        "BottomLeft": {
-          "X": 2177.4639,
-          "Y": -942.19293
-        },
-        "BottomRight": {
-          "X": 2557.3486,
-          "Y": -943.58856
-        }
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.Door, MIR",
-      "Properties": {
-        "SpawnPoint": {
-          "X": -5111.0815,
-          "Y": -941.3153
-        },
-        "FacingDirection": {
-          "X": "NaN",
-          "Y": "NaN"
-        },
-        "EnemySpawnerDoor": true,
-        "IsLevelProgressionDoor": false,
-        "IsPortal": false,
-        "PortalID": null,
-        "DestinationLevel": null,
-        "TopLeft": {
-          "X": -5293.2695,
-          "Y": -331.16653
-        },
-        "TopRight": {
-          "X": -4931.13,
-          "Y": -331.5076
-        },
-        "BottomLeft": {
-          "X": -5293.6104,
-          "Y": -940.6358
-        },
-        "BottomRight": {
-          "X": -4928.5527,
-          "Y": -941.9948
+          "X": -2201.7173,
+          "Y": -942.6488
         }
       },
       "Tag": null
@@ -299,8 +383,8 @@
       "$type": "MIR.LevelEditor.Objects.Door, MIR",
       "Properties": {
         "SpawnPoint": {
-          "X": -2391.1606,
-          "Y": -941.4914
+          "X": -5111.0815,
+          "Y": -941.3153
         },
         "FacingDirection": {
           "X": "NaN",
@@ -312,52 +396,102 @@
         "PortalID": null,
         "DestinationLevel": null,
         "TopLeft": {
-          "X": -2580.2632,
-          "Y": -330.86465
+          "X": -5293.2695,
+          "Y": -331.16653
         },
         "TopRight": {
-          "X": -2202.9275,
-          "Y": -329.66357
+          "X": -4931.13,
+          "Y": -331.5076
         },
         "BottomLeft": {
-          "X": -2580.604,
-          "Y": -940.334
+          "X": -5293.6104,
+          "Y": -940.6358
         },
         "BottomRight": {
-          "X": -2201.7173,
-          "Y": -942.6488
+          "X": -4928.5527,
+          "Y": -941.9948
         }
       },
       "Tag": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
-      "WeaponKey": "mossberg_500",
-      "Angle": -126.50197,
-      "Ammo": 8,
-      "AttachedToWall": true,
-      "Position": {
-        "X": -4388.0815,
-        "Y": -770.7287
-      }
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.LevelScript, MIR",
-      "Position": {
-        "X": 60.80915,
-        "Y": 1416.1931
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": 2367.4062,
+          "Y": -942.89075
+        },
+        "FacingDirection": {
+          "X": "NaN",
+          "Y": "NaN"
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": 2178.8174,
+          "Y": -330.5606
+        },
+        "TopRight": {
+          "X": 2554.936,
+          "Y": -331.14978
+        },
+        "BottomLeft": {
+          "X": 2177.4639,
+          "Y": -942.19293
+        },
+        "BottomRight": {
+          "X": 2557.3486,
+          "Y": -943.58856
+        }
       },
-      "Name": "untitled",
-      "Code": "float acc = 0;\r\n\r\nvoid Update()\r\n{\r\n\tif (Scene.FindAnyComponent<LevelProgressComponent>(out var progress))\r\n\t{\r\n\t\tif (progress.Timed.Time >= 93 - 5)\r\n\t\t{\r\n\t\t\tacc += Time.DeltaTime;\r\n\t\t\t\r\n\t\t\tif (acc > 0.8f)\r\n\t\t\t{\r\n\t\t\t\tacc = 0;\r\n\t\t\t\tMadnessUtils.Shake(120);\r\n\t\t\t\tvar audio = Utilities.PickRandom(Assets.EnumerateFolder(\"sounds\/mag_footstep\"));\r\n\t\t\t\tvar snd = SoundCache.Instance.LoadSoundEffect(Assets.Load<FixedAudioData>(audio));\r\n\t\t\t\tAudio.PlayOnce(snd, 1, 1, AudioTracks.SoundEffects);\r\n\t\t\t}\r\n\t\t}\r\n\t}\r\n}",
       "Tag": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.LevelProgressTrigger, MIR",
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": 3764.7178,
+          "Y": -941.69885
+        },
+        "FacingDirection": {
+          "X": "NaN",
+          "Y": "NaN"
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": 3578.769,
+          "Y": -329.585
+        },
+        "TopRight": {
+          "X": 3951.053,
+          "Y": -330.17416
+        },
+        "BottomLeft": {
+          "X": 3577.9739,
+          "Y": -941.2173
+        },
+        "BottomRight": {
+          "X": 3951.462,
+          "Y": -942.1805
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 1,
       "Rectangle": {
-        "MinX": -8236.562,
-        "MinY": -1543.1174,
-        "MaxX": 8027.9365,
-        "MaxY": 1445.9747
+        "MinX": -8344.606,
+        "MinY": -1351.0258,
+        "MaxX": -7567.78,
+        "MaxY": 1117.5883
       },
       "Tag": null
     },
@@ -368,172 +502,38 @@
       "Ammo": 20,
       "AttachedToWall": true,
       "Position": {
-        "X": -3010.1797,
-        "Y": -755.09973
+        "X": -3185.1562,
+        "Y": -765.6687
       }
     },
     {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "agent",
-        "Stats": "agent",
-        "Faction": null,
-        "Weapon": "deagle",
-        "Flipped": false,
-        "BottomCenter": {
-          "X": -2197.7192,
-          "Y": -1061.6272
-        },
-        "ScaleOverride": false,
-        "Scale": 0.0,
-        "IsProgressionRequirement": false
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": -15.248535,
+        "Y": -89.29736
       },
-      "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "agent",
-        "Stats": "agent",
-        "Faction": null,
-        "Weapon": "deagle",
-        "Flipped": true,
-        "BottomCenter": {
-          "X": 1842.6503,
-          "Y": -1058.429
-        },
-        "ScaleOverride": false,
-        "Scale": 0.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "agent",
-        "Stats": "agent",
-        "Faction": null,
-        "Weapon": "deagle",
-        "Flipped": true,
-        "BottomCenter": {
-          "X": 2314.6758,
-          "Y": -1042.8463
-        },
-        "ScaleOverride": false,
-        "Scale": 0.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "agent",
-        "Stats": "agent",
-        "Faction": null,
-        "Weapon": "deagle",
-        "Flipped": false,
-        "BottomCenter": {
-          "X": -1810.4172,
-          "Y": -1065.2416
-        },
-        "ScaleOverride": false,
-        "Scale": 0.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
+      "TexturePath": "textures/backgrounds/background_roof.qoi",
+      "Scale": 2.96295
     },
     {
       "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
-      "WeaponKey": "dragon_sword",
-      "Angle": -29.520676,
-      "Ammo": 12,
+      "WeaponKey": "m14_ebr",
+      "Angle": 8.519501,
+      "Ammo": 10,
       "AttachedToWall": true,
       "Position": {
-        "X": -6444.5913,
-        "Y": -787.62494
+        "X": 6132.523,
+        "Y": -1019.79114
       }
     },
     {
-      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
-      "WeaponKey": "luger",
-      "Angle": -31.097366,
-      "Ammo": 8,
-      "AttachedToWall": true,
+      "$type": "MIR.LevelEditor.Objects.LevelScript, MIR",
       "Position": {
-        "X": 4381.1763,
-        "Y": -899.44977
-      }
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
-      "Rectangle": {
-        "MinX": -7575.9453,
-        "MinY": -2085.1768,
-        "MaxX": 6661.144,
-        "MaxY": -1148.3658
+        "X": 60.80915,
+        "Y": 1416.1931
       },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.Door, MIR",
-      "Properties": {
-        "SpawnPoint": {
-          "X": 5085.477,
-          "Y": -941.8009
-        },
-        "FacingDirection": {
-          "X": "NaN",
-          "Y": "NaN"
-        },
-        "EnemySpawnerDoor": true,
-        "IsLevelProgressionDoor": false,
-        "IsPortal": false,
-        "PortalID": null,
-        "DestinationLevel": null,
-        "TopLeft": {
-          "X": 4902.0005,
-          "Y": -330.2074
-        },
-        "TopRight": {
-          "X": 5269.3706,
-          "Y": -330.79657
-        },
-        "BottomLeft": {
-          "X": 4901.205,
-          "Y": -941.8397
-        },
-        "BottomRight": {
-          "X": 5269.749,
-          "Y": -941.7621
-        }
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
-      "Rectangle": {
-        "MinX": -7246.1353,
-        "MinY": -1281.2136,
-        "MaxX": 6569.3823,
-        "MaxY": -1025.2136
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
-      "BlockerType": 1,
-      "Rectangle": {
-        "MinX": 6655.973,
-        "MinY": -1316.8279,
-        "MaxX": 7432.797,
-        "MaxY": 1151.7859
-      },
+      "Name": "untitled",
+      "Code": "float acc = 0;\r\n\r\nvoid Update()\r\n{\r\n\tif (Scene.FindAnyComponent<LevelProgressComponent>(out var progress))\r\n\t{\r\n\t\tif (progress.Timed.Time >= 93 - 5)\r\n\t\t{\r\n\t\t\tacc += Time.DeltaTime;\r\n\t\t\t\r\n\t\t\tif (acc > 0.8f)\r\n\t\t\t{\r\n\t\t\t\tacc = 0;\r\n\t\t\t\tMadnessUtils.Shake(120);\r\n\t\t\t\tvar audio = Utilities.PickRandom(Assets.EnumerateFolder(\"sounds/mag_footstep\"));\r\n\t\t\t\tvar snd = SoundCache.Instance.LoadSoundEffect(Assets.Load<FixedAudioData>(audio));\r\n\t\t\t\tAudio.PlayOnce(snd, 1, 1, AudioTracks.SoundEffects);\r\n\t\t\t}\r\n\t\t}\r\n\t}\r\n}",
       "Tag": null
     },
     {

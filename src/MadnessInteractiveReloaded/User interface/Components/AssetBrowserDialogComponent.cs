@@ -22,7 +22,11 @@ public class AssetBrowserDialogComponent : Component
         if (Assets.TryGetPackage(Asset.External, out var p))
             if (p.HasAsset(Asset.Internal))
             {
-                AssetBrowserControl.External = p.Metadata.Name;
+                var ei = Array.IndexOf(AssetBrowserControl.PackageIdOptions, new AssetBrowserControl.PackageOption(Asset.External));
+                if (ei == -1)
+                    ei = 0;
+
+                AssetBrowserControl.External = ei;
                 var v = p.GetAssetPath(asset.Internal);
                 var i = v.LastIndexOf('/');
                 if (i != -1)

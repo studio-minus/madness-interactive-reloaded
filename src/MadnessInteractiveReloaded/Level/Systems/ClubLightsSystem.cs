@@ -56,6 +56,22 @@ public class ClubLightsSystem : Walgelijk.System
         Draw.BlendMode = BlendMode.Multiply;
         Draw.Colour = color;
         Draw.Quad(Vector2.Zero, Window.Size);
-        Draw.Reset();
+
+#if please_render_fancy_club_lasers
+        if (DjComponent.PlaybackState is DjComponent.State.Playing)
+        {
+            Draw.ScreenSpace = false;
+            Draw.BlendMode = BlendMode.Screen;
+
+            Draw.Colour = Colors.Green * 0.05f;
+            Draw.Line(new Vector2(0, 2000), new Vector2(float.Sin(Time * 2) * 3000, -2000), 10);
+
+            Draw.Colour = Colors.Cyan * 0.05f;
+            Draw.Line(new Vector2(-3000, 2000), new Vector2(float.Sin(Time * 2.5f + 2) * 3000, -2000), 10);
+
+            Draw.Colour = Colors.Magenta * 0.05f;
+            Draw.Line(new Vector2(3000, 2000), new Vector2(float.Sin(Time * 1.5f - 1.523f) * 3000, -2000), 10);
+        }
+#endif
     }
 }

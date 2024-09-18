@@ -62,7 +62,7 @@ public class PauseSystem : Walgelijk.System
                 pauseMusic.Volume = 0.01f;
                 pauseMusic.ForceUpdate();
                 Audio.Play(pauseMusic, pauseMusic.Volume);
-
+                
                 if (PersistentSoundHandles.LevelMusic != null && Audio.IsPlaying(PersistentSoundHandles.LevelMusic))
                     Audio.Pause(PersistentSoundHandles.LevelMusic);
             }

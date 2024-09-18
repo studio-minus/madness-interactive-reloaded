@@ -219,31 +219,25 @@ public static class Prefabs
     /// <summary>
     /// Helper function for creating a character body.
     /// </summary>
-    /// <param name="scene"></param>
-    /// <param name="skin"></param>
-    /// <param name="flesh"></param>
-    /// <param name="bloodColour"></param>
-    /// <param name="renderOrder"></param>
-    /// <param name="parent"></param>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
-    public static Entity CreateBodypartSprite(Scene scene, Texture skin, Texture flesh, Color bloodColour,
-        RenderOrder renderOrder = default, ComponentRef<TransformComponent>? parent = null, float scale = 1)
+    public static Entity CreateBodypartSprite(Scene scene, BodyPartMaterialParams materialParams,
+        RenderOrder renderOrder = default, ComponentRef<TransformComponent>? parent = null)
     {
         var ent = scene.CreateEntity();
         scene.AttachComponent(ent, new TransformComponent
         {
-            Scale = new Vector2(skin.Width, skin.Height) * scale,
+            Scale = new Vector2(materialParams.SkinTexture.Width, materialParams.SkinTexture.Height) * materialParams.Scale,
             Parent = parent,
             //InterpolationFlags = InterpolationFlags.Position | InterpolationFlags.Rotation
         });
 
         var c = scene.AttachComponent(ent, new BodyPartShapeComponent(true)
         {
-            Material = BodyPartMaterialPool.Instance.RequestObject((skin, flesh, bloodColour, scale)) ??
-                       throw new Exception("Too many body parts!"),
+            Material = BodyPartMaterialPool.Instance.RequestObject(materialParams) 
+            ?? throw new Exception("Too many body parts!"),
             RenderOrder = renderOrder,
-            BloodColour = bloodColour
+            BloodColour = materialParams.BloodColour
         });
 
         c.Material.SetUniform("tint", Colors.White);
@@ -257,7 +251,7 @@ public static class Prefabs
     /// Then, when the <see cref="WeaponSystem"/> wants to create a casing particle (see: <see cref="WeaponSystem.EjectCasingParticle(WeaponComponent, TransformComponent)"/>
     /// it finds the one associated with the ammo type.
     /// <br></br>
-    /// (See <see cref="SceneUtils.PrepareGameScene(Game, GameMode, bool, bool, Level?)"/> for
+    /// (See <see cref="SceneUtils.PrepareGameScene(Game, GameMode, bool, Level?)"/> for
     /// where the particle systems for each casing type are created.)
     /// </summary>
     /// <param name="scene"></param>
@@ -609,9 +603,23 @@ public static class Prefabs
         else if (@params.Look.HeadFlesh.TryGetValue(out hf))
             headFlesh = hf;
 
+        var body = CreateBodypartSprite(scene, new BodyPartMaterialParams
+        {
+            SkinTexture = @params.Look.Body.Right,
+            GoreTexture = Textures.Character.GoreBody,
+            FleshTexture = bodyFlesh,
+            BloodColour = @params.Look.BloodColour,
+            Scale = scale
+        }, renderOrder);
+        var head = CreateBodypartSprite(scene, new BodyPartMaterialParams
+        {
+            SkinTexture = @params.Look.Head.Right,
+            GoreTexture = Textures.Character.GoreHead,
+            FleshTexture = headFlesh,
+            BloodColour = @params.Look.BloodColour,
+            Scale = scale
+        }, renderOrder.WithOrder(1));
 
-        var body = CreateBodypartSprite(scene, @params.Look.Body.Right.Value, bodyFlesh, @params.Look.BloodColour, renderOrder, scale: scale);
-        var head = CreateBodypartSprite(scene, @params.Look.Head.Right.Value, headFlesh, @params.Look.BloodColour, renderOrder.WithOrder(1), scale: scale);
         var headTransform = scene.GetComponentFrom<TransformComponent>(head);
         var bodyTransform = scene.GetComponentFrom<TransformComponent>(body);
         scene.SetTag(body, @params.Tag);
@@ -1005,6 +1013,7 @@ public static class Prefabs
         {
             IsPlaying = true,
             Duration = duration,
+            AffectedByTimeScale = false,
             OffsetCurve =
                 type == Transition.Entry
                     ? new Vec2Curve(

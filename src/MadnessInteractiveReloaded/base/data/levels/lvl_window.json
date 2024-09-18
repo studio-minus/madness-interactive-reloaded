@@ -2,10 +2,10 @@
   "DisplayName": "untitled",
   "LevelType": "Campaign",
   "ProgressionType": "BodyCount",
-  "EnemySpawnInterval": 0.4,
-  "MaxEnemyCount": 5,
+  "EnemySpawnInterval": 0.90000004,
+  "MaxEnemyCount": 2,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "sounds/music/Lothyde/jazzed_madness_overture.ogg",
+  "BackgroundMusic": "base:sounds/music/Lothyde/jazzed_madness_overture.ogg",
   "WeaponChance": 0.75,
   "LevelBounds": {
     "MinX": -2160.2842,
@@ -16,7 +16,7 @@
   "BodyCountToWin": 33,
   "TimeLimitInSeconds": -1.0,
   "FullZoom": false,
-  "Thumbnail": "textures/level_thumbnails/lvl_window.qoi",
+  "Thumbnail": "base:textures/level_thumbnails/lvl_window.qoi",
   "OpeningTransition": true,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [
@@ -42,7 +42,6 @@
     }
   ],
   "Weapons": [
-    "silenced_beretta_92",
     "switchblade",
     "baton",
     "megachette",
@@ -55,11 +54,11 @@
   ],
   "FloorLine": [
     {
-      "X": -1883.9113,
+      "X": -1861.9113,
       "Y": -1273.7551
     },
     {
-      "X": 1844.0887,
+      "X": 1822.0887,
       "Y": -1273.7551
     }
   ],
@@ -258,7 +257,7 @@
         "X": -26.950928,
         "Y": -216.25601
       },
-      "TexturePath": "textures/backgrounds/background_window.qoi",
+      "TexturePath": "base:textures/backgrounds/background_window.qoi",
       "Scale": 2.222222
     },
     {

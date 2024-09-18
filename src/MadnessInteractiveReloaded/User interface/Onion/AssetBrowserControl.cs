@@ -1,7 +1,6 @@
 ﻿using MIR.Controls;
 using System;
 using System.Diagnostics.CodeAnalysis;
-using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Walgelijk;
@@ -14,10 +13,23 @@ namespace MIR;
 public class AssetBrowserControl
 {
     private string currentFilter = string.Empty;
-    public string External = "base";
+    public int External = 0;
     public string Path = string.Empty;
 
     private Entry[]? folderCache;
+
+    public static PackageOption[] PackageIdOptions;
+
+    public readonly struct PackageOption(PackageId id)
+    {
+        public readonly PackageId Id = id;
+        public override string ToString() => Assets.GetPackage(Id).Metadata.Name;
+    }
+
+    static AssetBrowserControl()
+    {
+        PackageIdOptions = [.. Assets.AssetPackages.Select(d => new PackageOption(d))];
+    }
 
     private struct Entry
     {
@@ -29,7 +41,7 @@ public class AssetBrowserControl
     [MemberNotNull(nameof(folderCache))]
     public void RefreshCache()
     {
-        if (!Assets.TryGetPackage(External, out var package))
+        if (!Assets.TryGetPackage(PackageIdOptions[External].Id, out var package))
         {
             folderCache = [];
             return;
@@ -40,6 +52,7 @@ public class AssetBrowserControl
             ..package.GetFoldersIn(Path).Select(i => new Entry{ 
                 Name = $"{i}/", 
                 FolderDestination = Path.TrimEnd('/') + '/' + i }),
+
             ..package.EnumerateFolder(Path).Select(i => {
                 var m = package.GetMetadata(i);
                 return new Entry
@@ -53,7 +66,7 @@ public class AssetBrowserControl
 
     public bool Start(ref GlobalAssetId asset, Func<AssetMetadata, bool> filterFunction, int identity = 0, [CallerLineNumber] int site = 0)
     {
-        External ??= "base";
+        //External ??= "base";
         currentFilter ??= string.Empty;
         bool r = false;
 
@@ -77,12 +90,9 @@ public class AssetBrowserControl
                     }
                 }
 
-                Ui.Layout.FitContainer(0.2f, 1).MinWidth(100).CenterVertical().StickLeft().Move(40, 0);
-                if (Ui.StringInputBox(ref External, new("Package Id")))
-                {
+                Ui.Layout.FitContainer(0.5f, 1).MinWidth(100).CenterVertical().StickLeft().Move(40, 0);
+                if (Ui.Dropdown(PackageIdOptions, ref External))
                     folderCache = null;
-                    External = External.ToLowerInvariant();
-                }
 
                 Ui.Layout.FitContainer().Scale(-Onion.Tree.GetLastInstance().Rects.ComputedGlobal.Width - Onion.Theme.Base.Padding - 40, 0).CenterVertical().StickRight();
                 if (Ui.StringInputBox(ref Path, new("/")))
@@ -90,7 +100,7 @@ public class AssetBrowserControl
             }
             Ui.End();
 
-            if (folderCache != null && Assets.TryGetPackage(External, out var package))
+            if (folderCache != null && Assets.TryGetPackage(PackageIdOptions[External].Id, out var package))
             {
                 // resource buttons
                 Ui.Layout.FitContainer().Center().Scale(0, -50).StickBottom();

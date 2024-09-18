@@ -11,5 +11,6 @@ public static class PersistentSoundHandles
     public static Sound? PauseMusic;
     public static Sound? MainMenuMusic;
 
-    public static Sound? DjMusic =>     DjComponent.CurrentMusic == null ? null : SoundCache.Instance.LoadMusicNonLoop(DjComponent.CurrentMusic.Sound);
+    public static Sound? DjMusic 
+        => DjComponent.CurrentMusic == null ? null : SoundCache.Instance.LoadMusicNonLoop(DjComponent.CurrentMusic.Sound);
 }

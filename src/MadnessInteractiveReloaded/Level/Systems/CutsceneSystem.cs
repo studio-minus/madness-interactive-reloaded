@@ -1,5 +1,4 @@
-﻿using OpenTK.Windowing.GraphicsLibraryFramework;
-using System.Numerics;
+﻿using System.Numerics;
 using Walgelijk;
 using Walgelijk.Localisation;
 using Walgelijk.SimpleDrawing;
@@ -87,15 +86,5 @@ public class CutsceneSystem : Walgelijk.System
             Draw.BlendMode = BlendMode.Negate;
             Draw.Quad(new Rect(0, 0, w * component.SkipTimer, h).Translate(-10 - w, -3 - h).Translate(Window.Size));
         }
-    }
-    public override void Render()
-    {
-            return;
-        if (!Scene.FindAnyComponent<CutsceneComponent>(out var component) || component.IsComplete)
-            return;
-
-        var slide = component.Cutscene.Slides[component.Index];
-        
-        //slide.Execute(Graphics);
     }
 }

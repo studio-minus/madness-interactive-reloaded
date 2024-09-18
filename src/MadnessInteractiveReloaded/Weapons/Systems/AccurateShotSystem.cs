@@ -40,6 +40,7 @@ public class AccurateShotSystem : Walgelijk.System
             if (comp.Time >= comp.Lifespan && origin.EquippedWeapon.TryGet(Scene, out var wpn))
             {
                 wpn.IsFiring = true;
+                comp.Finished = true;
                 MadnessUtils.Flash(Colors.White.WithAlpha(0.5f), 0.05f);
                 MadnessUtils.Flash(Colors.Red.WithAlpha(0.8f), 0.1f);
                 AbortAccurateShot(comp.Entity, ai, origin);

@@ -1,0 +1,13 @@
+{
+  "id": "tutorial",
+  "name": "Tutorial",
+  "author": "Studio Minus",
+  "thumbnail": "data/campaigns/tutorial/thumb.png",
+  "description": "Tutorial",
+  "levels": [
+    "tut_move",
+    "tut_pickupshoot",
+    "tut_dodging",
+    "tut_melee"
+  ]
+}
