@@ -57,8 +57,8 @@ public class TeleportDashAbilityComponent : CharacterAbilityComponent
 
             IEnumerator<IRoutineCommand> Teleport()
             {
+                Audio.PlayOnce(Sounds.TrickyTeleport, 0.9f, Utilities.RandomFloat(0.9f, 1.1f), AudioTracks.SoundEffects);
                 var a = p.GlobalCenter;
-
                 var b = p.GlobalCenter;
                 b.X = float.Clamp(b.X + Distance * sign, level.FloorLine[0].X, level.FloorLine[^1].X);
                 b.Y = Level.CurrentLevel!.GetFloorLevelAt(b.X) + CharacterConstants.GetFloorOffset(p.Scale);
