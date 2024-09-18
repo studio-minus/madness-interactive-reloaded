@@ -70,7 +70,7 @@ public class PlayerUISystem : Walgelijk.System
         float targetCrosshairSize = 20f; //default for unarmed, melee and accurate guns
         bool firearmEmpty = false;
         float normalizedAmmoCount = 1f;
-        Vector2 worldCenter = character.AimTargetPosition;
+        Vector2 worldCenter = Input.WorldMousePosition;
 
         if (character.EquippedWeapon.TryGet(Scene, out var eq))
         {
@@ -200,7 +200,7 @@ public class PlayerUISystem : Walgelijk.System
                     var barrel = WeaponSystem.GetBarrel(eq, transform);
 
                     worldCenter += character.Positioning.RecoilPositionOffset * 0.5f;
-                    worldCenter = RotateAboutOrigin(worldCenter, barrel.position, character.Positioning.RecoilAngleOffset * (MathF.PI / 180f) * 0.4f);
+                    worldCenter = Utilities.RotatePoint(worldCenter, character.Positioning.RecoilAngleOffset, barrel.position);
 
                     float dist = Vector2.Distance(barrel.position, worldCenter);
                     float spread = (1 - eq.Data.Accuracy) * dist;
@@ -359,10 +359,5 @@ public class PlayerUISystem : Walgelijk.System
         Draw.Line(character.AimTargetPosition - new Vector2(0, minSize), character.AimTargetPosition - new Vector2(0, maxSize), o, 0);
         Draw.Line(character.AimTargetPosition - new Vector2(minSize, 0), character.AimTargetPosition - new Vector2(maxSize, 0), o, 0);
         Draw.ScreenSpace = true;
-    }
-
-    private static Vector2 RotateAboutOrigin(Vector2 point, Vector2 origin, float rotation)
-    {
-        return Vector2.Transform(point - origin, Matrix4x4.CreateRotationZ(rotation)) + origin;
     }
 }
