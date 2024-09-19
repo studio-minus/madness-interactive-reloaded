@@ -2,6 +2,7 @@
 using System.Numerics;
 using Walgelijk;
 using Walgelijk.SimpleDrawing;
+using static Walgelijk.Physics.Geometry;
 
 namespace MIR;
 
@@ -86,8 +87,8 @@ public static class ThumbnailRenderer
         }
 
         var headTexture = look.Head.Right.Value;
-        var scaling = (float)targetHeadHeight / headTexture.Height;
-        var bodyOffset = new Vector2(101, 260);
+        var scaling = (float)targetHeadHeight / (headTexture.Height * look.Head.TextureScale);
+        var bodyOffset = new Vector2(-20, 130);
 
         Draw.Material = BodyPartMaterialPool.Instance.RequestObject(new BodyPartMaterialParams
         {
@@ -124,15 +125,17 @@ public static class ThumbnailRenderer
                 return;
 
             const float angleDegrees = 6;
+            const float angleRad = 0.15f;
 
             var tex = piece.Right.Value;
-            var size = tex.Size * scaling;
-            var center = bodyOffset - size / 2;
-            var rotatedOffset = Vector2.Transform(piece.OffsetRight, Matrix3x2.CreateRotation(angleDegrees * Utilities.DegToRad, center));
-            var p = center + rotatedOffset * scaling;
 
             Draw.Texture = tex;
-            Draw.Quad(p, size, angleDegrees);
+            Draw.TransformMatrix =
+                Matrix3x2.CreateRotation(-angleRad) *
+                Matrix3x2.CreateScale(piece.TextureScale * scaling, center) *
+                Matrix3x2.CreateTranslation(piece.OffsetRight + bodyOffset);
+            Draw.Quad(new Rect(center, tex.Size));
+            Draw.ResetTransformation();
         }
 
         void drawHeadLayer(ArmourPiece? piece)
@@ -144,7 +147,9 @@ public static class ThumbnailRenderer
             var size = tex.Size * scaling;
             var p = center - size / 2 + new Vector2(piece.OffsetRight.X, piece.OffsetRight.Y) * scaling;
             Draw.Texture = tex;
+            Draw.TransformMatrix = Matrix3x2.CreateScale(piece.TextureScale, center);
             Draw.Quad(p, size);
+            Draw.ResetTransformation();
         }
 
         EndEnvironment();
