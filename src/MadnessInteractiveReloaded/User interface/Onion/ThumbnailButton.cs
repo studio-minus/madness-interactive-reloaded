@@ -83,8 +83,6 @@ public readonly struct ThumbnailButton(IReadableTexture? texture) : IControl
             Draw.Image(texture, thumbnailRect.Scale(0.85f), ImageContainmentMode.Contain);
             Draw.ResetTransformation();
             Draw.ResetTexture();
-
-            Draw.DrawBounds = new(instance.Rects.ComputedDrawBounds);
         }
 
         Draw.Font = p.Theme.Font;
