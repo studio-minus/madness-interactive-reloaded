@@ -19,6 +19,7 @@ public class PlayerUISystem : Walgelijk.System
     private float dodgeSmooth = 0;
     private int lastProgressIndex;
     private float lastProgressIndexFlashCounter = 0;
+    float lowAmmoWarningFade = 0;
 
     public override void Render()
     {
@@ -289,7 +290,17 @@ public class PlayerUISystem : Walgelijk.System
         // crosshair rendering
         Draw.ResetMaterial();
         Draw.ResetTexture();
-        Color desiredCrosshairColor = firearmEmpty ? (float.Sin(Time.SecondsSinceLoadUnscaled * 24f) > 0 ? Colors.Red : Colors.White) : Utilities.Lerp(Utilities.Lerp(Color.Red, Color.White, normalizedAmmoCount), Color.White, lastAmmoFlashCounter * 8f); // not very readable but it sure is concise!
+
+        lowAmmoWarningFade = float.Lerp(lowAmmoWarningFade, normalizedAmmoCount < 0.3f ? 1f : 0f, Time.DeltaTimeUnscaled * 5f);
+
+        Rect rec = new Rect(Window.WorldToWindowPoint(worldCenter), Vector2.One * (targetCrosshairSize * 2f + 24f));
+        Draw.Texture = Assets.Load<Texture>("textures/ui/crosshair_glow.png").Value;
+        Draw.Colour = Color.White.WithAlpha(lowAmmoWarningFade);
+        Draw.Quad(rec);
+
+        Draw.ResetTexture();
+
+        Color desiredCrosshairColor = firearmEmpty ? (float.Sin(Time.SecondsSinceLoadUnscaled * 24f) > 0 ? Colors.Red : Colors.White) : Utilities.Lerp(Utilities.Lerp(Color.Red, Color.White, normalizedAmmoCount), Color.White, lastAmmoFlashCounter * 3f); // not very readable but it sure is concise!
         Draw.Colour = desiredCrosshairColor;
         Draw.OutlineColour = desiredCrosshairColor;
         Draw.OutlineColour.A = Math.Max(1f - (targetCrosshairSize - 20f) * 0.0085f, 0.2f);
