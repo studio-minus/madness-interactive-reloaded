@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.ExceptionServices;
 using Walgelijk;
 using Walgelijk.AssetManager;
 using Walgelijk.Onion;
@@ -47,7 +48,21 @@ public class HandArmourPiece : ICharacterCustomisationItem
 
     bool ICharacterCustomisationItem.Hidden => false;
 
-    IReadableTexture ICharacterCustomisationItem.Texture => Point.FacingRight.Value;
+    IReadableTexture ICharacterCustomisationItem.Texture
+    {
+        get
+        {
+            var index = int.Abs((int)(Game.Main.State.Time * 0.8f)) % 4;
+            HandLook look = index switch
+            {
+                1 => HandLook.Open,
+                2 => HandLook.Fist,
+                3 => HandLook.HoldUnderside,
+                _ => HandLook.Point,
+            };
+            return GetByLook(look).FacingRight.Value;
+        }
+    }
 
     int ICharacterCustomisationItem.Order => MenuOrder;
 }

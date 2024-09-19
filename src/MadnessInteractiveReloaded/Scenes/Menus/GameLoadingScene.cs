@@ -99,7 +99,7 @@ public static class GameLoadingScene
 
             OnFinishedLoading?.Invoke();
             game.Scene = MainMenuScene.Load(game);
-            MadnessUtils.Delay(2f, scene.Dispose);
+            MadnessUtils.Delay(0.5f, scene.Dispose);
         }
 
         IRoutineCommand show(string a)

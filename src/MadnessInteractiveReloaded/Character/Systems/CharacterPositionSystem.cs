@@ -26,8 +26,6 @@ public class CharacterPositionSystem : Walgelijk.System
 
             c.EquippedWeapon.TryGet(Scene, out var equipped);
 
-            SetLimbScale(c);
-
             // iron sight and deflection animation stuff
             c.Positioning.IronSightProgress = Utilities.Clamp(c.Positioning.IronSightProgress + (c.IsIronSighting ? 1 : -1) * Time.DeltaTime / 0.2f);
             c.Positioning.MeleeBlockProgress = Utilities.Clamp(c.Positioning.MeleeBlockProgress + (c.IsMeleeBlocking ? 1 : -1) * Time.DeltaTime / 0.25f);
@@ -35,6 +33,7 @@ public class CharacterPositionSystem : Walgelijk.System
             ProcessRecoil(c, equipped);
 
             ProcessRenderers(c, equipped);
+            SetLimbScale(c);
             ProcessArmour(c);
 
             if (c.NeedsLookUpdate)
@@ -199,6 +198,8 @@ public class CharacterPositionSystem : Walgelijk.System
                     offset.X /= charPos.Head.Scale.X * charPos.FlipScaling;
                     offset.Y /= -charPos.Head.Scale.Y;
                     Scene.GetComponentFrom<TransformConstraintComponent>(headDecoration).PositionOffset = offset * charPos.Scale;
+
+                    Logger.Log(offset * charPos.Scale);
                 }
             }
         }
