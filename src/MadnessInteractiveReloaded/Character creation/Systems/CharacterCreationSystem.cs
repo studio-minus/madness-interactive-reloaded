@@ -189,15 +189,39 @@ public class CharacterCreationSystem : Walgelijk.System
         var look = character.Look;
 
         Ui.Theme.FontSize(23).Once();
-        Ui.Layout.Move(0, 5);
-        Ui.Label(Localisation.Get("blood-colour"));
+        Ui.Layout.FitWidth().Height(30).CenterHorizontal();
+        Ui.TextRect(Localisation.Get("blood-colour"), HorizontalTextAlign.Center, VerticalTextAlign.Middle);
 
-        Ui.Layout.FitWidth().CenterHorizontal().AspectRatio(2).Move(0, 38);
-        Ui.Theme.Padding(4).Push();
+        Ui.Layout.FitWidth().Height(40).CenterHorizontal().Move(0, 40).EnqueueLayout(new DistributeChildrenLayout());
+        Ui.StartGroup();
+        {
+            var rect = Onion.Tree.CurrentNode!.GetInstance().Rects.ComputedGlobal;
+            var colors = data.Swatches.Concat([Colors.Yellow, Colors.Red]).Reverse().Take((int)(rect.Width / (rect.Height + 1))); // TODO this could be faster. replace the list with an array and be more careful where you put stuff and what you replace
+            int i = 0;
+            foreach (var c in colors)
+            {
+                Ui.Layout.FitHeight(false);
+                Ui.Decorate(new FancyButtonDecorator());
+                Ui.Theme.Image(c).OutlineColour(Colors.Gray).OutlineWidth(1).Once();
+                if (Ui.ImageButton(Texture.White, ImageContainmentMode.Stretch, identity: i++))
+                    look.BloodColour = c;
+            }
+        }
+        Ui.End();
+
+        Ui.Layout.FitWidth().Scale(-Ui.Theme.GetChanges().Padding, 0).CenterHorizontal().AspectRatio(2).MinHeight(200).Move(0, 90);
+        Ui.Theme.Padding(5).OutlineColour(Colors.Gray).OutlineWidth(1).Push();
         Ui.ColourPicker(ref look.BloodColour);
         Ui.Theme.Pop();
+
+        if (Onion.Input.MousePrimaryRelease && Onion.Tree.GetLastInstance().Rects.Rendered.ContainsPoint(Onion.Input.MousePosition))
+        {
+            data.Swatches.Add(look.BloodColour);
+            if (data.Swatches.Count > 8)
+                data.Swatches.RemoveAt(0);
+        }
     }
-    
+
     private void HandMenu(CharacterCreationComponent data, CharacterComponent character)
     {
         var look = character.Look;
@@ -411,7 +435,7 @@ public class CharacterCreationSystem : Walgelijk.System
         Ui.Theme.ScrollbarWidth(24).ForegroundColor(Colors.Black).Once();
         Ui.StartScrollView(false);
         {
-            float w = Onion.Tree.CurrentNode!.GetInstance().Rects.GetInnerContentRect().Width - padding ;
+            float w = Onion.Tree.CurrentNode!.GetInstance().Rects.GetInnerContentRect().Width - padding;
             int i = 0;
             float x = 0;
             float rowHeight = (w) / preferredColumns;
@@ -422,7 +446,7 @@ public class CharacterCreationSystem : Walgelijk.System
 
                 if (x > w || i == 0)
                 {
-                    x = rowHeight ;
+                    x = rowHeight;
 
                     // end the previous row if this isnt the first row ever made!!
                     if (i != 0)
