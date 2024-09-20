@@ -1,14 +1,14 @@
 {
-  "Id": "baton",
+  "Id": "sledgehammer",
   "WeaponData": {
-    "Name": "Baton",
-    "Damage": 0.25,
-    "UseDelay": 0.05,
-    "MaxHandRangeMultiplier": 0.25,
+    "Name": "Sledgehammer",
+    "Damage": 1.0,
+    "UseDelay": 0.0,
+    "MaxHandRangeMultiplier": 1.0,
     "AdditionalComponents": null,
     "EnsureSystems": null,
-    "ThrowableDamage": 0.2,
-    "ThrowableHeavy": false,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": true,
     "ThrowableSharpBoxes": [],
     "WeaponType": "Melee",
     "BulletsPerShot": 1,
@@ -24,29 +24,33 @@
     "EjectionParticle": "Small",
     "CasingSize": 1.0,
     "IsPumpAction": false,
-    "Range": 500.0,
+    "Range": 600.0,
     "CanDeflectBullets": false,
     "SpecialMelee": false,
     "MeleeDamageType": "Blunt",
-    "MeleeSize": "Small"
+    "MeleeSize": "Large"
   },
-  "BaseTexture": "textures/weapons/baton/base.png",
-  "HoldForGrip": false,
+  "BaseTexture": "base:textures/weapons/sledgehammer/base.png",
+  "HoldForGrip": true,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {
-    "X": 0.0,
-    "Y": 0.0
+    "X": -15.0,
+    "Y": -15.0
   },
   "CasingEjectionPoint": {
-    "X": 0.0,
-    "Y": 0.0
+    "X": 15.0,
+    "Y": 15.0
   },
   "HoldPoints": [
     {
-      "X": 43.0,
-      "Y": 130.0
+      "X": -1.9319458,
+      "Y": 214.28705
+    },
+    {
+      "X": 6.534012,
+      "Y": -57.71696
     }
   ],
   "AnimatedParts": null,
-  "OnFloorAngle": 90.0
+  "OnFloorAngle": 0.0
 }
