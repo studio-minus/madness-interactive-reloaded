@@ -107,7 +107,7 @@
     "tut-throw-1": "Throwing is an important skill.\nIt stuns the enemy and, if you can catch it, grants you their weapon.",
     "tut-throw-2": "Aim and use <color=#ffffff>[{0}]</color> to <color=#ffff00>throw</color>.",
     "tut-melee": "Get ready to fight! Attack by pressing <color=#ffffff>[{0}]</color>.\n\n<color=#ffff00>Block</color> incoming attacks by holding <color=#ffffff>[{1}]</color>.\n\n<color=#ffff00>Parry</color> and stun the enemy by blocking right before the enemy attack lands. Get your timing right.",
-    "tut-parry": "Parry and kill.",
+    "tut-parry": "Parry and kill to proceed.",
     "tut-finish": "Well done. Jump into the pit."
   }
 }
