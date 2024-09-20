@@ -34,7 +34,8 @@ public static class Stamper
                 stamps[6 + i] = new(scene.GetComponentFrom<QuadShapeComponent>(pos.BodyDecorations[i]));
 
             for (int i = 0; i < pos.HeadDecorations.Length; i++)
-                stamps[6 + pos.BodyDecorations.Length + i] = new(scene.GetComponentFrom<QuadShapeComponent>(pos.HeadDecorations[i]));
+                stamps[6 + pos.BodyDecorations.Length + i] = new(scene.GetComponentFrom<QuadShapeComponent>(
+                    pos.HeadDecorations[i]));
 
             Array.Sort(stamps, 0, c, new StampComparer());
 

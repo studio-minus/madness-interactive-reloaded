@@ -101,7 +101,18 @@ public class CampaignMenuSystem : Walgelijk.System
                     }
 
                     if (MadnessUtils.FindPlayer(Scene, out var player, out var character))
-                        character.Delete(Scene);
+                    {
+                        bool needsLookUpdate = false;
+
+                        if (c.Look == null && character.Look != UserData.Instances.PlayerLook) // requested look is none, but look isnt playerlook, so we reset
+                            needsLookUpdate = true;
+
+                        if (c.Look != null && Registries.Looks.TryGet(c.Look, out var requested) && character.Look != requested)
+                            needsLookUpdate = true;
+
+                        if (needsLookUpdate)
+                            character.Delete(Scene);
+                    }
                 }
                 i++;
 
@@ -160,7 +171,7 @@ public class CampaignMenuSystem : Walgelijk.System
         {
             if (selectedCampaign != null && Registries.Campaigns.TryGet(selectedCampaign, out var sc) && sc != null)
             {
-                
+
                 if (CampaignProgress.TryGetCurrentStats(out var stats))
                 {
                     Ui.Layout.FitContainer(1, 0.7f).StickLeft().StickTop();

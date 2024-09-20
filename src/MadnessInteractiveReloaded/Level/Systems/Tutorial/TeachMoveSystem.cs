@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Numerics;
+using System.Runtime.Intrinsics.X86;
 using Walgelijk;
 using Walgelijk.Localisation;
 using Walgelijk.SimpleDrawing;
@@ -274,6 +275,12 @@ public class TeachMeleeSystem : TeachSystem
             {
                 Text = string.Format(Localisation.Get("tut-melee"), attack, block),
                 Target = Target.Top
+            });     
+            
+            Instructions(new Instruction
+            {
+                Text = string.Format(Localisation.Get("tut-parry"), attack, block),
+                Target = Target.NPC
             });
 
             foreach (var ai in Scene.GetAllComponentsOfType<AiComponent>())
@@ -353,6 +360,9 @@ public abstract class TeachSystem : Walgelijk.System
                     if (Scene.FindAnyComponent<AiComponent>(out var ai))
                     {
                         var character = Scene.GetComponentFrom<CharacterComponent>(ai.Entity);
+                        if (!character.IsAlive)
+                            return;
+
                         var p = character.Positioning.Body.ComputedVisualCenter;
                         p.Y += CharacterConstants.HalfHeight * 2 * character.Positioning.Scale;
 

@@ -5,7 +5,7 @@
   "EnemySpawnInterval": 5.0,
   "MaxEnemyCount": 1,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "0",
+  "BackgroundMusic": "sounds/music/madness_2.ogg",
   "WeaponChance": 1.0,
   "LevelBounds": {
     "MinX": -2392.029,
