@@ -274,6 +274,12 @@ public class TeachMeleeSystem : TeachSystem
             {
                 Text = string.Format(Localisation.Get("tut-melee"), attack, block),
                 Target = Target.Top
+            });     
+            
+            Instructions(new Instruction
+            {
+                Text = string.Format(Localisation.Get("tut-parry"), attack, block),
+                Target = Target.NPC
             });
 
             foreach (var ai in Scene.GetAllComponentsOfType<AiComponent>())
