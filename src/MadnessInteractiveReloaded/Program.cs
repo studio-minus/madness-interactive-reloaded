@@ -46,9 +46,10 @@ public static class Program
                 }
         }
 
+        TextureLoader.Decoders.Insert(0, new PngDecoder());
+
 #if DEBUG
         Harmony.DEBUG = true;
-        TextureLoader.Decoders.Insert(0, new PngDecoder());
         var _ = new MadnessInteractiveReloaded();
 #else
         try
@@ -95,6 +96,15 @@ public static class Program
             w.WriteLine("\t<div><b>Game build: </b>{0}</div>", System.Reflection.Assembly.GetAssembly(typeof(MIR.MadnessUtils)));
             w.WriteLine("\t<div><b>Engine build: </b>{0}</div>", System.Reflection.Assembly.GetAssembly(typeof(Walgelijk.Game)));
             w.WriteLine("</div>");
+
+            if (ModLoader.Mods.Any())
+            {
+                w.WriteLine("<div style='margin-bottom: 1em'>");
+                w.WriteLine("<div><b>Mods</b></div><ul>");
+                foreach (var mod in ModLoader.Mods)
+                    w.WriteLine("<li style=\"color: red\"><code>{0}</code></li>", mod.Id);
+                w.WriteLine("</ul></div>");
+            }
 
             w.WriteLine("<div style='margin-bottom: 1em'>");
             w.WriteLine("\t<div><a target='blank' href='{0}'>Component dump path</a></div>", componentDumpPath);
