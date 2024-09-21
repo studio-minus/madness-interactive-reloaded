@@ -43,7 +43,7 @@
     "MeleeDamageType": "Blade",
     "MeleeSize": "Medium"
   },
-  "BaseTexture": "base:textures/weapons/billhook_machete/base.png",
+  "BaseTexture": "textures/weapons/billhook_machete/base.png",
   "HoldForGrip": false,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {

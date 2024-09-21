@@ -49,7 +49,7 @@
     "MeleeDamageType": "Axe",
     "MeleeSize": "Large"
   },
-  "BaseTexture": "base:textures/weapons/mega_hammer/base.png",
+  "BaseTexture": "textures/weapons/mega_hammer/base.png",
   "HoldForGrip": true,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {

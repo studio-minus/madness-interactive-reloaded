@@ -30,7 +30,7 @@
     "MeleeDamageType": "Blunt",
     "MeleeSize": "Large"
   },
-  "BaseTexture": "base:textures/weapons/sledgehammer/base.png",
+  "BaseTexture": "textures/weapons/sledgehammer/base.png",
   "HoldForGrip": true,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {

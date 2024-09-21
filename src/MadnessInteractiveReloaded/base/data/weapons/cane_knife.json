@@ -37,7 +37,7 @@
     "MeleeDamageType": "Blade",
     "MeleeSize": "Small"
   },
-  "BaseTexture": "base:textures/weapons/cane_knife/base.png",
+  "BaseTexture": "textures/weapons/cane_knife/base.png",
   "HoldForGrip": false,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {

@@ -37,7 +37,7 @@
     "MeleeDamageType": "Blade",
     "MeleeSize": "Medium"
   },
-  "BaseTexture": "base:textures/weapons/iron_sword/base.png",
+  "BaseTexture": "textures/weapons/iron_sword/base.png",
   "HoldForGrip": false,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {
