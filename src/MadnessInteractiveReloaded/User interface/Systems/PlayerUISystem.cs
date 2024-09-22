@@ -312,6 +312,10 @@ public class PlayerUISystem : Walgelijk.System
         Draw.OutlineWidth = 5f;
         Draw.Circle(Window.WorldToWindowPoint(worldCenter), Vector2.One * targetCrosshairSize);
     }
+    public override void OnDeactivate()
+    {
+        Window.CursorStack.Fallthrough = DefaultCursor.Default;
+    }
 
     private static void DrawCounter(Vector2 p, int c, int max, HorizontalTextAlign alignment = HorizontalTextAlign.Left)
     {
