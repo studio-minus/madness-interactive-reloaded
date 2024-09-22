@@ -19,22 +19,22 @@ public class PlayerUISystem : Walgelijk.System
     private float dodgeSmooth = 0;
     private int lastProgressIndex;
     private float lastProgressIndexFlashCounter = 0;
+    private float lowAmmoWarningFade = 0;
 
     public override void Render()
     {
+        Window.CursorStack.Fallthrough = DefaultCursor.Default;
+
         if (!MadnessUtils.FindPlayer(Scene, out var player, out var character) || !character.IsAlive)
             return;
         if (MadnessUtils.IsCutscenePlaying(Scene))
             return;
         if (!Scene.FindAnyComponent<GameModeComponent>(out var gm))
             return;
-
-        //Window.CursorStack.Fallthrough = DefaultCursor.Default;
-
         if (MadnessUtils.IsPaused(Scene) || MadnessUtils.EditingInExperimentMode(Scene))
             return;
 
-        //Window.CursorStack.Fallthrough = DefaultCursor.Invisible;
+        Window.CursorStack.Fallthrough = DefaultCursor.Invisible;
 
         lastAmmoFlashCounter += Time.DeltaTimeUnscaled;
         lastProgressIndexFlashCounter += Time.DeltaTimeUnscaled;
@@ -66,6 +66,13 @@ public class PlayerUISystem : Walgelijk.System
         var c = new Vector2(padding, 0);
         bool hasWeapon = false;
         Draw.FontSize = iconSize;
+
+        //if (gameMode == GameMode.Experiment)
+        //    c.Y += 32;
+        float targetCrosshairSize = 20f; //default for unarmed, melee and accurate guns
+        bool firearmEmpty = false;
+        float normalizedAmmoCount = 1f;
+        Vector2 worldCenter = Input.WorldMousePosition;
 
         if (character.EquippedWeapon.TryGet(Scene, out var eq))
         {
@@ -168,6 +175,8 @@ public class PlayerUISystem : Walgelijk.System
                         lastAmmoCounter = eq.RemainingRounds;
                     }
 
+                    normalizedAmmoCount = (float)eq.RemainingRounds / eq.Data.RoundsPerMagazine;
+
                     if (eq.InfiniteAmmo)
                     {
                         Draw.Colour = Color.FromHsv(Time, 0.2f, 1);
@@ -179,6 +188,7 @@ public class PlayerUISystem : Walgelijk.System
                         {
                             Draw.Colour = float.Sin(Time.SecondsSinceLoadUnscaled * 24f) > 0 ? Colors.Red : Colors.White;
                             Draw.Text(Localisation.Get("empty"), c, new Vector2(1), HorizontalTextAlign.Left, VerticalTextAlign.Top);
+                            firearmEmpty = true;
                         }
                         else
                         {
@@ -187,6 +197,17 @@ public class PlayerUISystem : Walgelijk.System
                         }
                     }
                     c.Y += 40;
+
+                    var transform = Scene.GetComponentFrom<TransformComponent>(eq.Entity);
+                    var barrel = WeaponSystem.GetBarrel(eq, transform);
+
+                    worldCenter += character.Positioning.RecoilPositionOffset * 0.5f;
+                    worldCenter = Utilities.RotatePoint(worldCenter, character.Positioning.RecoilAngleOffset, barrel.position);
+
+                    float dist = Vector2.Distance(barrel.position, worldCenter);
+                    float spread = (1 - eq.Data.Accuracy) * dist;
+                    Rect size = new Rect(Vector2.Zero, Vector2.One * spread);
+                    targetCrosshairSize = MathF.Max(Window.WorldToWindowRect(new Rect(Vector2.Zero, Vector2.One * spread)).GetSize().X * 0.5f, 20f);
                     break;
                 default:
                     break;
@@ -266,6 +287,34 @@ public class PlayerUISystem : Walgelijk.System
                 Draw.Text(characterAbility.DisplayName, pos + new Vector2(inputWidth + 20, 0), Vector2.One, HorizontalTextAlign.Left, VerticalTextAlign.Top);
             }
         }
+
+        // crosshair rendering
+        Draw.ResetMaterial();
+        Draw.ResetTexture();
+
+        lowAmmoWarningFade = float.Lerp(lowAmmoWarningFade, normalizedAmmoCount < 0.3f ? 1f : 0f, Time.DeltaTimeUnscaled * 5f);
+
+        Rect rec = new Rect(Window.WorldToWindowPoint(worldCenter), Vector2.One * (targetCrosshairSize * 2f + 24f));
+        Draw.Texture = Assets.Load<Texture>("textures/ui/crosshair_glow.png").Value;
+        Draw.Colour = Color.White.WithAlpha(lowAmmoWarningFade);
+        Draw.Quad(rec);
+
+        Draw.ResetTexture();
+
+        Color desiredCrosshairColor = firearmEmpty ? (float.Sin(Time.SecondsSinceLoadUnscaled * 24f) > 0 ? Colors.Red : Colors.White) : Utilities.Lerp(normalizedAmmoCount < 0.5f ? new Color(1f, normalizedAmmoCount, normalizedAmmoCount) : Color.White, Color.White, lastAmmoFlashCounter * 3f); // not very readable but it sure is concise!
+        Draw.Colour = desiredCrosshairColor;
+        Draw.OutlineColour = desiredCrosshairColor;
+        Draw.OutlineColour.A = Math.Max(1f - (targetCrosshairSize - 20f) * 0.0085f, 0.2f);
+        Draw.OutlineWidth = 0;
+
+        Draw.Circle(Window.WorldToWindowPoint(worldCenter), Vector2.One * 5f);
+        Draw.Colour.A = 0f;
+        Draw.OutlineWidth = 5f;
+        Draw.Circle(Window.WorldToWindowPoint(worldCenter), Vector2.One * targetCrosshairSize);
+    }
+    public override void OnDeactivate()
+    {
+        Window.CursorStack.Fallthrough = DefaultCursor.Default;
     }
 
     private static void DrawCounter(Vector2 p, int c, int max, HorizontalTextAlign alignment = HorizontalTextAlign.Left)
