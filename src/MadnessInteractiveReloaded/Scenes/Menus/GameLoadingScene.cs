@@ -31,7 +31,7 @@ public static class GameLoadingScene
         new("Reading wardrobe assets", Registries.LoadArmour),
         new("Registering character appearances", Registries.LoadLooks),
         new("Manifesting ideological hostility", Registries.LoadFactions),
-        new("Detecting experiment character presets", Registries.LoadCharacterPresets),
+        new("Detecting experiment presets", Registries.LoadCharacterPresets),
         new("Reading cutscenes", Registries.LoadCutscenes, false), // loading videos has to be done on the main thread for... some reason
         new("Assembling reality", Registries.LoadLevels),
         new("Initiating Club N", Registries.LoadDjTracks),
@@ -41,7 +41,7 @@ public static class GameLoadingScene
         new("Initialising convars", ConVars.Initialise),
         new("Preparing textures", GameLoadingSteps.PrepareTextures, false),
         new("Preparing fonts", GameLoadingSteps.PrepareFonts),
-        new("Constructing the arena", () => UserData.Instances.ArenaMode = ArenaModeSaves.Load()),
+        //new("Constructing the arena", () => UserData.Instances.ArenaMode = ArenaModeSaves.Load()),
         new("Loading timeline", Registries.LoadCampaigns),
         new("Reading progression", Registries.LoadCampaignsStats),
         new("Finalising", () =>
@@ -83,18 +83,18 @@ public static class GameLoadingScene
             foreach (var item in LoadingSteps)
             {
                 yield return show(item.Title);
+
                 if (item.Async)
                     yield return asyncTask(item.Task);
                 else
                     item.Task();
 
                 gameLoadingComponent.Progress += 1f / LoadingSteps.Count;
-
-                yield return new RoutineDelay(0.05f);
             }
 
             yield return show("Welcome, " + Environment.UserName);
             game.AudioRenderer.Play(Sounds.UiConfirm);
+
             yield return new RoutineDelay(0.5f);
 
             OnFinishedLoading?.Invoke();
@@ -108,7 +108,7 @@ public static class GameLoadingScene
             tickSound.Pitch = Utilities.MapRange(0, 1, 0.9f, 1, gameLoadingComponent.Progress);
             tickSound.ForceUpdate();
             game.AudioRenderer.Play(tickSound);
-            return new RoutineFrameDelay();
+            return new RoutineDelay(0.05f);
         }
 
         static IRoutineCommand asyncTask(Action action)
