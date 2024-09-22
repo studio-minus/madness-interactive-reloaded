@@ -19,23 +19,22 @@ public class PlayerUISystem : Walgelijk.System
     private float dodgeSmooth = 0;
     private int lastProgressIndex;
     private float lastProgressIndexFlashCounter = 0;
-    float lowAmmoWarningFade = 0;
+    private float lowAmmoWarningFade = 0;
 
     public override void Render()
     {
+        Window.CursorStack.Fallthrough = DefaultCursor.Default;
+
         if (!MadnessUtils.FindPlayer(Scene, out var player, out var character) || !character.IsAlive)
             return;
         if (MadnessUtils.IsCutscenePlaying(Scene))
             return;
         if (!Scene.FindAnyComponent<GameModeComponent>(out var gm))
             return;
-
-        //Window.CursorStack.Fallthrough = DefaultCursor.Default;
-
         if (MadnessUtils.IsPaused(Scene) || MadnessUtils.EditingInExperimentMode(Scene))
             return;
 
-        //Window.CursorStack.Fallthrough = DefaultCursor.Invisible;
+        Window.CursorStack.Fallthrough = DefaultCursor.Invisible;
 
         lastAmmoFlashCounter += Time.DeltaTimeUnscaled;
         lastProgressIndexFlashCounter += Time.DeltaTimeUnscaled;
@@ -70,9 +69,6 @@ public class PlayerUISystem : Walgelijk.System
 
         //if (gameMode == GameMode.Experiment)
         //    c.Y += 32;
-
-        Window.CursorAppearance = DefaultCursor.Invisible;
-        Window.CursorStack.SetCursor(DefaultCursor.Invisible); // TODO when i get a way to actually disable the cursor, do that
         float targetCrosshairSize = 20f; //default for unarmed, melee and accurate guns
         bool firearmEmpty = false;
         float normalizedAmmoCount = 1f;
