@@ -233,11 +233,11 @@ public class TeachMeleeSystem : TeachSystem
                 if (ch.Name == "victim")
                 {
                     ai.IsDocile = true;
-                    ch.AllowWalking = false;
+                    ch.AllowWalking = false;    
                     if (Scene.TryGetComponentFrom<BodyPartComponent>(ch.Positioning.Head.Entity, out var head))
-                        head.Health = 0.01f;
+                        head.Health = 0.0001f;
                     if (Scene.TryGetComponentFrom<BodyPartComponent>(ch.Positioning.Body.Entity, out var body))
-                        body.Health = 0.01f;
+                        body.Health = 0.0001f;
                 }
             }
 

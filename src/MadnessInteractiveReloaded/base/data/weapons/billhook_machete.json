@@ -1,26 +1,26 @@
 {
-  "Id": "battle_axe",
+  "Id": "billhook_machete",
   "WeaponData": {
-    "Name": "Battle Axe",
-    "Damage": 2.0,
+    "Name": "Billhook Machete",
+    "Damage": 0.7,
     "UseDelay": 0.0,
     "MaxHandRangeMultiplier": 1.0,
     "AdditionalComponents": null,
     "EnsureSystems": null,
-    "ThrowableDamage": 5.0,
-    "ThrowableHeavy": true,
+    "ThrowableDamage": 1.0,
+    "ThrowableHeavy": false,
     "ThrowableSharpBoxes": [
       {
-        "MinX": 262.01794,
-        "MinY": -35.841614,
-        "MaxX": 317.1081,
-        "MaxY": 138.05103
+        "MinX": -2.3000412,
+        "MinY": -1.3999939,
+        "MaxX": 119.29996,
+        "MaxY": 62.600006
       },
       {
-        "MinX": 0.9472809,
-        "MinY": -69.72473,
-        "MaxX": 64.94728,
-        "MaxY": -32.987717
+        "MinX": 52.59999,
+        "MinY": -66.19998,
+        "MaxX": 119.3,
+        "MaxY": 110.30007
       }
     ],
     "WeaponType": "Melee",
@@ -37,13 +37,13 @@
     "EjectionParticle": "Small",
     "CasingSize": 1.0,
     "IsPumpAction": false,
-    "Range": 800.0,
-    "CanDeflectBullets": false,
+    "Range": 450.0,
+    "CanDeflectBullets": true,
     "SpecialMelee": false,
-    "MeleeDamageType": "Axe",
-    "MeleeSize": "Large"
+    "MeleeDamageType": "Blade",
+    "MeleeSize": "Medium"
   },
-  "BaseTexture": "textures/weapons/battle_axe/base.png",
+  "BaseTexture": "textures/weapons/billhook_machete/base.png",
   "HoldForGrip": false,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {
@@ -56,8 +56,8 @@
   },
   "HoldPoints": [
     {
-      "X": 20.581963,
-      "Y": 192.14536
+      "X": -25.800041,
+      "Y": 109.499954
     }
   ],
   "AnimatedParts": null,

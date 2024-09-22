@@ -1,15 +1,22 @@
 {
-  "Id": "baton",
+  "Id": "cane_knife",
   "WeaponData": {
-    "Name": "Baton",
-    "Damage": 0.25,
-    "UseDelay": 0.05,
-    "MaxHandRangeMultiplier": 0.25,
+    "Name": "Cane Knife",
+    "Damage": 0.45,
+    "UseDelay": 0.0,
+    "MaxHandRangeMultiplier": 1.0,
     "AdditionalComponents": null,
     "EnsureSystems": null,
-    "ThrowableDamage": 0.2,
+    "ThrowableDamage": 1.0,
     "ThrowableHeavy": false,
-    "ThrowableSharpBoxes": [],
+    "ThrowableSharpBoxes": [
+      {
+        "MinX": -1.3999443,
+        "MinY": 1.3000183,
+        "MaxX": 73.40005,
+        "MaxY": 226.40016
+      }
+    ],
     "WeaponType": "Melee",
     "BulletsPerShot": 1,
     "RoundsPerMagazine": 12,
@@ -24,29 +31,29 @@
     "EjectionParticle": "Small",
     "CasingSize": 1.0,
     "IsPumpAction": false,
-    "Range": 500.0,
-    "CanDeflectBullets": false,
+    "Range": 400.0,
+    "CanDeflectBullets": true,
     "SpecialMelee": false,
-    "MeleeDamageType": "Blunt",
+    "MeleeDamageType": "Blade",
     "MeleeSize": "Small"
   },
-  "BaseTexture": "textures/weapons/baton/base.png",
+  "BaseTexture": "textures/weapons/cane_knife/base.png",
   "HoldForGrip": false,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {
-    "X": 0.0,
-    "Y": 0.0
+    "X": -15.0,
+    "Y": -15.0
   },
   "CasingEjectionPoint": {
-    "X": 0.0,
-    "Y": 0.0
+    "X": 15.0,
+    "Y": 15.0
   },
   "HoldPoints": [
     {
-      "X": 43.0,
-      "Y": 130.0
+      "X": 0.30002594,
+      "Y": 90.600006
     }
   ],
   "AnimatedParts": null,
-  "OnFloorAngle": 90.0
+  "OnFloorAngle": 0.0
 }

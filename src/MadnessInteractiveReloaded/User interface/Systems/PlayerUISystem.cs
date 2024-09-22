@@ -29,8 +29,13 @@ public class PlayerUISystem : Walgelijk.System
             return;
         if (!Scene.FindAnyComponent<GameModeComponent>(out var gm))
             return;
+
+        //Window.CursorStack.Fallthrough = DefaultCursor.Default;
+
         if (MadnessUtils.IsPaused(Scene) || MadnessUtils.EditingInExperimentMode(Scene))
             return;
+
+        //Window.CursorStack.Fallthrough = DefaultCursor.Invisible;
 
         lastAmmoFlashCounter += Time.DeltaTimeUnscaled;
         lastProgressIndexFlashCounter += Time.DeltaTimeUnscaled;

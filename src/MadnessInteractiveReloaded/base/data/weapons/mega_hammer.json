@@ -1,26 +1,32 @@
 {
-  "Id": "battle_axe",
+  "Id": "mega_hammer",
   "WeaponData": {
-    "Name": "Battle Axe",
-    "Damage": 2.0,
-    "UseDelay": 0.0,
+    "Name": "Mega Hammer",
+    "Damage": 5.0,
+    "UseDelay": 2.0,
     "MaxHandRangeMultiplier": 1.0,
     "AdditionalComponents": null,
     "EnsureSystems": null,
-    "ThrowableDamage": 5.0,
+    "ThrowableDamage": 15.0,
     "ThrowableHeavy": true,
     "ThrowableSharpBoxes": [
       {
-        "MinX": 262.01794,
-        "MinY": -35.841614,
-        "MaxX": 317.1081,
-        "MaxY": 138.05103
+        "MinX": 100.857864,
+        "MinY": -1.5080261,
+        "MaxX": 164.85788,
+        "MaxY": 183.371
       },
       {
-        "MinX": 0.9472809,
-        "MinY": -69.72473,
-        "MaxX": 64.94728,
-        "MaxY": -32.987717
+        "MinX": 174.90988,
+        "MinY": -165.94699,
+        "MaxX": 292.271,
+        "MaxY": 175.74805
+      },
+      {
+        "MinX": 11.559967,
+        "MinY": -114.76404,
+        "MaxX": 75.55997,
+        "MaxY": 123.475914
       }
     ],
     "WeaponType": "Melee",
@@ -39,12 +45,12 @@
     "IsPumpAction": false,
     "Range": 800.0,
     "CanDeflectBullets": false,
-    "SpecialMelee": false,
+    "SpecialMelee": true,
     "MeleeDamageType": "Axe",
     "MeleeSize": "Large"
   },
-  "BaseTexture": "textures/weapons/battle_axe/base.png",
-  "HoldForGrip": false,
+  "BaseTexture": "textures/weapons/mega_hammer/base.png",
+  "HoldForGrip": true,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {
     "X": -15.0,
@@ -56,8 +62,12 @@
   },
   "HoldPoints": [
     {
-      "X": 20.581963,
-      "Y": 192.14536
+      "X": 22.025925,
+      "Y": 272.00403
+    },
+    {
+      "X": -19.602081,
+      "Y": -140.4809
     }
   ],
   "AnimatedParts": null,
