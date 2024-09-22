@@ -95,7 +95,7 @@ public static class GameLoadingScene
 
             yield return show("Welcome, " + Environment.UserName);
             game.AudioRenderer.Play(Sounds.UiConfirm);
-            yield return new RoutineDelay(1);
+            yield return new RoutineDelay(0.5f);
 
             OnFinishedLoading?.Invoke();
             game.Scene = MainMenuScene.Load(game);
