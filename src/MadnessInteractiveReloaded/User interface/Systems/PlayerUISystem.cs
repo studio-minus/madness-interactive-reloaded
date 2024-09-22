@@ -301,7 +301,7 @@ public class PlayerUISystem : Walgelijk.System
 
         Draw.ResetTexture();
 
-        Color desiredCrosshairColor = firearmEmpty ? (float.Sin(Time.SecondsSinceLoadUnscaled * 24f) > 0 ? Colors.Red : Colors.White) : Utilities.Lerp(Utilities.Lerp(Color.Red, Color.White, normalizedAmmoCount), Color.White, lastAmmoFlashCounter * 3f); // not very readable but it sure is concise!
+        Color desiredCrosshairColor = firearmEmpty ? (float.Sin(Time.SecondsSinceLoadUnscaled * 24f) > 0 ? Colors.Red : Colors.White) : Utilities.Lerp(normalizedAmmoCount < 0.5f ? new Color(1f, normalizedAmmoCount, normalizedAmmoCount) : Color.White, Color.White, lastAmmoFlashCounter * 3f); // not very readable but it sure is concise!
         Draw.Colour = desiredCrosshairColor;
         Draw.OutlineColour = desiredCrosshairColor;
         Draw.OutlineColour.A = Math.Max(1f - (targetCrosshairSize - 20f) * 0.0085f, 0.2f);
