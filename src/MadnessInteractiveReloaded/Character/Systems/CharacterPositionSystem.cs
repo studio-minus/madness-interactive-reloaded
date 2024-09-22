@@ -198,8 +198,6 @@ public class CharacterPositionSystem : Walgelijk.System
                     offset.X /= charPos.Head.Scale.X * charPos.FlipScaling;
                     offset.Y /= -charPos.Head.Scale.Y;
                     Scene.GetComponentFrom<TransformConstraintComponent>(headDecoration).PositionOffset = offset * charPos.Scale;
-
-                    Logger.Log(offset * charPos.Scale);
                 }
             }
         }

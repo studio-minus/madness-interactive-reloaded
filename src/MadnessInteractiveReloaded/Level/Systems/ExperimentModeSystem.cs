@@ -515,7 +515,7 @@ public class ExperimentModeSystem : Walgelijk.System
 
     private static void ProcessAutospawnWindow(ExperimentModeComponent exp, EnemySpawningComponent spawning)
     {
-        Ui.Layout.Size(MenuWidth, 593 + 40).Center();
+        Ui.Layout.Size(MenuWidth + 100, 593 + 40).Center().Resizable().MaxHeight(593 + 40).MinSize(100, 100);
         Ui.Theme.Background((Appearance)Colors.Red.WithAlpha(0.2f)).OutlineWidth(1).OutlineColour(new(Colors.Red, Colors.White)).Text(Colors.White).Once();
         Ui.StartDragWindow("Autospawn settings", ref exp.AutoSpawnSettingsOpen);
         {
@@ -524,7 +524,7 @@ public class ExperimentModeSystem : Walgelijk.System
             {
                 Ui.Label("Max enemy count");
                 Ui.Layout.Height(32).FitWidth().StickLeft();
-                Ui.IntStepper(ref spawning.MaxEnemyCount, (0, 10), 1);
+                Ui.IntStepper(ref spawning.MaxEnemyCount, (0, 30), 1);
                 Ui.Spacer(5);
                 Ui.Label("Spawn interval in seconds");
                 Ui.Layout.Height(32).FitWidth().StickLeft();
@@ -570,16 +570,44 @@ public class ExperimentModeSystem : Walgelijk.System
 
                 if (spawning.WeaponsToSpawnWith != null)
                 {
-                    Ui.Layout.FitWidth().Height(35).StickLeft().StickTop();
+                    Ui.Layout.FitWidth().Height(35).StickLeft().StickTop().EnqueueLayout(new DistributeChildrenLayout());
                     Ui.StartGroup();
                     {
-                        Ui.Layout.FitContainer(0.5f, 1).StickLeft().StickTop();
-                        if (Ui.Button("Only melee"))
-                            spawning.WeaponsToSpawnWith = [.. Registries.Weapons.GetAllValues().Where(t => t.WeaponData.WeaponType is WeaponType.Melee).Select(t => t.Id)];
+                        // TODO this should be cached! it's kind of scary
+                        // how fast it is without caching but it really
+                        // should be cached
+                        var meleeSet = Registries.Weapons.GetAllValues().Where(t => t.WeaponData.WeaponType is WeaponType.Melee).Select(t => t.Id);
+                        var firearmSet = Registries.Weapons.GetAllValues().Where(t => t.WeaponData.WeaponType is WeaponType.Firearm).Select(t => t.Id);
 
-                        Ui.Layout.FitContainer(0.5f, 1).StickRight().StickTop();
-                        if (Ui.Button("Only firearms"))
-                            spawning.WeaponsToSpawnWith = [.. Registries.Weapons.GetAllValues().Where(t => t.WeaponData.WeaponType is WeaponType.Firearm).Select(t => t.Id)];
+                        bool melee = spawning.WeaponsToSpawnWith.Intersect(meleeSet).Count() == meleeSet.Count();
+                        Ui.Layout.FitContainer(1 / 3f, 1).StickLeft().StickTop();
+                        if (Ui.Checkbox(ref melee, Localisation.Get("experiment-melee")))
+                        {
+                            if (!melee)
+                                spawning.WeaponsToSpawnWith = [.. spawning.WeaponsToSpawnWith.Concat(meleeSet).Distinct()];
+                            else
+                                spawning.WeaponsToSpawnWith = [.. spawning.WeaponsToSpawnWith.Except(meleeSet).Distinct()];
+                        }
+
+                        bool firearms = spawning.WeaponsToSpawnWith.Intersect(firearmSet).Count() == firearmSet.Count();
+                        Ui.Layout.FitContainer(1 / 3f, 1).StickLeft().StickTop();
+                        if (Ui.Checkbox(ref firearms, Localisation.Get("experiment-firearms")))
+                        {
+                            if (!firearms)
+                                spawning.WeaponsToSpawnWith = [.. spawning.WeaponsToSpawnWith.Concat(firearmSet).Distinct()];
+                            else
+                                spawning.WeaponsToSpawnWith = [.. spawning.WeaponsToSpawnWith.Except(firearmSet).Distinct()];
+                        }
+
+                        bool all = spawning.WeaponsToSpawnWith.Count == Registries.Weapons.Count;
+                        Ui.Layout.FitContainer(1 / 3f, 1).StickLeft().StickTop();
+                        if(Ui.Checkbox(ref all, Localisation.Get("experiment-all")))
+                        {
+                            if (!all)
+                                spawning.WeaponsToSpawnWith = [.. Registries.Weapons.GetAllValues().Select(d => d.Id)];
+                            else
+                                spawning.WeaponsToSpawnWith = [];
+                        }
                     }
                     Ui.End();
 

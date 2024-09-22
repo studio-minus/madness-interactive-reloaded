@@ -59,6 +59,9 @@
     "experiment-kill": "Kill",
     "experiment-body-health": "Body hp",
     "experiment-head-health": "Head hp",
+    "experiment-melee": "Melee",
+    "experiment-firearms": "Firearms",
+    "experiment-all": "All",
 
     "pause-menu-resume": "Resume",
     "pause-menu-retry": "Retry level",
