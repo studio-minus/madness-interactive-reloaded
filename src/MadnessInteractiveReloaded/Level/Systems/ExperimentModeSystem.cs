@@ -739,7 +739,7 @@ public class ExperimentModeSystem : Walgelijk.System
         Ui.Layout.FitWidth().Scale(-32, 0).Height(32).StickTop().StickLeft();
         Ui.StringInputBox(ref exp.NPCFilter, new TextBoxOptions(Localisation.Get("experiment-filter")));
 
-        Ui.Layout.Size(32, 32).StickRight();
+        Ui.Layout.Size(32, 32).StickTop().StickRight();
         if (Ui.ImageButton(Textures.UserInterface.SmallExitClose.Value, ImageContainmentMode.Center))
             exp.NPCFilter = string.Empty;
 
