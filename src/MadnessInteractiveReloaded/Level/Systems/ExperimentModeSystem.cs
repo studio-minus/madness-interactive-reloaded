@@ -288,10 +288,10 @@ public class ExperimentModeSystem : Walgelijk.System
                 Ui.Layout.StickLeft().StickTop().FitWidth().Height(60).HorizontalLayout();
                 Ui.StartScrollView();
                 {
-                    tabButton("Characters", Tab.Characters, Textures.UserInterface.ExperimentMode.CharactersIcon);
-                    tabButton("Weapons", Tab.Weapons, Textures.UserInterface.ExperimentMode.WeaponsIcon);
-                    tabButton("Music", Tab.Music, Textures.UserInterface.ExperimentMode.MusicIcon);
-                    tabButton("Game rules", Tab.GameRules, Textures.UserInterface.ExperimentMode.GameRulesIcon);
+                    tabButton(Localisation.Get("experiment-tab-characters"), Tab.Characters, Textures.UserInterface.ExperimentMode.CharactersIcon);
+                    tabButton(Localisation.Get("experiment-tab-weapons"), Tab.Weapons, Textures.UserInterface.ExperimentMode.WeaponsIcon);
+                    tabButton(Localisation.Get("experiment-tab-music"), Tab.Music, Textures.UserInterface.ExperimentMode.MusicIcon);
+                    tabButton(Localisation.Get("experiment-tab-game-rules"), Tab.GameRules, Textures.UserInterface.ExperimentMode.GameRulesIcon);
                     //tabButton("Settings", Tab.Settings, Textures.UserInterface.ExperimentMode.SettingsIcon);
 
                     void tabButton(in string name, Tab tab, in AssetRef<Texture> texture)
@@ -351,7 +351,7 @@ public class ExperimentModeSystem : Walgelijk.System
                         Ui.StartScrollView(false);
                         {
                             Ui.Layout.FitWidth().Height(32).StickLeft();
-                            if (Ui.Button("Head"))
+                            if (Ui.Button(Localisation.Get("head")))
                             {
                                 c.Preset.Look.Head = Registries.Armour.Head.GetRandomValue();
                                 item.Component.NeedsLookUpdate = true;
@@ -360,7 +360,7 @@ public class ExperimentModeSystem : Walgelijk.System
                             // TODO invoke the entire char customisation UI please, thanks
 
                             Ui.Layout.FitWidth().Height(32).StickLeft();
-                            if (Ui.Button("Save"))
+                            if (Ui.Button(Localisation.Get("save")))
                             {
                                 item.Component.NeedsLookUpdate = true;
                                 c.SaveChanges();
@@ -384,7 +384,7 @@ public class ExperimentModeSystem : Walgelijk.System
         {
             var p = exp.ContextMenuInstance.Value;
             var rect = new Rect();
-            Ui.Layout.Size(200, 128).VerticalLayout().MoveAbs(p.ScreenPosition.X, p.ScreenPosition.Y);
+            Ui.Layout.Size(200, 160).VerticalLayout().MoveAbs(p.ScreenPosition.X, p.ScreenPosition.Y);
             Ui.Layout.EnqueueConstraint(new AlwaysOnTop());
             Ui.Theme.OutlineColour(Colors.White).Padding(8).Foreground((Appearance)Colors.Black).OutlineWidth(1);
             Ui.StartScrollView(true);
@@ -445,7 +445,7 @@ public class ExperimentModeSystem : Walgelijk.System
             }
 
             Ui.Layout.FitWidth(false).Scale(-h * 2 - 12, 0).StickRight(false).Height(h);
-            Ui.StringInputBox(ref exp.MusicFilter, new("Filter..."));
+            Ui.StringInputBox(ref exp.MusicFilter, new(Localisation.Get("experiment-filter")));
         }
         Ui.End();
 
@@ -517,16 +517,16 @@ public class ExperimentModeSystem : Walgelijk.System
     {
         Ui.Layout.Size(MenuWidth + 100, 593 + 40).Center().Resizable().MaxHeight(593 + 40).MinSize(100, 100);
         Ui.Theme.Background((Appearance)Colors.Red.WithAlpha(0.2f)).OutlineWidth(1).OutlineColour(new(Colors.Red, Colors.White)).Text(Colors.White).Once();
-        Ui.StartDragWindow("Autospawn settings", ref exp.AutoSpawnSettingsOpen);
+        Ui.StartDragWindow(Localisation.Get("experiment-autospawn-settings"), ref exp.AutoSpawnSettingsOpen);
         {
             Ui.Layout.FitContainer(1, 1, false).VerticalLayout();
             Ui.StartScrollView();
             {
-                Ui.Label("Max enemy count");
+                Ui.Label(Localisation.Get("experiment-max-enemies"));
                 Ui.Layout.Height(32).FitWidth().StickLeft();
                 Ui.IntStepper(ref spawning.MaxEnemyCount, (0, 30), 1);
                 Ui.Spacer(5);
-                Ui.Label("Spawn interval in seconds");
+                Ui.Label(Localisation.Get("experiment-spawn-interval"));
                 Ui.Layout.Height(32).FitWidth().StickLeft();
                 Ui.FloatStepper(ref spawning.Interval, (0.1f, 60), 0.1f);
                 const float size = 40;
@@ -540,7 +540,7 @@ public class ExperimentModeSystem : Walgelijk.System
                     {
                         Ui.Layout.PreferredSize().FitWidth().StickLeft().StickTop();
                         Ui.Theme.Text(Colors.White.WithAlpha(0.5f)).Once();
-                        Ui.TextRect("Assign characters to spawn by right clicking a character in the character menu...", HorizontalTextAlign.Left, VerticalTextAlign.Top);
+                        Ui.TextRect(Localisation.Get("experiment-autospawn-help"), HorizontalTextAlign.Left, VerticalTextAlign.Top);
                     }
                     else
                         for (int i = 0; i < spawning.SpawnInstructions.Count; i++)
@@ -601,7 +601,7 @@ public class ExperimentModeSystem : Walgelijk.System
 
                         bool all = spawning.WeaponsToSpawnWith.Count == Registries.Weapons.Count;
                         Ui.Layout.FitContainer(1 / 3f, 1).StickLeft().StickTop();
-                        if(Ui.Checkbox(ref all, Localisation.Get("experiment-all")))
+                        if (Ui.Checkbox(ref all, Localisation.Get("experiment-all")))
                         {
                             if (!all)
                                 spawning.WeaponsToSpawnWith = [.. Registries.Weapons.GetAllValues().Select(d => d.Id)];
@@ -617,7 +617,7 @@ public class ExperimentModeSystem : Walgelijk.System
                     {
                         Ui.Layout.PreferredSize().FitWidth().StickLeft().StickTop();
                         Ui.Theme.Text(Colors.White.WithAlpha(0.5f)).Once();
-                        Ui.TextRect("Assign weapons to autospawn by right clicking a weapon in the weapon menu...", HorizontalTextAlign.Left, VerticalTextAlign.Top);
+                        Ui.TextRect(Localisation.Get("experiment-autospawn-help-weapon"), HorizontalTextAlign.Left, VerticalTextAlign.Top);
                     }
                     else
                         for (int i = 0; i < spawning.WeaponsToSpawnWith.Count; i++)
@@ -670,7 +670,7 @@ public class ExperimentModeSystem : Walgelijk.System
             if (AiCharacterSystem.AutoSpawn)
             {
                 Ui.Layout.Height(controlHeight).FitWidth().StickLeft();
-                if (Ui.ClickButton("Configure autospawn..."))
+                if (Ui.ClickButton(Localisation.Get("experiment-autospawn-configure")))
                     exp.AutoSpawnSettingsOpen = !exp.AutoSpawnSettingsOpen;
             }
 
@@ -698,7 +698,7 @@ public class ExperimentModeSystem : Walgelijk.System
     {
         Ui.Layout.Size(300, 400).Center();
         Ui.Theme.Background((Appearance)Colors.Red.WithAlpha(0.2f)).OutlineWidth(1).OutlineColour(new(Colors.Red, Colors.White)).Text(Colors.White).Once();
-        Ui.StartDragWindow("Improbability Disks", ref exp.ImprobabilityDisksOpen);
+        Ui.StartDragWindow(Localisation.Get("experiment-modifiers-disks"), ref exp.ImprobabilityDisksOpen);
         {
             Ui.Layout.FitContainer(1, 1, false).VerticalLayout();
             Ui.StartScrollView(false);
@@ -736,15 +736,23 @@ public class ExperimentModeSystem : Walgelijk.System
 
     private void ProcessCharacterTab(ExperimentModeComponent exp, float controlHeight)
     {
-        Ui.Layout.FitWidth().Height(32).StickLeft().StickTop();
+        Ui.Layout.FitWidth().Scale(-32, 0).Height(32).StickTop().StickLeft();
+        Ui.StringInputBox(ref exp.NPCFilter, new TextBoxOptions(Localisation.Get("experiment-filter")));
+
+        Ui.Layout.Size(32, 32).StickTop().StickRight();
+        if (Ui.ImageButton(Textures.UserInterface.SmallExitClose.Value, ImageContainmentMode.Center))
+            exp.NPCFilter = string.Empty;
+
+        Ui.Layout.FitWidth().Height(32).StickLeft().Move(0, 36);
         Ui.Theme.OutlineWidth(1).Once();
-        if (Ui.Button("Faction: " + Registries.Factions[exp.SelectedFaction].Name).Up)
+        if (Ui.Button(string.Format("{0}: ", Localisation.Get("experiment-npc-faction")) + Registries.Factions[exp.SelectedFaction].Name).Up)
         {
             exp.ContextMenuInstance = new ContextMenu(Input.WindowMousePosition, () =>
             {
                 foreach (var key in Registries.Factions.GetAllKeys())
                 {
                     var faction = Registries.Factions[key];
+                    Logger.Log(faction.Name);
                     Ui.Layout.FitWidth().Height(32).StickLeft();
                     if (Ui.Button(faction.Name, faction.GetHashCode()))
                     {
@@ -755,12 +763,15 @@ public class ExperimentModeSystem : Walgelijk.System
             });
         }
 
-        Ui.Layout.FitContainer().Scale(0, -32).StickTop().StickLeft().VerticalLayout().Move(0, 32);
+        Ui.Layout.FitContainer().Scale(0, -32).StickTop().StickLeft().VerticalLayout().Move(0, 64);
         Ui.StartScrollView(false);
         {
             int i = 0;
             foreach (var preset in Registries.Experiment.CharacterPresets.GetAllValues())
             {
+                if (!string.IsNullOrEmpty(exp.NPCFilter) && !preset.Name.Contains(exp.NPCFilter, StringComparison.InvariantCultureIgnoreCase))
+                    continue;
+
                 i++;
                 Ui.Layout.Height(controlHeight * 2).FitWidth().StickLeft();
                 Ui.Decorate(new CharacterContextMenuDecorator(preset, exp));
@@ -796,7 +807,7 @@ public class ExperimentModeSystem : Walgelijk.System
     private void ProcessWeaponsTab(ExperimentModeComponent exp, float controlHeight)
     {
         Ui.Layout.FitWidth().Scale(-32, 0).Height(32).StickTop().StickLeft();
-        Ui.StringInputBox(ref exp.WeaponFilter, new TextBoxOptions("Filter..."));
+        Ui.StringInputBox(ref exp.WeaponFilter, new TextBoxOptions(Localisation.Get("experiment-filter")));
 
         Ui.Layout.Size(32, 32).StickRight().StickTop();
         if (Ui.ImageButton(Textures.UserInterface.SmallExitClose.Value, ImageContainmentMode.Center))
