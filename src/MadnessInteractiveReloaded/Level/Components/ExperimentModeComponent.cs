@@ -15,7 +15,7 @@ public class ExperimentModeComponent : Component
     public readonly SelectionManager<IExperimentSelectable> SelectionManager = new();
 
     public float TimeSinceMenuOpened;
-    public string SelectedFaction = "aahw";
+    public FactionOption SelectedFaction = new("aahw");
     public bool DrawPropertyMenu = true;
     public ExperimentPlacableObject? CurrentlyPlacing;
     public ContextMenu? ContextMenuInstance;
@@ -28,6 +28,7 @@ public class ExperimentModeComponent : Component
     public FreeMoveTarget FreeMoveCameraTarget = new();
 
     public string[] SortedWeaponCache = [];
+    public FactionOption[] FactionCache = [];
 
     public void CopySceneToSelectionManager(Scene scene)
     {
@@ -52,6 +53,20 @@ public class ExperimentModeComponent : Component
             ScreenPosition = screenPosition;
             ProcessUi = processUi;
         }
+    }
+
+    public readonly struct FactionOption
+    {
+        public readonly string Id;
+        public readonly string Name;
+
+        public FactionOption(string id)
+        {
+            Id = id;
+            Name = Registries.Factions[id].Name;
+        }
+
+        public override string ToString() => Name;
     }
 
     public enum Tab

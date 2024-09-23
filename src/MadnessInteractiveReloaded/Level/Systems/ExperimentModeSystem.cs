@@ -37,6 +37,8 @@ public class ExperimentModeSystem : Walgelijk.System
                 var wpn = Registries.Weapons[key];
                 return wpn.WeaponData.WeaponType + wpn.WeaponData.Name;
             })];
+
+            exp.FactionCache = [.. Registries.Factions.GetAllKeys().Select(id => new FactionOption(id))];
         }
 
         if (Scene.FindAnyComponent<EnemySpawningComponent>(out var sp))
@@ -743,25 +745,12 @@ public class ExperimentModeSystem : Walgelijk.System
         if (Ui.ImageButton(Textures.UserInterface.SmallExitClose.Value, ImageContainmentMode.Center))
             exp.NPCFilter = string.Empty;
 
+        int factionIndex = int.Max(0, Array.IndexOf(exp.FactionCache, exp.SelectedFaction));
         Ui.Layout.FitWidth().Height(32).StickLeft().Move(0, 36);
+        Ui.Decorators.Tooltip(Localisation.Get("experiment-npc-faction"));
         Ui.Theme.OutlineWidth(1).Once();
-        if (Ui.Button(string.Format("{0}: ", Localisation.Get("experiment-npc-faction")) + Registries.Factions[exp.SelectedFaction].Name).Up)
-        {
-            exp.ContextMenuInstance = new ContextMenu(Input.WindowMousePosition, () =>
-            {
-                foreach (var key in Registries.Factions.GetAllKeys())
-                {
-                    var faction = Registries.Factions[key];
-                    Logger.Log(faction.Name);
-                    Ui.Layout.FitWidth().Height(32).StickLeft();
-                    if (Ui.Button(faction.Name, faction.GetHashCode()))
-                    {
-                        exp.SelectedFaction = key;
-                        exp.ContextMenuInstance = null;
-                    }
-                }
-            });
-        }
+        if (Ui.Dropdown(exp.FactionCache , ref factionIndex))
+            exp.SelectedFaction = exp.FactionCache[factionIndex];
 
         Ui.Layout.FitContainer().Scale(0, -32).StickTop().StickLeft().VerticalLayout().Move(0, 64);
         Ui.StartScrollView(false);
@@ -779,7 +768,7 @@ public class ExperimentModeSystem : Walgelijk.System
                 {
                     exp.CurrentlyPlacing = new ExperimentPlacableObject((scene, pos) =>
                     {
-                        var faction = Registries.Factions.Get(exp.SelectedFaction);
+                        var faction = Registries.Factions[exp.SelectedFaction.Id];
 
                         var character = Prefabs.CreateCharacter(scene, new CharacterPrefabParams
                         {
