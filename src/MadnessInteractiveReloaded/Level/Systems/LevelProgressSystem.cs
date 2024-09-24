@@ -74,15 +74,11 @@ public class LevelProgressSystem : Walgelijk.System
         if (!Scene.FindAnyComponent<LevelProgressComponent>(out var progress))
             throw new System.InvalidOperationException("There is no progress component in the scene, so you can't invoke Win");
 
-        if (!progress.GoalReached)
-            progress.GoalReached = true;
+        progress.GoalReached = true;
 
         // try opening the progress door
-        var door = Scene.GetAllComponentsOfType<DoorComponent>()
-            .FirstOrDefault(static d => d.Properties.IsLevelProgressionDoor);
-
-        if (door != null)
-            door.Open(Scene);
+        var door = Scene.GetAllComponentsOfType<DoorComponent>().FirstOrDefault(static d => d.Properties.IsLevelProgressionDoor);
+        door?.Open(Scene);
     }
 
     public void TransitionToNextLevel()
@@ -137,6 +133,6 @@ public class LevelProgressSystem : Walgelijk.System
                 throw new InvalidOperationException("Attempt to progress to next level at the end of the campaign level index");
         }
         else
-            throw new Exception("Campaign is missing a stats entry");
+            Logger.Error("Campaign is missing a stats entry");
     }
 }
