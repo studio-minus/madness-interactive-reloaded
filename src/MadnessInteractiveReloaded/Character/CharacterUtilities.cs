@@ -76,12 +76,6 @@ public static class CharacterUtilities
     /// <summary>
     /// Do damage with a gun.
     /// </summary>
-    /// <param name="scene"></param>
-    /// <param name="damage"></param>
-    /// <param name="bodyPart"></param>
-    /// <param name="character"></param>
-    /// <param name="bulletDirection"></param>
-    /// <param name="localHitPoint"></param>
     public static void DoGunDamage(Scene scene, float damage, BodyPartComponent bodyPart, CharacterComponent character, Vector2 bulletDirection, Vector2 localHitPoint)
     {
         bodyPart.Damage(damage);

@@ -20,18 +20,6 @@ public class DestructibleBodyPartSystem : Walgelijk.System
         }
     }
 
-    public static void ResetMaterial(Material material)
-    {
-        material.SetUniform("holesCount", 0);
-        material.SetUniform("holes", Array.Empty<Vector3>()); 
-        
-        material.SetUniform("slashesCount", 0);
-        material.SetUniform("slashes", Array.Empty<Vector3>());
-
-        material.SetUniform("innerCutoutHolesCount", 0);
-        material.SetUniform("innerCutoutHoles", Array.Empty<Vector3>());
-    }
-
     public override void Render()
     {
         foreach (var bodyPart in Scene.GetAllComponentsOfType<BodyPartShapeComponent>())
@@ -50,6 +38,19 @@ public class DestructibleBodyPartSystem : Walgelijk.System
                 material.SetUniform("innerCutoutHoles", bodyPart.InnerCutoutHoles);
 
                 bodyPart.NeedsUpdate = false;
+            }
+        }   
+        
+        foreach (var apparel in Scene.GetAllComponentsOfType<ApparelSpriteComponent>())
+        {
+            var material = apparel.RenderTask.Material;
+
+            if (apparel.NeedsUpdate)
+            {
+                material.SetUniform("holesCount", apparel.HolesCount);
+                material.SetUniform("holes", apparel.Holes);
+
+                    apparel.NeedsUpdate = false;
             }
         }
     }

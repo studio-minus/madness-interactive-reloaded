@@ -188,14 +188,6 @@ public static class Prefabs
     /// <summary>
     /// Spawn a simple entity with a sprite component.
     /// </summary>
-    /// <param name="scene"></param>
-    /// <param name="texture"></param>
-    /// <param name="position"></param>
-    /// <param name="renderOrder"></param>
-    /// <param name="parent"></param>
-    /// <param name="xScaleMultiplier"></param>
-    /// <param name="yScaleMultiplier"></param>
-    /// <returns></returns>
     public static Entity CreateSprite(Scene scene, Texture texture, Vector2 position, RenderOrder renderOrder = default,
         ComponentRef<TransformComponent>? parent = null, float xScaleMultiplier = 1, float yScaleMultiplier = 1)
     {
@@ -210,6 +202,29 @@ public static class Prefabs
         scene.AttachComponent(ent, new QuadShapeComponent(true)
         {
             Material = SpriteMaterialCreator.Instance.Load(texture),
+            RenderOrder = renderOrder
+        });
+
+        return ent;
+    }
+
+    /// <summary>
+    /// Spawn a sprite entity for a piece of destructible clothes.
+    /// </summary>
+    public static Entity CreateApparelSprite(Scene scene, ApparelMaterialParams materialParams, Vector2 position, RenderOrder renderOrder = default,
+        ComponentRef<TransformComponent>? parent = null)
+    {
+        var ent = scene.CreateEntity();
+        scene.AttachComponent(ent, new TransformComponent
+        {
+            Position = position,
+            Scale = new Vector2(materialParams.Texture.Width * materialParams.Scale, materialParams.Texture.Height * materialParams.Scale),
+            Parent = parent,
+        });
+
+        scene.AttachComponent(ent, new ApparelSpriteComponent(true)
+        {
+            Material = ApparelMaterialPool.Instance.RequestObject(materialParams) ?? Material.DefaultTextured,
             RenderOrder = renderOrder
         });
 
@@ -234,8 +249,7 @@ public static class Prefabs
 
         var c = scene.AttachComponent(ent, new BodyPartShapeComponent(true)
         {
-            Material = BodyPartMaterialPool.Instance.RequestObject(materialParams) 
-            ?? throw new Exception("Too many body parts!"),
+            Material = BodyPartMaterialPool.Instance.RequestObject(materialParams) ?? throw new Exception("Too many body parts!"),
             RenderOrder = renderOrder,
             BloodColour = materialParams.BloodColour
         });
@@ -611,6 +625,7 @@ public static class Prefabs
             BloodColour = @params.Look.BloodColour,
             Scale = scale
         }, renderOrder);
+
         var head = CreateBodypartSprite(scene, new BodyPartMaterialParams
         {
             SkinTexture = @params.Look.Head.Right,
@@ -650,7 +665,7 @@ public static class Prefabs
                 Character = new(characterEntity),
                 MaxHealth = @params.Stats.BodyHealth,
                 Health = @params.Stats.BodyHealth
-            }); // Body health
+            });
 
         scene.AttachComponent(head, new PhysicsBodyComponent
         {
@@ -760,9 +775,13 @@ public static class Prefabs
 
         void createHeadDecoration(ArmourPiece? armour, int index)
         {
-            var decor = CreateSprite(scene,
-                armour == null ? Textures.Transparent : armour.Right.Value, @params.Bottom,
-                renderOrder.OffsetOrder(2), xScaleMultiplier: scale, yScaleMultiplier: scale);
+            var matParams = new ApparelMaterialParams
+            {
+                Texture = armour == null ? Textures.Transparent : armour.Right.Value,
+                Scale = scale
+            };
+
+            var decor = CreateApparelSprite(scene, matParams, @params.Bottom, renderOrder.OffsetOrder(2));
             scene.AttachComponent(decor, new TransformConstraintComponent
             {
                 LockPosition = true,
@@ -770,15 +789,20 @@ public static class Prefabs
                 PositionOffset = (armour?.OffsetRight ?? default) / headTransform.Scale,
                 Other = new ComponentRef<TransformComponent>(head)
             });
+
             scene.AttachComponent(decor, new ArmourComponent(armour));
             charPos.HeadDecorations[index] = decor;
         }
 
         void createBodyDecoration(ArmourPiece? armour, int index)
         {
-            var decor = CreateSprite(scene,
-                armour == null ? Textures.Transparent : armour.Right.Value, @params.Bottom,
-                renderOrder.OffsetOrder(0), xScaleMultiplier: scale, yScaleMultiplier: scale);
+            var matParams = new ApparelMaterialParams
+            {
+                Texture = armour == null ? Textures.Transparent : armour.Right.Value,
+                Scale = scale
+            };
+
+            var decor = CreateApparelSprite(scene, matParams, @params.Bottom, renderOrder.OffsetOrder(0));
             scene.AttachComponent(decor, new TransformConstraintComponent
             {
                 LockPosition = true,
@@ -848,10 +872,10 @@ public static class Prefabs
 
         character.OnDeath.AddListener(e =>
         {
-            if (Level.CurrentLevel != null 
-                && Game.Main.Scene.Id == c 
+            if (Level.CurrentLevel != null
+                && Game.Main.Scene.Id == c
                 && Game.Main.Scene.FindAnyComponent<LevelProgressComponent>(out var progress))
-                    progress.BodyCount.Current++;
+                progress.BodyCount.Current++;
         });
 
         return character;

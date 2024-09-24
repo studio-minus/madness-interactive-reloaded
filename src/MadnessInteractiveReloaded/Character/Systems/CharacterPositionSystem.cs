@@ -151,7 +151,7 @@ public class CharacterPositionSystem : Walgelijk.System
         for (int i = 0; i < charPos.BodyDecorations.Length; i++)
         {
             var bodyDecoration = charPos.BodyDecorations[i];
-            var decorationRenderer = Scene.GetComponentFrom<QuadShapeComponent>(bodyDecoration);
+            var decorationRenderer = Scene.GetComponentFrom<ApparelSpriteComponent>(bodyDecoration);
             var piece = character.Look.GetBodyLayer(i);
 
             decorationRenderer.Visible = piece != null;
@@ -164,7 +164,7 @@ public class CharacterPositionSystem : Walgelijk.System
                 if (character.NeedsLookUpdate)
                 {
                     var texture = charPos.IsFlipped ? piece.Left.Value : piece.Right.Value;
-                    decorationRenderer.Material = SpriteMaterialCreator.Instance.Load(texture);
+                    decorationRenderer.SetPiece(texture);
                     Scene.GetComponentFrom<TransformComponent>(bodyDecoration).Scale = texture.Size * charPos.Scale * piece.TextureScale;
 
                     var offset = charPos.IsFlipped ? piece.OffsetLeft : piece.OffsetRight;
@@ -179,7 +179,7 @@ public class CharacterPositionSystem : Walgelijk.System
         for (int i = 0; i < charPos.HeadDecorations.Length; i++)
         {
             var headDecoration = charPos.HeadDecorations[i];
-            var decorationRenderer = Scene.GetComponentFrom<QuadShapeComponent>(headDecoration);
+            var decorationRenderer = Scene.GetComponentFrom<ApparelSpriteComponent>(headDecoration);
             var piece = character.Look.GetHeadLayer(i);
             decorationRenderer.Color = character.Tint;
             decorationRenderer.Visible = piece != null;
@@ -191,7 +191,7 @@ public class CharacterPositionSystem : Walgelijk.System
                 {
                     var t = Scene.GetComponentFrom<TransformComponent>(headDecoration);
                     var texture = charPos.IsFlipped ? piece.Left.Value : piece.Right.Value;
-                    decorationRenderer.Material = SpriteMaterialCreator.Instance.Load(texture);
+                    decorationRenderer.SetPiece(texture);
                     t.Scale = texture.Size * charPos.Scale * piece.TextureScale;
 
                     var offset = charPos.IsFlipped ? piece.OffsetLeft : piece.OffsetRight;
