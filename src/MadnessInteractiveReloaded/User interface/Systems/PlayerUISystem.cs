@@ -263,7 +263,10 @@ public class PlayerUISystem : Walgelijk.System
             var abilityColour = Colors.White.WithAlpha(0.7f);
             foreach (var item in Scene.GetAllComponentsFrom(character.Entity))
             {
-                if (item is CharacterAbilityComponent characterAbility && characterAbility.Behaviour is not AbilityBehaviour.Always)
+                if (item is CharacterAbilityComponent characterAbility
+                    && characterAbility.Slot !=  AbilitySlot.None
+                    && characterAbility.Slot.AsAction() != GameAction.None
+                    && characterAbility.Behaviour is not AbilityBehaviour.Always)
                 {
                     Draw.FontSize = 18;
 
