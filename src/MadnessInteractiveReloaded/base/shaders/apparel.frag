@@ -61,13 +61,16 @@ void main()
     for (int i = 0; i < holesCount; i++)
     {
         vec3 hole = holes[i];
-        vec2 holePos = hole.xy * aspectRatio;
+        vec2 holePos = (hole.xy + 0.1 * vec2(snoise(obj.xy * 1.5 - seed), snoise(obj.xy * 1.5 + seed))) * aspectRatio;
         vec2 delta = holePos - obj;
         float depth = hole.z;
         float magn = length(delta);
 
         float polar = atan(delta.y, delta.x);
-        float star = snoise(vec2(polar * 2, holePos.x * 23.45)) + snoise(vec2(polar * 5, holePos.y * 23.45)) * 0.4;
+        float star = 
+            snoise(vec2(polar * 2, holePos.x * 23.45)) 
+            + snoise(vec2(polar * 8, holePos.y * 23.45)) * 0.32
+            + snoise(vec2(polar * 17, holePos.y * 23.45)) * 0.1;
 
         star *= 0.5 * depth / max(1, magn * 4);
 
