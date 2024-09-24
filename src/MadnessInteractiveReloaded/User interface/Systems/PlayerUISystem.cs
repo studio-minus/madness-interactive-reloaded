@@ -306,7 +306,7 @@ public class PlayerUISystem : Walgelijk.System
 
             lowAmmoWarningFade = float.Lerp(lowAmmoWarningFade, normalizedAmmoCount < 0.3f ? 1f : 0f, Time.DeltaTimeUnscaled * 5f);
 
-            var rec = new Rect(Window.WorldToWindowPoint(crosshairPos), new Vector2(targetCrosshairSize * 2f + 24f));
+            var rec = new Rect(Window.WorldToWindowPoint(Input.WorldMousePosition), new Vector2(targetCrosshairSize * 2f + 24f));
             Draw.Texture = Assets.Load<Texture>("textures/ui/crosshair_glow.png").Value;
             Draw.Colour = Color.White.WithAlpha(lowAmmoWarningFade);
             Draw.Quad(rec);
@@ -315,14 +315,15 @@ public class PlayerUISystem : Walgelijk.System
 
             Color desiredCrosshairColor = firearmEmpty ? (float.Sin(Time.SecondsSinceLoadUnscaled * 24f) > 0 ? Colors.Red : Colors.White) : Utilities.Lerp(normalizedAmmoCount < 0.5f ? new Color(1f, normalizedAmmoCount, normalizedAmmoCount) : Color.White, Color.White, lastAmmoFlashCounter * 3f); // not very readable but it sure is concise!
             Draw.Colour = desiredCrosshairColor;
+            Draw.Colour.A = 1 - Vector2.Distance(crosshairPos, Input.WorldMousePosition) * 0.00142f;
             Draw.OutlineColour = desiredCrosshairColor;
             Draw.OutlineColour.A = float.Max(1f - (targetCrosshairSize - 20f) * 0.0085f, 0.2f);
             Draw.OutlineWidth = 0;
-
-            Draw.Circle(Window.WorldToWindowPoint(Input.WorldMousePosition), new Vector2(5));
+            
+            Draw.Circle(Window.WorldToWindowPoint(crosshairPos), new Vector2(5));
             Draw.Colour.A = 0f;
             Draw.OutlineWidth = 5f;
-            Draw.Circle(Window.WorldToWindowPoint(crosshairPos), new Vector2(targetCrosshairSize));
+            Draw.Circle(Window.WorldToWindowPoint(Input.WorldMousePosition), new Vector2(targetCrosshairSize));
         }
     }
 
