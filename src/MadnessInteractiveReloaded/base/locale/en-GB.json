@@ -35,8 +35,9 @@
 
     "character-creation-save-exit": "Done",
     "character-creation-flip": "Flip character",
-    "character-creation-export": "Export",
+    "character-creation-reset": "Reset",
     "character-creation-import": "Import",
+    "character-creation-export": "Export",
 
     "experiment-open-menu": "Menu",
     "experiment-close-menu": "Stop editing",

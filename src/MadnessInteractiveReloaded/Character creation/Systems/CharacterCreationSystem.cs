@@ -325,6 +325,60 @@ public class CharacterCreationSystem : Walgelijk.System
 
         UnhighlightParts(character);
 
+        Ui.Layout.FitContent().VerticalLayout().StickRight().StickTop();
+        Ui.Theme.Padding(8).Once();
+        Ui.StartGroup(false);
+        {
+            Ui.Layout.Size(200, 80);
+            Ui.Theme.ForegroundColor(Colors.Red.Brightness(0.5f)).Text(new StateDependent<Color>(Colors.Black, Colors.White, Colors.White, Colors.White)).FontSize(32).OutlineWidth(6).Once();
+            if (Ui.Button(Localisation.Get("character-creation-reset")))
+            {
+                var grunt = Registries.Looks.Get("grunt");
+                grunt.CopyTo(UserData.Instances.PlayerLook);
+                character.NeedsLookUpdate = true;
+            }
+
+            Ui.Layout.Size(200, 80);
+            Ui.Theme.FontSize(32).OutlineWidth(4).Once();
+            if (Ui.Button(Localisation.Get("character-creation-import")))
+            {
+                if (FileDialog.OpenFile(new[] { ("look file", "look"), ("All files", "*") }, out var importPath))
+                {
+                    Logger.Debug(string.Format("Opened preset from {0}", importPath));
+                    try
+                    {
+                        var read = CharacterLookDeserialiser.Load(importPath);
+                        read.CopyTo(UserData.Instances.PlayerLook);
+                        character.NeedsLookUpdate = true;
+                    }
+                    catch (Exception e)
+                    {
+                        Logger.Error(string.Format("Error importing character look preset! : {0}", e));
+                    }
+                }
+            }
+
+            Ui.Layout.Size(200, 80);
+            Ui.Theme.FontSize(32).OutlineWidth(4).Once();
+            if (Ui.Button(Localisation.Get("character-creation-export")))
+            {
+                if (FileDialog.SaveFile(new[] { ("look file", "look"), ("All files", "*") }, null, null, out var exportPath))
+                {
+                    try
+                    {
+                        CharacterLookDeserialiser.Save(look, exportPath);
+                    }
+                    catch (Exception e)
+                    {
+                        Logger.Error(string.Format("Error exporting preset to {0}. : {1}", exportPath, e));
+                    }
+                    Logger.Debug(string.Format("Exported preset to {0}", exportPath));
+                }
+            }
+
+        }
+        Ui.End();
+
         Ui.Layout.Size(200, 80).StickRight().StickBottom();
         Ui.Theme.FontSize(32).OutlineWidth(4).Once();
         if (Ui.Button(Localisation.Get("done")))
