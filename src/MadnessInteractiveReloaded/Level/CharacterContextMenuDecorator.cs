@@ -104,7 +104,7 @@ public readonly struct CharacterContextMenuDecorator : IDecorator
 
         if (!preset.Mutable)
         {
-            Draw.Colour = Colors.White;
+            Draw.Colour = Colors.Red.WithAlpha(0.25f);
             var r = p.Instance.Rects.Rendered;
             Draw.Image(Textures.UserInterface.Locked.Value, r with { MinX = r.MaxX - r.Height }, ImageContainmentMode.Center);
         }

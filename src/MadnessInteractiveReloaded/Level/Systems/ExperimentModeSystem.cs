@@ -752,7 +752,7 @@ public class ExperimentModeSystem : Walgelijk.System
         if (Ui.Dropdown(exp.FactionCache , ref factionIndex))
             exp.SelectedFaction = exp.FactionCache[factionIndex];
 
-        Ui.Layout.FitContainer().Scale(0, -32).StickTop().StickLeft().VerticalLayout().Move(0, 64);
+        Ui.Layout.FitContainer().Scale(0, -64).StickTop().StickLeft().Move(0, 64).VerticalLayout();
         Ui.StartScrollView(false);
         {
             int i = 0;
