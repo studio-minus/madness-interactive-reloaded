@@ -24,6 +24,8 @@ public class CharacterCreationSystem : Walgelijk.System
     private static Rect calculatedPlayerRect;
     private static readonly MenuCharacterRenderer menuCharacterRenderer = new();
 
+    private const float ButtonBarHeight = 50;
+
     public override void Render()
     {
         if (!Scene.FindAnyComponent<CharacterCreationComponent>(out var data))
@@ -50,7 +52,7 @@ public class CharacterCreationSystem : Walgelijk.System
         camera.OrthographicSize = 0.8f / (Window.Height / 1080f);
 
         DrawBackground(data);
-
+        DrawButtons(data, character);
         DrawMainPanel(data, character);
 
         var s = calculatedPlayerRect.Scale(0.9f);
@@ -69,8 +71,7 @@ public class CharacterCreationSystem : Walgelijk.System
     private void DrawMainPanel(CharacterCreationComponent data, CharacterComponent character)
     {
         Ui.Theme.Padding(15).Push();
-
-        Ui.Layout.FitContainer(null, 1).AspectRatio(0.6f, AspectRatioBehaviour.Grow).StickLeft().StickTop();
+        Ui.Layout.FitContainer(null, 1).AspectRatio(0.6f, AspectRatioBehaviour.Grow).StickLeft().StickTop().Scale(0, -ButtonBarHeight - 15);
         Ui.Theme.ForegroundColor(Colors.Black).Once();
         Ui.StartGroup(true);
         {
@@ -178,6 +179,78 @@ public class CharacterCreationSystem : Walgelijk.System
                     break;
             }
             Ui.End();
+        }
+        Ui.End();
+        Ui.Theme.Pop();
+    }
+
+    private void DrawButtons(CharacterCreationComponent data, CharacterComponent character)
+    {
+        var look = UserData.Instances.PlayerLook;
+
+        Ui.Theme.Padding(15).FontSize(18).Push();
+
+        Ui.Layout.FitContainer(null, 1).AspectRatio(0.6f, AspectRatioBehaviour.Grow).StickLeft().Height(ButtonBarHeight).StickBottom();
+        Ui.Layout.EnqueueLayout(new DistributeChildrenLayout());
+        Ui.Theme.ForegroundColor(Colors.Black).Once();
+        Ui.StartGroup(false);
+        {
+            Ui.Layout.FitContainer(1, 1, false);
+            if (Ui.Button(Localisation.Get("back")))
+            {
+                Game.Scene = MainMenuScene.Load(Game);
+                MadnessUtils.Flash(Colors.Black, 0.2f);
+                ThumbnailRenderer.ResetAllPosters();
+            }
+
+            Ui.Layout.FitContainer(1, 1, false);
+            Ui.Theme.Text(new(Colors.Red, Colors.White)).OutlineWidth(2).Once();
+            if (Ui.Button(Localisation.Get("character-creation-reset")))
+            {
+                if (!Scene.FindAnyComponent<ConfirmationDialogComponent>(out _))
+                    Scene.AttachComponent(Scene.CreateEntity(), new ConfirmationDialogComponent(Localisation.Get("character-creation-reset-confirm"), () =>
+                    {
+                        var grunt = Registries.Looks.Get("grunt");
+                        grunt.CopyTo(UserData.Instances.PlayerLook);
+                        character.NeedsLookUpdate = true;
+                    }));
+            }
+
+            Ui.Layout.FitContainer(1, 1, false);
+            if (Ui.Button(Localisation.Get("character-creation-import")))
+            {
+                if (FileDialog.OpenFile(new[] { ("look file", "look"), ("All files", "*") }, out var importPath))
+                {
+                    Logger.Debug(string.Format("Opened preset from {0}", importPath));
+                    try
+                    {
+                        var read = CharacterLookDeserialiser.Load(importPath);
+                        read.CopyTo(UserData.Instances.PlayerLook);
+                        character.NeedsLookUpdate = true;
+                    }
+                    catch (Exception e)
+                    {
+                        Logger.Error(string.Format("Error importing character look preset! : {0}", e));
+                    }
+                }
+            }
+
+            Ui.Layout.FitContainer(1, 1, false);
+            if (Ui.Button(Localisation.Get("character-creation-export")))
+            {
+                if (FileDialog.SaveFile(new[] { ("look file", "look"), ("All files", "*") }, null, null, out var exportPath))
+                {
+                    try
+                    {
+                        CharacterLookDeserialiser.Save(look, exportPath);
+                    }
+                    catch (Exception e)
+                    {
+                        Logger.Error(string.Format("Error exporting preset to {0}. : {1}", exportPath, e));
+                    }
+                    Logger.Debug(string.Format("Exported preset to {0}", exportPath));
+                }
+            }
         }
         Ui.End();
 
@@ -324,16 +397,6 @@ public class CharacterCreationSystem : Walgelijk.System
         var look = UserData.Instances.PlayerLook;
 
         UnhighlightParts(character);
-
-        Ui.Layout.Size(200, 80).StickRight().StickBottom();
-        Ui.Theme.FontSize(32).OutlineWidth(4).Once();
-        if (Ui.Button(Localisation.Get("done")))
-        {
-            Game.Scene = MainMenuScene.Load(Game);
-            MadnessUtils.Flash(Colors.Black, 0.2f);
-            ThumbnailRenderer.ResetAllPosters();
-        }
-
 
         Ui.Layout.Width(120).Height(40).CenterHorizontal().StickBottom().Move(0, -15);
         Ui.Theme.Foreground(default).Image(new(Colors.White, Colors.Red)).OutlineWidth(0).Once();

@@ -24,15 +24,15 @@ public class ConfirmationDialogSystem : Walgelijk.System
                 Ui.Layout.PreferredSize().StickLeft().StickTop().FitWidth();
                 Ui.TextRect(item.Message, HorizontalTextAlign.Center, VerticalTextAlign.Middle);
 
-                Ui.Layout.FitWidth(false).Height(32).StickBottom().Move(0, Ui.Theme.Base.Padding);
+                Ui.Layout.FitWidth(false).Height(32).StickBottom().Move(0, Ui.Theme.Base.Padding).EnqueueLayout(new DistributeChildrenLayout());
                 Ui.StartGroup(false);
                 {
-                    Ui.Layout.Size(120, 32).StickLeft().StickBottom();
+                    Ui.Layout.FitContainer(1, 1, false);
                     if (Ui.ClickButton("No"))
                         isOpen = false;
 
-                    Ui.Layout.Size(120, 32).StickRight().StickBottom();
-                    Ui.Theme.Foreground((Appearance)Colors.White).Text(Colors.Black).Once();
+                    Ui.Layout.FitContainer(1, 1, false);
+                    Ui.Theme.Foreground((Appearance)Colors.White).Text(new(Colors.Black, Colors.Red)).Once();
                     if (Ui.ClickButton("Yes"))
                     {
                         isOpen = false;

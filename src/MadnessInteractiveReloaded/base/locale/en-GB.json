@@ -35,8 +35,10 @@
 
     "character-creation-save-exit": "Done",
     "character-creation-flip": "Flip character",
-    "character-creation-export": "Export",
+    "character-creation-reset": "Reset",
+    "character-creation-reset-confirm": "Are you sure you want to reset your character?",
     "character-creation-import": "Import",
+    "character-creation-export": "Export",
 
     "experiment-open-menu": "Menu",
     "experiment-close-menu": "Stop editing",
@@ -50,7 +52,7 @@
     "experiment-modifiers": "Modifiers",
     "experiment-timescale": "Timescale",
     "experiment-cleanup": "Clean everything",
-    "experiment-autospawn-configure": "Configure autospawn...",
+    "experiment-autospawn-configure": "Configure autospawn",
     "experiment-autospawn-settings": "Autospawn settings",
     "experiment-spawn-interval": "Spawn interval in seconds",
     "experiment-autospawn-help-character": "Assign characters to spawn by right clicking a character in the character menu...",
@@ -73,7 +75,6 @@
     "experiment-tab-weapons": "Weapons",
     "experiment-tab-music": "Music",
     "experiment-tab-game-rules": "Game rules",
-
 
     "pause-menu-resume": "Resume",
     "pause-menu-retry": "Retry level",
