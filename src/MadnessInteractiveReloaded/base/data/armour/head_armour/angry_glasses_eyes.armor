@@ -10,3 +10,5 @@ right textures/bodies/eyes/angry_glasses/angry_glasses_right.png
 
 offset-left 80 0
 offset-right 80 0
+
+damage-size 0

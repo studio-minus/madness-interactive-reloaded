@@ -45,11 +45,12 @@ public static class GoreTestScene
         });
 
         scene.GetComponentFrom<TransformComponent>(head).Position = new Vector2(50, 200);
-
+        //src\MadnessInteractiveReloaded\base\data\armour\head_armour\angry_glasses_eyes.armor  
         var headArmour = Prefabs.CreateApparelSprite(scene, new ApparelMaterialParams
         {
             Texture = Registries.Armour.HeadAccessory["engineer_mask_eyes"].Left.Value,
-            Scale = 1
+            Scale = 1,
+            DamageScale = 0
         }, new Vector2(300, 200));
 
         return scene;

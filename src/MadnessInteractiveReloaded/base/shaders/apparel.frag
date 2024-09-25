@@ -14,6 +14,7 @@ uniform vec4 tint = vec4(1, 1, 1, 1);
 
 uniform float seed;
 uniform float scale = 1;
+uniform float damageScale = 1;
 uniform int holesCount;
 uniform vec3 holes[HOLE_MAX_COUNT];
 
@@ -54,14 +55,14 @@ void main()
     vec2 aspectRatio = vec2(texSize.x / float(texSize.y), 1);
 
     vec2 obj = object.xy * aspectRatio;
-    float scl = scale / aspectRatio.x;
+    float scl = scale / max(aspectRatio.x, aspectRatio.y);
 
-    float accDepth = 1000;
+    float accDepth = 100000;
 
     for (int i = 0; i < holesCount; i++)
     {
         vec3 hole = holes[i];
-        vec2 holePos = (hole.xy + 0.1 * vec2(snoise(obj.xy * 1.5 - seed), snoise(obj.xy * 1.5 + seed))) * aspectRatio;
+        vec2 holePos = (hole.xy + 0.02 * vec2(snoise(obj.xy * 1.5 - seed), snoise(obj.xy * 1.5 + seed))) * aspectRatio;
         vec2 delta = holePos - obj;
         float depth = hole.z;
         float magn = length(delta);
@@ -72,15 +73,17 @@ void main()
             + snoise(vec2(polar * 8, holePos.y * 23.45)) * 0.32
             + snoise(vec2(polar * 17, holePos.y * 23.45)) * 0.1;
 
-        star *= 0.5 * depth / max(1, magn * 4);
+        star *= 0.5 * depth / max(1, magn * 4) * scl;
 
         float d = magn * scl - depth + THRESHOLD + star * 0.25;
 
         accDepth = min(accDepth, d);
      }
           
+    accDepth /= max(0.001, damageScale);
+
     const float SMOOTH_EDGE = 0.0025;
-    float OUTLINE_WIDTH = 0.012 * scale;
+    float OUTLINE_WIDTH = 2.0 / max(texSize.x, texSize.y) * scale;
 
     float outline = smoothstep(0.5, 0.5 + SMOOTH_EDGE, accDepth - OUTLINE_WIDTH);
 

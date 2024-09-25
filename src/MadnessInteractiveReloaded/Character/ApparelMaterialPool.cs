@@ -33,6 +33,7 @@ public class ApparelMaterialPool : Pool<Material, ApparelMaterialParams>
 
         c.SetUniform(ShaderDefaults.MainTextureUniform, initialiser.Texture);
         c.SetUniform("scale", initialiser.Scale);
+        c.SetUniform("damageScale", initialiser.DamageScale);
         c.SetUniform("seed", Utilities.RandomFloat());
     }
 

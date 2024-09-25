@@ -1,8 +1,8 @@
-﻿namespace MIR;
-
-using System;
+﻿using System;
 using System.Numerics;
 using Walgelijk;
+
+namespace MIR;
 
 /// <summary>
 /// Runs logic for <see cref="BodyPartShapeComponent"/>

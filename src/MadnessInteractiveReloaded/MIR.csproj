@@ -54,7 +54,7 @@
 		<PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="4.11.0" />
 		<PackageReference Include="NativeFileDialogExtendedSharp" Version="0.1.0" />
 		<PackageReference Include="System.CommandLine.DragonFruit" Version="0.4.0-alpha.22272.1" />
-		<PackageReference Include="Walgelijk" Version="0.29.5" />
+		<PackageReference Include="Walgelijk" Version="0.29.6" />
 		<PackageReference Include="Walgelijk.AssetManager" Version="0.16.14" />
 		<PackageReference Include="Walgelijk.CommonAssetDeserialisers" Version="0.8.3" />
 		<PackageReference Include="Walgelijk.Localisation" Version="1.1.21" />

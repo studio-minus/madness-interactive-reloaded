@@ -21,7 +21,7 @@ public class BuiltLevelScript : IDisposable
     {
         Code = code;
         Identifier = Guid.NewGuid();
-        Logger.Log("Script assigned ID " + Identifier);
+        Logger.Log("Script assigned ID " + Identifier + ":\n" + Code + "\n --- \n");
     }
 
     /// <summary>

@@ -26,6 +26,7 @@ public static class ArmourDeserialiser
     private const string Hidden = "hidden"; // is this visible in the character creator?
     private const string Broken = "broken"; // optional armour piece to switch to when broken (shot, hit by melee)
     private const string DeflectChance = "deflect-chance"; // optional bullet deflect chance from 0 to 1, where 1 is always deflect
+    private const string ProceduralDamage = "damage-size"; // optional procedural damage scale multiplier, see ArmourPiece.ProceduralDamageScale
 
     private const string Offset = "offset"; // determines offset-left & offset-right. it is a shorthand
     private const string OffsetLeft = "offset-left"; // determines offset of Left texture
@@ -49,6 +50,7 @@ public static class ArmourDeserialiser
         deserialiser.RegisterString(Category, static (p, v) => p.Category = Enum.Parse<CharacterCreationCategory>(v, true));
         deserialiser.RegisterBool(Detachable, static (p, v) => p.Detachable = v);
         deserialiser.RegisterBool(Hidden, static (p, v) => p.Hidden = v);
+        deserialiser.RegisterFloat(ProceduralDamage, static (p, v) => p.ProceduralDamageScale = v);
 
         deserialiser.RegisterVector2(OffsetLeft, static (p, v) => p.OffsetLeft = v);
         deserialiser.RegisterVector2(OffsetRight, static (p, v) => p.OffsetRight = v);
@@ -107,6 +109,7 @@ public static class ArmourDeserialiser
         yield return new(Category, piece.Category.ToString());
         yield return new(Detachable, piece.Detachable.ToString());
         yield return new(Hidden, piece.Hidden.ToString());
+        yield return new(ProceduralDamage, piece.ProceduralDamageScale.ToString());
 
         if (piece.BrokenKeys != null)
         {
