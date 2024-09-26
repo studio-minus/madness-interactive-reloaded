@@ -1,4 +1,5 @@
-﻿using Walgelijk;
+﻿using System;
+using Walgelijk;
 
 namespace MIR;
 
@@ -36,5 +37,15 @@ public class ExperimentCharacterPreset : ISpawnInstructions
     public object Clone()
     {
         throw new System.NotImplementedException();
+    }
+
+    public void SaveChanges()
+    {
+        CharacterThumbnailCache.Instance.Unload(Look);
+        if (Registries.Experiment.CharacterPresets.TryGetKeyFor(this, out var id))
+        {
+            CharacterPresetDeserialiser.Save(Name, Look, Stats, UserData.Paths.ExperimentCharacterPresets + id + ".preset");
+            Registries.LoadCharacterPresets();
+        }
     }
 }

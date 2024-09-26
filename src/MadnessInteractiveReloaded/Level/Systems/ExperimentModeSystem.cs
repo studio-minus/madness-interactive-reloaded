@@ -10,6 +10,9 @@ using static MIR.ExperimentModeComponent;
 using Walgelijk.AssetManager;
 using Walgelijk.Localisation;
 using Icons = MIR.Textures.UserInterface.ExperimentMode.MusicPlayer;
+using OpenTK.Graphics.ES20;
+using Walgelijk.Onion.Animations;
+using MIR.Controls;
 
 namespace MIR;
 
@@ -339,38 +342,130 @@ public class ExperimentModeSystem : Walgelijk.System
             if (exp.ImprobabilityDisksOpen)
                 ProcessModifiersWindow(exp);
 
-            foreach (var item in exp.SelectionManager.Selectables.OfType<ExperimentSelectableCharacter>())
+            if (exp.ActivePresetEditor != null)
             {
-                if (item.LookEditorOpen)
+                Ui.Layout.Size(300, 400).Center();
+                Ui.Theme.Background((Appearance)Colors.Red.WithAlpha(0.2f)).OutlineWidth(1).OutlineColour(new(Colors.Red, Colors.White)).Text(Colors.White).Once();
+                bool isOpen = true;
+                Ui.StartDragWindow(exp.ActivePresetEditor.Name ?? Localisation.Get("experiment-preset-editor"), ref isOpen);
                 {
-                    Ui.Layout.Size(300, 200).Center();
-                    Ui.Theme.Background((Appearance)Colors.Red.WithAlpha(0.2f)).OutlineWidth(1).OutlineColour(new(Colors.Red, Colors.White)).Text(Colors.White).Once();
-                    Ui.StartDragWindow(item.Name, ref item.LookEditorOpen);
+                    // tab bar
+                    Ui.Layout.FitWidth(false).Height(40).EnqueueLayout(new DistributeChildrenLayout());
+                    Ui.StartGroup(false);
                     {
-                        var c = Scene.GetComponentFrom<CharacterPresetComponent>(item.Component.Entity);
+                        if (exp.PresetEditorTab != 0)
+                            Ui.Theme.ForegroundColor(Colors.Black.WithAlpha(0.5f)).Once();
+                        Ui.Layout.FitContainer(1, 1, false).Inflate(0, -5).StickBottom(false);
+                        if (Ui.Button(Localisation.Get("experiment-look")))
+                            exp.PresetEditorTab = 0;
 
-                        Ui.Layout.FitContainer().StickLeft().StickTop().VerticalLayout();
-                        Ui.StartScrollView(false);
-                        {
-                            Ui.Layout.FitWidth().Height(32).StickLeft();
-                            if (Ui.Button(Localisation.Get("head")))
-                            {
-                                c.Preset.Look.Head = Registries.Armour.Head.GetRandomValue();
-                                item.Component.NeedsLookUpdate = true;
-                            }
-
-                            // TODO invoke the entire char customisation UI please, thanks
-
-                            Ui.Layout.FitWidth().Height(32).StickLeft();
-                            if (Ui.Button(Localisation.Get("save")))
-                            {
-                                item.Component.NeedsLookUpdate = true;
-                                c.SaveChanges();
-                            }
-                        }
-                        Ui.End();
+                        if (exp.PresetEditorTab != 1)
+                            Ui.Theme.ForegroundColor(Colors.Black.WithAlpha(0.5f)).Once();
+                        Ui.Layout.FitContainer(1, 1, false).Inflate(0, -5).StickBottom(false);
+                        if (Ui.Button(Localisation.Get("experiment-stats")))
+                            exp.PresetEditorTab = 1;
                     }
                     Ui.End();
+
+                    // things
+                    Ui.Layout.FitContainer(1, 1, false).Scale(0, -40).StickBottom(false).VerticalLayout();
+                    Ui.StartScrollView(true);
+                    {
+                        bool changed = false;
+                        var preset = exp.ActivePresetEditor;
+                        switch (exp.PresetEditorTab)
+                        {
+                            case 0:
+                                {
+                                    //Ui.Layout.FitContainer().Center().Inflate(-10);
+                                    //Ui.TextRect("how am i supposed to display this much information and so many settings in this tiny little window??", default, default);
+                                    Ui.Label("Base layer", HorizontalTextAlign.Center);
+                                    Ui.Layout.FitWidth().Height(100).CenterHorizontal().VerticalLayout();
+                                    Ui.StartScrollView(false);
+                                    {
+                                        foreach (var k in Registries.Armour.Head.GetAllKeys())
+                                        {
+                                            var a = Registries.Armour.Head[k];
+                                            Ui.Layout.FitWidth(false).Height(30);
+                                            Ui.Theme.Font(Fonts.CascadiaMono).Once();
+                                            if (LeftAlignedButton.Start(a.Name, a.GetHashCode()))
+                                            {
+                                                preset.Look.Head = a;
+                                                changed = true;
+                                            }
+                                        }
+                                    }
+                                    Ui.End();
+
+                                    Ui.Spacer(10);
+                                    Ui.Label("Layer 1", HorizontalTextAlign.Center);
+                                    Ui.Layout.FitWidth().Height(100).CenterHorizontal().VerticalLayout();
+                                    Ui.StartScrollView(false);
+                                    {
+                                        foreach (var k in Registries.Armour.HeadAccessory.GetAllKeys())
+                                        {
+                                            var a = Registries.Armour.HeadAccessory[k];
+                                            Ui.Layout.FitWidth(false).Height(30);
+                                            Ui.Theme.Font(Fonts.CascadiaMono).Once();
+                                            if (LeftAlignedButton.Start(a.Name, a.GetHashCode()))
+                                            {
+                                                preset.Look.HeadLayer1 = a;
+                                                changed = true;
+                                            }
+                                        }
+                                    }
+                                    Ui.End();
+
+                                    Ui.Spacer(10);
+                                    Ui.Label("Layer 2", HorizontalTextAlign.Center);
+                                    Ui.Layout.FitWidth().Height(100).CenterHorizontal().VerticalLayout();
+                                    Ui.StartScrollView(false);
+                                    {
+                                        foreach (var k in Registries.Armour.HeadAccessory.GetAllKeys())
+                                        {
+                                            var a = Registries.Armour.HeadAccessory[k];
+                                            Ui.Layout.FitWidth(false).Height(30);
+                                            Ui.Theme.Font(Fonts.CascadiaMono).Once();
+                                            if (preset.Look.HeadLayer2 == a)
+                                                Ui.Decorate(new CrosshairDecorator());
+                                            if (LeftAlignedButton.Start(a.Name, a.GetHashCode()))
+                                            {
+                                                preset.Look.HeadLayer2 = a;
+                                                changed = true;
+                                            }
+                                        }
+                                    }
+                                    Ui.End();
+                                }
+                                break;
+                            case 1:
+                                {
+
+                                }
+                                break;
+                        }
+
+                        if (changed)
+                        {
+                            updateAllRelevantCharacters();
+                            preset.SaveChanges();
+                        }
+                    }
+                    Ui.End();
+                }
+                Ui.End();
+
+                if (!isOpen)
+                    exp.ActivePresetEditor = null;
+
+                void updateAllRelevantCharacters()
+                {
+                    foreach (var presetCharacters in Scene.GetAllComponentsOfType<CharacterPresetComponent>())
+                        if (presetCharacters.Preset == exp.ActivePresetEditor)
+                        {
+                            if (Scene.TryGetComponentFrom<CharacterComponent>(presetCharacters.Entity, out var character))
+                                character.NeedsLookUpdate = true;
+                        }
                 }
             }
         }
@@ -386,12 +481,15 @@ public class ExperimentModeSystem : Walgelijk.System
         {
             var p = exp.ContextMenuInstance.Value;
             var rect = new Rect();
-            Ui.Layout.Size(200, 160).VerticalLayout().MoveAbs(p.ScreenPosition.X, p.ScreenPosition.Y);
+            Ui.Layout.Size(200, 200).VerticalLayout().FitContent().Width(200).MoveAbs(p.ScreenPosition.X, p.ScreenPosition.Y);
             Ui.Layout.EnqueueConstraint(new AlwaysOnTop());
+            Ui.Animate(new SlideInRelativeAnimation(-Vector2.UnitY)).Add(new FadeAnimation());
+            Ui.Animation.SetDuration(0.1f);
             Ui.Theme.OutlineColour(Colors.White).Padding(8).Foreground((Appearance)Colors.Black).OutlineWidth(1);
-            Ui.StartScrollView(true);
+            Ui.StartGroup(true, identity: exp.ContextMenuInstance.Value.ProcessUi.GetHashCode());
             {
                 p.ProcessUi();
+                Ui.Spacer(0); // for padding
                 rect = Onion.Tree.CurrentNode!.GetFinalDrawBounds(Onion.Tree).Expand(Input.WindowMouseDelta.LengthSquared() + 40);
             }
             Ui.End();
@@ -542,7 +640,7 @@ public class ExperimentModeSystem : Walgelijk.System
                     {
                         Ui.Layout.PreferredSize().FitWidth().StickLeft().StickTop();
                         Ui.Theme.Text(Colors.White.WithAlpha(0.5f)).Once();
-                        Ui.TextRect(Localisation.Get("experiment-autospawn-help"), HorizontalTextAlign.Left, VerticalTextAlign.Top);
+                        Ui.TextRect(Localisation.Get("experiment-autospawn-help-weapon"), HorizontalTextAlign.Left, VerticalTextAlign.Top);
                     }
                     else
                         for (int i = 0; i < spawning.SpawnInstructions.Count; i++)
@@ -749,7 +847,7 @@ public class ExperimentModeSystem : Walgelijk.System
         Ui.Layout.FitWidth().Height(32).StickLeft().Move(0, 36);
         Ui.Decorators.Tooltip(Localisation.Get("experiment-npc-faction"));
         Ui.Theme.OutlineWidth(1).Once();
-        if (Ui.Dropdown(exp.FactionCache , ref factionIndex))
+        if (Ui.Dropdown(exp.FactionCache, ref factionIndex))
             exp.SelectedFaction = exp.FactionCache[factionIndex];
 
         Ui.Layout.FitContainer().Scale(0, -64).StickTop().StickLeft().Move(0, 64).VerticalLayout();

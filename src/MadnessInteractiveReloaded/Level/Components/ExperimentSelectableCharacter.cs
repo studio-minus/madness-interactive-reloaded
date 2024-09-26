@@ -113,62 +113,34 @@ public class ExperimentSelectableCharacter : ExperimentModeComponent.IExperiment
 
         if (scene.TryGetComponentFrom<CharacterPresetComponent>(Component.Entity, out var characterPresetComp))
         {
-            bool hasChanged = false;
+            //bool hasChanged = false;
 
-            // TODO look & stats editor?
-            var stats = characterPresetComp.Preset.Stats;
+            //// TODO look & stats editor?
+            //var stats = characterPresetComp.Preset.Stats;
+            //Ui.Theme.ForegroundColor(default).Push();
 
-            //Ui.Layout.FitWidth().Height(32).StickLeft();
-            //Ui.StartGroup(false);
-            //{
-            //    Ui.Layout.FitContainer(0.5f, 1, false);
-            //    Ui.TextRect(Localisation.Get("max-dodge"), HorizontalTextAlign.Left, VerticalTextAlign.Middle);
+            //Ui.Layout.Height(32).FitWidth().StickLeft();
+            //if (LeftAlignedButton.Click("Edit appearance"))
+            //    LookEditorOpen = true;
 
-            //    Ui.Layout.FitContainer(0.5f, 1, false).StickRight(false);
-            //    if (Ui.FloatInputBox(ref stats.DodgeAbility))
-            //        hasChanged = true;
-            //}
-            //Ui.End();     
+            //Ui.Layout.Height(32).FitWidth().StickLeft();
+            //if (LeftAlignedButton.Click("Edit stats"))
+            //    StatsEditorOpen = true;
 
-            Ui.Layout.Height(32).FitWidth().StickLeft();
-            if (Ui.Button("Edit appearance"))
-                LookEditorOpen = true;
+            //Ui.Theme.ForegroundColor(default).Pop();
 
-            Ui.Layout.Height(32).FitWidth().StickLeft();
-            if (Ui.Button("Edit stats"))
-                StatsEditorOpen = true;
-
-            if (hasChanged)
-                try
-                {
-                    characterPresetComp.SaveChanges();
-                }
-                catch (Exception e)
-                {
-                    Logger.Error("Failed to save character preset: " + e);
-                }
+            //if (hasChanged)
+            //    try
+            //    {
+            //        characterPresetComp.SaveChanges();
+            //    }
+            //    catch (Exception e)
+            //    {
+            //        Logger.Error("Failed to save character preset: " + e);
+            //    }
         }
         else
         {
-            //Ui.Spacer(8);
-            //int index = Array.IndexOf(exp.AvailableLooks, Component.Look);
-            //Ui.Layout.StickLeft();
-            //Ui.Label("Look");
-            //Ui.Layout.Height(32).FitWidth().StickLeft();
-            //if (Ui.Dropdown(exp.AvailableLooks, ref index))
-            //{
-            //    Component.Look = exp.AvailableLooks[index];
-            //    Component.NeedsLookUpdate = true;
-            //}
-
-            //index = Array.IndexOf(exp.AvailableStats, Component.Stats);
-            //Ui.Spacer(8);
-            //Ui.Layout.StickLeft();
-            //Ui.Label("Stats");
-            //Ui.Layout.Height(32).FitWidth().StickLeft();
-            //if (Ui.Dropdown(exp.AvailableStats, ref index))
-            //    Component.Stats = exp.AvailableStats[index];
-
             if (Component.EquippedWeapon.IsValid(scene))
             {
                 Ui.Layout.Height(32).FitWidth().StickLeft();

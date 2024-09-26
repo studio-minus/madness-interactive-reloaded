@@ -49,7 +49,6 @@ public readonly struct CharacterContextMenuDecorator : IDecorator
                         exp.ContextMenuInstance = null;
                     }
 
-
                     // TODO cache this, probably
                     // makes everything so messy though
                     // is there a more elegant way to speed this up? keep a hashmap?
@@ -59,9 +58,7 @@ public readonly struct CharacterContextMenuDecorator : IDecorator
                     if (Ui.Checkbox(ref c, Localisation.Get("experiment-autospawn")))
                     {
                         if (autospawn)
-                        {
                             spawn.SpawnInstructions?.Remove(preset);
-                        }
                         else
                         {
                             spawn.SpawnInstructions ??= [];
@@ -71,6 +68,14 @@ public readonly struct CharacterContextMenuDecorator : IDecorator
 
                     if (preset.Mutable)
                     {
+                        Ui.Theme.OutlineWidth(1);
+                        Ui.Layout.FitWidth().Height(32).StickLeft();
+                        if (Ui.ClickButton(Localisation.Get("experiment-edit")))
+                        {
+                            exp.ActivePresetEditor = preset;
+                            exp.ContextMenuInstance = null;
+                        }
+
                         Ui.Theme.Text(new(Colors.Red, Colors.White)).OutlineColour(Colors.Red).Foreground((Appearance)Colors.Transparent).OutlineWidth(1);
                         Ui.Layout.FitWidth().Height(32).StickLeft();
                         if (Ui.ClickButton(Localisation.Get("delete")))

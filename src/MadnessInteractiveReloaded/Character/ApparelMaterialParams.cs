@@ -1,6 +1,6 @@
 ﻿using Walgelijk;
 
-namespace MIR;
+namespace MIR; //😀
 
 public struct ApparelMaterialParams
 {

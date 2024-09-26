@@ -575,15 +575,22 @@ public class CharacterCreationSystem : Walgelijk.System
     }
 }
 
-public struct DistributeChildrenLayout : ILayout
+public struct DistributeChildrenLayout(bool Vertical) : ILayout
 {
     public void Apply(in ControlParams p, int index, int childId)
     {
         float padding = p.Theme.Padding;
-        var child = p.Tree.EnsureInstance(childId); //  - p.Theme.Padding
-        var w = (p.Instance.Rects.Rendered.Width + padding) / p.Node.Children.Count(Onion.Tree.IsAlive);
+        var child = p.Tree.EnsureInstance(childId);
 
-        child.Rects.Intermediate.Width = (w - padding);
-        child.Rects.Intermediate = child.Rects.Intermediate.Translate(w * index, 0);
+        if (Vertical)
+        {
+            throw new NotImplementedException();
+        }
+        else
+        {
+            var w = (p.Instance.Rects.Rendered.Width     + padding) / p.Node.Children.Count(Onion.Tree.IsAlive);
+            child.Rects.Intermediate.Width = (w - padding);
+            child.Rects.Intermediate = child.Rects.Intermediate.Translate(w * index, 0);
+        }
     }
 }

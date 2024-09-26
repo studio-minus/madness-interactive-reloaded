@@ -30,6 +30,9 @@ public class ExperimentModeComponent : Component
     public string[] SortedWeaponCache = [];
     public FactionOption[] FactionCache = [];
 
+    public ExperimentCharacterPreset? ActivePresetEditor;
+    public int PresetEditorTab = 0;
+
     public void CopySceneToSelectionManager(Scene scene)
     {
         SelectionManager.Selectables.Clear();

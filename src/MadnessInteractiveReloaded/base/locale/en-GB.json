@@ -75,6 +75,10 @@
     "experiment-tab-weapons": "Weapons",
     "experiment-tab-music": "Music",
     "experiment-tab-game-rules": "Game rules",
+    "experiment-preset-editor": "Preset editor",
+    "experiment-edit": "Edit",
+    "experiment-stats": "Stats",
+    "experiment-look": "Look",
 
     "pause-menu-resume": "Resume",
     "pause-menu-retry": "Retry level",

@@ -13,16 +13,7 @@ public class CharacterPresetComponent : Component
 
     public void SaveChanges()
     {
-        CharacterThumbnailCache.Instance.Unload(Preset.Look);
-        if (Registries.Experiment.CharacterPresets.TryGetKeyFor(Preset, out var id))
-        {
-            CharacterPresetDeserialiser.Save(
-                 Preset.Name,
-                 Preset.Look,
-                 Preset.Stats,
-                 UserData.Paths.ExperimentCharacterPresets + id + ".preset");
-            Registries.LoadCharacterPresets();
-        }
+        Preset.SaveChanges();
     }
 }
 // 🎈
