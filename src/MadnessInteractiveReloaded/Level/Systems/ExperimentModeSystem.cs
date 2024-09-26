@@ -387,12 +387,13 @@ public class ExperimentModeSystem : Walgelijk.System
             var p = exp.ContextMenuInstance.Value;
             var rect = new Rect();
             Ui.Layout.Size(200, 160).VerticalLayout().MoveAbs(p.ScreenPosition.X, p.ScreenPosition.Y);
-            Ui.Layout.EnqueueConstraint(new AlwaysOnTop());
+            Ui.Layout.EnqueueConstraint(new AlwaysOnTop()).FitContent().Width(200);
             Ui.Theme.OutlineColour(Colors.White).Padding(8).Foreground((Appearance)Colors.Black).OutlineWidth(1);
-            Ui.StartScrollView(true);
+            Ui.StartGroup(true);
             {
                 p.ProcessUi();
                 rect = Onion.Tree.CurrentNode!.GetFinalDrawBounds(Onion.Tree).Expand(Input.WindowMouseDelta.LengthSquared() + 40);
+                Ui.Spacer(0);
             }
             Ui.End();
             Ui.Theme.Reset();
