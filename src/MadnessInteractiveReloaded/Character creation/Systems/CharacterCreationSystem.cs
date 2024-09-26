@@ -588,7 +588,7 @@ public struct DistributeChildrenLayout(bool Vertical) : ILayout
         }
         else
         {
-            var w = (p.Instance.Rects.Rendered.Width     + padding) / p.Node.Children.Count(Onion.Tree.IsAlive);
+            var w = (p.Instance.Rects.Rendered.Width + padding) / p.Node.Children.Count(Onion.Tree.IsAlive);
             child.Rects.Intermediate.Width = (w - padding);
             child.Rects.Intermediate = child.Rects.Intermediate.Translate(w * index, 0);
         }

@@ -13,6 +13,7 @@ using Icons = MIR.Textures.UserInterface.ExperimentMode.MusicPlayer;
 using OpenTK.Graphics.ES20;
 using Walgelijk.Onion.Animations;
 using MIR.Controls;
+using Walgelijk.Onion.Layout;
 
 namespace MIR;
 
@@ -373,6 +374,7 @@ public class ExperimentModeSystem : Walgelijk.System
                     {
                         bool changed = false;
                         var preset = exp.ActivePresetEditor;
+                        preset.Name ??= string.Empty;
                         switch (exp.PresetEditorTab)
                         {
                             case 0:
@@ -439,9 +441,7 @@ public class ExperimentModeSystem : Walgelijk.System
                                 }
                                 break;
                             case 1:
-                                {
-
-                                }
+                                changed |= StatsEditor(preset);
                                 break;
                         }
 
@@ -498,6 +498,118 @@ public class ExperimentModeSystem : Walgelijk.System
             if (Input.IsButtonReleased(MouseButton.Left) && !rect.ContainsPoint(Input.WindowMousePosition))
                 exp.ContextMenuInstance = null;
         }
+    }
+
+    private static bool StatsEditor(ExperimentCharacterPreset preset)
+    {
+        const int controlHeight = 35;
+        bool changed = false;
+
+        Ui.Theme.Padding(5).Push();
+
+        Ui.Layout.Height(controlHeight).FitWidth(false).EnqueueLayout(new DistributeChildrenLayout());
+        Ui.StartGroup(false);
+        {
+            Ui.Layout.FitHeight(false);
+            Ui.TextRect("Name", HorizontalTextAlign.Left, VerticalTextAlign.Middle);
+            Ui.Layout.FitHeight(false); Ui.Theme.Font(Fonts.CascadiaMono).Once();
+            changed |= Ui.StringInputBox(ref preset.Name, TextBoxOptions.TextInput);
+        }
+        Ui.End();
+
+        Ui.Layout.Height(controlHeight).FitWidth(false).EnqueueLayout(new DistributeChildrenLayout());
+        Ui.StartGroup(false);
+        {
+            Ui.Layout.FitHeight(false);
+            Ui.TextRect("Head HP", HorizontalTextAlign.Left, VerticalTextAlign.Middle);
+            Ui.Layout.FitHeight(false); Ui.Theme.Font(Fonts.CascadiaMono).Once();
+            changed |= Ui.FloatInputBox(ref preset.Stats.HeadHealth, (0.01f, 1000));
+        }
+        Ui.End();
+
+        Ui.Layout.Height(controlHeight).FitWidth(false).EnqueueLayout(new DistributeChildrenLayout());
+        Ui.StartGroup(false);
+        {
+            Ui.Layout.FitHeight(false);
+            Ui.TextRect("Body HP", HorizontalTextAlign.Left, VerticalTextAlign.Middle);
+            Ui.Layout.FitHeight(false); Ui.Theme.Font(Fonts.CascadiaMono).Once();
+            changed |= Ui.FloatInputBox(ref preset.Stats.BodyHealth, (0.01f, 1000));
+        }
+        Ui.End();
+
+        Ui.Layout.Height(controlHeight).FitWidth(false).EnqueueLayout(new DistributeChildrenLayout());
+        Ui.StartGroup(false);
+        {
+            Ui.Layout.FitHeight(false);
+            Ui.TextRect("Scale", HorizontalTextAlign.Left, VerticalTextAlign.Middle);
+            Ui.Layout.FitHeight(false); Ui.Theme.Font(Fonts.CascadiaMono).Once();
+            changed |= Ui.FloatInputBox(ref preset.Stats.Scale, (0.1f, 3f));
+        }
+        Ui.End();
+
+        Ui.Layout.Height(controlHeight).FitWidth(false).EnqueueLayout(new DistributeChildrenLayout());
+        Ui.StartGroup(false);
+        {
+            Ui.Layout.FitHeight(false);
+            Ui.TextRect("Dodge", HorizontalTextAlign.Left, VerticalTextAlign.Middle);
+            Ui.Layout.FitHeight(false); Ui.Theme.Font(Fonts.CascadiaMono).Once();
+            changed |= Ui.FloatInputBox(ref preset.Stats.DodgeAbility, (0.1f, 3f));
+        }
+        Ui.End();
+
+        Ui.Layout.Height(controlHeight).FitWidth(false).EnqueueLayout(new DistributeChildrenLayout());
+        Ui.StartGroup(false);
+        {
+            Ui.Layout.FitHeight(false);
+            Ui.TextRect("Agility", HorizontalTextAlign.Left, VerticalTextAlign.Middle);
+            Ui.Layout.FitHeight(false); Ui.Theme.Font(Fonts.CascadiaMono).Once();
+            changed |= Ui.EnumDropdown(ref preset.Stats.AgilitySkillLevel);
+        }
+        Ui.End();
+
+        Ui.Layout.Height(controlHeight).FitWidth(false).EnqueueLayout(new DistributeChildrenLayout());
+        Ui.StartGroup(false);
+        {
+            Ui.Layout.FitHeight(false);
+            Ui.TextRect("Melee skill", HorizontalTextAlign.Left, VerticalTextAlign.Middle);
+            Ui.Layout.FitHeight(false); Ui.Theme.Font(Fonts.CascadiaMono).Once();
+            changed |= Ui.FloatInputBox(ref preset.Stats.MeleeSkill, (0, 100));
+        }
+        Ui.End();
+
+        Ui.Layout.Height(controlHeight).FitWidth(false).EnqueueLayout(new DistributeChildrenLayout());
+        Ui.StartGroup(false);
+        {
+            Ui.Layout.FitHeight(false);
+            Ui.TextRect("Melee force", HorizontalTextAlign.Left, VerticalTextAlign.Middle);
+            Ui.Layout.FitHeight(false); Ui.Theme.Font(Fonts.CascadiaMono).Once();
+            changed |= Ui.FloatInputBox(ref preset.Stats.MeleeKnockback, (0, 100));
+        }
+        Ui.End();
+
+        Ui.Layout.Height(controlHeight).FitWidth(false).EnqueueLayout(new DistributeChildrenLayout());
+        Ui.StartGroup(false);
+        {
+            Ui.Layout.FitHeight(false);
+            Ui.TextRect("Can deflect", HorizontalTextAlign.Left, VerticalTextAlign.Middle);
+            Ui.Layout.FitHeight(false); Ui.Theme.Font(Fonts.CascadiaMono).Once();
+            changed |= Toggle.Start(ref preset.Stats.CanDeflect);
+        }
+        Ui.End();
+
+        Ui.Layout.Height(controlHeight).FitWidth(false).EnqueueLayout(new DistributeChildrenLayout());
+        Ui.StartGroup(false);
+        {
+            Ui.Layout.FitHeight(false);
+            Ui.TextRect("Can deflect", HorizontalTextAlign.Left, VerticalTextAlign.Middle);
+            Ui.Layout.FitHeight(false); Ui.Theme.Font(Fonts.CascadiaMono).Once();
+            changed |= Toggle.Start(ref preset.Stats.CanDeflect);
+        }
+        Ui.End();
+
+        Ui.Theme.Pop();
+
+        return changed;
     }
 
     private void ProcessMusicTab(ExperimentModeComponent exp, float h)
