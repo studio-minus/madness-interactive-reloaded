@@ -2,8 +2,11 @@
 
 name Mag agent mask
 type HeadAccessory
+deflect-chance 0.9
+
 left textures/bodies/eyes/mag_agent_mask/mag_agent_mask_left.png
 right textures/bodies/eyes/mag_agent_mask/mag_agent_mask_right.png
+
 category Eyes
 detach False
 hidden False
