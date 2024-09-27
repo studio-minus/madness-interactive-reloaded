@@ -1,11 +1,11 @@
 {
-    "id": "Mag campaign",
-    "name": "mag_campaign",
+    "id": "mag_campaign",
+    "name": "Mag campaign",
     "author": "Studio Minus",
     "thumbnail": "data/campaigns/mag_campaign/thumb.png",
     "look": "mag_agent",
     "stats": "mag",
-    "description": "mag_campaign!",
+    "description": "mag campaign!! ONLY MAGS ALLOWED",
     "levels": [
         "lvl_mag_intro",
         "lvl_mag_procedural"

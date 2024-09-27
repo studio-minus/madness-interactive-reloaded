@@ -5,7 +5,7 @@ name Mag
 aiming_randomness 0
 recoil_handling 2
 dodge 0.2
-melee 0.8
+melee 1
 melee_knockback 30
 can_deflect true
 dodge_oversaturate true

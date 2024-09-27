@@ -16,7 +16,7 @@
   "BodyCountToWin": 3,
   "TimeLimitInSeconds": -1.0,
   "FullZoom": true,
-  "Thumbnail": "0",
+  "Thumbnail": "base:textures/level_thumbnails/mag_campaign/lvl_mag_intro.qoi",
   "OpeningTransition": false,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [
