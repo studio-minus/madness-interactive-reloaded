@@ -1,20 +1,20 @@
 {
-  "Id": "carbon_knife",
+  "Id": "doloire_axe",
   "WeaponData": {
-    "Name": "Carbon Knife",
-    "Damage": 0.5,
+    "Name": "Doloire Axe",
+    "Damage": 0.75,
     "UseDelay": 0.0,
     "MaxHandRangeMultiplier": 1.0,
     "AdditionalComponents": null,
     "EnsureSystems": null,
-    "ThrowableDamage": 1.0,
+    "ThrowableDamage": 2.0,
     "ThrowableHeavy": false,
     "ThrowableSharpBoxes": [
       {
-        "MinX": 14.096745,
-        "MinY": -6.5877,
-        "MaxX": 43.819683,
-        "MaxY": 110.00959
+        "MinX": 65.19996,
+        "MinY": 1.2999878,
+        "MaxX": 124.699936,
+        "MaxY": 207.50015
       }
     ],
     "WeaponType": "Melee",
@@ -31,29 +31,33 @@
     "EjectionParticle": "Small",
     "CasingSize": 1.0,
     "IsPumpAction": false,
-    "Range": 383.0,
+    "Range": 600.0,
     "CanDeflectBullets": false,
     "SpecialMelee": false,
-    "MeleeDamageType": "Blade",
-    "MeleeSize": "Small"
+    "MeleeDamageType": "Axe",
+    "MeleeSize": "Medium"
   },
-  "BaseTexture": "textures/weapons/carbon_knife/base.png",
-  "HoldForGrip": false,
+  "BaseTexture": "base:textures/weapons/doloire_axe/base.png",
+  "HoldForGrip": true,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {
-    "X": 1.0941772,
-    "Y": -60.180416
+    "X": -15.0,
+    "Y": -15.0
   },
   "CasingEjectionPoint": {
-    "X": 1.0941772,
-    "Y": -60.180416
+    "X": 15.0,
+    "Y": 15.0
   },
   "HoldPoints": [
     {
-      "X": 2.1883774,
-      "Y": 59.08624
+      "X": 35.40001,
+      "Y": 172.5001
+    },
+    {
+      "X": -33.30001,
+      "Y": -72.90003
     }
   ],
-  "AnimatedParts": [],
+  "AnimatedParts": null,
   "OnFloorAngle": 90.0
 }

@@ -1,8 +1,8 @@
 {
-  "Id": "carbon_knife",
+  "Id": "serrated_sword",
   "WeaponData": {
-    "Name": "Carbon Knife",
-    "Damage": 0.5,
+    "Name": "Serrated Sword",
+    "Damage": 0.85,
     "UseDelay": 0.0,
     "MaxHandRangeMultiplier": 1.0,
     "AdditionalComponents": null,
@@ -11,10 +11,10 @@
     "ThrowableHeavy": false,
     "ThrowableSharpBoxes": [
       {
-        "MinX": 14.096745,
-        "MinY": -6.5877,
-        "MaxX": 43.819683,
-        "MaxY": 110.00959
+        "MinX": 1.1842194,
+        "MinY": 1.1842041,
+        "MaxX": 100.98825,
+        "MaxY": 336.7708
       }
     ],
     "WeaponType": "Melee",
@@ -31,29 +31,29 @@
     "EjectionParticle": "Small",
     "CasingSize": 1.0,
     "IsPumpAction": false,
-    "Range": 383.0,
-    "CanDeflectBullets": false,
+    "Range": 500.0,
+    "CanDeflectBullets": true,
     "SpecialMelee": false,
     "MeleeDamageType": "Blade",
-    "MeleeSize": "Small"
+    "MeleeSize": "Medium"
   },
-  "BaseTexture": "textures/weapons/carbon_knife/base.png",
+  "BaseTexture": "base:textures/weapons/serrated_sword/base.png",
   "HoldForGrip": false,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {
-    "X": 1.0941772,
-    "Y": -60.180416
+    "X": -15.0,
+    "Y": -15.0
   },
   "CasingEjectionPoint": {
-    "X": 1.0941772,
-    "Y": -60.180416
+    "X": 15.0,
+    "Y": 15.0
   },
   "HoldPoints": [
     {
-      "X": 2.1883774,
-      "Y": 59.08624
+      "X": -1.0276642,
+      "Y": 148.61009
     }
   ],
-  "AnimatedParts": [],
+  "AnimatedParts": null,
   "OnFloorAngle": 90.0
 }

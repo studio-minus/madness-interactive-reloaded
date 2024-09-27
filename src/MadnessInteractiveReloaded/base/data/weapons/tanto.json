@@ -1,8 +1,8 @@
 {
-  "Id": "carbon_knife",
+  "Id": "tanto",
   "WeaponData": {
-    "Name": "Carbon Knife",
-    "Damage": 0.5,
+    "Name": "Tantōōōōōo",
+    "Damage": 0.9,
     "UseDelay": 0.0,
     "MaxHandRangeMultiplier": 1.0,
     "AdditionalComponents": null,
@@ -11,10 +11,10 @@
     "ThrowableHeavy": false,
     "ThrowableSharpBoxes": [
       {
-        "MinX": 14.096745,
-        "MinY": -6.5877,
-        "MaxX": 43.819683,
-        "MaxY": 110.00959
+        "MinX": -1.4356537,
+        "MinY": 2.9307861,
+        "MaxX": 62.56436,
+        "MaxY": 293.10733
       }
     ],
     "WeaponType": "Melee",
@@ -31,29 +31,29 @@
     "EjectionParticle": "Small",
     "CasingSize": 1.0,
     "IsPumpAction": false,
-    "Range": 383.0,
-    "CanDeflectBullets": false,
+    "Range": 450.0,
+    "CanDeflectBullets": true,
     "SpecialMelee": false,
     "MeleeDamageType": "Blade",
-    "MeleeSize": "Small"
+    "MeleeSize": "Medium"
   },
-  "BaseTexture": "textures/weapons/carbon_knife/base.png",
+  "BaseTexture": "base:textures/weapons/tanto/base.png",
   "HoldForGrip": false,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {
-    "X": 1.0941772,
-    "Y": -60.180416
+    "X": -15.0,
+    "Y": -15.0
   },
   "CasingEjectionPoint": {
-    "X": 1.0941772,
-    "Y": -60.180416
+    "X": 15.0,
+    "Y": 15.0
   },
   "HoldPoints": [
     {
-      "X": 2.1883774,
-      "Y": 59.08624
+      "X": -0.15446472,
+      "Y": 116.299194
     }
   ],
-  "AnimatedParts": [],
+  "AnimatedParts": null,
   "OnFloorAngle": 90.0
 }
