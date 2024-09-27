@@ -90,7 +90,6 @@ public class HolyShieldAbilityComponent : CharacterAbilityComponent, IDisposable
         Draw.Reset();
         Draw.Order = RenderOrders.Effects;
 
-
         var targetTransform =
             Matrix3x2.CreateScale(1, float.Sign(a.Character.AimDirection.X)) *
             Matrix3x2.CreateRotation(float.Atan2(a.Character.AimDirection.Y * 0.5f, a.Character.AimDirection.X));

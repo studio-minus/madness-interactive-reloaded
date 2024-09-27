@@ -257,6 +257,9 @@ public class PlayerUISystem : Walgelijk.System
 
         // ability controls
         {
+            Draw.Reset();
+            Draw.ScreenSpace = true;
+
             Draw.Font = Fonts.CascadiaMono;
             Draw.FontSize = 18;
             int abilityCursor = 0;
@@ -301,8 +304,8 @@ public class PlayerUISystem : Walgelijk.System
 
         // crosshair rendering
         {
-            Draw.ResetMaterial();
-            Draw.ResetTexture();
+            Draw.Reset();
+            Draw.ScreenSpace = true;
 
             lowAmmoWarningFade = float.Lerp(lowAmmoWarningFade, normalizedAmmoCount < 0.3f ? 1f : 0f, Time.DeltaTimeUnscaled * 5f);
 
