@@ -1,7 +1,7 @@
 using System;
 using System.Numerics;
 
-namespace InputIndustry;
+namespace MIR;
 
 /// <summary>
 /// Includes methods for manual <see cref="Vector2"/> manipulation.
