@@ -86,7 +86,7 @@ public class CharacterMovementSystem : Walgelijk.System
             if (isAlreadyInsideWall)
             {
                 var escapeTarget = Level.CurrentLevel?.LevelBounds.GetCenter() ?? resultBuffer[0].Collider.Bounds.GetCenter();
-                var dir = Vector2.Normalize(escapeTarget - charPos.GlobalCenter);
+                var dir = MadnessVector2.Normalize(escapeTarget - charPos.GlobalCenter);
                 delta = dir.X > 0 ? 10 : -10;
                 pos.X += delta;
             }
@@ -114,7 +114,7 @@ public class CharacterMovementSystem : Walgelijk.System
             if (isAlreadyInsideWall)
             {
                 var escapeTarget = Level.CurrentLevel?.LevelBounds.GetCenter() ?? resultBuffer[0].Collider.Bounds.GetCenter();
-                var dir = Vector2.Normalize(escapeTarget - charPos.GlobalCenter);
+                var dir = MadnessVector2.Normalize(escapeTarget - charPos.GlobalCenter);
                 character.WalkAcceleration.X = dir.X > 0 ? 500 : -500;
                 delta = character.WalkAcceleration.X;
                 charPos.NextHopPosition = charPos.GlobalTarget.X + delta;

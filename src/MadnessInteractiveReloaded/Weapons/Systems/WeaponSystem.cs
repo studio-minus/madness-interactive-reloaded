@@ -413,8 +413,8 @@ public class WeaponSystem : Walgelijk.System
                                 }
 
                                 var returnDir = perfectDeflect
-                                    ? Vector2.Normalize(wielder.Positioning.Head.GlobalPosition - hitPosOnLine)
-                                    : Vector2.Normalize(bulletDirection * new Vector2(-1, Utilities.RandomFloat(-12, 12)));
+                                    ? MadnessVector2.Normalize(wielder.Positioning.Head.GlobalPosition - hitPosOnLine)
+                                    : MadnessVector2.Normalize(bulletDirection * new Vector2(-1, Utilities.RandomFloat(-12, 12)));
                                 wielder = victimChar;
                                 MadnessUtils.DelayPausable(0.05f, () =>
                                 {
@@ -626,7 +626,7 @@ public class WeaponSystem : Walgelijk.System
     public static (Vector2 position, Vector2 direction) GetBarrel(WeaponComponent weapon, TransformComponent weaponTransform)
     {
         var endPoint = Vector2.Transform(new Vector2(weapon.BarrelEndPoint.X, weapon.BarrelEndPoint.Y), weaponTransform.LocalToWorldMatrix);
-        var aimingDir = Vector2.Normalize(Vector2.TransformNormal(new Vector2(1, 0), weaponTransform.LocalToWorldMatrix));
+        var aimingDir = MadnessVector2.Normalize(Vector2.TransformNormal(new Vector2(1, 0), weaponTransform.LocalToWorldMatrix));
 
         return (endPoint, aimingDir);
     }

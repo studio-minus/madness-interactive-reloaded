@@ -41,7 +41,7 @@ public static class FloorlineCalculator
     {
         for (int i = lvl.FloorLine.Count - 2; i >= 1; i--)
         {
-            var angleLeft = Vector2.Normalize(lvl.FloorLine[i] - lvl.FloorLine[i - 1]);
+            var angleLeft = MadnessVector2.Normalize(lvl.FloorLine[i] - lvl.FloorLine[i - 1]);
             var angleRight = Vector2.Normalize(lvl.FloorLine[i + 1] - lvl.FloorLine[i]);
 
             // remove colinear points
@@ -90,7 +90,7 @@ public static class FloorlineCalculator
 
             if (lvl.FloorLine.Count > 2 && lastHit.HasValue)
             {
-                var dir = Vector2.Normalize(lastHit.Value - hit.Value);
+                var dir = MadnessVector2.Normalize(lastHit.Value - hit.Value);
                 var steepness = MathF.Abs(dir.Y);
                 if (steepness > MaxSteepness)
                     break;

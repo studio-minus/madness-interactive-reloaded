@@ -44,7 +44,7 @@ public class DoorComponent : Component, IDisposable
         Material = material;
         Properties = properties;
 
-        Properties.FacingDirection = Vector2.Normalize((Properties.BottomLeft + Properties.BottomRight) / 2 - Properties.SpawnPoint);
+        Properties.FacingDirection = MadnessVector2.Normalize((Properties.BottomLeft + Properties.BottomRight) / 2 - Properties.SpawnPoint);
         if (float.IsNaN(properties.FacingDirection.X) || float.IsNaN(properties.FacingDirection.Y))
             Properties.FacingDirection = new Vector2(0, -1); // if the door is facing the camera its facing vector will be 0,0, which gets normalised to NaN,NaN, but its probably better if it points down
     }

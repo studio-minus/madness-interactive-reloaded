@@ -63,7 +63,7 @@ public class VerletPhysicsSystem : Walgelijk.System
                         if (Vector2.Distance(Input.WorldMousePosition, node.Position) < 400)
                         {
                             node.Acceleration -= node.PreviousVelocity * 0.02f;
-                            node.Acceleration += 1 * Vector2.Normalize(Input.WorldMousePosition - node.Position);
+                            node.Acceleration += 1 * MadnessVector2.Normalize(Input.WorldMousePosition - node.Position);
                         }
                     }
         }
@@ -91,7 +91,7 @@ public class VerletPhysicsSystem : Walgelijk.System
             Draw.Colour = Colors.Green.WithAlpha(0.5f);
             Draw.Line(link.A.Position, link.B.Position, 4);
 
-            var direction = Vector2.Normalize(link.B.Position - link.A.Position);
+            var direction = MadnessVector2.Normalize(link.B.Position - link.A.Position);
 
             switch (link.Mode)
             {
@@ -201,8 +201,8 @@ public class VerletPhysicsSystem : Walgelijk.System
 
         var m = (a.Position + b.Position) / 2;
         var diff = (distance - targetDistance) * 0.45f;
-        a.Position += diff * Vector2.Normalize(m - a.Position) * aInfluence;
-        var bD = Vector2.Normalize(m - b.Position);
+        a.Position += diff * MadnessVector2.Normalize(m - a.Position) * aInfluence;
+        var bD = MadnessVector2.Normalize(m - b.Position);
         b.Position += diff * bD * bInfluence;
         var targetRot = MathF.Atan2(bD.Y, bD.X) * Utilities.RadToDeg + link.B.DirectionOffset;
         b.RotationOffset = targetRot;
@@ -216,7 +216,7 @@ public class VerletPhysicsSystem : Walgelijk.System
         var transform = link.Transform;
 
         var center = ct.Position;
-        var upVector = Vector2.Normalize(up.Position - center);
+        var upVector = MadnessVector2.Normalize(up.Position - center);
         var rightVector = new Vector2(upVector.Y, -upVector.X);
 
         var angle = Utilities.VectorToAngle(rightVector);

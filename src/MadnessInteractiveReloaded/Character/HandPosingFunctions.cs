@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Numerics;
 using Walgelijk;
+using MIR;
 
 namespace MIR;
 
@@ -86,7 +87,7 @@ public static class HandPosingFunctions
         var charPos = poseParams.Character.Positioning;
         var direction = poseParams.Character.AimDirection;
         float flipScaling = charPos.FlipScaling;
-        var clampedDir = Vector2.Normalize(new Vector2(
+        var clampedDir = MadnessVector2.Normalize(new Vector2(
             float.Sign(direction.X) * float.Max(float.Abs(direction.X), 0.5f),
             Utilities.Clamp(direction.Y, -0.2f, 0.2f)
         ));

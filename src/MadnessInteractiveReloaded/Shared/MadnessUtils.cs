@@ -697,7 +697,7 @@ public static class MadnessUtils
                     ragdoll.Nodes.Add(new ComponentRef<VerletNodeComponent>(node.Entity));
                     var rotAcc = (node.Position - center);
                     rotAcc = new Vector2(-rotAcc.Y, rotAcc.X);
-                    rotAcc = Vector2.Normalize(rotAcc);
+                    rotAcc = MadnessVector2.Normalize(rotAcc);
                     node.Acceleration += rotAcc * addTorque + addVelocity;
                     break;
                 case VerletLinkComponent link:

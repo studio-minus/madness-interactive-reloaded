@@ -167,7 +167,7 @@ public class Door : LevelObject, ITagged
 
         var bottomOfDoor = (Properties.BottomLeft + Properties.BottomRight) / 2;
         Properties.SpawnPoint = OLD_SpawnDoorInstructions.CalculateWorldSpawnPoint(Properties.BottomLeft, Properties.BottomRight);
-        Properties.FacingDirection = Vector2.Normalize(bottomOfDoor - Properties.SpawnPoint);
+        Properties.FacingDirection = MadnessVector2.Normalize(bottomOfDoor - Properties.SpawnPoint);
 
         Draw.Colour = Colors.White;
         Draw.Texture = Textures.Door.Value;

@@ -38,7 +38,7 @@ public struct OLD_SpawnDoorInstructions
     {
         var spawningPoint = (bottomLeft + bottomRight) / 2;
         var dir = (bottomRight - bottomLeft);
-        var spawnOffset = Vector2.Reflect(new Vector2(0, 1), Vector2.Normalize(dir));
+        var spawnOffset = Vector2.Reflect(new Vector2(0, 1), MadnessVector2.Normalize(dir));
         spawnOffset.X = (MathF.Abs(spawnOffset.X) > 0.1f ? (spawnOffset.X > 0 ? 1 : -1) : 0) * DoorSpawnOffsetDistance;
         spawnOffset.Y = 0;
 

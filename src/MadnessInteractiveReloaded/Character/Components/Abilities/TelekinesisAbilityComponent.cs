@@ -163,8 +163,8 @@ public class TelekinesisAbilityComponent : CharacterAbilityComponent
 
             if (weapon.Wielder.IsValid(a.Scene))
                 continue;
-
-            var dir = Vector2.Normalize(aimPos - velocity.Position);
+            
+            var dir = MadnessVector2.Normalize(aimPos - velocity.Position);
 
             if (weapon.Data.MeleeDamageType != MeleeDamageType.Axe)
             {

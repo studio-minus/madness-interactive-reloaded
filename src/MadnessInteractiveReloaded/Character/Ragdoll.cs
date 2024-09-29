@@ -46,7 +46,7 @@ public static class Ragdoll
                 {
                     node.Acceleration += impact.TranslationOffset * (1.9f + (impactStrength));
                     if (node.Acceleration.Length() > 25)
-                        node.Acceleration = Vector2.Normalize(node.Acceleration) * 25;
+                        node.Acceleration = MadnessVector2.Normalize(node.Acceleration) * 25;
                 }
 
                 if (scene.TryGetComponentFrom<MeasuredVelocityComponent>(speedOrigin, out var measured))

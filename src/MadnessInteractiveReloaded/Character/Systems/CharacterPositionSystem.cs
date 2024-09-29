@@ -363,7 +363,7 @@ public class CharacterPositionSystem : Walgelijk.System
         var impactOffset = Scene.GetComponentFrom<ImpactOffsetComponent>(head.Entity);
 
         // head look offset
-        var targetLookOffset = Vector2.Normalize(character.AimTargetPosition - head.GlobalPosition) * 10;
+        var targetLookOffset = MadnessVector2.Normalize(character.AimTargetPosition - head.GlobalPosition) * 10;
         head.LookOffset = Utilities.SmoothApproach(head.LookOffset, targetLookOffset, charPos.LookOffsetSpeed, Time.DeltaTime);
 
         // head direction

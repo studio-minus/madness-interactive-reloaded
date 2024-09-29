@@ -132,7 +132,7 @@ public class AiCharacterSystem : Walgelijk.System
             var aimingDirection = ai.AimingPosition - aimingSource;
             float maxHandRange = CharacterConstants.MaxHandRange * (equipped?.Data.MaxHandRangeMultiplier ?? 1) * character.Positioning.Scale;
             if (targetHandPosition.LengthSquared() > (maxHandRange * maxHandRange))
-                targetHandPosition = Vector2.Normalize(targetHandPosition) * maxHandRange;
+                targetHandPosition = MadnessVector2.Normalize(targetHandPosition) * maxHandRange;
 
             character.Positioning.HandMousePosition = targetHandPosition;
 

@@ -70,7 +70,7 @@ public class VerletTransformComponent : Component
         Center = center;
         Transform = transform;
 
-        var upVector = Vector2.Normalize(up.Position - center.Position);
+        var upVector = MadnessVector2.Normalize(up.Position - center.Position);
         var rightVector = new Vector2(upVector.Y, -upVector.X);
 
         LocalRotationalOffset = transform.Rotation - Utilities.VectorToAngle(rightVector);

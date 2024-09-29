@@ -82,7 +82,7 @@ public class PlayerCharacterSystem : Walgelijk.System
         var targetHandPosition = character.AimTargetPosition - originalPos;
         float maxHandRange = CharacterConstants.MaxHandRange * (equipped?.Data.MaxHandRangeMultiplier ?? 1) * character.Positioning.Scale;
         if (targetHandPosition.LengthSquared() > (maxHandRange * maxHandRange))
-            targetHandPosition = Vector2.Normalize(targetHandPosition) * maxHandRange;
+            targetHandPosition = MadnessVector2.Normalize(targetHandPosition) * maxHandRange;
         character.Positioning.HandMousePosition = targetHandPosition;
 
         if (!experimentMode && character.HasWeaponEquipped && equipped != null)

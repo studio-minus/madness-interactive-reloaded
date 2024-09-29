@@ -1,7 +1,7 @@
 using System;
 using System.Numerics;
 
-namespace InputIndustry;
+namespace MIR;
 
 /// <summary>
 /// Includes methods for manual <see cref="Vector2"/> manipulation.
@@ -17,11 +17,12 @@ public struct MadnessVector2
     public static void SelfNormalize(ref Vector2 toNormalize)
     {
         toNormalize = toNormalize / toNormalize.Length();
+        Console.WriteLine(toNormalize);
     }
 
     /// <summary>
     /// Returns a new normalized version of the provided <see cref="Vector2"/>, without hardware acceleration.
-    /// and without changine the <see cref="Vector2"/>
+    /// and without changing the original <see cref="Vector2"/>.
     /// </summary>
     /// <param name="ToNormalize"></param>
     /// <returns><see cref="Vector2"/></returns>

@@ -331,7 +331,7 @@ public abstract class LevelObject : ICloneable, ISelectable, IDisposable
             //rotationTransformation.RotationPointTarget += input.IsKeyHeld(AltMoveKey) && !input.IsKeyHeld(SnapKey) ? editor.MouseDelta * 0.125f : editor.MouseDelta;
             RotationTransformation.RotationPointTarget += Editor.MouseDelta;
 
-            var dir = Vector2.Normalize(RotationTransformation.RotationPointTarget - RotationTransformation.Center);
+            var dir = MadnessVector2.Normalize(RotationTransformation.RotationPointTarget - RotationTransformation.Center);
 
             var previousRadians = normaliseRadians(RotationTransformation.CurrentProxyRadians);
             RotationTransformation.CurrentProxyRadians = normaliseRadians(RotationTransformation.RadiansOffset - MathF.Atan2(dir.Y, dir.X));
@@ -375,7 +375,7 @@ public abstract class LevelObject : ICloneable, ISelectable, IDisposable
             RotationTransformation.RadiansAccumulation = 0;
             RotationTransformation.CurrentProxyRadians = 0;
 
-            var dir = Vector2.Normalize(RotationTransformation.RotationPointTarget - RotationTransformation.Center);
+            var dir = MadnessVector2.Normalize(RotationTransformation.RotationPointTarget - RotationTransformation.Center);
             RotationTransformation.RadiansOffset = normaliseRadians(MathF.Atan2(dir.Y, dir.X));
 
             IsBeingRotated = true;

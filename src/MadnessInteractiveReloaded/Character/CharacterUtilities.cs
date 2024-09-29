@@ -650,7 +650,7 @@ public static class CharacterUtilities
 
             var targetPosition = character.AimTargetPosition;
             var delta = character.AimTargetPosition - character.Positioning.Head.GlobalPosition;
-            var dir = Vector2.Normalize(delta);
+            var dir = MadnessVector2.Normalize(delta);
 
             var distanceToTarget = 0f;
 

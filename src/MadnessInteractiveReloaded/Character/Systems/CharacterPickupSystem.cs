@@ -89,7 +89,7 @@ public class CharacterPickupSystem : Walgelijk.System
                 // TODO this is already done somewhere else so... its kind of ugly. but it works :)
                 var direction = p.Character.AimDirection;
                 float flipScaling = charPos.FlipScaling;
-                var clampedDir = Vector2.Normalize(new Vector2(
+                var clampedDir = MadnessVector2.Normalize(new Vector2(
                     float.Sign(direction.X) * float.Max(float.Abs(direction.X), 0.5f),
                     Utilities.Clamp(direction.Y, -0.2f, 0.2f)
                 ));

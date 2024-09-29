@@ -159,7 +159,7 @@ public class LegacyDoor : LevelObject, ITagged
 
         var bottomOfDoor = (Instructions.BottomLeft + Instructions.BottomRight) / 2;
         var spawnPoint = OLD_SpawnDoorInstructions.CalculateWorldSpawnPoint(Instructions.BottomLeft, Instructions.BottomRight);
-        Instructions.FacingDirection = Vector2.Normalize(bottomOfDoor - spawnPoint);
+        Instructions.FacingDirection = MadnessVector2.Normalize(bottomOfDoor - spawnPoint);
 
         Draw.Colour = Colors.White;
         Draw.Texture = Textures.Door.Value;
