@@ -8,6 +8,10 @@ This may be fixed in the future with .NET 9, but for now here's this fork
 # What the fork does;
 The fork replaces all instances of Vector2.Normalize and other faulty (yet to be discovered) methods with custom Vector2.Normalize methods at minimum performance losses.
 
+## How it accomplishes that;
+
+The fork includes a Vector2 (MadnessVector2) class utility that can probably run on your kitchen microwave. It replaces 2 methods that would only work on newer CPUs with offbrand one. The methods in the MadnessVector2 class do not take advantage of Hardware Acceleration to ensure it doesn't cause issues.
+
 ## What it currently fixes;
 This fork fixes all things related to positions, It fixes melee combat, head turning and rotating, special abilities,
 
