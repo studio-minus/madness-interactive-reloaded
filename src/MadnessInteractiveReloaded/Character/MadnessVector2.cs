@@ -6,7 +6,7 @@ namespace MIR;
 /// <summary>
 /// Includes methods for manual <see cref="Vector2"/> manipulation.
 /// </summary>
-public struct MadnessVector2
+public class MadnessVector2
 {
     //Debug mode: ON
 
