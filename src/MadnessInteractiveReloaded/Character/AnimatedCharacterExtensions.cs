@@ -53,12 +53,24 @@ public static class AnimatedCharacterExtensions
     }
 
     /// <summary>
-    /// Returns true if the given animation type (as defined in the animation file itself) is playing
+    /// Returns true if the given animation group (parent folder) is playing
     /// </summary>
     public static bool IsPlayingAnimationGroup(this CharacterComponent character, in string group)
     {
         foreach (var item in character.Animations)
             if (item.Animation.Group.Equals(group, StringComparison.InvariantCultureIgnoreCase))
+                return true;
+        return false;
+    }
+        
+    
+    /// <summary>
+    /// Returns true if the given animation type (as defined in the animation file itself) is playing
+    /// </summary>
+    public static bool IsPlayingAnimation(this CharacterComponent character, CharacterAnimation anim)
+    {
+        foreach (var a in character.Animations)
+            if (a.Animation == anim)
                 return true;
         return false;
     }

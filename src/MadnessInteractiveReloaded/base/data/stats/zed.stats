@@ -11,6 +11,7 @@ melee 0.2
 head_health 3
 body_health 3
 hop_duration 0.5
+walk_anim zed_walk
 
 abilities
 	MIR.NoStunAbilityComponent

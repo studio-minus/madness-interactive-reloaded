@@ -62,11 +62,11 @@
   ],
   "FloorLine": [
     {
-      "X": -2516.3828,
+      "X": -2506.3828,
       "Y": -1200.1561
     },
     {
-      "X": 2481.6172,
+      "X": 2471.6172,
       "Y": -1200.1561
     }
   ],
@@ -131,22 +131,22 @@
       "$type": "MIR.LevelEditor.Objects.AnimationTrigger, MIR",
       "Component": {
         "WorldRect": {
-          "MinX": 1989.1893,
+          "MinX": 2063.9353,
           "MinY": -1213.8567,
           "MaxX": 2501.1895,
           "MaxY": 943.8384
         },
         "Animation": "cutscene_climbing_ladder",
         "StartEvent": 1,
-        "Target": 0,
+        "Target": 1,
         "ExistingLerpTime": 0.0,
         "TargetPosition": {
           "X": 2085.0,
           "Y": -1200.0
         },
         "TargetFlipped": false,
-        "CreateNewLook": null,
-        "CreateNewStats": null,
+        "CreateNewLook": "mag_rich",
+        "CreateNewStats": "agent",
         "CreateNewFaction": "player",
         "IsExpired": false,
         "Entity": {
@@ -154,7 +154,7 @@
         }
       },
       "Rectangle": {
-        "MinX": 1989.1893,
+        "MinX": 2063.9353,
         "MinY": -1213.8567,
         "MaxX": 2501.1895,
         "MaxY": 943.8384
@@ -217,14 +217,23 @@
       "Tag": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
-      "Rectangle": {
-        "MinX": 2490.9143,
-        "MinY": -1198.4471,
-        "MaxX": 2837.2664,
-        "MaxY": 1170.79
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "experiment",
+        "Stats": "experiment",
+        "Faction": "rogue",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": 1847.5116,
+          "Y": -1159.2554
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
       },
-      "Tag": null
+      "StartAnimation": null
     },
     {
       "$type": "MIR.LevelEditor.Objects.PlayerPoster, MIR",
@@ -387,23 +396,18 @@
       "Scale": 1.8185204
     },
     {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "experiment",
-        "Stats": "experiment",
-        "Faction": "rogue",
-        "Weapon": null,
-        "Flipped": false,
-        "BottomCenter": {
-          "X": 1847.5116,
-          "Y": -1159.2554
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": -2642.067,
+        "Y": 556.6947
       },
-      "StartAnimation": null
+      "B": {
+        "X": -2210.7764,
+        "Y": 987.98334
+      },
+      "Radius": 145.16666,
+      "Tag": null
     },
     {
       "$type": "MIR.LevelEditor.Objects.Door, MIR",
@@ -529,17 +533,13 @@
       "StartAnimation": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
-      "BlockerType": 0,
-      "A": {
-        "X": -2642.067,
-        "Y": 556.6947
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": 2490.9143,
+        "MinY": -1198.4471,
+        "MaxX": 2837.2664,
+        "MaxY": 1170.79
       },
-      "B": {
-        "X": -2210.7764,
-        "Y": 987.98334
-      },
-      "Radius": 145.16666,
       "Tag": null
     },
     {

@@ -37,6 +37,7 @@ public readonly struct CharacterContextMenuDecorator : IDecorator
             {
                 exp.ContextMenuInstance = new ContextMenu(p.Input.MousePosition, () =>
                 {
+#if PRESET_EDITOR
                     Ui.Layout.FitWidth().Height(32).StickLeft();
                     if (Ui.ClickButton(Localisation.Get("experiment-duplicate-preset")))
                     {
@@ -48,7 +49,7 @@ public readonly struct CharacterContextMenuDecorator : IDecorator
                         Registries.LoadCharacterPresets();
                         exp.ContextMenuInstance = null;
                     }
-
+#endif
 
                     // TODO cache this, probably
                     // makes everything so messy though
@@ -69,6 +70,7 @@ public readonly struct CharacterContextMenuDecorator : IDecorator
                         }
                     }
 
+#if PRESET_EDITOR
                     if (preset.Mutable)
                     {
                         Ui.Theme.Text(new(Colors.Red, Colors.White)).OutlineColour(Colors.Red).Foreground((Appearance)Colors.Transparent).OutlineWidth(1);
@@ -99,15 +101,18 @@ public readonly struct CharacterContextMenuDecorator : IDecorator
                             }
                         }
                     }
+#endif
                 });
             }
 
+#if PRESET_EDITOR
         if (!preset.Mutable)
         {
-            Draw.Colour = Colors.White;
+            Draw.Colour = Colors.Red.WithAlpha(0.25f);
             var r = p.Instance.Rects.Rendered;
             Draw.Image(Textures.UserInterface.Locked.Value, r with { MinX = r.MaxX - r.Height }, ImageContainmentMode.Center);
         }
+#endif
     }
 
     public void RenderBefore(in ControlParams p)

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Numerics;
 using Walgelijk;
 using Walgelijk.AssetManager;
@@ -10,9 +9,16 @@ namespace MIR;
 /// <summary>
 /// System for the loading scene.
 /// </summary>
-public class GameLoadingSystem : Walgelijk.System
+public class GameLoadingSystem : Walgelijk.System, IDisposable
 {
     private static readonly string GameName = "MADNESS INTERACTIVE RELOADED " + GameVersion.Version;
+    private Font Cascadia, Toxigenesis;
+
+    public GameLoadingSystem()
+    {
+        Cascadia = Assets.LoadNoCache<Font>("fonts/cascadia-mono.wf");
+        Toxigenesis = Assets.LoadNoCache<Font>("fonts/toxigenesis.wf");
+    }
 
     public override void Render()
     {
@@ -27,7 +33,7 @@ public class GameLoadingSystem : Walgelijk.System
 
         Draw.Reset();
         Draw.ScreenSpace = true;
-        Draw.Font = Fonts.Toxigenesis;
+        Draw.Font = Toxigenesis;
 
         Draw.FontSize = 72;
         Draw.Colour = Colors.Red * 0.5f;
@@ -61,7 +67,7 @@ public class GameLoadingSystem : Walgelijk.System
         {
             int i = 0;
             Draw.ResetTransformation();
-            Draw.Font = Fonts.CascadiaMono;
+            Draw.Font = Cascadia;
             Draw.FontSize = 18;
             foreach (var m in ModLoader.Mods)
             {
@@ -78,5 +84,11 @@ public class GameLoadingSystem : Walgelijk.System
                 i++;
             }
         }
+    }
+
+    public void Dispose()
+    {
+        Cascadia.Page.Dispose();
+        Toxigenesis.Page.Dispose();
     }
 }

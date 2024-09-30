@@ -24,6 +24,8 @@ public class CharacterCreationSystem : Walgelijk.System
     private static Rect calculatedPlayerRect;
     private static readonly MenuCharacterRenderer menuCharacterRenderer = new();
 
+    private const float ButtonBarHeight = 50;
+
     public override void Render()
     {
         if (!Scene.FindAnyComponent<CharacterCreationComponent>(out var data))
@@ -50,7 +52,7 @@ public class CharacterCreationSystem : Walgelijk.System
         camera.OrthographicSize = 0.8f / (Window.Height / 1080f);
 
         DrawBackground(data);
-
+        DrawButtons(data, character);
         DrawMainPanel(data, character);
 
         var s = calculatedPlayerRect.Scale(0.9f);
@@ -69,8 +71,7 @@ public class CharacterCreationSystem : Walgelijk.System
     private void DrawMainPanel(CharacterCreationComponent data, CharacterComponent character)
     {
         Ui.Theme.Padding(15).Push();
-
-        Ui.Layout.FitContainer(null, 1).AspectRatio(0.6f, AspectRatioBehaviour.Grow).StickLeft().StickTop();
+        Ui.Layout.FitContainer(null, 1).AspectRatio(0.6f, AspectRatioBehaviour.Grow).StickLeft().StickTop().Scale(0, -ButtonBarHeight - 15);
         Ui.Theme.ForegroundColor(Colors.Black).Once();
         Ui.StartGroup(true);
         {
@@ -180,6 +181,78 @@ public class CharacterCreationSystem : Walgelijk.System
             Ui.End();
         }
         Ui.End();
+        Ui.Theme.Pop();
+    }
+
+    private void DrawButtons(CharacterCreationComponent data, CharacterComponent character)
+    {
+        var look = UserData.Instances.PlayerLook;
+
+        Ui.Theme.Padding(15).FontSize(18).Push();
+
+        Ui.Layout.FitContainer(null, 1).AspectRatio(0.6f, AspectRatioBehaviour.Grow).StickLeft().Height(ButtonBarHeight).StickBottom();
+        Ui.Layout.EnqueueLayout(new DistributeChildrenLayout());
+        Ui.Theme.ForegroundColor(Colors.Black).Once();
+        Ui.StartGroup(false);
+        {
+            Ui.Layout.FitContainer(1, 1, false);
+            if (Ui.Button(Localisation.Get("back")))
+            {
+                Game.Scene = MainMenuScene.Load(Game);
+                MadnessUtils.Flash(Colors.Black, 0.2f);
+                ThumbnailRenderer.ResetAllPosters();
+            }
+
+            Ui.Layout.FitContainer(1, 1, false);
+            Ui.Theme.Text(new(Colors.Red, Colors.White)).OutlineWidth(2).Once();
+            if (Ui.Button(Localisation.Get("character-creation-reset")))
+            {
+                if (!Scene.FindAnyComponent<ConfirmationDialogComponent>(out _))
+                    Scene.AttachComponent(Scene.CreateEntity(), new ConfirmationDialogComponent(Localisation.Get("character-creation-reset-confirm"), () =>
+                    {
+                        var grunt = Registries.Looks.Get("grunt");
+                        grunt.CopyTo(UserData.Instances.PlayerLook);
+                        character.NeedsLookUpdate = true;
+                    }));
+            }
+
+            Ui.Layout.FitContainer(1, 1, false);
+            if (Ui.Button(Localisation.Get("character-creation-import")))
+            {
+                if (FileDialog.OpenFile(new[] { ("look file", "look"), ("All files", "*") }, out var importPath))
+                {
+                    Logger.Debug(string.Format("Opened preset from {0}", importPath));
+                    try
+                    {
+                        var read = CharacterLookDeserialiser.Load(importPath);
+                        read.CopyTo(UserData.Instances.PlayerLook);
+                        character.NeedsLookUpdate = true;
+                    }
+                    catch (Exception e)
+                    {
+                        Logger.Error(string.Format("Error importing character look preset! : {0}", e));
+                    }
+                }
+            }
+
+            Ui.Layout.FitContainer(1, 1, false);
+            if (Ui.Button(Localisation.Get("character-creation-export")))
+            {
+                if (FileDialog.SaveFile(new[] { ("look file", "look"), ("All files", "*") }, null, null, out var exportPath))
+                {
+                    try
+                    {
+                        CharacterLookDeserialiser.Save(look, exportPath);
+                    }
+                    catch (Exception e)
+                    {
+                        Logger.Error(string.Format("Error exporting preset to {0}. : {1}", exportPath, e));
+                    }
+                    Logger.Debug(string.Format("Exported preset to {0}", exportPath));
+                }
+            }
+        }
+        Ui.End();
 
         Ui.Theme.Pop();
     }
@@ -189,15 +262,39 @@ public class CharacterCreationSystem : Walgelijk.System
         var look = character.Look;
 
         Ui.Theme.FontSize(23).Once();
-        Ui.Layout.Move(0, 5);
-        Ui.Label(Localisation.Get("blood-colour"));
+        Ui.Layout.FitWidth().Height(30).CenterHorizontal();
+        Ui.TextRect(Localisation.Get("blood-colour"), HorizontalTextAlign.Center, VerticalTextAlign.Middle);
 
-        Ui.Layout.FitWidth().CenterHorizontal().AspectRatio(2).Move(0, 38);
-        Ui.Theme.Padding(4).Push();
+        Ui.Layout.FitWidth().Height(40).CenterHorizontal().Move(0, 40).EnqueueLayout(new DistributeChildrenLayout());
+        Ui.StartGroup();
+        {
+            var rect = Onion.Tree.CurrentNode!.GetInstance().Rects.ComputedGlobal;
+            var colors = data.Swatches.Concat([Colors.Yellow, Colors.Red]).Reverse().Take((int)(rect.Width / (rect.Height + 1))); // TODO this could be faster. replace the list with an array and be more careful where you put stuff and what you replace
+            int i = 0;
+            foreach (var c in colors)
+            {
+                Ui.Layout.FitHeight(false);
+                Ui.Decorate(new FancyButtonDecorator());
+                Ui.Theme.Image(c).OutlineColour(Colors.Gray).OutlineWidth(1).Once();
+                if (Ui.ImageButton(Texture.White, ImageContainmentMode.Stretch, identity: i++))
+                    look.BloodColour = c;
+            }
+        }
+        Ui.End();
+
+        Ui.Layout.FitWidth().Scale(-Ui.Theme.GetChanges().Padding, 0).CenterHorizontal().AspectRatio(2).MinHeight(200).Move(0, 90);
+        Ui.Theme.Padding(5).OutlineColour(Colors.Gray).OutlineWidth(1).Push();
         Ui.ColourPicker(ref look.BloodColour);
         Ui.Theme.Pop();
+
+        if (Onion.Input.MousePrimaryRelease && Onion.Tree.GetLastInstance().Rects.Rendered.ContainsPoint(Onion.Input.MousePosition))
+        {
+            data.Swatches.Add(look.BloodColour);
+            if (data.Swatches.Count > 8)
+                data.Swatches.RemoveAt(0);
+        }
     }
-    
+
     private void HandMenu(CharacterCreationComponent data, CharacterComponent character)
     {
         var look = character.Look;
@@ -301,16 +398,6 @@ public class CharacterCreationSystem : Walgelijk.System
 
         UnhighlightParts(character);
 
-        Ui.Layout.Size(200, 80).StickRight().StickBottom();
-        Ui.Theme.FontSize(32).OutlineWidth(4).Once();
-        if (Ui.Button(Localisation.Get("done")))
-        {
-            Game.Scene = MainMenuScene.Load(Game);
-            MadnessUtils.Flash(Colors.Black, 0.2f);
-            ThumbnailRenderer.ResetAllPosters();
-        }
-
-
         Ui.Layout.Width(120).Height(40).CenterHorizontal().StickBottom().Move(0, -15);
         Ui.Theme.Foreground(default).Image(new(Colors.White, Colors.Red)).OutlineWidth(0).Once();
         if (Ui.ImageButton(Assets.Load<Texture>("textures/ui/icon/flip.png").Value, ImageContainmentMode.Center))
@@ -411,7 +498,7 @@ public class CharacterCreationSystem : Walgelijk.System
         Ui.Theme.ScrollbarWidth(24).ForegroundColor(Colors.Black).Once();
         Ui.StartScrollView(false);
         {
-            float w = Onion.Tree.CurrentNode!.GetInstance().Rects.GetInnerContentRect().Width - padding ;
+            float w = Onion.Tree.CurrentNode!.GetInstance().Rects.GetInnerContentRect().Width - padding;
             int i = 0;
             float x = 0;
             float rowHeight = (w) / preferredColumns;
@@ -422,7 +509,7 @@ public class CharacterCreationSystem : Walgelijk.System
 
                 if (x > w || i == 0)
                 {
-                    x = rowHeight ;
+                    x = rowHeight;
 
                     // end the previous row if this isnt the first row ever made!!
                     if (i != 0)
@@ -498,5 +585,60 @@ public struct DistributeChildrenLayout : ILayout
 
         child.Rects.Intermediate.Width = (w - padding);
         child.Rects.Intermediate = child.Rects.Intermediate.Translate(w * index, 0);
+    }
+}
+
+public struct DistributeVerticalLayout : ILayout
+{
+    public void Apply(in ControlParams p, int index, int childId)
+    {
+        float padding = p.Theme.Padding;
+        var child = p.Tree.EnsureInstance(childId); //  - p.Theme.Padding
+        var h = (p.Instance.Rects.Rendered.Height + padding) / p.Node.Children.Count(Onion.Tree.IsAlive);
+
+        child.Rects.Intermediate.Height = (h - padding);
+        child.Rects.Intermediate = child.Rects.Intermediate.Translate(0, h * index);
+    }
+}
+
+public struct FractionLayout(params float[] coefficients) : ILayout
+{
+    public void Apply(in ControlParams p, int index, int childId)
+    {
+        if (coefficients.Length <= index)
+            return;
+
+        float padding = p.Theme.Padding;
+        var total = (p.Instance.Rects.Rendered.Width + padding);
+
+        var cf = coefficients[index];
+        var lastWidth = (index == 0 ? 0 : coefficients[index - 1]) * total;
+
+        var child = p.Tree.EnsureInstance(childId);
+        var w = total * cf;
+
+        child.Rects.Intermediate.Width = (w - padding);
+        child.Rects.Intermediate = child.Rects.Intermediate.Translate(lastWidth, 0);
+    }
+}
+
+public struct FractionHorizontalLayout(params float[] coefficients) : ILayout
+{
+    public void Apply(in ControlParams p, int index, int childId)
+    {
+        if (coefficients.Length <= index)
+            return;
+
+        float padding = p.Theme.Padding;
+        var total = (p.Instance.Rects.Rendered.Height + padding);
+
+        var cf = coefficients[index];
+        var lastHeight = (index == 0 ? 0 : coefficients[index - 1]) * total;
+
+        var child = p.Tree.EnsureInstance(childId);
+        var h = total * cf;
+
+        child.Rects.Intermediate.Height = (h - padding);
+        child.Rects.Intermediate = child.Rects.Intermediate.Translate(0, lastHeight);
     }
 }

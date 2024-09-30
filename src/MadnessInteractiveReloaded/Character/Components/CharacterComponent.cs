@@ -67,7 +67,10 @@ public class CharacterComponent : Component
     /// A <see cref="Hook"/> event for when the Character dies.
     /// </summary>
     public readonly Hook<CharacterComponent> OnDeath = new();
-
+    
+    /// <summary>
+    /// the look direction which likes to break the entire gam unless MadnessVector is utilized.
+    /// </summary>
     public Vector2 AimDirection => MadnessVector2.Normalize(AimTargetPosition - new Vector2(Positioning.GlobalCenter.X, Positioning.Head.GlobalPosition.Y));
 
     // combat

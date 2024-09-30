@@ -8,3 +8,4 @@ category Hat
 detach False
 hidden False
 offset -10 0
+deflect-chance 1

@@ -40,7 +40,7 @@ public static class Stamper
 
             for (int i = 0; i < c; i++)
             {
-                var stamp = stamps[i];
+                ref var stamp = ref stamps[i];
                 scene.Game.RenderQueue.Add(canvas.CreateStampTask(stamp.Task), stamp.RenderOrder);
             }
         }
@@ -74,8 +74,16 @@ public static class Stamper
     {
         if (scene.FindAnyComponent<StampCanvasComponent>(out var canvas))
         {
-            var transform = Matrix3x2.CreateScale(subsprite.Rectangle.GetSize()) * Matrix3x2.CreateTranslation(subsprite.Rectangle.GetCenter()) * subsprite.Transform;
-            var subspriteTask = new ShapeRenderTask(PrimitiveMeshes.CenteredQuad, transform, DrawingMaterialCreator.Cache.Load(subsprite.Texture.Value));
+            var transform =
+                Matrix3x2.CreateScale(subsprite.Rectangle.GetSize())
+                * Matrix3x2.CreateTranslation(subsprite.Rectangle.GetCenter())
+                * subsprite.Transform;
+
+            var subspriteTask = new ShapeRenderTask(
+                PrimitiveMeshes.CenteredQuad,
+                transform,
+                DrawingMaterialCreator.Cache.Load(subsprite.Texture.Value));
+
             scene.Game.RenderQueue.Add(canvas.CreateStampTask(subspriteTask), subsprite.Order);
         }
     }

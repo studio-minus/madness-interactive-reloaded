@@ -1,4 +1,6 @@
-﻿using Walgelijk;
+﻿using System;
+using System.Numerics;
+using Walgelijk;
 using Walgelijk.AssetManager;
 
 namespace MIR;
@@ -30,7 +32,7 @@ public class BodyPartMaterialPool : Pool<Material, BodyPartMaterialParams>
 
     protected override void ResetObjectForNextUse(Material c, BodyPartMaterialParams initialiser)
     {
-        DestructibleBodyPartSystem.ResetMaterial(c);
+        ResetMaterial(c);
         var v3 = initialiser.BloodColour.RGB;
 
         var slashTexture = Assets.Load<Texture>(Utilities.PickRandom(slashTextures)).Value;
@@ -44,6 +46,18 @@ public class BodyPartMaterialPool : Pool<Material, BodyPartMaterialParams>
         c.SetUniform("outerBloodColour", v3);
         c.SetUniform("innerBloodColour", v3 * 0.8f);
         c.SetUniform("seed", Utilities.RandomFloat());
+    }
+
+    public static void ResetMaterial(Material material)
+    {
+        material.SetUniform("holesCount", 0);
+        material.SetUniform("holes", Array.Empty<Vector3>());
+
+        material.SetUniform("slashesCount", 0);
+        material.SetUniform("slashes", Array.Empty<Vector3>());
+
+        material.SetUniform("innerCutoutHolesCount", 0);
+        material.SetUniform("innerCutoutHoles", Array.Empty<Vector3>());
     }
 }
 
