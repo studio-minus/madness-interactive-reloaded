@@ -5,7 +5,7 @@
   "EnemySpawnInterval": 0.90000004,
   "MaxEnemyCount": 2,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "base:sounds/music/incident_010a.ogg",
+  "BackgroundMusic": "base:sounds/music/Lothyde/precarious_state.ogg",
   "WeaponChance": 0.26,
   "LevelBounds": {
     "MinX": -2420.772,

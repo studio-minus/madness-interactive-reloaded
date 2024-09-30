@@ -7,6 +7,7 @@
     "stats": "mag",
     "description": "mag campaign!! ONLY MAGS ALLOWED",
     "levels": [
+        "lvl_cutscene_mag_intro",
         "lvl_mag_intro",
         "lvl_mag_procedural"
     ]
