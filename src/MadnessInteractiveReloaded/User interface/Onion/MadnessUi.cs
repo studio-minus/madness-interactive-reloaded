@@ -24,9 +24,11 @@ public static class MadnessUi
         Ui.StartGroup(false, identity + site);
         {
             var h = Onion.Tree.CurrentNode!.GetInstance().Rects.ComputedGlobal.Height;
+            var pressed = false;
 
-            Ui.Layout.Size(h, h);
-            Ui.Image(Assets.Load<Texture>("textures/ui/icon/folder.png").Value, ImageContainmentMode.Stretch);
+            Ui.Layout.Size(h, h).Inflate(-5);
+            Ui.Theme.Foreground(default).OutlineWidth(0).Image(new(Colors.White, Colors.Red)).Once();
+            pressed = Ui.ImageButton(Assets.Load<Texture>("textures/ui/icon/folder.png").Value, ImageContainmentMode.Stretch);
 
             var path = "None";
             if (Assets.TryFindFirst(asset.Internal, out var global) && Assets.TryGetPackage(global.External, out var p) && p.HasAsset(global.Internal))
@@ -36,7 +38,7 @@ public static class MadnessUi
             Ui.Decorators.Tooltip(path);
             Ui.Layout.FitContainer(1, 1, false).Scale(-h, 0).Move(h, 0);
             Ui.Theme.Font(Fonts.CascadiaMono).FontSize(12).OutlineWidth(0).Once();
-            if (LeftAlignedButton.Start(path))
+            if (LeftAlignedButton.Start(path) || pressed)
             {
                 var s = Game.Main.Scene;
                 s.AttachComponent( s.CreateEntity(),

@@ -218,7 +218,10 @@ public class PlayerUISystem : Walgelijk.System
 
         // level goal
         {
-            Draw.Colour = Colors.White;
+            Draw.Reset();
+            Draw.ScreenSpace = true;
+            Draw.Order = RenderOrders.UserInterface;
+
             if (Level.CurrentLevel != null && Scene.FindAnyComponent<LevelProgressComponent>(out var progress))
             {
                 switch (Level.CurrentLevel.ProgressionType)
@@ -258,6 +261,7 @@ public class PlayerUISystem : Walgelijk.System
         {
             Draw.Reset();
             Draw.ScreenSpace = true;
+            Draw.Order = RenderOrders.UserInterface;
 
             Draw.Font = Fonts.CascadiaMono;
             Draw.FontSize = 18;
