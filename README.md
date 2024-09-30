@@ -16,4 +16,4 @@ The fork includes a Vector2 (MadnessVector2) class utility that can probably run
 This fork fixes all things related to positions, It fixes melee combat, head turning and rotating, special abilities,
 
 ## What it does NOT fix;
-As of now it does not fix raycasting (might be related to Walgelijk), and ragdolls.
+As of now it does not fix physics (related to ragdolls, gun physics, and more) but it will do that soone enough. This is because Walgelijk also uses Vector2.Normalize.
