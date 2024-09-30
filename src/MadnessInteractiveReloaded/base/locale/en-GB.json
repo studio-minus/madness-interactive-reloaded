@@ -1,5 +1,5 @@
 {
-  "DisplayName": "English",
+  "DisplayName": "English (UK)",
   "Culture": "en-GB",
   "Table": {
     "main-menu-campaigns": "Campaigns",
@@ -35,8 +35,10 @@
 
     "character-creation-save-exit": "Done",
     "character-creation-flip": "Flip character",
-    "character-creation-export": "Export",
+    "character-creation-reset": "Reset",
+    "character-creation-reset-confirm": "Are you sure you want to reset your character?",
     "character-creation-import": "Import",
+    "character-creation-export": "Export",
 
     "experiment-open-menu": "Menu",
     "experiment-close-menu": "Stop editing",
@@ -50,15 +52,29 @@
     "experiment-modifiers": "Modifiers",
     "experiment-timescale": "Timescale",
     "experiment-cleanup": "Clean everything",
+    "experiment-autospawn-configure": "Configure autospawn",
+    "experiment-autospawn-settings": "Autospawn settings",
+    "experiment-spawn-interval": "Spawn interval in seconds",
+    "experiment-autospawn-help-character": "Assign characters to spawn by right clicking a character in the character menu...",
+    "experiment-autospawn-help-weapon": "Assign weapons to autospawn by right clicking a weapon in the weapon menu...",
     "experiment-autospawn": "Autospawn",
-    "experiment-spawn-interval": "Spawn interval",
-    "experiment-max-enemies": "Max. enemies",
+    "experiment-max-enemies": "Maximum enemies",
     "experiment-you": "You",
     "experiment-duplicate-preset": "Duplicate",
     "experiment-drop-weapon": "Drop weapon",
     "experiment-kill": "Kill",
     "experiment-body-health": "Body hp",
     "experiment-head-health": "Head hp",
+    "experiment-melee": "Melee",
+    "experiment-firearms": "Firearms",
+    "experiment-all": "All",
+    "experiment-filter": "Filter...",
+    "experiment-npc-faction": "Faction",
+    "experiment-modifiers-disks": "Improbability Disks",
+    "experiment-tab-characters": "Characters",
+    "experiment-tab-weapons": "Weapons",
+    "experiment-tab-music": "Music",
+    "experiment-tab-game-rules": "Game rules",
 
     "pause-menu-resume": "Resume",
     "pause-menu-retry": "Retry level",
@@ -82,6 +98,7 @@
     "skip": "Skip",
     "base-layer": "Base layer",
     "blood-colour": "Blood colour",
+    "save": "Save",
 
     "god-mode": "God mode",
     "inf-ammo": "Infinite ammo",
@@ -106,7 +123,8 @@
     "tut-jump-dodge": "Press <color=#ffffff>[{0}]</color> to jump-dodge",
     "tut-throw-1": "Throwing is an important skill.\nIt stuns the enemy and, if you can catch it, grants you their weapon.",
     "tut-throw-2": "Aim and use <color=#ffffff>[{0}]</color> to <color=#ffff00>throw</color>.",
-    "tut-melee": "Get ready to fight! Attack by pressing <color=#ffffff>[{0}]</color>.\n\n<color=#ffff00>Block</color> incoming attacks by holding <color=#ffffff>[{1}]</color>.\n\nYou can <color=#ffff00>parry</color> and stun the enemy by blocking right before the enemy attack lands. Get your timing right.",
+    "tut-melee": "Get ready to fight! Attack by pressing <color=#ffffff>[{0}]</color>.\n\n<color=#ffff00>Block</color> incoming attacks by holding <color=#ffffff>[{1}]</color>.\n\n<color=#ffff00>Parry</color> and stun the enemy by blocking right before the enemy attack lands. Get your timing right.",
+    "tut-parry": "Parry and kill to proceed.",
     "tut-finish": "Well done. Jump into the pit."
   }
 }

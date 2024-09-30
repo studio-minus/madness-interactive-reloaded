@@ -10,9 +10,9 @@ using Walgelijk.AssetManager;
 /// <summary>
 /// For creating buttons with little pictures in them.
 /// </summary>
-public readonly struct ThumbnailButton : IControl
+public readonly struct ThumbnailButton(IReadableTexture? texture) : IControl
 {
-    private readonly static OptionalControlState<(string, IReadableTexture?)> state = new();
+    private readonly static OptionalControlState<float> state = new();
 
     public static bool Hold(string label, IReadableTexture? thumbnail, int identity = 0, [CallerLineNumber] int site = 0)
         => CreateButton(label, thumbnail, identity, site).Held;
@@ -22,11 +22,10 @@ public readonly struct ThumbnailButton : IControl
 
     private static InteractionReport CreateButton(string label, IReadableTexture? thumbnail, int identity = 0, int site = 0)
     {
-        var (instance, node) = Onion.Tree.Start(IdGen.Create(nameof(ThumbnailButton).GetHashCode(), identity, site), new ThumbnailButton());
+        var (instance, node) = Onion.Tree.Start(IdGen.Create(nameof(ThumbnailButton).GetHashCode(), identity, site), new ThumbnailButton(thumbnail));
         instance.RenderFocusBox = false;
         instance.Name = label;
-        var v = (label, thumbnail);
-        state.UpdateFor(instance.Identity, ref v);
+
         Onion.Tree.End();
         return new InteractionReport(instance, node, InteractionReport.CastingBehaviour.Up);
     }
@@ -37,14 +36,25 @@ public readonly struct ThumbnailButton : IControl
 
     public void OnStart(in ControlParams p) { }
 
-    public void OnProcess(in ControlParams p) => ControlUtils.ProcessButtonLike(p);
+    public void OnProcess(in ControlParams p)
+    {
+        ControlUtils.ProcessButtonLike(p);
+    }
 
     public void OnRender(in ControlParams p)
     {
         (ControlTree tree, LayoutQueue layout, Input input, GameState state, Node node, ControlInstance instance) = p;
 
+        float scaleMultiplier = 1;
+        ThumbnailButton.state.UpdateFor(p.Identity, ref scaleMultiplier);
+
         var t = node.GetAnimationTime();
         var anim = instance.Animations;
+
+        if (p.Instance.IsHover)
+            scaleMultiplier = Utilities.SmoothApproach(scaleMultiplier, 1.1f, 25, p.GameState.Time.DeltaTime);
+        else
+            scaleMultiplier = Utilities.SmoothApproach(scaleMultiplier, 1, 25, p.GameState.Time.DeltaTime);
 
         Draw.Colour = p.Theme.Image[instance.State];
         Draw.ImageMode = ImageMode.Stretch;
@@ -59,8 +69,7 @@ public readonly struct ThumbnailButton : IControl
         Draw.Texture = Assets.Load<Texture>("textures/ui/item_background.png").Value;
         Draw.Quad(instance.Rects.Rendered, 0, p.Theme.Rounding);
 
-        var tex = ThumbnailButton.state[p.Identity].Item2;
-        if (tex != null)
+        if (texture != null)
         {
             Draw.ImageMode = default;
             Draw.ResetTexture();
@@ -70,7 +79,9 @@ public readonly struct ThumbnailButton : IControl
             thumbnailRect = thumbnailRect.Translate(0, 5);
             Draw.Colour = Colors.White;
             anim.AnimateColour(ref Draw.Colour, t);
-            Draw.Image(tex, thumbnailRect.Scale(0.9f), ImageContainmentMode.Contain);
+            Draw.TransformMatrix = Matrix3x2.CreateScale(scaleMultiplier, thumbnailRect.GetCenter());
+            Draw.Image(texture, thumbnailRect.Scale(0.85f), ImageContainmentMode.Contain);
+            Draw.ResetTransformation();
             Draw.ResetTexture();
         }
 
@@ -86,6 +97,9 @@ public readonly struct ThumbnailButton : IControl
             Draw.Text(instance.Name, textRect.GetCenter(), new Vector2(ratio),
                 HorizontalTextAlign.Center, VerticalTextAlign.Middle, textRect.Width);
         }
+
+        ThumbnailButton.state.SetValue(p.Identity, scaleMultiplier);
+
     }
 
     public void OnEnd(in ControlParams p)

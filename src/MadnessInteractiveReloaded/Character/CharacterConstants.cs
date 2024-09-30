@@ -71,4 +71,8 @@ public static class CharacterConstants
     public static readonly Shader BodyPartShader = new(
             Assets.Load<string>("shaders/worldspace-vertex-object-pos.vert").Value,
             Assets.Load<string>("shaders/bodypart.frag").Value);
+
+    public static readonly Shader ApparelShader = new(
+            Assets.Load<string>("shaders/worldspace-vertex-object-pos.vert").Value,
+            Assets.Load<string>("shaders/apparel.frag").Value);
 }

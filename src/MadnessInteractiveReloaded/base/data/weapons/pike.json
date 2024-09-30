@@ -1,0 +1,63 @@
+{
+  "Id": "pike",
+  "WeaponData": {
+    "Name": "Pike",
+    "Damage": 0.55,
+    "UseDelay": 0.0,
+    "MaxHandRangeMultiplier": 0.5,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 2.0,
+    "ThrowableHeavy": true,
+    "ThrowableSharpBoxes": [
+      {
+        "MinX": -6.8000183,
+        "MinY": 0.40013885,
+        "MaxX": 132.80008,
+        "MaxY": 266.00034
+      }
+    ],
+    "WeaponType": "Melee",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 12,
+    "BurstFireCount": 0,
+    "Accuracy": 0.0,
+    "Recoil": 0.0,
+    "RotationalRecoilIntensity": 1.0,
+    "RecoilHandling": 0.0,
+    "Automatic": false,
+    "ShootSounds": null,
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 800.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Axe",
+    "MeleeSize": "Large"
+  },
+  "BaseTexture": "base:textures/weapons/pike/base.png",
+  "HoldForGrip": true,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": -15.0,
+    "Y": -15.0
+  },
+  "CasingEjectionPoint": {
+    "X": 15.0,
+    "Y": 15.0
+  },
+  "HoldPoints": [
+    {
+      "X": 20.99997,
+      "Y": 269.6999
+    },
+    {
+      "X": -18.899971,
+      "Y": -147.60002
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 90.0
+}

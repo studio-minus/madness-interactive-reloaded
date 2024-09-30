@@ -74,15 +74,11 @@ public class LevelProgressSystem : Walgelijk.System
         if (!Scene.FindAnyComponent<LevelProgressComponent>(out var progress))
             throw new System.InvalidOperationException("There is no progress component in the scene, so you can't invoke Win");
 
-        if (!progress.GoalReached)
-            progress.GoalReached = true;
+        progress.GoalReached = true;
 
         // try opening the progress door
-        var door = Scene.GetAllComponentsOfType<DoorComponent>()
-            .FirstOrDefault(static d => d.Properties.IsLevelProgressionDoor);
-
-        if (door != null)
-            door.Open(Scene);
+        var door = Scene.GetAllComponentsOfType<DoorComponent>().FirstOrDefault(static d => d.Properties.IsLevelProgressionDoor);
+        door?.Open(Scene);
     }
 
     public void TransitionToNextLevel()
@@ -91,6 +87,9 @@ public class LevelProgressSystem : Walgelijk.System
         {
             int currentLevelIndex = Level.CurrentLevel == null ? 0 :
                 Array.IndexOf(CampaignProgress.CurrentCampaign.Levels, Level.CurrentLevel.Id); // get index of current level
+
+            if (Level.CurrentLevel == null || CampaignProgress.CurrentCampaign.Levels[stats.LevelIndexClamped] == Level.CurrentLevel.Id)
+                CampaignProgress.SetProgressToNextLevel(); // only increment progression if we are playing the last unlocked level
 
             if (CampaignProgress.GetCampaignLevelList().Length <= currentLevelIndex + 1)
             {
@@ -102,9 +101,6 @@ public class LevelProgressSystem : Walgelijk.System
                     Audio.Stop(PersistentSoundHandles.LevelMusic);
                 return;
             }
-
-            if (Level.CurrentLevel == null || CampaignProgress.CurrentCampaign.Levels[stats.LevelIndexClamped] == Level.CurrentLevel.Id)
-                CampaignProgress.SetProgressToNextLevel(); // only increment progression if we are playing the last unlocked level
 
             var nextLvl = Registries.Levels.Get(CampaignProgress.GetLevelKeyAt(currentLevelIndex + 1)
                 ?? throw new Exception("Attempt to progress to next level at the end of the campaign level index "));
@@ -137,6 +133,6 @@ public class LevelProgressSystem : Walgelijk.System
                 throw new InvalidOperationException("Attempt to progress to next level at the end of the campaign level index");
         }
         else
-            throw new Exception("Campaign is missing a stats entry");
+            Logger.Error("Campaign is missing a stats entry");
     }
 }

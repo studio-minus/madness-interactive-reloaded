@@ -17,16 +17,15 @@ $@"<color=#ff0000>Madness Interactive Reloaded v{GameVersion.Version} for {Build
 Programming
 <color=#ffffff80>zooi</color>
 <color=#ffffff80>duston</color>
-
+<color=#ffffff80>Orsoniks</color>
+<color=#ffffff80>Orongto</color>
 
 Art and animations
 <color=#ffffff80>Dikkiedik</color>
 <color=#ffffff80>Koof</color>
 
-
 Original soundtrack
 <color=#ffffff80>Lothyde</color>
-
 <color=#ffffff80>Additional music by Cheshyre and mmodule.</color>
 
 <color=#ffffff80>Based on Madness Interactive by </color>Flecko (Max Abernethy)<color=#ffffff80> and Madness Combat by </color>Krinkels";

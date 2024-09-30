@@ -8,3 +8,4 @@ category Mask
 detach False
 hidden False
 offset -20 40
+damage-size 0

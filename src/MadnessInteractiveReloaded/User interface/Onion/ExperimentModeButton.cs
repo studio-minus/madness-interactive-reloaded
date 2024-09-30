@@ -63,8 +63,7 @@ public readonly struct ExperimentModeButton : IControl
         };
         Draw.Colour = p.Theme.Image[instance.State];
         anim.AnimateColour(ref Draw.Colour, t);
-        Draw.Image(ExperimentModeButton.state[p.Identity].Item2,
-            thumbnailRect.Expand(-p.Theme.Padding), ImageContainmentMode.Contain);
+        Draw.Image(ExperimentModeButton.state[p.Identity].Item2, thumbnailRect.Expand(-p.Theme.Padding), ImageContainmentMode.Contain);
         Draw.ResetTexture();
 
         Draw.Font = p.Theme.Font;

@@ -34,6 +34,7 @@ public static class CharacterStatsDeserialiser
 
         deserialiser.RegisterBool("can_deflect", (s, v) => s.CanDeflect = v);
         deserialiser.RegisterBool("dodge_oversaturate", (s, v) => s.DodgeOversaturate = v);
+        deserialiser.RegisterString("walk_anim", (s, v) => s.WalkAnimation = v);
         deserialiser.RegisterStringArray("abilities", (s, v) => s.Abilities = [.. v.Select(GetAbilityTypeFromString)]);
 
         deserialiser.RegisterString("name", (s, v) => s.Name = v);
@@ -102,6 +103,9 @@ public static class CharacterStatsDeserialiser
         writer.AppendKvStringArray("two_handed_seq", stats.TwoHandedSeq);
         writer.AppendKvStringArray("two_handed_gun_seq", stats.TwoHandedGunSeq);
         writer.AppendKvStringArray("blunt_seq", stats.BluntSeq);
+
+        if (stats.WalkAnimation != null)
+        writer.AppendLineFormat("walk_anim {0}", stats.WalkAnimation);
 
         writer.AppendLineFormat("agility_skill_level {0}", stats.AgilitySkillLevel.ToString());
 

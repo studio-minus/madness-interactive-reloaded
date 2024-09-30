@@ -567,6 +567,22 @@ public class WeaponSystem : Walgelijk.System
 
                     Prefabs.CreateBloodSpurt(Scene, hit.Position, MathF.Atan2(bulletDirection.Y, bulletDirection.X) * Utilities.RadToDeg, damagable.BloodColour, Utilities.Clamp(s * 4, 1f, 1.4f));
 
+                    // We should somehow only apply this to the apparel that is actually attached to this thing?
+                    foreach (var dec in victimChar.Positioning.HeadDecorations)
+                        if (Scene.TryGetComponentFrom<ApparelSpriteComponent>(dec, out var apparel) && apparel.Visible)
+                        {
+                            var decTransform = Scene.GetComponentFrom<TransformComponent>(dec);
+                            var localPointOnDec = Vector2.Transform(hit.Position, decTransform.WorldToLocalMatrix);
+                            apparel.TryAddHole(localPointOnDec.X, localPointOnDec.Y, s);
+                        }
+                    foreach (var dec in victimChar.Positioning.BodyDecorations)
+                        if (Scene.TryGetComponentFrom<ApparelSpriteComponent>(dec, out var apparel) && apparel.Visible)
+                        {
+                            var decTransform = Scene.GetComponentFrom<TransformComponent>(dec);
+                            var localPointOnDec = Vector2.Transform(hit.Position, decTransform.WorldToLocalMatrix);
+                            apparel.TryAddHole(localPointOnDec.X, localPointOnDec.Y, s);
+                        }
+
                     if (s > 0.2f)
                     {
                         var d = isExitWound ? bulletDirection : hit.Normal;
@@ -576,8 +592,7 @@ public class WeaponSystem : Walgelijk.System
                     }
 
                     // make sure that corpses never block bullets
-                    bool cosmeticBullet = !wasAlive;// && 
-                                                    //weapon.GetDamageAtDistance(hit.Distance) / (iteration + 1) < Utilities.RandomFloat(0.6f, 0.8f);
+                    bool cosmeticBullet = !wasAlive;
 
                     cosmeticBullet = weapon.GetDamageAtDistance(totalDistance) / (iteration + 1) < 0.4f;
 

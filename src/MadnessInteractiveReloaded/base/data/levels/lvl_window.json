@@ -2,8 +2,8 @@
   "DisplayName": "untitled",
   "LevelType": "Campaign",
   "ProgressionType": "BodyCount",
-  "EnemySpawnInterval": 0.90000004,
-  "MaxEnemyCount": 2,
+  "EnemySpawnInterval": 0.5,
+  "MaxEnemyCount": 3,
   "MaxSimultaneousAttackingEnemies": 2,
   "BackgroundMusic": "sounds/music/Lothyde/jazzed_madness_overture.ogg",
   "WeaponChance": 0.75,
@@ -54,11 +54,11 @@
   ],
   "FloorLine": [
     {
-      "X": -1861.9113,
+      "X": -1893.9113,
       "Y": -1273.7551
     },
     {
-      "X": 1822.0887,
+      "X": 1856.0887,
       "Y": -1273.7551
     }
   ],

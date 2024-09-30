@@ -21,6 +21,8 @@ public class CharacterCreationComponent : Component, IDisposable
     public int SelectedHeadLayer = 0;
     public int SelectedBodyLayer = 0;
 
+    public List<Color> Swatches = [Colors.Black, Colors.Black, Colors.Black, Colors.Black, Colors.Black, Colors.Black, Colors.Black, Colors.Black];
+
     public CharacterCreationComponent()
     {
         Background = Assets.Load<Texture>("textures/backgrounds/character_creation_1.qoi");

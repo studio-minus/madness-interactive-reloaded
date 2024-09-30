@@ -68,7 +68,10 @@ public class CharacterComponent : Component
     /// </summary>
     public readonly Hook<CharacterComponent> OnDeath = new();
 
-    public Vector2 AimDirection => Vector2.Normalize(AimTargetPosition - new Vector2(Positioning.GlobalCenter.X, Positioning.Head.GlobalPosition.Y));
+    public Vector2 AimDirection => Vector2.Normalize(
+        AimTargetPosition - 
+        new Vector2(Positioning.GlobalCenter.X, Positioning.Head.GlobalPosition.Y)
+    );
 
     // combat
 

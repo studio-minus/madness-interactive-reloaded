@@ -76,6 +76,11 @@ public class ArmourPiece : ICharacterCustomisationItem
     /// </summary>
     public float DeflectChance = 0;
 
+    /// <summary>
+    /// The size multiplier of all procedural damage on this armour piece
+    /// </summary>
+    public float ProceduralDamageScale = 1;
+
     string ICharacterCustomisationItem.DisplayName => Name;
 
     bool ICharacterCustomisationItem.Hidden => Hidden;

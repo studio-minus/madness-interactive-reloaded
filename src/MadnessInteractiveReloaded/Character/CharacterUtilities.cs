@@ -61,7 +61,7 @@ public static class CharacterUtilities
                 delay = d.PickupTime * d.Duration;
             }
 
-            MadnessUtils.DelayPausable(delay, () => 
+            MadnessUtils.DelayPausable(delay, () =>
             {
                 if (character.EquipWeapon(scene, weapon))
                 {
@@ -76,12 +76,6 @@ public static class CharacterUtilities
     /// <summary>
     /// Do damage with a gun.
     /// </summary>
-    /// <param name="scene"></param>
-    /// <param name="damage"></param>
-    /// <param name="bodyPart"></param>
-    /// <param name="character"></param>
-    /// <param name="bulletDirection"></param>
-    /// <param name="localHitPoint"></param>
     public static void DoGunDamage(Scene scene, float damage, BodyPartComponent bodyPart, CharacterComponent character, Vector2 bulletDirection, Vector2 localHitPoint)
     {
         bodyPart.Damage(damage);
@@ -251,12 +245,11 @@ public static class CharacterUtilities
                 return;
             }
 
-            var s = 1f; // Utilities.RandomFloat(1f, 1.3f);
             character.StopAllAnimations();
-            var a = character.PlayAnimation(anim, s);
+            var a = character.PlayAnimation(anim, 1);
             // during the animation, check if the body is above a flat ground. if it isnt, turn into a ragdoll MID ANIMATION 
             // TODO this should be in a system, not in a routine
-            MadnessUtils.RoutineForSecondsPausable(anim.TotalDuration / s, dt =>
+            MadnessUtils.RoutineForSecondsPausable(anim.TotalDuration, dt =>
             {
                 var isFlatUnderMe = Level.CurrentLevel?.IsFlatAt(character.Positioning.Body.ComputedVisualCenter.X) ?? true;
                 if (!isFlatUnderMe && !character.AnimationConstrainsAny(AnimationConstraint.PreventRagdoll))
@@ -264,7 +257,8 @@ public static class CharacterUtilities
 
             });
             // if the animation is over stamp it onto the background immediately
-            a.OnEnd += () =>
+            //a.OnEnd += () => // OnEnd is invoked at an unfortunate time, where the rendertasks are off by a few frames??
+            MadnessUtils.DelayPausable(anim.TotalDuration, () =>
             {
                 if (!character.HasBeenRagdolled && scene.HasEntity(entity))
                 {
@@ -280,7 +274,7 @@ public static class CharacterUtilities
                         character.Delete(scene);
                     }
                 }
-            };
+            });
         }
 
         // nothing has been chosen

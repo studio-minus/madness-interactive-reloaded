@@ -34,6 +34,7 @@ public static class GoreTestScene
             BloodColour = Colors.Red,
             Scale = 1
         });
+
         var head = Prefabs.CreateBodypartSprite(scene, new BodyPartMaterialParams
         {
             SkinTexture = Registries.Armour.Head["default_head"].Left,
@@ -44,6 +45,13 @@ public static class GoreTestScene
         });
 
         scene.GetComponentFrom<TransformComponent>(head).Position = new Vector2(50, 200);
+        //src\MadnessInteractiveReloaded\base\data\armour\head_armour\angry_glasses_eyes.armor  
+        var headArmour = Prefabs.CreateApparelSprite(scene, new ApparelMaterialParams
+        {
+            Texture = Registries.Armour.HeadAccessory["engineer_mask_eyes"].Left.Value,
+            Scale = 1,
+            DamageScale = 0
+        }, new Vector2(300, 200));
 
         return scene;
     }
@@ -54,31 +62,49 @@ public static class GoreTestScene
 
         public override void Update()
         {
-            if (!Ui.IsBeingUsed)
-                foreach (var body in Scene.GetAllComponentsOfType<BodyPartShapeComponent>())
+            Draw.Reset();
+            Draw.ScreenSpace = true;
+            Draw.Colour = Colors.Gray;
+            Draw.Quad(new(0,0,Window.Width, Window.Height));
+            DrawUi();
+
+            if (Ui.IsBeingUsed)
+                return;
+
+            foreach (var body in Scene.GetAllComponentsOfType<BodyPartShapeComponent>())
+            {
+                var transform = Scene.GetComponentFrom<TransformComponent>(body.Entity);
+                Vector2 ToLocal(Vector2 global) => Vector2.Transform(global, transform.WorldToLocalMatrix);
+                var localMouse = ToLocal(Input.WorldMousePosition);
+
+                if (Input.IsButtonPressed(MouseButton.Left))
                 {
-                    var transform = Scene.GetComponentFrom<TransformComponent>(body.Entity);
-                    Vector2 ToLocal(Vector2 global) => Vector2.Transform(global, transform.WorldToLocalMatrix);
-                    var localMouse = ToLocal(Input.WorldMousePosition);
+                    body.TryAddHole(localMouse.X, localMouse.Y, Damage);
 
-                    if (Input.IsButtonPressed(MouseButton.Left))
+                    if (Damage > 0.2f)
                     {
-                        body.TryAddHole(localMouse.X, localMouse.Y, Damage);
-
-                        if (Damage > 0.2f)
-                        {
-                            localMouse += Utilities.RandomPointInCircle() * 0.2f;
-                            body.TryAddInnerCutoutHole(localMouse.X, localMouse.Y, Damage + 1);
-                        }
-                    }
-
-                    if (Input.IsButtonPressed(MouseButton.Right))
-                    {
-                        body.AddSlash(localMouse, Utilities.RandomFloat() * float.Tau);
+                        localMouse += Utilities.RandomPointInCircle() * 0.2f;
+                        body.TryAddInnerCutoutHole(localMouse.X, localMouse.Y, Damage + 1);
                     }
                 }
 
-            DrawUi();
+                if (Input.IsButtonPressed(MouseButton.Right))
+                {
+                    body.AddSlash(localMouse, Utilities.RandomFloat() * float.Tau);
+                }
+            }   
+            
+            foreach (var armour in Scene.GetAllComponentsOfType<ApparelSpriteComponent>())
+            {
+                var transform = Scene.GetComponentFrom<TransformComponent>(armour.Entity);
+                Vector2 ToLocal(Vector2 global) => Vector2.Transform(global, transform.WorldToLocalMatrix);
+                var localMouse = ToLocal(Input.WorldMousePosition);
+
+                if (Input.IsButtonPressed(MouseButton.Left))
+                {
+                    armour.TryAddHole(localMouse.X, localMouse.Y, Damage);
+                }
+            }
         }
 
         private void DrawUi()
@@ -88,6 +114,9 @@ public static class GoreTestScene
             {
                 foreach (var body in Scene.GetAllComponentsOfType<BodyPartShapeComponent>())
                     body.ClearHoles();
+
+                foreach (var b in Scene.GetAllComponentsOfType<ApparelSpriteComponent>())
+                    b.ClearHoles();
             }
 
             Ui.Layout.Size(100, 32).StickTop().StickLeft().Move(0, 32);

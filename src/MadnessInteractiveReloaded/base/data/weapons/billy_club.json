@@ -3,11 +3,11 @@
   "WeaponData": {
     "Name": "Billy Club",
     "Damage": 0.25,
-    "UseDelay": 0.0,
+    "UseDelay": 0.2,
     "MaxHandRangeMultiplier": 1.0,
     "AdditionalComponents": null,
     "EnsureSystems": null,
-    "ThrowableDamage": 15.0,
+    "ThrowableDamage": 0.5,
     "ThrowableHeavy": false,
     "ThrowableSharpBoxes": [],
     "WeaponType": "Melee",

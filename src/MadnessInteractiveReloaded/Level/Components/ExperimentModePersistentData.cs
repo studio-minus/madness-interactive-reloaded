@@ -1,8 +1,10 @@
-﻿namespace MIR;
+﻿using static MIR.ExperimentModeComponent;
+
+namespace MIR;
 
 public static class ExperimentModePersistentData
 {
-    public static string SelectedFaction = "aahw";
+    public static FactionOption SelectedFaction = new("aahw");
     public static string CurrentFilter = string.Empty;
     public static bool AIDisabled = false;
     public static bool AutoSpawn = false;
