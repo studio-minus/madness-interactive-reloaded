@@ -587,3 +587,58 @@ public struct DistributeChildrenLayout : ILayout
         child.Rects.Intermediate = child.Rects.Intermediate.Translate(w * index, 0);
     }
 }
+
+public struct DistributeVerticalLayout : ILayout
+{
+    public void Apply(in ControlParams p, int index, int childId)
+    {
+        float padding = p.Theme.Padding;
+        var child = p.Tree.EnsureInstance(childId); //  - p.Theme.Padding
+        var h = (p.Instance.Rects.Rendered.Height + padding) / p.Node.Children.Count(Onion.Tree.IsAlive);
+
+        child.Rects.Intermediate.Height = (h - padding);
+        child.Rects.Intermediate = child.Rects.Intermediate.Translate(0, h * index);
+    }
+}
+
+public struct FractionLayout(params float[] coefficients) : ILayout
+{
+    public void Apply(in ControlParams p, int index, int childId)
+    {
+        if (coefficients.Length <= index)
+            return;
+
+        float padding = p.Theme.Padding;
+        var total = (p.Instance.Rects.Rendered.Width + padding);
+
+        var cf = coefficients[index];
+        var lastWidth = (index == 0 ? 0 : coefficients[index - 1]) * total;
+
+        var child = p.Tree.EnsureInstance(childId);
+        var w = total * cf;
+
+        child.Rects.Intermediate.Width = (w - padding);
+        child.Rects.Intermediate = child.Rects.Intermediate.Translate(lastWidth, 0);
+    }
+}
+
+public struct FractionHorizontalLayout(params float[] coefficients) : ILayout
+{
+    public void Apply(in ControlParams p, int index, int childId)
+    {
+        if (coefficients.Length <= index)
+            return;
+
+        float padding = p.Theme.Padding;
+        var total = (p.Instance.Rects.Rendered.Height + padding);
+
+        var cf = coefficients[index];
+        var lastHeight = (index == 0 ? 0 : coefficients[index - 1]) * total;
+
+        var child = p.Tree.EnsureInstance(childId);
+        var h = total * cf;
+
+        child.Rects.Intermediate.Height = (h - padding);
+        child.Rects.Intermediate = child.Rects.Intermediate.Translate(0, lastHeight);
+    }
+}

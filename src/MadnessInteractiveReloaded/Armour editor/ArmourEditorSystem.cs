@@ -12,8 +12,9 @@ namespace MIR;
 
 public class ArmourEditorSystem : Walgelijk.System
 {
-    const float rightBarWidth = 450;
+    const float rightBarWidth = 400;
     const float topBarHeight = 32;
+    private static Texture checkerboard = TexGen.Checkerboard(32, 32, 16, Colors.White, Colors.Gray);
 
     private bool TryResetLook()
     {
@@ -36,8 +37,8 @@ public class ArmourEditorSystem : Walgelijk.System
         Draw.ScreenSpace = true;
         Draw.Order = RenderOrders.BackgroundBehind;
         Draw.Image(
-            Assets.Load<Texture>("textures/red-black-gradient.png").Value, 
-            new Rect(0,0,Window.Width, Window.Height), ImageContainmentMode.Stretch);
+            Assets.Load<Texture>("textures/red-black-gradient.png").Value,
+            new Rect(0, 0, Window.Width, Window.Height), ImageContainmentMode.Stretch);
 
         if (!Scene.FindAnyComponent<ArmourEditorComponent>(out var editor))
             return;
@@ -47,6 +48,12 @@ public class ArmourEditorSystem : Walgelijk.System
 
         DrawTopBar(editor);
         DrawArmourEditorUi(editor);
+
+        if (player != null)
+        {
+            Ui.Layout.Size(Window.Width - rightBarWidth, 30).StickLeft(false).StickBottom(false);
+            Ui.TextRect(player.RespondToUserInput ? "Press F to freeze character" : "Press F to unfreeze character", HorizontalTextAlign.Center, VerticalTextAlign.Middle);
+        }
 
         character.NeedsLookUpdate = true;
 
@@ -63,10 +70,10 @@ public class ArmourEditorSystem : Walgelijk.System
         var w = Window.Size.X;
         var h = Window.Size.Y;
 
-        Ui.Layout.Size(w, topBarHeight).HorizontalLayout();
+        Ui.Layout.Size(w - rightBarWidth, topBarHeight).HorizontalLayout();
         Ui.StartGroup();
         {
-            Ui.Layout.Size(64, topBarHeight);
+            Ui.Layout.Size(100, topBarHeight);
             if (Ui.Button("New"))
             {
                 var tag = new Tag(234578); // random number to identify the dialog box later
@@ -91,7 +98,7 @@ public class ArmourEditorSystem : Walgelijk.System
 
             }
 
-            Ui.Layout.Size(64, topBarHeight);
+            Ui.Layout.Size(100, topBarHeight);
             if (Ui.Button("Load"))
             {
                 if (FileDialog.OpenFile(new[] { ("armor file", "armor"), ("All files", "*") }, out var chosenPath)
@@ -106,16 +113,48 @@ public class ArmourEditorSystem : Walgelijk.System
                 }
             }
 
-            Ui.Layout.Size(400, topBarHeight);
-            if (player != null)
-                Onion.Theme.Text(player.RespondToUserInput ? Colors.White : Colors.Green).Once();
-            Ui.TextRect("Press F to freeze/unfreeze character.", HorizontalTextAlign.Center, VerticalTextAlign.Middle);
+            if (editor.CurrentPiece != null)
+            {
+                Ui.Layout.Size(100, topBarHeight);
+                if (Ui.Button("Save") && editor.CurrentPiece.Type != ArmourPieceType.Hand && editor.CurrentPiece != null)
+                {
+                    if (string.IsNullOrWhiteSpace(editor.CurrentPiecePath))
+                    {
+                        // We do this label and goto shit because the CurrentPiecePath is remembered, so that when Save is pressed, the file is overwritten.
+                        // This behaviour matches basically every other program but does not match any other editor in this game.
+
+                        // TODO: should we make every other editor behave this way? i dont know!! probably!!???
+
+                        // UPDATE: the behaviour in the level editor is preferred:
+                        // your save overwrites by default if you have a file currently open (no prompt, just a green flash if successful)
+                        // if you hold shift, the button changes to say "Save as..." and opens a file dialog
+
+                        if (FileDialog.SaveFile(new[] { ("armor file", "armor"), ("All files", "*") },
+                            defaultName: editor.CurrentPiece.Name, defaultPath: Program.BaseDirectory, out var selectedPath))
+                            editor.CurrentPiecePath = selectedPath;
+                        else goto skip;
+                    }
+
+                    try
+                    {
+                        ArmourDeserialiser.Save(editor.CurrentPiece, editor.CurrentPiecePath);
+                        Audio.PlayOnce(Sounds.UiBad);
+                        MadnessUtils.Flash(Colors.Green.WithAlpha(0.2f), 0.25f);
+                    }
+                    catch (Exception e)
+                    {
+                        Logger.Error(e);
+                        MadnessUtils.Flash(Colors.Red, 0.5f);
+                        Audio.PlayOnce(Sounds.UiBad);
+                    }
+
+                skip:;
+                }
+            }
 
             if (editor.CurrentPiecePath != null)
             {
                 Ui.Layout.Size(2900, topBarHeight);
-                if (player != null)
-                    Onion.Theme.Text(Colors.White.WithAlpha(0.5f)).Once();
                 Ui.TextRect(editor.CurrentPiecePath, HorizontalTextAlign.Left, VerticalTextAlign.Middle);
             }
         }
@@ -124,17 +163,16 @@ public class ArmourEditorSystem : Walgelijk.System
 
     private void DrawArmourEditorUi(ArmourEditorComponent editor)
     {
-        var layout = Onion.Layout;
         var w = Window.Size.X;
         var h = Window.Size.Y;
 
-        layout.Size(rightBarWidth, h).Move(w - rightBarWidth, topBarHeight).VerticalLayout().CenterVertical();
-        Ui.Theme.Foreground((Appearance)new Color(25, 25, 25)).Once();
-        Ui.StartGroup();
+        Ui.Layout.Size(rightBarWidth, h).StickRight(false).VerticalLayout();
+        Ui.Theme.Foreground((Appearance)new Color(45, 45, 45)).Once();
+        Ui.StartScrollView(true);
         {
             if (editor.CurrentPiece == null)
             {
-                layout.Size(100, 100);
+                Ui.Layout.Size(100, 100);
                 Ui.Label("Select an armour piece to edit.");
             }
             else
@@ -152,213 +190,189 @@ public class ArmourEditorSystem : Walgelijk.System
         if (editor.CurrentPiece == null)
             return;
 
-        Onion.Theme.Padding(8);
-        var layout = Onion.Layout;
-
-        layout.FitWidth().Height(42).CenterHorizontal();
-        Onion.Theme.OutlineColour(Colors.Green).Text(new(Colors.White, Colors.Green)).Once();
-        if (Ui.ClickButton("Save") && editor.CurrentPiece.Type != ArmourPieceType.Hand && editor.CurrentPiece != null)
-        {
-            if (string.IsNullOrWhiteSpace(editor.CurrentPiecePath))
-            {
-                // We do this label and goto shit because the CurrentPiecePath is remembered, so that when Save is pressed, the file is overwritten.
-                // This behaviour matches basically every other program but does not match any other editor in this game.
-
-                // TODO: should we make every other editor behave this way? i dont know!! probably!!???
-
-                if (FileDialog.SaveFile(new[] { ("armor file", "armor"), ("All files", "*") }, 
-                    defaultName: editor.CurrentPiece.Name, defaultPath: Program.BaseDirectory, out var selectedPath))
-                    editor.CurrentPiecePath = selectedPath;
-                else goto skip;
-            }
-
-            try
-            {
-                ArmourDeserialiser.Save(editor.CurrentPiece, editor.CurrentPiecePath);
-                Audio.PlayOnce(Sounds.UiBad);
-                MadnessUtils.Flash(Colors.Green.WithAlpha(0.2f), 0.25f);
-            }
-            catch (Exception e)
-            {
-                Logger.Error(e);
-                MadnessUtils.Flash(Colors.Red, 0.5f);
-                Audio.PlayOnce(Sounds.UiBad);
-            }
-
-        skip:;
-        }
-
         if (editor.CurrentPiece == null) // appease the nullability gods
             return;
 
-        Ui.Spacer(35);
+        Ui.Spacer(5);
 
         {
-            layout.FitWidth().Height(32).CenterHorizontal();
-            Ui.Label("Name:");
-
-            layout.FitWidth().Height(32).CenterHorizontal();
-            Ui.StringInputBox(ref editor.CurrentPiece.Name, new TextBoxOptions());
-        }
-
-        Ui.Spacer(8);
-
-        {
-            layout.FitWidth().Height(32).CenterHorizontal();
-            Ui.Label("Type:");
-
-            layout.FitWidth().Height(32).CenterHorizontal();
-            Ui.EnumDropdown(ref editor.CurrentPiece.Type);
-        }
-
-        Ui.Spacer(8);
-
-        {
-            layout.FitWidth().Height(32).CenterHorizontal();
-            Ui.Label("Category:");
-
-            layout.FitWidth().Height(32).CenterHorizontal();
-            Ui.EnumDropdown(ref editor.CurrentPiece.Category);
-        }
-
-        Ui.Spacer(8);
-
-        {
-            layout.FitWidth().Height(32).CenterHorizontal();
-            Ui.Label("Texture scale:");
-
-            layout.FitWidth().Height(32).CenterHorizontal();
-            Ui.FloatInputBox(ref editor.CurrentPiece.TextureScale);
-        }
-
-        Ui.Spacer(8);
-
-        {
-            layout.FitWidth().Height(32).CenterHorizontal();
-            Ui.Label("Bullet deflect chance:");
-
-            layout.FitWidth().Height(32).CenterHorizontal();
-            Ui.FloatInputBox(ref editor.CurrentPiece.DeflectChance, (0, 1));
-        }
-
-        Ui.Spacer(8);
-
-        static void dPad(ref Vector2 v, in LayoutQueue layout, in bool hold, in bool inverse = false, [CallerLineNumber] int site = 0)
-        {
-            var delta = inverse ? -1 : 1;
-            Ui.StartDummy(identity: site);
+            Ui.Layout.FitWidth().Height(32).CenterHorizontal().EnqueueLayout(new FractionLayout(0.4f, 0.6f));
+            Ui.StartGroup(false);
             {
-                if (hold)
-                {
-                    layout.Size(32, 32).Move(-32, 0);
-                    if (Ui.HoldButton("<", identity: site))
-                        v.X -= delta;
-
-                    layout.Size(32, 32).Move(0, -32);
-                    if (Ui.HoldButton("^", identity: site))
-                        v.Y--;
-
-                    layout.Size(32, 32).Move(32, 0);
-                    if (Ui.HoldButton(">", identity: site))
-                        v.X += delta;
-
-                    layout.Size(32, 32).Move(0, 32);
-                    if (Ui.HoldButton("v", identity: site))
-                        v.Y++;
-                }
-                else
-                {
-                    layout.Size(32, 32).Move(-32, 0);
-                    if (Ui.ClickButton("<", identity: site))
-                        v.X -= delta;
-
-                    layout.Size(32, 32).Move(0, -32);
-                    if (Ui.ClickButton("^", identity: site))
-                        v.Y--;
-
-                    layout.Size(32, 32).Move(32, 0);
-                    if (Ui.ClickButton(">", identity: site))
-                        v.X += delta;
-
-                    layout.Size(32, 32).Move(0, 32);
-                    if (Ui.ClickButton("v", identity: site))
-                        v.Y++;
-                }
+                Ui.Layout.FitContainer(0.4f, 1, false);
+                Ui.TextRect("Name", HorizontalTextAlign.Left, VerticalTextAlign.Middle);
+                Ui.Layout.FitContainer(0.6f, 1, false);
+                Ui.StringInputBox(ref editor.CurrentPiece.Name, default);
             }
             Ui.End();
         }
 
-        layout.FitWidth().Height(150).HorizontalLayout();
-        Ui.StartGroup(false);
         {
-            layout.Size(32, 16);
-            Ui.Label("OffsetLeft");
+            Ui.Layout.FitWidth().Height(32).CenterHorizontal().EnqueueLayout(new FractionLayout(0.4f, 0.6f));
+            Ui.StartGroup(false);
+            {
+                Ui.Layout.FitContainer(0.4f, 1, false);
+                Ui.TextRect("Type", HorizontalTextAlign.Left, VerticalTextAlign.Middle);
+                Ui.Layout.FitContainer(0.6f, 1, false);
+                Ui.EnumDropdown(ref editor.CurrentPiece.Type);
+            }
+            Ui.End();
+        }
 
-            layout.Size(64, 32);
-            Ui.FloatInputBox(ref editor.CurrentPiece.OffsetLeft.X);
+        {
+            Ui.Layout.FitWidth().Height(32).CenterHorizontal().EnqueueLayout(new FractionLayout(0.4f, 0.6f));
+            Ui.StartGroup(false);
+            {
+                Ui.Layout.FitContainer(0.4f, 1, false);
+                Ui.TextRect("Scale", HorizontalTextAlign.Left, VerticalTextAlign.Middle);
+                Ui.Layout.FitContainer(0.6f, 1, false);
+                Ui.FloatStepper(ref editor.CurrentPiece.TextureScale, (0.01f, 10000), 0.05f);
+            }
+            Ui.End();
+        }
 
-            layout.Size(64, 32);
-            Ui.FloatInputBox(ref editor.CurrentPiece.OffsetLeft.Y);
+        {
+            Ui.Layout.FitWidth().Height(32).CenterHorizontal().EnqueueLayout(new FractionLayout(0.4f, 0.6f));
+            Ui.StartGroup(false);
+            {
+                Ui.Layout.FitContainer(0.4f, 1, false);
+                Ui.TextRect("Deflect chance", HorizontalTextAlign.Left, VerticalTextAlign.Middle);
+                Ui.Layout.FitContainer(0.6f, 1, false);
+                Ui.FloatSlider(ref editor.CurrentPiece.DeflectChance, Direction.Horizontal, (0, 1), label: "{0:P0}");
+            }
+            Ui.End();
+        }
 
-            layout.FitWidth().Height(64).Move(0, 64);
-            dPad(ref editor.CurrentPiece.OffsetLeft, layout, Input.IsKeyHeld(Key.LeftShift), true);
+        {
+            Ui.Layout.FitWidth().Height(60).CenterHorizontal().EnqueueLayout(new FractionLayout(0.4f, 0.6f));
+            Ui.StartGroup(false);
+            {
+                Ui.Layout.FitContainer(0.4f, 1, false);
+                Ui.TextRect("Offset (left)", HorizontalTextAlign.Left, VerticalTextAlign.Middle);
+                Ui.Layout.FitContainer(0.6f, 1, false);
+                VectorControl(ref editor.CurrentPiece.OffsetLeft, Input.IsKeyHeld(Key.LeftShift), true);
+            }
+            Ui.End();
+        }
+
+        {
+            Ui.Layout.FitWidth().Height(60).CenterHorizontal().EnqueueLayout(new FractionLayout(0.4f, 0.6f));
+            Ui.StartGroup(false);
+            {
+                Ui.Layout.FitContainer(0.4f, 1, false);
+                Ui.TextRect("Offset (right)", HorizontalTextAlign.Left, VerticalTextAlign.Middle);
+                Ui.Layout.FitContainer(0.6f, 1, false);
+                VectorControl(ref editor.CurrentPiece.OffsetRight, Input.IsKeyHeld(Key.LeftShift), false);
+            }
+            Ui.End();
+        }
+
+        {
+            Ui.Layout.FitWidth().Height(32).CenterHorizontal().EnqueueLayout(new FractionLayout(0.4f, 0.6f));
+            Ui.StartGroup(false);
+            {
+                Ui.Layout.FitContainer(1, 1, false);
+                Ui.TextRect("Texture (left)", HorizontalTextAlign.Left, VerticalTextAlign.Middle);
+                Ui.Layout.FitContainer(1, 1, false);
+                MadnessUi.AssetPicker(
+                    editor.CurrentPiece.Left.Id,
+                    c =>
+                    {
+                        editor.CurrentPiece.Left = new(c);
+                        character.NeedsLookUpdate = true;
+                        SetPiece(editor, editor.CurrentPiece);
+                    },
+                    static c => c.MimeType.Contains("image"));
+            }
+            Ui.End();
+        }
+
+        {
+            Ui.Layout.FitWidth().Height(32).CenterHorizontal().EnqueueLayout(new FractionLayout(0.4f, 0.6f));
+            Ui.StartGroup(false);
+            {
+                Ui.Layout.FitContainer(1, 1, false);
+                Ui.TextRect("Texture (right)", HorizontalTextAlign.Left, VerticalTextAlign.Middle);
+                Ui.Layout.FitContainer(1, 1, false);
+                MadnessUi.AssetPicker(
+                    editor.CurrentPiece.Right.Id,
+                    c =>
+                    {
+                        editor.CurrentPiece.Right = new(c);
+                        character.NeedsLookUpdate = true;
+                        SetPiece(editor, editor.CurrentPiece);
+                    },
+                    static c => c.MimeType.Contains("image"));
+            }
+            Ui.End();
+        }
+
+        Ui.Spacer(10);
+
+        {
+            var a = new Appearance(checkerboard ?? Textures.Black, ImageMode.Tiled);
+            Ui.Layout.FitWidth().Height(160).CenterHorizontal().EnqueueLayout(new DistributeChildrenLayout());
+            Ui.Theme.Foreground(a).Once();
+            Ui.StartGroup(true);
+            {
+                var left = Textures.Transparent;
+                var right = Textures.Transparent;
+
+                if (editor.CurrentPiece.Left.IsValid && Assets.TryLoad<Texture>(editor.CurrentPiece.Left.Id, out var ll))
+                    left = ll;
+                if (editor.CurrentPiece.Right.IsValid && Assets.TryLoad<Texture>(editor.CurrentPiece.Right.Id, out var rr))
+                    right = rr;
+
+                Ui.Layout.FitContainer(1, 1, false);
+                Ui.Image(left, ImageContainmentMode.Contain);
+                Ui.Layout.FitContainer(1, 1, false);
+                Ui.Image(right, ImageContainmentMode.Contain);
+            }
+            Ui.End();
+        }
+    }
+
+    private static void VectorControl(ref Vector2 v, in bool hold, in bool inverse = false, [CallerLineNumber] int identity = 0)
+    {
+        float sign = inverse ? -1 : 1;
+        bool h = hold;
+
+        Ui.Theme.ForegroundColor(Colors.Black.WithAlpha(0.3f)).Once();
+        Ui.StartGroup(true, identity: identity);
+        {
+            Ui.Layout.FitContainer(1, 0.5f, false);
+            Ui.StartGroup(false);
+            {
+                Ui.Layout.FitContainer(0.5f, 1, false).Scale(-2, 0);
+                Ui.FloatInputBox(ref v.X);
+                Ui.Layout.FitContainer(0.5f, 1, false).StickRight(false);
+                Ui.FloatInputBox(ref v.Y);
+            }
+            Ui.End();
+
+            Ui.Layout.FitContainer(1, 0.5f, false).Scale(0, -2).StickBottom(false).EnqueueLayout(new DistributeChildrenLayout());
+            Ui.Theme.Foreground(default).Push();
+            Ui.StartGroup(false);
+            {
+                Ui.Layout.FitHeight(false);
+                if (Interpret(Ui.Button("<")))
+                    v.X += -1 * sign;
+                Ui.Layout.FitHeight(false);
+                if (Interpret(Ui.Button(">")))
+                    v.X += 1 * sign;
+                Ui.Layout.FitHeight(false);
+                if (Interpret(Ui.Button("^")))
+                    v.Y -= 1;
+                Ui.Layout.FitHeight(false);
+                if (Interpret(Ui.Button("v")))
+                    v.Y -= -1;
+            }
+            Ui.End();
+            Ui.Theme.Pop();
         }
         Ui.End();
 
-        Ui.Spacer(32);
-
-        layout.FitWidth().Height(150).HorizontalLayout();
-        Ui.StartGroup(false);
-        {
-            layout.Size(32, 16);
-            Ui.Label("OffsetRight");
-
-            layout.Size(64, 32);
-            Ui.FloatInputBox(ref editor.CurrentPiece.OffsetRight.X);
-
-            layout.Size(64, 32);
-            Ui.FloatInputBox(ref editor.CurrentPiece.OffsetRight.Y);
-
-            layout.FitWidth().Height(64).Move(0, 64);
-            dPad(ref editor.CurrentPiece.OffsetRight, layout, Input.IsKeyHeld(Key.LeftShift));
-        }
-        Ui.End();
-
-        Ui.Spacer(8);
-
-        {
-            layout.FitWidth().Height(32).CenterHorizontal();
-            Ui.Label("Left Texture");
-            layout.FitWidth().Height(32).CenterHorizontal();
-
-            MadnessUi.AssetPicker(
-                editor.CurrentPiece.Left.Id,
-                c =>
-                {
-                    editor.CurrentPiece.Left = new(c);
-                    character.NeedsLookUpdate = true;
-                    SetPiece(editor, editor.CurrentPiece);
-                },
-                static c => c.MimeType.Contains("image"));
-        }
-
-        Ui.Spacer(4);
-
-        {
-            layout.FitWidth().Height(32).CenterHorizontal();
-            Ui.Label("Right Texture");
-            layout.FitWidth().Height(32).CenterHorizontal();
-
-            MadnessUi.AssetPicker(
-                editor.CurrentPiece.Right.Id,
-                c =>
-                {
-                    editor.CurrentPiece.Right = new(c);
-                    character.NeedsLookUpdate = true;
-                    SetPiece(editor, editor.CurrentPiece);
-                },
-                static c => c.MimeType.Contains("image"));
-        }
+        bool Interpret(InteractionReport i) => h ? i.Held : i;
     }
 
     public void SetPiece(ArmourEditorComponent editor, ArmourPiece? piece)
