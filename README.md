@@ -1,6 +1,10 @@
 # The Scrapeface bug;
 This fork is aimed to fix the very infamous https://github.com/studio-minus/madness-interactive-reloaded/issues/38.
 
+## How to install the fork
+THIS IS NOT INSTALLED LIKE A MOD!
+Download the fork from the releases tab (win64). Once downloaded, extract it and open the exe. Same with MIR.
+
 ## The cause of the bug;
 .NET 8.0.8 causes Vector2.Normalize() (and some other methods) on older CPU's that do not support SSE41 or SSE42 to not.
 This may be fixed in the future with .NET 9, but for now here's this fork
