@@ -37,7 +37,7 @@
     "MeleeDamageType": "Axe",
     "MeleeSize": "Large"
   },
-  "BaseTexture": "base:textures/weapons/pike/base.png",
+  "BaseTexture": "textures/weapons/pike/base.png",
   "HoldForGrip": true,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {

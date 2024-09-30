@@ -37,7 +37,7 @@
     "MeleeDamageType": "Blade",
     "MeleeSize": "Medium"
   },
-  "BaseTexture": "base:textures/weapons/serrated_sword/base.png",
+  "BaseTexture": "textures/weapons/serrated_sword/base.png",
   "HoldForGrip": false,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {
