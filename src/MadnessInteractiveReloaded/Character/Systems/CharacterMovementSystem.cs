@@ -11,7 +11,7 @@ namespace MIR;
 /// </summary>
 public class CharacterMovementSystem : Walgelijk.System
 {
-    private QueryResult[] resultBuffer = new QueryResult[1];
+    private readonly QueryResult[] resultBuffer = new QueryResult[1];
 
     public override void Update()
     {
@@ -26,7 +26,7 @@ public class CharacterMovementSystem : Walgelijk.System
             ProcessWalking(character);
         }
 
-        Array.Clear(resultBuffer); // ensure GC 
+        Array.Clear(resultBuffer); // ensure GC (QueryResult contains a PhysicsBodyComponent for fuck knows what reason)
     }
 
     private void ProcessWalking(CharacterComponent character)
@@ -43,6 +43,12 @@ public class CharacterMovementSystem : Walgelijk.System
 
         if (character.Positioning.IsBusyHopping && isWalking)
         {
+            if (character.Stats.WalkAnimation != null && Registries.Animations.TryGet(character.Stats.WalkAnimation, out var walkAnim))
+            {
+                if (!character.IsPlayingAnimation(walkAnim))
+                    character.PlayAnimation(walkAnim, Utilities.RandomFloat(0.9f, 1.1f));
+            }
+
             var pos = charPos.GlobalTarget;
             pos.X = Utilities.Lerp(charPos.HopStartingPosition, charPos.NextHopPosition, Easings.Quad.InOut(charPos.HopAnimationTimer));
             charPos.CurrentHoppingHeight = MadnessUtils.NormalisedSineWave(charPos.HopAnimationTimer) * charPos.HopTargetHeight * charPos.HopAcceleration;

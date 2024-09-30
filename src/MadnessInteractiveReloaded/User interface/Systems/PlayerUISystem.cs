@@ -79,7 +79,6 @@ public class PlayerUISystem : Walgelijk.System
         {
             if (character.EquippedWeapon.TryGet(Scene, out var eq))
             {
-
                 Draw.Colour = Colors.White;
                 // draw weapon silhouette
                 if (eq.RegistryKey != null && Registries.Weapons.TryGet(eq.RegistryKey, out var wpn))
@@ -90,7 +89,7 @@ public class PlayerUISystem : Walgelijk.System
                     var aspectRatio = baseTex.Height / (float)baseTex.Width;
 
                     bool flipped = wpn.WeaponData.WeaponType is WeaponType.Melee;
-                    if (flipped)
+                    if (flipped)    
                         aspectRatio = 1 / aspectRatio;
 
                     var wpnRect = flipped ?
@@ -113,7 +112,7 @@ public class PlayerUISystem : Walgelijk.System
                     }
 
                     float recoilEffect = 1 - float.Clamp(lastAmmoFlashCounter * 4f, 0, 1);
-                    float rot = recoilEffect * -0.05f * (Noise.GetSimplex(Time * 2, 452.123f, 0)) * wpn.WeaponData.Recoil;
+                    float rot = recoilEffect * -0.06f * (Noise.GetSimplex(Time * 2, 452.123f, 0)) * wpn.WeaponData.Recoil;
 
                     wpnRect = wpnRect.Translate(0, cursor.Y);
                     wpnRect = wpnRect.Translate((MadnessUtils.Noise2D(Time * 2, 452.123f) + new Vector2(-0.5f, 0)) * 15 * recoilEffect);
@@ -141,7 +140,7 @@ public class PlayerUISystem : Walgelijk.System
                                 float s = 0;
 
                                 if (eq.AnimatedParts != null
-                                    && eq.AnimatedParts.Length > i
+                                    && eq.AnimatedParts.Length > i  
                                     && Scene.TryGetComponentFrom<WeaponPartAnimationComponent>(eq.AnimatedParts[i++], out var comp))
                                 {
                                     s = comp.CurrentPlaybackTime / part.Duration;
@@ -267,7 +266,7 @@ public class PlayerUISystem : Walgelijk.System
             foreach (var item in Scene.GetAllComponentsFrom(character.Entity))
             {
                 if (item is CharacterAbilityComponent characterAbility
-                    && characterAbility.Slot !=  AbilitySlot.None
+                    && characterAbility.Slot != AbilitySlot.None
                     && characterAbility.Slot.AsAction() != GameAction.None
                     && characterAbility.Behaviour is not AbilityBehaviour.Always)
                 {
@@ -322,7 +321,7 @@ public class PlayerUISystem : Walgelijk.System
             Draw.OutlineColour = desiredCrosshairColor;
             Draw.OutlineColour.A = float.Max(1f - (targetCrosshairSize - 20f) * 0.0085f, 0.2f);
             Draw.OutlineWidth = 0;
-            
+
             Draw.Circle(Window.WorldToWindowPoint(crosshairPos), new Vector2(5));
             Draw.Colour.A = 0f;
             Draw.OutlineWidth = 5f;
