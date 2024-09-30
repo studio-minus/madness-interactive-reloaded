@@ -105,7 +105,7 @@ public static class CharacterStatsDeserialiser
         writer.AppendKvStringArray("blunt_seq", stats.BluntSeq);
 
         if (stats.WalkAnimation != null)
-        writer.AppendLineFormat("walk_anim", stats.WalkAnimation);
+        writer.AppendLineFormat("walk_anim {0}", stats.WalkAnimation);
 
         writer.AppendLineFormat("agility_skill_level {0}", stats.AgilitySkillLevel.ToString());
 
