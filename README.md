@@ -3,7 +3,11 @@ This fork is aimed to fix the very infamous https://github.com/studio-minus/madn
 
 ## How to install the fork
 THIS IS NOT INSTALLED LIKE A MOD!
-Download the fork from the releases tab (win64). Once downloaded, extract it and open the exe. Same with MIR.
+Download the fork from the releases tab (win64). Once downloaded, extract it and open the exe. Same with MIR
+
+**Debug** versions may require downloading and installing the .NET sdk for the debug console to work and open correctly.
+
+**Releases** (as of now there are only debug releases because the fix is not finished) only need the .NET runtime.
 
 ## The cause of the bug;
 .NET 8.0.8 causes Vector2.Normalize() (and some other methods) on older CPU's that do not support SSE41 or SSE42 to not.
