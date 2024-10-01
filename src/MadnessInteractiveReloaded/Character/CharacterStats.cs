@@ -127,6 +127,11 @@ public class CharacterStats
     /// </summary>
     public Type[] Abilities;
 
+    /// <summary>
+    /// Optional animation key for the walk cycle.
+    /// </summary>
+    public string? WalkAnimation = null;
+
     public override string ToString() => Name;
 
     public CharacterStats()

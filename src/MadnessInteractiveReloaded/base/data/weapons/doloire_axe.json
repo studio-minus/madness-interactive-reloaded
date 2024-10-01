@@ -37,7 +37,7 @@
     "MeleeDamageType": "Axe",
     "MeleeSize": "Medium"
   },
-  "BaseTexture": "base:textures/weapons/doloire_axe/base.png",
+  "BaseTexture": "textures/weapons/doloire_axe/base.png",
   "HoldForGrip": true,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {

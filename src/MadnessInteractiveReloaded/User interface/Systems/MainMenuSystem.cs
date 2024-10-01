@@ -82,7 +82,7 @@ public class MainMenuSystem : Walgelijk.System
         Ui.Layout.Size(80, 80).StickRight().StickTop().Move(-10, 10);
         if (Ui.ImageButton(Assets.Load<Texture>("textures/ui/discord.png").Value, ImageContainmentMode.Contain))
         {
-            global::System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("https://discord.gg/invite/ezBxexVe4t")
+            global::System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("https://discord.gg/studio-minus-779898133064056862")
             {
                 UseShellExecute  = true
             });
