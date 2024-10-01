@@ -330,7 +330,7 @@ public abstract class TeachSystem : Walgelijk.System
 
         var m = Localisation.Get(instr.Text);
 
-        float w = float.Clamp(Draw.CalculateTextWidth(m) + 10, 100, int.Min(Window.Width, 600));
+        float w = float.Min(Draw.CalculateTextWidth(m) + 10, int.Min(Window.Width, 600));
         float h = Draw.CalculateTextHeight(m, w);
         var r = new Rect(0, 0, w, h);
 

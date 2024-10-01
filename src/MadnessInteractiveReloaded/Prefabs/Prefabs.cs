@@ -800,7 +800,7 @@ public static class Prefabs
             var matParams = new ApparelMaterialParams
             {
                 Texture = armour == null ? Textures.Transparent : armour.Right.Value,
-                Scale = scale ,
+                Scale = scale,
                 DamageScale = armour?.ProceduralDamageScale ?? 1
             };
 
