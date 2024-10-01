@@ -223,8 +223,13 @@ public class AiCharacterSystem : Walgelijk.System
 
                 if (!character.IsMeleeBlocking && ai.WantsToShoot.Value && !ai.IsDoingAccurateShot && !MadnessUtils.IsTargetedByAccurateShot(Scene, ai.KillTarget.Entity))
                 {
-                    if (ai.HasKillTarget && !killTargetChar.Positioning.IsFlying)
-                        MeleeUtils.TryPerformMeleeAttack(Scene, equipped, character);
+                    if (ai.HasKillTarget)
+                    {
+                        //if (killTargetChar?.Positioning.IsFlying ?? false)
+                        //    ai.HasKillTarget = false;
+                        //else
+                            MeleeUtils.TryPerformMeleeAttack(Scene, equipped, character);
+                    }
                 }
 
                 if (!character.AnimationConstrainsAny(AnimationConstraint.PreventFlip))

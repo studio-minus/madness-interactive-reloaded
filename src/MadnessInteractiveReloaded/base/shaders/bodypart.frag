@@ -129,10 +129,12 @@ vec3 hueShift(in vec3 rgb, float shift) {
     return shiftedRGB;
 }
 
-vec3 setHue(in vec3 o, in vec3 dst) {
+vec3 setHueSat(in vec3 o, in vec3 dst) {
     vec3 oHSV = rgb2hsv(o);
     vec3 dstHSV = rgb2hsv(dst);
     oHSV.x = dstHSV.x;
+    oHSV.y = dstHSV.y;
+    oHSV.z = dstHSV.z;
     vec3 result = hsv2rgb(oHSV);
     return result;
 }
@@ -160,7 +162,7 @@ void main()
     float slashDepth = 0;
 
     flesh.rgb *= innerBloodColour;
-    gore.rgb = setHue(gore.rgb, innerBloodColour); // the gore layer is red by default (because gray and multiply is ugly), so we hue shift to the blood colour (it looks nicer)
+    gore.rgb = setHueSat(gore.rgb, innerBloodColour); // the gore layer is red by default (because gray and multiply is ugly), so we hue shift to the blood colour (it looks nicer)
     gore.a *= skin.a;
     flesh.a *= skin.a;
 
