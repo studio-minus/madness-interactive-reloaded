@@ -221,6 +221,9 @@ public class PlayerUISystem : Walgelijk.System
             Draw.Reset();
             Draw.ScreenSpace = true;
             Draw.Order = RenderOrders.UserInterface;
+            Draw.Colour = Colors.White;
+            Draw.Font = Fonts.Toxigenesis;
+            Draw.FontSize = 24;
 
             if (Level.CurrentLevel != null && Scene.FindAnyComponent<LevelProgressComponent>(out var progress))
             {
@@ -309,6 +312,7 @@ public class PlayerUISystem : Walgelijk.System
         {
             Draw.Reset();
             Draw.ScreenSpace = true;
+            Draw.Order = RenderOrders.UserInterface;
 
             lowAmmoWarningFade = float.Lerp(lowAmmoWarningFade, normalizedAmmoCount < 0.3f ? 1f : 0f, Time.DeltaTimeUnscaled * 5f);
 
