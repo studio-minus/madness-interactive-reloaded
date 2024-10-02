@@ -1,0 +1,200 @@
+{
+  "DisplayName": "untitled",
+  "LevelType": "Campaign",
+  "ProgressionType": "BodyCount",
+  "EnemySpawnInterval": 0.6,
+  "MaxEnemyCount": 4,
+  "MaxSimultaneousAttackingEnemies": 2,
+  "BackgroundMusic": "sounds/music/Lothyde/agr3.ogg",
+  "WeaponChance": 0.62,
+  "LevelBounds": {
+    "MinX": -2365.4497,
+    "MinY": -748.91736,
+    "MaxX": 3314.7666,
+    "MaxY": 1148.1433
+  },
+  "BodyCountToWin": 15,
+  "TimeLimitInSeconds": -1.0,
+  "FullZoom": true,
+  "Thumbnail": "textures/level_thumbnails/lvl_incident_12.qoi",
+  "OpeningTransition": true,
+  "ExitingTransition": true,
+  "EnemySpawnInstructions": [
+    {
+      "StatsKey": "soldat",
+      "LookKey": "soldat"
+    },
+    {
+      "StatsKey": "engineer",
+      "LookKey": "engineer"
+    }
+  ],
+  "Weapons": [
+    "synkomidei",
+    "galil",
+    "usp_match",
+    "g36c"
+  ],
+  "FloorLine": [
+    {
+      "X": -1701.7128,
+      "Y": -576.44165
+    },
+    {
+      "X": 2680.287,
+      "Y": -576.44165
+    }
+  ],
+  "Objects": [
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerSpawn, MIR",
+      "Position": {
+        "X": -1651.7128,
+        "Y": -400.4926
+      },
+      "SpawnWeapon": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": 474.65854,
+        "Y": 199.61298
+      },
+      "TexturePath": "textures/backgrounds/incidents/background_level_12.qoi",
+      "Scale": 2.7414172
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -2166.8271,
+        "MinY": -1083.3723,
+        "MaxX": -1735.0063,
+        "MaxY": 4130.164
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -4496.6787,
+        "MinY": -1083.3723,
+        "MaxX": 6158.812,
+        "MaxY": -576.44165
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 2714.2683,
+        "MinY": -1083.3723,
+        "MaxX": 3146.089,
+        "MaxY": 4299.991
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": -1872.6572,
+          "Y": -587.44055
+        },
+        "FacingDirection": {
+          "X": 1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": -1907.3514,
+          "Y": 161.82999
+        },
+        "TopRight": {
+          "X": -1621.1724,
+          "Y": 171.71986
+        },
+        "BottomLeft": {
+          "X": -1917.3083,
+          "Y": -641.1559
+        },
+        "BottomRight": {
+          "X": -1628.006,
+          "Y": -533.7253
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": 2855.541,
+          "Y": -588.67163
+        },
+        "FacingDirection": {
+          "X": -1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": true,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": 2891.9019,
+          "Y": 161.30742
+        },
+        "TopRight": {
+          "X": 2602.681,
+          "Y": 170.98004
+        },
+        "BottomLeft": {
+          "X": 2900.9785,
+          "Y": -642.0922
+        },
+        "BottomRight": {
+          "X": 2610.1038,
+          "Y": -535.25104
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -1848.0869,
+        "MinY": 250.9353,
+        "MaxX": -1592.0869,
+        "MaxY": 1093.2297
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -1542.3159,
+        "MinY": -674.79333,
+        "MaxX": 2582.1072,
+        "MaxY": -514.1714
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 2634.6824,
+        "MinY": 231.29877,
+        "MaxX": 2798.1104,
+        "MaxY": 1104.4512
+      },
+      "Tag": null
+    }
+  ]
+}

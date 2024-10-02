@@ -46,10 +46,7 @@ Original soundtrack
 
         // back button
         if (MenuUiUtils.BackButton())
-        {
             Game.Scene = MainMenuScene.Load(Game);
-            MadnessUtils.Flash(Colors.Black, 0.2f);
-        }
 
         Ui.Theme.OutlineWidth(2).Once();
         Ui.Layout.Size(170, 40).StickRight().StickBottom().Move(-10, -10);

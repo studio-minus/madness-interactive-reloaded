@@ -1,0 +1,268 @@
+{
+  "DisplayName": "untitled",
+  "LevelType": "Campaign",
+  "ProgressionType": "BodyCount",
+  "EnemySpawnInterval": 0.8,
+  "MaxEnemyCount": 4,
+  "MaxSimultaneousAttackingEnemies": 2,
+  "BackgroundMusic": "sounds/music/Lothyde/agr3.ogg",
+  "WeaponChance": 0.65,
+  "LevelBounds": {
+    "MinX": -2096.2249,
+    "MinY": -1160.7035,
+    "MaxX": 2234.886,
+    "MaxY": 1368.1852
+  },
+  "BodyCountToWin": 25,
+  "TimeLimitInSeconds": -1.0,
+  "FullZoom": false,
+  "Thumbnail": "textures/level_thumbnails/lvl_incident_4.qoi",
+  "OpeningTransition": true,
+  "ExitingTransition": true,
+  "EnemySpawnInstructions": [
+    {
+      "StatsKey": "agent",
+      "LookKey": "agent"
+    },
+    {
+      "StatsKey": "engineer",
+      "LookKey": "engineer"
+    },
+    {
+      "StatsKey": "agent",
+      "LookKey": "agent"
+    }
+  ],
+  "Weapons": [
+    "famas",
+    "megachette",
+    "g36c",
+    "vigneron_m2",
+    "mossberg_500"
+  ],
+  "FloorLine": [
+    {
+      "X": -1684.1511,
+      "Y": -984.6554
+    },
+    {
+      "X": 1823.8489,
+      "Y": -984.6554
+    }
+  ],
+  "Objects": [
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerSpawn, MIR",
+      "Position": {
+        "X": -1586.1511,
+        "Y": -848.6261
+      },
+      "SpawnWeapon": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": 69.33055,
+        "Y": 103.740814
+      },
+      "TexturePath": "textures/backgrounds/incidents/background_level_4.qoi",
+      "Scale": 2.222222
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -2209.2805,
+        "MinY": -1219.1179,
+        "MaxX": -1717.2527,
+        "MaxY": 1435.6525
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -2209.2805,
+        "MinY": 1141.6626,
+        "MaxX": 2342.4714,
+        "MaxY": 1435.6525
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 1857.6997,
+        "MinY": -1271.0454,
+        "MaxX": 2342.4714,
+        "MaxY": 1435.6525
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -3603.6042,
+        "MinY": -1360.755,
+        "MaxX": 4106.8086,
+        "MaxY": -984.6554
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": -1833.7822,
+          "Y": -932.98834
+        },
+        "FacingDirection": {
+          "X": 1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": -1786.2336,
+          "Y": -289.55554
+        },
+        "TopRight": {
+          "X": -1679.4941,
+          "Y": -267.66147
+        },
+        "BottomLeft": {
+          "X": -1786.6364,
+          "Y": -963.09094
+        },
+        "BottomRight": {
+          "X": -1680.928,
+          "Y": -902.88574
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": 1972.5276,
+          "Y": -933.0438
+        },
+        "FacingDirection": {
+          "X": -1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": true,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": 1924.6763,
+          "Y": -289.3405
+        },
+        "TopRight": {
+          "X": 1819.8624,
+          "Y": -267.44644
+        },
+        "BottomLeft": {
+          "X": 1925.0212,
+          "Y": -963.5972
+        },
+        "BottomRight": {
+          "X": 1820.034,
+          "Y": -902.4904
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerPoster, MIR",
+      "Type": 0,
+      "Angle": 0.74432373,
+      "Position": {
+        "X": 590.47974,
+        "Y": -454.0354
+      },
+      "Scale": 1.9293944
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Look": "engineer",
+        "Stats": "engineer",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": -257.46033,
+          "Y": -904.5067
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Look": "soldat",
+        "Stats": "soldat",
+        "Weapon": "famas",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": 183.97293,
+          "Y": -905.8735
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -1856.3716,
+        "MinY": -201.50826,
+        "MaxX": -1600.3716,
+        "MaxY": 1090.394
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -1659.508,
+        "MinY": 1044.7625,
+        "MaxX": 1748.3055,
+        "MaxY": 1198.8269
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 1705.9404,
+        "MinY": -201.50812,
+        "MaxX": 1961.9404,
+        "MaxY": 989.9458
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -1646.8585,
+        "MinY": -1075.146,
+        "MaxX": 1783.2067,
+        "MaxY": -897.5441
+      },
+      "Tag": null
+    }
+  ]
+}

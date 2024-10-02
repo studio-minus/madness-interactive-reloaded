@@ -171,7 +171,6 @@ public class CampaignMenuSystem : Walgelijk.System
         {
             if (selectedCampaign != null && Registries.Campaigns.TryGet(selectedCampaign, out var sc) && sc != null)
             {
-
                 if (CampaignProgress.TryGetCurrentStats(out var stats))
                 {
                     Ui.Layout.FitContainer(1, 0.7f).StickLeft().StickTop();
@@ -234,9 +233,6 @@ public class CampaignMenuSystem : Walgelijk.System
         Ui.End();
 
         if (MenuUiUtils.BackButton())
-        {
             Game.Scene = MainMenuScene.Load(Game);
-            MadnessUtils.Flash(Colors.Black, 0.2f);
-        }
     }
 }

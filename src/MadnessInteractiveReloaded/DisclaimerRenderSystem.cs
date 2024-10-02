@@ -9,6 +9,9 @@ internal class DisclaimerRenderSystem : Walgelijk.System
 {
     public override void Update()
     {
+        if (Input.IsKeyHeld(Key.F3))
+            return;
+
         Draw.Reset();
         Draw.Font = Fonts.Oxanium;
         Draw.Order = RenderOrders.UserInterfaceTop;

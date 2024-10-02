@@ -82,6 +82,35 @@
 	</ItemGroup>
 	
 	<ItemGroup>
+	  <Resource Include="base\data\levels\incident\lvl_incident_1.json" />
+	  <Resource Include="base\data\levels\incident\lvl_incident_10.json" />
+	  <Resource Include="base\data\levels\incident\lvl_incident_11.json" />
+	  <Resource Include="base\data\levels\incident\lvl_incident_12.json" />
+	  <Resource Include="base\data\levels\incident\lvl_incident_13.json" />
+	  <Resource Include="base\data\levels\incident\lvl_incident_14.json" />
+	  <Resource Include="base\data\levels\incident\lvl_incident_15.json" />
+	  <Resource Include="base\data\levels\incident\lvl_incident_2.json" />
+	  <Resource Include="base\data\levels\incident\lvl_incident_3.json" />
+	  <Resource Include="base\data\levels\incident\lvl_incident_4.json" />
+	  <Resource Include="base\data\levels\incident\lvl_incident_5.json" />
+	  <Resource Include="base\data\levels\incident\lvl_incident_6.json" />
+	  <Resource Include="base\data\levels\incident\lvl_incident_7.json" />
+	  <Resource Include="base\data\levels\incident\lvl_incident_8.json" />
+	  <Resource Include="base\data\levels\incident\lvl_incident_9.json" />
+	  <Resource Include="base\data\levels\incident\lvl_incident_begin_1.json" />
+	  <Resource Include="base\data\levels\incident\lvl_incident_begin_2.json" />
+	  <Resource Include="base\data\levels\incident\lvl_incident_begin_3.json" />
+	  <Resource Include="base\data\levels\incident\lvl_incident_begin_4.json" />
+	  <Resource Include="base\data\levels\incident\lvl_incident_begin_5.json" />
+	  <Resource Include="base\data\levels\incident\lvl_incident_end_1.json" />
+	  <Resource Include="base\data\levels\incident\lvl_incident_end_2.json" />
+	  <Resource Include="base\data\levels\incident\lvl_incident_end_3.json" />
+	  <Resource Include="base\data\levels\incident\lvl_incident_end_4.json" />
+	  <Resource Include="base\data\levels\incident\lvl_incident_end_5.json" />
+	  <Resource Include="base\data\levels\incident\lvl_incident_end_6.json" />
+	</ItemGroup>
+	
+	<ItemGroup>
 		<None Update="avcodec-59.dll">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
