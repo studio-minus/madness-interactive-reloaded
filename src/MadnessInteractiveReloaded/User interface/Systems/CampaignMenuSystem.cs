@@ -184,7 +184,8 @@ public class CampaignMenuSystem : Walgelijk.System
                         {
                             Ui.Layout.Height(40).FitWidth().StickLeft().StickTop();
                             Ui.Theme.FontSize(16).Once();
-                            Ui.TextRect($"<color=#ff0000>Completed levels</color>\n{stats.LevelIndex} / {sc.Levels.Length}", HorizontalTextAlign.Left, VerticalTextAlign.Middle);
+                            int a = int.Min(stats.LevelIndex, sc.Levels.Length);
+                            Ui.TextRect($"<color=#ff0000>Completed levels</color>\n{a} / {sc.Levels.Length}", HorizontalTextAlign.Left, VerticalTextAlign.Middle);
 
                             Ui.Layout.Height(40).FitWidth().StickLeft().StickTop();
                             Ui.Theme.FontSize(16).Once();
