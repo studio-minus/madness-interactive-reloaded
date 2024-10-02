@@ -156,6 +156,10 @@ public class ExperimentModeSystem : Walgelijk.System
             exp.CurrentlyPlacing = null;
             if (Input.IsKeyReleased(Key.R) && !playerCharacter.IsAlive)
                 MadnessCommands.Revive();
+
+            Ui.Layout.Move(10).Size(500, 40).PreferredSize();
+            Ui.Theme.Font(Fonts.CascadiaMono).Text(Colors.Red).Once();
+            Ui.TextRect(string.Format(Localisation.Get("experiment-press-to-toggle"), Key.Tab), HorizontalTextAlign.Left, VerticalTextAlign.Top);
         }
     }
 
@@ -750,7 +754,7 @@ public class ExperimentModeSystem : Walgelijk.System
         Ui.Layout.FitWidth().Height(32).StickLeft().Move(0, 36);
         Ui.Decorators.Tooltip(Localisation.Get("experiment-npc-faction"));
         Ui.Theme.OutlineWidth(1).Once();
-        if (Ui.Dropdown(exp.FactionCache , ref factionIndex))
+        if (Ui.Dropdown(exp.FactionCache, ref factionIndex))
             exp.SelectedFaction = exp.FactionCache[factionIndex];
 
         Ui.Layout.FitContainer().Scale(0, -64).StickTop().StickLeft().Move(0, 64).VerticalLayout();
