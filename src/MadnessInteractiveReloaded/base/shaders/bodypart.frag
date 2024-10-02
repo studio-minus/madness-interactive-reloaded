@@ -115,24 +115,10 @@ vec3 hsv2rgb(vec3 hsv) {
     return hsv.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), hsv.y);
 }
 
-vec3 hueShift(in vec3 rgb, float shift) {
-    // Convert RGB to HSV
-    vec4 hsv = vec4(0.0);
-    hsv.xyz = rgb2hsv(rgb);
-    
-    // Shift the hue
-    hsv.x = fract(hsv.x + shift);
-    
-    // Convert HSV back to RGB
-    vec3 shiftedRGB = hsv2rgb(hsv.xyz);
-    
-    return shiftedRGB;
-}
-
 vec3 setHue(in vec3 o, in vec3 dst) {
     vec3 oHSV = rgb2hsv(o);
     vec3 dstHSV = rgb2hsv(dst);
-    oHSV.x = dstHSV.x;
+    oHSV.x = dstHSV.x; // x is the h
     vec3 result = hsv2rgb(oHSV);
     return result;
 }
@@ -160,7 +146,10 @@ void main()
     float slashDepth = 0;
 
     flesh.rgb *= innerBloodColour;
-    gore.rgb = setHue(gore.rgb, innerBloodColour); // the gore layer is red by default (because gray and multiply is ugly), so we hue shift to the blood colour (it looks nicer)
+    gore.rgb = setHue(gore.rgb, innerBloodColour); 
+    // the gore layer is red by default (because gray and multiply is ugly), so we hue shift to the blood colour (it looks nicer)
+    gore.rgb *= pow(((innerBloodColour.r + innerBloodColour.g + innerBloodColour.b) * 0.333), 0.2); 
+    // we then multiply by the average to make sure the value is also transferred (we adjust the curve to make sure the default isnt too dark)
     gore.a *= skin.a;
     flesh.a *= skin.a;
 

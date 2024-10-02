@@ -1,10 +1,8 @@
-﻿using FFmpeg.AutoGen;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Numerics;
 using Walgelijk;
 using Walgelijk.Onion;
+using static MIR.CameraMovementComponent;
 
 namespace MIR;
 
@@ -60,8 +58,8 @@ public class CameraMovementComponent : Component
 
                 foreach (var k in States)
                 {
-                    var old = oldWeights[k.Key];
-
+                    if (!oldWeights.TryGetValue(k.Key, out var old))
+                        continue;
                     var t = k.Key == target ? 1 : 0;
                     k.Value.Weight = float.Lerp(old, t, progress);
                 }
@@ -95,6 +93,8 @@ public class CameraMovementComponent : Component
         public Vector2 Position;
         public float OrthographicSize = 1;
         public float Weight = 1;
+
+        public bool Expired;
     }
 
     public class FreeMoveTarget : ITarget

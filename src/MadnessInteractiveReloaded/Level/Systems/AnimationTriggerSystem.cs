@@ -1,8 +1,6 @@
-﻿using System.Drawing;
-using System.Numerics;
+﻿using System.Numerics;
 using Walgelijk;
 using static MIR.AnimationTriggerComponent;
-using static System.Formats.Asn1.AsnWriter;
 
 namespace MIR;
 
@@ -15,6 +13,9 @@ public class AnimationTriggerSystem : Walgelijk.System
     public override void Update()
     {
         if (!MadnessUtils.FindPlayer(Scene, out var player, out var playerChar))
+            return;
+
+        if (player.IsDoingDyingSequence || !playerChar.IsAlive || playerChar.Positioning.IsFlying || playerChar.IsPlayingAnimation)
             return;
 
         var playerBounds = playerChar.GetBoundingBox(Scene);

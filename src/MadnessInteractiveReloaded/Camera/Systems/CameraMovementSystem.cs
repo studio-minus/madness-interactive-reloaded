@@ -48,7 +48,7 @@ public class CameraMovementSystem : Walgelijk.System
             }
 
             if (state.Weight > float.Epsilon)
-                item.Apply(Scene, Time, ref state.Position, ref state.OrthographicSize);
+                state.Expired |= item.Apply(Scene, Time, ref state.Position, ref state.OrthographicSize);
 
             totalWeight += state.Weight;
 
@@ -58,6 +58,10 @@ public class CameraMovementSystem : Walgelijk.System
             p += state.Position * state.Weight;
             o += state.OrthographicSize * state.Weight;
         }
+
+        foreach (var item in movement.States)
+            if (item.Value.Expired)
+                movement.Targets.Remove(item.Key);
 
         if (o <= float.Epsilon)
             o = 1;
