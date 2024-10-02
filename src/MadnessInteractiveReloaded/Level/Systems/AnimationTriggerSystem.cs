@@ -1,8 +1,8 @@
-﻿namespace MIR;
-
-using System.Numerics;
+﻿using System.Numerics;
 using Walgelijk;
 using static MIR.AnimationTriggerComponent;
+
+namespace MIR;
 
 /// <summary>
 /// Plays an animation when the player character overlaps a 
