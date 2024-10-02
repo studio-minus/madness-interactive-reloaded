@@ -20,7 +20,7 @@
     "RecoilHandling": 0.8,
     "Automatic": true,
     "ShootSounds": [
-      "base:sounds/firearms/ak74u_1.wav"
+      "sounds/firearms/ak74u_1.wav"
     ],
     "CanBulletsBeDeflected": true,
     "EjectionParticle": "RifleCasing",
