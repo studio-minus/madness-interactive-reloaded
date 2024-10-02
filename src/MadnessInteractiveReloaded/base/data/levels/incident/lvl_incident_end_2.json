@@ -55,7 +55,7 @@
       "$type": "MIR.LevelEditor.Objects.NPC, MIR",
       "Instructions": {
         "Look": "mag",
-        "Stats": "magrich",
+        "Stats": "mag_rich",
         "Weapon": "true_dragon_sword",
         "Flipped": true,
         "BottomCenter": {
