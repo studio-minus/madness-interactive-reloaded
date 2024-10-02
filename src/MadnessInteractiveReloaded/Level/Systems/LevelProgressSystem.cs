@@ -123,7 +123,8 @@ public class LevelProgressSystem : Walgelijk.System
             {
                 var nextLevelStats = stats.ByLevel.Ensure(nextLvl.Id);
                 nextLevelStats.EquippedWeapon = eqwt;
-                stats.Save();
+                if (!CampaignProgress.CurrentCampaign.Temporary)
+                    stats.Save();
                 Logger.Debug($"Equipped weapon for next level: {(eqwt?.Key ?? "None")} with {(eqwt?.Ammo ?? 0)} rounds");
             }
 

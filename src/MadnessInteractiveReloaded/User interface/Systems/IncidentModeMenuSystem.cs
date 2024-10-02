@@ -111,7 +111,7 @@ public class IncidentModeMenuSystem : Walgelijk.System
                     int l = IncidentConfig.KillTarget;
                     var dir = float.Sign(th - lastSnappedDialDir); // <-- me when i pretend to be a rotary encoder
                     IncidentConfig.KillTarget = int.Clamp(IncidentConfig.KillTarget + dir, IncidentConfig.MinKillTarget, IncidentConfig.MaxKillTarget);
-
+                    IncidentConfig.Seed = Utilities.RandomInt(0, 1000000);
                     if (l != IncidentConfig.KillTarget)
                     {
                         Audio.Play(Sounds.UiPress);
@@ -158,6 +158,7 @@ public class IncidentConfig
 {
     public const int MinKillTarget = 20;
     public const int MaxKillTarget = 200;
+    public const int LevelCount = 5;
 
     public int Seed;
     public int KillTarget = 100;
@@ -173,6 +174,11 @@ public class IncidentConfig
         string[] endLevels = [.. Registries.Levels.GetAllKeys().Where(k => k.StartsWith("lvl_incident_end"))];
         string[] midLevels = [.. Registries.Levels.GetAllKeys().Where(k => k.StartsWith("lvl_incident")).Except(beginLevels).Except(endLevels)];
 
+        GlobalAssetId[] music = [..Assets.EnumerateFolder("sounds/music", System.IO.SearchOption.AllDirectories)
+            .Where(d => Assets.GetMetadata(d).MimeType.Contains("audio", StringComparison.InvariantCultureIgnoreCase))];
+
+        var selectedTrack = rand.GetItems(music, 1)[0];
+
         var begin = rand.GetItems(beginLevels, 1);
         var end = rand.GetItems(endLevels, 1);
         rand.Shuffle(midLevels);
@@ -182,15 +188,23 @@ public class IncidentConfig
             Name = Name,
             Author = "INCIDENT DIRECTOR",
             Description = $"Seed={Seed}; Victims={KillTarget};",
-            Id = Name,
+            Id = $"incident_{Hashed:X}",
             Thumbnail = Assets.Load<Texture>("error.png"),
+            Temporary =  true,
             Levels = [
-                    begin[0],
-                    ..midLevels.Take(rand.Next(0, midLevels.Length)),
-                    end[0],
-                ]
-
+                begin[0],
+                ..midLevels.Take(LevelCount),
+                end[0],
+            ]
         };
+
+        foreach (var k in c.Levels)
+        {
+            if (Registries.Levels.TryGet(k, out var lvl))
+            {
+                lvl.Level.Value.BackgroundMusic = new(selectedTrack);
+            }
+        }
 
         return c;
     }

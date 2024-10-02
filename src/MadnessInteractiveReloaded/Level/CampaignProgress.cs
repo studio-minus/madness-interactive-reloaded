@@ -72,7 +72,8 @@ public static class CampaignProgress
         if (TryGetCurrentStats(out var stats))
         {
             stats.LevelIndex++;
-            stats.Save();
+            if (!CurrentCampaign.Temporary)
+                stats.Save();
         }
     }
 }
