@@ -9,6 +9,7 @@
     "levels": [
         "lvl_cutscene_mag_intro",
         "lvl_mag_intro",
-        "lvl_mag_procedural"
+        "lvl_mag_procedural",
+        "lvl_mag_crawl"
     ]
 }
