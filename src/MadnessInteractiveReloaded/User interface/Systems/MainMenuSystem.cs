@@ -100,7 +100,11 @@ public class MainMenuSystem : Walgelijk.System
             character.AimTargetPosition = new Vector2(1000, 0);
 
             if (!Registries.Weapons.TryGet("walther_ppk", out var instr))
+            {
+                if (Registries.Weapons.Count == 0)
+                    return;
                 instr = Registries.Weapons.GetRandomValue();
+            }
             var wpn = Prefabs.CreateWeapon(Scene, default, instr!);
             character.EquipWeapon(Scene, wpn);
         }
