@@ -1,0 +1,208 @@
+{
+  "DisplayName": "untitled",
+  "LevelType": "Unknown",
+  "ProgressionType": "BodyCount",
+  "EnemySpawnInterval": 2.0,
+  "MaxEnemyCount": 4,
+  "MaxSimultaneousAttackingEnemies": 2,
+  "BackgroundMusic": "0",
+  "WeaponChance": 0.5,
+  "LevelBounds": {
+    "MinX": -1892.2803,
+    "MinY": -521.9963,
+    "MaxX": 2770.771,
+    "MaxY": 1697.6604
+  },
+  "BodyCountToWin": 50,
+  "TimeLimitInSeconds": -1.0,
+  "FullZoom": false,
+  "Thumbnail": "0",
+  "OpeningTransition": true,
+  "ExitingTransition": true,
+  "EnemySpawnInstructions": [],
+  "Weapons": [],
+  "FloorLine": [
+    {
+      "X": -1563.1189,
+      "Y": -34.387268
+    },
+    {
+      "X": 542.8811,
+      "Y": -33.781506
+    },
+    {
+      "X": 548.8811,
+      "Y": -35.132652
+    },
+    {
+      "X": 1170.8811,
+      "Y": -385.4616
+    },
+    {
+      "X": 1172.8811,
+      "Y": -386.09778
+    },
+    {
+      "X": 2434.881,
+      "Y": -386.09778
+    }
+  ],
+  "Objects": [
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerSpawn, MIR",
+      "Position": {
+        "X": -1529.1189,
+        "Y": 135.26288
+      },
+      "SpawnWeapon": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": 439.24536,
+        "Y": 587.8321
+      },
+      "TexturePath": "base:textures/backgrounds/mag_campaign/background_mag_specimen.qoi",
+      "Scale": 1.1076131
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -2381.166,
+        "MinY": -342.0382,
+        "MaxX": 542.7079,
+        "MaxY": -34.387268
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 599.7003,
+        "MinY": -659.556,
+        "MaxX": 3514.1904,
+        "MaxY": -386.09778
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": 1289.1157,
+        "Y": -478.52145
+      },
+      "B": {
+        "X": 540.8642,
+        "Y": -56.69307
+      },
+      "Radius": 23.0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -2014.5503,
+        "MinY": -148.08997,
+        "MaxX": -1606.2302,
+        "MaxY": 1754.8403
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 2477.2756,
+        "MinY": -513.18164,
+        "MaxX": 2864.968,
+        "MaxY": 1966.5684
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -2241.4,
+        "MinY": 1616.2367,
+        "MaxX": 3321.3535,
+        "MaxY": 1915.9202
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": 2840.5059,
+        "Y": 1174.9546
+      },
+      "B": {
+        "X": 1494.3246,
+        "Y": 1972.4795
+      },
+      "Radius": 118.0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": -1760.2512,
+        "Y": 1486.6296
+      },
+      "B": {
+        "X": -1517.1943,
+        "Y": 1791.5901
+      },
+      "Radius": 126.0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": 1238.655,
+        "Y": -608.8772
+      },
+      "B": {
+        "X": 490.40417,
+        "Y": -187.04848
+      },
+      "Radius": 131.0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": -1723.5662,
+        "Y": 1612.8696
+      },
+      "B": {
+        "X": -1377.6792,
+        "Y": 1792.982
+      },
+      "Radius": 126.0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": -1752.1958,
+        "Y": 1305.0782
+      },
+      "B": {
+        "X": -1669.8242,
+        "Y": 1686.2516
+      },
+      "Radius": 126.0,
+      "Tag": null
+    }
+  ]
+}
