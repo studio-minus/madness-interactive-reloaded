@@ -50,6 +50,7 @@ public class IncidentModeMenuSystem : Walgelijk.System
         var ph3timer = Utilities.Clamp(Utilities.MapRange(phase3, phase4, 0, 1, introAnimationTimer));
         var ph4timer = Utilities.Clamp(Utilities.MapRange(phase4, 1, 0, 1, introAnimationTimer));
 
+#if DEBUG
         if (Input.IsKeyPressed(Key.F5))
         {
             if (Input.IsKeyHeld(Key.D4))
@@ -61,6 +62,7 @@ public class IncidentModeMenuSystem : Walgelijk.System
             else
                 introAnimationTimer = 0;
         }
+#endif
 
         changeFlash -= Time.DeltaTime * 2;
         changeFlash = float.Max(0, changeFlash);
@@ -87,10 +89,18 @@ public class IncidentModeMenuSystem : Walgelijk.System
                 b = Utilities.Clamp(Utilities.MapRange(phase2, phase2 + 0.2f, 1, 0, introAnimationTimer));
                 Draw.Colour = Vector4.Lerp(Colors.Red, Colors.White, Easings.Cubic.In(b * b));
                 Draw.Colour.A *= Utilities.MapRange(-1, 1, 0.8f, 1, float.Sin(Time.SecondsSinceLoadUnscaled * 60));
-                Draw.TransformMatrix = Matrix3x2.CreateScale(1, (1 - Easings.Circ.In(ph2timer)), Window.Size * 0.5f);
+                Draw.Colour.A *= 1 - Easings.Circ.In(ph2timer);
                 Draw.Texture = Assets.Load<Texture>("textures/horizontal-gradient.png").Value;
-                Draw.Quad(new Rect(Window.Size * 0.5f, new Vector2(Window.Width, 70)));
-                Draw.ResetTransformation();
+
+                float mh = 70;
+                int bc = 8;
+                float bh = mh / (bc * 2);
+                var br = new Rect(Window.Size * 0.5f, new Vector2(Window.Width, bh)).Translate(0, -mh * 0.5f + bh);
+                for (int i = 0; i < bc; i++)
+                {
+                    Draw.Quad(br.Translate(0, i * bh * 2));
+                }
+
                 ////var snd = SoundCache.Instance.LoadUISoundEffect(Assets.Load<FixedAudioData>("sounds/firearms/automag_1.wav"));
                 //var snd = SoundCache.Instance.LoadUISoundEffect(Assets.Load<FixedAudioData>("sounds/proceed.wav"));
                 //if (!Audio.IsPlaying(snd) && introAnimationTimer < phase2 + 0.05f)
@@ -138,6 +148,7 @@ public class IncidentModeMenuSystem : Walgelijk.System
         }
 
         // incident title
+        if (introAnimationTimer < phase3)
         {
             Draw.Colour = Vector4.Lerp(Colors.Red, Colors.White, flash);
             Draw.FontSize = titleFntSize;
@@ -146,7 +157,7 @@ public class IncidentModeMenuSystem : Walgelijk.System
             p.Y = float.Lerp(p.Y, Window.Height * 0.5f - 3, Easings.Quad.InOut(Utilities.Clamp(ph1timer * 1.1f)));
 
             if (introAnimationTimer > phase2)
-                Draw.Colour = Colors.Black.WithAlpha(1 - Easings.Cubic.In(ph2timer));
+                Draw.Colour = Colors.Black;
 
             var r = new Rect(p, new Vector2(700, 70));
             if (!isBusyWithIntroAnimation && r.ContainsPoint(Input.WindowMousePosition))
