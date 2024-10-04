@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using Walgelijk;
 using Walgelijk.AssetManager;
 using Walgelijk.Physics;
-using static System.Formats.Asn1.AsnWriter;
 
 namespace MIR;
 /// <summary>
@@ -45,7 +43,7 @@ public class AiCharacterSystem : Walgelijk.System
                 {
                     if (targetCharacter.CurrentAttackerCount >=
                         (Level.CurrentLevel?.MaxSimultaneousAttackingEnemies ?? 2))
-                        ai.TooBusyToAttack = true;
+                        ai.TooBusyToAttack = ai.WaitsForAttackTurn;
                     else
                     {
                         targetCharacter.CurrentAttackerCount++;
