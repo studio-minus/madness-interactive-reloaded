@@ -220,7 +220,12 @@ public class CampaignMenuSystem : Walgelijk.System
                     {
                         // TODO ensure we cant press this button while loading a campaign
 
-                        Game.Scene = LevelLoadingScene.Create(Game, Registries.Levels.Get(sc.Levels[stats.LevelIndex]).Level, SceneCacheSettings.NoCache);
+                        var i = stats.LevelIndex;
+
+                        if (i >= sc.Levels.Length) // we completed the campaign, restart
+                            i = 0;
+
+                        Game.Scene = LevelLoadingScene.Create(Game, Registries.Levels.Get(sc.Levels[i]).Level, SceneCacheSettings.NoCache);
                         MadnessUtils.Flash(Colors.Black, 0.2f);
                     }
                 }
