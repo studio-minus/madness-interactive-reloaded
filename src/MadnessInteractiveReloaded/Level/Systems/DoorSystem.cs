@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Numerics;
 using Walgelijk;
-using static System.Formats.Asn1.AsnWriter;
 
 namespace MIR;
 
@@ -10,6 +8,15 @@ namespace MIR;
 /// </summary>
 public class DoorSystem : Walgelijk.System
 {
+    public override void OnActivate()
+    {
+        foreach (var item in Scene.GetAllComponentsOfType<DoorComponent>())
+        {
+            item.IsBusyWithAnimation = false;
+            item.Close(Scene);
+        }
+    }
+
     public override void Update()
     {
         if (MadnessUtils.IsPaused(Scene) || MadnessUtils.EditingInExperimentMode(Scene) || MadnessUtils.IsCutscenePlaying(Scene))
