@@ -6,5 +6,5 @@ left textures/bodies/skin/hybrid/hybrid_left.png
 right textures/bodies/skin/hybrid/hybrid_right.png
 category All
 detach False
-hidden True
+hidden False
 offset 0 0

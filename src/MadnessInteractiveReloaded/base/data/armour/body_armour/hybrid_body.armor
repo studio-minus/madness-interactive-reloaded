@@ -7,4 +7,4 @@ category All
 left textures/bodies/body1/hybrid/hybrid_left.png
 right textures/bodies/body1/hybrid/hybrid_right.png
 
-hidden True
+hidden False
