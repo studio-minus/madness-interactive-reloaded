@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System;
+using System.Numerics;
 using Walgelijk;
 using Walgelijk.AssetManager;
 using Walgelijk.Physics;
@@ -544,6 +545,7 @@ public class CharacterPositionSystem : Walgelijk.System
             // base position
             pos = charPos.GlobalCenter + hand.PosePosition;
             pos.X += charPos.TiltIntensity * -5;
+
             animatedPos = hand.AnimationPosition;
 
             // base rotation
@@ -590,6 +592,7 @@ public class CharacterPositionSystem : Walgelijk.System
 
             pos = Utilities.Lerp(pos, animatedPos, character.AnimationTransitionFactorEased);
             rot = Utilities.LerpAngle(rot, animatedRot, character.AnimationTransitionFactorEased);
+            pos.Y -= Math.Max((354 - charPos.Body.Scale.Y) * 0.7f, 0);
 
             if (character.Look.Jitter)
                 pos += MadnessUtils.Noise2D(Time * 2, (character.Entity.Identity % 1000) * index) * 12;

@@ -419,7 +419,7 @@ public static class CharacterUtilities
             return;
 
         var anim = Animations.Dodge[character.AnimationFlipFlop % Animations.Dodge.Length];
-        character.PlayAnimation(anim, 1 / float.Max(0.85f, character.Stats.DodgeAbility));
+        character.PlayAnimation(anim, 1 / ((character.Stats.Scale + 1) / 2));
         character.AnimationFlipFlop++;
     }
 
