@@ -1,7 +1,8 @@
 0.49.5
 
 body
-   blouse1_body
+   blouse2_body
+   reflective_vest_over
 
 head
    default_head
