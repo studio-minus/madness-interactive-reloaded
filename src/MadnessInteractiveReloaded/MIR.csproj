@@ -74,6 +74,9 @@
 		<Resource Include="$(ProjectDir)base\**" CopyToOutputDirectory="Never" />
 	</ItemGroup>
 	<ItemGroup>
+	  <None Remove="base\data\incident_music.json" />
+	</ItemGroup>
+	<ItemGroup>
 		<None Include="..\.editorconfig" Link=".editorconfig" />
 	</ItemGroup>
 	
@@ -82,6 +85,7 @@
 	</ItemGroup>
 	
 	<ItemGroup>
+	  <Resource Include="base\data\incident_music.json" />
 	  <Resource Include="base\data\levels\incident\lvl_incident_1.json" />
 	  <Resource Include="base\data\levels\incident\lvl_incident_10.json" />
 	  <Resource Include="base\data\levels\incident\lvl_incident_11.json" />

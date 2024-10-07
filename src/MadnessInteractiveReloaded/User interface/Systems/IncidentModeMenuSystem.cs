@@ -373,13 +373,7 @@ public class IncidentConfig
         string[] endLevels = [.. Registries.Levels.GetAllKeys().Where(k => k.StartsWith("lvl_incident_end"))];
         string[] midLevels = [.. Registries.Levels.GetAllKeys().Where(k => k.StartsWith("lvl_incident")).Except(beginLevels).Except(endLevels)];
 
-        // all music choices
-        // TODO make sure only sensible music is available. currently, even the death music might be chosen.
-        // how to do this? tags? maybe a list somewhere in a text file asset?
-        GlobalAssetId[] music = [..Assets.EnumerateFolder("sounds/music", System.IO.SearchOption.AllDirectories)
-            .Where(d => Assets.GetMetadata(d).MimeType.Contains("audio", StringComparison.InvariantCultureIgnoreCase))];
-
-        var selectedTrack = rand.GetItems(music, 1)[0];
+        selectedMusic = Registries.IncidentMusicSet[rand.Next(0, Registries.IncidentMusicSet.Count)];
 
         var begin = rand.GetItems(beginLevels, 1);
         var end = rand.GetItems(endLevels, 1);
@@ -400,10 +394,12 @@ public class IncidentConfig
             ]
         };
 
-        selectedMusic = new(selectedTrack);
+        // make shit happen
         foreach (var k in c.Levels)
             if (Registries.Levels.TryGet(k, out var lvl))
-                lvl.Level.Value.BackgroundMusic = selectedMusic;
+            {
+                lvl.Level.Value.BackgroundMusic = selectedMusic; // we set the music
+            }
 
         return c;
     }
