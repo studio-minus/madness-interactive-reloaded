@@ -93,6 +93,7 @@
 	  <Resource Include="base\data\levels\incident\lvl_incident_13.json" />
 	  <Resource Include="base\data\levels\incident\lvl_incident_14.json" />
 	  <Resource Include="base\data\levels\incident\lvl_incident_15.json" />
+	  <Resource Include="base\data\levels\incident\lvl_incident_16.json" />
 	  <Resource Include="base\data\levels\incident\lvl_incident_2.json" />
 	  <Resource Include="base\data\levels\incident\lvl_incident_3.json" />
 	  <Resource Include="base\data\levels\incident\lvl_incident_4.json" />
