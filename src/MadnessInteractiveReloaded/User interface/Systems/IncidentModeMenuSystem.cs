@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MIR.LevelEditor.Objects;
+using System;
 using System.Linq;
 using System.Numerics;
 using Walgelijk;
@@ -40,7 +41,7 @@ public class IncidentModeMenuSystem : Walgelijk.System
         const float phase3 = 0.5f;
         const float phase4 = 0.6f;
 
-        if (isBusyWithIntroAnimation)
+        if (isBusyWithIntroAnimation /*|| true*/)
             introAnimationTimer += Time.DeltaTime / animationDuration;
         else
             introAnimationTimer = 0;
@@ -129,7 +130,7 @@ public class IncidentModeMenuSystem : Walgelijk.System
                     var p2 = Utilities.Clamp(Easings.Expo.Out(ph4timer * 4));
                     var p3 = Easings.Cubic.InOut(Utilities.Clamp((ph4timer + 0.17f) * 1.2f));
                     var v = (int)float.Round(IncidentConfig.KillTarget * p);
-                    var pos = new Vector2(rect.MaxX - 100, Window.Height * 0.5f);
+                    var pos = new Vector2(rect.MaxX - 250, Window.Height * 0.5f - 60);
 
                     var bnds = rect with { MinX = float.Lerp(rect.MaxX, rect.MinX, p3), MaxX = pos.X - Draw.CalculateTextWidth("###") };
                     Draw.DrawBounds = new DrawBounds(bnds);
@@ -327,6 +328,8 @@ public class IncidentModeMenuSystem : Walgelijk.System
 
                 MadnessUtils.Delay(animationDuration, () =>
                 {
+                    IncidentSystem.CurrentConfig = IncidentConfig;
+                    IncidentSystem.CurrentState = new();
                     Game.Scene = LevelLoadingScene.Create(Game, Registries.Levels.Get(c.Levels[0]).Level, SceneCacheSettings.NoCache);
                     MadnessUtils.Flash(Colors.Black, 0.2f);
                 });
@@ -353,6 +356,42 @@ public class IncidentModeMenuSystem : Walgelijk.System
 }
 //😀😀
 
+public class IncidentSystem : Walgelijk.System
+{
+    public static IncidentConfig? CurrentConfig;
+    public static IncidentState CurrentState;
+
+    private int startKillCount;
+
+    public override void OnActivate()
+    {
+        startKillCount = CurrentState.KillCount;
+    }
+
+    public override void Update()
+    {
+        if (CurrentConfig != null)
+        {
+            CurrentState.KillCount = startKillCount;
+            if (Scene.FindAnyComponent<LevelProgressComponent>(out var lvl))
+                CurrentState.KillCount += lvl.BodyCount.Current;
+
+            Draw.Reset();
+            Draw.ScreenSpace = true;
+            Draw.Order = RenderOrders.UserInterface;
+            Draw.Font = Fonts.Impact;
+            Draw.FontSize = 72;
+
+            Draw.Text($"{CurrentConfig.KillTarget - CurrentState.KillCount}", Window.Size * 0.5f, Vector2.One);
+        }
+    }
+}
+
+public struct IncidentState
+{
+    public int KillCount;
+}
+
 public class IncidentConfig
 {
     public const int MinKillTarget = 20;
@@ -372,6 +411,7 @@ public class IncidentConfig
         string[] beginLevels = [.. Registries.Levels.GetAllKeys().Where(k => k.StartsWith("lvl_incident_begin"))];
         string[] endLevels = [.. Registries.Levels.GetAllKeys().Where(k => k.StartsWith("lvl_incident_end"))];
         string[] midLevels = [.. Registries.Levels.GetAllKeys().Where(k => k.StartsWith("lvl_incident")).Except(beginLevels).Except(endLevels)];
+        string[] wpns = [.. Registries.Weapons.GetAllKeys()];
 
         selectedMusic = Registries.IncidentMusicSet[rand.Next(0, Registries.IncidentMusicSet.Count)];
 
@@ -394,12 +434,60 @@ public class IncidentConfig
             ]
         };
 
+        int bcOpening = Registries.Levels[c.Levels[0]].Level.Value.BodyCountToWin;
+        int bcEnd = Registries.Levels[c.Levels[^1]].Level.Value.BodyCountToWin;
+
+        int remaining = KillTarget - bcOpening - bcEnd;
+
+        //while (remaining > 0)
+        //{
+        //    int i = rand.Next(1, c.Levels.Length - 1); // skip opening and ending
+        //    string? k = c.Levels[i];
+        //    if (Registries.Levels.TryGet(k, out var lvl))
+        //    {
+        //        var loaded = lvl.Level.Value;
+        //        if (i > 0 && i < (c.Levels.Length - 1))
+        //        {
+        //            if (loaded.EnemySpawnInstructions.Count != 0 && loaded.MaxEnemyCount != 0)
+        //            {
+        //                loaded.BodyCountToWin =;
+        //            }
+        //        }
+        //    }
+        //}
+
         // make shit happen
-        foreach (var k in c.Levels)
-            if (Registries.Levels.TryGet(k, out var lvl))
+        {
+            var sys = typeof(IncidentSystem).FullName;
+
+            for (int i = 0; i < c.Levels.Length; i++)
             {
-                lvl.Level.Value.BackgroundMusic = selectedMusic; // we set the music
+                string? k = c.Levels[i];
+                if (Registries.Levels.TryGet(k, out var lvl))
+                {
+                    var loaded = lvl.Level.Value;
+
+                    loaded.BackgroundMusic = selectedMusic; // we set the music
+
+                    if (!loaded.Objects.Any(d => d is GameSystem ss && ss.SystemTypeName != sys))
+                    {
+                        loaded.Objects.Add(new GameSystem(null!) { SystemTypeName = sys });
+                    }
+
+                    if (i > 0 && i < (c.Levels.Length - 1))
+                    {
+                        if (loaded.EnemySpawnInstructions.Count != 0 && loaded.MaxEnemyCount != 0)
+                        {
+                            loaded.BodyCountToWin = rand.Next(5, 25);
+                            loaded.MaxEnemyCount = rand.Next(2, 7);
+                            loaded.MaxSimultaneousAttackingEnemies = rand.Next(1, 4);
+                            loaded.Weapons = [.. rand.GetItems(wpns, rand.Next(2, 30))];
+                            loaded.EnemySpawnInterval = float.Lerp(0.01f, 0.2f, rand.NextSingle());
+                        }
+                    }
+                }
             }
+        }
 
         return c;
     }
