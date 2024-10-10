@@ -5,7 +5,7 @@
   "EnemySpawnInterval": 1.0,
   "MaxEnemyCount": 3,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "base:sounds/music/Lothyde/agr3.ogg",
+  "BackgroundMusic": "sounds/music/Lothyde/agr3.ogg",
   "WeaponChance": 0.5,
   "LevelBounds": {
     "MinX": -3859.222,
@@ -16,7 +16,7 @@
   "BodyCountToWin": 25,
   "TimeLimitInSeconds": -1.0,
   "FullZoom": false,
-  "Thumbnail": "base:textures/level_thumbnails/lvl_incident_1.qoi",
+  "Thumbnail": "textures/level_thumbnails/lvl_incident_1.qoi",
   "OpeningTransition": true,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [
@@ -271,7 +271,7 @@
         "X": -137.0,
         "Y": 161.99997
       },
-      "TexturePath": "base:textures/backgrounds/incidents/background_level_1.qoi",
+      "TexturePath": "textures/backgrounds/incidents/background_level_1.qoi",
       "Scale": 2.222222
     },
     {
@@ -290,7 +290,7 @@
         "X": -465.9232,
         "Y": 1482.0948
       },
-      "TexturePath": "base:textures/black-transparent-gradient.png",
+      "TexturePath": "textures/black-transparent-gradient.png",
       "Scale": 2.222222
     },
     {
@@ -299,7 +299,7 @@
         "X": -465.9232,
         "Y": -1148.6136
       },
-      "TexturePath": "base:textures/black-transparent-gradient.png",
+      "TexturePath": "textures/black-transparent-gradient.png",
       "Scale": 2.222222
     }
   ]
