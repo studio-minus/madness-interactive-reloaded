@@ -3,9 +3,7 @@ using System.Numerics;
 using System.Runtime.CompilerServices;
 using Walgelijk;
 using Walgelijk.AssetManager;
-using Walgelijk.Localisation;
 using Walgelijk.Onion;
-using Walgelijk.Onion.Animations;
 using Walgelijk.Onion.Controls;
 using Walgelijk.Onion.Layout;
 using Walgelijk.SimpleDrawing;
@@ -187,12 +185,7 @@ public class ModMenuSystem : Walgelijk.System
 
         // back button
         if (MenuUiUtils.BackButton())
-        {
-            //ModLoader.ApplyActiveMods();
-
             Game.Scene = MainMenuScene.Load(Game);
-            MadnessUtils.Flash(Colors.Black, 0.2f);
-        }
 
 #if WINDOWS // windows only because there is no such thing as a "linux file explorer". its all fucked and unique to each user 
         // folder button

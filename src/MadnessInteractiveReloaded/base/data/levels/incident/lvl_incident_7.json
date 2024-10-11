@@ -1,0 +1,366 @@
+{
+  "DisplayName": "untitled",
+  "LevelType": "Campaign",
+  "ProgressionType": "BodyCount",
+  "EnemySpawnInterval": 2.0,
+  "MaxEnemyCount": 2,
+  "MaxSimultaneousAttackingEnemies": 2,
+  "BackgroundMusic": "sounds/music/Lothyde/agr3.ogg",
+  "WeaponChance": 0.89,
+  "LevelBounds": {
+    "MinX": -2851.9958,
+    "MinY": -579.4754,
+    "MaxX": 2836.8928,
+    "MaxY": 1740.5244
+  },
+  "BodyCountToWin": 10,
+  "TimeLimitInSeconds": -1.0,
+  "FullZoom": false,
+  "Thumbnail": "textures/level_thumbnails/lvl_incident_7.qoi",
+  "OpeningTransition": true,
+  "ExitingTransition": true,
+  "EnemySpawnInstructions": [
+    {
+      "StatsKey": "experiment",
+      "LookKey": "experiment"
+    }
+  ],
+  "Weapons": [
+    "m_73",
+    "oa_93",
+    "sawed_off_shotgun",
+    "sw_500",
+    "tactical_deagle",
+    "ak_47",
+    "automag",
+    "hk_sl8"
+  ],
+  "FloorLine": [
+    {
+      "X": -2321.65,
+      "Y": -378.24078
+    },
+    {
+      "X": 2302.35,
+      "Y": -378.24078
+    }
+  ],
+  "Objects": [
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerSpawn, MIR",
+      "Position": {
+        "X": -2161.65,
+        "Y": -216.47891
+      },
+      "SpawnWeapon": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
+      "WeaponKey": "mk_23",
+      "Angle": 17.267365,
+      "Ammo": 12,
+      "AttachedToWall": true,
+      "Position": {
+        "X": -1455.6754,
+        "Y": -2.7747803
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
+      "WeaponKey": "m_73",
+      "Angle": 26.484558,
+      "Ammo": 6,
+      "AttachedToWall": true,
+      "Position": {
+        "X": -1886.9362,
+        "Y": -31.957748
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 2335.4597,
+        "MinY": -590.67194,
+        "MaxX": 2870.877,
+        "MaxY": 1755.7356
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": -7.551422,
+        "Y": 580.5245
+      },
+      "TexturePath": "textures/backgrounds/incidents/background_level_7.qoi",
+      "Scale": 2.222222
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -2885.5361,
+        "MinY": -590.67194,
+        "MaxX": -2355.979,
+        "MaxY": 1755.7357
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -2885.5361,
+        "MinY": 1537.6085,
+        "MaxX": -587.94965,
+        "MaxY": 1755.7357
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 566.2865,
+        "MinY": 1537.6085,
+        "MaxX": 2863.873,
+        "MaxY": 1755.7357
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 564.9863,
+        "MinY": 1722.7732,
+        "MaxX": 1010.59344,
+        "MaxY": 4135.003
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -1034.8096,
+        "MinY": 1722.7737,
+        "MaxX": -589.20276,
+        "MaxY": 4135.0024
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -5365.587,
+        "MinY": -671.4771,
+        "MaxX": 4899.3633,
+        "MaxY": -378.24078
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": -920.62964,
+          "Y": -217.28
+        },
+        "FacingDirection": {
+          "X": "NaN",
+          "Y": "NaN"
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": -1113.5533,
+          "Y": 360.41403
+        },
+        "TopRight": {
+          "X": -727.3828,
+          "Y": 361.27927
+        },
+        "BottomLeft": {
+          "X": -1114.6998,
+          "Y": -217.44879
+        },
+        "BottomRight": {
+          "X": -726.5594,
+          "Y": -217.1112
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerPoster, MIR",
+      "Type": 0,
+      "Angle": 3.255478,
+      "Position": {
+        "X": -1720.1191,
+        "Y": 152.2278
+      },
+      "Scale": 1.6952629
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerPoster, MIR",
+      "Type": 2,
+      "Angle": 0.0,
+      "Position": {
+        "X": -584.9446,
+        "Y": 73.39648
+      },
+      "Scale": 2.3351681
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerPoster, MIR",
+      "Type": 1,
+      "Angle": -0.70262146,
+      "Position": {
+        "X": 530.57275,
+        "Y": 91.44847
+      },
+      "Scale": 1.797286
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": 2452.581,
+          "Y": -374.19107
+        },
+        "FacingDirection": {
+          "X": -1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": true,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": 2424.8438,
+          "Y": 310.579
+        },
+        "TopRight": {
+          "X": 2278.9497,
+          "Y": 326.2889
+        },
+        "BottomLeft": {
+          "X": 2424.849,
+          "Y": -403.51065
+        },
+        "BottomRight": {
+          "X": 2280.313,
+          "Y": -344.8715
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": -2469.7327,
+          "Y": -373.79156
+        },
+        "FacingDirection": {
+          "X": 1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": -2441.9954,
+          "Y": 310.97855
+        },
+        "TopRight": {
+          "X": -2296.1013,
+          "Y": 326.68842
+        },
+        "BottomLeft": {
+          "X": -2442.0007,
+          "Y": -403.11115
+        },
+        "BottomRight": {
+          "X": -2297.4646,
+          "Y": -344.472
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": 898.1114,
+          "Y": -216.63199
+        },
+        "FacingDirection": {
+          "X": "NaN",
+          "Y": "NaN"
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": 705.1876,
+          "Y": 361.06204
+        },
+        "TopRight": {
+          "X": 1091.3582,
+          "Y": 361.92728
+        },
+        "BottomLeft": {
+          "X": 704.04114,
+          "Y": -216.80078
+        },
+        "BottomRight": {
+          "X": 1092.1816,
+          "Y": -216.4632
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Look": "experiment",
+        "Stats": "experiment",
+        "Weapon": "ump",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": 1805.2798,
+          "Y": -310.45007
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.EnemySpawner, MIR",
+      "Position": {
+        "X": -362.61258,
+        "Y": 2323.8328
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.EnemySpawner, MIR",
+      "Position": {
+        "X": 356.05783,
+        "Y": 2341.1182
+      }
+    }
+  ]
+}

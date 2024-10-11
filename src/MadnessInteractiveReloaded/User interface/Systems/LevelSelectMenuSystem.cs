@@ -25,10 +25,7 @@ public class ImprobabilityDiskSelectMenuSystem : Walgelijk.System
         Ui.End();
 
         if (MenuUiUtils.BackButton())
-        {
             Game.Scene = MainMenuScene.Load(Game);
-            MadnessUtils.Flash(Colors.Black, 0.2f);
-        }
     }
 
     private void ModifierSelectGrid()
@@ -260,10 +257,7 @@ public class LevelSelectMenuSystem : Walgelijk.System
         Ui.End();
 
         if (MenuUiUtils.BackButton())
-        {
             Game.Scene = CampaignMenuScene.Load(Game);
-            MadnessUtils.Flash(Colors.Black, 0.2f);
-        }
     }
 
     private void LevelSelectGrid(Campaign campaign)

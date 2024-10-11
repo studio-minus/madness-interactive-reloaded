@@ -52,6 +52,11 @@ public class Campaign
     /// </summary>
     public string? Stats = null;
 
+    /// <summary>
+    /// Campaign stats won't be saved to disk if true.
+    /// </summary>
+    public bool Temporary;
+
     public Campaign()
     {
 

@@ -41,6 +41,7 @@ public static class Registries
     public static readonly Registry<Faction> Factions = new();
     public static readonly Registry<CampaignStats> CampaignStats = new();
     public static readonly Registry<Language> Languages = new();
+    public static readonly List<AssetRef<StreamAudioData>> IncidentMusicSet = new();
 
     public static void ClearAll()
     {
@@ -64,6 +65,7 @@ public static class Registries
         Campaigns.Clear();
         Factions.Clear();
         CampaignStats.Clear();
+        IncidentMusicSet.Clear();
     }
 
     public static void LoadCharacterPresets()
@@ -148,7 +150,7 @@ public static class Registries
                 var metadata = Assets.GetMetadata(asset);
                 var cutscene = Assets.Load<Cutscene>(asset);
 
-                Cutscenes.Register(Path.GetFileNameWithoutExtension(metadata.Path),cutscene);
+                Cutscenes.Register(Path.GetFileNameWithoutExtension(metadata.Path), cutscene);
             }
             catch (Exception e)
             {
@@ -310,6 +312,32 @@ public static class Registries
                 {
                     var track = list[i];
                     Dj.Add(track);
+                }
+        }
+    }
+
+    public static void LoadIncidentMusicSet()
+    {
+        IncidentMusicSet.Clear();
+        var asset = new AssetId("data/incident_music.json");
+
+        foreach (var id in Assets.AssetPackages)
+        {
+            if (!Assets.TryGetPackage(id, out var package))
+                continue;
+
+            if (!package.HasAsset(asset))
+                continue;
+
+            var json = package.LoadNoCache<string>(asset);
+            var list = JsonConvert.DeserializeObject<AssetRef<StreamAudioData>[]>(json);
+            if (list != null)
+                for (int i = 0; i < list.Length; i++)
+                {
+                    var track = list[i];
+                    if (track.IsValid && track.Id.Exists && Assets.TryGetMetadata(track.Id, out var md))
+                        if (md.Path.EndsWith("ogg", StringComparison.InvariantCultureIgnoreCase))
+                            IncidentMusicSet.Add(track);
                 }
         }
     }

@@ -4,6 +4,7 @@
   "Table": {
     "main-menu-campaigns": "Campaigns",
     "main-menu-experiment": "Experiment",
+    "main-menu-incident-mode": "Incident mode",
     "main-menu-improbability-disks": "Improbability disks",
     "main-menu-char-customisation": "Character customisation",
     "main-menu-settings": "Settings",
@@ -40,6 +41,7 @@
     "character-creation-import": "Import",
     "character-creation-export": "Export",
 
+    "experiment-press-to-toggle": "Press <color=#ffffff>[{0}]</color> to toggle EDIT mode",
     "experiment-open-menu": "Menu",
     "experiment-close-menu": "Stop editing",
     "experiment-main-menu": "Main menu",

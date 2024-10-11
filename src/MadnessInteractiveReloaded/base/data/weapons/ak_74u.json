@@ -1,0 +1,58 @@
+{
+  "Id": "ak_74u",
+  "WeaponData": {
+    "Name": "AK-74U",
+    "Damage": 0.9,
+    "UseDelay": 0.105,
+    "MaxHandRangeMultiplier": 0.5,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 0.5,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 30,
+    "BurstFireCount": 0,
+    "Accuracy": 1.0,
+    "Recoil": 0.8,
+    "RotationalRecoilIntensity": 0.8,
+    "RecoilHandling": 0.8,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/ak74u_1.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "RifleCasing",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 400.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/ak_74u/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 190.25745,
+    "Y": 51.876957
+  },
+  "CasingEjectionPoint": {
+    "X": -29.87726,
+    "Y": 71.68706
+  },
+  "HoldPoints": [
+    {
+      "X": 146.99992,
+      "Y": 0.9999981
+    },
+    {
+      "X": 63.44263,
+      "Y": 36.420723
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

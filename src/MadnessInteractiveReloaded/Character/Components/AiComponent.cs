@@ -52,6 +52,11 @@ public class AiComponent : Component
     public bool WantsToPickupWeapon = true;
 
     /// <summary>
+    /// Whether or not this AI respects the MaxSimultaneousAttackingEnemies property
+    /// </summary>
+    public bool WaitsForAttackTurn = true;
+
+    /// <summary>
     /// Where the AI is aiming. This is separate from <see cref="CharacterComponent.AimTargetPosition"/> in that <see cref="AimingPosition"/> is where the AI <i>wants</i> to aim, and <see cref="CharacterComponent.AimTargetPosition"/> is where it is actually aiming.
     /// </summary>
     public Vector2 AimingPosition;

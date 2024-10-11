@@ -85,7 +85,7 @@ public class MadnessInteractiveReloaded
         //Resources.SetBasePathForType<Campaign>("data/campaigns");
 
         Resources.RegisterType(typeof(Language), Language.Load);
-        Resources.RegisterType(typeof(CharacterAnimation), static s=>
+        Resources.RegisterType(typeof(CharacterAnimation), static s =>
         {
             using var f = new FileStream(s, FileMode.Open, FileAccess.Read);
             return AnimationDeserialiser.Load(f, Path.GetFileNameWithoutExtension(s), Path.GetDirectoryName(s) ?? string.Empty);
@@ -137,7 +137,7 @@ void main()
              new OpenTKWindow("Madness Interactive Reloaded", -Vector2.One, new Vector2(1920, 1080) * 0.8f),
              new OpenALAudioRenderer()
              );
-        
+
         CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
 
         Game.Window.SetIcon(TextureLoader.FromFile("resources/textures/icon.png"));
@@ -227,7 +227,8 @@ void main()
         foreach (var item in Registries.CampaignStats.GetAllValues())
             try
             {
-                item.Save();
+                if (Registries.Campaigns.Has(item.CampaignId))
+                    item.Save();
             }
             catch (System.Exception e)
             {

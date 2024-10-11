@@ -15,3 +15,4 @@ walk_anim zed_walk
 
 abilities
 	MIR.NoStunAbilityComponent
+	MIR.NoWaitForAttackTurn

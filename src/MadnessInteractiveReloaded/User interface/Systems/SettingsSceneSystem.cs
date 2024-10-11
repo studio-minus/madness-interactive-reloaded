@@ -163,10 +163,7 @@ public class SettingsSceneSystem : Walgelijk.System
 
             // back button
             if (MenuUiUtils.BackButton())
-            {
                 Game.Scene = MainMenuScene.Load(Game);
-                MadnessUtils.Flash(Colors.Black, 0.2f);
-            }
         }
         Ui.End();
     }

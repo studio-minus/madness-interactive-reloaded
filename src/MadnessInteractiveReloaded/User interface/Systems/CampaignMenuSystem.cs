@@ -171,7 +171,6 @@ public class CampaignMenuSystem : Walgelijk.System
         {
             if (selectedCampaign != null && Registries.Campaigns.TryGet(selectedCampaign, out var sc) && sc != null)
             {
-
                 if (CampaignProgress.TryGetCurrentStats(out var stats))
                 {
                     Ui.Layout.FitContainer(1, 0.7f).StickLeft().StickTop();
@@ -185,7 +184,8 @@ public class CampaignMenuSystem : Walgelijk.System
                         {
                             Ui.Layout.Height(40).FitWidth().StickLeft().StickTop();
                             Ui.Theme.FontSize(16).Once();
-                            Ui.TextRect($"<color=#ff0000>Completed levels</color>\n{stats.LevelIndex} / {sc.Levels.Length}", HorizontalTextAlign.Left, VerticalTextAlign.Middle);
+                            int a = int.Min(stats.LevelIndex, sc.Levels.Length);
+                            Ui.TextRect($"<color=#ff0000>Completed levels</color>\n{a} / {sc.Levels.Length}", HorizontalTextAlign.Left, VerticalTextAlign.Middle);
 
                             Ui.Layout.Height(40).FitWidth().StickLeft().StickTop();
                             Ui.Theme.FontSize(16).Once();
@@ -220,7 +220,12 @@ public class CampaignMenuSystem : Walgelijk.System
                     {
                         // TODO ensure we cant press this button while loading a campaign
 
-                        Game.Scene = LevelLoadingScene.Create(Game, Registries.Levels.Get(sc.Levels[stats.LevelIndex]).Level, SceneCacheSettings.NoCache);
+                        var i = stats.LevelIndex;
+
+                        if (i >= sc.Levels.Length) // we completed the campaign, restart
+                            i = 0;
+
+                        Game.Scene = LevelLoadingScene.Create(Game, Registries.Levels.Get(sc.Levels[i]).Level, SceneCacheSettings.NoCache);
                         MadnessUtils.Flash(Colors.Black, 0.2f);
                     }
                 }
@@ -234,9 +239,6 @@ public class CampaignMenuSystem : Walgelijk.System
         Ui.End();
 
         if (MenuUiUtils.BackButton())
-        {
             Game.Scene = MainMenuScene.Load(Game);
-            MadnessUtils.Flash(Colors.Black, 0.2f);
-        }
     }
 }

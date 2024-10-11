@@ -1,0 +1,222 @@
+{
+  "DisplayName": "untitled",
+  "LevelType": "Campaign",
+  "ProgressionType": "BodyCount",
+  "EnemySpawnInterval": 2.0,
+  "MaxEnemyCount": 4,
+  "MaxSimultaneousAttackingEnemies": 2,
+  "BackgroundMusic": "sounds/music/Lothyde/agr3.ogg",
+  "WeaponChance": 0.5,
+  "LevelBounds": {
+    "MinX": -2149.6318,
+    "MinY": -485.362,
+    "MaxX": 1968.1456,
+    "MaxY": 2425.7488
+  },
+  "BodyCountToWin": 6,
+  "TimeLimitInSeconds": -1.0,
+  "FullZoom": false,
+  "Thumbnail": "textures/level_thumbnails/lvl_incident_begin_3.qoi",
+  "OpeningTransition": true,
+  "ExitingTransition": true,
+  "EnemySpawnInstructions": [
+    {
+      "StatsKey": "grunt",
+      "LookKey": "grunt"
+    }
+  ],
+  "Weapons": [
+    "megachette"
+  ],
+  "FloorLine": [
+    {
+      "X": -2150.9814,
+      "Y": -225.62775
+    },
+    {
+      "X": 1561.0186,
+      "Y": -225.62775
+    }
+  ],
+  "Objects": [
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerSpawn, MIR",
+      "Position": {
+        "X": -1994.9814,
+        "Y": 0.0
+      },
+      "SpawnWeapon": "bowie_knife"
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": -90.74304,
+        "Y": 970.1934
+      },
+      "TexturePath": "textures/backgrounds/incidents/background_begin_3.qoi",
+      "Scale": 2.222222
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -4995.2773,
+        "MinY": -569.2456,
+        "MaxX": 3821.3364,
+        "MaxY": -225.62775
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 1595.1875,
+        "MinY": -395.14673,
+        "MaxX": 2378.9502,
+        "MaxY": 2839.5547
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerPoster, MIR",
+      "Type": 0,
+      "Angle": -0.64108276,
+      "Position": {
+        "X": 285.07657,
+        "Y": 362.69376
+      },
+      "Scale": 1.6251521
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Look": "grunt",
+        "Stats": "grunt",
+        "Weapon": "carbon_knife",
+        "Flipped": false,
+        "BottomCenter": {
+          "X": 738.45685,
+          "Y": -171.96011
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Look": "grunt",
+        "Stats": "grunt",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": 229.3219,
+          "Y": -170.66135
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Look": "grunt",
+        "Stats": "grunt",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": -279.81317,
+          "Y": -164.1676
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Look": "grunt",
+        "Stats": "grunt",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": -488.92218,
+          "Y": -161.56992
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
+      "WeaponKey": "carbon_knife",
+      "Angle": -24.575027,
+      "Ammo": 12,
+      "AttachedToWall": true,
+      "Position": {
+        "X": -1195.4313,
+        "Y": -7.1616516
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": 1699.2671,
+          "Y": -225.5752
+        },
+        "FacingDirection": {
+          "X": -1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": true,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": 1546.1112,
+          "Y": 605.6267
+        },
+        "TopRight": {
+          "X": 1650.3225,
+          "Y": 583.80975
+        },
+        "BottomLeft": {
+          "X": 1546.6229,
+          "Y": -187.85608
+        },
+        "BottomRight": {
+          "X": 1651.9111,
+          "Y": -263.2943
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 1457.4761,
+        "MinY": 650.8562,
+        "MaxX": 1713.4761,
+        "MaxY": 2588.3682
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -2226.6865,
+        "MinY": -312.96088,
+        "MaxX": 1551.0352,
+        "MaxY": -177.45874
+      },
+      "Tag": null
+    }
+  ]
+}

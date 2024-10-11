@@ -100,7 +100,11 @@ public class MainMenuSystem : Walgelijk.System
             character.AimTargetPosition = new Vector2(1000, 0);
 
             if (!Registries.Weapons.TryGet("walther_ppk", out var instr))
+            {
+                if (Registries.Weapons.Count == 0)
+                    return;
                 instr = Registries.Weapons.GetRandomValue();
+            }
             var wpn = Prefabs.CreateWeapon(Scene, default, instr!);
             character.EquipWeapon(Scene, wpn);
         }
@@ -186,7 +190,7 @@ public class MainMenuSystem : Walgelijk.System
 
     private void ProcessUi(MainMenuComponent mm)
     {
-        Ui.Layout.Size(330, 355).VerticalLayout();
+        Ui.Layout.Size(330, 385).VerticalLayout();
         if (Window.Height > WindowHeightResponsiveThreshold)
             Ui.Layout.StickBottom(false).StickLeft(false).MoveAbs(70, -70);
         else
@@ -231,6 +235,13 @@ public class MainMenuSystem : Walgelijk.System
                     var lvl = Registries.Levels["exp_1"]?.Level.Value ?? throw new Exception("The current level is null");
                     return ExperimentScene.Create(game, lvl, new SceneCacheSettings(lvl.Id));
                 });
+            }    
+            
+            Ui.Decorate(new MenuButtonDecorator());
+            if (LeftAlignedButton.Start(Localisation.Get("main-menu-incident-mode")))
+            {
+                Game.Scene = IncidentModeMenuScene.Load(Game.Main);
+                MadnessUtils.Flash(Colors.Black, 0.2f);
             }
 
             Ui.Decorate(new MenuButtonDecorator());

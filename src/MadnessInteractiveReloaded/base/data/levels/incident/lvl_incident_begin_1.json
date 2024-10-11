@@ -1,0 +1,156 @@
+{
+  "DisplayName": "untitled",
+  "LevelType": "Campaign",
+  "ProgressionType": "BodyCount",
+  "EnemySpawnInterval": 2.0,
+  "MaxEnemyCount": 4,
+  "MaxSimultaneousAttackingEnemies": 2,
+  "BackgroundMusic": "sounds/music/Lothyde/agr3.ogg",
+  "WeaponChance": 0.5,
+  "LevelBounds": {
+    "MinX": -1789.7004,
+    "MinY": -675.23175,
+    "MaxX": 1879.1882,
+    "MaxY": 913.65704
+  },
+  "BodyCountToWin": 1,
+  "TimeLimitInSeconds": -1.0,
+  "FullZoom": true,
+  "Thumbnail": "textures/level_thumbnails/lvl_incident_begin_1.qoi",
+  "OpeningTransition": true,
+  "ExitingTransition": true,
+  "EnemySpawnInstructions": [],
+  "Weapons": [],
+  "FloorLine": [
+    {
+      "X": -1791.0334,
+      "Y": -542.0443
+    },
+    {
+      "X": 1520.9666,
+      "Y": -542.0443
+    }
+  ],
+  "Objects": [
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerSpawn, MIR",
+      "Position": {
+        "X": -1685.0334,
+        "Y": -229.92181
+      },
+      "SpawnWeapon": "silenced_beretta_92"
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": 44.74385,
+        "Y": 119.21267
+      },
+      "TexturePath": "textures/backgrounds/incidents/background_begin_1.qoi",
+      "Scale": 2.222222
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -6216.7666,
+        "MinY": -911.3873,
+        "MaxX": 2820.0098,
+        "MaxY": -542.0443
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 1553.9152,
+        "MinY": -607.32874,
+        "MaxX": 2099.8435,
+        "MaxY": 1090.6652
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Look": "agent",
+        "Stats": "agent",
+        "Weapon": "glock_20",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": 1349.4441,
+          "Y": -503.85626
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": 1673.518,
+          "Y": -538.3309
+        },
+        "FacingDirection": {
+          "X": -1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": false,
+        "IsLevelProgressionDoor": true,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": 1532.9279,
+          "Y": 262.02438
+        },
+        "TopRight": {
+          "X": 1610.7556,
+          "Y": 270.28946
+        },
+        "BottomLeft": {
+          "X": 1536.3115,
+          "Y": -520.5017
+        },
+        "BottomRight": {
+          "X": 1610.7244,
+          "Y": -556.16003
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 1447.4305,
+        "MinY": 307.65656,
+        "MaxX": 1703.4305,
+        "MaxY": 1110.6298
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -1848.3364,
+        "MinY": -691.32916,
+        "MaxX": 1474.2588,
+        "MaxY": -455.58728
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelScript, MIR",
+      "Position": {
+        "X": 1389.0247,
+        "Y": -68.503845
+      },
+      "Name": "guard",
+      "Code": "public void Update()\r\n        {\r\n            if (Scene.FindAnyComponent<AiComponent>(out var ai))\r\n            {\r\n                ai.IsDocile = true;\r\n            }\r\n        }",
+      "Tag": null
+    }
+  ]
+}
