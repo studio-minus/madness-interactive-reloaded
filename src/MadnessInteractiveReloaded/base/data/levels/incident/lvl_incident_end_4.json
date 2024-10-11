@@ -5,7 +5,7 @@
   "EnemySpawnInterval": 2.0,
   "MaxEnemyCount": 4,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "sounds/music/Lothyde/agr3.ogg",
+  "BackgroundMusic": "base:sounds/music/Lothyde/agr3.ogg",
   "WeaponChance": 0.5,
   "LevelBounds": {
     "MinX": -1946.187,
@@ -16,18 +16,18 @@
   "BodyCountToWin": 1,
   "TimeLimitInSeconds": -1.0,
   "FullZoom": false,
-  "Thumbnail": "textures/level_thumbnails/lvl_incident_end_4.qoi",
+  "Thumbnail": "base:textures/level_thumbnails/lvl_incident_end_4.qoi",
   "OpeningTransition": true,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [],
   "Weapons": [],
   "FloorLine": [
     {
-      "X": -1589.7964,
+      "X": -1609.7964,
       "Y": -237.60753
     },
     {
-      "X": 1232.2036,
+      "X": 1252.2036,
       "Y": -237.60753
     }
   ],
@@ -46,7 +46,7 @@
         "X": 30.479553,
         "Y": 688.98785
       },
-      "TexturePath": "textures/backgrounds/incidents/background_end_4.qoi",
+      "TexturePath": "base:textures/backgrounds/incidents/background_end_4.qoi",
       "Scale": 2.222222
     },
     {
@@ -96,8 +96,10 @@
     {
       "$type": "MIR.LevelEditor.Objects.NPC, MIR",
       "Instructions": {
+        "Name": "Unnamed NPC",
         "Look": "smith",
         "Stats": "player",
+        "Faction": "aahw",
         "Weapon": "deagle",
         "Flipped": false,
         "BottomCenter": {
@@ -105,15 +107,18 @@
           "Y": -167.79645
         },
         "ScaleOverride": false,
-        "Scale": 1.0
+        "Scale": 1.0,
+        "IsProgressionRequirement": true
       },
       "StartAnimation": null
     },
     {
       "$type": "MIR.LevelEditor.Objects.NPC, MIR",
       "Instructions": {
+        "Name": "Unnamed NPC",
         "Look": "vendor",
         "Stats": "grunt",
+        "Faction": "civil",
         "Weapon": null,
         "Flipped": true,
         "BottomCenter": {
@@ -121,7 +126,8 @@
           "Y": -229.7073
         },
         "ScaleOverride": false,
-        "Scale": 1.0
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
       },
       "StartAnimation": null
     },

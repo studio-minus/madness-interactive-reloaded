@@ -3,9 +3,9 @@
   "LevelType": "Campaign",
   "ProgressionType": "BodyCount",
   "EnemySpawnInterval": 2.0,
-  "MaxEnemyCount": 4,
+  "MaxEnemyCount": 3,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "sounds/music/Lothyde/agr3.ogg",
+  "BackgroundMusic": "base:sounds/music/Lothyde/agr3.ogg",
   "WeaponChance": 0.5,
   "LevelBounds": {
     "MinX": -1570.375,
@@ -16,18 +16,24 @@
   "BodyCountToWin": 1,
   "TimeLimitInSeconds": -1.0,
   "FullZoom": false,
-  "Thumbnail": "textures/level_thumbnails/lvl_incident_end_2.qoi",
+  "Thumbnail": "base:textures/level_thumbnails/lvl_incident_end_2.qoi",
   "OpeningTransition": true,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [],
-  "Weapons": [],
+  "Weapons": [
+    "beretta_93r",
+    "sabre",
+    "thompson",
+    "bowie_knife",
+    "saiga_12"
+  ],
   "FloorLine": [
     {
-      "X": -1240.5562,
+      "X": -1258.5562,
       "Y": -485.07062
     },
     {
-      "X": 1247.4438,
+      "X": 1265.4438,
       "Y": -485.07062
     }
   ],
@@ -54,8 +60,10 @@
     {
       "$type": "MIR.LevelEditor.Objects.NPC, MIR",
       "Instructions": {
+        "Name": "Unnamed NPC",
         "Look": "mag",
-        "Stats": "mag_rich",
+        "Stats": "end_soldat",
+        "Faction": "aahw",
         "Weapon": "true_dragon_sword",
         "Flipped": true,
         "BottomCenter": {
@@ -63,7 +71,8 @@
           "Y": -443.90314
         },
         "ScaleOverride": true,
-        "Scale": 2.0
+        "Scale": 1.5,
+        "IsProgressionRequirement": true
       },
       "StartAnimation": null
     },
@@ -156,7 +165,7 @@
     },
     {
       "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/bubbles_4x6.png",
+      "TexturePath": "base:textures/bubbles_4x6.png",
       "Angle": 0.0,
       "Position": {
         "X": 224.71014,
@@ -217,7 +226,7 @@
         "X": 224.06935,
         "Y": 432.05057
       },
-      "TexturePath": "textures/backgrounds/incidents/background_end_2.qoi",
+      "TexturePath": "base:textures/backgrounds/incidents/background_end_2.qoi",
       "Scale": 2.222222
     },
     {
@@ -242,7 +251,7 @@
           "X": 1.0,
           "Y": 0.0
         },
-        "EnemySpawnerDoor": false,
+        "EnemySpawnerDoor": true,
         "IsLevelProgressionDoor": false,
         "IsPortal": false,
         "PortalID": null,
@@ -278,7 +287,7 @@
     },
     {
       "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/screen_1x11.png",
+      "TexturePath": "base:textures/screen_1x11.png",
       "Angle": 0.0,
       "Position": {
         "X": 1454.3901,

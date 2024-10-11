@@ -5,7 +5,7 @@
   "EnemySpawnInterval": 2.0,
   "MaxEnemyCount": 0,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "sounds/music/Lothyde/agr3.ogg",
+  "BackgroundMusic": "base:sounds/music/Lothyde/agr3.ogg",
   "WeaponChance": 0.5,
   "LevelBounds": {
     "MinX": -2912.2817,
@@ -13,21 +13,30 @@
     "MaxX": 2705.2197,
     "MaxY": 1465.5925
   },
-  "BodyCountToWin": 2,
+  "BodyCountToWin": 6,
   "TimeLimitInSeconds": -1.0,
   "FullZoom": false,
   "Thumbnail": "0",
   "OpeningTransition": true,
   "ExitingTransition": true,
-  "EnemySpawnInstructions": [],
-  "Weapons": [],
+  "EnemySpawnInstructions": [
+    {
+      "StatsKey": "agent",
+      "LookKey": "agent",
+      "FactionKey": "aahw"
+    }
+  ],
+  "Weapons": [
+    "glock_20",
+    "glock_18_c"
+  ],
   "FloorLine": [
     {
-      "X": -1692.2966,
+      "X": -1710.2966,
       "Y": -547.73224
     },
     {
-      "X": 2223.7034,
+      "X": 2243.7034,
       "Y": -547.73224
     }
   ],
@@ -41,18 +50,90 @@
       "SpawnWeapon": null
     },
     {
+      "$type": "MIR.LevelEditor.Objects.LevelProgressTrigger, MIR",
+      "Rectangle": {
+        "MinX": -2512.0142,
+        "MinY": -552.07556,
+        "MaxX": 2280.0042,
+        "MaxY": 135.56203
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "base:textures/end6Fan_1x7.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": -1147.2385,
+        "Y": 1023.9626
+      },
+      "Scale": 2.397366,
+      "Columns": 7,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 0.25,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": 14.7565155,
+          "Y": -419.41492
+        },
+        "FacingDirection": {
+          "X": "NaN",
+          "Y": "NaN"
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": -251.72424,
+          "Y": 296.07977
+        },
+        "TopRight": {
+          "X": 281.8813,
+          "Y": 296.52972
+        },
+        "BottomLeft": {
+          "X": -250.57349,
+          "Y": -419.6308
+        },
+        "BottomRight": {
+          "X": 280.08652,
+          "Y": -419.199
+        }
+      },
+      "Tag": null
+    },
+    {
       "$type": "MIR.LevelEditor.Objects.NPC, MIR",
       "Instructions": {
-        "Look": "grunt",
-        "Stats": "grunt",
-        "Weapon": null,
+        "Name": "Unnamed NPC",
+        "Look": "classsic_agent",
+        "Stats": "agent",
+        "Faction": "aahw",
+        "Weapon": "glock_20",
         "Flipped": false,
         "BottomCenter": {
           "X": 1046.5261,
           "Y": -478.59662
         },
         "ScaleOverride": false,
-        "Scale": 1.0
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
       },
       "StartAnimation": null
     },
@@ -154,45 +235,12 @@
       "Tag": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.Door, MIR",
-      "Properties": {
-        "SpawnPoint": {
-          "X": 14.7565155,
-          "Y": -419.41492
-        },
-        "FacingDirection": {
-          "X": "NaN",
-          "Y": "NaN"
-        },
-        "EnemySpawnerDoor": false,
-        "IsLevelProgressionDoor": false,
-        "IsPortal": false,
-        "PortalID": null,
-        "DestinationLevel": null,
-        "TopLeft": {
-          "X": -251.72424,
-          "Y": 296.07977
-        },
-        "TopRight": {
-          "X": 281.8813,
-          "Y": 296.52972
-        },
-        "BottomLeft": {
-          "X": -250.57349,
-          "Y": -419.6308
-        },
-        "BottomRight": {
-          "X": 280.08652,
-          "Y": -419.199
-        }
-      },
-      "Tag": null
-    },
-    {
       "$type": "MIR.LevelEditor.Objects.NPC, MIR",
       "Instructions": {
+        "Name": "Unnamed NPC",
         "Look": "rich",
         "Stats": "player",
+        "Faction": "aahw",
         "Weapon": "iron_knife",
         "Flipped": false,
         "BottomCenter": {
@@ -200,9 +248,20 @@
           "Y": -523.6445
         },
         "ScaleOverride": false,
-        "Scale": 1.0
+        "Scale": 1.0,
+        "IsProgressionRequirement": true
       },
       "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerPoster, MIR",
+      "Type": 1,
+      "Angle": -3.5840454,
+      "Position": {
+        "X": 887.125,
+        "Y": -69.13439
+      },
+      "Scale": 1.7050719
     },
     {
       "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
@@ -254,7 +313,7 @@
         "X": -103.531006,
         "Y": 376.87408
       },
-      "TexturePath": "textures/backgrounds/incidents/background_end_6.qoi",
+      "TexturePath": "base:textures/backgrounds/incidents/background_end_6.qoi",
       "Scale": 2.382316
     },
     {
@@ -278,7 +337,7 @@
           "X": "NaN",
           "Y": "NaN"
         },
-        "EnemySpawnerDoor": false,
+        "EnemySpawnerDoor": true,
         "IsLevelProgressionDoor": false,
         "IsPortal": false,
         "PortalID": null,
@@ -313,38 +372,42 @@
       "Tag": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.PlayerPoster, MIR",
-      "Type": 1,
-      "Angle": -3.5840454,
-      "Position": {
-        "X": 887.125,
-        "Y": -69.13439
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "classsic_agent",
+        "Stats": "agent",
+        "Faction": "aahw",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": 509.79993,
+          "Y": -478.59662
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
       },
-      "Scale": 1.7050719
+      "StartAnimation": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/end6Fan_1x7.png",
-      "Angle": 0.0,
-      "Position": {
-        "X": -1147.2385,
-        "Y": 1023.9626
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "classsic_agent",
+        "Stats": "agent",
+        "Faction": "aahw",
+        "Weapon": "glock_20",
+        "Flipped": false,
+        "BottomCenter": {
+          "X": 737.6637,
+          "Y": -478.59662
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
       },
-      "Scale": 2.397366,
-      "Columns": 7,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 0.25,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
+      "StartAnimation": null
     }
   ]
 }

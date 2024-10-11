@@ -5,7 +5,7 @@
   "EnemySpawnInterval": 2.0,
   "MaxEnemyCount": 4,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "sounds/music/Lothyde/agr3.ogg",
+  "BackgroundMusic": "base:sounds/music/Lothyde/agr3.ogg",
   "WeaponChance": 0.5,
   "LevelBounds": {
     "MinX": -1420.375,
@@ -16,18 +16,18 @@
   "BodyCountToWin": 1,
   "TimeLimitInSeconds": -1.0,
   "FullZoom": false,
-  "Thumbnail": "textures/level_thumbnails/lvl_incident_end_3.qoi",
+  "Thumbnail": "base:textures/level_thumbnails/lvl_incident_end_3.qoi",
   "OpeningTransition": true,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [],
   "Weapons": [],
   "FloorLine": [
     {
-      "X": -1098.7751,
+      "X": -1120.7751,
       "Y": -396.03857
     },
     {
-      "X": 1557.2249,
+      "X": 1579.2249,
       "Y": -396.03857
     }
   ],
@@ -125,7 +125,7 @@
         "X": 224.06935,
         "Y": 432.05057
       },
-      "TexturePath": "textures/backgrounds/incidents/background_end_3.qoi",
+      "TexturePath": "base:textures/backgrounds/incidents/background_end_3.qoi",
       "Scale": 2.222222
     },
     {
@@ -153,16 +153,19 @@
     {
       "$type": "MIR.LevelEditor.Objects.NPC, MIR",
       "Instructions": {
+        "Name": "Unnamed NPC",
         "Look": "end_soldat",
         "Stats": "player",
+        "Faction": "aahw",
         "Weapon": "mg_42",
         "Flipped": false,
         "BottomCenter": {
           "X": -896.0646,
           "Y": -288.05804
         },
-        "ScaleOverride": false,
-        "Scale": 1.0
+        "ScaleOverride": true,
+        "Scale": 1.07,
+        "IsProgressionRequirement": true
       },
       "StartAnimation": null
     },
