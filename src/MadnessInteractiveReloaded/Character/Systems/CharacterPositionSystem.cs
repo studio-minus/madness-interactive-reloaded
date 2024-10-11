@@ -76,10 +76,12 @@ public class CharacterPositionSystem : Walgelijk.System
             var tex = charPos.IsFlipped ? character.Look.Head.Left : character.Look.Head.Right;
             if (tex.IsValid && Assets.HasAsset(tex.Id))
             {
+                var transform = Scene.GetComponentFrom<TransformComponent>(headRenderer.Entity);
+
                 var v = tex.Value;
                 headRenderer.Material.SetUniform(ShaderDefaults.MainTextureUniform, v);
                 headRenderer.Color = character.Tint;
-                Scene.GetComponentFrom<TransformComponent>(headRenderer.Entity).Scale = v.Size * charPos.Scale * character.Look.Head.TextureScale;
+                transform.Scale = v.Size * charPos.Scale * character.Look.Head.TextureScale;
             }
         }
 
@@ -550,7 +552,7 @@ public class CharacterPositionSystem : Walgelijk.System
             if (character.IsPlayingAnimation)
             {
                 // TODO what the fuck
-                if ((character.IsPlayingAnimationGroup("dodge") || character.IsPlayingAnimationGroup("pickup")) && !character.IsPlayingAnimationGroup("melee") )
+                if ((character.IsPlayingAnimationGroup("dodge") || character.IsPlayingAnimationGroup("pickup")) && !character.IsPlayingAnimationGroup("melee"))
                     animatedRot = rot;
                 else
                     animatedRot = hand.AnimationAngle + (charPos.IsFlipped ? 180 : 0);

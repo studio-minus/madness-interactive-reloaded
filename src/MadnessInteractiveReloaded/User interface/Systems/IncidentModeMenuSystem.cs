@@ -438,23 +438,30 @@ public class IncidentConfig
         int bcEnd = Registries.Levels[c.Levels[^1]].Level.Value.BodyCountToWin;
 
         int remaining = KillTarget - bcOpening - bcEnd;
+        int[] bodyCounts = new int[c.Levels.Length];
 
-        //while (remaining > 0)
-        //{
-        //    int i = rand.Next(1, c.Levels.Length - 1); // skip opening and ending
-        //    string? k = c.Levels[i];
-        //    if (Registries.Levels.TryGet(k, out var lvl))
-        //    {
-        //        var loaded = lvl.Level.Value;
-        //        if (i > 0 && i < (c.Levels.Length - 1))
-        //        {
-        //            if (loaded.EnemySpawnInstructions.Count != 0 && loaded.MaxEnemyCount != 0)
-        //            {
-        //                loaded.BodyCountToWin =;
-        //            }
-        //        }
-        //    }
-        //}
+        while (remaining > 0)
+        {
+            int i = rand.Next(1, c.Levels.Length - 1); // skip opening and ending
+            string? k = c.Levels[i];
+            if (Registries.Levels.TryGet(k, out var lvl))
+            {
+                var loaded = lvl.Level.Value;
+                if (i > 0 && i < (c.Levels.Length - 1))
+                {
+                    if (loaded.EnemySpawnInstructions.Count != 0 && loaded.MaxEnemyCount != 0)
+                    {
+                        var existingNpcs = loaded.Objects.Count(b => b is NPC);
+                        var o = 1 + existingNpcs;
+
+                        bodyCounts[i] += o;
+                        remaining -= o;
+                    }
+                }
+            }
+        }
+
+        KillTarget = bodyCounts.Sum() + bcOpening + bcEnd;
 
         // make shit happen
         {
@@ -478,9 +485,9 @@ public class IncidentConfig
                     {
                         if (loaded.EnemySpawnInstructions.Count != 0 && loaded.MaxEnemyCount != 0)
                         {
-                            loaded.BodyCountToWin = rand.Next(5, 25);
-                            loaded.MaxEnemyCount = rand.Next(2, 7);
-                            loaded.MaxSimultaneousAttackingEnemies = rand.Next(1, 4);
+                            loaded.BodyCountToWin = bodyCounts[i];
+                            loaded.MaxEnemyCount = rand.Next(2, 4);
+                            loaded.MaxSimultaneousAttackingEnemies = rand.Next(2, 4);
                             loaded.Weapons = [.. rand.GetItems(wpns, rand.Next(2, 30))];
                             loaded.EnemySpawnInterval = float.Lerp(0.01f, 0.2f, rand.NextSingle());
                         }
