@@ -23,11 +23,11 @@
   "Weapons": [],
   "FloorLine": [
     {
-      "X": -1589.7964,
+      "X": -1609.7964,
       "Y": -237.60753
     },
     {
-      "X": 1232.2036,
+      "X": 1252.2036,
       "Y": -237.60753
     }
   ],
@@ -96,8 +96,10 @@
     {
       "$type": "MIR.LevelEditor.Objects.NPC, MIR",
       "Instructions": {
+        "Name": "Unnamed NPC",
         "Look": "smith",
         "Stats": "player",
+        "Faction": "aahw",
         "Weapon": "deagle",
         "Flipped": false,
         "BottomCenter": {
@@ -105,15 +107,18 @@
           "Y": -167.79645
         },
         "ScaleOverride": false,
-        "Scale": 1.0
+        "Scale": 1.0,
+        "IsProgressionRequirement": true
       },
       "StartAnimation": null
     },
     {
       "$type": "MIR.LevelEditor.Objects.NPC, MIR",
       "Instructions": {
+        "Name": "Unnamed NPC",
         "Look": "vendor",
         "Stats": "grunt",
+        "Faction": "civil",
         "Weapon": null,
         "Flipped": true,
         "BottomCenter": {
@@ -121,7 +126,8 @@
           "Y": -229.7073
         },
         "ScaleOverride": false,
-        "Scale": 1.0
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
       },
       "StartAnimation": null
     },

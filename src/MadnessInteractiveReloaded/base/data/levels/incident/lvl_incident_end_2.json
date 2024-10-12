@@ -3,7 +3,7 @@
   "LevelType": "Campaign",
   "ProgressionType": "BodyCount",
   "EnemySpawnInterval": 2.0,
-  "MaxEnemyCount": 4,
+  "MaxEnemyCount": 3,
   "MaxSimultaneousAttackingEnemies": 2,
   "BackgroundMusic": "sounds/music/Lothyde/agr3.ogg",
   "WeaponChance": 0.5,
@@ -20,14 +20,20 @@
   "OpeningTransition": true,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [],
-  "Weapons": [],
+  "Weapons": [
+    "beretta_93r",
+    "sabre",
+    "thompson",
+    "bowie_knife",
+    "saiga_12"
+  ],
   "FloorLine": [
     {
-      "X": -1240.5562,
+      "X": -1258.5562,
       "Y": -485.07062
     },
     {
-      "X": 1247.4438,
+      "X": 1265.4438,
       "Y": -485.07062
     }
   ],
@@ -54,8 +60,10 @@
     {
       "$type": "MIR.LevelEditor.Objects.NPC, MIR",
       "Instructions": {
+        "Name": "Unnamed NPC",
         "Look": "mag",
-        "Stats": "mag_rich",
+        "Stats": "end_soldat",
+        "Faction": "aahw",
         "Weapon": "true_dragon_sword",
         "Flipped": true,
         "BottomCenter": {
@@ -63,7 +71,8 @@
           "Y": -443.90314
         },
         "ScaleOverride": true,
-        "Scale": 2.0
+        "Scale": 1.5,
+        "IsProgressionRequirement": true
       },
       "StartAnimation": null
     },
@@ -242,7 +251,7 @@
           "X": 1.0,
           "Y": 0.0
         },
-        "EnemySpawnerDoor": false,
+        "EnemySpawnerDoor": true,
         "IsLevelProgressionDoor": false,
         "IsPortal": false,
         "PortalID": null,

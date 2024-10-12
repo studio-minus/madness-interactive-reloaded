@@ -101,7 +101,7 @@ public class AiCharacterSystem : Walgelijk.System
 
             character.IsIronSighting = character.HasWeaponEquipped && ai.WantsToIronSight.Value;
 
-            var originalPos = character.Positioning.Body.ComputedVisualCenter;
+            var originalPos = character.AimOrigin = character.Positioning.GlobalCenter;
 
             var aimingSource = originalPos;
             if (!experimentMode)

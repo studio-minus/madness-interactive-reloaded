@@ -29,6 +29,16 @@ public class PlayerDeathSequenceSystem : Walgelijk.System, IDisposable
         }
     }
 
+    public override void FixedUpdate()
+    {
+        if (ImprobabilityDisks.IsEnabled("tricky"))
+            if (Scene.TryGetEntityWithTag(Tags.PlayerDeathSequence, out var ent) &&
+                Scene.TryGetComponentFrom<PlayerDeathSequenceComponent>(ent, out var comp))
+            {
+                MadnessUtils.Shake(comp.Time); // because we wait 2 seconds before rivival in Prefabs.cs
+            }
+    }
+
     public override void Render()
     {
         if (Scene.TryGetEntityWithTag(Tags.PlayerDeathSequence, out var ent) &&

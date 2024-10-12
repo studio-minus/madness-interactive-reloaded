@@ -56,7 +56,8 @@ public class EnemySpawningSystem : Walgelijk.System
             if (enemies.Count == 0)
                 return;
 
-            //float weaponChance = Scene.GetAllComponentsOfType<WeaponComponent>().Count(static c => !c.IsBeingWielded) > spawningComponent.DroppedWeaponAmountThreshold ? 0 : spawningComponent.WeaponChance;
+            //float weaponChance = Scene.GetAllComponentsOfType<WeaponComponent>()
+            //  .Count(c => !c.Wielder.IsValid(Scene)) > spawningComponent.DroppedWeaponAmountThreshold ? spawningComponent.WeaponChance * 0.1f : spawningComponent.WeaponChance;
             float weaponChance = spawningComponent.WeaponChance;
 
             if (isDoor)

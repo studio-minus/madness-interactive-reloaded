@@ -83,7 +83,7 @@ public static class CharacterUtilities
         {
             UpdateAliveStatus(scene, character);
             if (!character.IsAlive && !character.Flags.HasFlag(CharacterFlags.NoRagdoll))
-                TryStartDeathAnimation(scene, character, bulletDirection, localHitPoint);
+                TryStartDeathAnimation(scene, character, bulletDirection, localHitPoint, 0.8f);
             //MadnessUtils.TurnIntoRagdoll(Scene, entity, character, phys);
         }
     }

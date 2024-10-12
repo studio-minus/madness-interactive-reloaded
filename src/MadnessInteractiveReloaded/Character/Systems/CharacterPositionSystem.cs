@@ -3,6 +3,7 @@ using System.Numerics;
 using Walgelijk;
 using Walgelijk.AssetManager;
 using Walgelijk.Physics;
+using Walgelijk.SimpleDrawing;
 
 namespace MIR;
 
@@ -60,6 +61,10 @@ public class CharacterPositionSystem : Walgelijk.System
                     Scene.GetSystem<PhysicsSystem>().QueryCircle(bodyRect.GetCenter(), 10, resultBuffer, CollisionLayers.BlockPhysics) > 0)
                     MadnessUtils.TurnIntoRagdoll(Scene, c);
             }
+
+            //Draw.Reset();
+            //Draw.Order = RenderOrders.UserInterface;
+            //Draw.Line(c.AimTargetPosition, c.AimOrigin, 5);
         }
     }
 
@@ -77,10 +82,12 @@ public class CharacterPositionSystem : Walgelijk.System
             var tex = charPos.IsFlipped ? character.Look.Head.Left : character.Look.Head.Right;
             if (tex.IsValid && Assets.HasAsset(tex.Id))
             {
+                var transform = Scene.GetComponentFrom<TransformComponent>(headRenderer.Entity);
+
                 var v = tex.Value;
                 headRenderer.Material.SetUniform(ShaderDefaults.MainTextureUniform, v);
                 headRenderer.Color = character.Tint;
-                Scene.GetComponentFrom<TransformComponent>(headRenderer.Entity).Scale = v.Size * charPos.Scale * character.Look.Head.TextureScale;
+                transform.Scale = v.Size * charPos.Scale * character.Look.Head.TextureScale;
             }
         }
 
@@ -523,7 +530,7 @@ public class CharacterPositionSystem : Walgelijk.System
             charPos.MeleeBlockImpactIntensity = Utilities.SmoothApproach(charPos.MeleeBlockImpactIntensity, 0, 8, Time.DeltaTime);
         }
 
-        var ironSightOffset = new Vector2(-25, 50) * Easings.Quad.InOut(charPos.IronSightProgress) * charPos.Scale;
+        var ironSightOffset = CharacterConstants.IronsightOffset * Easings.Quad.InOut(charPos.IronSightProgress) * charPos.Scale;
         ironSightOffset.X *= charPos.FlipScaling;
 
         CharacterUtilities.PositionHandsForWeapon(Scene, character, equipped);
@@ -552,7 +559,7 @@ public class CharacterPositionSystem : Walgelijk.System
             if (character.IsPlayingAnimation)
             {
                 // TODO what the fuck
-                if ((character.IsPlayingAnimationGroup("dodge") || character.IsPlayingAnimationGroup("pickup")) && !character.IsPlayingAnimationGroup("melee") )
+                if ((character.IsPlayingAnimationGroup("dodge") || character.IsPlayingAnimationGroup("pickup")) && !character.IsPlayingAnimationGroup("melee"))
                     animatedRot = rot;
                 else
                     animatedRot = hand.AnimationAngle + (charPos.IsFlipped ? 180 : 0);
@@ -622,7 +629,6 @@ public class CharacterPositionSystem : Walgelijk.System
             handTransform.Position = hand.GlobalPosition;
             handTransform.Rotation = hand.GlobalRotation;
         }
-
     }
 
     private void PositionFeet(CharacterComponent character)

@@ -60,6 +60,8 @@ public class VerletTransformComponent : Component
     public Vector2 LocalOffset;
     public float LocalRotationalOffset;
 
+    public Vector2 GlobalOffset;
+
     public VerletTransformComponent(
         Entity entity,
         TransformComponent transform,

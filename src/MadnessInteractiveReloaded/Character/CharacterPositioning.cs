@@ -14,10 +14,6 @@ public class CharacterPositioning
 {
     // general
     public Vector2 GlobalCenter;
-    /// <summary>
-    /// The vertical offset to pretend like we're flying
-    /// </summary>
-
 
     /// <summary>
     /// The scale of this character. This is determined when it is created and cannot be changed afterwards. Used for mag agents and such.

@@ -85,6 +85,8 @@ public static class MeleeUtils
     {
         //damage = 0;
         distance += 200; // TODO wtf is this lmfao 
+        if (Game.Main.DevelopmentMode)
+            Game.Main.DebugDraw.Line(origin, direction * distance + origin, Colors.Magenta, 1);
 
         if (!scene.GetSystem<PhysicsSystem>().Raycast(origin, direction, out var hit, distance, targetCollisionLayer | CollisionLayers.BlockPhysics, ignore: actor.AttackIgnoreCollision))
             return;

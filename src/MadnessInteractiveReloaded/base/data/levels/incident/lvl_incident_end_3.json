@@ -23,11 +23,11 @@
   "Weapons": [],
   "FloorLine": [
     {
-      "X": -1098.7751,
+      "X": -1120.7751,
       "Y": -396.03857
     },
     {
-      "X": 1557.2249,
+      "X": 1579.2249,
       "Y": -396.03857
     }
   ],
@@ -153,16 +153,19 @@
     {
       "$type": "MIR.LevelEditor.Objects.NPC, MIR",
       "Instructions": {
+        "Name": "Unnamed NPC",
         "Look": "end_soldat",
         "Stats": "player",
+        "Faction": "aahw",
         "Weapon": "mg_42",
         "Flipped": false,
         "BottomCenter": {
           "X": -896.0646,
           "Y": -288.05804
         },
-        "ScaleOverride": false,
-        "Scale": 1.0
+        "ScaleOverride": true,
+        "Scale": 1.07,
+        "IsProgressionRequirement": true
       },
       "StartAnimation": null
     },
