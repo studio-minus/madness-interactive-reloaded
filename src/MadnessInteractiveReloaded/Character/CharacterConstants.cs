@@ -19,6 +19,7 @@ public static class CharacterConstants
 
     public static readonly Vector2 HandOffset1 = new(-105.09f, 26.76f);
     public static readonly Vector2 HandOffset2 = new(160.63f, 39.61f);
+    public static readonly Vector2 IronsightOffset = new Vector2(-25, 50);
 
     public const float AccurateShotWarningDuration = 2;
     public const float AccurateShotCooldown = 5;
@@ -75,4 +76,5 @@ public static class CharacterConstants
     public static readonly Shader ApparelShader = new(
             Assets.Load<string>("shaders/worldspace-vertex-object-pos.vert").Value,
             Assets.Load<string>("shaders/apparel.frag").Value);
+
 }

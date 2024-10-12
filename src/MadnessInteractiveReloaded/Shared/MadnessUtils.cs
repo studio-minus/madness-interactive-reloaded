@@ -689,6 +689,7 @@ public static class MadnessUtils
         ragdoll.Main = character.Entity;
         ragdoll.ShouldDelete = character.Flags.HasFlag(CharacterFlags.DeleteRagdoll);
 
+        //var visualOffset = new Vector2(0, Utilities.RandomFloat(-5,5));
         foreach (var component in Ragdoll.BuildDefaultRagdoll(scene, character))
         {
             switch (component)
@@ -705,6 +706,7 @@ public static class MadnessUtils
                     break;
                 case VerletTransformComponent tlink:
                     ragdoll.TransformLinks.Add(new ComponentRef<VerletTransformComponent>(tlink.Entity));
+                    //tlink.GlobalOffset += visualOffset;
                     break;
                 default:
                     throw new Exception("Unknown object returned by ragdoll constructor");

@@ -56,6 +56,26 @@ public class TeleportDashAbilityComponent : CharacterAbilityComponent
 
             RoutineScheduler.Start(Teleport());
 
+            //var charBounds = a.Character.GetBoundingBox(Scene);
+            //var overlapRect = new Rect(float.MaxValue, float.MaxValue, float.MinValue, float.MinValue);
+            //overlapRect = overlapRect.StretchToContain(charBounds);
+            //overlapRect = overlapRect.StretchToContain(charBounds.Translate(sign * Distance, 0));
+
+            //// we stun/kill enemies in our way
+            //foreach (var c in Scene.GetAllComponentsOfType<CharacterComponent>())
+            //{
+            //    if (c.Entity == a.Character.Entity)
+            //        continue;
+
+            //    if (overlapRect.IntersectsRectangle(c.GetBoundingBox(Scene)))
+            //    {
+            //        if (c.IsPlayingAnimationGroup("stun"))
+            //            c.Kill();
+            //        else
+            //            CharacterUtilities.StunHeavy(Scene, c, c.Positioning.IsFlipped == sign > 0);
+            //    }
+            //}
+
             IEnumerator<IRoutineCommand> Teleport()
             {
                 Audio.PlayOnce(Sounds.TrickyTeleport, 0.9f, Utilities.RandomFloat(0.9f, 1.1f), AudioTracks.SoundEffects);
@@ -77,7 +97,7 @@ public class TeleportDashAbilityComponent : CharacterAbilityComponent
                     p.GlobalCenter.X = float.Lerp(a.X, b.X, f);
                     p.GlobalCenter.Y = float.Lerp(a.Y, b.Y, f);
 
-                    delta = p.GlobalCenter.X - delta;
+                    delta = (p.GlobalCenter.X - delta) / Time.DeltaTimeUnscaled;
 
                     p.GlobalTarget = p.GlobalCenter;
 
@@ -85,7 +105,7 @@ public class TeleportDashAbilityComponent : CharacterAbilityComponent
                     p.NextHopPosition = p.GlobalCenter.X;
                     p.HopAnimationTimer = 0;
 
-                    var vv = float.Cos((f - 0.5f) * float.Pi) * float.Abs(delta) * 0.025f;
+                    var vv = float.Cos((f - 0.5f) * float.Pi) * float.Abs(delta) * 0.0001f;
                     var transform = Matrix3x2.CreateScale(1 + vv, 1, p.GlobalCenter);
 
                     SetAllAdditionalTransforms(p, transform);

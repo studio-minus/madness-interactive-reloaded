@@ -102,10 +102,10 @@ public static class Ragdoll
         yield return scene.AttachComponent(e, new VerletLinkComponent(headNode1, neckNode, VerletLinkMode.MaxDistanceOnly) { /*TargetDistance = 50*/ }); //connect neck to head node with special joint
 
         e = scene.CreateEntity();
-        yield return scene.AttachComponent(e, new VerletLinkComponent(bodyNode2, noseJoint, VerletLinkMode.MinMaxDistance) { MinMaxDistance = new Vector2(107, 260 ) * scale }); //connect nose joint to body 1
+        yield return scene.AttachComponent(e, new VerletLinkComponent(bodyNode2, noseJoint, VerletLinkMode.MinMaxDistance) { MinMaxDistance = new Vector2(107, 260) * scale }); //connect nose joint to body 1
 
         e = scene.CreateEntity();
-        yield return scene.AttachComponent(e, new VerletLinkComponent(bottomNode, noseJoint, VerletLinkMode.MinMaxDistance) { MinMaxDistance = new Vector2(300, 400 ) * scale }); //connect nose joint to body 2
+        yield return scene.AttachComponent(e, new VerletLinkComponent(bottomNode, noseJoint, VerletLinkMode.MinMaxDistance) { MinMaxDistance = new Vector2(300, 400) * scale }); //connect nose joint to body 2
 
         e = scene.CreateEntity();
         yield return scene.AttachComponent(e, new VerletLinkComponent(bottomNode, noseJoint, VerletLinkMode.MinDistanceOnly) { TargetDistance = 230 * scale }); //nog een link to prevent opvouwen

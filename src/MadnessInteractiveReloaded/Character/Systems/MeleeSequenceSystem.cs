@@ -90,7 +90,7 @@ public class MeleeSequenceSystem : Walgelijk.System
         // TODO "center" should not be the head position, but instead the default, unarmed hand position
         // this fixes issues relating to the character scale and melee "missing" when it really shouldn't 
 
-        var center = ch.Positioning.Head.GlobalPosition;
+        var center = ch.AimOrigin;
         var dir = ch.AimDirection;
 
         float damageMultiplier =  float.Pow(ch.Positioning.Scale, 8);
