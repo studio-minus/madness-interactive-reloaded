@@ -134,7 +134,21 @@ public static class Program
             WriteSystems(systemDumpPath);
             WriteLog(logDumpPath);
 
-            System.Diagnostics.Process.Start("explorer", $"\"{presentationPath}\"");
+            string executable;
+            if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows))
+            {
+                executable = "explorer";
+            }
+            else if(System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.OSX))
+            {
+                executable = "open";
+            }
+            else
+            {
+                executable = "xdg-open";
+            }
+
+            System.Diagnostics.Process.Start(executable, $"\"{presentationPath}\"");
 
             return;
         }

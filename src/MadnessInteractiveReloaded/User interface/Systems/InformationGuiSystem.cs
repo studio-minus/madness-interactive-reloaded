@@ -52,8 +52,21 @@ Original soundtrack
         Ui.Layout.Size(170, 40).StickRight().StickBottom().Move(-10, -10);
         if (Ui.ClickButton(Localisation.Get("Open source libraries")))
         {
-            //TODO this only works on Windows
-            global::System.Diagnostics.Process.Start("explorer", $"\"{Game.ExecutableDirectory}NOTICE.txt\"");
+            string executable;
+            if (global::System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(global::System.Runtime.InteropServices.OSPlatform.Windows))
+            {
+                executable = "explorer";
+            }
+            else if(global::System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(global::System.Runtime.InteropServices.OSPlatform.OSX))
+            {
+                executable = "open";
+            }
+            else
+            {
+                executable = "xdg-open";
+            }
+            
+            global::System.Diagnostics.Process.Start(executable, $"\"{Game.ExecutableDirectory}NOTICE.txt\"");
         }
     }
 }

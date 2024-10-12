@@ -187,15 +187,27 @@ public class ModMenuSystem : Walgelijk.System
         if (MenuUiUtils.BackButton())
             Game.Scene = MainMenuScene.Load(Game);
 
-#if WINDOWS // windows only because there is no such thing as a "linux file explorer". its all fucked and unique to each user 
         // folder button
         Ui.Layout.FitWidth().MaxWidth(160).Height(40).StickRight().StickBottom().Move(-10);
         Ui.Theme.OutlineWidth(2).Once();
         if (Ui.Button("Mods folder"))
         {
-            global::System.Diagnostics.Process.Start("explorer.exe", ModLoader.Sources.OfType<LocalModCollectionSource>().First().Directory.FullName);
+            string executable;
+            if (global::System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(global::System.Runtime.InteropServices.OSPlatform.Windows))
+            {
+                executable = "explorer";
+            }
+            else if(global::System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(global::System.Runtime.InteropServices.OSPlatform.OSX))
+            {
+                executable = "open";
+            }
+            else
+            {
+                executable = "xdg-open";
+            }
+            
+            global::System.Diagnostics.Process.Start(executable, ModLoader.Sources.OfType<LocalModCollectionSource>().First().Directory.FullName);
         }
-#endif
     }
 }
 
