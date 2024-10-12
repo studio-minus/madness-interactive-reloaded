@@ -5,7 +5,7 @@
   "EnemySpawnInterval": 2.0,
   "MaxEnemyCount": 4,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "base:sounds/music/Lothyde/agr3.ogg",
+  "BackgroundMusic": "sounds/music/Lothyde/agr3.ogg",
   "WeaponChance": 0.5,
   "LevelBounds": {
     "MinX": -1415.5327,
@@ -16,7 +16,7 @@
   "BodyCountToWin": 1,
   "TimeLimitInSeconds": -1.0,
   "FullZoom": true,
-  "Thumbnail": "base:textures/level_thumbnails/lvl_incident_end_1.qoi",
+  "Thumbnail": "textures/level_thumbnails/lvl_incident_end_1.qoi",
   "OpeningTransition": true,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [],
@@ -57,7 +57,7 @@
         "X": 294.46716,
         "Y": 624.0927
       },
-      "TexturePath": "base:textures/backgrounds/incidents/background_end_1.qoi",
+      "TexturePath": "textures/backgrounds/incidents/background_end_1.qoi",
       "Scale": 2.222222
     },
     {

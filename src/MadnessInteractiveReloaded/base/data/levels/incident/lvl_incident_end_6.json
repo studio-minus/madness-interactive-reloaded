@@ -5,7 +5,7 @@
   "EnemySpawnInterval": 2.0,
   "MaxEnemyCount": 0,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "base:sounds/music/Lothyde/agr3.ogg",
+  "BackgroundMusic": "sounds/music/Lothyde/agr3.ogg",
   "WeaponChance": 0.5,
   "LevelBounds": {
     "MinX": -2912.2817,
@@ -61,7 +61,7 @@
     },
     {
       "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "base:textures/end6Fan_1x7.png",
+      "TexturePath": "textures/end6Fan_1x7.png",
       "Angle": 0.0,
       "Position": {
         "X": -1147.2385,
@@ -313,7 +313,7 @@
         "X": -103.531006,
         "Y": 376.87408
       },
-      "TexturePath": "base:textures/backgrounds/incidents/background_end_6.qoi",
+      "TexturePath": "textures/backgrounds/incidents/background_end_6.qoi",
       "Scale": 2.382316
     },
     {

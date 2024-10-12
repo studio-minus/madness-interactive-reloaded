@@ -5,7 +5,7 @@
   "EnemySpawnInterval": 2.0,
   "MaxEnemyCount": 3,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "base:sounds/music/Lothyde/agr3.ogg",
+  "BackgroundMusic": "sounds/music/Lothyde/agr3.ogg",
   "WeaponChance": 0.5,
   "LevelBounds": {
     "MinX": -1570.375,
@@ -16,7 +16,7 @@
   "BodyCountToWin": 1,
   "TimeLimitInSeconds": -1.0,
   "FullZoom": false,
-  "Thumbnail": "base:textures/level_thumbnails/lvl_incident_end_2.qoi",
+  "Thumbnail": "textures/level_thumbnails/lvl_incident_end_2.qoi",
   "OpeningTransition": true,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [],
@@ -165,7 +165,7 @@
     },
     {
       "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "base:textures/bubbles_4x6.png",
+      "TexturePath": "textures/bubbles_4x6.png",
       "Angle": 0.0,
       "Position": {
         "X": 224.71014,
@@ -226,7 +226,7 @@
         "X": 224.06935,
         "Y": 432.05057
       },
-      "TexturePath": "base:textures/backgrounds/incidents/background_end_2.qoi",
+      "TexturePath": "textures/backgrounds/incidents/background_end_2.qoi",
       "Scale": 2.222222
     },
     {
@@ -287,7 +287,7 @@
     },
     {
       "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "base:textures/screen_1x11.png",
+      "TexturePath": "textures/screen_1x11.png",
       "Angle": 0.0,
       "Position": {
         "X": 1454.3901,
