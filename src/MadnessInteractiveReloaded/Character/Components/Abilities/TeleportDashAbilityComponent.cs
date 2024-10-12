@@ -13,7 +13,7 @@ public class TeleportDashAbilityComponent : CharacterAbilityComponent
 
     //TODO idk if this ability makes any sense ³¤
     public override string DisplayName => "Teleport";
-    public float Distance = 1000;
+    public float Distance = 1500;
     private bool flipFlop = false;
     private QueryResult[] buffer = new QueryResult[4];
     private bool routine = false;
@@ -51,7 +51,7 @@ public class TeleportDashAbilityComponent : CharacterAbilityComponent
             flipFlop = true;
             var sign = float.Sign(a.Character.WalkAcceleration.X);
             var p = a.Character.Positioning;
-
+            a.Character.DodgeMeter = a.Character.Stats.DodgeAbility;
             routine = true;
 
             RoutineScheduler.Start(Teleport());
@@ -85,8 +85,7 @@ public class TeleportDashAbilityComponent : CharacterAbilityComponent
                     p.NextHopPosition = p.GlobalCenter.X;
                     p.HopAnimationTimer = 0;
 
-                    var vv = float.Cos((f - 0.5f) * float.Pi) * float.Abs(delta) * 0.05f;
-                    Logger.Log(vv);
+                    var vv = float.Cos((f - 0.5f) * float.Pi) * float.Abs(delta) * 0.025f;
                     var transform = Matrix3x2.CreateScale(1 + vv, 1, p.GlobalCenter);
 
                     SetAllAdditionalTransforms(p, transform);
