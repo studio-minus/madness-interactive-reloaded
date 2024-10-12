@@ -31,7 +31,7 @@
     "EjectionParticle": "Small",
     "CasingSize": 1.0,
     "IsPumpAction": false,
-    "Range": 600.0,
+    "Range": 590.0,
     "CanDeflectBullets": false,
     "SpecialMelee": false,
     "MeleeDamageType": "Axe",
@@ -50,12 +50,8 @@
   },
   "HoldPoints": [
     {
-      "X": 35.40001,
-      "Y": 172.5001
-    },
-    {
-      "X": -33.30001,
-      "Y": -72.90003
+      "X": 38.680504,
+      "Y": 125.26093
     }
   ],
   "AnimatedParts": null,
