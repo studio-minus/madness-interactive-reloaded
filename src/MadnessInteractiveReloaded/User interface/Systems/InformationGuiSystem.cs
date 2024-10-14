@@ -1,4 +1,5 @@
-﻿using Walgelijk;
+﻿using System.IO;
+using Walgelijk;
 using Walgelijk.Localisation;
 using Walgelijk.Onion;
 using Walgelijk.SimpleDrawing;
@@ -51,9 +52,6 @@ Original soundtrack
         Ui.Theme.OutlineWidth(2).Once();
         Ui.Layout.Size(170, 40).StickRight().StickBottom().Move(-10, -10);
         if (Ui.ClickButton(Localisation.Get("Open source libraries")))
-        {
-            //TODO this only works on Windows
-            global::System.Diagnostics.Process.Start("explorer", $"\"{Game.ExecutableDirectory}NOTICE.txt\"");
-        }
+            MadnessUtils.OpenExplorer('"' + Path.Combine(Game.ExecutableDirectory, "NOTICE.txt") + '"');
     }
 }

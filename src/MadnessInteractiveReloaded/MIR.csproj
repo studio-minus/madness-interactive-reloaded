@@ -42,11 +42,11 @@
 	</PropertyGroup>
 	
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Exec Command="MIR --mode pack --input &quot;$(ProjectDir)base&quot; --output resources/base.waa" WorkingDirectory="$(OutDir)" />
+		<Exec Command=".\MIR --mode pack --input &quot;$(ProjectDir)base&quot; --output resources/base.waa" WorkingDirectory="$(OutDir)" />
 	</Target>
 	
 	<Target Name="PostPublish" AfterTargets="Publish">
-		<Exec Command="MIR --mode pack --input &quot;$(ProjectDir)base&quot; --output resources/base.waa" WorkingDirectory="$(PublishDir)" />
+		<Exec Command=".\MIR --mode pack --input &quot;$(ProjectDir)base&quot; --output resources/base.waa" WorkingDirectory="$(PublishDir)" />
 	</Target>
 
 	<ItemGroup>
