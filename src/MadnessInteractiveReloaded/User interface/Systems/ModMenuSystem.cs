@@ -191,23 +191,7 @@ public class ModMenuSystem : Walgelijk.System
         Ui.Layout.FitWidth().MaxWidth(160).Height(40).StickRight().StickBottom().Move(-10);
         Ui.Theme.OutlineWidth(2).Once();
         if (Ui.Button("Mods folder"))
-        {
-            string executable;
-            if (global::System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(global::System.Runtime.InteropServices.OSPlatform.Windows))
-            {
-                executable = "explorer";
-            }
-            else if(global::System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(global::System.Runtime.InteropServices.OSPlatform.OSX))
-            {
-                executable = "open";
-            }
-            else
-            {
-                executable = "xdg-open";
-            }
-            
-            global::System.Diagnostics.Process.Start(executable, ModLoader.Sources.OfType<LocalModCollectionSource>().First().Directory.FullName);
-        }
+            MadnessUtils.OpenExplorer(ModLoader.Sources.OfType<LocalModCollectionSource>().First().Directory.FullName);
     }
 }
 
@@ -242,11 +226,7 @@ public readonly struct ModViewControl(Mod mod) : IControl
                 Ui.Layout.FitHeight().EnqueueConstraint(new AspectRatio(1)).CenterVertical();
                 Ui.Theme.OutlineWidth(0).ForegroundColor(Colors.Transparent).Image(new(Colors.Red, Colors.White)).Once();
                 if (Ui.ImageButton(folder, ImageContainmentMode.Stretch))
-                {
-                    // TODO windows only :(
-                    // TODO get actual mod directory somehow from the local source
-                    global::System.Diagnostics.Process.Start("explorer", local.GetModDirectory(mod.Id)?.FullName ?? local.Directory.FullName);
-                }
+                    MadnessUtils.OpenExplorer(local.GetModDirectory(mod.Id)?.FullName ?? local.Directory.FullName);
             }
         }
         Ui.End();

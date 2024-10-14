@@ -1,5 +1,4 @@
 ﻿using MIR.LevelEditor.Objects;
-using OpenTK.Windowing.Common.Input;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -68,18 +67,32 @@ public static class MadnessUtils
         return false;
     }
 
+    public static void OpenExplorer(string path)
+    {
+        string executable;
+
+        if (OperatingSystem.IsWindows())
+            executable = "explorer";
+        else if (OperatingSystem.IsMacOS())
+            executable = "open";
+        else
+            executable = "xdg-open";
+
+        System.Diagnostics.Process.Start(executable, path);
+    }
+
     public static Matrix4x4 Invert(this Matrix4x4 matrix)
     {
         if (Matrix4x4.Invert(matrix, out var inverted))
             return inverted;
-        return matrix * -1; //?????????
+        return matrix;
     }
 
     public static Matrix3x2 Invert(this Matrix3x2 matrix)
     {
         if (Matrix3x2.Invert(matrix, out var inverted))
             return inverted;
-        return matrix * -1; //wtf is dit
+        return matrix;
     }
 
     /// <summary>
