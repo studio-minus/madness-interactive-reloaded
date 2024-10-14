@@ -75,10 +75,33 @@ public static class MadnessUtils
             executable = "explorer";
         else if (OperatingSystem.IsMacOS())
             executable = "open";
-        else
+        else if (OperatingSystem.IsLinux())
             executable = "xdg-open";
+        else return;
 
         System.Diagnostics.Process.Start(executable, path);
+    }
+
+    public static void OpenBrowser(string url)
+    {
+        try
+        {
+            System.Diagnostics.Process.Start(url);
+        }
+        catch (Exception)
+        {
+            if (OperatingSystem.IsWindows())
+            {
+                url = url.Replace("&", "^&");
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+            }
+            else if (OperatingSystem.IsMacOS())
+                System.Diagnostics.Process.Start("open", url);
+            else if (OperatingSystem.IsLinux())
+                System.Diagnostics.Process.Start("xdg-open", url);
+            else
+                throw;
+        }
     }
 
     public static Matrix4x4 Invert(this Matrix4x4 matrix)
