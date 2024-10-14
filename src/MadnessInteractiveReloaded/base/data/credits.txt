@@ -9,7 +9,7 @@ Art and animations
 Original soundtrack
 <color=#ffffff80>Lothyde</color>
 
-<color=#ffffff80>Additional music by Cheshyre and mmodule.</color>
+<color=#ffffff80>Additional music by Cheshyre, API, and mmodule.</color>
 <color=#ffffff80>Based on Madness Interactive by </color>Flecko (Max Abernethy)<color=#ffffff80>
 and Madness Combat by </color>Krinkels
 
