@@ -69,7 +69,7 @@ public class CharacterComponent : Component
     public readonly Hook<CharacterComponent> OnDeath = new();
 
     public Vector2 AimOrigin;// new Vector2(Positioning.GlobalCenter.X, Positioning.Head.GlobalPosition.Y);
-    public Vector2 AimDirection => Vector2.Normalize(AimTargetPosition - AimOrigin);
+    public Vector2 AimDirection => Utilities.NanFallback(Vector2.Normalize(AimTargetPosition - AimOrigin));
 
     // combat
 

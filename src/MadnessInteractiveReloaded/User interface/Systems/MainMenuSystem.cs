@@ -70,22 +70,19 @@ public class MainMenuSystem : Walgelijk.System
             mm.Time = 0;
 #endif
 
-        PersistentSoundHandles.MainMenuMusic ??=
-            SoundCache.Instance.LoadMusic(Assets.Load<StreamAudioData>("sounds/music/Lothyde/unusual_tranquillity.ogg"));
-
-        //var snd = SoundCache.Instance.LoadMusic(Assets.Load<StreamAudioData>("sounds/music/Lothyde/unusual_tranquillity.ogg"));
-
-        if (!Audio.IsPlaying(PersistentSoundHandles.MainMenuMusic))
+        if (PersistentSoundHandles.MainMenuMusic == null || !Audio.IsPlaying(PersistentSoundHandles.MainMenuMusic))
+        {
+            PersistentSoundHandles.MainMenuMusic = Utilities.PickRandom(
+                SoundCache.Instance.LoadMusic(Assets.Load<StreamAudioData>("sounds/music/Lothyde/unusual_tranquillity.ogg")),
+                SoundCache.Instance.LoadMusic(Assets.Load<StreamAudioData>("sounds/music/splitmek.ogg")));
             Audio.Play(PersistentSoundHandles.MainMenuMusic);
+        }
 
-        Ui.Theme.FontSize(24).ForegroundColor(new Color(0x5865F2)).Rounding(10).OutlineColour(Colors.White).OutlineWidth(new(0,5)).Once();
+        Ui.Theme.FontSize(24).ForegroundColor(new Color(0x5865F2)).Rounding(10).OutlineColour(Colors.White).OutlineWidth(new(0, 5)).Once();
         Ui.Layout.Size(80, 80).StickRight().StickTop().Move(-10, 10);
         if (Ui.ImageButton(Assets.Load<Texture>("textures/ui/discord.png").Value, ImageContainmentMode.Contain))
         {
-            global::System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("https://discord.gg/studio-minus-779898133064056862")
-            {
-                UseShellExecute  = true
-            });
+            MadnessUtils.OpenBrowser("https://discord.gg/studio-minus-779898133064056862");
         }
     }
 
@@ -218,8 +215,8 @@ public class MainMenuSystem : Walgelijk.System
             {
                 Game.Scene = ImprobabilityDiskSelectionMenuScene.Load(Game.Main);
                 MadnessUtils.Flash(Colors.Black, 0.2f);
-            }  
-            
+            }
+
             //Ui.Decorate(new MenuButtonDecorator());
             //if (Ui.ClickButton(Localisation.Get("main-menu-arena-mode")))
             //{
@@ -235,8 +232,8 @@ public class MainMenuSystem : Walgelijk.System
                     var lvl = Registries.Levels["exp_1"]?.Level.Value ?? throw new Exception("The current level is null");
                     return ExperimentScene.Create(game, lvl, new SceneCacheSettings(lvl.Id));
                 });
-            }    
-            
+            }
+
             Ui.Decorate(new MenuButtonDecorator());
             if (LeftAlignedButton.Start(Localisation.Get("main-menu-incident-mode")))
             {

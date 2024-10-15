@@ -156,7 +156,7 @@ public class BodyPartShapeComponent : QuadShapeComponent, IDisposable
     /// <returns>The depth of the hole.</returns>
     public float TryAddHole(float x, float y, float depth)
     {
-        depth += ShotHeat;
+        //depth += ShotHeat;
 
         int overlappingHole = GetOverlappingHole(x, y);
         if (overlappingHole != -1 && depth >= Holes[overlappingHole].Z)

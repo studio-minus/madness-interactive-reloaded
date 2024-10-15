@@ -58,11 +58,8 @@ public class PlayerCharacterSystem : Walgelijk.System
             // TODO this is fucked up because its actually determined in CharacterPositionSystem.PositionHands
             // and I just copied the easing and everything to here.
             var ironSightOffset = CharacterConstants.IronsightOffset.Y * Easings.Quad.InOut(character.Positioning.IronSightProgress) * character.Positioning.Scale;
-
             var barrel = equipped.BarrelEndPoint - equippedTransform.LocalPivot;
-
             var o = barrel.Y + ironSightOffset;
-
             character.AimOrigin += Vector2.TransformNormal(new Vector2(0, o * character.Positioning.FlipScaling), Matrix3x2.CreateRotation(th));
         }
 

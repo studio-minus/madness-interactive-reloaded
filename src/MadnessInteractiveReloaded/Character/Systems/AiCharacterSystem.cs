@@ -226,7 +226,7 @@ public class AiCharacterSystem : Walgelijk.System
                         //if (killTargetChar?.Positioning.IsFlying ?? false)
                         //    ai.HasKillTarget = false;
                         //else
-                            MeleeUtils.TryPerformMeleeAttack(Scene, equipped, character);
+                        MeleeUtils.TryPerformMeleeAttack(Scene, equipped, character);
                     }
                 }
 
@@ -587,15 +587,19 @@ public class AiCharacterSystem : Walgelijk.System
                 if (dd.Timer < 1) // TODO convar
                     continue;
 
-            var otherTransform = Scene.GetComponentFrom<TransformComponent>(weapon.Entity);
-            var d = Vector2.DistanceSquared(transform.Position, otherTransform.Position);
-            if (d < minDistance)
+            var weaponTransform = Scene.GetComponentFrom<TransformComponent>(weapon.Entity);
+            // dont pick up weapons outside level bounds
+            if (Level.CurrentLevel?.LevelBounds.ContainsPoint(weaponTransform.Position) ?? true)
             {
-                if (Scene.TryGetComponentFrom<VelocityComponent>(weapon.Entity, out var vel) && vel.Velocity.LengthSquared() > maxSpeedSqrd)
-                    continue;
+                var d = Vector2.DistanceSquared(transform.Position, weaponTransform.Position);
+                if (d < minDistance)
+                {
+                    if (Scene.TryGetComponentFrom<VelocityComponent>(weapon.Entity, out var vel) && vel.Velocity.LengthSquared() > maxSpeedSqrd)
+                        continue;
 
-                minDistance = d;
-                found = weapon.Entity;
+                    minDistance = d;
+                    found = weapon.Entity;
+                }
             }
         }
 

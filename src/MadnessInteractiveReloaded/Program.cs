@@ -134,7 +134,7 @@ public static class Program
             WriteSystems(systemDumpPath);
             WriteLog(logDumpPath);
 
-            System.Diagnostics.Process.Start("explorer", $"\"{presentationPath}\"");
+            MadnessUtils.OpenExplorer($"\"{presentationPath}\"");
 
             return;
         }

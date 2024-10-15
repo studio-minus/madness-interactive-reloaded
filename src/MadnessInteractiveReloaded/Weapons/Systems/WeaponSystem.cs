@@ -212,7 +212,7 @@ public class WeaponSystem : Walgelijk.System
     /// Get how big a bullethole will be from a weapon.
     /// </summary>
     public static float GetBulletHoleSize(float totalDistance, WeaponComponent weapon) =>
-        0.1f + weapon.GetDamageAtDistance(totalDistance) * 0.05f / weapon.Data.BulletsPerShot;
+        (0.1f + weapon.GetDamageAtDistance(totalDistance) * 0.07f) * float.Lerp(weapon.Data.BulletsPerShot, 1, 0.55f);
 
     private void EmitBulletFrom(WeaponComponent weapon, TransformComponent transform, CharacterComponent wielder, bool isPlayer, float recoilMultiplier = 1)
     {
@@ -562,6 +562,9 @@ public class WeaponSystem : Walgelijk.System
                     var s = GetBulletHoleSize(totalDistance, weapon) / (iteration + 1) * (isExitWound ? 2 : 0.5f);
                     if (isCosmetic)
                         s *= 0.5f;
+
+                    //s *= 0;
+
                     s /= charScaleSqrd;
                     s = damagable.TryAddHole(p.X, p.Y, s);
 

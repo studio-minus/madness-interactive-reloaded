@@ -1,4 +1,7 @@
-﻿using Walgelijk;
+﻿using System;
+using System.IO;
+using Walgelijk;
+using Walgelijk.AssetManager;
 using Walgelijk.Localisation;
 using Walgelijk.Onion;
 using Walgelijk.SimpleDrawing;
@@ -10,25 +13,8 @@ namespace MIR;
 /// </summary>
 public class InformationGuiSystem : Walgelijk.System
 {
-    private static readonly string infoText =
-$@"<color=#ff0000>Madness Interactive Reloaded v{GameVersion.Version} for {BuildInfo.Runtime}</color>
-<color=#ff0061>Studio Minus</color>
-
-Programming
-<color=#ffffff80>zooi</color>
-<color=#ffffff80>duston</color>
-<color=#ffffff80>Orsoniks</color>
-<color=#ffffff80>Orongto</color>
-
-Art and animations
-<color=#ffffff80>Dikkiedik</color>
-<color=#ffffff80>Koof</color>
-
-Original soundtrack
-<color=#ffffff80>Lothyde</color>
-<color=#ffffff80>Additional music by Cheshyre and mmodule.</color>
-
-<color=#ffffff80>Based on Madness Interactive by </color>Flecko (Max Abernethy)<color=#ffffff80> and Madness Combat by </color>Krinkels";
+    private static string startText = $"<color=#ff0000>Madness Interactive Reloaded v{GameVersion.Version} for {BuildInfo.Runtime}</color>\n<color=#ff0061>Studio Minus</color>";
+    private static string infoText => Assets.Load<string>("base:data/credits.txt");
 
     public override void Update()
     {
@@ -38,6 +24,10 @@ Original soundtrack
             Ui.Layout.FitWidth(true).Height(250).CenterHorizontal();
             Ui.Image(Textures.UserInterface.Logo.Value, ImageContainmentMode.Contain);
 
+            Ui.Layout.PreferredSize().FitWidth(true).CenterHorizontal();
+            Ui.Theme.FontSize(24).Once();
+            Ui.TextRect(startText, HorizontalTextAlign.Center, VerticalTextAlign.Top);   
+             
             Ui.Layout.PreferredSize().FitWidth(true).CenterHorizontal();
             Ui.Theme.FontSize(24).Once();
             Ui.TextRect(infoText, HorizontalTextAlign.Center, VerticalTextAlign.Top);
@@ -51,9 +41,6 @@ Original soundtrack
         Ui.Theme.OutlineWidth(2).Once();
         Ui.Layout.Size(170, 40).StickRight().StickBottom().Move(-10, -10);
         if (Ui.ClickButton(Localisation.Get("Open source libraries")))
-        {
-            //TODO this only works on Windows
-            global::System.Diagnostics.Process.Start("explorer", $"\"{Game.ExecutableDirectory}NOTICE.txt\"");
-        }
+            MadnessUtils.OpenExplorer('"' + Path.Combine(Game.ExecutableDirectory, "NOTICE.txt") + '"');
     }
 }

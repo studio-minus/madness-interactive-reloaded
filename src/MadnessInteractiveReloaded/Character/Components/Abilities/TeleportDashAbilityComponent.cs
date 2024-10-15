@@ -78,39 +78,34 @@ public class TeleportDashAbilityComponent : CharacterAbilityComponent
 
             IEnumerator<IRoutineCommand> Teleport()
             {
-                Audio.PlayOnce(Sounds.TrickyTeleport, 0.9f, Utilities.RandomFloat(0.9f, 1.1f), AudioTracks.SoundEffects);
-                var a = p.GlobalCenter;
-                var b = p.GlobalCenter;
-                b.X = float.Clamp(b.X + Distance * sign, level.FloorLine[0].X, level.FloorLine[^1].X);
-                b.Y = Level.CurrentLevel!.GetFloorLevelAt(b.X) + CharacterConstants.GetFloorOffset(p.Scale);
+                var bounds = a.Character.GetBoundingBox(Scene);
 
+                Audio.PlayOnce(Sounds.TrickyTeleport, 0.9f, Utilities.RandomFloat(0.9f, 1.1f), AudioTracks.SoundEffects);
+                var start = p.GlobalCenter;
+                var end = p.GlobalCenter;
+                var initialPos = start;
+                end.X = float.Clamp(end.X + Distance * sign, level.FloorLine[0].X, level.FloorLine[^1].X);
+                end.Y = Level.CurrentLevel!.GetFloorLevelAt(end.X) + CharacterConstants.GetFloorOffset(p.Scale);
+                const float duration = 0.05f;
                 float t = 0;
-                const float timeDuration = 0.15f;
                 while (true)
                 {
                     yield return new GameSafeRoutineDelay();
-                    t += Game.Main.State.Time.DeltaTime / timeDuration;
-                    float f = Easings.Cubic.In(t);
 
-                    var delta = p.GlobalCenter.X;
+                    t += Time.DeltaTime;
+                    float progress = t / duration;
+                    Blink(p, start, end, progress);
 
-                    p.GlobalCenter.X = float.Lerp(a.X, b.X, f);
-                    p.GlobalCenter.Y = float.Lerp(a.Y, b.Y, f);
+                    var pivot = Vector2.Zero;
+                    if (sign > 0)
+                        pivot = bounds.BottomRight + new Vector2(p.GlobalCenter.X - initialPos.X);
+                    else
+                        pivot = bounds.BottomLeft + new Vector2(p.GlobalCenter.X - initialPos.X);
 
-                    delta = (p.GlobalCenter.X - delta) / Time.DeltaTimeUnscaled;
-
-                    p.GlobalTarget = p.GlobalCenter;
-
-                    p.HopStartingPosition = p.GlobalCenter.X;
-                    p.NextHopPosition = p.GlobalCenter.X;
-                    p.HopAnimationTimer = 0;
-
-                    var vv = float.Cos((f - 0.5f) * float.Pi) * float.Abs(delta) * 0.0001f;
-                    var transform = Matrix3x2.CreateScale(1 + vv, 1, p.GlobalCenter);
-
+                    var transform = Matrix3x2.CreateScale((1 - float.Abs(progress - 0.5f) * 2) * float.Abs(start.X - end.X) * 0.5f / bounds.Width + 1, 1, pivot);
                     SetAllAdditionalTransforms(p, transform);
 
-                    if (t > 1)
+                    if (t > duration)
                         break;
                 }
 
@@ -118,6 +113,16 @@ public class TeleportDashAbilityComponent : CharacterAbilityComponent
                 routine = false;
             }
         }
+    }
+
+    private static void Blink(CharacterPositioning p, Vector2 a, Vector2 b, float f)
+    {
+        p.GlobalCenter.X = float.Lerp(a.X, b.X, f);
+        p.GlobalCenter.Y = float.Lerp(a.Y, b.Y, f);
+        p.GlobalTarget = p.GlobalCenter;
+        p.HopStartingPosition = p.GlobalCenter.X;
+        p.NextHopPosition = p.GlobalCenter.X;
+        p.HopAnimationTimer = 0;
     }
 
     private void SetAllAdditionalTransforms(CharacterPositioning p, Matrix3x2? transform)
@@ -134,6 +139,14 @@ public class TeleportDashAbilityComponent : CharacterAbilityComponent
 
         foreach (var b in p.HeadDecorations)
             if (Scene.TryGetComponentFrom(b, out q))
+                q.AdditionalTransform = transform;
+
+        foreach (var b in p.Hands)
+            if (Scene.TryGetComponentFrom(b.Entity, out q))
+                q.AdditionalTransform = transform;
+
+        foreach (var b in p.Feet)
+            if (Scene.TryGetComponentFrom(b.Entity, out q))
                 q.AdditionalTransform = transform;
     }
 
