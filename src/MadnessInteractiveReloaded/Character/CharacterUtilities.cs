@@ -247,6 +247,7 @@ public static class CharacterUtilities
 
             character.StopAllAnimations();
             var a = character.PlayAnimation(anim, 1);
+
             // during the animation, check if the body is above a flat ground. if it isnt, turn into a ragdoll MID ANIMATION 
             // TODO this should be in a system, not in a routine
             MadnessUtils.RoutineForSecondsPausable(anim.TotalDuration, dt =>

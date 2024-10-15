@@ -336,7 +336,7 @@ public class CharacterPositionSystem : Walgelijk.System
             var floorLevel = (Level.CurrentLevel?.GetFloorLevelAt(target.X) ?? 0) + CharacterConstants.GetFloorOffset(charPos.Scale);
             //target.Y -= Utilities.MapRange(RenderOrders.CharacterLower.Layer, RenderOrders.CharacterUpper.Layer, 0, 80, character.BaseRenderOrder.Layer);
 
-            if (experimentMode)
+            if (experimentMode && character.IsAlive)
                 charPos.GlobalCenter = target;
             else
             {

@@ -843,6 +843,9 @@ public class ExperimentModeSystem : Walgelijk.System
 
         foreach (var comp in Scene.GetAllComponentsOfType<CharacterComponent>())
         {
+            if (!comp.IsAlive)
+                continue;
+
             var floorLevel = (Level.CurrentLevel?.GetFloorLevelAt(comp.Positioning.GlobalCenter.X) ?? 0) + CharacterConstants.GetFloorOffset(comp.Positioning.Scale);
             comp.Positioning.GlobalTarget.Y = floorLevel + comp.Positioning.FlyingOffset;
         }
