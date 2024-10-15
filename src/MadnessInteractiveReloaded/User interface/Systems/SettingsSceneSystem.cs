@@ -151,7 +151,7 @@ public class SettingsSceneSystem : Walgelijk.System
         MenuUiUtils.DrawLogo(Scene, 1, 0);
         Ui.Theme.Padding(10).Foreground(new Appearance(Colors.White.WithAlpha(0.9f),
             Assets.Load<Texture>("textures/border-top-bottom.png").Value, ImageMode.Slice)).Once();
-        Ui.Layout.FitContainer(0.4f, 1).MinWidth(500).StickLeft().Scale(0, -300 / Onion.GlobalScale).StickBottom();
+        Ui.Layout.FitContainer(0.4f, 1).Width(600).StickLeft().Scale(0, -300 / Onion.GlobalScale).MaxHeight(800).StickBottom();
         Ui.StartGroup(true);
         {
             Ui.Layout.FitContainer(1, 1, true).StickLeft().StickTop().Scale(0, -60);
