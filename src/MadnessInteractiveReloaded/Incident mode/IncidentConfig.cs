@@ -27,6 +27,39 @@ public class IncidentConfig
         string[] midLevels = [.. Registries.Levels.GetAllKeys().Where(k => k.StartsWith("lvl_incident")).Except(beginLevels).Except(endLevels)];
         string[] wpns = [.. Registries.Weapons.GetAllKeys()];
 
+        EnemySpawnInstructions[] spawnInstr = [ // TODO make a weighted grab bag or something
+            new("grunt", "grunt", "aahw"),
+            new("grunt", "grunt", "aahw"),
+            new("grunt", "grunt", "aahw"),
+            new("grunt", "grunt", "aahw"),
+            new("grunt", "grunt", "aahw"),
+            new("grunt", "grunt", "aahw"),
+
+            new("agent", "agent", "aahw"),
+            new("agent", "agent", "aahw"),
+            new("agent", "agent", "aahw"),
+            new("agent", "agent", "aahw"),
+            new("agent", "agent", "aahw"),
+            new("agent", "agent", "aahw"),
+
+            new("engineer", "engineer", "aahw"),
+            new("engineer", "engineer", "aahw"),
+            new("engineer", "engineer", "aahw"),
+            new("engineer", "engineer", "aahw"),
+
+            new("machinist", "machinist", "aahw"),
+            new("machinist", "machinist", "aahw"),
+            new("machinist", "machinist", "aahw"),
+            new("machinist", "machinist", "aahw"),
+
+            new("soldat", "soldat", "aahw"),
+            new("soldat", "soldat", "aahw"),
+            new("soldat", "soldat", "aahw"),
+
+            new("experiment", "experiment", "aahw"),
+            new("end_soldat", "end_soldat", "aahw"),
+        ];
+
         selectedMusic = Registries.IncidentMusicSet[rand.Next(0, Registries.IncidentMusicSet.Count)];
 
         var begin = rand.GetItems(beginLevels, 1);
@@ -50,15 +83,17 @@ public class IncidentConfig
 
         var targetKillCount = KillTarget;
         {
+            int maxCycles = 5000;
             var levels = c.Levels.Select(Registries.Levels.Get).Select(l => l.Level.Value).ToArray(); // TODO this is slow lol
+            var mid = levels.Skip(1).SkipLast(1).ToArray();
             while (true)
             {
                 KillTarget = levels.Sum(l => l.BodyCountToWin);
-                if (KillTarget == targetKillCount)
+                if (KillTarget == targetKillCount || maxCycles-- <= 0)
                     break;
                 var sign = int.Sign(targetKillCount - KillTarget);
 
-                var lvl = Utilities.PickRandom(levels.Skip(1).SkipLast(1));
+                var lvl = rand.GetItems(mid, 1)[0];
                 var existingNpcs = lvl.Objects.Count(b => b is NPC);
 
                 lvl.BodyCountToWin += sign;
@@ -97,7 +132,6 @@ public class IncidentConfig
             KillTarget = bodyCounts.Sum() + bcOpening + bcEnd;
         }*/
 
-        // make shit happen
         {
             var sys = typeof(IncidentSystem).FullName;
 
@@ -111,9 +145,7 @@ public class IncidentConfig
                     loaded.BackgroundMusic = selectedMusic; // we set the music
 
                     if (!loaded.Objects.Any(d => d is GameSystem ss && ss.SystemTypeName != sys))
-                    {
-                        loaded.Objects.Add(new GameSystem(null!) { SystemTypeName = sys });
-                    }
+                        loaded.Objects.Add(new GameSystem(null!) { SystemTypeName = sys }); /// add incident mode system if not present
 
                     if (i > 0 && i < (c.Levels.Length - 1))
                     {
@@ -123,6 +155,13 @@ public class IncidentConfig
                             loaded.MaxSimultaneousAttackingEnemies = rand.Next(2, 4);
                             loaded.Weapons = [.. rand.GetItems(wpns, rand.Next(2, 30))];
                             loaded.EnemySpawnInterval = float.Lerp(0.01f, 0.2f, rand.NextSingle());
+
+                            loaded.EnemySpawnInstructions.Clear();
+                            for (int n = 0; n < rand.Next(1, 5); n++)
+                            {
+                                var instr = spawnInstr[rand.Next(0, spawnInstr.Length)];
+                                loaded.EnemySpawnInstructions.Add(instr);
+                            }
                         }
                     }
                 }
