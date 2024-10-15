@@ -48,34 +48,54 @@ public class IncidentConfig
             ]
         };
 
-        int bcOpening = Registries.Levels[c.Levels[0]].Level.Value.BodyCountToWin;
-        int bcEnd = Registries.Levels[c.Levels[^1]].Level.Value.BodyCountToWin;
-
-        int remaining = KillTarget - bcOpening - bcEnd;
-        int[] bodyCounts = new int[c.Levels.Length];
-
-        while (remaining > 0)
+        var targetKillCount = KillTarget;
         {
-            int i = rand.Next(1, c.Levels.Length - 1); // skip opening and ending 🎈🎈
-            string? k = c.Levels[i];
-            if (Registries.Levels.TryGet(k, out var lvl))
+            var levels = c.Levels.Select(Registries.Levels.Get).Select(l => l.Level.Value).ToArray(); // TODO this is slow lol
+            while (true)
             {
-                var loaded = lvl.Level.Value;
-                if (i > 0 && i < (c.Levels.Length - 1))
-                {
-                    if (loaded.EnemySpawnInstructions.Count != 0 && loaded.MaxEnemyCount != 0)
-                    {
-                        var existingNpcs = loaded.Objects.Count(b => b is NPC);
-                        var o = 1 + existingNpcs;
+                KillTarget = levels.Sum(l => l.BodyCountToWin);
+                if (KillTarget == targetKillCount)
+                    break;
+                var sign = int.Sign(targetKillCount - KillTarget);
 
-                        bodyCounts[i] += o;
-                        remaining -= o;
-                    }
-                }
+                var lvl = Utilities.PickRandom(levels.Skip(1).SkipLast(1));
+                var existingNpcs = lvl.Objects.Count(b => b is NPC);
+
+                lvl.BodyCountToWin += sign;
+                lvl.BodyCountToWin = int.Max(1, int.Max(existingNpcs, lvl.BodyCountToWin));
             }
         }
 
-        KillTarget = bodyCounts.Sum() + bcOpening + bcEnd;
+        /*{
+            int bcOpening = Registries.Levels[c.Levels[0]].Level.Value.BodyCountToWin;
+            int bcEnd = Registries.Levels[c.Levels[^1]].Level.Value.BodyCountToWin;
+
+            int remaining = KillTarget - bcOpening - bcEnd;
+            int[] bodyCounts = new int[c.Levels.Length];
+
+            while (remaining > 0)
+            {
+                int i = rand.Next(1, c.Levels.Length - 1); // skip opening and ending 🎈🎈
+                string? k = c.Levels[i];
+                if (Registries.Levels.TryGet(k, out var lvl))
+                {
+                    var loaded = lvl.Level.Value;
+                    if (i > 0 && i < (c.Levels.Length - 1))
+                    {
+                        if (loaded.EnemySpawnInstructions.Count != 0 && loaded.MaxEnemyCount != 0)
+                        {
+                            var existingNpcs = loaded.Objects.Count(b => b is NPC);
+                            var o = 1 + existingNpcs;
+
+                            bodyCounts[i] += o;
+                            remaining -= o;
+                        }
+                    }
+                }
+            }
+
+            KillTarget = bodyCounts.Sum() + bcOpening + bcEnd;
+        }*/
 
         // make shit happen
         {
@@ -99,7 +119,6 @@ public class IncidentConfig
                     {
                         if (loaded.EnemySpawnInstructions.Count != 0 && loaded.MaxEnemyCount != 0)
                         {
-                            loaded.BodyCountToWin = bodyCounts[i];
                             loaded.MaxEnemyCount = rand.Next(2, 4);
                             loaded.MaxSimultaneousAttackingEnemies = rand.Next(2, 4);
                             loaded.Weapons = [.. rand.GetItems(wpns, rand.Next(2, 30))];
