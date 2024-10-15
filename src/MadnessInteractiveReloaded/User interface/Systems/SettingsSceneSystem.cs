@@ -231,7 +231,6 @@ public class SettingsSceneSystem : Walgelijk.System
 
                 if (tab is SettingTab.Input)
                 {
-                    Ui.Spacer(16);
 
                     i = 0;
                     foreach (var action in settings.Controls.InputMap.Keys)

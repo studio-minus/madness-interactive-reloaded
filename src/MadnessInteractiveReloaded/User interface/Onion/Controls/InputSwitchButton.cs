@@ -18,7 +18,7 @@ public readonly struct InputSwitchButton : IControl
     {
         var (instance, node) = Onion.Tree.Start(IdGen.Create(nameof(InputSwitchButton).GetHashCode(), identity, site), new InputSwitchButton());
         instance.RenderFocusBox = false;
-        instance.Name = string.Join('+', input.Inputs); // TODO prevent allocation (cache?)
+        instance.Name = input.ToString();
         Onion.Tree.End();
 
         bool changed = inputs.UpdateFor(instance.Identity, ref input);
@@ -99,7 +99,7 @@ public readonly struct InputSwitchButton : IControl
             var keyRect = instance.Rects.Rendered with { Width = w };
             keyRect = keyRect.Translate(w * -0.5f + instance.Rects.Rendered.Width * 0.5f, 0);
 
-            Draw.Colour = triggered ? Colors.White : Colors.Transparent;
+            Draw.Colour = triggered ? Colors.White : Colors.Red.WithAlpha(0.1f);
             Draw.OutlineColour = Colors.Red.WithAlpha(p.Instance.IsHover ? 0.8f : 0.7f);
             Draw.OutlineWidth = 4;
             Draw.Quad(keyRect.Expand(-2), 0, 8);
