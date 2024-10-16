@@ -69,7 +69,7 @@ public static class MadnessCommands
         else
             scene.GetSystem<LevelProgressSystem>().ForceReachGoal();
 
-        MadnessUtils.Delay(1, () =>
+        MadnessUtils.DelayPausable(1, () =>
         {
             scene.GetSystem<LevelProgressSystem>().TransitionToNextLevel();
         });

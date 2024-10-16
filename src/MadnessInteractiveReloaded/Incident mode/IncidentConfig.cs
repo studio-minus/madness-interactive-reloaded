@@ -6,6 +6,7 @@ using Walgelijk.AssetManager;
 
 namespace MIR;
 
+
 public class IncidentConfig
 {
     public const int MinKillTarget = 20;
@@ -27,38 +28,15 @@ public class IncidentConfig
         string[] midLevels = [.. Registries.Levels.GetAllKeys().Where(k => k.StartsWith("lvl_incident")).Except(beginLevels).Except(endLevels)];
         string[] wpns = [.. Registries.Weapons.GetAllKeys()];
 
-        EnemySpawnInstructions[] spawnInstr = [ // TODO make a weighted grab bag or something
-            new("grunt", "grunt", "aahw"),
-            new("grunt", "grunt", "aahw"),
-            new("grunt", "grunt", "aahw"),
-            new("grunt", "grunt", "aahw"),
-            new("grunt", "grunt", "aahw"),
-            new("grunt", "grunt", "aahw"),
+        WeightedGrabBag<EnemySpawnInstructions> spawnInstr = [];
 
-            new("agent", "agent", "aahw"),
-            new("agent", "agent", "aahw"),
-            new("agent", "agent", "aahw"),
-            new("agent", "agent", "aahw"),
-            new("agent", "agent", "aahw"),
-            new("agent", "agent", "aahw"),
-
-            new("engineer", "engineer", "aahw"),
-            new("engineer", "engineer", "aahw"),
-            new("engineer", "engineer", "aahw"),
-            new("engineer", "engineer", "aahw"),
-
-            new("machinist", "machinist", "aahw"),
-            new("machinist", "machinist", "aahw"),
-            new("machinist", "machinist", "aahw"),
-            new("machinist", "machinist", "aahw"),
-
-            new("soldat", "soldat", "aahw"),
-            new("soldat", "soldat", "aahw"),
-            new("soldat", "soldat", "aahw"),
-
-            new("experiment", "experiment", "aahw"),
-            new("end_soldat", "end_soldat", "aahw"),
-        ];
+        spawnInstr.Add(new("grunt", "grunt", "aahw"), 4);
+        spawnInstr.Add(new("agent", "agent", "aahw"), 5);
+        spawnInstr.Add(new("engineer", "engineer", "aahw"), 4);
+        spawnInstr.Add(new("machinist", "machinist", "aahw"), 2);
+        spawnInstr.Add(new("soldat", "soldat", "aahw"), 3.5f);
+        //spawnInstr.Add(new("experiment", "experiment", "aahw"), 1);
+        //spawnInstr.Add(new("end_soldat", "end_soldat", "aahw"), 0.2f);
 
         selectedMusic = Registries.IncidentMusicSet[rand.Next(0, Registries.IncidentMusicSet.Count)];
 
@@ -101,37 +79,6 @@ public class IncidentConfig
             }
         }
 
-        /*{
-            int bcOpening = Registries.Levels[c.Levels[0]].Level.Value.BodyCountToWin;
-            int bcEnd = Registries.Levels[c.Levels[^1]].Level.Value.BodyCountToWin;
-
-            int remaining = KillTarget - bcOpening - bcEnd;
-            int[] bodyCounts = new int[c.Levels.Length];
-
-            while (remaining > 0)
-            {
-                int i = rand.Next(1, c.Levels.Length - 1); // skip opening and ending 🎈🎈
-                string? k = c.Levels[i];
-                if (Registries.Levels.TryGet(k, out var lvl))
-                {
-                    var loaded = lvl.Level.Value;
-                    if (i > 0 && i < (c.Levels.Length - 1))
-                    {
-                        if (loaded.EnemySpawnInstructions.Count != 0 && loaded.MaxEnemyCount != 0)
-                        {
-                            var existingNpcs = loaded.Objects.Count(b => b is NPC);
-                            var o = 1 + existingNpcs;
-
-                            bodyCounts[i] += o;
-                            remaining -= o;
-                        }
-                    }
-                }
-            }
-
-            KillTarget = bodyCounts.Sum() + bcOpening + bcEnd;
-        }*/
-
         {
             var sys = typeof(IncidentSystem).FullName;
 
@@ -157,9 +104,9 @@ public class IncidentConfig
                             loaded.EnemySpawnInterval = float.Lerp(0.01f, 0.2f, rand.NextSingle());
 
                             loaded.EnemySpawnInstructions.Clear();
-                            for (int n = 0; n < rand.Next(1, 5); n++)
+                            for (int n = 0; n < rand.Next(2, 10); n++)
                             {
-                                var instr = spawnInstr[rand.Next(0, spawnInstr.Length)];
+                                var instr = spawnInstr.Grab();
                                 loaded.EnemySpawnInstructions.Add(instr);
                             }
                         }
