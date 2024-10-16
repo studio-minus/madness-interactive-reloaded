@@ -54,6 +54,9 @@ public class TeleportDashAbilityComponent : CharacterAbilityComponent
             a.Character.DodgeMeter = a.Character.Stats.DodgeAbility;
             routine = true;
 
+            Distance = float.Abs((a.Character.AimTargetPosition.X - p.GlobalCenter.X) * 0.9f);
+            if (Distance < 500) // just go forwards
+                Distance = 1500;
             RoutineScheduler.Start(Teleport());
 
             //var charBounds = a.Character.GetBoundingBox(Scene);
@@ -86,7 +89,7 @@ public class TeleportDashAbilityComponent : CharacterAbilityComponent
                 var initialPos = start;
                 end.X = float.Clamp(end.X + Distance * sign, level.FloorLine[0].X, level.FloorLine[^1].X);
                 end.Y = Level.CurrentLevel!.GetFloorLevelAt(end.X) + CharacterConstants.GetFloorOffset(p.Scale);
-                const float duration = 0.05f;
+                float duration = float.Clamp(Distance / 30000, 0.05f, 0.1f);
                 float t = 0;
                 while (true)
                 {
@@ -141,9 +144,9 @@ public class TeleportDashAbilityComponent : CharacterAbilityComponent
             if (Scene.TryGetComponentFrom(b, out q))
                 q.AdditionalTransform = transform;
 
-        foreach (var b in p.Hands)
-            if (Scene.TryGetComponentFrom(b.Entity, out q))
-                q.AdditionalTransform = transform;
+        //foreach (var b in p.Hands)
+        //    if (Scene.TryGetComponentFrom(b.Entity, out q))
+        //        q.AdditionalTransform = transform;
 
         foreach (var b in p.Feet)
             if (Scene.TryGetComponentFrom(b.Entity, out q))
