@@ -458,18 +458,22 @@ public static class CharacterUtilities
         {
             var previous = CalculateAnimationResult(character.Animations[^2], character);
 
-            result.BodyPosition = Utilities.Lerp(previous.BodyPosition, result.BodyPosition, mixFactor);
+            result.BodyPosition = Vector2.Lerp(previous.BodyPosition, result.BodyPosition, mixFactor);
             result.BodyRotation = Utilities.LerpAngle(previous.BodyRotation, result.BodyRotation, mixFactor);
+            result.BodyScale = Vector2.Lerp(previous.BodyScale, result.BodyScale, mixFactor);
 
-            result.HeadPosition = Utilities.Lerp(previous.HeadPosition, result.HeadPosition, mixFactor);
+            result.HeadPosition = Vector2.Lerp(previous.HeadPosition, result.HeadPosition, mixFactor);
             result.HeadRotation = Utilities.LerpAngle(previous.HeadRotation, result.HeadRotation, mixFactor);
+            result.HeadScale = Vector2.Lerp(previous.HeadScale, result.HeadScale, mixFactor);
 
-            result.Hand1Position = Utilities.Lerp(previous.Hand1Position, result.Hand1Position, mixFactor);
+            result.Hand1Position = Vector2.Lerp(previous.Hand1Position, result.Hand1Position, mixFactor);
             result.Hand1Rotation = Utilities.LerpAngle(previous.Hand1Rotation, result.Hand1Rotation, mixFactor);
+            result.Hand1Scale = Vector2.Lerp(previous.Hand1Scale, result.Hand1Scale, mixFactor);
             result.Hand1Look = mixFactor < 0.5f ? previous.Hand1Look : result.Hand1Look;
 
-            result.Hand2Position = Utilities.Lerp(previous.Hand2Position, result.Hand2Position, mixFactor);
+            result.Hand2Position = Vector2.Lerp(previous.Hand2Position, result.Hand2Position, mixFactor);
             result.Hand2Rotation = Utilities.LerpAngle(previous.Hand2Rotation, result.Hand2Rotation, mixFactor);
+            result.Hand2Scale = Vector2.Lerp(previous.Hand1Scale, result.Hand2Scale, mixFactor);
             result.Hand2Look = mixFactor < 0.5f ? previous.Hand2Look : result.Hand2Look;
         }
 
@@ -496,6 +500,11 @@ public static class CharacterUtilities
         if (activeAnim.Animation.BodyAnimation?.RotationCurve != null)
             result.BodyRotation = activeAnim.GetBodyRotation() * flipScaling;
 
+        if (activeAnim.Animation.BodyAnimation?.ScaleCurve != null)
+            result.BodyScale = activeAnim.GetBodyScale();
+        else
+            result.BodyScale = Vector2.One;
+
         if (activeAnim.Animation.HeadAnimation?.TranslationCurve != null)
         {
             result.HeadPosition = activeAnim.GetHeadPosition();
@@ -504,6 +513,11 @@ public static class CharacterUtilities
 
         if (activeAnim.Animation.HeadAnimation?.RotationCurve != null)
             result.HeadRotation = activeAnim.GetHeadRotation() * flipScaling;
+
+        if (activeAnim.Animation.HeadAnimation?.ScaleCurve != null)
+            result.HeadScale = activeAnim.GetHeadScale();
+        else
+            result.HeadScale = Vector2.One;
 
         if (activeAnim.Animation.HandAnimations != null)
         {
@@ -520,6 +534,7 @@ public static class CharacterUtilities
                             : character.Positioning.Hands[0]);
 
                 result.Hand1Rotation = calculateHandRotation(a);
+                result.Hand1Scale = evalScale(a);
 
                 if (a.HandLooks != null && a.HandLooks.Length > 0)
                     result.Hand1Look = evalHandLook(a);
@@ -535,6 +550,7 @@ public static class CharacterUtilities
                             : character.Positioning.Hands[1]);
 
                 result.Hand2Rotation = calculateHandRotation(a);
+                result.Hand2Scale = evalScale(a);
 
                 if (a.HandLooks != null && a.HandLooks.Length > 0)
                     result.Hand2Look = evalHandLook(a);
@@ -583,11 +599,17 @@ public static class CharacterUtilities
             }
         }
 
-        Vector2 evalTranslation(LimbAnimation a) =>
-            a.TranslationCurve?.Evaluate(activeAnim.CalculateProgress(a)) ?? Vector2.Zero;
+        Vector2 evalTranslation(LimbAnimation a)
+            => a.TranslationCurve?.Evaluate(activeAnim.CalculateProgress(a)) ?? Vector2.Zero;
 
-        float evalRotation(LimbAnimation a) => a?.RotationCurve?.Evaluate(activeAnim.CalculateProgress(a)) ?? 0;
-        HandLook? evalHandLook(HandLimbAnimation a) => a.GetHandLookForTime(activeAnim.UnscaledTimer / a.Duration);
+        float evalRotation(LimbAnimation a)
+            => a?.RotationCurve?.Evaluate(activeAnim.CalculateProgress(a)) ?? 0;
+
+        Vector2 evalScale(LimbAnimation a)
+            => a?.ScaleCurve?.Evaluate(activeAnim.CalculateProgress(a)) ?? Vector2.One;
+
+        HandLook? evalHandLook(HandLimbAnimation a)
+            => a.GetHandLookForTime(activeAnim.UnscaledTimer / a.Duration);
 
         return result;
     }

@@ -18,6 +18,11 @@ public struct AnimationResult
     public float BodyRotation;
 
     /// <summary>
+    /// The scale of the body.
+    /// </summary>
+    public Vector2 BodyScale;
+
+    /// <summary>
     /// The position of the head.
     /// </summary>
     public Vector2 HeadPosition;
@@ -26,6 +31,11 @@ public struct AnimationResult
     /// The angle of the head.
     /// </summary>
     public float HeadRotation;
+
+    /// <summary>
+    /// The scale of the head.
+    /// </summary>
+    public Vector2 HeadScale;
 
     /// <summary>
     /// The position of hand1
@@ -38,6 +48,11 @@ public struct AnimationResult
     public float Hand1Rotation;
 
     /// <summary>
+    /// The scale of hand1.
+    /// </summary>
+    public Vector2 Hand1Scale;
+
+    /// <summary>
     /// The position of hand2
     /// </summary>
     public Vector2 Hand2Position;
@@ -46,6 +61,11 @@ public struct AnimationResult
     /// The angle of hand2.
     /// </summary>
     public float Hand2Rotation;
+
+    /// <summary>
+    /// The scale of hand2.
+    /// </summary>
+    public Vector2 Hand2Scale;
 
     /// <summary>
     /// What pose is hand1 in?

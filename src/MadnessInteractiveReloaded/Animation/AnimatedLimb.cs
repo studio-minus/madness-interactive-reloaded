@@ -40,4 +40,9 @@ public class AnimatedLimb
     /// Absolute scale of the transform as determined by the texture
     /// </summary>
     public Vector2 Scale;
+
+    /// <summary>
+    /// The transform scale multiplier as decided by the animation
+    /// </summary>
+    public Vector2 AnimationScale;
 }
