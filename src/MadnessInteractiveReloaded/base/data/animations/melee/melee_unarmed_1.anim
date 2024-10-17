@@ -3,7 +3,7 @@ scale 1
 speed 1
 
 BODY
-0       0.0px  0.0px  0.0deg constraints(PreventThrowing PreventIronSight   )
+0       0.0px  0.0px  0.0deg constraints(PreventThrowing PreventIronSight)
 1       -0.05px  0.21px  -0.26deg
 2       0.71px  -0.35px  -1.04deg
 3       2.65px  -3.03px
