@@ -79,7 +79,7 @@ public static class AnimationDeserialiser
             }
             line = line.Trim();
 
-            if (line.StartsWith("#"))//comments
+            if (line.StartsWith('#'))//comments
                 continue;
 
             switch (line)
@@ -316,7 +316,6 @@ public static class AnimationDeserialiser
                 if (keyframe.Scale.HasValue)
                 {
                     animationToWriteTo.ScaleCurve ??= new Vec2Curve();
-
                     AppendKey(animationToWriteTo.ScaleCurve, new Curve<Vector2>.Key(keyframe.Scale.Value, scaledTime));
                 }
 
