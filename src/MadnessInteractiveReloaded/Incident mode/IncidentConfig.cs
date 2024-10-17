@@ -67,15 +67,20 @@ public class IncidentConfig
             while (true)
             {
                 KillTarget = levels.Sum(l => l.BodyCountToWin);
+
                 if (KillTarget == targetKillCount || maxCycles-- <= 0)
                     break;
+
                 var sign = int.Sign(targetKillCount - KillTarget);
 
                 var lvl = rand.GetItems(mid, 1)[0];
                 var existingNpcs = lvl.Objects.Count(b => b is NPC);
 
-                lvl.BodyCountToWin += sign;
-                lvl.BodyCountToWin = int.Max(1, int.Max(existingNpcs, lvl.BodyCountToWin));
+                if (lvl.EnemySpawnInstructions.Count != 0 && lvl.MaxEnemyCount != 0)
+                {
+                    lvl.BodyCountToWin += sign;
+                    lvl.BodyCountToWin = int.Max(1, int.Max(existingNpcs, lvl.BodyCountToWin));
+                }
             }
         }
 
