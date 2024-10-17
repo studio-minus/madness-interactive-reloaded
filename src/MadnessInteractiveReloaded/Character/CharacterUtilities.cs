@@ -452,11 +452,11 @@ public static class CharacterUtilities
             return default;
 
         float mixFactor = Easings.Quad.InOut(character.AnimationMixProgress);
-        var result = CalculateAnimationResult(character.Animations[^1], character);
+        var result = CalculateAnimationResult(character.Animations[^1], character); // last animation in list
 
         if (character.Animations.Count > 1)
         {
-            var previous = CalculateAnimationResult(character.Animations[^2], character);
+            var previous = CalculateAnimationResult(character.Animations[^2], character); // second-to-last animation in list
 
             result.BodyPosition = Vector2.Lerp(previous.BodyPosition, result.BodyPosition, mixFactor);
             result.BodyRotation = Utilities.LerpAngle(previous.BodyRotation, result.BodyRotation, mixFactor);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Numerics;
+using Walgelijk;
 
 namespace MIR;
 
@@ -67,7 +68,7 @@ public class ActiveCharacterAnimation
         return anim.TranslationCurve?.Evaluate(UnscaledTimer / anim.Duration) ?? default;
     }
 
-    public Vector2 GetHeadPosition()    
+    public Vector2 GetHeadPosition()
     {
         if (Animation.HeadAnimation == null)
             return default;
@@ -86,9 +87,9 @@ public class ActiveCharacterAnimation
     public Vector2 GetHeadScale()
     {
         if (Animation.HeadAnimation == null)
-            return default;
+            return Vector2.One;
         var anim = Animation.HeadAnimation;
-        return anim.ScaleCurve?.Evaluate(UnscaledTimer / anim.Duration) ?? default;
+        return anim.ScaleCurve?.Evaluate(UnscaledTimer / anim.Duration) ?? Vector2.One;
     }
 
     public Vector2 GetBodyPosition()
@@ -106,13 +107,13 @@ public class ActiveCharacterAnimation
         var anim = Animation.BodyAnimation;
         return anim.RotationCurve?.Evaluate(UnscaledTimer / anim.Duration) ?? default;
     }
-        
+
     public Vector2 GetBodyScale()
     {
         if (Animation.BodyAnimation == null)
-            return default;
+            return Vector2.One;
         var anim = Animation.BodyAnimation;
-        return anim.ScaleCurve?.Evaluate(UnscaledTimer / anim.Duration) ?? default;
+        return anim.ScaleCurve?.Evaluate(UnscaledTimer / anim.Duration) ?? Vector2.One;
     }
 
     public void Stop()

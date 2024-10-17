@@ -91,12 +91,18 @@ public class CharacterPositionSystem : Walgelijk.System
         }
         if (character.IsHeadAnimated())
         {
-            var th = float.DegreesToRadians(charPos.Head.GlobalRotation);
-            headRenderer.AdditionalTransform =
-                Matrix3x2.CreateRotation(-th, charPos.Head.GlobalPosition)
-                * Matrix3x2.CreateScale(charPos.Head.AnimationScale, charPos.Head.GlobalPosition)
-                * Matrix3x2.CreateRotation(th, charPos.Head.GlobalPosition);
+            if (charPos.Head.Unscaled)
+                headRenderer.AdditionalTransform = null;
+            else
+            {
+                var th = float.DegreesToRadians(charPos.Head.GlobalRotation);
+                headRenderer.AdditionalTransform =
+                    Matrix3x2.CreateRotation(-th, charPos.Head.GlobalPosition)
+                    * Matrix3x2.CreateScale(charPos.Head.AnimationScale, charPos.Head.GlobalPosition)
+                    * Matrix3x2.CreateRotation(th, charPos.Head.GlobalPosition);
+            }
         }
+        else headRenderer.AdditionalTransform = null;
 
         // body renderer
         var bodyRenderer = Scene.GetComponentFrom<QuadShapeComponent>(charPos.Body.Entity);
@@ -115,12 +121,18 @@ public class CharacterPositionSystem : Walgelijk.System
         }
         if (character.IsBodyAnimated())
         {
-            var th = float.DegreesToRadians(charPos.Body.GlobalRotation);
-            bodyRenderer.AdditionalTransform =
-                Matrix3x2.CreateRotation(-th, charPos.Body.GlobalPosition)
-                * Matrix3x2.CreateScale(charPos.Body.AnimationScale, charPos.Body.GlobalPosition)
-                * Matrix3x2.CreateRotation(th, charPos.Body.GlobalPosition);
+            if (charPos.Body.Unscaled)
+                bodyRenderer.AdditionalTransform = null;
+            else
+            {
+                var th = float.DegreesToRadians(charPos.Body.GlobalRotation);
+                bodyRenderer.AdditionalTransform =
+                    Matrix3x2.CreateRotation(-th, charPos.Body.GlobalPosition)
+                    * Matrix3x2.CreateScale(charPos.Body.AnimationScale, charPos.Body.GlobalPosition)
+                    * Matrix3x2.CreateRotation(th, charPos.Body.GlobalPosition);
+            }
         }
+        else bodyRenderer.AdditionalTransform = null;
 
         // hand renderers
         int i = 0;
@@ -149,12 +161,18 @@ public class CharacterPositionSystem : Walgelijk.System
 
             if (character.IsHandAnimated(hand))
             {
-                var th = float.DegreesToRadians(hand.GlobalRotation);
-                hr.AdditionalTransform =
-                    Matrix3x2.CreateRotation(-th, hand.GlobalPosition)
-                    * Matrix3x2.CreateScale(hand.AnimationScale, hand.GlobalPosition)
-                    * Matrix3x2.CreateRotation(th, hand.GlobalPosition);
+                if (hand.Unscaled)
+                    hr.AdditionalTransform = null;
+                else
+                {
+                    var th = float.DegreesToRadians(hand.GlobalRotation);
+                    hr.AdditionalTransform =
+                        Matrix3x2.CreateRotation(-th, hand.GlobalPosition)
+                        * Matrix3x2.CreateScale(hand.AnimationScale, hand.GlobalPosition)
+                        * Matrix3x2.CreateRotation(th, hand.GlobalPosition);
+                }
             }
+            else hr.AdditionalTransform = null;
 
             hr.RenderOrder = targetHandRenderOrder;
             hr.Material = targetHandMaterial;

@@ -44,5 +44,10 @@ public class AnimatedLimb
     /// <summary>
     /// The transform scale multiplier as decided by the animation
     /// </summary>
-    public Vector2 AnimationScale;
+    public Vector2 AnimationScale = Vector2.One;
+
+    /// <summary>
+    /// Returns true if <see cref="AnimationScale"/> is approximately (1,1)
+    /// </summary>
+    public bool Unscaled => float.Abs(1 - AnimationScale.X) < 0.001f && float.Abs(1 - AnimationScale.Y) < 0.001f;
 }
