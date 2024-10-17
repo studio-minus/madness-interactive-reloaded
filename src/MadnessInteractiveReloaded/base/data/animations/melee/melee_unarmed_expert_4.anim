@@ -1,0 +1,71 @@
+﻿fps 24
+scale 1
+speed 1
+
+BODY
+0       63.69px  18.41px  -17.74deg constraints(PreventThrowing PreventIronSight)
+1       47.33px  18.68px
+2       30.96px  25.62px  -14.25deg
+3       32.42px  43.15px  -20.73deg
+4       41.72px  45.46px  -25.38deg
+5       -22.0deg
+6       42.8px  17.8px
+7       33.32px  17.15px
+8       23.83px  15.99px  -7.39deg
+9       8.27px  14.83px  -3.59deg
+10      3.89px  11.28px  -1.55deg
+11      -0.79deg
+12      1.08px  4.17px
+13      0.81px  0.62px  -0.1deg
+16      0.0px  0.0px  -0.0deg
+
+HEAD
+0       26.13px  -15.62px  17.04deg
+1       28.58px  -15.0px
+2       26.82px  -16.87px  14.1deg
+3       25.07px  -20.7px  24.03deg
+4       23.32px  -21.52px  25.35deg
+5       29.92px  -19.95px  23.61deg
+6       36.53px  -17.59px  19.23deg
+7       38.69px  -15.23px  13.0deg
+8       31.32px  -9.24px  7.88deg
+9       7.35px  -3.25px  4.96deg
+10      2.97px  -1.79px  2.87deg
+11      1.16px  -1.12px  1.47deg
+12      0.04px  -0.9px
+15      0.0px  -0.22px
+16      0.0px  0.0px  0.0deg
+
+HAND
+aim
+0       459.48px  77.84px  22.55deg  scale(1.0, 1.0)
+1       175.71px  77.67px  21.55deg
+2       41.22px  97.22px  19.35deg
+3       17.72px  83.08px
+4       2.02px  68.95px
+5       -13.68px  49.63px
+7       -45.09px  39.66px  2.69deg
+8       -60.79px  38.05px  0.21deg
+9       0.0deg
+14      -94.38px  28.37px
+15      -96.24px  26.76px
+16      -98.09px  26.76px  -0.0deg
+
+HAND
+aim
+0       204.21px  35.04px  -0.01deg  scale(1.0, 1.0)
+1       159.3px  51.26px  0.06deg  scale(1.0, 1.0)
+2       187.22px  64.15px  0.25deg  scale(1.04, 1.0)
+3       465.9px  60.52px  0.85deg  scale(2.44, 1.0)
+4       707.37px  67.62px  27.06deg  scale(1.3, 1.0)
+5       711.46px  93.87px  32.8deg  scale(1.02, 1.0)
+6       641.9px  109.28px  32.36deg  scale(1.0, 1.0)
+7       29.22deg
+8       352.03px  83.53px  19.56deg
+9       7.28deg
+10      252.26px  57.78px  0.18deg
+11      202.37px  55.08px  0.04deg
+12      0.02deg
+14      184.87px  47.0px
+16      181.63px  41.61px  0.0deg  scale(1.0, 1.0)
+
