@@ -48,15 +48,15 @@ public class AnimationTestingSystem : Walgelijk.System
 
             if (Input.IsKeyPressed(Key.Comma))
             {
-                mainAnim.UnscaledTimer = float.Ceiling(mainAnim.UnscaledTimer / keyframeTime) * keyframeTime;
-                mainAnim.UnscaledTimer -= keyframeTime;
+                mainAnim.UnscaledTimer -= 0.001f;
+                mainAnim.UnscaledTimer = float.Floor(mainAnim.UnscaledTimer / keyframeTime) * keyframeTime;
                 mainAnim.UnscaledTimer = float.Clamp(mainAnim.UnscaledTimer, 0, mainAnim.Animation.TotalDuration);
             }
 
             if (Input.IsKeyPressed(Key.Period))
             {
-                mainAnim.UnscaledTimer = float.Floor(mainAnim.UnscaledTimer / keyframeTime) * keyframeTime;
-                mainAnim.UnscaledTimer += keyframeTime;
+                mainAnim.UnscaledTimer += 0.001f;
+                mainAnim.UnscaledTimer = float.Ceiling(mainAnim.UnscaledTimer / keyframeTime) * keyframeTime;
                 mainAnim.UnscaledTimer = float.Clamp(mainAnim.UnscaledTimer, 0, mainAnim.Animation.TotalDuration);
             }
         }
@@ -160,22 +160,24 @@ public class AnimationTestingSystem : Walgelijk.System
         }
         Ui.End();
 
-        float time = character.MainAnimation != null ? character.MainAnimation.UnscaledTimer : 0;
-        float max = character.MainAnimation != null ? character.MainAnimation.Animation.TotalDuration : 0;
-
-        string keyframeText = character.MainAnimation != null ? $"{(int)(time / max * (character.MainAnimation.MaxKeyCount + 1))} | {time:0.##}" : string.Empty;
-
-        Ui.Layout.Move(0, Window.Size.Y - progressBarHeight / 2).Size(Window.Size.X, progressBarHeight / 2);
-        Ui.Theme.OutlineWidth(2).OutlineColour(Colors.White).Once();
-        Ui.Decorate(new TimelineConstraintDecorator(character.MainAnimation?.Animation ?? data.LastAnimation));
-        if (Ui.FloatSlider(ref time, Direction.Horizontal, new MinMax<float>(0, max), label: keyframeText))
         {
-            if (!character.IsPlayingAnimation && data.LastAnimation != null)
-                character.PlayAnimation(data.LastAnimation);
-            if (character.MainAnimation != null)
-                character.MainAnimation.UnscaledTimer = time;
+            float time = character.MainAnimation != null ? character.MainAnimation.UnscaledTimer : 0;
+            float max = character.MainAnimation != null ? character.MainAnimation.Animation.TotalDuration : 0;
+
+            string keyframeText = character.MainAnimation != null ? $"{(int)(time / max * (character.MainAnimation.MaxKeyCount + 1))} | {time:0.##}" : string.Empty;
+
+            Ui.Layout.Move(0, Window.Size.Y - progressBarHeight / 2).Size(Window.Size.X, progressBarHeight / 2);
+            Ui.Theme.OutlineWidth(2).OutlineColour(Colors.White).Once();
+            Ui.Decorate(new TimelineConstraintDecorator(character.MainAnimation?.Animation ?? data.LastAnimation));
+            if (Ui.FloatSlider(ref time, Direction.Horizontal, new MinMax<float>(0, max), label: keyframeText))
+            {
+                if (!character.IsPlayingAnimation && data.LastAnimation != null)
+                    character.PlayAnimation(data.LastAnimation);
+                if (character.MainAnimation != null)
+                    character.MainAnimation.UnscaledTimer = time;
+            }
+            Ui.Layout.Move(0, Window.Size.Y - progressBarHeight / 2).Size(Window.Size.X, progressBarHeight / 2);
         }
-        Ui.Layout.Move(0, Window.Size.Y - progressBarHeight / 2).Size(Window.Size.X, progressBarHeight / 2);
 
         Draw.Reset();
         Draw.Colour = Colors.Red;
@@ -185,16 +187,70 @@ public class AnimationTestingSystem : Walgelijk.System
 
         if (data.ShowCurveDebugger)
         {
-            var rr = new Rect(0, 0, 400, 300);
-
-            rr = rr.Translate(Window.Width - rr.Width, 0);
-            rr = rr.Translate(0, Window.Height - rr.Height - progressBarHeight);
+            var rr = new Rect(0, 0, Window.Width, 300).Translate(0, 10);
+            rr.MinX += 310;
+            rr.MaxX -= 310;
 
             Draw.Reset();
             Draw.ScreenSpace = true;
             Draw.Order = RenderOrders.UserInterface;
             Draw.Colour = Colors.Black.WithAlpha(0.9f);
             Draw.Quad(rr);
+            rr = rr.Expand(-10);
+
+            Draw.Colour = Colors.GreenYellow;
+            var cursor = rr.GetCenter() with { X = rr.MinX };
+            float valScale = 0.01f;
+
+            if (character.MainAnimation != null)
+            {
+                var active = character.MainAnimation;
+                var anim = active.Animation;
+
+                var limb = anim.BodyAnimation;
+                if (limb != null)
+                {
+                    float durationRatio = anim.TotalDuration / limb.Duration;
+                    var curve = limb.RotationCurve;
+                    if (curve != null)
+                    {
+                        float min = curve.Keys.Min(static k => k.Value);
+                        float max = curve.Keys.Max(static k => k.Value);
+
+                        foreach (var item in curve.Keys)
+                        {
+                            var a = cursor;
+                            var b = new Vector2(
+                                float.Lerp(rr.MinX, rr.MaxX, item.Position / durationRatio),
+                                float.Lerp(rr.MaxY, rr.MinY, Utilities.MapRange(min, max, 0, 1, item.Value))
+                            );
+
+                            if (item.Position > float.Epsilon)
+                                Draw.Line(a, b, 2);
+                            Draw.Circle(b, new(4));
+
+                            cursor = b;
+                        }
+
+                        var linePos = float.Lerp(rr.MinX, rr.MaxX, active.UnscaledTimer / anim.TotalDuration);
+                        var t = active.UnscaledTimer / anim.TotalDuration * durationRatio;
+                        var valAtTime = curve.Evaluate(t);
+                        var screenPos = new Vector2(linePos,
+                            float.Lerp(rr.MaxY, rr.MinY, Utilities.MapRange(min, max, 0, 1, valAtTime)));
+
+                        Draw.Colour = Colors.Cyan;
+                        Draw.Font = Fonts.CascadiaMono;
+                        Draw.Line(new Vector2(linePos, rr.MinY), new Vector2(linePos, rr.MaxY), 1);
+                        var vts = $"{valAtTime:0.###}";
+                        Draw.Colour = Colors.Black;
+                        screenPos.Y -= 10;
+                        screenPos.X += 10;
+                        Draw.Text(vts, screenPos + new Vector2(0, 1), Vector2.One, HorizontalTextAlign.Left, VerticalTextAlign.Bottom);
+                        Draw.Colour = Colors.White;
+                        Draw.Text(vts, screenPos, Vector2.One, HorizontalTextAlign.Left, VerticalTextAlign.Bottom);
+                    }
+                }
+            }
         }
     }
 

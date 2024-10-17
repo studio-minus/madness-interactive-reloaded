@@ -9,6 +9,9 @@ internal class DisclaimerRenderSystem : Walgelijk.System
 {
     public override void Update()
     {
+        if (Scene.HasSystem<AnimationTestingSystem>())
+            return;
+
         if (Input.IsKeyHeld(Key.F3))
             return;
 
