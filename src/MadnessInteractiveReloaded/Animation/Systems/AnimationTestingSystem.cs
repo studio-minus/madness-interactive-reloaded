@@ -41,6 +41,26 @@ public class AnimationTestingSystem : Walgelijk.System
                 character.EnableAnimationClock = !character.EnableAnimationClock;
         }
 
+        if (character.MainAnimation != null)
+        {
+            var mainAnim = character.MainAnimation;
+            float keyframeTime = mainAnim.Animation.TotalDuration / mainAnim.MaxKeyCount;
+
+            if (Input.IsKeyPressed(Key.Comma))
+            {
+                mainAnim.UnscaledTimer = float.Ceiling(mainAnim.UnscaledTimer / keyframeTime) * keyframeTime;
+                mainAnim.UnscaledTimer -= keyframeTime;
+                mainAnim.UnscaledTimer = float.Clamp(mainAnim.UnscaledTimer, 0, mainAnim.Animation.TotalDuration);
+            }
+
+            if (Input.IsKeyPressed(Key.Period))
+            {
+                mainAnim.UnscaledTimer = float.Floor(mainAnim.UnscaledTimer / keyframeTime) * keyframeTime;
+                mainAnim.UnscaledTimer += keyframeTime;
+                mainAnim.UnscaledTimer = float.Clamp(mainAnim.UnscaledTimer, 0, mainAnim.Animation.TotalDuration);
+            }
+        }
+
         Ui.Theme.Font(Fonts.CascadiaMono);
 
         playerComponent.RespondToUserInput = false;
@@ -131,8 +151,11 @@ public class AnimationTestingSystem : Walgelijk.System
             Ui.Layout.Width(128).FitHeight();
             Ui.Checkbox(ref data.LoopAnimationFlag, "loop");
 
-            Ui.Layout.Width(128).FitHeight();
+            Ui.Layout.Width(150).FitHeight();
             Ui.Checkbox(ref character.EnableAnimationClock, "playback");
+
+            Ui.Layout.Width(200).FitHeight();
+            Ui.Checkbox(ref data.ShowCurveDebugger, "show curves");
 
         }
         Ui.End();
@@ -140,7 +163,7 @@ public class AnimationTestingSystem : Walgelijk.System
         float time = character.MainAnimation != null ? character.MainAnimation.UnscaledTimer : 0;
         float max = character.MainAnimation != null ? character.MainAnimation.Animation.TotalDuration : 0;
 
-        string keyframeText = character.MainAnimation != null ? $"{(int)(time / max * (character.MainAnimation.MaxKeyCount + 1))} | {time}" : string.Empty;
+        string keyframeText = character.MainAnimation != null ? $"{(int)(time / max * (character.MainAnimation.MaxKeyCount + 1))} | {time:0.##}" : string.Empty;
 
         Ui.Layout.Move(0, Window.Size.Y - progressBarHeight / 2).Size(Window.Size.X, progressBarHeight / 2);
         Ui.Theme.OutlineWidth(2).OutlineColour(Colors.White).Once();
@@ -159,6 +182,20 @@ public class AnimationTestingSystem : Walgelijk.System
         Draw.Line(new Vector2(-1000, Level.CurrentLevel?.GetFloorLevelAt(0) ?? 0), new Vector2(1000, Level.CurrentLevel?.GetFloorLevelAt(0) ?? 0), 5);
 
         Ui.Theme.Pop();
+
+        if (data.ShowCurveDebugger)
+        {
+            var rr = new Rect(0, 0, 400, 300);
+
+            rr = rr.Translate(Window.Width - rr.Width, 0);
+            rr = rr.Translate(0, Window.Height - rr.Height - progressBarHeight);
+
+            Draw.Reset();
+            Draw.ScreenSpace = true;
+            Draw.Order = RenderOrders.UserInterface;
+            Draw.Colour = Colors.Black.WithAlpha(0.9f);
+            Draw.Quad(rr);
+        }
     }
 
     public readonly struct TimelineConstraintDecorator : IDecorator

@@ -302,14 +302,12 @@ public static class AnimationDeserialiser
                 if (keyframe.Position.HasValue)
                 {
                     animationToWriteTo.TranslationCurve ??= new Vec2Curve();
-
                     AppendKey(animationToWriteTo.TranslationCurve, new Curve<Vector2>.Key(keyframe.Position.Value * globalScale, scaledTime));
                 }
 
                 if (keyframe.Angle.HasValue)
                 {
                     animationToWriteTo.RotationCurve ??= new AngleCurve();
-
                     AppendKey(animationToWriteTo.RotationCurve, new Curve<float>.Key(keyframe.Angle.Value, scaledTime));
                 }
 

@@ -11,4 +11,5 @@ public class AnimationTestingComponent : Component
     public string Filter = string.Empty;
     public CharacterAnimation? LastAnimation = null;
     public AssetRef<CharacterAnimation>[] Animations = [];
+    public bool ShowCurveDebugger;
 }
