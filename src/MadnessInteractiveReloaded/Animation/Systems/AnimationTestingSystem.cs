@@ -8,6 +8,7 @@ using Walgelijk.Onion;
 using Walgelijk.Onion.Controls;
 using Walgelijk.Onion.Decorators;
 using Walgelijk.SimpleDrawing;
+using static MIR.AnimationTestingSystem;
 
 namespace MIR;
 
@@ -44,7 +45,7 @@ public class AnimationTestingSystem : Walgelijk.System
         if (character.MainAnimation != null)
         {
             var mainAnim = character.MainAnimation;
-            float keyframeTime = mainAnim.Animation.TotalDuration / mainAnim.MaxKeyCount;
+            float keyframeTime = 1 / 24f;
 
             if (Input.IsKeyPressed(Key.Comma))
             {
@@ -176,7 +177,7 @@ public class AnimationTestingSystem : Walgelijk.System
                 if (character.MainAnimation != null)
                     character.MainAnimation.UnscaledTimer = time;
             }
-            Ui.Layout.Move(0, Window.Size.Y - progressBarHeight / 2).Size(Window.Size.X, progressBarHeight / 2);
+            //Ui.Layout.Move(0, Window.Size.Y - progressBarHeight / 2).Size(Window.Size.X, progressBarHeight / 2);
         }
 
         Draw.Reset();
@@ -195,63 +196,189 @@ public class AnimationTestingSystem : Walgelijk.System
             Draw.ScreenSpace = true;
             Draw.Order = RenderOrders.UserInterface;
             Draw.Colour = Colors.Black.WithAlpha(0.9f);
-            Draw.Quad(rr);
-            rr = rr.Expand(-10);
 
-            Draw.Colour = Colors.GreenYellow;
-            var cursor = rr.GetCenter() with { X = rr.MinX };
-            float valScale = 0.01f;
+            Draw.Quad(rr with { MaxY = rr.MaxY + 32 });
+            Draw.ResetMaterial();
+
+            Ui.Theme.ForegroundColor(Colors.White).Text(Colors.Black).Push();
+            {
+                Ui.Layout.MoveAbs(rr.MinX, rr.MinY + rr.Height).Size(200, 32);
+                Ui.EnumDropdown(ref data.CurveDebuggerLimb);
+                
+                Ui.Layout.MoveAbs(rr.MinX, rr.MinY + rr.Height).Move(205, 0).Size(200, 32);
+                Ui.EnumDropdown(ref data.CurveDebuggerCurve); 
+            }
+            Ui.Theme.Pop();
+
+            rr = rr.Expand(-10);
 
             if (character.MainAnimation != null)
             {
                 var active = character.MainAnimation;
                 var anim = active.Animation;
 
-                var limb = anim.BodyAnimation;
+                LimbAnimation? limb = data.CurveDebuggerLimb switch
+                {
+                    AnimationTestingComponent.Limb.Head => anim.HeadAnimation,
+                    AnimationTestingComponent.Limb.Body => anim.BodyAnimation,
+                    AnimationTestingComponent.Limb.Hand1 => anim.HandAnimations?[0],
+                    AnimationTestingComponent.Limb.Hand2 => anim.HandAnimations?[1],
+                    _ => null
+                };
+
                 if (limb != null)
                 {
                     float durationRatio = anim.TotalDuration / limb.Duration;
-                    var curve = limb.RotationCurve;
-                    if (curve != null)
+
+                    switch (data.CurveDebuggerCurve)
                     {
-                        float min = curve.Keys.Min(static k => k.Value);
-                        float max = curve.Keys.Max(static k => k.Value);
-
-                        foreach (var item in curve.Keys)
-                        {
-                            var a = cursor;
-                            var b = new Vector2(
-                                float.Lerp(rr.MinX, rr.MaxX, item.Position / durationRatio),
-                                float.Lerp(rr.MaxY, rr.MinY, Utilities.MapRange(min, max, 0, 1, item.Value))
-                            );
-
-                            if (item.Position > float.Epsilon)
-                                Draw.Line(a, b, 2);
-                            Draw.Circle(b, new(4));
-
-                            cursor = b;
-                        }
-
-                        var linePos = float.Lerp(rr.MinX, rr.MaxX, active.UnscaledTimer / anim.TotalDuration);
-                        var t = active.UnscaledTimer / anim.TotalDuration * durationRatio;
-                        var valAtTime = curve.Evaluate(t);
-                        var screenPos = new Vector2(linePos,
-                            float.Lerp(rr.MaxY, rr.MinY, Utilities.MapRange(min, max, 0, 1, valAtTime)));
-
-                        Draw.Colour = Colors.Cyan;
-                        Draw.Font = Fonts.CascadiaMono;
-                        Draw.Line(new Vector2(linePos, rr.MinY), new Vector2(linePos, rr.MaxY), 1);
-                        var vts = $"{valAtTime:0.###}";
-                        Draw.Colour = Colors.Black;
-                        screenPos.Y -= 10;
-                        screenPos.X += 10;
-                        Draw.Text(vts, screenPos + new Vector2(0, 1), Vector2.One, HorizontalTextAlign.Left, VerticalTextAlign.Bottom);
-                        Draw.Colour = Colors.White;
-                        Draw.Text(vts, screenPos, Vector2.One, HorizontalTextAlign.Left, VerticalTextAlign.Bottom);
+                        case AnimationTestingComponent.Curve.PositionX:
+                            {
+                                var curve = limb.TranslationCurve;
+                                if (curve != null)
+                                {
+                                    Draw.Colour = Colors.Red;
+                                    DrawCurve(rr, active, anim, durationRatio, curve, 0);
+                                }
+                            }
+                            break;
+                        case AnimationTestingComponent.Curve.PositionY:
+                            {
+                                var curve = limb.TranslationCurve;
+                                if (curve != null)
+                                {
+                                    Draw.Colour = Colors.GreenYellow;
+                                    DrawCurve(rr, active, anim, durationRatio, curve, 1);
+                                }
+                            }
+                            break;
+                        case AnimationTestingComponent.Curve.Rotation:
+                            {
+                                var curve = limb.RotationCurve;
+                                if (curve != null)
+                                {
+                                    Draw.Colour = Colors.Blue;
+                                    DrawCurve(rr, active, anim, durationRatio, curve);
+                                }
+                            }
+                            break;
+                        case AnimationTestingComponent.Curve.ScaleX:
+                            {
+                                var curve = limb.ScaleCurve;
+                                if (curve != null)
+                                {
+                                    Draw.Colour = Colors.Blue;
+                                    DrawCurve(rr, active, anim, durationRatio, curve, 0);
+                                }
+                            }
+                            break;
+                        case AnimationTestingComponent.Curve.ScaleY:
+                            {
+                                var curve = limb.ScaleCurve;
+                                if (curve != null)
+                                {
+                                    Draw.Colour = Colors.Blue;
+                                    DrawCurve(rr, active, anim, durationRatio, curve, 1);
+                                }
+                            }
+                            break;
                     }
+
+
                 }
             }
         }
+    }
+
+    public readonly struct AnimationCurveDemuxer<T>(Curve<T> curve, int componentIndex) where T : notnull
+    {
+        public readonly float Evaluate(float t)
+        {
+            return curve switch
+            {
+                AngleCurve v => v.Evaluate(t),
+                Curve<float> v => v.Evaluate(t),
+                Curve<Vector2> v => Decompose(v.Evaluate(t)),
+                _ => 0,
+            };
+        }
+
+        public readonly float GetValue(Curve<T>.Key key)
+        {
+            return key switch
+            {
+                Curve<float>.Key v => v.Value,
+                Curve<Vector2>.Key v => Decompose(v.Value),
+                _ => 0,
+            };
+        }
+
+        private readonly float Decompose(Vector2 v)
+        {
+            return componentIndex switch
+            {
+                1 => v.Y,
+                _ => v.X,
+            };
+        }
+    }
+
+    private static Vector2 DrawCurve<T>(Rect container, ActiveCharacterAnimation active, CharacterAnimation anim, float durationRatio, Curve<T> curve, int componentIndex = 0) where T : notnull
+    {
+        var demuxer = new AnimationCurveDemuxer<T>(curve, componentIndex);
+        var cursor = container.GetCenter() with { X = container.MinX };
+
+        float min = curve.Keys.Min(demuxer.GetValue);
+        float max = curve.Keys.Max(demuxer.GetValue);
+
+        if (max - min < 0.05f)
+        {
+            min -= 0.5f;
+            max += 0.5f;
+        }
+
+        int i = 0;
+        foreach (var item in curve.Keys)
+        {
+            var a = cursor;
+            var b = new Vector2(
+                float.Lerp(container.MinX, container.MaxX, item.Position / durationRatio),
+                float.Lerp(container.MaxY, container.MinY, Utilities.MapRange(min, max, 0, 1, demuxer.GetValue(item)))
+            );
+
+            if (i == 0)
+                a.Y = b.Y;
+
+            if (item.Position > float.Epsilon)
+            {
+                Draw.Line(a, b, 2);
+                if (i == curve.Keys.Length - 1)
+                    Draw.Line(b, new Vector2(container.MaxX, b.Y), 2);
+            }
+            Draw.Circle(b, new(4));
+
+            cursor = b;
+
+            i++;
+        }
+
+        var linePos = float.Lerp(container.MinX, container.MaxX, active.UnscaledTimer / anim.TotalDuration);
+        var t = active.UnscaledTimer / anim.TotalDuration * durationRatio;
+        var valAtTime = demuxer.Evaluate(t);
+        var screenPos = new Vector2(linePos,
+            float.Lerp(container.MaxY, container.MinY, Utilities.MapRange(min, max, 0, 1, valAtTime)));
+
+        Draw.Colour = Colors.Cyan;
+        Draw.Font = Fonts.CascadiaMono;
+        Draw.Line(new Vector2(linePos, container.MinY), new Vector2(linePos, container.MaxY), 1);
+        var vts = $"{valAtTime:0.###}";
+        Draw.Colour = Colors.Black;
+        screenPos.Y -= 10;
+        screenPos.X += 10;
+        Draw.Text(vts, screenPos + new Vector2(0, 1), Vector2.One, HorizontalTextAlign.Left, VerticalTextAlign.Bottom);
+        Draw.Colour = Colors.White;
+        Draw.Text(vts, screenPos, Vector2.One, HorizontalTextAlign.Left, VerticalTextAlign.Bottom);
+        return cursor;
     }
 
     public readonly struct TimelineConstraintDecorator : IDecorator
@@ -292,7 +419,8 @@ public class AnimationTestingSystem : Walgelijk.System
                 var r = container;
                 r.MinX = Utilities.Lerp(container.MinX, container.MaxX, min);
                 r.MaxX = Utilities.Lerp(container.MinX, container.MaxX, max);
-                if (p.Input.MousePosition.X > r.MinX && p.Input.MousePosition.X < r.MaxX)
+                if (r.Expand(5).ContainsPoint(p.Input.MousePosition))
+                //if (p.Input.MousePosition.X > r.MinX && p.Input.MousePosition.X < r.MaxX)
                     hover |= constraint.Constraints;
                 Draw.Quad(r);
 
