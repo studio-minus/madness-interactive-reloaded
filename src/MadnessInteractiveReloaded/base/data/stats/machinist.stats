@@ -10,6 +10,8 @@ dodge 0.2
 panic 1.25
 melee 0.35
 accurate_shot_chance 0.5
+unarmed_seq
+	unarmed_adept
 
 agility_skill_level adept
 jump_dodge_duration 0.25

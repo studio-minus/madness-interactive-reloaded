@@ -7,10 +7,12 @@ shooting_timeout 0.75
 recoil_handling 0.8
 dodge 0.35
 panic 0.5
-melee 0.4
+melee 0.6
 accurate_shot_chance 0.25
 can_deflect true
 body_health 0.5
+unarmed_seq
+	unarmed_expert
 
 agility_skill_level adept
 jump_dodge_duration 0.25

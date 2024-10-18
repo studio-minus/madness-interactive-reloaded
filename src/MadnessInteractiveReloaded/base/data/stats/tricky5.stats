@@ -12,6 +12,8 @@ dodge_oversaturate true
 accurate_shot_chance 0.25
 head_health 300
 body_health 300
+unarmed_seq
+	unarmed_master
 
 agility_skill_level master
 jump_dodge_duration 0.65

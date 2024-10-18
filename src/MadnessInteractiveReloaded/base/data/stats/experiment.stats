@@ -10,6 +10,8 @@ can_deflect true
 dodge_oversaturate true
 accurate_shot_chance 0.7
 hop_duration 0.27
+unarmed_seq
+	unarmed_master
 
 agility_skill_level master
 jump_dodge_duration 0.65

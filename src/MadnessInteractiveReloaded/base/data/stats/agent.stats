@@ -7,8 +7,10 @@ shooting_timeout 0.75
 recoil_handling 0.7
 dodge 0.05
 panic 2
-melee 0.3
+melee 0.5
 accurate_shot_chance 0.05
+unarmed_seq
+	unarmed_adept
 
 agility_skill_level novice
 jump_dodge_duration 0.25

@@ -12,3 +12,6 @@ accurate_shot_chance 0.25
 
 agility_skill_level master
 jump_dodge_duration 0.65
+
+unarmed_seq
+	unarmed_master
