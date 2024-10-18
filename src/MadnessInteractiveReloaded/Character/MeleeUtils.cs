@@ -18,7 +18,7 @@ public static class MeleeUtils
     /// <returns>The scaled melee animation speed based on their <see cref="CharacterStats.MeleeSkill"/></returns>
     /// 
     //public static float GetMeleeAnimationSpeedFor(CharacterStats stats) => float.Clamp(stats.MeleeSkill * 1.5f + 0.5f, 1, 3) / stats.Scale;
-    public static float GetMeleeAnimationSpeedFor(CharacterStats stats) => (1 + stats.MeleeSkill / 3) / stats.Scale;
+    public static float GetMeleeAnimationSpeedFor(CharacterStats stats) => (1) / stats.Scale;
 
     /// <summary>
     /// Attempt to perform a melee attack with the given parameters.
