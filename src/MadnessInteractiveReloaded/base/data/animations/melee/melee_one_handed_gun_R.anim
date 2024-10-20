@@ -5,7 +5,7 @@ relative
 
 
 BODY
-0       0.0px  0.0px  0.0deg constraints(PreventThrowing PreventIronSight  )
+0       0.0px  0.0px  0.0deg constraints(PreventThrowing PreventIronSight)
 1       -0.43px  0.28px  0.99deg
 2       -1.46px  0.57px
 3       -2.49px  0.58px  3.96deg

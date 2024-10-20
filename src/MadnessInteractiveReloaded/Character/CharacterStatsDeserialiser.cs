@@ -42,6 +42,7 @@ public static class CharacterStatsDeserialiser
         deserialiser.RegisterStringArray("sword_seq", (s, v) => s.SwordSeq = [..v]);
         deserialiser.RegisterStringArray("two_handed_seq", (s, v) => s.TwoHandedSeq = [..v]);
         deserialiser.RegisterStringArray("two_handed_gun_seq", (s, v) => s.TwoHandedGunSeq = [..v]);
+        deserialiser.RegisterStringArray("one_handed_gun_seq", (s, v) => s.OneHandedGunSeq = [..v]);
         deserialiser.RegisterStringArray("blunt_seq", (s, v) => s.BluntSeq = [..v]);
         deserialiser.RegisterString("agility_skill_level", (s, v) => s.AgilitySkillLevel = Enum.Parse<AgilitySkillLevel>(v, true));
     }
