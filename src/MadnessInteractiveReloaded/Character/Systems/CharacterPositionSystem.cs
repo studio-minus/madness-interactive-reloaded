@@ -90,6 +90,20 @@ public class CharacterPositionSystem : Walgelijk.System
                 transform.Scale = v.Size * charPos.Scale * character.Look.Head.TextureScale;
             }
         }
+        if (character.IsHeadAnimated())
+        {
+            if (charPos.Head.Unscaled)
+                headRenderer.AdditionalTransform = null;
+            else
+            {
+                var th = float.DegreesToRadians(charPos.Head.GlobalRotation);
+                headRenderer.AdditionalTransform =
+                    Matrix3x2.CreateRotation(-th, charPos.Head.GlobalPosition)
+                    * Matrix3x2.CreateScale(charPos.Head.AnimationScale, charPos.Head.GlobalPosition)
+                    * Matrix3x2.CreateRotation(th, charPos.Head.GlobalPosition);
+            }
+        }
+        else headRenderer.AdditionalTransform = null;
 
         // body renderer
         var bodyRenderer = Scene.GetComponentFrom<QuadShapeComponent>(charPos.Body.Entity);
@@ -106,6 +120,20 @@ public class CharacterPositionSystem : Walgelijk.System
                 Scene.GetComponentFrom<TransformComponent>(bodyRenderer.Entity).Scale = v.Size * charPos.Scale * character.Look.Body.TextureScale;
             }
         }
+        if (character.IsBodyAnimated())
+        {
+            if (charPos.Body.Unscaled)
+                bodyRenderer.AdditionalTransform = null;
+            else
+            {
+                var th = float.DegreesToRadians(charPos.Body.GlobalRotation);
+                bodyRenderer.AdditionalTransform =
+                    Matrix3x2.CreateRotation(-th, charPos.Body.GlobalPosition)
+                    * Matrix3x2.CreateScale(charPos.Body.AnimationScale, charPos.Body.GlobalPosition)
+                    * Matrix3x2.CreateRotation(th, charPos.Body.GlobalPosition);
+            }
+        }
+        else bodyRenderer.AdditionalTransform = null;
 
         // hand renderers
         int i = 0;
@@ -132,6 +160,21 @@ public class CharacterPositionSystem : Walgelijk.System
             else
                 targetHandRenderOrder.OrderInLayer = (shouldRenderBackHand ? CharacterConstants.RenderOrders.OtherHandOrder : CharacterConstants.RenderOrders.MainHandOrder);
 
+            if (character.IsHandAnimated(hand))
+            {
+                if (hand.Unscaled)
+                    hr.AdditionalTransform = null;
+                else
+                {
+                    var th = float.DegreesToRadians(hand.GlobalRotation);
+                    hr.AdditionalTransform =
+                        Matrix3x2.CreateRotation(-th, hand.GlobalPosition)
+                        * Matrix3x2.CreateScale(hand.AnimationScale, hand.GlobalPosition)
+                        * Matrix3x2.CreateRotation(th, hand.GlobalPosition);
+                }
+            }
+            else hr.AdditionalTransform = null;
+
             hr.RenderOrder = targetHandRenderOrder;
             hr.Material = targetHandMaterial;
             hr.Color = character.Tint;
@@ -155,6 +198,9 @@ public class CharacterPositionSystem : Walgelijk.System
     {
         var charPos = character.Positioning;
 
+        var headRenderer = Scene.GetComponentFrom<QuadShapeComponent>(charPos.Head.Entity);
+        var bodyRenderer = Scene.GetComponentFrom<QuadShapeComponent>(charPos.Body.Entity);
+
         // body decorations
         for (int i = 0; i < charPos.BodyDecorations.Length; i++)
         {
@@ -167,6 +213,7 @@ public class CharacterPositionSystem : Walgelijk.System
 
             if (piece != null)
             {
+                decorationRenderer.AdditionalTransform = bodyRenderer.AdditionalTransform;
                 decorationRenderer.HorizontalFlip = charPos.IsFlipped;
                 decorationRenderer.Color = character.Tint;
                 if (character.NeedsLookUpdate)
@@ -194,6 +241,7 @@ public class CharacterPositionSystem : Walgelijk.System
             decorationRenderer.RenderOrder = character.BaseRenderOrder.WithOrder(i + CharacterConstants.RenderOrders.HeadDecorOrder);
             if (piece != null)
             {
+                decorationRenderer.AdditionalTransform = headRenderer.AdditionalTransform;
                 decorationRenderer.HorizontalFlip = charPos.IsFlipped;
                 if (character.NeedsLookUpdate)
                 {
@@ -307,9 +355,11 @@ public class CharacterPositionSystem : Walgelijk.System
 
         charPos.Head.AnimationPosition = mixed.HeadPosition * charPos.Scale;
         charPos.Head.AnimationAngle = mixed.HeadRotation;
+        charPos.Head.AnimationScale = mixed.HeadScale;
 
         charPos.Body.AnimationPosition = mixed.BodyPosition * charPos.Scale;
         charPos.Body.AnimationAngle = mixed.BodyRotation;
+        charPos.Body.AnimationScale = mixed.BodyScale;
 
         for (int i = 0; i < charPos.Hands.Length; i++)
         {
@@ -320,7 +370,7 @@ public class CharacterPositionSystem : Walgelijk.System
             //    hand.AnimationPosition = Utilities.SmoothApproach(hand.AnimationPosition, transformedIndex == 0 ? mixed.Hand1Position : mixed.Hand2Position, 15, Time.DeltaTime);
             //else
             hand.AnimationPosition = (transformedIndex == 0 ? mixed.Hand1Position : mixed.Hand2Position);
-
+            hand.AnimationScale = transformedIndex == 0 ? mixed.Hand1Scale : mixed.Hand2Scale;
             hand.AnimationAngle = transformedIndex == 0 ? mixed.Hand1Rotation : mixed.Hand2Rotation;
             hand.AnimatedHandLook = transformedIndex == 0 ? mixed.Hand1Look : mixed.Hand2Look;
         }

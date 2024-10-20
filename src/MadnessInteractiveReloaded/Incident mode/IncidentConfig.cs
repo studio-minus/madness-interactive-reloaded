@@ -6,6 +6,7 @@ using Walgelijk.AssetManager;
 
 namespace MIR;
 
+
 public class IncidentConfig
 {
     public const int MinKillTarget = 20;
@@ -26,6 +27,16 @@ public class IncidentConfig
         string[] endLevels = [.. Registries.Levels.GetAllKeys().Where(k => k.StartsWith("lvl_incident_end"))];
         string[] midLevels = [.. Registries.Levels.GetAllKeys().Where(k => k.StartsWith("lvl_incident")).Except(beginLevels).Except(endLevels)];
         string[] wpns = [.. Registries.Weapons.GetAllKeys()];
+
+        WeightedGrabBag<EnemySpawnInstructions> spawnInstr = [];
+
+        spawnInstr.Add(new("grunt", "grunt", "aahw"), 4);
+        spawnInstr.Add(new("agent", "agent", "aahw"), 5);
+        spawnInstr.Add(new("engineer", "engineer", "aahw"), 4);
+        spawnInstr.Add(new("machinist", "machinist", "aahw"), 2);
+        spawnInstr.Add(new("soldat", "soldat", "aahw"), 3.5f);
+        //spawnInstr.Add(new("experiment", "experiment", "aahw"), 1);
+        //spawnInstr.Add(new("end_soldat", "end_soldat", "aahw"), 0.2f);
 
         selectedMusic = Registries.IncidentMusicSet[rand.Next(0, Registries.IncidentMusicSet.Count)];
 
@@ -48,36 +59,31 @@ public class IncidentConfig
             ]
         };
 
-        int bcOpening = Registries.Levels[c.Levels[0]].Level.Value.BodyCountToWin;
-        int bcEnd = Registries.Levels[c.Levels[^1]].Level.Value.BodyCountToWin;
-
-        int remaining = KillTarget - bcOpening - bcEnd;
-        int[] bodyCounts = new int[c.Levels.Length];
-
-        while (remaining > 0)
+        var targetKillCount = KillTarget;
         {
-            int i = rand.Next(1, c.Levels.Length - 1); // skip opening and ending 🎈🎈
-            string? k = c.Levels[i];
-            if (Registries.Levels.TryGet(k, out var lvl))
+            int maxCycles = 5000;
+            var levels = c.Levels.Select(Registries.Levels.Get).Select(l => l.Level.Value).ToArray(); // TODO this is slow lol
+            var mid = levels.Skip(1).SkipLast(1).ToArray();
+            while (true)
             {
-                var loaded = lvl.Level.Value;
-                if (i > 0 && i < (c.Levels.Length - 1))
-                {
-                    if (loaded.EnemySpawnInstructions.Count != 0 && loaded.MaxEnemyCount != 0)
-                    {
-                        var existingNpcs = loaded.Objects.Count(b => b is NPC);
-                        var o = 1 + existingNpcs;
+                KillTarget = levels.Sum(l => l.BodyCountToWin);
 
-                        bodyCounts[i] += o;
-                        remaining -= o;
-                    }
+                if (KillTarget == targetKillCount || maxCycles-- <= 0)
+                    break;
+
+                var sign = int.Sign(targetKillCount - KillTarget);
+
+                var lvl = rand.GetItems(mid, 1)[0];
+                var existingNpcs = lvl.Objects.Count(b => b is NPC);
+
+                if (lvl.EnemySpawnInstructions.Count != 0 && lvl.MaxEnemyCount != 0)
+                {
+                    lvl.BodyCountToWin += sign;
+                    lvl.BodyCountToWin = int.Max(1, int.Max(existingNpcs, lvl.BodyCountToWin));
                 }
             }
         }
 
-        KillTarget = bodyCounts.Sum() + bcOpening + bcEnd;
-
-        // make shit happen
         {
             var sys = typeof(IncidentSystem).FullName;
 
@@ -91,19 +97,23 @@ public class IncidentConfig
                     loaded.BackgroundMusic = selectedMusic; // we set the music
 
                     if (!loaded.Objects.Any(d => d is GameSystem ss && ss.SystemTypeName != sys))
-                    {
-                        loaded.Objects.Add(new GameSystem(null!) { SystemTypeName = sys });
-                    }
+                        loaded.Objects.Add(new GameSystem(null!) { SystemTypeName = sys }); /// add incident mode system if not present
 
                     if (i > 0 && i < (c.Levels.Length - 1))
                     {
                         if (loaded.EnemySpawnInstructions.Count != 0 && loaded.MaxEnemyCount != 0)
                         {
-                            loaded.BodyCountToWin = bodyCounts[i];
                             loaded.MaxEnemyCount = rand.Next(2, 4);
                             loaded.MaxSimultaneousAttackingEnemies = rand.Next(2, 4);
                             loaded.Weapons = [.. rand.GetItems(wpns, rand.Next(2, 30))];
                             loaded.EnemySpawnInterval = float.Lerp(0.01f, 0.2f, rand.NextSingle());
+
+                            loaded.EnemySpawnInstructions.Clear();
+                            for (int n = 0; n < rand.Next(2, 10); n++)
+                            {
+                                var instr = spawnInstr.Grab();
+                                loaded.EnemySpawnInstructions.Add(instr);
+                            }
                         }
                     }
                 }

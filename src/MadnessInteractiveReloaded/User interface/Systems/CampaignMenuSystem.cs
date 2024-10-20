@@ -1,7 +1,7 @@
-﻿using System.Numerics;
+﻿using System.Linq;
+using System.Numerics;
 using Walgelijk;
 using Walgelijk.AssetManager;
-using Walgelijk.Localisation;
 using Walgelijk.Onion;
 using Walgelijk.Onion.Controls;
 using Walgelijk.SimpleDrawing;
@@ -15,6 +15,7 @@ public class CampaignMenuSystem : Walgelijk.System
     public Rect PlayerDrawRect;
     // TODO maybe use a shared rendertexure for this?
     public static RenderTexture PlayerDrawTarget = new(512, 512, flags: RenderTargetFlags.None);
+    private Rect campaignBoxRect;
 
     private static readonly MenuCharacterRenderer menuCharacterRenderer = new();
 
@@ -83,7 +84,7 @@ public class CampaignMenuSystem : Walgelijk.System
             Ui.Theme.Padding(10).ForegroundColor(Colors.Black.WithAlpha(0.5f)).Once();
             Ui.StartScrollView(false);
             int i = 0;
-            foreach (var c in Registries.Campaigns.GetAllValues())
+            foreach (var c in Registries.Campaigns.GetAllValues().OrderBy(static c => c.Order))
             {
                 Ui.Layout.FitWidth().Height(40).CenterHorizontal();
                 Ui.Theme.Padding(10).Once();
@@ -127,10 +128,13 @@ public class CampaignMenuSystem : Walgelijk.System
                 Ui.StartScrollView(true);
                 {
                     Ui.Layout.FitWidth().PreferredSize().StickLeft().StickTop();
-                    Ui.Theme.Text(Colors.White.WithAlpha(0.5f)).Once();
-                    Ui.TextRect($"<color=#ff0000>{sc.Name}</color>\n - {sc.Author}", HorizontalTextAlign.Left, VerticalTextAlign.Top);
+                    Ui.Theme.Text(Colors.Red).FontSize(18).Once();
+                    Ui.TextRect(sc.Name, HorizontalTextAlign.Left, VerticalTextAlign.Top);
 
-                    Ui.Layout.FitWidth().PreferredSize().StickLeft().StickTop().Move(0, Onion.Tree.LastNode.GetInstance().Rects.ComputedGlobal.Height);
+                    Ui.Layout.FitWidth().PreferredSize().StickLeft().StickTop().Height(38);
+                    Ui.Theme.Text(Colors.White.WithAlpha(0.5f)).FontSize(15).Once();
+                    Ui.TextRect(sc.Author, HorizontalTextAlign.Left, VerticalTextAlign.Bottom);
+                    Ui.Layout.FitWidth().PreferredSize().StickLeft().StickTop().Move(0, Onion.Tree.LastNode.GetInstance().Rects.ComputedGlobal.Height + 10);
                     Ui.TextRect(sc.Description, HorizontalTextAlign.Left, VerticalTextAlign.Top);
                 }
                 Ui.End();
@@ -142,25 +146,23 @@ public class CampaignMenuSystem : Walgelijk.System
         //Ui.Image(PlayerDrawTarget, ImageContainmentMode.Contain);
         //PlayerDrawRect = Onion.Tree.LastNode.GetInstance().Rects.ComputedGlobal;
 
+        const float pedestalHeight = 70;
         var s = new Vector2(400, 512);
         s.Y = float.Min(Window.Height / 2, s.Y);
         Draw.Order = new RenderOrder(0, 1);
-        PlayerDrawRect = Draw.Image(PlayerDrawTarget, new Rect(0, 0, s.X, s.Y).Translate(Window.Width - s.X, 0).Translate(-10, -10), ImageContainmentMode.Contain);
+
+        PlayerDrawRect = MadnessUtils.FitImageRect(PlayerDrawTarget, campaignBoxRect.Translate(0, -campaignBoxRect.Height), ImageContainmentMode.Contain);
+        PlayerDrawRect = PlayerDrawRect.Translate(0, campaignBoxRect.MinY -  PlayerDrawRect.MaxY - pedestalHeight ); // stick to top of box
+        Draw.Image(PlayerDrawTarget, PlayerDrawRect.Translate(0, pedestalHeight * 0.5f), ImageContainmentMode.Stretch);
 
         if (Input.IsButtonPressed(MouseButton.Left) && PlayerDrawRect.ContainsPoint(Input.WindowMousePosition))
-        {
             if (MadnessUtils.FindPlayer(Scene, out var player, out var character))
-            {
-                character.PlayAnimation(Utilities.PickRandom(Animations.Dancing));
-            }
-        }
+                character.PlayAnimation(Registries.Animations.GetRandomValue());
 
-        Draw.Order = new RenderOrder(0, 0);
+        Draw.Order = default;
         var pedestal = Assets.Load<Texture>("textures/pedestal.png").Value;
-        var r = PlayerDrawRect;
-        r.MinY = r.MaxY - pedestal.Height;
-        r = r.Scale(0.7f, 1);
-        r = r.Translate(0, 70);
+        var r = PlayerDrawRect.Translate(0, pedestalHeight);
+        r.MinY = r.MaxY - pedestalHeight;
         Draw.Reset();
         Draw.ScreenSpace = true;
         Draw.Image(pedestal, r, ImageContainmentMode.Contain);
@@ -237,6 +239,7 @@ public class CampaignMenuSystem : Walgelijk.System
             }
         }
         Ui.End();
+        campaignBoxRect = Onion.Tree.LastNode.GetInstance().Rects.ComputedGlobal;
 
         if (MenuUiUtils.BackButton())
             Game.Scene = MainMenuScene.Load(Game);

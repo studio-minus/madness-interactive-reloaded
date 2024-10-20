@@ -1,0 +1,67 @@
+﻿fps 24
+scale 1
+speed 1
+
+BODY
+0       0.0px  0.0px  0.0deg constraints(PreventThrowing PreventIronSight)
+1       -2.63deg
+2       1.56px  15.15px
+3       -21.42deg
+4       -3.37px  16.72px  -28.46deg
+5       -6.91px  14.65px  -31.35deg
+6       -10.45px  8.69px  -32.14deg
+7       -10.49px  2.73px  -29.9deg
+8       -7.12px  0.01px  -24.16deg
+10      -2.34px  0.01px  -11.34deg
+11      -0.99px  0.0px  -5.63deg
+12      -0.24px  0.0px  -1.55deg
+13      0.0px  0.0px  0.0deg
+
+HEAD
+0       0.0px  0.0px  0.0deg
+1       -2.87px  -0.49px  2.3deg
+2       -5.74px  -3.94px
+3       -5.23px  -12.61px  21.07deg
+4       -1.67px  -18.32px  27.34deg
+5       30.75deg
+6       13.4px  -15.75px  31.97deg
+7       16.93px  -17.11px
+8       30.49px  -16.62px  23.83deg
+9       27.32px  -14.09px
+11      10.73px  -5.72px  6.01deg
+12      3.17px  -1.53px  1.69deg
+13      0.0px  0.0px  0.0deg
+
+HAND
+aim
+0       -98.09px  26.85px  0.0deg  scale(1.0, 1.0)
+1       -82.93px  53.36px
+2       75.26px  76.27px  2.65deg  scale(1.0, 1.0)
+3       473.92px  73.11px  -5.55deg  scale(2.84, 1.0)
+4       630.65px  42.02px  -9.61deg  scale(1.92, 1.0)
+5       684.87px  -1.05px  -3.08deg  scale(1.0, 1.0)
+6       638.95px  -11.18px  9.05deg
+7       400.05px  17.16px  15.57deg
+8       100.15px  45.51px  -8.51deg  scale(1.0, 1.0)
+9       -20.21px  52.51px  -10.07deg
+10      -67.38px  47.64px  -8.05deg
+11      -88.78px  39.19px
+12      -96.8px  30.74px  -1.45deg
+13      -98.09px  26.85px  0.0deg  scale(1.0, 1.0)
+
+HAND
+aim
+0       181.63px  41.61px  0.0deg  scale(1.0, 1.0)
+1       184.48px  51.41px  0.95deg
+2       193.31px  61.21px  3.49deg
+3       202.14px  43.31px
+4       210.97px  9.62px  11.52deg
+5       178.61px  -14.58px
+6       114.39px  -23.0px  20.47deg
+7       50.16px  -12.42px
+8       24.14px  7.77px  26.68deg  scale(1.0, 1.0)
+9       30.34px  25.22px  25.67deg
+10      62.5px  34.57px
+11      112.22px  39.3px
+12      161.95px  40.46px  3.23deg
+13      181.63px  41.61px  0.0deg  scale(1.0, 1.0)

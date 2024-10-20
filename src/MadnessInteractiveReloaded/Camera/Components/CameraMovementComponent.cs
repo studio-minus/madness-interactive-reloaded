@@ -135,6 +135,8 @@ public class CameraMovementComponent : Component
 
     public class PlayerTarget : ITarget
     {
+        public const float HorizontalLevelPadding = 100;
+
         public bool Apply(Scene scene, Time time, ref Vector2 position, ref float orthographicSize)
         {
             var window = scene.Game.Window;
@@ -146,6 +148,8 @@ public class CameraMovementComponent : Component
                 if (Level.CurrentLevel != null)
                 {
                     var bnds = Level.CurrentLevel.LevelBounds;
+                    bnds.MinX -= HorizontalLevelPadding;
+                    bnds.MaxX += HorizontalLevelPadding;
 
                     if (Level.CurrentLevel.FullZoom)
                         orthographicSize = float.Max(bnds.Width / window.Size.X, bnds.Height / window.Size.Y);

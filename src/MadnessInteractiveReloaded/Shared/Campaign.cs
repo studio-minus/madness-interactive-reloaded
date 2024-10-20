@@ -57,6 +57,11 @@ public class Campaign
     /// </summary>
     public bool Temporary;
 
+    /// <summary>
+    /// Order in displayed lists.
+    /// </summary>
+    public int Order = 0;
+
     public Campaign()
     {
 

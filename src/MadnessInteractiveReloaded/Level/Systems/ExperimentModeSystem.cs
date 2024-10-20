@@ -279,6 +279,13 @@ public class ExperimentModeSystem : Walgelijk.System
             Draw.Colour = Colors.White.WithAlpha(0.5f);
             Draw.Quad(r.TopLeft, r.GetSize());
         }
+
+        Draw.Reset();
+        Draw.ScreenSpace = true;
+        Draw.BlendMode = BlendMode.Multiply;
+        Draw.Order = RenderOrders.UserInterface.OffsetLayer(-1);
+        Draw.Colour = Vector4.Lerp(Colors.Red, Colors.White, 0.95f);
+        Draw.Quad(new Rect(0, 0, Window.Width, Window.Height));
     }
 
     private void ProcessUi(ExperimentModeComponent exp)

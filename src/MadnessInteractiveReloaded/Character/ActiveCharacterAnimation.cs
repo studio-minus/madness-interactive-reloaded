@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Numerics;
+using Walgelijk;
 
 namespace MIR;
 
@@ -25,25 +26,26 @@ public class ActiveCharacterAnimation
         Animation = animation;
         Speed = speed;
 
-        //TODO dit is foeilelijk fix ooit
+        //TODO this code is not pretty
+
         MaxKeyCount = 0;
         if (animation.HandAnimations != null)
             foreach (var item in animation.HandAnimations)
             {
-                MaxKeyCount = Math.Max(MaxKeyCount, item.TranslationCurve?.Keys.Length ?? 0);
-                MaxKeyCount = Math.Max(MaxKeyCount, item.RotationCurve?.Keys.Length ?? 0);
+                MaxKeyCount = int.Max(MaxKeyCount, item.TranslationCurve?.Keys.Length ?? 0);
+                MaxKeyCount = int.Max(MaxKeyCount, item.RotationCurve?.Keys.Length ?? 0);
             }
 
         if (animation.HeadAnimation != null)
         {
-            MaxKeyCount = Math.Max(MaxKeyCount, animation.HeadAnimation.TranslationCurve?.Keys.Length ?? 0);
-            MaxKeyCount = Math.Max(MaxKeyCount, animation.HeadAnimation.RotationCurve?.Keys.Length ?? 0);
+            MaxKeyCount = int.Max(MaxKeyCount, animation.HeadAnimation.TranslationCurve?.Keys.Length ?? 0);
+            MaxKeyCount = int.Max(MaxKeyCount, animation.HeadAnimation.RotationCurve?.Keys.Length ?? 0);
         }
 
         if (animation.BodyAnimation != null)
         {
-            MaxKeyCount = Math.Max(MaxKeyCount, animation.BodyAnimation.TranslationCurve?.Keys.Length ?? 0);
-            MaxKeyCount = Math.Max(MaxKeyCount, animation.BodyAnimation.RotationCurve?.Keys.Length ?? 0);
+            MaxKeyCount = int.Max(MaxKeyCount, animation.BodyAnimation.TranslationCurve?.Keys.Length ?? 0);
+            MaxKeyCount = int.Max(MaxKeyCount, animation.BodyAnimation.RotationCurve?.Keys.Length ?? 0);
         }
     }
 
@@ -82,6 +84,14 @@ public class ActiveCharacterAnimation
         return anim.RotationCurve?.Evaluate(UnscaledTimer / anim.Duration) ?? default;
     }
 
+    public Vector2 GetHeadScale()
+    {
+        if (Animation.HeadAnimation == null)
+            return Vector2.One;
+        var anim = Animation.HeadAnimation;
+        return anim.ScaleCurve?.Evaluate(UnscaledTimer / anim.Duration) ?? Vector2.One;
+    }
+
     public Vector2 GetBodyPosition()
     {
         if (Animation.BodyAnimation == null)
@@ -96,6 +106,14 @@ public class ActiveCharacterAnimation
             return default;
         var anim = Animation.BodyAnimation;
         return anim.RotationCurve?.Evaluate(UnscaledTimer / anim.Duration) ?? default;
+    }
+
+    public Vector2 GetBodyScale()
+    {
+        if (Animation.BodyAnimation == null)
+            return Vector2.One;
+        var anim = Animation.BodyAnimation;
+        return anim.ScaleCurve?.Evaluate(UnscaledTimer / anim.Duration) ?? Vector2.One;
     }
 
     public void Stop()
