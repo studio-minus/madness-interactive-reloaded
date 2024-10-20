@@ -2,7 +2,7 @@
   "Id": "mag_railgun",
   "WeaponData": {
     "Name": "MAG RAILGUN",
-    "Damage": 10.0,
+    "Damage": 3.0,
     "UseDelay": 0.1,
     "MaxHandRangeMultiplier": 0.6,
     "AdditionalComponents": null,
@@ -11,7 +11,7 @@
     "ThrowableHeavy": true,
     "ThrowableSharpBoxes": [],
     "WeaponType": "Firearm",
-    "BulletsPerShot": 1,
+    "BulletsPerShot": 4,
     "RoundsPerMagazine": 120,
     "BurstFireCount": 0,
     "Accuracy": 1.0,
