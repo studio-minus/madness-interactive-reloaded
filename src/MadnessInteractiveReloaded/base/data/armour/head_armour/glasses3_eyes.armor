@@ -2,8 +2,8 @@
 
 name Glasses 3
 type HeadAccessory
-left base:textures/bodies/eyes/glasses3/glasses3_left.png
-right base:textures/bodies/eyes/glasses3/glasses3_right.png
+left textures/bodies/eyes/glasses3/glasses3_left.png
+right textures/bodies/eyes/glasses3/glasses3_right.png
 texture-scale 1
 category All
 detach False

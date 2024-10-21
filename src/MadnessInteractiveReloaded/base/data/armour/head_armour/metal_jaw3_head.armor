@@ -2,8 +2,8 @@
 
 name Metal jaw 3
 type Head
-left base:textures/bodies/skin/metal_jaw3/metal_jaw3_left.png
-right base:textures/bodies/skin/metal_jaw3/metal_jaw3_right.png
+left textures/bodies/skin/metal_jaw3/metal_jaw3_left.png
+right textures/bodies/skin/metal_jaw3/metal_jaw3_right.png
 texture-scale 1
 category All
 detach False
