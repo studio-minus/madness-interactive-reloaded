@@ -1,0 +1,12 @@
+0.49.5
+
+name Zealot robes
+type BodyAccessory
+left base:textures/bodies/body2/zealot_robes/zealot_robes_left.png
+right base:textures/bodies/body2/zealot_robes/zealot_robes_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+damage-size 1
+offset 5 26
