@@ -1,0 +1,365 @@
+{
+  "DisplayName": "untitled",
+  "LevelType": "Campaign",
+  "ProgressionType": "BodyCount",
+  "EnemySpawnInterval": 1.0,
+  "MaxEnemyCount": 2,
+  "MaxSimultaneousAttackingEnemies": 2,
+  "BackgroundMusic": "base:sounds/music/Lothyde/precarious_state.ogg",
+  "WeaponChance": 0.57,
+  "LevelBounds": {
+    "MinX": -3219.782,
+    "MinY": -362.57446,
+    "MaxX": 3180.2175,
+    "MaxY": 1770.7588
+  },
+  "BodyCountToWin": 25,
+  "TimeLimitInSeconds": -1.0,
+  "FullZoom": true,
+  "Thumbnail": "0",
+  "OpeningTransition": true,
+  "ExitingTransition": true,
+  "EnemySpawnInstructions": [
+    {
+      "StatsKey": "zealot",
+      "LookKey": "zealot",
+      "FactionKey": "aahw"
+    }
+  ],
+  "Weapons": [
+    "mp5k",
+    "laser_rifle"
+  ],
+  "FloorLine": [
+    {
+      "X": -2866.0,
+      "Y": -264.47565
+    },
+    {
+      "X": 2826.0,
+      "Y": -264.47565
+    }
+  ],
+  "Objects": [
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerSpawn, MIR",
+      "Position": {
+        "X": 0.0,
+        "Y": 0.0
+      },
+      "SpawnWeapon": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": -13.709946,
+          "Y": -88.23843
+        },
+        "FacingDirection": {
+          "X": "NaN",
+          "Y": "NaN"
+        },
+        "EnemySpawnerDoor": false,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": -480.86172,
+          "Y": 1232.2959
+        },
+        "TopRight": {
+          "X": 455.78204,
+          "Y": 1233.2842
+        },
+        "BottomLeft": {
+          "X": -482.23828,
+          "Y": -88.23844
+        },
+        "BottomRight": {
+          "X": 454.8184,
+          "Y": -88.23841
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": -3010.9878,
+          "Y": -241.58691
+        },
+        "FacingDirection": {
+          "X": 1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": -3044.0906,
+          "Y": 548.78845
+        },
+        "TopRight": {
+          "X": -2778.4768,
+          "Y": 562.1755
+        },
+        "BottomLeft": {
+          "X": -3043.367,
+          "Y": -284.26654
+        },
+        "BottomRight": {
+          "X": -2778.6084,
+          "Y": -198.90729
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": 2973.4763,
+          "Y": -241.58691
+        },
+        "FacingDirection": {
+          "X": -1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": true,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": 3006.579,
+          "Y": 548.78845
+        },
+        "TopRight": {
+          "X": 2740.9653,
+          "Y": 562.1755
+        },
+        "BottomLeft": {
+          "X": 3005.8555,
+          "Y": -284.26654
+        },
+        "BottomRight": {
+          "X": 2741.0972,
+          "Y": -198.90729
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
+      "WeaponKey": "laser_rifle",
+      "Angle": 0.0,
+      "Ammo": 5,
+      "AttachedToWall": true,
+      "Position": {
+        "X": 1693.352,
+        "Y": 410.47217
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
+      "WeaponKey": "laser_rifle",
+      "Angle": 0.0,
+      "Ammo": 1,
+      "AttachedToWall": true,
+      "Position": {
+        "X": 1532.551,
+        "Y": 218.21004
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
+      "WeaponKey": "laser_rifle",
+      "Angle": 0.0,
+      "Ammo": 2,
+      "AttachedToWall": true,
+      "Position": {
+        "X": -1732.4084,
+        "Y": 218.21004
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "zealot",
+        "Stats": "zealot",
+        "Faction": "aahw",
+        "Weapon": "laser_rifle",
+        "Flipped": false,
+        "BottomCenter": {
+          "X": -1331.283,
+          "Y": -245.51633
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AnimationTrigger, MIR",
+      "Component": {
+        "WorldRect": {
+          "MinX": 2386.0056,
+          "MinY": -274.13214,
+          "MaxX": 2766.489,
+          "MaxY": 1078.3643
+        },
+        "Animation": "cutscene_crawl_into",
+        "StartEvent": 0,
+        "Target": 0,
+        "ExistingLerpTime": 0.0,
+        "TargetPosition": {
+          "X": 2491.4893,
+          "Y": -274.13214
+        },
+        "TargetFlipped": false,
+        "CreateNewLook": null,
+        "CreateNewStats": null,
+        "CreateNewFaction": "aahw",
+        "IsExpired": false,
+        "Entity": {
+          "Identity": 0
+        }
+      },
+      "Rectangle": {
+        "MinX": 2386.0056,
+        "MinY": -274.13214,
+        "MaxX": 2766.489,
+        "MaxY": 1078.3643
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelProgressTrigger, MIR",
+      "Rectangle": {
+        "MinX": 3564.6155,
+        "MinY": -279.73087,
+        "MaxX": 4076.6155,
+        "MaxY": 515.94336
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -3187.5298,
+        "MinY": 1619.1586,
+        "MaxX": 3207.143,
+        "MaxY": 1842.3749
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -4711.7725,
+        "MinY": -740.25525,
+        "MaxX": 4337.0312,
+        "MaxY": -264.47565
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 2844.472,
+        "MinY": -402.28497,
+        "MaxX": 3207.1428,
+        "MaxY": 1800.1672
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -3248.106,
+        "MinY": -402.2849,
+        "MaxX": -2885.4353,
+        "MaxY": 1800.1672
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": -19.782135,
+        "Y": 704.09216
+      },
+      "TexturePath": "base:textures/backgrounds/mag_campaign/background_mag_trap.qoi",
+      "Scale": 2.222222
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": 2976.9094,
+        "Y": 1482.5645
+      },
+      "B": {
+        "X": 2732.025,
+        "Y": 1749.2156
+      },
+      "Radius": 123.0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
+      "WeaponKey": "laser_rifle",
+      "Angle": 0.0,
+      "Ammo": 3,
+      "AttachedToWall": true,
+      "Position": {
+        "X": -1640.5225,
+        "Y": 419.34668
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": -3035.4377,
+        "Y": 1484.806
+      },
+      "B": {
+        "X": -2785.7598,
+        "Y": 1746.9749
+      },
+      "Radius": 123.0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "zealot",
+        "Stats": "zealot",
+        "Faction": "aahw",
+        "Weapon": "laser_rifle",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": 1913.6595,
+          "Y": -245.51633
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    }
+  ]
+}

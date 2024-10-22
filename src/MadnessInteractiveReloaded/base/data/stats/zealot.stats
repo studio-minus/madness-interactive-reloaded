@@ -10,6 +10,8 @@ panic 0.2
 melee 0.5
 accurate_shot_chance 0.7
 can_deflect true
+head_health 4
+body_health 7
 
 agility_skill_level master
 jump_dodge_duration 0.65
