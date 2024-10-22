@@ -64,6 +64,7 @@ public class LevelEditorGuiSystem : Walgelijk.System
         new("GameSystem", (editor, pos) => new GameSystem(editor){ Position = pos }),
         new("Script", (editor, pos) => new LevelScript(editor, pos)),
         new("Improbability disk", (editor, pos) => new Disk(editor, pos)),
+        new("Turret", (editor, pos) => new Turret(editor, pos)),
     ];
 
     public override void Update()
