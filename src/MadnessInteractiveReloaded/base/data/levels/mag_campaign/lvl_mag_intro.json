@@ -5,7 +5,7 @@
   "EnemySpawnInterval": 0.90000004,
   "MaxEnemyCount": 2,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "base:sounds/music/Lothyde/precarious_state.ogg",
+  "BackgroundMusic": "sounds/music/Lothyde/precarious_state.ogg",
   "WeaponChance": 0.26,
   "LevelBounds": {
     "MinX": -2420.772,
@@ -16,7 +16,7 @@
   "BodyCountToWin": 3,
   "TimeLimitInSeconds": -1.0,
   "FullZoom": true,
-  "Thumbnail": "base:textures/level_thumbnails/mag_campaign/lvl_mag_intro.qoi",
+  "Thumbnail": "textures/level_thumbnails/mag_campaign/lvl_mag_intro.qoi",
   "OpeningTransition": false,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [
@@ -106,7 +106,7 @@
         "X": -105.21652,
         "Y": 386.8178
       },
-      "TexturePath": "base:textures/backgrounds/mag_campaign/background_mag_intro.qoi",
+      "TexturePath": "textures/backgrounds/mag_campaign/background_mag_intro.qoi",
       "Scale": 2.222222
     },
     {
@@ -316,7 +316,7 @@
     },
     {
       "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "base:textures/mag_glass_layer.png",
+      "TexturePath": "textures/mag_glass_layer.png",
       "Angle": 0.0,
       "Position": {
         "X": -1350.8335,

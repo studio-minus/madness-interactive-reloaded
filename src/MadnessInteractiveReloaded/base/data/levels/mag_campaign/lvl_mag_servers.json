@@ -5,7 +5,7 @@
   "EnemySpawnInterval": 0.5,
   "MaxEnemyCount": 6,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "base:sounds/music/Lothyde/precarious_state.ogg",
+  "BackgroundMusic": "sounds/music/Lothyde/precarious_state.ogg",
   "WeaponChance": 0.61,
   "LevelBounds": {
     "MinX": -4922.9126,
@@ -234,7 +234,7 @@
         "X": 1027.035,
         "Y": 1281.0952
       },
-      "TexturePath": "base:textures/black-transparent-gradient.png",
+      "TexturePath": "textures/black-transparent-gradient.png",
       "Scale": 2.222222
     },
     {
@@ -284,7 +284,7 @@
         "X": -1.8015747,
         "Y": -37.29956
       },
-      "TexturePath": "base:textures/backgrounds/mag_campaign/background_mag_servers.qoi",
+      "TexturePath": "textures/backgrounds/mag_campaign/background_mag_servers.qoi",
       "Scale": 2.222222
     },
     {
@@ -293,7 +293,7 @@
         "X": 1027.035,
         "Y": -1328.2319
       },
-      "TexturePath": "base:textures/black-transparent-gradient.png",
+      "TexturePath": "textures/black-transparent-gradient.png",
       "Scale": 2.222222
     },
     {

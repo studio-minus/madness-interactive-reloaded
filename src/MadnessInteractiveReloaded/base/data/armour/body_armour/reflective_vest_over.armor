@@ -2,8 +2,8 @@
 
 name Reflective Vest
 type BodyAccessory
-left base:textures/bodies/body2/reflective_vest/reflective_vest_left.png
-right base:textures/bodies/body2/reflective_vest/reflective_vest_right.png
+left textures/bodies/body2/reflective_vest/reflective_vest_left.png
+right textures/bodies/body2/reflective_vest/reflective_vest_right.png
 texture-scale 1
 category All
 detach False

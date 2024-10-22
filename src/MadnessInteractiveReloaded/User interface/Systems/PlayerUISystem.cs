@@ -50,7 +50,7 @@ public class PlayerUISystem : Walgelijk.System
 
         float p = Utilities.Clamp(character.DodgeMeter / character.Stats.DodgeAbility);
         dodgeSmooth = Utilities.SmoothApproach(dodgeSmooth, p, 10, Time.DeltaTime);
-        if (dodgeSmooth < 1)
+        if (character.Stats.DodgeAbility > 0.01f && dodgeSmooth < 1)
         {
             Draw.OutlineWidth = 0;
             Draw.Texture = Assets.Load<Texture>("textures/red_vignette.png").Value;
