@@ -1,0 +1,15 @@
+﻿0.49.5
+
+name Zealot
+
+aiming_randomness 0.1
+shooting_timeout 0.1
+recoil_handling 1
+dodge 0.45
+panic 0.2
+melee 0.5
+accurate_shot_chance 0.7
+can_deflect true
+
+agility_skill_level master
+jump_dodge_duration 0.65
