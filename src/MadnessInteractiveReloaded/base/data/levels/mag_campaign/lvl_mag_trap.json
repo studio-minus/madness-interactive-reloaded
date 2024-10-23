@@ -2,11 +2,11 @@
   "DisplayName": "untitled",
   "LevelType": "Campaign",
   "ProgressionType": "BodyCount",
-  "EnemySpawnInterval": 1.0,
+  "EnemySpawnInterval": 2.0,
   "MaxEnemyCount": 2,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "base:sounds/music/Lothyde/precarious_state.ogg",
-  "WeaponChance": 0.57,
+  "BackgroundMusic": sounds/music/Lothyde/precarious_state.ogg",
+  "WeaponChance": 0.71,
   "LevelBounds": {
     "MinX": -3219.782,
     "MinY": -362.57446,
@@ -27,16 +27,15 @@
     }
   ],
   "Weapons": [
-    "mp5k",
     "laser_rifle"
   ],
   "FloorLine": [
     {
-      "X": -2866.0,
+      "X": -2852.0,
       "Y": -264.47565
     },
     {
-      "X": 2826.0,
+      "X": 2810.0,
       "Y": -264.47565
     }
   ],
@@ -48,6 +47,70 @@
         "Y": 0.0
       },
       "SpawnWeapon": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -1640.2288,
+        "MinY": 1581.1403,
+        "MaxX": 1614.8873,
+        "MaxY": 1640.5107
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -2706.399,
+        "MinY": 1581.1403,
+        "MaxX": -2384.8538,
+        "MaxY": 1640.5107
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -2927.7896,
+        "MinY": 606.7306,
+        "MaxX": -2845.113,
+        "MaxY": 1442.4243
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AnimationTrigger, MIR",
+      "Component": {
+        "WorldRect": {
+          "MinX": 2738.2551,
+          "MinY": -274.13214,
+          "MaxX": 3444.266,
+          "MaxY": 1078.3643
+        },
+        "Animation": "cutscene_crawl_into",
+        "StartEvent": 0,
+        "Target": 0,
+        "ExistingLerpTime": 0.0,
+        "TargetPosition": {
+          "X": 2491.4893,
+          "Y": -274.13214
+        },
+        "TargetFlipped": false,
+        "CreateNewLook": null,
+        "CreateNewStats": null,
+        "CreateNewFaction": "aahw",
+        "IsExpired": false,
+        "Entity": {
+          "Identity": 0
+        }
+      },
+      "Rectangle": {
+        "MinX": 2738.2551,
+        "MinY": -274.13214,
+        "MaxX": 3444.266,
+        "MaxY": 1078.3643
+      },
+      "Tag": null
     },
     {
       "$type": "MIR.LevelEditor.Objects.Door, MIR",
@@ -158,17 +221,6 @@
       "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
       "WeaponKey": "laser_rifle",
       "Angle": 0.0,
-      "Ammo": 5,
-      "AttachedToWall": true,
-      "Position": {
-        "X": 1693.352,
-        "Y": 410.47217
-      }
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
-      "WeaponKey": "laser_rifle",
-      "Angle": 0.0,
       "Ammo": 1,
       "AttachedToWall": true,
       "Position": {
@@ -177,68 +229,25 @@
       }
     },
     {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 2801.7065,
+        "MinY": 606.7305,
+        "MaxX": 2884.3833,
+        "MaxY": 1420.5221
+      },
+      "Tag": null
+    },
+    {
       "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
       "WeaponKey": "laser_rifle",
       "Angle": 0.0,
-      "Ammo": 2,
+      "Ammo": 1,
       "AttachedToWall": true,
       "Position": {
         "X": -1732.4084,
         "Y": 218.21004
       }
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "zealot",
-        "Stats": "zealot",
-        "Faction": "aahw",
-        "Weapon": "laser_rifle",
-        "Flipped": false,
-        "BottomCenter": {
-          "X": -1331.283,
-          "Y": -245.51633
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.AnimationTrigger, MIR",
-      "Component": {
-        "WorldRect": {
-          "MinX": 2386.0056,
-          "MinY": -274.13214,
-          "MaxX": 2766.489,
-          "MaxY": 1078.3643
-        },
-        "Animation": "cutscene_crawl_into",
-        "StartEvent": 0,
-        "Target": 0,
-        "ExistingLerpTime": 0.0,
-        "TargetPosition": {
-          "X": 2491.4893,
-          "Y": -274.13214
-        },
-        "TargetFlipped": false,
-        "CreateNewLook": null,
-        "CreateNewStats": null,
-        "CreateNewFaction": "aahw",
-        "IsExpired": false,
-        "Entity": {
-          "Identity": 0
-        }
-      },
-      "Rectangle": {
-        "MinX": 2386.0056,
-        "MinY": -274.13214,
-        "MaxX": 2766.489,
-        "MaxY": 1078.3643
-      },
-      "Tag": null
     },
     {
       "$type": "MIR.LevelEditor.Objects.LevelProgressTrigger, MIR",
@@ -248,6 +257,20 @@
         "MaxX": 4076.6155,
         "MaxY": 515.94336
       },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": -3035.4377,
+        "Y": 1484.806
+      },
+      "B": {
+        "X": -2785.7598,
+        "Y": 1746.9749
+      },
+      "Radius": 123.0,
       "Tag": null
     },
     {
@@ -300,7 +323,7 @@
         "X": -19.782135,
         "Y": 704.09216
       },
-      "TexturePath": "base:textures/backgrounds/mag_campaign/background_mag_trap.qoi",
+      "TexturePath": textures/backgrounds/mag_campaign/background_mag_trap.qoi",
       "Scale": 2.222222
     },
     {
@@ -318,28 +341,13 @@
       "Tag": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
-      "WeaponKey": "laser_rifle",
-      "Angle": 0.0,
-      "Ammo": 3,
-      "AttachedToWall": true,
-      "Position": {
-        "X": -1640.5225,
-        "Y": 419.34668
-      }
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
-      "BlockerType": 0,
-      "A": {
-        "X": -3035.4377,
-        "Y": 1484.806
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 2354.9788,
+        "MinY": 1581.1401,
+        "MaxX": 2677.9255,
+        "MaxY": 1640.5106
       },
-      "B": {
-        "X": -2785.7598,
-        "Y": 1746.9749
-      },
-      "Radius": 123.0,
       "Tag": null
     },
     {
@@ -350,9 +358,9 @@
         "Stats": "zealot",
         "Faction": "aahw",
         "Weapon": "laser_rifle",
-        "Flipped": true,
+        "Flipped": false,
         "BottomCenter": {
-          "X": 1913.6595,
+          "X": -1331.283,
           "Y": -245.51633
         },
         "ScaleOverride": false,
@@ -360,6 +368,16 @@
         "IsProgressionRequirement": false
       },
       "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -2813.3113,
+        "MinY": -300.94818,
+        "MaxX": 2783.8984,
+        "MaxY": -202.70041
+      },
+      "Tag": null
     }
   ]
 }

@@ -5,7 +5,7 @@
   "EnemySpawnInterval": 0.6,
   "MaxEnemyCount": 4,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "sounds/music/Lothyde/precarious_state.ogg",
+  "BackgroundMusic": sounds/music/Lothyde/precarious_state.ogg",
   "WeaponChance": 0.78999996,
   "LevelBounds": {
     "MinX": -1973.4126,
@@ -16,7 +16,7 @@
   "BodyCountToWin": 21,
   "TimeLimitInSeconds": -1.0,
   "FullZoom": true,
-  "Thumbnail": "textures/level_thumbnails/mag_campaign/lvl_mag_specimen.qoi",
+  "Thumbnail": textures/level_thumbnails/mag_campaign/lvl_mag_specimen.qoi",
   "OpeningTransition": true,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [
@@ -52,7 +52,7 @@
   ],
   "FloorLine": [
     {
-      "X": -1650.4429,
+      "X": -1652.4429,
       "Y": -47.42053
     },
     {
@@ -76,7 +76,7 @@
       "Y": -410.04843
     },
     {
-      "X": 2531.5571,
+      "X": 2533.5571,
       "Y": -410.04843
     }
   ],
@@ -319,7 +319,7 @@
         "X": 439.24536,
         "Y": 587.8321
       },
-      "TexturePath": "textures/backgrounds/mag_campaign/background_mag_specimen.qoi",
+      "TexturePath": textures/backgrounds/mag_campaign/background_mag_specimen.qoi",
       "Scale": 2.2923117
     },
     {
@@ -438,9 +438,9 @@
       "$type": "MIR.LevelEditor.Objects.AnimationTrigger, MIR",
       "Component": {
         "WorldRect": {
-          "MinX": 2033.0223,
+          "MinX": 2317.904,
           "MinY": -417.57135,
-          "MaxX": 2509.2463,
+          "MaxX": 2794.1282,
           "MaxY": 839.24286
         },
         "Animation": "cutscene_crawl_into",
@@ -461,9 +461,9 @@
         }
       },
       "Rectangle": {
-        "MinX": 2033.0223,
+        "MinX": 2317.904,
         "MinY": -417.57135,
-        "MaxX": 2509.2463,
+        "MaxX": 2794.1282,
         "MaxY": 839.24286
       },
       "Tag": null
