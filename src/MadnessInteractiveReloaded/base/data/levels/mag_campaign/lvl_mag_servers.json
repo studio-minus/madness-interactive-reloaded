@@ -16,7 +16,7 @@
   "BodyCountToWin": 32,
   "TimeLimitInSeconds": -1.0,
   "FullZoom": false,
-  "Thumbnail": "0",
+  "Thumbnail": "textures/level_thumbnails/mag_campaign/lvl_mag_servers.qoi",
   "OpeningTransition": true,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [
@@ -52,11 +52,11 @@
   ],
   "FloorLine": [
     {
-      "X": -4402.6846,
+      "X": -4583.4175,
       "Y": -892.5848
     },
     {
-      "X": 4381.3154,
+      "X": 4374.5825,
       "Y": -892.5848
     }
   ],
@@ -64,7 +64,7 @@
     {
       "$type": "MIR.LevelEditor.Objects.PlayerSpawn, MIR",
       "Position": {
-        "X": -4356.6846,
+        "X": -4543.4175,
         "Y": -744.34625
       },
       "SpawnWeapon": null
@@ -195,41 +195,6 @@
         "MinY": 533.9364,
         "MaxX": -4338.9775,
         "MaxY": 759.5463
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.Door, MIR",
-      "Properties": {
-        "SpawnPoint": {
-          "X": -4548.5693,
-          "Y": -884.7905
-        },
-        "FacingDirection": {
-          "X": 1.0,
-          "Y": 0.0
-        },
-        "EnemySpawnerDoor": false,
-        "IsLevelProgressionDoor": false,
-        "IsPortal": false,
-        "PortalID": null,
-        "DestinationLevel": null,
-        "TopLeft": {
-          "X": -4665.3945,
-          "Y": 496.3424
-        },
-        "TopRight": {
-          "X": -4230.2715,
-          "Y": 443.45932
-        },
-        "BottomLeft": {
-          "X": -4667.7925,
-          "Y": -927.0486
-        },
-        "BottomRight": {
-          "X": -4229.346,
-          "Y": -842.5325
-        }
       },
       "Tag": null
     },
@@ -496,7 +461,7 @@
       "BlockerType": 0,
       "Rectangle": {
         "MinX": -5015.834,
-        "MinY": -1278.262,
+        "MinY": 475.9314,
         "MaxX": -4411.305,
         "MaxY": 1223.6257
       },
@@ -564,6 +529,28 @@
           "X": 3114.2825,
           "Y": -748.963
         }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -5357.8633,
+        "MinY": -1052.834,
+        "MaxX": -4903.513,
+        "MaxY": 780.5427
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 1,
+      "Rectangle": {
+        "MinX": -5015.834,
+        "MinY": -976.18225,
+        "MaxX": -4599.0903,
+        "MaxY": 518.6457
       },
       "Tag": null
     }

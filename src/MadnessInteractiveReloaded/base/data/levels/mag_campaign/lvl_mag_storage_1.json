@@ -6,7 +6,7 @@
   "MaxEnemyCount": 5,
   "MaxSimultaneousAttackingEnemies": 2,
   "BackgroundMusic": "sounds/music/Lothyde/precarious_state.ogg",
-  "WeaponChance": 0.68,
+  "WeaponChance": 0.35,
   "LevelBounds": {
     "MinX": -3328.9397,
     "MinY": -1507.9749,
@@ -16,7 +16,7 @@
   "BodyCountToWin": 20,
   "TimeLimitInSeconds": 14.0,
   "FullZoom": true,
-  "Thumbnail": "0",
+  "Thumbnail": "textures/level_thumbnails/mag_campaign/lvl_mag_storage_1.qoi",
   "OpeningTransition": true,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [
@@ -31,15 +31,18 @@
     "1337_sword",
     "mac_10",
     "ak_74u",
-    "ak_47"
+    "ak_47",
+    "g36c",
+    "qbz_95",
+    "silenced_mp5"
   ],
   "FloorLine": [
     {
-      "X": -2961.6921,
+      "X": -2947.6921,
       "Y": -247.39499
     },
     {
-      "X": 3200.3079,
+      "X": 3248.3079,
       "Y": -247.39499
     }
   ],
@@ -53,12 +56,41 @@
       "SpawnWeapon": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "$type": "MIR.LevelEditor.Objects.EnemySpawner, MIR",
+      "Position": {
+        "X": 3432.7761,
+        "Y": -162.47748
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.EnemySpawner, MIR",
+      "Position": {
+        "X": 3488.6855,
+        "Y": -165.65646
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.EnemySpawner, MIR",
+      "Position": {
+        "X": 3460.163,
+        "Y": -77.92697
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.EnemySpawner, MIR",
+      "Position": {
+        "X": 3435.1028,
+        "Y": -71.56906
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
       "Rectangle": {
-        "MinX": -2406.2727,
-        "MinY": 1207.1295,
-        "MaxX": -2277.1765,
-        "MaxY": 1578.8446
+        "MinX": 3539.6357,
+        "MinY": -295.76862,
+        "MaxX": 4184.061,
+        "MaxY": 1582.5005
       },
       "Tag": null
     },
@@ -66,9 +98,9 @@
       "$type": "MIR.LevelEditor.Objects.LevelProgressTrigger, MIR",
       "Rectangle": {
         "MinX": 3152.0051,
-        "MinY": -260.5755,
+        "MinY": -260.57513,
         "MaxX": 3470.4812,
-        "MaxY": 1421.5686
+        "MaxY": 1421.5682
       },
       "Tag": null
     },
@@ -85,7 +117,7 @@
       "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
       "BlockerType": 0,
       "Rectangle": {
-        "MinX": -3169.8386,
+        "MinX": -3382.737,
         "MinY": -589.3291,
         "MaxX": 4848.368,
         "MaxY": -247.39499
@@ -96,10 +128,10 @@
       "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
       "BlockerType": 0,
       "Rectangle": {
-        "MinX": -3400.8547,
-        "MinY": -589.3289,
-        "MaxX": -2976.4053,
-        "MaxY": 2091.1719
+        "MinX": -3778.8628,
+        "MinY": -589.32965,
+        "MaxX": -3354.4133,
+        "MaxY": 2091.1726
       },
       "Tag": null
     },
@@ -107,7 +139,7 @@
       "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
       "BlockerType": 0,
       "Rectangle": {
-        "MinX": -3169.8386,
+        "MinX": -3405.697,
         "MinY": 1146.1359,
         "MaxX": -2357.6907,
         "MaxY": 1703.1985
@@ -129,12 +161,19 @@
       "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
       "BlockerType": 1,
       "Rectangle": {
-        "MinX": 3213.8557,
-        "MinY": -283.83813,
-        "MaxX": 3706.822,
-        "MaxY": 1578.6555
+        "MinX": 3268.2144,
+        "MinY": -283.83783,
+        "MaxX": 3761.1807,
+        "MaxY": 1578.6553
       },
       "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.EnemySpawner, MIR",
+      "Position": {
+        "X": 3461.0063,
+        "Y": -162.47739
+      }
     },
     {
       "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
@@ -149,10 +188,10 @@
     {
       "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
       "Rectangle": {
-        "MinX": -2274.6782,
-        "MinY": 1529.6522,
-        "MaxX": 3167.563,
-        "MaxY": 1709.8256
+        "MinX": -2406.2727,
+        "MinY": 1207.1295,
+        "MaxX": -2277.1765,
+        "MaxY": 1578.8446
       },
       "Tag": null
     },
@@ -174,16 +213,6 @@
         "IsProgressionRequirement": false
       },
       "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
-      "Rectangle": {
-        "MinX": -2649.5488,
-        "MinY": -325.7832,
-        "MaxX": 2923.875,
-        "MaxY": -145.60986
-      },
-      "Tag": null
     },
     {
       "$type": "MIR.LevelEditor.Objects.AnimationTrigger, MIR",
@@ -251,8 +280,8 @@
     {
       "$type": "MIR.LevelEditor.Objects.EnemySpawner, MIR",
       "Position": {
-        "X": 3302.667,
-        "Y": 23.800415
+        "X": 3492.0464,
+        "Y": -74.74812
       }
     },
     {
@@ -351,13 +380,51 @@
       "StartAnimation": null
     },
     {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -2649.5488,
+        "MinY": -325.7832,
+        "MaxX": 2923.875,
+        "MaxY": -145.60986
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -2274.6782,
+        "MinY": 1529.6522,
+        "MaxX": 3167.563,
+        "MaxY": 1709.8256
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.EnemySpawner, MIR",
+      "Position": {
+        "X": -3291.6265,
+        "Y": -145.42902
+      }
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 1,
+      "Rectangle": {
+        "MinX": -3393.664,
+        "MinY": -589.32855,
+        "MaxX": -2969.2146,
+        "MaxY": 679.2219
+      },
+      "Tag": null
+    },
+    {
       "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
       "BlockerType": 0,
       "Rectangle": {
-        "MinX": 3371.4346,
-        "MinY": -295.7685,
-        "MaxX": 4015.8577,
-        "MaxY": 1582.5005
+        "MinX": -3467.1543,
+        "MinY": 627.9376,
+        "MaxX": -2966.678,
+        "MaxY": 1185.0005
       },
       "Tag": null
     }

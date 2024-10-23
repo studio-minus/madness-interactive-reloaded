@@ -46,13 +46,12 @@
     "l85",
     "switchblade",
     "iron_pipe",
-    "mossberg_500",
     "micro_uzi",
     "ump"
   ],
   "FloorLine": [
     {
-      "X": -1652.4429,
+      "X": -1646.4429,
       "Y": -47.42053
     },
     {
@@ -76,7 +75,7 @@
       "Y": -410.04843
     },
     {
-      "X": 2533.5571,
+      "X": 2527.5571,
       "Y": -410.04843
     }
   ],
@@ -90,22 +89,82 @@
       "SpawnWeapon": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
       "Rectangle": {
-        "MinX": -1408.4731,
-        "MinY": 1551.6594,
-        "MaxX": 1120.5199,
-        "MaxY": 1694.8832
+        "MinX": 968.4083,
+        "MinY": 1643.017,
+        "MaxX": 1974.4215,
+        "MaxY": 1866.8405
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": 2952.177,
+        "Y": 1126.4204
+      },
+      "B": {
+        "X": 1605.9954,
+        "Y": 1923.945
+      },
+      "Radius": 95.0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AnimationTrigger, MIR",
+      "Component": {
+        "WorldRect": {
+          "MinX": -1570.9836,
+          "MinY": -54.733917,
+          "MaxX": -1094.7593,
+          "MaxY": 874.6796
+        },
+        "Animation": "cutscene_crawl_out_of",
+        "StartEvent": 0,
+        "Target": 1,
+        "ExistingLerpTime": 0.0,
+        "TargetPosition": {
+          "X": -1332.8715,
+          "Y": -54.733917
+        },
+        "TargetFlipped": false,
+        "CreateNewLook": "agent",
+        "CreateNewStats": "mag_rich",
+        "CreateNewFaction": "aahw",
+        "IsExpired": false,
+        "Entity": {
+          "Identity": 0
+        }
+      },
+      "Rectangle": {
+        "MinX": -1570.9836,
+        "MinY": -54.733917,
+        "MaxX": -1094.7593,
+        "MaxY": 874.6796
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -2077.5205,
+        "MinY": 755.24115,
+        "MaxX": -1669.1993,
+        "MaxY": 1754.8403
       },
       "Tag": null
     },
     {
       "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
       "Rectangle": {
-        "MinX": -1752.3057,
-        "MinY": 951.7371,
-        "MaxX": -1399.6663,
-        "MaxY": 1695.8595
+        "MinX": -1408.4731,
+        "MinY": 1551.6594,
+        "MaxX": 1120.5199,
+        "MaxY": 1694.8832
       },
       "Tag": null
     },
@@ -180,6 +239,13 @@
       "Tag": null
     },
     {
+      "$type": "MIR.LevelEditor.Objects.EnemySpawner, MIR",
+      "Position": {
+        "X": -2011.4934,
+        "Y": 16.933105
+      }
+    },
+    {
       "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
       "BlockerType": 0,
       "A": {
@@ -247,102 +313,6 @@
       "Tag": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
-      "Rectangle": {
-        "MinX": 1241.6626,
-        "MinY": -482.08615,
-        "MaxX": 2487.8533,
-        "MaxY": -338.86227
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
-      "BlockerType": 0,
-      "Rectangle": {
-        "MinX": 2550.3367,
-        "MinY": -513.1817,
-        "MaxX": 2938.029,
-        "MaxY": 1310.9388
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
-      "BlockerType": 0,
-      "A": {
-        "X": 1289.2054,
-        "Y": -491.52927
-      },
-      "B": {
-        "X": 540.9544,
-        "Y": -69.70088
-      },
-      "Radius": 23.0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.LevelProgressTrigger, MIR",
-      "Rectangle": {
-        "MinX": 3446.9224,
-        "MinY": -430.03815,
-        "MaxX": 3958.9224,
-        "MaxY": 299.87677
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
-      "BlockerType": 0,
-      "Rectangle": {
-        "MinX": 599.7003,
-        "MinY": -659.556,
-        "MaxX": 3514.1904,
-        "MaxY": -410.04843
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
-      "BlockerType": 0,
-      "Rectangle": {
-        "MinX": -2381.166,
-        "MinY": -342.0382,
-        "MaxX": 542.7079,
-        "MaxY": -47.42053
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.Background, MIR",
-      "Center": {
-        "X": 439.24536,
-        "Y": 587.8321
-      },
-      "TexturePath": "textures/backgrounds/mag_campaign/background_mag_specimen.qoi",
-      "Scale": 2.2923117
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
-      "Rectangle": {
-        "MinX": 2509.3037,
-        "MinY": 585.1617,
-        "MaxX": 2591.3157,
-        "MaxY": 1127.3
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
-      "Rectangle": {
-        "MinX": -1565.7039,
-        "MinY": -119.77185,
-        "MaxX": 499.95422,
-        "MaxY": 23.452026
-      },
-      "Tag": null
-    },
-    {
       "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
       "BlockerType": 0,
       "A": {
@@ -359,6 +329,36 @@
     {
       "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
       "Rectangle": {
+        "MinX": 1904.5955,
+        "MinY": 1302.7036,
+        "MaxX": 2432.9465,
+        "MaxY": 1618.6571
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -1752.3057,
+        "MinY": 951.7371,
+        "MaxX": -1399.6663,
+        "MaxY": 1695.8595
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 1268.2607,
+        "MinY": 1586.1892,
+        "MaxX": 1796.6117,
+        "MaxY": 1703.0996
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
         "MinX": 580.83765,
         "MinY": -462.71735,
         "MaxX": 1168.4825,
@@ -367,72 +367,15 @@
       "Tag": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
-      "WeaponKey": "billy_club",
-      "Angle": -11.794479,
-      "Ammo": 12,
-      "AttachedToWall": true,
-      "Position": {
-        "X": -1377.5482,
-        "Y": 203.6023
-      }
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "agent",
-        "Stats": "agent",
-        "Faction": "aahw",
-        "Weapon": "fbi_9",
-        "Flipped": true,
-        "BottomCenter": {
-          "X": 2256.3918,
-          "Y": -388.98868
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 2550.3367,
+        "MinY": -513.1817,
+        "MaxX": 2938.029,
+        "MaxY": 1310.9388
       },
-      "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "agent",
-        "Stats": "agent",
-        "Faction": "aahw",
-        "Weapon": "fbi_9",
-        "Flipped": true,
-        "BottomCenter": {
-          "X": 1854.3435,
-          "Y": -389.60626
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "scientist2",
-        "Stats": "grunt",
-        "Faction": "aahw",
-        "Weapon": null,
-        "Flipped": true,
-        "BottomCenter": {
-          "X": 230.1496,
-          "Y": -19.911957
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
+      "Tag": null
     },
     {
       "$type": "MIR.LevelEditor.Objects.AnimationTrigger, MIR",
@@ -469,47 +412,177 @@
       "Tag": null
     },
     {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "scientist2",
+        "Stats": "grunt",
+        "Faction": "aahw",
+        "Weapon": null,
+        "Flipped": true,
+        "BottomCenter": {
+          "X": 230.1496,
+          "Y": -19.911957
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "agent",
+        "Stats": "agent",
+        "Faction": "aahw",
+        "Weapon": "fbi_9",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": 1854.3435,
+          "Y": -389.60626
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "agent",
+        "Stats": "agent",
+        "Faction": "aahw",
+        "Weapon": "fbi_9",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": 2256.3918,
+          "Y": -388.98868
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
+      "WeaponKey": "billy_club",
+      "Angle": -11.794479,
+      "Ammo": 12,
+      "AttachedToWall": true,
+      "Position": {
+        "X": -1377.5482,
+        "Y": 203.6023
+      }
+    },
+    {
       "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
       "BlockerType": 0,
       "Rectangle": {
-        "MinX": -2077.5203,
+        "MinX": -2462.232,
         "MinY": -148.08997,
-        "MaxX": -1669.1996,
+        "MaxX": -2053.911,
         "MaxY": 1754.8403
       },
       "Tag": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.AnimationTrigger, MIR",
-      "Component": {
-        "WorldRect": {
-          "MinX": -1570.9836,
-          "MinY": -54.733917,
-          "MaxX": -1094.7593,
-          "MaxY": 874.6796
-        },
-        "Animation": "cutscene_crawl_out_of",
-        "StartEvent": 0,
-        "Target": 1,
-        "ExistingLerpTime": 0.0,
-        "TargetPosition": {
-          "X": -1332.8715,
-          "Y": -54.733917
-        },
-        "TargetFlipped": false,
-        "CreateNewLook": "agent",
-        "CreateNewStats": "mag_rich",
-        "CreateNewFaction": "aahw",
-        "IsExpired": false,
-        "Entity": {
-          "Identity": 0
-        }
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": 1289.2054,
+        "Y": -491.52927
       },
+      "B": {
+        "X": 540.9544,
+        "Y": -69.70088
+      },
+      "Radius": 23.0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
       "Rectangle": {
-        "MinX": -1570.9836,
-        "MinY": -54.733917,
-        "MaxX": -1094.7593,
-        "MaxY": 874.6796
+        "MinX": -1565.7039,
+        "MinY": -119.77185,
+        "MaxX": 499.95422,
+        "MaxY": 23.452026
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 2509.3037,
+        "MinY": 585.1617,
+        "MaxX": 2591.3157,
+        "MaxY": 1127.3
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": 439.24536,
+        "Y": 587.8321
+      },
+      "TexturePath": "textures/backgrounds/mag_campaign/background_mag_specimen.qoi",
+      "Scale": 2.2923117
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -2381.166,
+        "MinY": -342.0382,
+        "MaxX": 542.7079,
+        "MaxY": -47.42053
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 599.7003,
+        "MinY": -659.556,
+        "MaxX": 3514.1904,
+        "MaxY": -410.04843
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelProgressTrigger, MIR",
+      "Rectangle": {
+        "MinX": 3446.9224,
+        "MinY": -430.03815,
+        "MaxX": 3958.9224,
+        "MaxY": 299.87677
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 1241.6626,
+        "MinY": -482.08615,
+        "MaxX": 2487.8533,
+        "MaxY": -338.86227
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 1,
+      "Rectangle": {
+        "MinX": -2077.5205,
+        "MinY": -175.0549,
+        "MaxX": -1669.1993,
+        "MaxY": 824.54443
       },
       "Tag": null
     }
