@@ -260,7 +260,7 @@ public class LevelEditorGuiSystem : Walgelijk.System
 
                     Ui.Label("Max enemy count");
                     Ui.Layout.FitWidth().Height(32).StickLeft();
-                    Ui.IntStepper(ref editor.Level.MaxEnemyCount, (0, 15));
+                    Ui.IntStepper(ref editor.Level.MaxEnemyCount, (0, 50));
 
                     Ui.Spacer(8);
 

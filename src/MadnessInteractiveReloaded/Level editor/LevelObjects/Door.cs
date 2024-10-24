@@ -109,7 +109,7 @@ public class Door : LevelObject, ITagged
             {
                 targetDragCorner = Corner.None;
 
-                if (MathF.Abs(GetDistanceFromPolygon(mousePos)) > dragRadius)
+                if (float.Abs(GetDistanceFromPolygon(mousePos)) > dragRadius)
                     targetDragCorner = (Corner)byte.MaxValue;
                 else
                 {
