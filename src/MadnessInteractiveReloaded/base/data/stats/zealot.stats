@@ -6,12 +6,12 @@ aiming_randomness 0.1
 shooting_timeout 0.1
 recoil_handling 1
 dodge 0.45
-panic 0.2
-melee 0.5
+panic 0.1
+melee 0.7
 accurate_shot_chance 0.7
 can_deflect true
-head_health 4
-body_health 7
+head_health 5
+body_health 3
 
 agility_skill_level master
 jump_dodge_duration 0.65

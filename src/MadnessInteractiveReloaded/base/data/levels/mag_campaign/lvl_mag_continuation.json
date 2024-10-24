@@ -1,0 +1,438 @@
+{
+  "DisplayName": "untitled",
+  "LevelType": "Campaign",
+  "ProgressionType": "BodyCount",
+  "EnemySpawnInterval": 1.1,
+  "MaxEnemyCount": 3,
+  "MaxSimultaneousAttackingEnemies": 2,
+  "BackgroundMusic": "base:sounds/music/Lothyde/precarious_state.ogg",
+  "WeaponChance": 0.79999995,
+  "LevelBounds": {
+    "MinX": -2936.153,
+    "MinY": -1147.8285,
+    "MaxX": 3021.6243,
+    "MaxY": 1225.0975
+  },
+  "BodyCountToWin": 30,
+  "TimeLimitInSeconds": -1.0,
+  "FullZoom": false,
+  "Thumbnail": "0",
+  "OpeningTransition": true,
+  "ExitingTransition": true,
+  "EnemySpawnInstructions": [
+    {
+      "StatsKey": "zealot",
+      "LookKey": "zealot",
+      "FactionKey": "aahw"
+    },
+    {
+      "StatsKey": "engineer",
+      "LookKey": "engineer",
+      "FactionKey": "aahw"
+    },
+    {
+      "StatsKey": "soldat",
+      "LookKey": "soldat",
+      "FactionKey": "aahw"
+    }
+  ],
+  "Weapons": [
+    "laser_rifle",
+    "enfield_mk2",
+    "aug"
+  ],
+  "FloorLine": [
+    {
+      "X": -2511.2095,
+      "Y": -722.0465
+    },
+    {
+      "X": 2608.7905,
+      "Y": -722.0465
+    }
+  ],
+  "Objects": [
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerSpawn, MIR",
+      "Position": {
+        "X": -2451.2095,
+        "Y": -616.5622
+      },
+      "SpawnWeapon": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "scientist1",
+        "Stats": "grunt",
+        "Faction": "aahw",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": 1754.2424,
+          "Y": -699.7657
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": 2733.354,
+          "Y": -724.7438
+        },
+        "FacingDirection": {
+          "X": -1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": true,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": 2478.7004,
+          "Y": 691.42615
+        },
+        "TopRight": {
+          "X": 2788.7002,
+          "Y": 772.8842
+        },
+        "BottomLeft": {
+          "X": 2476.4346,
+          "Y": -675.97766
+        },
+        "BottomRight": {
+          "X": 2790.2732,
+          "Y": -773.50995
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": 42.735542,
+        "Y": 55.80417
+      },
+      "TexturePath": "base:textures/backgrounds/mag_campaign/background_mag_continuation.qoi",
+      "Scale": 2.222222
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -2829.8594,
+        "MinY": -1313.9001,
+        "MaxX": -2520.5813,
+        "MaxY": 1124.322
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -2829.8594,
+        "MinY": 828.3081,
+        "MaxX": 3000.2715,
+        "MaxY": 1124.322
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 2619.7117,
+        "MinY": -1030.8318,
+        "MaxX": 2990.7078,
+        "MaxY": 1124.322
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -4833.456,
+        "MinY": -1018.0604,
+        "MaxX": 4516.119,
+        "MaxY": -722.0465
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -2568.9238,
+        "MinY": 44.73352,
+        "MaxX": -2461.4868,
+        "MaxY": 777.05457
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": -1111.2689,
+          "Y": -634.4911
+        },
+        "FacingDirection": {
+          "X": "NaN",
+          "Y": "NaN"
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": -1377.6747,
+          "Y": 87.60184
+        },
+        "TopRight": {
+          "X": -844.86316,
+          "Y": 87.60184
+        },
+        "BottomLeft": {
+          "X": -1377.6747,
+          "Y": -634.1745
+        },
+        "BottomRight": {
+          "X": -844.86316,
+          "Y": -634.8076
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "scientist2",
+        "Stats": "grunt",
+        "Faction": "aahw",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": 1340.1963,
+          "Y": -699.7657
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": -305.3065,
+        "Y": 1220.6531
+      },
+      "TexturePath": "base:textures/black-transparent-gradient.png",
+      "Scale": 2.222222
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": -305.3065,
+        "Y": -1143.384
+      },
+      "TexturePath": "base:textures/black-transparent-gradient.png",
+      "Scale": 2.222222
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "scientist1",
+        "Stats": "grunt",
+        "Faction": "aahw",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": 2000.1481,
+          "Y": -699.7657
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "scientist1",
+        "Stats": "grunt",
+        "Faction": "aahw",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": 1085.8552,
+          "Y": -699.7657
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "scientist2",
+        "Stats": "grunt",
+        "Faction": "aahw",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": 443.821,
+          "Y": -699.7657
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "scientist2",
+        "Stats": "grunt",
+        "Faction": "aahw",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": 783.2313,
+          "Y": -699.7657
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AnimationTrigger, MIR",
+      "Component": {
+        "WorldRect": {
+          "MinX": -2550.115,
+          "MinY": -748.77606,
+          "MaxX": -2038.115,
+          "MaxY": -236.77478
+        },
+        "Animation": "cutscene_crawl_out_of",
+        "StartEvent": 0,
+        "Target": 1,
+        "ExistingLerpTime": 0.0,
+        "TargetPosition": {
+          "X": -2294.115,
+          "Y": -748.77606
+        },
+        "TargetFlipped": false,
+        "CreateNewLook": null,
+        "CreateNewStats": null,
+        "CreateNewFaction": "aahw",
+        "IsExpired": false,
+        "Entity": {
+          "Identity": 0
+        }
+      },
+      "Rectangle": {
+        "MinX": -2550.115,
+        "MinY": -748.77606,
+        "MaxX": -2038.115,
+        "MaxY": -236.77478
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -2489.282,
+        "MinY": 775.29663,
+        "MaxX": 272.37817,
+        "MaxY": 858.2281
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -2489.2822,
+        "MinY": -762.6428,
+        "MaxX": 2549.0713,
+        "MaxY": -679.7114
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 286.0059,
+        "MinY": 722.5546,
+        "MaxX": 1624.3347,
+        "MaxY": 933.85486
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": 448.06427,
+        "Y": 724.1256
+      },
+      "B": {
+        "X": 1459.0006,
+        "Y": 724.1256
+      },
+      "Radius": 162.0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 246.3728,
+        "MinY": 515.1343,
+        "MaxX": 1434.2881,
+        "MaxY": 747.26996
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 1718.373,
+        "MinY": 775.2966,
+        "MaxX": 2575.4392,
+        "MaxY": 858.228
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 2531.144,
+        "MinY": 756.1248,
+        "MaxX": 2666.651,
+        "MaxY": 800.7124
+      },
+      "Tag": null
+    }
+  ]
+}
