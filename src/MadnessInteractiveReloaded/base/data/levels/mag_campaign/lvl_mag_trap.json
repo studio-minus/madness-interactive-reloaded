@@ -49,11 +49,11 @@
   ],
   "FloorLine": [
     {
-      "X": -2876.0,
+      "X": -2884.0,
       "Y": -264.47565
     },
     {
-      "X": 2836.0,
+      "X": 2844.0,
       "Y": -264.47565
     }
   ],
@@ -65,6 +65,30 @@
         "Y": 0.0
       },
       "SpawnWeapon": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "base:textures/backgrounds/mag_campaign/background_mag_trap_layer_1.qoi",
+      "Angle": 0.0,
+      "Position": {
+        "X": -3032.3162,
+        "Y": -218.04224
+      },
+      "Scale": 2.2213619,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
     },
     {
       "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
@@ -158,6 +182,41 @@
       "Tag": null
     },
     {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": -12.485382,
+          "Y": -87.81403
+        },
+        "FacingDirection": {
+          "X": "NaN",
+          "Y": "NaN"
+        },
+        "EnemySpawnerDoor": false,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": -481.5431,
+          "Y": 1230.9103
+        },
+        "TopRight": {
+          "X": 456.57233,
+          "Y": 1230.9103
+        },
+        "BottomLeft": {
+          "X": -481.5431,
+          "Y": -88.10855
+        },
+        "BottomRight": {
+          "X": 456.57233,
+          "Y": -87.519516
+        }
+      },
+      "Tag": null
+    },
+    {
       "$type": "MIR.LevelEditor.Objects.LevelProgressTrigger, MIR",
       "Rectangle": {
         "MinX": 3564.6155,
@@ -166,17 +225,6 @@
         "MaxY": 515.94336
       },
       "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
-      "WeaponKey": "laser_rifle",
-      "Angle": 0.0,
-      "Ammo": 1,
-      "AttachedToWall": true,
-      "Position": {
-        "X": -1732.4084,
-        "Y": 218.21004
-      }
     },
     {
       "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
@@ -344,12 +392,23 @@
       "Tag": null
     },
     {
+      "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
+      "WeaponKey": "laser_rifle",
+      "Angle": 0.0,
+      "Ammo": 1,
+      "AttachedToWall": true,
+      "Position": {
+        "X": -1732.4084,
+        "Y": 218.21004
+      }
+    },
+    {
       "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "base:textures/backgrounds/mag_campaign/background_mag_trap_layer.qoi",
+      "TexturePath": "base:textures/backgrounds/mag_campaign/background_mag_trap_layer_2.qoi",
       "Angle": 0.0,
       "Position": {
-        "X": -16.598785,
-        "Y": 703.308
+        "X": 2992.4812,
+        "Y": -218.14697
       },
       "Scale": 2.2213619,
       "Columns": 1,
@@ -365,41 +424,6 @@
       "Layer": 300,
       "AlphaClip": false,
       "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.Door, MIR",
-      "Properties": {
-        "SpawnPoint": {
-          "X": -12.485382,
-          "Y": -87.81403
-        },
-        "FacingDirection": {
-          "X": "NaN",
-          "Y": "NaN"
-        },
-        "EnemySpawnerDoor": false,
-        "IsLevelProgressionDoor": false,
-        "IsPortal": false,
-        "PortalID": null,
-        "DestinationLevel": null,
-        "TopLeft": {
-          "X": -481.5431,
-          "Y": 1230.9103
-        },
-        "TopRight": {
-          "X": 456.57233,
-          "Y": 1230.9103
-        },
-        "BottomLeft": {
-          "X": -481.5431,
-          "Y": -88.10855
-        },
-        "BottomRight": {
-          "X": 456.57233,
-          "Y": -87.519516
-        }
-      },
       "Tag": null
     }
   ]
