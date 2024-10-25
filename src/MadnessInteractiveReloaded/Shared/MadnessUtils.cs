@@ -165,6 +165,16 @@ public static class MadnessUtils
         return 1 - Utilities.Clamp(distanceFromTargetToImpact / ConVars.Instance.InaccuracyMaxDistance);
     }
 
+    public static float LerpRadians(float startAngle, float endAngle, float t)
+    {
+        float delta = endAngle - startAngle;
+        if (delta > float.Pi)
+            delta -= float.Tau;
+        else if (delta < -float.Pi)
+            delta += float.Tau;
+        return startAngle + delta * t;
+    }
+
     /// <summary>
     /// Get floor height or a fallback
     /// </summary>

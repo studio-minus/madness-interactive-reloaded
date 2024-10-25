@@ -4,6 +4,7 @@ using Walgelijk;
 using Walgelijk.AssetManager;
 using Walgelijk.Onion;
 using Walgelijk.Onion.Controls;
+using Walgelijk.Physics;
 using Walgelijk.SimpleDrawing;
 
 namespace MIR.LevelEditor.Objects;
@@ -137,13 +138,34 @@ public class Turret : LevelObject, ITagged
     public override void SpawnInGameScene(Scene scene)
     {
         var entity = scene.CreateEntity();
-        scene.AttachComponent(entity, new TurretComponent
+        var turret = scene.AttachComponent(entity, new TurretComponent
         {
             Faction = Faction,
             AngleRangeRads = new Vector2(float.DegreesToRadians(MinAngle), float.DegreesToRadians(MaxAngle)),
             Position = Position,
             RenderOrder = RenderOrder,
-            AngleRads = float.DegreesToRadians(Angle)
+            AngleRads = float.DegreesToRadians(Angle),
+            Health = 2
+        });
+        var t = scene.AttachComponent(entity, new TransformComponent
+        {
+            Position = Position
+        });
+        scene.AttachComponent(entity, new PhysicsBodyComponent
+        {
+            BodyType = BodyType.Static,
+            Collider = new RectangleCollider(t, new Vector2(300)),
+            FilterBits = CollisionLayers.BlockBullets
+        });
+        scene.AttachComponent(entity, new IsShotTriggerComponent()).Event.AddListener(e =>
+        {
+            if (!e.Params.IsCosmetic)
+            {
+                turret.Health -= e.Params.Damage;
+                Prefabs.CreateDeflectionSpark(scene, e.Point, 
+                    Utilities.VectorToAngle(-e.Params.Direction + Utilities.RandomVector2()*0.5f),
+                    Utilities.RandomFloat(1, 2));
+            }
         });
 
         if (!scene.HasSystem<TurretSystem>())

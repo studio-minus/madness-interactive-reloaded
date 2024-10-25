@@ -44,12 +44,12 @@ public static class BulletEmitter
             ClusterSize = 1;
         }
 
-        public BulletParameters(WeaponComponent weapon)
+        public BulletParameters(WeaponComponent? weapon)
         {
-            Damage = weapon.Data.Damage;
+            Damage = weapon?.Data.Damage ?? 0;
             OriginWeapon = weapon;
-            CanBeDeflected = weapon.Data.CanBulletsBeDeflected && weapon.Data.BulletsPerShot == 1;
-            ClusterSize = weapon.Data.BulletsPerShot;
+            CanBeDeflected = (weapon?.Data.CanBulletsBeDeflected ?? false) && weapon.Data.BulletsPerShot == 1;
+            ClusterSize = weapon?.Data.BulletsPerShot ?? 1;
         }
     }
 
@@ -272,8 +272,12 @@ public static class BulletEmitter
                         localPoint.X *= -1;
 
                 if (Scene.TryGetComponentFrom<IsShotTriggerComponent>(hit.Entity, out var trigger))
-                    trigger.Event.Dispatch(new HitEvent(pp.OriginWeapon, hit.Position, hit.Normal, bulletDirection));
-
+                    trigger.Event.Dispatch(new HitEvent
+                    {
+                        Normal = hit.Normal,
+                        Point = hit.Position,
+                        Params = pp
+                    });
 
                 if (isCharacter && victimChar != null)
                 {

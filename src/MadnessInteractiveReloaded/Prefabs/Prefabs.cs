@@ -442,7 +442,9 @@ public static class Prefabs
             transform.RecalculateModelMatrix(Matrix3x2.Identity);
             var flipbook = scene.GetComponentFrom<FlipbookComponent>(entity);
             flipbook.CurrentTime = 0;
-            scene.GetComponentFrom<QuadShapeComponent>(entity).Visible = true;
+            var v = scene.GetComponentFrom<QuadShapeComponent>(entity);
+            v.RenderOrder = RenderOrders.BackgroundInFront;
+            v.Visible = true;
         }
     }
 

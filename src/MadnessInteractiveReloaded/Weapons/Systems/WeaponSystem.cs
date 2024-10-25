@@ -13,8 +13,6 @@ namespace MIR;
 /// </summary>
 public class WeaponSystem : Walgelijk.System
 {
-    private static QueryResult[] buffer = new QueryResult[8];
-
     private static ParticlesComponent? GetParticlesFor(EjectionParticle ejectionParticle, Scene scene)
     {
         if (scene.FindAnyComponent<CasingParticleDictComponent>(out var dict))
@@ -274,6 +272,7 @@ public class WeaponSystem : Walgelijk.System
             BulletEmitter.CastBulletRay(new BulletEmitter.BulletParameters(weapon)
             {
                 Origin = barrel.position,
+                ClusterSize = 1,
                 Direction = dir,
                 OriginCharacter = wielder,
                 CanBeAutoDodged = !wielder.AttacksCannotBeAutoDodged,
