@@ -1,6 +1,8 @@
 ﻿using System.Numerics;
 using Walgelijk;
 using Walgelijk.AssetManager;
+using Walgelijk.Onion;
+using Walgelijk.Onion.Controls;
 using Walgelijk.SimpleDrawing;
 
 namespace MIR;
@@ -12,10 +14,20 @@ public class TurretSystem : Walgelijk.System
         if (MadnessUtils.EditingInExperimentMode(Scene) || MadnessUtils.IsPaused(Scene) || MadnessUtils.IsCutscenePlaying(Scene))
             return;
 
+        const float restDistance = 420;
+        var dt = Time.FixedInterval * 35;
+
         foreach (var turret in Scene.GetAllComponentsOfType<TurretComponent>())
         {
             if (!Registries.Factions.TryGet(turret.Faction, out var faction))
                 continue;
+
+            if (turret.BarrelNode.LengthSquared() < 1)
+                turret.BarrelNodeNext = turret.BarrelNode = restDistance * new Vector2(float.Cos(-turret.AngleRads), float.Sin(-turret.AngleRads));
+
+            turret.BarrelNodeVelocity += dt * turret.BarrelNodeForceAcc;
+            turret.BarrelNodeForceAcc = default;
+            turret.BarrelNodeNext = turret.BarrelNode + dt * turret.BarrelNodeVelocity;
 
             if (!turret.Exploded)
             {
@@ -28,26 +40,22 @@ public class TurretSystem : Walgelijk.System
                     // aim and kill
 
                     {
-                        var dir = target.Positioning.Head.GlobalPosition - turret.Position;
-                        float th = Utilities.Snap(float.Atan2(dir.Y, dir.X) + turret.AngleRads, float.Tau / 30);
-                        turret.AimAnglePredictedRads = float.Lerp(turret.AimAnglePredictedRads, th, 0.1f);
+                        var dir = Vector2.Normalize(target.Positioning.Head.GlobalPosition - turret.Position) * turret.BarrelNode.Length();
+                        turret.BarrelNodeForceAcc += 0.07f * (dir - turret.BarrelNode);
                     }
 
                     turret.ShootClock += Time.FixedInterval;
                     if (turret.ShootClock > 0.2f && turret.FindTargetClock > 1)
                     {
                         turret.ShootClock = 0;
-                        var th = (turret.AimAngleRads - turret.AngleRads);
-                        var dir = new Vector2(float.Cos(th), float.Sin(th));
+                        var dir = Vector2.Normalize(turret.BarrelNode);
 
-                        var origin = turret.Position + new Vector2(
-                            float.Cos(-turret.AngleRads), 
-                            float.Sin(-turret.AngleRads)) * 80;
+                        var origin = turret.Position + new Vector2(float.Cos(-turret.AngleRads), float.Sin(-turret.AngleRads)) * 80;
                         var barrelPos = origin + 420 * dir;
                         var flashPos = origin + (420 + 250) * dir;
 
-                        turret.AimAngleVelocity += Utilities.RandomFloat(-1f, 1f) * 0.05f;
-                        Prefabs.CreateMuzzleFlash(Scene, flashPos, float.RadiansToDegrees(th), 2.5f);
+                        turret.BarrelNodeForceAcc += Utilities.RandomVector2() * 30;
+                        Prefabs.CreateMuzzleFlash(Scene, flashPos, Utilities.VectorToAngle(dir), 2.5f);
                         BulletEmitter.CastBulletRay(new BulletEmitter.BulletParameters
                         {
                             Origin = barrelPos,
@@ -87,21 +95,54 @@ public class TurretSystem : Walgelijk.System
                     t = Utilities.MapRange(idleTime, 1 - idleTime, 0, 1, t);
                     t = Utilities.Clamp(t);
                     var th = Utilities.MapRange(0, 1, turret.AngleRangeRads.X, turret.AngleRangeRads.Y, t);
-                    turret.AimAnglePredictedRads = MadnessUtils.LerpRadians(turret.AimAnglePredictedRads, th, 0.5f);
+
+                    var tt = turret.BarrelNode.Length() * new Vector2(float.Cos(th), float.Sin(th));
+                    turret.BarrelNodeNext += (tt - turret.BarrelNode) * 0.1f;
                 }
             }
             else
+                turret.BarrelNodeForceAcc += new Vector2(0, -10);
+
             {
-                turret.AimAnglePredictedRads += (0 - turret.AimAngleRads) * 0.05f ;
+                // angle constraint
+                var x = turret.AngleRangeRads.X;
+                var y = turret.AngleRangeRads.Y;
+                float min = float.Min(x, y);
+                float max = float.Max(x, y);
+                float mid = (min + max) * 0.5f;
+                var len = turret.BarrelNode.Length();
+                var midPoint = len * new Vector2(float.Cos(mid), float.Sin(mid));
+                var minPoint = len * new Vector2(float.Cos(min), float.Sin(min));
+                var maxPoint = len * new Vector2(float.Cos(max), float.Sin(max));
+
+                var maxDistance = Vector2.Distance(midPoint, minPoint);
+                var distanceToMidPoint = Vector2.Distance(turret.BarrelNode, midPoint);
+
+                if (distanceToMidPoint > maxDistance)
+                {
+                    var direction = midPoint - turret.BarrelNode;
+                    turret.BarrelNodeNext += Vector2.Normalize(direction) * float.Abs(maxDistance - distanceToMidPoint);
+                }
             }
 
-            turret.RenderedAimAngleRads = turret.AimAngleRads;
-            turret.AimAngleVelocity += (turret.AimAnglePredictedRads - turret.AimAngleRads) * 0.4f;
-            turret.AimAngleRads += float.Clamp(turret.AimAngleVelocity, -0.1f, 0.1f);
-            turret.AimAngleVelocity *= 0.85f;
+            {
+                // distance constraint
+                var offset = Vector2.Normalize(turret.BarrelNode) * (restDistance - turret.BarrelNode.Length());
+                turret.BarrelNodeNext += offset * 0.9f;
+            }
+
+            turret.BarrelNodeVelocity = (turret.BarrelNodeNext - turret.BarrelNode) / dt;
+            turret.BarrelNode = turret.BarrelNodeNext;
+            if (turret.Exploded)
+                turret.BarrelNodeVelocity *= 0.95f;
+            else
+                turret.BarrelNodeVelocity *= 0.8f;
 
             turret.Lifespan += Time.FixedInterval;
             turret.FindTargetClock += Time.FixedInterval;
+
+            turret.RenderedAimAngleRads = turret.AimAngleRads;
+            turret.AimAngleRads = float.Atan2(turret.BarrelNode.Y, turret.BarrelNode.X);
         }
     }
 
@@ -116,15 +157,31 @@ public class TurretSystem : Walgelijk.System
         {
             Draw.Order = turret.RenderOrder;
             Draw.Texture = body;
+            Draw.Colour = Colors.White;
+            Draw.BlendMode = BlendMode.AlphaBlend;
 
-            var th = float.Lerp(turret.RenderedAimAngleRads, turret.AimAngleRads, Time.Interpolation);
+            var th = MadnessUtils.LerpRadians(
+                turret.RenderedAimAngleRads, turret.AimAngleRads, Time.Interpolation);
 
             var o = Draw.TransformMatrix = Matrix3x2.CreateTranslation(turret.Position) * Matrix3x2.CreateRotation(-turret.AngleRads, turret.Position);
             Draw.Quad(new Rect(default, body.Size));
-            Draw.TransformMatrix = Matrix3x2.CreateRotation(th, default) * Matrix3x2.CreateTranslation(body.Width * 0.5f, -6) * Draw.TransformMatrix;
+            Draw.TransformMatrix = Matrix3x2.CreateRotation(th + turret.AngleRads, default)
+                * Matrix3x2.CreateTranslation(body.Width * 0.5f, -6) * Draw.TransformMatrix;
             Draw.Texture = head;
             Draw.Order = Draw.Order.OffsetOrder(-1);
             Draw.Quad(new Rect(default, head.Size).Translate(head.Width * 0.5f - 85, -3));
+
+            if (!turret.Exploded)
+            {
+                var hasTarget = turret.Target.IsValid(Scene);
+                float ping = hasTarget ? ((turret.Lifespan * 4) % 1) : (turret.Lifespan % 1);
+                float s = hasTarget ? 50 : 25;
+                Draw.Order = Draw.Order.OffsetOrder(1);
+                Draw.ResetTexture();
+                Draw.BlendMode = BlendMode.Addition;
+                Draw.Colour = Colors.Red.WithAlpha(1 - Easings.Expo.Out(ping));
+                Draw.Circle(new Vector2(375, 42), new(s * Easings.Expo.Out(ping)));
+            }
         }
     }
 }

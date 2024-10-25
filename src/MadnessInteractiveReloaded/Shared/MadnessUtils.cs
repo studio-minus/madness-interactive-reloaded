@@ -6,6 +6,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Numerics;
+using System.Reflection;
 using Walgelijk;
 using Walgelijk.Physics;
 using Walgelijk.SimpleDrawing;
@@ -173,6 +174,36 @@ public static class MadnessUtils
         else if (delta < -float.Pi)
             delta += float.Tau;
         return startAngle + delta * t;
+    }
+
+    public static float ClampRadians(float angle, float min, float max)
+    {
+        angle = NormaliseRadians(angle, float.Tau);
+        min = NormaliseRadians(min, float.Tau);
+        max = NormaliseRadians(max, float.Tau);
+
+        if (max < min)
+            max += float.Tau;
+
+        if (angle < min)
+            angle += float.Tau;
+        else if (angle > max)
+            angle -= float.Tau;
+
+        return float.Clamp(angle, min, max);
+    }
+
+    public static float NormaliseRadians(float angle)
+    {
+        return float.DegreesToRadians(float.RadiansToDegrees(angle));
+    }
+
+    private static float NormaliseRadians(float angle, float modulus)
+    {
+        angle %= modulus;
+        if (angle < 0)
+            angle += modulus;
+        return angle;
     }
 
     /// <summary>

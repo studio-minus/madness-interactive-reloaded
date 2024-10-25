@@ -26,8 +26,12 @@ public class TurretComponent : Component
     public float Lifespan = Utilities.RandomFloat(0, 1);
     public float FindTargetClock;
     public float ShootClock;
-    public float AimAngleVelocity;
+
+    public Vector2 BarrelNode;
+    public Vector2 BarrelNodeNext;
+    public Vector2 BarrelNodeVelocity;
+    public Vector2 BarrelNodeForceAcc;
+
     public float AimAngleRads;
-    public float AimAnglePredictedRads;
     public float RenderedAimAngleRads;
 }

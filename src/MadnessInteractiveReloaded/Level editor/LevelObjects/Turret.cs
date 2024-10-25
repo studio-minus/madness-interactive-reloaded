@@ -141,7 +141,10 @@ public class Turret : LevelObject, ITagged
         var turret = scene.AttachComponent(entity, new TurretComponent
         {
             Faction = Faction,
-            AngleRangeRads = new Vector2(float.DegreesToRadians(MinAngle), float.DegreesToRadians(MaxAngle)),
+            AngleRangeRads = new Vector2(
+                float.DegreesToRadians(MinAngle - Angle), 
+                float.DegreesToRadians(MaxAngle - Angle)
+            ),
             Position = Position,
             RenderOrder = RenderOrder,
             AngleRads = float.DegreesToRadians(Angle),

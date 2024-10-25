@@ -108,7 +108,6 @@ public class NPC : LevelObject
         Ui.Layout.Height(32).FitWidth(false);
         if (Ui.StringInputBox(ref Instructions.Name, default))
             Editor.Dirty = true;
-        
         Ui.Spacer(5);
         Ui.Label("Look");
         selectedIndex = Array.IndexOf(Editor.Looks, Instructions.Look);
