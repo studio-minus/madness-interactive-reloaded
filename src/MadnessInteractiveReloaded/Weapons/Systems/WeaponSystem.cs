@@ -272,7 +272,7 @@ public class WeaponSystem : Walgelijk.System
             BulletEmitter.CastBulletRay(new BulletEmitter.BulletParameters(weapon)
             {
                 Origin = barrel.position,
-                ClusterSize = 1,
+                ClusterSize = weapon.Data.BulletsPerShot,
                 Direction = dir,
                 OriginCharacter = wielder,
                 CanBeAutoDodged = !wielder.AttacksCannotBeAutoDodged,
