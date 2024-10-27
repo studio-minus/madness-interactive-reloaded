@@ -495,7 +495,7 @@ public class WeaponSystem : Walgelijk.System
                         var splatter = SoundCache.Instance.LoadSoundEffect(Assets.Load<FixedAudioData>("sounds/splatter.wav"));
                         Audio.PlayOnce(splatter, 1, Utilities.RandomFloat(0.95f, 1.05f));
                     }
-
+                     
                     //damage broken armour
                     if (hit.Entity == victimChar.Positioning.Head.Entity && Utilities.RandomFloat() > 0.5f)
                     {
