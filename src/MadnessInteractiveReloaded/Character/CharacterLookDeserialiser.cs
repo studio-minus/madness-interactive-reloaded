@@ -19,7 +19,7 @@ public static class CharacterLookDeserialiser
     public const string BloodIdentifier = "blood";
     public const string HandsIdentifier = "hands";
     public const string FeetIdentifier = "feet";
-    public const string JitterIdentifier = "jitter"; 
+    public const string JitterIdentifier = "jitter";
     public const string HeadFleshIdentifier = "head_flesh";
     public const string BodyFleshIdentifier = "body_flesh";
 
@@ -50,6 +50,11 @@ public static class CharacterLookDeserialiser
         deserialiser.RegisterString(BodyFleshIdentifier, static (look, id) =>
         {
             look.BodyFlesh = new AssetRef<Texture>(id);
+        });
+
+        deserialiser.RegisterString(FeetIdentifier, static (look, id) =>
+        {
+            look.Feet = new AssetRef<Texture>(id);
         });
 
         deserialiser.RegisterString(HandsIdentifier, static (look, armourKey) =>
@@ -167,6 +172,10 @@ public static class CharacterLookDeserialiser
             writer.Append(' ');
             writer.AppendLine(key);
         }
+
+        // Write feet
+        if (look.Feet.HasValue && Assets.HasAsset(look.Feet.Value.Id))
+            writer.AppendFormat("{0} {1}\n", FeetIdentifier, look.Feet.Value.Id);
 
         // Write flesh
         if (look.HeadFlesh.HasValue)

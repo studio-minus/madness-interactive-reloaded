@@ -258,17 +258,6 @@ public class WeaponSystem : Walgelijk.System
 
         if (weapon.AnimatedParts != null && !data.IsPumpAction)
             foreach (var animatedPart in weapon.AnimatedParts)
-            {
-                var animation = Scene.GetComponentFrom<WeaponPartAnimationComponent>(animatedPart);
-                animation.IsPlaying = true;
-                animation.CurrentPlaybackTime = 0;
-            }
-
-        for (int i = 0; i < data.BulletsPerShot; i++)
-        {
-            var dir = barrel.direction;
-            dir += Utilities.RandomPointInCircle() * (1 - data.Accuracy);
-            MadnessUtils.Shake(weapon.Data.Damage * 4);
             BulletEmitter.CastBulletRay(new BulletEmitter.BulletParameters(weapon)
             {
                 Origin = barrel.position,
@@ -280,6 +269,17 @@ public class WeaponSystem : Walgelijk.System
                 EnemyCollisionLayer = wielder.EnemyCollisionLayer,
                 IgnoreCollisionSet = wielder.AttackIgnoreCollision
             });
+            {
+                var animation = Scene.GetComponentFrom<WeaponPartAnimationComponent>(animatedPart);
+                animation.IsPlaying = true;
+                animation.CurrentPlaybackTime = 0;
+            }
+
+        for (int i = 0; i < data.BulletsPerShot; i++)
+        {
+            var dir = barrel.direction;
+            dir += Utilities.RandomPointInCircle() * (1 - data.Accuracy);
+            MadnessUtils.Shake(weapon.Data.Damage * 4);
         }
     }
 
