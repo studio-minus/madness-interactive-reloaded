@@ -356,7 +356,7 @@ public class WeaponSystem : Walgelijk.System
                         && weapon.Data.CanBulletsBeDeflected;
 
                     float armourDeflectChance = bodyPart != null
-                        && bodyPart.Entity == victimChar.Positioning.Head.Entity ? victimChar.Look.GetHeadDeflectionChance() : victimChar.Look.GetBodyDeflectionChance();
+                        && bodyPart.Entity == victimChar.Positioning.Head.Entity ? victimChar.Look.GetHeadDeflectChance() : victimChar.Look.GetBodyDeflectChance();
 
                     bool deflectingArmour = !victimChar.Look.Cosmetic && armourDeflectChance > Utilities.RandomFloat();
 
