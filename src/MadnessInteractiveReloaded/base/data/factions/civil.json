@@ -1,6 +1,9 @@
 {
-  "Name": "Civil",
-  "Allies": [
-    "civil"
-  ]
+    "Name": "Civil",
+    "Allies": [
+        "civil"
+    ],
+    "Enemies": [
+        "zeds"
+    ]
 }
