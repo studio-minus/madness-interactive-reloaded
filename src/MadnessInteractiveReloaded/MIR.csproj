@@ -54,7 +54,7 @@
 		<PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="4.11.0" />
 		<PackageReference Include="NativeFileDialogExtendedSharp" Version="0.1.0" />
 		<PackageReference Include="System.CommandLine.DragonFruit" Version="0.4.0-alpha.22272.1" />
-		<PackageReference Include="Walgelijk" Version="0.29.7" />
+		<PackageReference Include="Walgelijk" Version="0.29.8" />
 		<PackageReference Include="Walgelijk.AssetManager" Version="0.16.14" />
 		<PackageReference Include="Walgelijk.CommonAssetDeserialisers" Version="0.8.3" />
 		<PackageReference Include="Walgelijk.Localisation" Version="1.1.21" />
@@ -63,7 +63,7 @@
 		<PackageReference Include="Walgelijk.OpenTK.MotionTK" Version="1.1.27" />
 		<PackageReference Include="Walgelijk.ParticleSystem" Version="0.2.34" />
 		<PackageReference Include="Walgelijk.Physics" Version="0.3.2" />
-		<PackageReference Include="Walgelijk.PortAudio" Version="0.2.0" />
+		<PackageReference Include="Walgelijk.PortAudio" Version="0.4.1" />
 		<PackageReference Include="Walgelijk.SimpleDrawing" Version="1.26.4" />
 	</ItemGroup>
 	

@@ -18,7 +18,8 @@ public static class CharacterLookDeserialiser
     public const string HeadIdentifier = "head";
     public const string BloodIdentifier = "blood";
     public const string HandsIdentifier = "hands";
-    public const string JitterIdentifier = "jitter";
+    public const string FeetIdentifier = "feet";
+    public const string JitterIdentifier = "jitter"; 
     public const string HeadFleshIdentifier = "head_flesh";
     public const string BodyFleshIdentifier = "body_flesh";
 
