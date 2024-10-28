@@ -37,8 +37,8 @@ HEAD
 
 HAND
 aim
-0       -98.09px  26.76px  -0.0deg  scale(1.0, 1.0)
-1       -0.97deg  scale(1.0, 1.0)
+0       -98.09px  26.76px  0.0deg  scale(1.0, 1.0)
+1       -0.97deg
 2       -68.82px  69.42px  -2.9deg  scale(1.0, 1.0)
 3       -21.22px  89.26px  -4.17deg  scale(1.15, 1.0)
 4       225.49px  88.17px  -4.27deg  scale(2.47, 1.0)
@@ -55,12 +55,12 @@ aim
 
 HAND
 aim
-0       181.63px  41.61px  0.0deg
+0       181.63px  41.61px  0.0deg  scale(1.0, 1.0)
 2       209.74px  35.17px
 3       223.79px  25.5px
-4       237.84px  -7.37px  0.11deg
+4       237.84px  -7.37px  0.11deg  scale(1.0, 1.0)
 5       251.89px  -15.75px  0.16deg
-6       265.94px  -2.28px  0.22deg
+6       265.94px  -2.28px  0.22deg  scale(1.0, 1.0)
 7       266.84px  14.4px  0.25deg
 8       254.53px  31.09px  0.23deg
 9       233.35px  39.01px
@@ -69,5 +69,4 @@ aim
 12      187.97px  41.99px  0.02deg
 13      183.09px  41.8px  0.01deg
 14      181.63px  41.61px  0.0deg
-
 

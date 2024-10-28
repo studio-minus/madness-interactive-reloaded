@@ -2,6 +2,6 @@
 # animation_id transition_frame [hit,frame,array]
 
 melee_unarmed_expert_1	    6		[5]
-melee_unarmed_expert_2		10		[6]
-melee_unarmed_expert_3		7		[4]
-melee_unarmed_expert_4  	8		[3]
+melee_unarmed_expert_2		7		[6]
+melee_unarmed_expert_3		8		[7]
+melee_unarmed_expert_4  	11		[6]
