@@ -1,0 +1,13 @@
+0.49.5
+
+name Coat 10
+type BodyAccessory
+left base:textures/bodies/body2/coat10/coat10_left.png
+right base:textures/bodies/body2/coat10/coat10_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+damage-size 1
+offset-left -4 19
+offset-right 4 19

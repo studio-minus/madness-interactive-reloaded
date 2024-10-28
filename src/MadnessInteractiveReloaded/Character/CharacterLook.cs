@@ -31,6 +31,11 @@ public class CharacterLook
     public HandArmourPiece? Hands;
 
     /// <summary>
+    /// Feet texture. Falls back to default if null.
+    /// </summary>
+    public AssetRef<Texture>? Feet;
+
+    /// <summary>
     /// Inner flesh textures. Falls back to default if null.
     /// </summary>
     public AssetRef<Texture>? HeadFlesh, BodyFlesh;
@@ -63,6 +68,7 @@ public class CharacterLook
         BodyLayer2 = toCopy.BodyLayer2;
 
         Hands = toCopy.Hands;
+        Feet = toCopy.Feet;
         Cosmetic = toCopy.Cosmetic;
 
         BloodColour = toCopy.BloodColour;
@@ -82,6 +88,7 @@ public class CharacterLook
         target.BodyLayer2 = BodyLayer2;
 
         target.Hands = Hands;
+        target.Feet = Feet;
         target.Cosmetic = Cosmetic;
 
         target.BloodColour = BloodColour;
@@ -169,10 +176,11 @@ public class CharacterLook
     /// Return the combined chance of head armour bullet deflection
     /// </summary>
     /// <returns></returns>
-    public float GetHeadDeflectionChance()
+    public float GetHeadDeflectChance()
     {
         if (Cosmetic) 
             return 0;
+
         float a = 0;
 
         a = float.Max(a, Head.DeflectChance);
@@ -187,10 +195,11 @@ public class CharacterLook
     /// Return the combined chance of body armour bullet deflection
     /// </summary>
     /// <returns></returns>
-    public float GetBodyDeflectionChance()
+    public float GetBodyDeflectChance()
     {
         if (Cosmetic) 
             return 0;
+
         float a = 0;
 
         a = float.Max(a, Body.DeflectChance);

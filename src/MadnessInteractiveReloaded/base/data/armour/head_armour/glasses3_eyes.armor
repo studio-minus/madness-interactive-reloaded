@@ -1,0 +1,12 @@
+0.49.5
+
+name Glasses 3
+type HeadAccessory
+left textures/bodies/eyes/glasses3/glasses3_left.png
+right textures/bodies/eyes/glasses3/glasses3_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+damage-size 1
+offset 30 3

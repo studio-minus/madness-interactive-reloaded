@@ -186,6 +186,10 @@ public class CharacterPositionSystem : Walgelijk.System
         foreach (var foot in charPos.Feet)
         {
             var fr = Scene.GetComponentFrom<QuadShapeComponent>(foot.Entity);
+
+            if (lookUpdate && character.Look.Feet.HasValue)
+                fr.Material = SpriteMaterialCreator.Instance.Load(character.Look.Feet.Value.Value);
+
             fr.HorizontalFlip = charPos.IsFlipped;
             fr.RenderOrder = character.BaseRenderOrder.WithOrder(CharacterConstants.RenderOrders.FootBaseOrder - charPos.Feet.Length + i);
             fr.Color = character.Tint;

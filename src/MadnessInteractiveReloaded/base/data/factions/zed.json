@@ -1,10 +1,9 @@
 {
-  "Name": "Rogue",
+  "Name": "Zed",
   "Enemies": [
     "player",
     "aahw",
     "civil",
-    "rogue",
-    "zed"
+    "rogue"
   ]
 }

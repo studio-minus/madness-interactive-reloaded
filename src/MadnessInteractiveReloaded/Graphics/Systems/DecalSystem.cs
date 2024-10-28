@@ -95,7 +95,7 @@ public class DecalSystem : Walgelijk.System
                 renderer.Material.SetUniform(DecalMaterialCreator.DecalMaskUniform, mask!.Buffer);
 
             var task = renderer.RenderTask;
-            task.InstanceCount = Math.Min(renderer.CurrentDecalCount, renderer.MaxDecalCount);
+            task.InstanceCount = int.Min(renderer.CurrentDecalCount, renderer.MaxDecalCount);
             task.ModelMatrix = Matrix3x2.Identity;
             renderer.VertexBuffer.ExtraDataHasChanged = true;
             RenderQueue.Add(renderer.RenderTask, renderer.RenderOrder);
