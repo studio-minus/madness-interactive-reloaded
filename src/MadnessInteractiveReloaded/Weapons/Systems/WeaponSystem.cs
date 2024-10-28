@@ -258,17 +258,6 @@ public class WeaponSystem : Walgelijk.System
 
         if (weapon.AnimatedParts != null && !data.IsPumpAction)
             foreach (var animatedPart in weapon.AnimatedParts)
-            BulletEmitter.CastBulletRay(new BulletEmitter.BulletParameters(weapon)
-            {
-                Origin = barrel.position,
-                ClusterSize = weapon.Data.BulletsPerShot,
-                Direction = dir,
-                OriginCharacter = wielder,
-                CanBeAutoDodged = !wielder.AttacksCannotBeAutoDodged,
-                CanBeDeflected = data.CanBulletsBeDeflected,
-                EnemyCollisionLayer = wielder.EnemyCollisionLayer,
-                IgnoreCollisionSet = wielder.AttackIgnoreCollision
-            });
             {
                 var animation = Scene.GetComponentFrom<WeaponPartAnimationComponent>(animatedPart);
                 animation.IsPlaying = true;
@@ -280,6 +269,17 @@ public class WeaponSystem : Walgelijk.System
             var dir = barrel.direction;
             dir += Utilities.RandomPointInCircle() * (1 - data.Accuracy);
             MadnessUtils.Shake(weapon.Data.Damage * 4);
+            BulletEmitter.CastBulletRay(new BulletEmitter.BulletParameters(weapon)
+            {
+                Origin = barrel.position,
+                ClusterSize = weapon.Data.BulletsPerShot,
+                Direction = dir,
+                OriginCharacter = wielder,
+                CanBeAutoDodged = !wielder.AttacksCannotBeAutoDodged,
+                CanBeDeflected = data.CanBulletsBeDeflected,
+                EnemyCollisionLayer = wielder.EnemyCollisionLayer,
+                IgnoreCollisionSet = wielder.AttackIgnoreCollision
+            });
         }
     }
 
