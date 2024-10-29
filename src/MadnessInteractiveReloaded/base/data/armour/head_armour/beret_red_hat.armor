@@ -1,0 +1,13 @@
+0.49.5
+
+name Beret red
+type HeadAccessory
+left textures/bodies/hats/beret_red/beret_red_left.png
+right textures/bodies/hats/beret_red/beret_red_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+damage-size 1
+offset-left -14 -105
+offset-right 9 -105

@@ -9,7 +9,7 @@ melee 1
 can_deflect true
 dodge_oversaturate true
 accurate_shot_chance 0.25
-head_health 1.6
+head_health 1
 body_health 1.6
 unarmed_seq
 	unarmed_master

@@ -1,0 +1,12 @@
+0.49.5
+
+body
+   nexus_agent_suit_body
+   radio_over
+
+head
+   default_head
+   nexus_glasses_eyes
+
+hands default
+blood #ff0000

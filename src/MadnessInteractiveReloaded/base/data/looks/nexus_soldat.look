@@ -1,0 +1,13 @@
+0.49.5
+
+body
+   nexus_agent_suit_body
+   nexus_heavy_body_armor_over
+
+head
+   nexus_balaclava_head
+   beret_red_hat
+   nexus_eyepiece_eyes
+
+hands full_gloves
+blood #ff0000

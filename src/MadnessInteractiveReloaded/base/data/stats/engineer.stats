@@ -10,7 +10,6 @@ panic 0.5
 melee 0.6
 accurate_shot_chance 0.25
 can_deflect true
-body_health 0.5
 unarmed_seq
 	unarmed_expert
 

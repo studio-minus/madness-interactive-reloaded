@@ -1,16 +1,19 @@
-﻿0.35.0
+﻿0.49.5
 
-name Zed
+name Sleepwalker
 
 aiming_randomness 1.25
 shooting_timeout 1
 recoil_handling 0.2
-dodge 0
+dodge 0.5
 panic 0
 melee 0.2
-head_health 3
-body_health 6
+head_health 2
+body_health 5
 hop_duration 0.5
+
+agility_skill_level adept
+
 walk_anim zed_walk
 unarmed_seq
 	unarmed_zed

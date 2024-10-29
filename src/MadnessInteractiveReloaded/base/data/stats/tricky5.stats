@@ -10,7 +10,7 @@ melee_knockback 3
 can_deflect true
 dodge_oversaturate true
 accurate_shot_chance 0.25
-head_health 300
+head_health 200
 body_health 300
 unarmed_seq
 	unarmed_master
