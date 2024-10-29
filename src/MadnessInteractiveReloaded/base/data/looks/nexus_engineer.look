@@ -1,0 +1,13 @@
+0.49.5
+
+body
+   nexus_engineer_suit_body
+   nexus_body_armor_over
+
+head
+   default_head
+   beret_black_hat
+   nexus_engineer_mask_eyes
+
+hands default
+blood #ff0000

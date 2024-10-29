@@ -1,0 +1,15 @@
+﻿0.49.5
+
+name Nexus riot guard
+
+aiming_randomness 0.5
+shooting_timeout 0.75
+recoil_handling 0.9
+can_deflect true
+dodge 0.2
+panic 0.3
+melee 0.4
+accurate_shot_chance 0.5
+
+agility_skill_level adept
+jump_dodge_duration 0.25

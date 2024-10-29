@@ -7,7 +7,7 @@
     "MaxHandRangeMultiplier": 0.8,
     "AdditionalComponents": null,
     "EnsureSystems": null,
-    "ThrowableDamage": 15.0,
+    "ThrowableDamage": 1.0,
     "ThrowableHeavy": false,
     "ThrowableSharpBoxes": [],
     "WeaponType": "Firearm",
@@ -20,37 +20,37 @@
     "RecoilHandling": 1.2,
     "Automatic": false,
     "ShootSounds": [
-      "sounds/firearms/ak_1.wav"
+      "base:sounds/firearms/ak_1.wav"
     ],
     "CanBulletsBeDeflected": true,
     "EjectionParticle": "RifleCasing",
     "CasingSize": 1.0,
     "IsPumpAction": false,
-    "Range": 500.0,
+    "Range": 600.0,
     "CanDeflectBullets": false,
     "SpecialMelee": false,
     "MeleeDamageType": "Firearm",
     "MeleeSize": "Medium"
   },
-  "BaseTexture": "textures/weapons/m16a1/base.png",
+  "BaseTexture": "base:textures/weapons/m16a1/base.png",
   "HoldForGrip": false,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {
-    "X": 343.025,
-    "Y": 33.825066
+    "X": 407.73285,
+    "Y": 35.704548
   },
   "CasingEjectionPoint": {
-    "X": -54.414825,
-    "Y": 34.450325
+    "X": -74.73595,
+    "Y": 41.35183
   },
   "HoldPoints": [
     {
-      "X": 133.51318,
-      "Y": 38.913853
+      "X": 153.39365,
+      "Y": 41.539326
     },
     {
-      "X": 86.71195,
-      "Y": 15.149008
+      "X": 87.09537,
+      "Y": 13.231937
     }
   ],
   "AnimatedParts": [],
