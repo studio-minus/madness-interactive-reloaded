@@ -176,7 +176,7 @@ public class CharacterLook
     /// Return the combined chance of head armour bullet deflection
     /// </summary>
     /// <returns></returns>
-    public float GetHeadDeflectChance()
+    public float GetHeadDeflectionChance()
     {
         if (Cosmetic) 
             return 0;
@@ -195,7 +195,7 @@ public class CharacterLook
     /// Return the combined chance of body armour bullet deflection
     /// </summary>
     /// <returns></returns>
-    public float GetBodyDeflectChance()
+    public float GetBodyDeflectionChance()
     {
         if (Cosmetic) 
             return 0;
