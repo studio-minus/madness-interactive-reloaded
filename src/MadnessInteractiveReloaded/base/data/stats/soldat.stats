@@ -10,8 +10,8 @@ panic 1.1
 melee 0.5
 accurate_shot_chance 0.7
 can_deflect true
+agility_skill_level master
+jump_dodge_duration 0.65
 unarmed_seq
 	unarmed_expert
 
-agility_skill_level master
-jump_dodge_duration 0.65

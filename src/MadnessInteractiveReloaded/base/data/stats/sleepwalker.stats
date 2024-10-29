@@ -11,9 +11,7 @@ melee 0.2
 head_health 2
 body_health 5
 hop_duration 0.5
-
 agility_skill_level adept
-
 walk_anim zed_walk
 unarmed_seq
 	unarmed_zed

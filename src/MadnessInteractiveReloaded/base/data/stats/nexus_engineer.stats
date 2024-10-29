@@ -10,6 +10,7 @@ panic 0.5
 melee 0.45
 accurate_shot_chance 0.25
 can_deflect true
-
 agility_skill_level adept
 jump_dodge_duration 0.25
+unarmed_seq
+	unarmed_expert
