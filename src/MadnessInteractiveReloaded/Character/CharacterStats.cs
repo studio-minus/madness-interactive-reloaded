@@ -160,5 +160,6 @@ public class CharacterStats
         TwoHandedSeq = [.. stats.TwoHandedSeq];
         BluntSeq = [.. stats.BluntSeq];
         TwoHandedGunSeq = [.. stats.TwoHandedGunSeq];
+        OneHandedGunSeq = [.. stats.OneHandedGunSeq];
     }
 }

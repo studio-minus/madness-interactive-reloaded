@@ -173,7 +173,7 @@ public class CharacterComponent : Component
     /// <summary>
     /// The duration of blending between animations.
     /// </summary>
-    public float AnimationMixDuration = 0.3125f;
+    public float AnimationMixDuration = 0.05f;
 
     /// <summary>
     /// The factor of mix between previous animation and current animation (for smooth transitions).

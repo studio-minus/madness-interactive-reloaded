@@ -13,3 +13,5 @@ agility_skill_level master
 jump_dodge_duration 0.65
 unarmed_seq
 	unarmed_master
+one_handed_gun_seq
+	onehanded_gun_master

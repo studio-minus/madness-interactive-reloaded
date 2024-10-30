@@ -1,0 +1,5 @@
+0.7.6
+# animation_id transition_frame [hit,frame,array]
+
+[melee_one_handed_master_L_1,melee_one_handed_master_R_1]   9	[7]
+[melee_one_handed_master_L_2,melee_one_handed_master_R_2]   12	[4]
