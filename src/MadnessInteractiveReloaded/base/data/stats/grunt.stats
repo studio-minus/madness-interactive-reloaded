@@ -13,3 +13,5 @@ unarmed_seq
 	unarmed_novice
 sword_seq
 	sword_novice
+one_handed_gun_seq
+	onehanded_gun_novice

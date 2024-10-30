@@ -1,6 +1,6 @@
 ﻿fps 24
 scale 1
-speed 1.8
+speed 1.4
 
 BODY
 0       0.15px  44.9px  -21.94deg constraints(PreventThrowing PreventIronSight)
