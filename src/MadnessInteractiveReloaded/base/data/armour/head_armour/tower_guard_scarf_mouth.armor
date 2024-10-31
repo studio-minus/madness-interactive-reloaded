@@ -1,0 +1,13 @@
+0.49.5
+
+name Tower guard scarf
+type HeadAccessory
+left base:textures/bodies/mouth/tower_guard_scarf/tower_guard_scarf_left.png
+right base:textures/bodies/mouth/tower_guard_scarf/tower_guard_scarf_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+damage-size 1
+offset-left -9 97
+offset-right -20 97
