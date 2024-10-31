@@ -1,0 +1,5 @@
+0.7.6
+# animation_id transition_frame [hit,frame,array]
+
+[melee_sword_master_2_R_1,melee_sword_master_2_L_1]   12	[9]
+[melee_sword_master_2_R_2,melee_sword_master_2_L_2]   15	[4]
