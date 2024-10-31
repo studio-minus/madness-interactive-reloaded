@@ -15,3 +15,5 @@ unarmed_seq
 	unarmed_master
 one_handed_gun_seq
 	onehanded_gun_master
+sword_seq
+	sword_master
