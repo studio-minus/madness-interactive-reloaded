@@ -2,8 +2,8 @@
 
 name Sanford bandages 2
 type Body
-left base:textures/bodies/body1/sanford_bandages2/sanford_bandages2_left.png
-right base:textures/bodies/body1/sanford_bandages2/sanford_bandages2_right.png
+left textures/bodies/body1/sanford_bandages2/sanford_bandages2_left.png
+right textures/bodies/body1/sanford_bandages2/sanford_bandages2_right.png
 texture-scale 1
 category All
 detach False

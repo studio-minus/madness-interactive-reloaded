@@ -2,8 +2,8 @@
 
 name Bandages 5
 type HeadAccessory
-left base:textures/bodies/hats/bandages5/bandages5_left.png
-right base:textures/bodies/hats/bandages5/bandages5_right.png
+left textures/bodies/hats/bandages5/bandages5_left.png
+right textures/bodies/hats/bandages5/bandages5_right.png
 texture-scale 1
 category All
 detach False
