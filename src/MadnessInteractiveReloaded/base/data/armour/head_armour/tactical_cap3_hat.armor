@@ -1,0 +1,13 @@
+0.50.0
+
+name Tactical cap 3
+type HeadAccessory
+left base:textures/bodies/hats/tactical_cap3/tactical_cap3_left.png
+right base:textures/bodies/hats/tactical_cap3/tactical_cap3_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+damage-size 1
+offset-left 44 -10
+offset-right 43 -10

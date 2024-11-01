@@ -1,0 +1,12 @@
+0.50.0
+
+name Bandages 5
+type HeadAccessory
+left base:textures/bodies/hats/bandages5/bandages5_left.png
+right base:textures/bodies/hats/bandages5/bandages5_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+damage-size 1
+offset -8 -43
