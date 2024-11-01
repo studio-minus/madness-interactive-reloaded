@@ -5,6 +5,8 @@ using System.Buffers.Text;
 using System.Globalization;
 using System.IO;
 using System.Text;
+using Walgelijk.AssetManager.Deserialisers;
+using Walgelijk.AssetManager;
 
 namespace MIR;
 
@@ -73,5 +75,19 @@ public static class CharacterPresetDeserialiser
             writer.AppendLineFormat("stats {0}", dataPrefix + Convert.ToBase64String(File.ReadAllBytes(f)));
         }
         File.WriteAllText(path, writer.ToString());
+    }
+
+    public class AssetDeserialiser : IAssetDeserialiser<ExperimentCharacterPreset>
+    {
+        public ExperimentCharacterPreset Deserialise(Func<Stream> stream, in AssetMetadata assetMetadata)
+        {
+            using var s = stream();
+            return deserialiser.Deserialise(s, assetMetadata.Path);
+        }
+
+        public bool IsCandidate(in AssetMetadata assetMetadata)
+        {
+            return assetMetadata.Path.EndsWith(".preset");
+        }
     }
 }

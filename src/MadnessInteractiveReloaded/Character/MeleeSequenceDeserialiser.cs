@@ -2,6 +2,8 @@ using MIR.Serialisation;
 using System;
 using System.IO;
 using Walgelijk;
+using Walgelijk.AssetManager.Deserialisers;
+using Walgelijk.AssetManager;
 
 namespace MIR;
 
@@ -10,21 +12,19 @@ namespace MIR;
 /// </summary>
 public static class MeleeSequenceDeserialiser
 {
-    private static readonly string[] delimiters = { "\t", " " };
+    private static readonly string[] delimiters = ["\t", " "];
 
     /// <summary>
     /// Load a <see cref="MeleeSequence"/>.
     /// </summary>
-    /// <param name="path"></param>
-    /// <returns></returns>
-    public static MeleeSequence Load(string path)
+    public static MeleeSequence Load(Stream stream)
     {
-        using var file = new StreamReader(path);
+        using var s = new StreamReader(stream);
 
         var keyIndex = 0;
         var keys = new MeleeSequenceKey[16]; //TODO maak het duidelijk dat je er maar 16 kan hebben
 
-        foreach (var line in BaseDeserialiser.Read(file))
+        foreach (var line in BaseDeserialiser.Read(s))
         {
             var text = line.String.AsSpan().Trim();
             var parts = text.ToString().Split(delimiters, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries); //TODO had beter gekund
@@ -106,7 +106,21 @@ public static class MeleeSequenceDeserialiser
 
         Array.Resize(ref keys, keyIndex);
 
-        file.Dispose();
+        s.Dispose();
         return new MeleeSequence(keys);
+    }
+
+    public class AssetDeserialiser : IAssetDeserialiser<MeleeSequence>
+    {
+        public MeleeSequence Deserialise(Func<Stream> stream, in AssetMetadata assetMetadata)
+        {
+            using var s = stream();
+            return Load(s);
+        }
+
+        public bool IsCandidate(in AssetMetadata assetMetadata)
+        {
+            return assetMetadata.Path.EndsWith(".seq");
+        }
     }
 }

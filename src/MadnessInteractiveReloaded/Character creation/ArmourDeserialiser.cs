@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using Walgelijk;
 using Walgelijk.AssetManager;
+using Walgelijk.AssetManager.Deserialisers;
 
 namespace MIR;
 
@@ -81,7 +82,7 @@ public static class ArmourDeserialiser
     /// Load a <see cref="ArmourPiece"/> from the given input path
     /// </summary>
     /// <exception cref="Exceptions.SerialisationException"></exception>
-    public static ArmourPiece Load(string path)
+    public static ArmourPiece LoadFromPath(string path)
     {
         using var s = new FileStream(path, FileMode.Open, FileAccess.Read);
         return Load(s, Path.GetFileName(path));
@@ -131,6 +132,20 @@ public static class ArmourDeserialiser
         yield return new(OffsetLeft, string.Format("{0} {1}", piece.OffsetLeft.X, piece.OffsetLeft.Y));
         yield return new(OffsetRight, string.Format("{0} {1}", piece.OffsetRight.X, piece.OffsetRight.Y));
         yield break;
+    }
+
+    public class AssetDeserialiser : IAssetDeserialiser<ArmourPiece>
+    {
+        public ArmourPiece Deserialise(Func<Stream> stream, in AssetMetadata assetMetadata)
+        {
+            using var s = stream();
+            return Load(s, assetMetadata.Path);
+        }
+
+        public bool IsCandidate(in AssetMetadata assetMetadata)
+        {
+            return assetMetadata.Path.EndsWith(".armor");
+        }
     }
 }
 

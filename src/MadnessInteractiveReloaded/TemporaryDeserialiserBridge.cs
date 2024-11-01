@@ -5,6 +5,7 @@ using Walgelijk.AssetManager.Deserialisers;
 
 namespace MIR;//👩
 
+[Obsolete]
 public abstract class TemporaryDeserialiserBridge<T> : IAssetDeserialiser<T> where T : notnull
 {
     public Type ReturningType => typeof(T);
