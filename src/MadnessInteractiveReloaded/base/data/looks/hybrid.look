@@ -1,4 +1,4 @@
-0.49.5
+0.50.0
 
 body
    hybrid_body
@@ -8,4 +8,6 @@ head
 
 hands hybrid
 feet textures/bodies/feet/hybrid.png
+head_flesh textures/bodies/gore/hybrid_head_flesh.png
+head_gore textures/bodies/gore/hybrid_head_gore.png
 blood #41BB3CFF
