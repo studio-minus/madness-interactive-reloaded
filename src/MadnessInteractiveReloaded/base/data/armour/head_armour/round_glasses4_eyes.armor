@@ -1,0 +1,12 @@
+0.49.5
+
+name Round glasses 4
+type HeadAccessory
+left textures/bodies/eyes/round_glasses4/round_glasses4_left.png
+right textures/bodies/eyes/round_glasses4/round_glasses4_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+damage-size 1
+offset 79 0

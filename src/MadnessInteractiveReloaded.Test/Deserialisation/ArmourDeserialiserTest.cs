@@ -38,7 +38,7 @@ offset {xOffset} {yOffset}
         var path = Path.GetTempFileName();
         File.WriteAllText(path, content);
 
-        var result = ArmourDeserialiser.Load(path);
+        var result = ArmourDeserialiser.LoadFromPath(path);
 
         result.Name.Should().Be(name.Trim().ToString());
         result.MenuOrder.Should().Be(order);
@@ -71,7 +71,7 @@ broken
         var path = Path.GetTempFileName();
         File.WriteAllText(path, content);
 
-        var result = ArmourDeserialiser.Load(path);
+        var result = ArmourDeserialiser.LoadFromPath(path);
 
         result.BrokenKeys!.Select(b => b.ToString()).Should().Equal(["test54", "what12", "kameel!"]);
     }
@@ -92,7 +92,7 @@ right textures/bodies/default/head_right.png
         File.WriteAllText(path, content);
         Assert.Throws<Exceptions.SerialisationException>(() =>
         {
-            var result = ArmourDeserialiser.Load(path);
+            var result = ArmourDeserialiser.LoadFromPath(path);
 
             result.Name.Should().Be("Hoe is het");
             result.MenuOrder.Should().Be(default);
@@ -124,7 +124,7 @@ right textures/bodies/default/head_right.png
 
         Assert.Throws<Exceptions.SerialisationException>(() =>
         {
-            var result = ArmourDeserialiser.Load(path);
+            var result = ArmourDeserialiser.LoadFromPath(path);
 
             result.Name.Should().Be("Head again");
             result.MenuOrder.Should().Be(default);

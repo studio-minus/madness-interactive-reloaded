@@ -1,0 +1,13 @@
+0.49.5
+
+body
+   nexus_agent_suit_body
+   nexus_riot_armor_over
+
+head
+   default_head
+   nexus_riot_visor_eyes
+   nexus_riot_helmet_hat
+
+hands default
+blood #ff0000

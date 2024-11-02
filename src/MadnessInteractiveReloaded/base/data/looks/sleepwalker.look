@@ -1,0 +1,13 @@
+0.49.5
+
+body
+   sleepwalker_body
+   sleepwalker_backpack_over
+
+head
+   default_head
+   sleepwalker_bandages_hat
+   nexus_sleepwalker_visor_eyes
+
+hands default
+blood #ff0000
