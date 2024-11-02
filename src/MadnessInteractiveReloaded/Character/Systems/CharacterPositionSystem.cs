@@ -188,7 +188,12 @@ public class CharacterPositionSystem : Walgelijk.System
             var fr = Scene.GetComponentFrom<QuadShapeComponent>(foot.Entity);
 
             if (lookUpdate && character.Look.Feet.HasValue)
-                fr.Material = SpriteMaterialCreator.Instance.Load(character.Look.Feet.Value.Value);
+            {
+                var tex = character.Look.Feet.Value.Value;
+                fr.Material = SpriteMaterialCreator.Instance.Load(tex);
+                if (Scene.TryGetComponentFrom<TransformComponent>(fr.Entity, out var footTransform))
+                    footTransform.Scale = charPos.Scale * tex.Size;
+            }
 
             fr.HorizontalFlip = charPos.IsFlipped;
             fr.RenderOrder = character.BaseRenderOrder.WithOrder(CharacterConstants.RenderOrders.FootBaseOrder - charPos.Feet.Length + i);
