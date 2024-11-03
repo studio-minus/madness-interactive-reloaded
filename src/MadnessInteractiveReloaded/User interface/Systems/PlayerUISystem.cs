@@ -3,7 +3,10 @@ using System.Numerics;
 using Walgelijk;
 using Walgelijk.AssetManager;
 using Walgelijk.Localisation;
+using Walgelijk.Onion.Layout;
 using Walgelijk.SimpleDrawing;
+using static System.Formats.Asn1.AsnWriter;
+using static MIR.Textures;
 
 namespace MIR;
 
@@ -20,6 +23,7 @@ public class PlayerUISystem : Walgelijk.System
     private int lastProgressIndex;
     private float lastProgressIndexFlashCounter = 0;
     private float lowAmmoWarningFade = 0;
+    private static Scene scene => MadnessInteractiveReloaded.Game?.Scene ?? throw new Exception("Game may not be null");
 
     public override void Render()
     {
@@ -75,6 +79,24 @@ public class PlayerUISystem : Walgelijk.System
         float normalizedAmmoCount = 1f;
         var crosshairPos = Input.WorldMousePosition;
 
+        // health indicator
+        var head = scene.GetComponentFrom<BodyPartComponent>(character.Positioning.Head.Entity);
+        var body = scene.GetComponentFrom<BodyPartComponent>(character.Positioning.Body.Entity);
+
+        var health = float.Min(head.Health, body.Health);
+        var maxHealth = float.Min(head.MaxHealth, body.MaxHealth);
+        float healthRatio = health / maxHealth;
+        Draw.OutlineWidth = 0;
+        Draw.Texture = healthRatio switch
+        {
+            > 0.7f => Assets.Load<Texture>("textures/low_health_vignette_1.png").Value,
+            > 0.3f and <= 0.7f => Assets.Load<Texture>("textures/low_health_vignette_2.png").Value,
+            > 0.1f and <= 0.3f => Assets.Load<Texture>("textures/low_health_vignette_3.png").Value,
+            _ => Assets.Load<Texture>("textures/low_health_vignette_4.png").Value
+        };
+        Draw.Colour = Utilities.Lerp(Colors.Transparent, Colors.White, (1 - float.Pow((health / maxHealth), 2) - float.Abs(float.Sin(Time * (1 - healthRatio) * 4)) * 0.25f) * 0.8f);
+        Draw.Quad(Vector2.Zero, Window.Size, 0, 0);
+
         // draw gun icon & process crosshair pos
         {
             if (character.EquippedWeapon.TryGet(Scene, out var eq))
@@ -89,7 +111,7 @@ public class PlayerUISystem : Walgelijk.System
                     var aspectRatio = baseTex.Height / (float)baseTex.Width;
 
                     bool flipped = wpn.WeaponData.WeaponType is WeaponType.Melee;
-                    if (flipped)    
+                    if (flipped)
                         aspectRatio = 1 / aspectRatio;
 
                     var wpnRect = flipped ?
@@ -140,7 +162,7 @@ public class PlayerUISystem : Walgelijk.System
                                 float s = 0;
 
                                 if (eq.AnimatedParts != null
-                                    && eq.AnimatedParts.Length > i  
+                                    && eq.AnimatedParts.Length > i
                                     && Scene.TryGetComponentFrom<WeaponPartAnimationComponent>(eq.AnimatedParts[i++], out var comp))
                                 {
                                     s = comp.CurrentPlaybackTime / part.Duration;
