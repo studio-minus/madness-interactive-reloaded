@@ -10,4 +10,4 @@ detach False
 hidden False
 damage-size 1
 offset 4 6
-deflect-chance 0.99
+deflect-chance 0.999
