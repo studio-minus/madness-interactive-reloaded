@@ -6,8 +6,7 @@ body
 
 head
    default_head
-   nexus_riot_visor_eyes
-   nexus_riot_helmet_hat
+   full_nexus_riot_helmet_hat
 
 hands default
 blood #ff0000

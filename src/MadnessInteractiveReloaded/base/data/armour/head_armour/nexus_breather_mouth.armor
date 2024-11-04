@@ -1,0 +1,12 @@
+0.50.0
+
+name Nexus breather
+type HeadAccessory
+left textures/bodies/mouth/nexus_breather/nexus_breather_left.png
+right textures/bodies/mouth/nexus_breather/nexus_breather_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+damage-size 1
+offset 11 76
