@@ -65,7 +65,7 @@
         "X": 1.0,
         "Y": 1.0
       },
-      "Texture": "base:textures/weapons/m60/ammo.png",
+      "Texture": "textures/weapons/m60/ammo.png",
       "TranslationCurve": {
         "MappingFunction": null,
         "Keys": [
@@ -103,7 +103,7 @@
         "X": 1.0,
         "Y": 1.0
       },
-      "Texture": "base:textures/weapons/m60/ammo_carrier_l2.png",
+      "Texture": "textures/weapons/m60/ammo_carrier_l2.png",
       "TranslationCurve": {
         "MappingFunction": null,
         "Keys": [

@@ -1,0 +1,11 @@
+0.50.0
+
+body
+   blouse4_body
+
+head
+   default_head
+   mouth_bandages2_mouth
+   doc_mask_eyes
+
+blood #FF0000FF

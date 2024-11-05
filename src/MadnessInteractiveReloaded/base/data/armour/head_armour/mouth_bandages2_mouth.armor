@@ -1,0 +1,12 @@
+0.50.0
+
+name Mouth Bandages 2
+type HeadAccessory
+left textures/bodies/mouth/mouth_bandages2/mouth_bandages2_left.png
+right textures/bodies/mouth/mouth_bandages2/mouth_bandages2_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+damage-size 1
+offset -1 61
