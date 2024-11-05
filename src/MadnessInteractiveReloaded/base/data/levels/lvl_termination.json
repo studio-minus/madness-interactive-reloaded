@@ -13,7 +13,7 @@
     "MaxX": 1700.3987,
     "MaxY": 1231.9509
   },
-  "BodyCountToWin": 1,
+  "BodyCountToWin": 0,
   "TimeLimitInSeconds": -1.0,
   "FullZoom": true,
   "Thumbnail": "textures/level_thumbnails/lvl_termination.qoi",
@@ -23,11 +23,11 @@
   "Weapons": null,
   "FloorLine": [
     {
-      "X": -2859.5,
+      "X": -2853.5,
       "Y": -1187.9802
     },
     {
-      "X": -455.5,
+      "X": -461.5,
       "Y": -1187.9802
     }
   ],
@@ -138,8 +138,8 @@
       "$type": "MIR.LevelEditor.Objects.AnimationTrigger, MIR",
       "Component": {
         "WorldRect": {
-          "MinX": -1867.3079,
-          "MinY": 2903.6343,
+          "MinX": -2655.346,
+          "MinY": -1229.2812,
           "MaxX": -1113.0521,
           "MaxY": 4697.7847
         },
@@ -161,8 +161,8 @@
         }
       },
       "Rectangle": {
-        "MinX": -1867.3079,
-        "MinY": 2903.6343,
+        "MinX": -2655.346,
+        "MinY": -1229.2812,
         "MaxX": -1113.0521,
         "MaxY": 4697.7847
       },
