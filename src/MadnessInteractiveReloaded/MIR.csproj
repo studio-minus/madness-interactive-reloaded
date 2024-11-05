@@ -75,6 +75,7 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <None Remove="base\data\incident_music.json" />
+	  <None Remove="base\shaders\blur.frag" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Include="..\.editorconfig" Link=".editorconfig" />
@@ -113,6 +114,9 @@
 	  <Resource Include="base\data\levels\incident\lvl_incident_end_4.json" />
 	  <Resource Include="base\data\levels\incident\lvl_incident_end_5.json" />
 	  <Resource Include="base\data\levels\incident\lvl_incident_end_6.json" />
+	  <Resource Include="base\shaders\blur.frag">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Resource>
 	</ItemGroup>
 	
 	<ItemGroup>
