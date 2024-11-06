@@ -1,11 +1,11 @@
 0.50.0
 
 body
-   jacket1_body
+   jacket2_body
 
 head
    default_head
    mouth_bandages2_mouth
-   doc_mask_eyes
+   doc_mask2_eyes
 
 blood #FF0000FF

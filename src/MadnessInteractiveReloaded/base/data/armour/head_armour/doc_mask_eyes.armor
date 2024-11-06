@@ -2,12 +2,12 @@
 
 name Doc mask
 type HeadAccessory
-left textures/bodies/eyes/doc_mask/doc_mask_left.png
-right textures/bodies/eyes/doc_mask/doc_mask_right.png
+left base:textures/bodies/eyes/doc_mask/doc_mask_left.png
+right base:textures/bodies/eyes/doc_mask/doc_mask_right.png
 texture-scale 1
 category All
 detach False
 hidden False
 damage-size 1
-offset-left 2 19
-offset-right 10 19
+offset-left 12 19
+offset-right 2 19
