@@ -1,0 +1,13 @@
+0.50.0
+
+name Doc mask
+type HeadAccessory
+left base:textures/bodies/eyes/doc_mask/doc_mask_left.png
+right base:textures/bodies/eyes/doc_mask/doc_mask_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+damage-size 1
+offset-left 12 19
+offset-right 2 19
