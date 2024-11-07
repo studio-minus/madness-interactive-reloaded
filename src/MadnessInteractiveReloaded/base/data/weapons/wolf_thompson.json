@@ -1,0 +1,58 @@
+{
+  "Id": "wolf_thompson",
+  "WeaponData": {
+    "Name": "Wolf Thompson",
+    "Damage": 0.95,
+    "UseDelay": 0.13,
+    "MaxHandRangeMultiplier": 1.0,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 20,
+    "BurstFireCount": 0,
+    "Accuracy": 1.0,
+    "Recoil": 0.77,
+    "RotationalRecoilIntensity": 0.37,
+    "RecoilHandling": 1.36,
+    "Automatic": true,
+    "ShootSounds": [
+      "sounds/firearms/wolf_thompson.wav"
+    ],
+    "CanBulletsBeDeflected": true,
+    "EjectionParticle": "Small",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 505.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/wolf_thompson/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 266.2988,
+    "Y": 55.182888
+  },
+  "CasingEjectionPoint": {
+    "X": 16.61504,
+    "Y": 53.9156
+  },
+  "HoldPoints": [
+    {
+      "X": 16.65506,
+      "Y": 9.455961
+    },
+    {
+      "X": 170.90732,
+      "Y": 17.516108
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}
