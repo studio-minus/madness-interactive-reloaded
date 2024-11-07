@@ -90,9 +90,10 @@ public class LocalModCollectionSource : IModCollectionSource
 
         var readZip = new ZipArchive(stream);
 
-        if (System.IO.Directory.Exists("./debugout/"))
-            System.IO.Directory.Delete("./debugout/", true);
-        readZip.ExtractToDirectory("./debugout/", true);
+        var debugoutPath = Path.Combine(Game.Main.AppDataDirectory, "debugout/");
+        if (System.IO.Directory.Exists(debugoutPath))
+            System.IO.Directory.Delete(debugoutPath, true);
+        readZip.ExtractToDirectory(debugoutPath, true);
 
         var m = new Mod(readZip);
         modDirs.Add(m.Id, dir);

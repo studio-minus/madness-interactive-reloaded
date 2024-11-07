@@ -186,7 +186,7 @@ void main()
         Directory.CreateDirectory(UserData.Paths.CampaignStatsDir);
         MigrateSaveData();
 
-        ModLoader.AddSource(new LocalModCollectionSource(new DirectoryInfo("./mods")));
+        ModLoader.AddSource(new LocalModCollectionSource(new DirectoryInfo(Path.Combine(Game.Main.AppDataDirectory, "mods/"))));
 
 #if DEBUG
         Game.Profiling.DrawQuickProfiler = false;
