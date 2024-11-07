@@ -247,6 +247,11 @@ void main()
         if (oldFolder.Exists)
         {
             Logger.Log($"Old user data folder found at \"{oldFolder.FullName}\"! Migrating to \"{UserData.Paths.BaseDir}\"");
+            if (Directory.Exists(UserData.Paths.BaseDir))
+            {
+                Logger.Warn($"Migration cancelled because the target folder already exists.");
+                return;
+            }
             MadnessUtils.CopyDirectory(oldFolder.FullName, UserData.Paths.BaseDir, true);
             oldFolder.Delete(true);
         }
