@@ -1,4 +1,5 @@
 ﻿using MIR.Cutscenes;
+using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
@@ -183,6 +184,7 @@ void main()
         Directory.CreateDirectory(UserData.Paths.ExperimentDir);
         Directory.CreateDirectory(UserData.Paths.ExperimentCharacterPresets);
         Directory.CreateDirectory(UserData.Paths.CampaignStatsDir);
+        MigrateSaveData();
 
         ModLoader.AddSource(new LocalModCollectionSource(new DirectoryInfo("./mods")));
 
@@ -236,5 +238,17 @@ void main()
         Game.Scene.Dispose();
         Resources.UnloadAll();
         Assets.ClearRegistry();
+    }
+
+    private void MigrateSaveData()
+    {
+        var oldFolder = new DirectoryInfo("userdata");
+
+        if (oldFolder.Exists)
+        {
+            Logger.Log($"Old user data folder found at \"{oldFolder.FullName}\"! Migrating to \"{UserData.Paths.BaseDir}\"");
+            MadnessUtils.CopyDirectory(oldFolder.FullName, UserData.Paths.BaseDir, true);
+            oldFolder.Delete(true);
+        }
     }
 }
