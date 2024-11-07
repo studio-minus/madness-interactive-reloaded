@@ -1,0 +1,12 @@
+0.50.0
+
+name Mosian robes
+type BodyAccessory
+left textures/bodies/body2/mosian_robes/mosian_robes_left.png
+right textures/bodies/body2/mosian_robes/mosian_robes_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+damage-size 1
+offset -3 24

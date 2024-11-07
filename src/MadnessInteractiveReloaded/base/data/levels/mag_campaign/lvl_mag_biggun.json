@@ -5,7 +5,7 @@
   "EnemySpawnInterval": 2.0,
   "MaxEnemyCount": 5,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "base:sounds/music/Lothyde/precarious_state.ogg",
+  "BackgroundMusic": "sounds/music/Lothyde/precarious_state.ogg",
   "WeaponChance": 0.84999996,
   "LevelBounds": {
     "MinX": -3039.4492,
@@ -132,7 +132,7 @@
         "X": -10.560486,
         "Y": 527.3312
       },
-      "TexturePath": "base:textures/backgrounds/mag_campaign/background_mag_biggun.qoi",
+      "TexturePath": "textures/backgrounds/mag_campaign/background_mag_biggun.qoi",
       "Scale": 2.222222
     },
     {
