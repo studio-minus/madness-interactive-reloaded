@@ -21,7 +21,9 @@ public static class CharacterLookDeserialiser
     public const string FeetIdentifier = "feet";
     public const string JitterIdentifier = "jitter"; 
     public const string HeadFleshIdentifier = "head_flesh";
-    public const string BodyFleshIdentifier = "body_flesh";
+    public const string BodyFleshIdentifier = "body_flesh";   
+    public const string HeadGoreIdentifier = "head_gore";
+    public const string BodyGoreIdentifier = "body_gore";
 
     private static readonly KeyValueDeserialiser<CharacterLook> deserialiser = new(nameof(CharacterLookDeserialiser));
 
@@ -181,7 +183,13 @@ public static class CharacterLookDeserialiser
         if (look.HeadFlesh.HasValue)
             writer.AppendFormat("{0} {1}\n", HeadFleshIdentifier, look.HeadFlesh.Value.Id);
         if (look.BodyFlesh.HasValue)
-            writer.AppendFormat("{0} {1}\n", BodyFleshIdentifier, look.BodyFlesh.Value.Id);
+            writer.AppendFormat("{0} {1}\n", BodyFleshIdentifier, look.BodyFlesh.Value.Id);  
+        
+        // Write gore
+        if (look.HeadGore.HasValue)
+            writer.AppendFormat("{0} {1}\n", HeadGoreIdentifier, look.HeadGore.Value.Id);
+        if (look.BodyGore.HasValue)
+            writer.AppendFormat("{0} {1}\n", BodyGoreIdentifier, look.BodyGore.Value.Id);
 
         writer.Append(BloodIdentifier);
         writer.Append(' ');
