@@ -38,7 +38,12 @@ public class CharacterLook
     /// <summary>
     /// Inner flesh textures. Falls back to default if null.
     /// </summary>
-    public AssetRef<Texture>? HeadFlesh, BodyFlesh;
+    public AssetRef<Texture>? HeadFlesh, BodyFlesh;  
+    
+    /// <summary>
+    /// Inner gore textures. Falls back to default if null.
+    /// </summary>
+    public AssetRef<Texture>? HeadGore, BodyGore;
 
     /// <summary>
     /// Protective stats have no influence if true
@@ -57,22 +62,7 @@ public class CharacterLook
 
     public CharacterLook(CharacterLook toCopy)
     {
-        Head = toCopy.Head;
-        Body = toCopy.Body;
-
-        HeadLayer1 = toCopy.HeadLayer1;
-        HeadLayer2 = toCopy.HeadLayer2;
-        HeadLayer3 = toCopy.HeadLayer3;
-
-        BodyLayer1 = toCopy.BodyLayer1;
-        BodyLayer2 = toCopy.BodyLayer2;
-
-        Hands = toCopy.Hands;
-        Feet = toCopy.Feet;
-        Cosmetic = toCopy.Cosmetic;
-
-        BloodColour = toCopy.BloodColour;
-        Jitter = toCopy.Jitter;
+        toCopy.CopyTo(this);
     }
 
     public void CopyTo(CharacterLook target)
@@ -86,6 +76,11 @@ public class CharacterLook
 
         target.BodyLayer1 = BodyLayer1;
         target.BodyLayer2 = BodyLayer2;
+
+        target.HeadFlesh = HeadFlesh;
+        target.BodyFlesh = BodyFlesh; 
+        target.HeadGore = HeadGore;
+        target.BodyGore = BodyGore;
 
         target.Hands = Hands;
         target.Feet = Feet;

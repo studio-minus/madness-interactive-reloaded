@@ -39,7 +39,7 @@ public class IncidentModeMenuSystem : Walgelijk.System
         const float phase3 = 0.5f;
         const float phase4 = 0.6f;
 
-        if (isBusyWithIntroAnimation /*|| true*/)
+        if (isBusyWithIntroAnimation || true)
             introAnimationTimer += Time.DeltaTime / animationDuration;
         else
             introAnimationTimer = 0;
@@ -70,6 +70,24 @@ public class IncidentModeMenuSystem : Walgelijk.System
         Draw.Reset();
         Draw.ScreenSpace = true;
         Draw.Font = Fonts.Impact;
+
+        // unfinished disclaimer
+        if (introAnimationTimer < phase2)
+        {
+            Draw.Colour = Colors.White;
+            Draw.FontSize = 128;
+            float w = 700;
+            float h = 150;
+            Draw.TransformMatrix = Matrix3x2.CreateRotation(float.Tau * 0.1f, Window.Size * 0.5f) * Matrix3x2.CreateScale(1.5f, Window.Size * 0.5f);
+            for (int y = -1; y <= float.Ceiling(Window.Height / h); y++)
+                for (int x = -1; x <= float.Ceiling(Window.Width / w); x++)
+                {
+                    Draw.Colour.A = Utilities.MapRange(-1, 1, 0.02f, 0.05f, float.Sin(Time * 5 + x + y));
+                    Draw.Text("UNFINISHED",
+                        new Vector2(x * w - (y % 2) * w * 0.5f + (Time * 50) % w, y * h), Vector2.One, HorizontalTextAlign.Left, VerticalTextAlign.Middle);
+                }
+            Draw.ResetTransformation();
+        }
 
         // intro bg
         {
@@ -115,11 +133,12 @@ public class IncidentModeMenuSystem : Walgelijk.System
                 Draw.WriteMask();
                 var rect = Draw.Image(bg, new Rect(0, 0, Window.Width, Window.Height), ImageContainmentMode.Contain);
                 Draw.InsideMask();
-                Draw.TransformMatrix = Matrix3x2.CreateScale(1.1f, Window.Size * 0.5f);
+                Draw.TransformMatrix = Matrix3x2.CreateScale(float.Lerp(1.1f, 1, Easings.Quad.Out(ph3timer)), Window.Size * 0.5f);
                 Draw.TransformMatrix *= Matrix3x2.CreateTranslation(Utilities.MapRange(0, 1, 50, 0, Easings.Quad.Out(ph3timer)), 0);
-                Draw.Image(bg, rect, ImageContainmentMode.Stretch);
+                var bgRect = Draw.Image(bg, rect, ImageContainmentMode.Stretch);
 
                 var flicker = ph4timer < 0.9f || Time % 0.1f > 0.05f;
+                flicker = true;
                 if (introAnimationTimer > phase4 && (flicker))
                 {
                     Draw.FontSize = Window.Height / 1080f * 180;
@@ -128,17 +147,18 @@ public class IncidentModeMenuSystem : Walgelijk.System
                     var p2 = Utilities.Clamp(Easings.Expo.Out(ph4timer * 4));
                     var p3 = Easings.Cubic.InOut(Utilities.Clamp((ph4timer + 0.17f) * 1.2f));
                     var v = (int)float.Round(IncidentConfig.KillTarget * p);
-                    var pos = new Vector2(rect.MaxX - 250, Window.Height * 0.5f - 60);
+                    var pos = bgRect.GetCenter();
+                    //var pos = new Vector2(rect.MaxX - 250, Window.Height * 0.5f - 60);
 
                     var bnds = rect with { MinX = float.Lerp(rect.MaxX, rect.MinX, p3), MaxX = pos.X - Draw.CalculateTextWidth("###") };
-                    Draw.DrawBounds = new DrawBounds(bnds);
+                    //Draw.DrawBounds = new DrawBounds(bnds);
                     Draw.Colour = Vector4.Lerp(Colors.White, Colors.Red, p3);
                     Draw.Image(bgOverlay, rect, ImageContainmentMode.Stretch);
                     Draw.ResetDrawBounds();
 
                     Draw.TransformMatrix = Matrix3x2.CreateScale(1, 1 + 0.5f * (1 - p2), pos);
                     Draw.Colour = Vector4.Lerp(Colors.Red, Colors.White, p2);
-                    Draw.Text($"{v:0}", pos, Vector2.One, HorizontalTextAlign.Right, VerticalTextAlign.Middle);
+                    Draw.Text($"{v:0}", pos, Vector2.One, HorizontalTextAlign.Left, VerticalTextAlign.Middle);
                     Draw.ResetTransformation();
                 }
 
