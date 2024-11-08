@@ -3,7 +3,7 @@
   "WeaponData": {
     "Name": "MAG RAILGUN",
     "Damage": 3.0,
-    "UseDelay": 0.1,
+    "UseDelay": 0.18,
     "MaxHandRangeMultiplier": 0.6,
     "AdditionalComponents": null,
     "EnsureSystems": null,
@@ -12,7 +12,7 @@
     "ThrowableSharpBoxes": [],
     "WeaponType": "Firearm",
     "BulletsPerShot": 4,
-    "RoundsPerMagazine": 240,
+    "RoundsPerMagazine": 480,
     "BurstFireCount": 0,
     "Accuracy": 1.0,
     "Recoil": 1.0,
@@ -20,7 +20,7 @@
     "RecoilHandling": 1.0,
     "Automatic": false,
     "ShootSounds": [
-      "sounds/firearms/railgun.wav"
+      "base:sounds/firearms/railgun.wav"
     ],
     "CanBulletsBeDeflected": false,
     "EjectionParticle": "None",
@@ -32,7 +32,7 @@
     "MeleeDamageType": "Firearm",
     "MeleeSize": "Large"
   },
-  "BaseTexture": "textures/weapons/mag_railgun/base.png",
+  "BaseTexture": "base:textures/weapons/mag_railgun/base.png",
   "HoldForGrip": false,
   "HoldStockHandPose": true,
   "BarrelEndPoint": {
@@ -58,7 +58,7 @@
         "X": 1.0,
         "Y": 1.0
       },
-      "Texture": "textures/weapons/mag_railgun/glow.png",
+      "Texture": "base:textures/weapons/mag_railgun/glow.png",
       "TranslationCurve": {
         "MappingFunction": null,
         "Keys": [
