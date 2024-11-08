@@ -13,10 +13,10 @@
     "MaxX": 5347.025,
     "MaxY": 1706.2327
   },
-  "BodyCountToWin": 50,
+  "BodyCountToWin": 42,
   "TimeLimitInSeconds": -1.0,
   "FullZoom": false,
-  "Thumbnail": "0",
+  "Thumbnail": "textures/level_thumbnails/mag_campaign/lvl_mag_mowing.qoi",
   "OpeningTransition": true,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [
@@ -31,11 +31,11 @@
   ],
   "FloorLine": [
     {
-      "X": -4999.782,
+      "X": -4973.782,
       "Y": -693.3984
     },
     {
-      "X": 4948.218,
+      "X": 4924.218,
       "Y": -693.3984
     }
   ],
@@ -47,6 +47,374 @@
         "Y": -572.8517
       },
       "SpawnWeapon": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -5844.732,
+        "MinY": 1298.19,
+        "MaxX": 5789.37,
+        "MaxY": 1953.0642
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "agent",
+        "Stats": "agent",
+        "Faction": "aahw",
+        "Weapon": "m14_ebr",
+        "Flipped": false,
+        "BottomCenter": {
+          "X": -344.75592,
+          "Y": -644.8377
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": 5100.976,
+          "Y": -711.1297
+        },
+        "FacingDirection": {
+          "X": -1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": true,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": 5194.5635,
+          "Y": 778.2095
+        },
+        "TopRight": {
+          "X": 4807.493,
+          "Y": 742.2345
+        },
+        "BottomLeft": {
+          "X": 5194.4707,
+          "Y": -750.5051
+        },
+        "BottomRight": {
+          "X": 4807.4814,
+          "Y": -671.7543
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "agent",
+        "Stats": "agent",
+        "Faction": "aahw",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": 4056.0928,
+          "Y": -647.4276
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "grunt",
+        "Stats": "grunt",
+        "Faction": "aahw",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": -2430.2556,
+          "Y": -670.74005
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "agent",
+        "Stats": "agent",
+        "Faction": "aahw",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": 2351.4097,
+          "Y": -647.4276
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "agent",
+        "Stats": "agent",
+        "Faction": "aahw",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": -799.3467,
+          "Y": -652.60864
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "agent",
+        "Stats": "agent",
+        "Faction": "aahw",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": -651.7018,
+          "Y": -644.8377
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "scientist1",
+        "Stats": "grunt",
+        "Faction": "aahw",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": -1471.8257,
+          "Y": -668.1499
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -5060.195,
+        "MinY": 820.6005,
+        "MaxX": -4924.5684,
+        "MaxY": 1253.4453
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -4948.7383,
+        "MinY": 1243.7625,
+        "MaxX": 4899.9443,
+        "MaxY": 1335.18
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "agent",
+        "Stats": "agent",
+        "Faction": "aahw",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": -93.50081,
+          "Y": -644.8377
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "agent",
+        "Stats": "agent",
+        "Faction": "aahw",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": 1666.0825,
+          "Y": -644.8377
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "agent",
+        "Stats": "agent",
+        "Faction": "aahw",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": 2138.2358,
+          "Y": -644.8377
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "agent",
+        "Stats": "agent",
+        "Faction": "aahw",
+        "Weapon": "glock_20",
+        "Flipped": false,
+        "BottomCenter": {
+          "X": -1055.7822,
+          "Y": -652.60864
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": -28.530365,
+        "Y": 306.43494
+      },
+      "TexturePath": "textures/backgrounds/mag_campaign/background_mag_mowing.qoi",
+      "Scale": 2.222222
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": -5148.951,
+          "Y": -711.1297
+        },
+        "FacingDirection": {
+          "X": 1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": -5242.539,
+          "Y": 778.2095
+        },
+        "TopRight": {
+          "X": -4855.4688,
+          "Y": 742.2345
+        },
+        "BottomLeft": {
+          "X": -5242.4463,
+          "Y": -750.5051
+        },
+        "BottomRight": {
+          "X": -4855.4565,
+          "Y": -671.7543
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -5610.782,
+        "MinY": -1047.1079,
+        "MaxX": -5007.889,
+        "MaxY": 1575.6598
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "agent",
+        "Stats": "agent",
+        "Faction": "aahw",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": 1322.8706,
+          "Y": -644.8377
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "scientist2",
+        "Stats": "grunt",
+        "Faction": "aahw",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": 1647.4404,
+          "Y": -644.83813
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
     },
     {
       "$type": "MIR.LevelEditor.Objects.NPC, MIR",
@@ -336,374 +704,6 @@
         "IsProgressionRequirement": false
       },
       "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "scientist2",
-        "Stats": "grunt",
-        "Faction": "aahw",
-        "Weapon": null,
-        "Flipped": false,
-        "BottomCenter": {
-          "X": 1647.4404,
-          "Y": -644.83813
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "agent",
-        "Stats": "agent",
-        "Faction": "aahw",
-        "Weapon": null,
-        "Flipped": false,
-        "BottomCenter": {
-          "X": 1322.8706,
-          "Y": -644.8377
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
-      "BlockerType": 0,
-      "Rectangle": {
-        "MinX": -5610.782,
-        "MinY": -1047.1079,
-        "MaxX": -5007.889,
-        "MaxY": 1575.6598
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "agent",
-        "Stats": "agent",
-        "Faction": "aahw",
-        "Weapon": null,
-        "Flipped": false,
-        "BottomCenter": {
-          "X": -651.7018,
-          "Y": -644.8377
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
-      "BlockerType": 0,
-      "Rectangle": {
-        "MinX": -5844.732,
-        "MinY": 1298.19,
-        "MaxX": 5789.37,
-        "MaxY": 1953.0642
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "agent",
-        "Stats": "agent",
-        "Faction": "aahw",
-        "Weapon": "m14_ebr",
-        "Flipped": false,
-        "BottomCenter": {
-          "X": -344.75592,
-          "Y": -644.8377
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.Door, MIR",
-      "Properties": {
-        "SpawnPoint": {
-          "X": 5100.976,
-          "Y": -711.1297
-        },
-        "FacingDirection": {
-          "X": -1.0,
-          "Y": 0.0
-        },
-        "EnemySpawnerDoor": true,
-        "IsLevelProgressionDoor": true,
-        "IsPortal": false,
-        "PortalID": null,
-        "DestinationLevel": null,
-        "TopLeft": {
-          "X": 5194.5635,
-          "Y": 778.2095
-        },
-        "TopRight": {
-          "X": 4807.493,
-          "Y": 742.2345
-        },
-        "BottomLeft": {
-          "X": 5194.4707,
-          "Y": -750.5051
-        },
-        "BottomRight": {
-          "X": 4807.4814,
-          "Y": -671.7543
-        }
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "agent",
-        "Stats": "agent",
-        "Faction": "aahw",
-        "Weapon": null,
-        "Flipped": false,
-        "BottomCenter": {
-          "X": 4056.0928,
-          "Y": -647.4276
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "grunt",
-        "Stats": "grunt",
-        "Faction": "aahw",
-        "Weapon": null,
-        "Flipped": false,
-        "BottomCenter": {
-          "X": -2430.2556,
-          "Y": -670.74005
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "agent",
-        "Stats": "agent",
-        "Faction": "aahw",
-        "Weapon": null,
-        "Flipped": false,
-        "BottomCenter": {
-          "X": 2351.4097,
-          "Y": -647.4276
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "agent",
-        "Stats": "agent",
-        "Faction": "aahw",
-        "Weapon": null,
-        "Flipped": false,
-        "BottomCenter": {
-          "X": -799.3467,
-          "Y": -652.60864
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "scientist1",
-        "Stats": "grunt",
-        "Faction": "aahw",
-        "Weapon": null,
-        "Flipped": false,
-        "BottomCenter": {
-          "X": -1471.8257,
-          "Y": -668.1499
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.Door, MIR",
-      "Properties": {
-        "SpawnPoint": {
-          "X": -5148.951,
-          "Y": -711.1297
-        },
-        "FacingDirection": {
-          "X": 1.0,
-          "Y": 0.0
-        },
-        "EnemySpawnerDoor": true,
-        "IsLevelProgressionDoor": false,
-        "IsPortal": false,
-        "PortalID": null,
-        "DestinationLevel": null,
-        "TopLeft": {
-          "X": -5242.539,
-          "Y": 778.2095
-        },
-        "TopRight": {
-          "X": -4855.4688,
-          "Y": 742.2345
-        },
-        "BottomLeft": {
-          "X": -5242.4463,
-          "Y": -750.5051
-        },
-        "BottomRight": {
-          "X": -4855.4565,
-          "Y": -671.7543
-        }
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
-      "Rectangle": {
-        "MinX": -5060.195,
-        "MinY": 820.6005,
-        "MaxX": -4924.5684,
-        "MaxY": 1253.4453
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
-      "Rectangle": {
-        "MinX": -4948.7383,
-        "MinY": 1243.7625,
-        "MaxX": 4899.9443,
-        "MaxY": 1335.18
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "agent",
-        "Stats": "agent",
-        "Faction": "aahw",
-        "Weapon": null,
-        "Flipped": false,
-        "BottomCenter": {
-          "X": -93.50081,
-          "Y": -644.8377
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "agent",
-        "Stats": "agent",
-        "Faction": "aahw",
-        "Weapon": null,
-        "Flipped": false,
-        "BottomCenter": {
-          "X": 1666.0825,
-          "Y": -644.8377
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "agent",
-        "Stats": "agent",
-        "Faction": "aahw",
-        "Weapon": null,
-        "Flipped": false,
-        "BottomCenter": {
-          "X": 2138.2358,
-          "Y": -644.8377
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "agent",
-        "Stats": "agent",
-        "Faction": "aahw",
-        "Weapon": "glock_20",
-        "Flipped": false,
-        "BottomCenter": {
-          "X": -1055.7822,
-          "Y": -652.60864
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.Background, MIR",
-      "Center": {
-        "X": -28.530365,
-        "Y": 306.43494
-      },
-      "TexturePath": "textures/backgrounds/mag_campaign/background_mag_mowing.qoi",
-      "Scale": 2.222222
     },
     {
       "$type": "MIR.LevelEditor.Objects.Background, MIR",
