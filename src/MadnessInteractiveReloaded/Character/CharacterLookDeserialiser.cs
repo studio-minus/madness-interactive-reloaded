@@ -54,6 +54,16 @@ public static class CharacterLookDeserialiser
             look.BodyFlesh = new AssetRef<Texture>(id);
         });
 
+        deserialiser.RegisterString(HeadGoreIdentifier, static (look, id) =>
+        {
+            look.HeadGore = new AssetRef<Texture>(id);
+        });
+
+        deserialiser.RegisterString(BodyGoreIdentifier, static (look, id) =>
+        {
+            look.BodyGore = new AssetRef<Texture>(id);
+        });
+
         deserialiser.RegisterString(FeetIdentifier, static (look, id) =>
         {
             look.Feet = new AssetRef<Texture>(id);
