@@ -1056,6 +1056,29 @@ public static class MadnessUtils
         return name;
     }
 
+    // Straight up from https://learn.microsoft.com/en-us/dotnet/standard/io/how-to-copy-directories
+    public static void CopyDirectory(string sourceDir, string destinationDir, bool recursive)
+    {
+        var dir = new DirectoryInfo(sourceDir);
+        if (!dir.Exists)
+            throw new DirectoryNotFoundException($"Source directory not found: {dir.FullName}");
+
+        Directory.CreateDirectory(destinationDir);
+
+        foreach (var file in dir.GetFiles())
+        {
+            var targetFilePath = Path.Combine(destinationDir, file.Name);
+            file.CopyTo(targetFilePath);
+        }
+
+        if (recursive)
+            foreach (var subDir in dir.GetDirectories())
+            {
+                var newDestinationDir = Path.Combine(destinationDir, subDir.Name);
+                CopyDirectory(subDir.FullName, newDestinationDir, true);
+            }
+    }
+
     //public static void PlayerEquipLastWeapon(Scene scene, Entity playerEntity, Level? level = null)
     //{
     //    if (SharedLevelData.LastPlayerWeapon.HasValue && (level?.EquipWeaponFromLastLevel ?? true))

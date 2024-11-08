@@ -361,7 +361,7 @@
     },
     {
       "$type": "MIR.LevelEditor.Objects.LevelWeapon, MIR",
-      "WeaponKey": "thompson",
+      "WeaponKey": "wolf_thompson",
       "Angle": -2.3191528,
       "Ammo": 20,
       "AttachedToWall": true,
