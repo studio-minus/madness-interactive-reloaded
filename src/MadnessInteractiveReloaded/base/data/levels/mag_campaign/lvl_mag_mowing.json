@@ -5,7 +5,7 @@
   "EnemySpawnInterval": 0.4,
   "MaxEnemyCount": 12,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "sounds/music/Lothyde/precarious_state.ogg",
+  "BackgroundMusic": "sounds/music/Lothyde/a_casual_trip_through_hell.ogg",
   "WeaponChance": 0.78,
   "LevelBounds": {
     "MinX": -5404.0854,
@@ -13,7 +13,7 @@
     "MaxX": 5347.025,
     "MaxY": 1706.2327
   },
-  "BodyCountToWin": 42,
+  "BodyCountToWin": 31,
   "TimeLimitInSeconds": -1.0,
   "FullZoom": false,
   "Thumbnail": "textures/level_thumbnails/mag_campaign/lvl_mag_mowing.qoi",
@@ -31,11 +31,11 @@
   ],
   "FloorLine": [
     {
-      "X": -4973.782,
+      "X": -4999.782,
       "Y": -693.3984
     },
     {
-      "X": 4924.218,
+      "X": 4948.218,
       "Y": -693.3984
     }
   ],
@@ -47,17 +47,6 @@
         "Y": -572.8517
       },
       "SpawnWeapon": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
-      "BlockerType": 0,
-      "Rectangle": {
-        "MinX": -5844.732,
-        "MinY": 1298.19,
-        "MaxX": 5789.37,
-        "MaxY": 1953.0642
-      },
-      "Tag": null
     },
     {
       "$type": "MIR.LevelEditor.Objects.NPC, MIR",
@@ -209,6 +198,17 @@
       "StartAnimation": null
     },
     {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -5844.732,
+        "MinY": 1298.19,
+        "MaxX": 5789.37,
+        "MaxY": 1953.0642
+      },
+      "Tag": null
+    },
+    {
       "$type": "MIR.LevelEditor.Objects.NPC, MIR",
       "Instructions": {
         "Name": "Unnamed NPC",
@@ -226,16 +226,6 @@
         "IsProgressionRequirement": false
       },
       "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
-      "Rectangle": {
-        "MinX": -5060.195,
-        "MinY": 820.6005,
-        "MaxX": -4924.5684,
-        "MaxY": 1253.4453
-      },
-      "Tag": null
     },
     {
       "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
@@ -368,6 +358,16 @@
       "Tag": null
     },
     {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -5060.195,
+        "MinY": 820.6005,
+        "MaxX": -4924.5684,
+        "MaxY": 1253.4453
+      },
+      "Tag": null
+    },
+    {
       "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
       "BlockerType": 0,
       "Rectangle": {
@@ -409,25 +409,6 @@
         "BottomCenter": {
           "X": 1647.4404,
           "Y": -644.83813
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "agent",
-        "Stats": "agent",
-        "Faction": "aahw",
-        "Weapon": null,
-        "Flipped": false,
-        "BottomCenter": {
-          "X": 2758.3738,
-          "Y": -644.8377
         },
         "ScaleOverride": false,
         "Scale": 1.0,
@@ -561,8 +542,8 @@
         "Weapon": null,
         "Flipped": false,
         "BottomCenter": {
-          "X": 3794.477,
-          "Y": -647.4276
+          "X": 2758.3738,
+          "Y": -644.8377
         },
         "ScaleOverride": false,
         "Scale": 1.0,
@@ -577,11 +558,11 @@
         "Look": "agent",
         "Stats": "agent",
         "Faction": "aahw",
-        "Weapon": "usp_match",
+        "Weapon": null,
         "Flipped": false,
         "BottomCenter": {
-          "X": 133.14679,
-          "Y": -642.248
+          "X": 3794.477,
+          "Y": -647.4276
         },
         "ScaleOverride": false,
         "Scale": 1.0,
@@ -698,6 +679,25 @@
         "BottomCenter": {
           "X": -1638.8975,
           "Y": -668.1499
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "agent",
+        "Stats": "agent",
+        "Faction": "aahw",
+        "Weapon": "usp_match",
+        "Flipped": false,
+        "BottomCenter": {
+          "X": 133.14679,
+          "Y": -642.248
         },
         "ScaleOverride": false,
         "Scale": 1.0,

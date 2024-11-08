@@ -5,7 +5,7 @@
   "EnemySpawnInterval": 2.0,
   "MaxEnemyCount": 5,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "sounds/music/Lothyde/precarious_state.ogg",
+  "BackgroundMusic": "sounds/music/Lothyde/a_casual_trip_through_hell.ogg",
   "WeaponChance": 0.84999996,
   "LevelBounds": {
     "MinX": -3039.4492,
@@ -40,11 +40,11 @@
   ],
   "FloorLine": [
     {
-      "X": -2673.2515,
+      "X": -2695.2515,
       "Y": -549.4386
     },
     {
-      "X": 2644.7485,
+      "X": 2666.7485,
       "Y": -549.4386
     }
   ],

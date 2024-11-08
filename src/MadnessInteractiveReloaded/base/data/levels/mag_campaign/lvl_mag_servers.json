@@ -5,7 +5,7 @@
   "EnemySpawnInterval": 0.5,
   "MaxEnemyCount": 6,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "sounds/music/Lothyde/precarious_state.ogg",
+  "BackgroundMusic": "sounds/music/Lothyde/living_on_the_edge_(feat_monocronic).ogg",
   "WeaponChance": 0.61,
   "LevelBounds": {
     "MinX": -4922.9126,

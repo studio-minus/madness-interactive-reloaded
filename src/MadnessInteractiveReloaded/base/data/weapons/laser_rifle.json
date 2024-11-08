@@ -12,7 +12,7 @@
     "ThrowableSharpBoxes": [],
     "WeaponType": "Firearm",
     "BulletsPerShot": 2,
-    "RoundsPerMagazine": 6,
+    "RoundsPerMagazine": 4,
     "BurstFireCount": 0,
     "Accuracy": 1.0,
     "Recoil": 2.0,
