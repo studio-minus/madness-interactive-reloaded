@@ -62,11 +62,11 @@
   ],
   "FloorLine": [
     {
-      "X": -1701.7098,
+      "X": -1711.7098,
       "Y": -843.67615
     },
     {
-      "X": 2454.29,
+      "X": 2466.29,
       "Y": -843.67615
     }
   ],
@@ -209,9 +209,9 @@
         },
         "EnemySpawnerDoor": true,
         "IsLevelProgressionDoor": false,
-        "IsPortal": false,
-        "PortalID": null,
-        "DestinationLevel": null,
+        "IsPortal": true,
+        "PortalID": "666",
+        "DestinationLevel": "face",
         "TopLeft": {
           "X": -1815.1885,
           "Y": 72.04265

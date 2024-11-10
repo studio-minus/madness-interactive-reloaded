@@ -138,7 +138,7 @@ public class FlipbookRect : LevelObject, ITagged
         ProcessRotatable(input, ref Angle, Position);
         ProcessScalable(input, ref Scale, Position);
 
-        Scale = Utilities.Clamp(Scale, 0.1f, 10);
+        Scale = Utilities.Clamp(Scale, 0.1f, 1000);
         var finalSize = GetFinalSize();
 
         var th = Utilities.DegToRad * Angle;

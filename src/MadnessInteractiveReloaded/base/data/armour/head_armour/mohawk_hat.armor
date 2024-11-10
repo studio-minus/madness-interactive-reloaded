@@ -2,8 +2,8 @@
 
 name Mohawk
 type HeadAccessory
-left base:textures/bodies/hats/mohawk/mohawk_left.png
-right base:textures/bodies/hats/mohawk/mohawk_right.png
+left textures/bodies/hats/mohawk/mohawk_left.png
+right textures/bodies/hats/mohawk/mohawk_right.png
 texture-scale 1
 category All
 detach False
