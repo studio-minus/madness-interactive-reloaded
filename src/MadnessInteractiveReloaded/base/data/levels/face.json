@@ -5,7 +5,7 @@
   "EnemySpawnInterval": 0.0,
   "MaxEnemyCount": 0,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": ":sounds/rumble.ogg",
+  "BackgroundMusic": "sounds/rumble.ogg",
   "WeaponChance": 0.5,
   "LevelBounds": {
     "MinX": -4102.6035,
@@ -42,607 +42,11 @@
     },
     {
       "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": -180.0,
+      "TexturePath": "textures/bodies/hands/darkened/darkened_fist.png",
+      "Angle": 33.091705,
       "Position": {
-        "X": 4124.1406,
-        "Y": -1169.6827
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": 0.0,
-      "Position": {
-        "X": -3073.915,
-        "Y": -769.68274
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": -180.0,
-      "Position": {
-        "X": 3724.1406,
-        "Y": -1169.6827
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": 0.0,
-      "Position": {
-        "X": -673.91504,
-        "Y": -769.68274
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": -180.0,
-      "Position": {
-        "X": -2275.8594,
-        "Y": -1169.6827
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": 0.0,
-      "Position": {
-        "X": -3473.915,
-        "Y": -769.68274
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": 0.0,
-      "Position": {
-        "X": -5392.4785,
-        "Y": -167.69604
-      },
-      "Scale": 1000.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": 0.0,
-      "Position": {
-        "X": 2607.5215,
-        "Y": -167.69604
-      },
-      "Scale": 1000.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": 0.0,
-      "Position": {
-        "X": 126.08496,
-        "Y": -769.68274
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.Background, MIR",
-      "Center": {
-        "X": 8503.163,
-        "Y": -1263.8774
-      },
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Scale": 2.222222
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/bg_transparent.qoi",
-      "Angle": 0.0,
-      "Position": {
-        "X": 2822.743,
-        "Y": 1164.1543
-      },
-      "Scale": 2.4050293,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": -100,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": 0.0,
-      "Position": {
-        "X": -1073.915,
-        "Y": -769.68274
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": 0.0,
-      "Position": {
-        "X": 4926.085,
-        "Y": -769.68274
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.Door, MIR",
-      "Properties": {
-        "SpawnPoint": {
-          "X": 8309.492,
-          "Y": -866.0672
-        },
-        "FacingDirection": {
-          "X": -1.0,
-          "Y": 0.0
-        },
-        "EnemySpawnerDoor": false,
-        "IsLevelProgressionDoor": false,
-        "IsPortal": true,
-        "PortalID": "666",
-        "DestinationLevel": "lvl_destination",
-        "TopLeft": {
-          "X": 8112.552,
-          "Y": 99.17131
-        },
-        "TopRight": {
-          "X": 8312.929,
-          "Y": 131.86531
-        },
-        "BottomLeft": {
-          "X": 8104.4204,
-          "Y": -779.428
-        },
-        "BottomRight": {
-          "X": 8314.563,
-          "Y": -952.7064
-        }
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": -180.0,
-      "Position": {
-        "X": 3324.1406,
-        "Y": -1169.6827
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": 0.0,
-      "Position": {
-        "X": 1726.085,
-        "Y": -769.68274
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": 0.0,
-      "Position": {
-        "X": -3873.915,
-        "Y": -769.68274
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": 0.0,
-      "Position": {
-        "X": -1392.4785,
-        "Y": -167.69604
-      },
-      "Scale": 1000.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/bg_transparent.qoi",
-      "Angle": 0.0,
-      "Position": {
-        "X": 159.78043,
-        "Y": 111.62752
-      },
-      "Scale": 4.2209563,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 0.989071,
-        "G": 0.9843611,
-        "B": 0.9843611,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/bg_transparent.qoi",
-      "Angle": -3.5628967,
-      "Position": {
-        "X": -2426.9233,
-        "Y": 850.6871
-      },
-      "Scale": 5.9377456,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 0.43715847,
-        "G": 0.43507674,
-        "B": 0.43507674,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": 0.0,
-      "Position": {
-        "X": 3726.085,
-        "Y": -769.68274
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": 0.0,
-      "Position": {
-        "X": 3326.085,
-        "Y": -769.68274
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": 0.0,
-      "Position": {
-        "X": 7326.085,
-        "Y": -769.68274
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": 0.0,
-      "Position": {
-        "X": -1873.915,
-        "Y": -769.68274
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": 0.0,
-      "Position": {
-        "X": 8124.1406,
-        "Y": -769.68274
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/bodies/hands/darkened/darkened_fist_back.png",
-      "Angle": 34.18112,
-      "Position": {
-        "X": -3915.7058,
-        "Y": 121.11226
+        "X": -4106.691,
+        "Y": 111.76883
       },
       "Scale": 1.0,
       "Columns": 1,
@@ -657,41 +61,6 @@
       "MaxFrames": 0,
       "Layer": -100,
       "AlphaClip": true,
-      "OrderInLayer": -2,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
-      "BlockerType": 0,
-      "Rectangle": {
-        "MinX": -4300.453,
-        "MinY": -1370.4961,
-        "MaxX": 8706.822,
-        "MaxY": -873.0117
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": -180.0,
-      "Position": {
-        "X": 2524.1406,
-        "Y": -1169.6827
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
       "OrderInLayer": 0,
       "Tag": null
     },
@@ -700,775 +69,7 @@
       "TexturePath": "textures/black-transparent-gradient.png",
       "Angle": 0.0,
       "Position": {
-        "X": 4526.085,
-        "Y": -769.68274
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": -180.0,
-      "Position": {
-        "X": -4275.8594,
-        "Y": -1169.6827
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": -180.0,
-      "Position": {
-        "X": -1075.8594,
-        "Y": -1169.6827
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": -180.0,
-      "Position": {
-        "X": -2675.8594,
-        "Y": -1169.6827
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": -180.0,
-      "Position": {
-        "X": 4924.1406,
-        "Y": -1169.6827
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": -180.0,
-      "Position": {
-        "X": 5324.1406,
-        "Y": -1169.6827
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": 0.0,
-      "Position": {
-        "X": 2526.085,
-        "Y": -769.68274
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": -180.0,
-      "Position": {
-        "X": -3475.8594,
-        "Y": -1169.6827
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": -180.0,
-      "Position": {
-        "X": 2924.1406,
-        "Y": -1169.6827
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": -180.0,
-      "Position": {
-        "X": -1475.8594,
-        "Y": -1169.6827
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": 0.0,
-      "Position": {
-        "X": 2126.085,
-        "Y": -769.68274
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": -180.0,
-      "Position": {
-        "X": -275.85938,
-        "Y": -1169.6827
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": 0.0,
-      "Position": {
-        "X": 4126.085,
-        "Y": -769.68274
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": 0.0,
-      "Position": {
-        "X": -2273.915,
-        "Y": -769.68274
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": -180.0,
-      "Position": {
-        "X": 1724.1406,
-        "Y": -1169.6827
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/bg_transparent.qoi",
-      "Angle": 2.1100922,
-      "Position": {
-        "X": -563.3053,
-        "Y": -892.65796
-      },
-      "Scale": 2.4050293,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": -100,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": 0.0,
-      "Position": {
-        "X": 7726.085,
-        "Y": -769.68274
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": -180.0,
-      "Position": {
-        "X": 2124.1406,
-        "Y": -1169.6827
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": -180.0,
-      "Position": {
-        "X": 124.140625,
-        "Y": -1169.6827
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": 0.0,
-      "Position": {
-        "X": 1326.085,
-        "Y": -769.68274
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/bg_transparent.qoi",
-      "Angle": 7.5341644,
-      "Position": {
-        "X": 4519.1562,
-        "Y": -750.60864
-      },
-      "Scale": 5.580343,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": -100,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": -180.0,
-      "Position": {
-        "X": 6124.1406,
-        "Y": -1169.6827
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": -180.0,
-      "Position": {
-        "X": 6924.1406,
-        "Y": -1169.6827
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": -180.0,
-      "Position": {
-        "X": -1875.8594,
-        "Y": -1169.6827
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": -180.0,
-      "Position": {
-        "X": 8124.1406,
-        "Y": -1169.6827
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": -180.0,
-      "Position": {
-        "X": -3075.8594,
-        "Y": -1169.6827
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/bodies/default/body_right.png",
-      "Angle": -5.5693665,
-      "Position": {
-        "X": -4037.1052,
-        "Y": 190.48424
-      },
-      "Scale": 1.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": -100,
-      "AlphaClip": true,
-      "OrderInLayer": -1,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": -180.0,
-      "Position": {
-        "X": -3875.8594,
-        "Y": -1169.6827
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": 0.0,
-      "Position": {
-        "X": 6607.5215,
-        "Y": -167.69604
-      },
-      "Scale": 1000.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/bodies/default/foot.png",
-      "Angle": 14.825562,
-      "Position": {
-        "X": -3979.5679,
-        "Y": 7.9024277
-      },
-      "Scale": 1.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": -100,
-      "AlphaClip": true,
-      "OrderInLayer": -4,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": 0.0,
-      "Position": {
-        "X": 6526.085,
-        "Y": -769.68274
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": 0.0,
-      "Position": {
-        "X": 5326.085,
-        "Y": -769.68274
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": 0.0,
-      "Position": {
-        "X": 926.08496,
+        "X": 5726.085,
         "Y": -769.68274
       },
       "Scale": 100.0,
@@ -1516,7 +117,7 @@
       "TexturePath": "textures/black-transparent-gradient.png",
       "Angle": 0.0,
       "Position": {
-        "X": 5726.085,
+        "X": 926.08496,
         "Y": -769.68274
       },
       "Scale": 100.0,
@@ -1537,11 +138,59 @@
     },
     {
       "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/bodies/hands/darkened/darkened_fist.png",
-      "Angle": 33.091705,
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": 0.0,
       "Position": {
-        "X": -4106.691,
-        "Y": 111.76883
+        "X": 5326.085,
+        "Y": -769.68274
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": 6526.085,
+        "Y": -769.68274
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/bodies/default/foot.png",
+      "Angle": 14.825562,
+      "Position": {
+        "X": -3979.5679,
+        "Y": 7.9024277
       },
       "Scale": 1.0,
       "Columns": 1,
@@ -1556,6 +205,30 @@
       "MaxFrames": 0,
       "Layer": -100,
       "AlphaClip": true,
+      "OrderInLayer": -4,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": 6607.5215,
+        "Y": -167.69604
+      },
+      "Scale": 1000.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
       "OrderInLayer": 0,
       "Tag": null
     },
@@ -1586,10 +259,763 @@
     {
       "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
       "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": -180.0,
+      "Position": {
+        "X": -3875.8594,
+        "Y": -1169.6827
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": -180.0,
+      "Position": {
+        "X": -3075.8594,
+        "Y": -1169.6827
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": -180.0,
+      "Position": {
+        "X": 8124.1406,
+        "Y": -1169.6827
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": -180.0,
+      "Position": {
+        "X": -1875.8594,
+        "Y": -1169.6827
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": -180.0,
+      "Position": {
+        "X": 6924.1406,
+        "Y": -1169.6827
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": -180.0,
+      "Position": {
+        "X": 6124.1406,
+        "Y": -1169.6827
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/bg_transparent.qoi",
+      "Angle": 7.5341644,
+      "Position": {
+        "X": 4519.1562,
+        "Y": -750.60864
+      },
+      "Scale": 5.580343,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": -100,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": 1326.085,
+        "Y": -769.68274
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": -180.0,
+      "Position": {
+        "X": 124.140625,
+        "Y": -1169.6827
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/bodies/default/body_right.png",
+      "Angle": -5.5693665,
+      "Position": {
+        "X": -4037.1052,
+        "Y": 190.48424
+      },
+      "Scale": 1.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": -100,
+      "AlphaClip": true,
+      "OrderInLayer": -1,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
       "Angle": 0.0,
       "Position": {
         "X": -2673.915,
         "Y": -769.68274
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": 7726.085,
+        "Y": -769.68274
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/bg_transparent.qoi",
+      "Angle": 2.1100922,
+      "Position": {
+        "X": -563.3053,
+        "Y": -892.65796
+      },
+      "Scale": 2.4050293,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": -100,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": -273.91504,
+        "Y": -769.68274
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/bodies/skin/skull2/skull2_right.png",
+      "Angle": -5.5005646,
+      "Position": {
+        "X": -2974.297,
+        "Y": -1105.354
+      },
+      "Scale": 1.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 0.46448088,
+        "G": 0.46226904,
+        "B": 0.46226904,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": -100,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": -4098.159,
+        "Y": 1252.8511
+      },
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Scale": 2.222222
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": -90.0,
+      "Position": {
+        "X": 7665.374,
+        "Y": -255.55273
+      },
+      "Scale": 1000.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": -180.0,
+      "Position": {
+        "X": 7724.1406,
+        "Y": -1169.6827
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": -4273.915,
+        "Y": -769.68274
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": -180.0,
+      "Position": {
+        "X": -675.8594,
+        "Y": -1169.6827
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": 90.0,
+      "Position": {
+        "X": -2527.1514,
+        "Y": -478.26724
+      },
+      "Scale": 1000.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": 2926.085,
+        "Y": -769.68274
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": 526.08496,
+        "Y": -769.68274
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": -180.0,
+      "Position": {
+        "X": 4524.1406,
+        "Y": -1169.6827
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/bodies/skin/skull2/skull2_right.png",
+      "Angle": -26.626678,
+      "Position": {
+        "X": -2718.0999,
+        "Y": -1159.1635
+      },
+      "Scale": 1.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 0.5464481,
+        "G": 0.54384595,
+        "B": 0.54384595,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": -100,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": -180.0,
+      "Position": {
+        "X": 524.1406,
+        "Y": -1169.6827
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/bg_transparent.qoi",
+      "Angle": 7.310898,
+      "Position": {
+        "X": 7049.9106,
+        "Y": 1213.7701
+      },
+      "Scale": 3.9918509,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": -100,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": -180.0,
+      "Position": {
+        "X": 1324.1406,
+        "Y": -1169.6827
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": -180.0,
+      "Position": {
+        "X": 6524.1406,
+        "Y": -1169.6827
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": 6126.085,
+        "Y": -769.68274
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": -180.0,
+      "Position": {
+        "X": 924.1406,
+        "Y": -1169.6827
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": -180.0,
+      "Position": {
+        "X": 5724.1406,
+        "Y": -1169.6827
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": -180.0,
+      "Position": {
+        "X": 2124.1406,
+        "Y": -1169.6827
       },
       "Scale": 100.0,
       "Columns": 1,
@@ -1660,31 +1086,7 @@
       "TexturePath": "textures/black-transparent-gradient.png",
       "Angle": -180.0,
       "Position": {
-        "X": 5724.1406,
-        "Y": -1169.6827
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": -180.0,
-      "Position": {
-        "X": 924.1406,
+        "X": 1724.1406,
         "Y": -1169.6827
       },
       "Scale": 100.0,
@@ -1708,7 +1110,79 @@
       "TexturePath": "textures/black-transparent-gradient.png",
       "Angle": 0.0,
       "Position": {
-        "X": 6126.085,
+        "X": 7326.085,
+        "Y": -769.68274
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": -1392.4785,
+        "Y": -167.69604
+      },
+      "Scale": 1000.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": -3873.915,
+        "Y": -769.68274
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": 1726.085,
         "Y": -769.68274
       },
       "Scale": 100.0,
@@ -1732,8 +1206,220 @@
       "TexturePath": "textures/black-transparent-gradient.png",
       "Angle": -180.0,
       "Position": {
-        "X": 6524.1406,
+        "X": 3324.1406,
         "Y": -1169.6827
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": 8309.492,
+          "Y": -866.0672
+        },
+        "FacingDirection": {
+          "X": -1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": false,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": true,
+        "PortalID": "666",
+        "DestinationLevel": "lvl_destination",
+        "TopLeft": {
+          "X": 8112.552,
+          "Y": 99.17131
+        },
+        "TopRight": {
+          "X": 8312.929,
+          "Y": 131.86531
+        },
+        "BottomLeft": {
+          "X": 8104.4204,
+          "Y": -779.428
+        },
+        "BottomRight": {
+          "X": 8314.563,
+          "Y": -952.7064
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": 4926.085,
+        "Y": -769.68274
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": -1073.915,
+        "Y": -769.68274
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/bg_transparent.qoi",
+      "Angle": 0.0,
+      "Position": {
+        "X": 2822.743,
+        "Y": 1164.1543
+      },
+      "Scale": 2.4050293,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": -100,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": 8503.163,
+        "Y": -1263.8774
+      },
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Scale": 2.222222
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": 126.08496,
+        "Y": -769.68274
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": 2607.5215,
+        "Y": -167.69604
+      },
+      "Scale": 1000.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": -5392.4785,
+        "Y": -167.69604
+      },
+      "Scale": 1000.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": -3473.915,
+        "Y": -769.68274
       },
       "Scale": 100.0,
       "Columns": 1,
@@ -1756,7 +1442,103 @@
       "TexturePath": "textures/black-transparent-gradient.png",
       "Angle": -180.0,
       "Position": {
-        "X": 1324.1406,
+        "X": -2275.8594,
+        "Y": -1169.6827
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": -673.91504,
+        "Y": -769.68274
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": -180.0,
+      "Position": {
+        "X": 3724.1406,
+        "Y": -1169.6827
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": -3073.915,
+        "Y": -769.68274
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": -180.0,
+      "Position": {
+        "X": 4124.1406,
         "Y": -1169.6827
       },
       "Scale": 100.0,
@@ -1778,315 +1560,18 @@
     {
       "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
       "TexturePath": "textures/bg_transparent.qoi",
-      "Angle": 7.310898,
+      "Angle": -3.5628967,
       "Position": {
-        "X": 7049.9106,
-        "Y": 1213.7701
+        "X": -2426.9233,
+        "Y": 850.6871
       },
-      "Scale": 3.9918509,
+      "Scale": 5.9377456,
       "Columns": 1,
       "Rows": 1,
       "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": -100,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": -180.0,
-      "Position": {
-        "X": 524.1406,
-        "Y": -1169.6827
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/bodies/skin/skull2/skull2_right.png",
-      "Angle": -26.626678,
-      "Position": {
-        "X": -2718.0999,
-        "Y": -1159.1635
-      },
-      "Scale": 1.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 0.5464481,
-        "G": 0.54384595,
-        "B": 0.54384595,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": -100,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": -180.0,
-      "Position": {
-        "X": 4524.1406,
-        "Y": -1169.6827
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": 0.0,
-      "Position": {
-        "X": 526.08496,
-        "Y": -769.68274
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": 0.0,
-      "Position": {
-        "X": 2926.085,
-        "Y": -769.68274
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": 90.0,
-      "Position": {
-        "X": -2527.1514,
-        "Y": -478.26724
-      },
-      "Scale": 1000.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": -180.0,
-      "Position": {
-        "X": -675.8594,
-        "Y": -1169.6827
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": 0.0,
-      "Position": {
-        "X": -4273.915,
-        "Y": -769.68274
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": -180.0,
-      "Position": {
-        "X": 7724.1406,
-        "Y": -1169.6827
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": -90.0,
-      "Position": {
-        "X": 7665.374,
-        "Y": -255.55273
-      },
-      "Scale": 1000.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": 300,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.Background, MIR",
-      "Center": {
-        "X": -4098.159,
-        "Y": 1252.8511
-      },
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Scale": 2.222222
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/bodies/skin/skull2/skull2_right.png",
-      "Angle": -5.5005646,
-      "Position": {
-        "X": -2974.297,
-        "Y": -1105.354
-      },
-      "Scale": 1.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 0.46448088,
-        "G": 0.46226904,
-        "B": 0.46226904,
-        "A": 1.0
-      },
-      "Duration": 1.0,
-      "MaxFrames": 0,
-      "Layer": -100,
-      "AlphaClip": false,
-      "OrderInLayer": 0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/black-transparent-gradient.png",
-      "Angle": 0.0,
-      "Position": {
-        "X": -273.91504,
-        "Y": -769.68274
-      },
-      "Scale": 100.0,
-      "Columns": 1,
-      "Rows": 1,
-      "Color": {
-        "R": 1.0,
-        "G": 1.0,
-        "B": 1.0,
+        "R": 0.43715847,
+        "G": 0.43507674,
+        "B": 0.43507674,
         "A": 1.0
       },
       "Duration": 1.0,
@@ -2142,6 +1627,531 @@
       "Layer": 300,
       "AlphaClip": false,
       "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/bg_transparent.qoi",
+      "Angle": 0.0,
+      "Position": {
+        "X": 159.78043,
+        "Y": 111.62752
+      },
+      "Scale": 4.2209563,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 0.989071,
+        "G": 0.9843611,
+        "B": 0.9843611,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": -2273.915,
+        "Y": -769.68274
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": 4126.085,
+        "Y": -769.68274
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": -180.0,
+      "Position": {
+        "X": -275.85938,
+        "Y": -1169.6827
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": 2126.085,
+        "Y": -769.68274
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": -180.0,
+      "Position": {
+        "X": -1475.8594,
+        "Y": -1169.6827
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": -180.0,
+      "Position": {
+        "X": 2924.1406,
+        "Y": -1169.6827
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": -180.0,
+      "Position": {
+        "X": -3475.8594,
+        "Y": -1169.6827
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": 2526.085,
+        "Y": -769.68274
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": -180.0,
+      "Position": {
+        "X": 5324.1406,
+        "Y": -1169.6827
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": -180.0,
+      "Position": {
+        "X": 4924.1406,
+        "Y": -1169.6827
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": -180.0,
+      "Position": {
+        "X": -2675.8594,
+        "Y": -1169.6827
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": -180.0,
+      "Position": {
+        "X": -1075.8594,
+        "Y": -1169.6827
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": -180.0,
+      "Position": {
+        "X": -4275.8594,
+        "Y": -1169.6827
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": 4526.085,
+        "Y": -769.68274
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": -180.0,
+      "Position": {
+        "X": 2524.1406,
+        "Y": -1169.6827
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -4300.453,
+        "MinY": -1370.4961,
+        "MaxX": 8706.822,
+        "MaxY": -873.0117
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/bodies/hands/darkened/darkened_fist_back.png",
+      "Angle": 34.18112,
+      "Position": {
+        "X": -3915.7058,
+        "Y": 121.11226
+      },
+      "Scale": 1.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": -100,
+      "AlphaClip": true,
+      "OrderInLayer": -2,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": 8124.1406,
+        "Y": -769.68274
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": -1873.915,
+        "Y": -769.68274
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": 3326.085,
+        "Y": -769.68274
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/black-transparent-gradient.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": 3726.085,
+        "Y": -769.68274
+      },
+      "Scale": 100.0,
+      "Columns": 1,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 1.0,
+      "MaxFrames": 0,
+      "Layer": 300,
+      "AlphaClip": false,
+      "OrderInLayer": 0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelScript, MIR",
+      "Position": {
+        "X": 9917.947,
+        "Y": -470.9686
+      },
+      "Name": "bingo",
+      "Code": "/*\r\nthis.Game\r\nthis.Scene\r\nthis.Input\r\nthis.Time\r\nthis.Audio\r\nthis.Window\r\nthis.Graphics\r\nthis.DebugDraw\r\n*/\r\n\r\nvoid Start()\r\n{\r\n\r\n}\r\n\r\nvoid Update()\r\n{\r\n\t\r\n}\r\n\r\nvoid FixedUpdate()\r\n{\r\n    if (Utilities.RandomFloat() <= 0.00005f)\r\n        Audio.PlayOnce(SoundCache.Instance.LoadSoundEffect(Assets.Load<FixedAudioData>(\"sounds/neermij.ogg\")));\r\n}\r\n\r\nvoid Render()\r\n{\r\n\t\r\n}\r\n\r\nvoid End()\r\n{\r\n\t\r\n}",
       "Tag": null
     }
   ]
