@@ -6,10 +6,10 @@ body
    default_body
 
 head
-   classic_zed_head
+   zed_head
    clown_hat
    iron_slab_eyes
 
-hands classic_zed
+hands zed
 blood #FB0700FF
 jitter true

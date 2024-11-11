@@ -1,0 +1,10 @@
+0.50.0
+
+body
+   nexus_zed_body
+
+head
+   nexus_zed_head
+
+hands zed
+blood #FF0000FF

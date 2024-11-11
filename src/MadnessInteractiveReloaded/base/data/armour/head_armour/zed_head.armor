@@ -1,0 +1,7 @@
+0.36.0
+
+name Zed
+type Head
+
+left textures/bodies/skin/zed/zed_left.png
+right textures/bodies/skin/zed/zed_right.png
