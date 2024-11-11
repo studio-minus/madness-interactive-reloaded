@@ -2,8 +2,8 @@
 
 name Sanford 3
 type BodyAccessory
-left base:textures/bodies/body2/sanford3/sanford3_left.png
-right base:textures/bodies/body2/sanford3/sanford3_right.png
+left textures/bodies/body2/sanford3/sanford3_left.png
+right textures/bodies/body2/sanford3/sanford3_right.png
 texture-scale 1
 category All
 detach False

@@ -66,6 +66,11 @@ public class LevelEditorGuiSystem : Walgelijk.System
         new("Improbability disk", (editor, pos) => new Disk(editor, pos)),
     ];
 
+    public override void OnActivate()
+    {
+        Creatables = [.. Creatables.OrderBy(s => s.Name)];
+    }
+
     public override void Update()
     {
         if (!Scene.FindAnyComponent<LevelEditorComponent>(out var editor))

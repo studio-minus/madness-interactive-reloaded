@@ -12,6 +12,14 @@
     "main-menu-quit": "Quit",
     "main-menu-mod-menu": "Mods",
 
+    "cmpgn-menu-lvl-select": "Level select",
+    "cmpgn-menu-completed-levels": "Completed levels",
+    "cmpgn-menu-time-spent": "Time spent",
+    "cmpgn-menu-play": "Play",
+    "cmpgn-menu-restart": "Restart",
+    "cmpgn-menu-continue": "Continue",
+    "cmpgn-menu-select-campaign": "Select a campaign on the left",
+
     "settings-general-header": "General",
     "settings-video-header": "Video",
     "settings-audio-header": "Audio",

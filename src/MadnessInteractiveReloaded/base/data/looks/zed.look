@@ -1,0 +1,12 @@
+﻿0.35.0
+
+name Classic Zed
+
+body
+   zed_body
+
+head
+   zed_head
+
+hands zed
+blood #ff0000

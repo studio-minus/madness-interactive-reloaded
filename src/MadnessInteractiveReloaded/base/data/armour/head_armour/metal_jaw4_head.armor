@@ -2,8 +2,8 @@
 
 name Metal jaw 4
 type Head
-left base:textures/bodies/skin/metal_jaw4/metal_jaw4_left.png
-right base:textures/bodies/skin/metal_jaw4/metal_jaw4_right.png
+left textures/bodies/skin/metal_jaw4/metal_jaw4_left.png
+right textures/bodies/skin/metal_jaw4/metal_jaw4_right.png
 texture-scale 1
 category All
 detach False

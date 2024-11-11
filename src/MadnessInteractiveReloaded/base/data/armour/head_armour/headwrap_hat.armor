@@ -2,8 +2,8 @@
 
 name Headwrap
 type HeadAccessory
-left base:textures/bodies/hats/headwrap/headwrap_left.png
-right base:textures/bodies/hats/headwrap/headwrap_right.png
+left textures/bodies/hats/headwrap/headwrap_left.png
+right textures/bodies/hats/headwrap/headwrap_right.png
 texture-scale 1
 category All
 detach False

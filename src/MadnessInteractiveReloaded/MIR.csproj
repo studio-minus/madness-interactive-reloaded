@@ -54,12 +54,12 @@
 		<PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="4.11.0" />
 		<PackageReference Include="NativeFileDialogExtendedSharp" Version="0.1.0" />
 		<PackageReference Include="System.CommandLine.DragonFruit" Version="0.4.0-alpha.22272.1" />
-		<PackageReference Include="Walgelijk" Version="0.29.8" />
+		<PackageReference Include="Walgelijk" Version="0.29.9" />
 		<PackageReference Include="Walgelijk.AssetManager" Version="0.16.14" />
 		<PackageReference Include="Walgelijk.CommonAssetDeserialisers" Version="0.8.3" />
 		<PackageReference Include="Walgelijk.Localisation" Version="1.1.21" />
 		<PackageReference Include="Walgelijk.Onion" Version="0.5.24" />
-		<PackageReference Include="Walgelijk.OpenTK" Version="0.22.7" />
+		<PackageReference Include="Walgelijk.OpenTK" Version="0.23.0" />
 		<PackageReference Include="Walgelijk.OpenTK.MotionTK" Version="1.1.27" />
 		<PackageReference Include="Walgelijk.ParticleSystem" Version="0.2.34" />
 		<PackageReference Include="Walgelijk.Physics" Version="0.3.2" />
@@ -75,6 +75,7 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <None Remove="base\data\incident_music.json" />
+	  <None Remove="base\shaders\blur.frag" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Include="..\.editorconfig" Link=".editorconfig" />
@@ -113,6 +114,9 @@
 	  <Resource Include="base\data\levels\incident\lvl_incident_end_4.json" />
 	  <Resource Include="base\data\levels\incident\lvl_incident_end_5.json" />
 	  <Resource Include="base\data\levels\incident\lvl_incident_end_6.json" />
+	  <Resource Include="base\shaders\blur.frag">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Resource>
 	</ItemGroup>
 	
 	<ItemGroup>

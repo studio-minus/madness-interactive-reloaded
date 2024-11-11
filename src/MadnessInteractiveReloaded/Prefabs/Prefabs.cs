@@ -620,7 +620,7 @@ public static class Prefabs
         var body = CreateBodypartSprite(scene, new BodyPartMaterialParams
         {
             SkinTexture = @params.Look.Body.Right,
-            GoreTexture = Textures.Character.GoreBody,
+            GoreTexture = @params.Look.BodyGore ?? Textures.Character.GoreBody,
             FleshTexture = bodyFlesh,
             BloodColour = @params.Look.BloodColour,
             Scale = scale
@@ -629,7 +629,7 @@ public static class Prefabs
         var head = CreateBodypartSprite(scene, new BodyPartMaterialParams
         {
             SkinTexture = @params.Look.Head.Right,
-            GoreTexture = Textures.Character.GoreHead,
+            GoreTexture = @params.Look.HeadGore ?? Textures.Character.GoreHead,
             FleshTexture = headFlesh,
             BloodColour = @params.Look.BloodColour,
             Scale = scale

@@ -2,8 +2,8 @@
 
 name Round glasses 4
 type HeadAccessory
-left base:textures/bodies/eyes/round_glasses4/round_glasses4_left.png
-right base:textures/bodies/eyes/round_glasses4/round_glasses4_right.png
+left textures/bodies/eyes/round_glasses4/round_glasses4_left.png
+right textures/bodies/eyes/round_glasses4/round_glasses4_right.png
 texture-scale 1
 category All
 detach False

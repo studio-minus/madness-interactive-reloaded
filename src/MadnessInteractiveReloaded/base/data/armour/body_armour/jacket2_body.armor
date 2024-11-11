@@ -1,0 +1,12 @@
+0.50.0
+
+name Jacket 2
+type Body
+left textures/bodies/body1/jacket2/jacket2_left.png
+right textures/bodies/body1/jacket2/jacket2_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+damage-size 1
+offset 0 0

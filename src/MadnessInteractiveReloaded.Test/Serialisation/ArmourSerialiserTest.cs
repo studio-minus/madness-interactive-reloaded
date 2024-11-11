@@ -38,7 +38,7 @@ public class ArmourSerialiserTest : global::System.IDisposable
         var path = Path.GetTempFileName() + ".armor";
         Assert.True(ArmourDeserialiser.Save(testPiece, path));
 
-        var loaded = ArmourDeserialiser.Load(path);
+        var loaded = ArmourDeserialiser.LoadFromPath(path);
         Assert.NotNull(loaded);
         loaded.Name.Should().Be(name.Trim().ToString());
         loaded.MenuOrder.Should().Be(order);
@@ -67,7 +67,7 @@ public class ArmourSerialiserTest : global::System.IDisposable
         Assert.Throws<Exceptions.SerialisationException>(() =>
         {
             Assert.True(ArmourDeserialiser.Save(armourPiece, path));
-            var loaded = ArmourDeserialiser.Load(path);
+            var loaded = ArmourDeserialiser.LoadFromPath(path);
             Assert.NotNull(loaded);
 
             loaded.Name.Should().Be(armourPiece.Name);

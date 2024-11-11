@@ -2,8 +2,8 @@
 
 name Coat 11
 type BodyAccessory
-left base:textures/bodies/body2/coat11/coat11_left.png
-right base:textures/bodies/body2/coat11/coat11_right.png
+left textures/bodies/body2/coat11/coat11_left.png
+right textures/bodies/body2/coat11/coat11_right.png
 texture-scale 1
 category All
 detach False

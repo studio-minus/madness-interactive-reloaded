@@ -2,8 +2,8 @@
 
 name Tower guard scarf
 type HeadAccessory
-left base:textures/bodies/mouth/tower_guard_scarf/tower_guard_scarf_left.png
-right base:textures/bodies/mouth/tower_guard_scarf/tower_guard_scarf_right.png
+left textures/bodies/mouth/tower_guard_scarf/tower_guard_scarf_left.png
+right textures/bodies/mouth/tower_guard_scarf/tower_guard_scarf_right.png
 texture-scale 1
 category All
 detach False

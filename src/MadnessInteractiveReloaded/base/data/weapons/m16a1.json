@@ -20,7 +20,7 @@
     "RecoilHandling": 1.2,
     "Automatic": false,
     "ShootSounds": [
-      "base:sounds/firearms/ak_1.wav"
+      "sounds/firearms/ak_1.wav"
     ],
     "CanBulletsBeDeflected": true,
     "EjectionParticle": "RifleCasing",
@@ -32,7 +32,7 @@
     "MeleeDamageType": "Firearm",
     "MeleeSize": "Medium"
   },
-  "BaseTexture": "base:textures/weapons/m16a1/base.png",
+  "BaseTexture": "textures/weapons/m16a1/base.png",
   "HoldForGrip": false,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {

@@ -62,11 +62,11 @@
   ],
   "FloorLine": [
     {
-      "X": -1701.7098,
+      "X": -1695.7098,
       "Y": -843.67615
     },
     {
-      "X": 2454.29,
+      "X": 2448.29,
       "Y": -843.67615
     }
   ],
@@ -210,8 +210,8 @@
         "EnemySpawnerDoor": true,
         "IsLevelProgressionDoor": false,
         "IsPortal": false,
-        "PortalID": null,
-        "DestinationLevel": null,
+        "PortalID": "666",
+        "DestinationLevel": "face",
         "TopLeft": {
           "X": -1815.1885,
           "Y": 72.04265
@@ -229,7 +229,9 @@
           "Y": -788.9452
         }
       },
-      "Tag": null
+      "Tag": {
+        "Value": 900
+      }
     },
     {
       "$type": "MIR.LevelEditor.Objects.Door, MIR",
@@ -264,6 +266,16 @@
           "Y": -791.4016
         }
       },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LevelScript, MIR",
+      "Position": {
+        "X": -2192.0818,
+        "Y": -402.58368
+      },
+      "Name": "untitled",
+      "Code": "/*\r\nthis.Game\r\nthis.Scene\r\nthis.Input\r\nthis.Time\r\nthis.Audio\r\nthis.Window\r\nthis.Graphics\r\nthis.DebugDraw\r\n*/\r\n\r\nvoid Start()\r\n{\r\n    if (Utilities.RandomFloat() <= 0.05f)\r\n        foreach (var item in Scene.GetAllComponentsOfType<DoorComponent>())\r\n            if (Scene.HasTag(item.Entity, new(900)))\r\n                item.Properties.IsPortal = true;\r\n}\r\n\r\nvoid Update()\r\n{\r\n\t\r\n}\r\n\r\nvoid FixedUpdate()\r\n{\r\n\t\r\n}\r\n\r\nvoid Render()\r\n{\r\n\t\r\n}\r\n\r\nvoid End()\r\n{\r\n\t\r\n}",
       "Tag": null
     }
   ]

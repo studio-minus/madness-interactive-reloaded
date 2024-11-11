@@ -1,11 +1,13 @@
-0.1.18
+0.50.0
 
 name Bandages 1
 type BodyAccessory
-category All
-
 left textures/bodies/body2/bandages1/bandages1_left.png
 right textures/bodies/body2/bandages1/bandages1_right.png
-
-offset-left -1 21
-offset-right 0 21
+texture-scale 1
+category All
+detach False
+hidden False
+damage-size 1
+offset-left 4 17
+offset-right 3 23

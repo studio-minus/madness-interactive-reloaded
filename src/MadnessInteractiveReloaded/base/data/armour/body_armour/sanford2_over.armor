@@ -2,8 +2,8 @@
 
 name Sanford 2
 type BodyAccessory
-left base:textures/bodies/body2/sanford2/sanford2_left.png
-right base:textures/bodies/body2/sanford2/sanford2_right.png
+left textures/bodies/body2/sanford2/sanford2_left.png
+right textures/bodies/body2/sanford2/sanford2_right.png
 texture-scale 1
 category All
 detach False

@@ -1,0 +1,13 @@
+0.50.0
+
+body
+   sanford_bandages_body
+   sanford_over
+
+head
+   determined_head
+   bandages2_hat
+   round_glasses3_eyes
+   bandana1_hat
+
+blood #FF0000FF

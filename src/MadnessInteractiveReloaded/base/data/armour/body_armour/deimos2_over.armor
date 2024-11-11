@@ -1,0 +1,12 @@
+0.50.0
+
+name Deimos 2
+type BodyAccessory
+left textures/bodies/body2/deimos2/deimos2_left.png
+right textures/bodies/body2/deimos2/deimos2_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+damage-size 1
+offset 1 30

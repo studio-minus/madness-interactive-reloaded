@@ -2,8 +2,8 @@
 
 name Robo armor
 type BodyAccessory
-left base:textures/bodies/body2/robo_armor/robo_armor_left.png
-right base:textures/bodies/body2/robo_armor/robo_armor_right.png
+left textures/bodies/body2/robo_armor/robo_armor_left.png
+right textures/bodies/body2/robo_armor/robo_armor_right.png
 texture-scale 1
 category All
 detach False

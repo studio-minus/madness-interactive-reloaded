@@ -28,7 +28,7 @@ public static class Textures
     /// The door texture.
     /// </summary>
     public static readonly AssetRef<Texture> Door = Assets.Load<Texture>("textures/door.png");
-    public static readonly AssetRef<Texture> TrainLevelExplosion = Assets.Load<Texture>("textures/explosie1x15.png");
+    public static readonly AssetRef<Texture> TrainLevelExplosion = Assets.Load<Texture>("textures/explosion_1x15.png");
 
     public static readonly AssetRef<Texture>[] Muzzleflashes = {
             Assets.Load<Texture>("textures/muzzle_flashes/muzzle_flash_1.png"),

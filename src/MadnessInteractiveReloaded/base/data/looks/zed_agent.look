@@ -6,8 +6,8 @@ body
    agent_suit_body
 
 head
-   classic_zed_head
+   zed_head
    black_agent_glasses_eyes
 
-hands classic_zed
+hands zed
 blood #ff0000

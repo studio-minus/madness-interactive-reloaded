@@ -2,57 +2,98 @@
   "Id": "thompson",
   "WeaponData": {
     "Name": "Thompson",
-    "Damage": 0.95,
-    "UseDelay": 0.13,
-    "MaxHandRangeMultiplier": 1.0,
+    "Damage": 0.2,
+    "UseDelay": 0.066,
+    "MaxHandRangeMultiplier": 0.9,
     "AdditionalComponents": null,
     "EnsureSystems": null,
-    "ThrowableDamage": 15.0,
+    "ThrowableDamage": 0.6,
     "ThrowableHeavy": false,
     "ThrowableSharpBoxes": [],
     "WeaponType": "Firearm",
     "BulletsPerShot": 1,
     "RoundsPerMagazine": 20,
     "BurstFireCount": 0,
-    "Accuracy": 1.0,
-    "Recoil": 0.77,
-    "RotationalRecoilIntensity": 0.37,
-    "RecoilHandling": 1.36,
+    "Accuracy": 0.96999997,
+    "Recoil": 0.3,
+    "RotationalRecoilIntensity": 0.25,
+    "RecoilHandling": 1.0,
     "Automatic": true,
     "ShootSounds": [
-      "sounds/firearms/thompson.wav"
+      "sounds/firearms/l22_1.wav",
+      "sounds/firearms/l22_2.wav",
+      "sounds/firearms/l22_3.wav"
     ],
     "CanBulletsBeDeflected": true,
     "EjectionParticle": "Small",
     "CasingSize": 1.0,
     "IsPumpAction": false,
-    "Range": 505.0,
+    "Range": 500.0,
     "CanDeflectBullets": false,
     "SpecialMelee": false,
     "MeleeDamageType": "Firearm",
     "MeleeSize": "Medium"
   },
   "BaseTexture": "textures/weapons/thompson/base.png",
-  "HoldForGrip": false,
+  "HoldForGrip": true,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {
-    "X": 266.2988,
-    "Y": 55.182888
+    "X": 308.75494,
+    "Y": 67.09136
   },
   "CasingEjectionPoint": {
-    "X": 16.61504,
-    "Y": 53.9156
+    "X": 57.53876,
+    "Y": 68.34781
   },
   "HoldPoints": [
     {
-      "X": 16.65506,
-      "Y": 9.455961
+      "X": 7.8985424,
+      "Y": -0.15973091
     },
     {
-      "X": 170.90732,
-      "Y": 17.516108
+      "X": 188.82126,
+      "Y": 1.605442
     }
   ],
-  "AnimatedParts": null,
+  "AnimatedParts": [
+    {
+      "OutOfAmmoKeyframeTime": 0.1,
+      "InvisbleWhenOutOfAmmo": false,
+      "Duration": 0.15,
+      "Scale": {
+        "X": 1.0,
+        "Y": 1.0
+      },
+      "Texture": "textures/weapons/thompson/slide.png",
+      "TranslationCurve": {
+        "MappingFunction": null,
+        "Keys": [
+          {
+            "Value": {
+              "X": -50.0,
+              "Y": 86.0
+            },
+            "Position": 0.0
+          },
+          {
+            "Value": {
+              "X": 45.0,
+              "Y": 86.0
+            },
+            "Position": 0.35
+          },
+          {
+            "Value": {
+              "X": -50.0,
+              "Y": 86.0
+            },
+            "Position": 1.0
+          }
+        ]
+      },
+      "AngleCurve": null,
+      "VisibilityCurve": null
+    }
+  ],
   "OnFloorAngle": 0.0
 }
