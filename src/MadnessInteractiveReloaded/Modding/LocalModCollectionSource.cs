@@ -3,7 +3,6 @@ using System.Collections.Immutable;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using Walgelijk;
 
 namespace MIR;
@@ -31,11 +30,23 @@ public class LocalModCollectionSource : IModCollectionSource
     {
         Directory = dir;
         if (!dir.Exists)
-            dir.Create();
+            try
+            {
+                dir.Create();
+            }
+            catch (IOException e)
+            {
+                Logger.Error(e);
+                return;
+            }
+        Logger.Log($"Created local mod source at {dir.FullName}");
     }
 
     public IEnumerable<Mod> ReadAll()
     {
+        if (!Directory.Exists)
+            yield break;
+
         foreach (var file in Directory.GetFiles("meta.json", SearchOption.AllDirectories))
         {
             if (file.Directory == null)

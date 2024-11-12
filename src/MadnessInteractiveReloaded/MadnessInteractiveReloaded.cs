@@ -187,6 +187,7 @@ void main()
         MigrateSaveData();
 
         ModLoader.AddSource(new LocalModCollectionSource(new DirectoryInfo(Path.Combine(Game.Main.AppDataDirectory, "mods/"))));
+        ModLoader.AddSource(new LocalModCollectionSource(new DirectoryInfo("./mods")));
 
 #if DEBUG
         Game.Profiling.DrawQuickProfiler = false;

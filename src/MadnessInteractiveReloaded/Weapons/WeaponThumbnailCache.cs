@@ -19,14 +19,13 @@ public class WeaponThumbnailCache// : Cache<WeaponInstructions, IReadableTexture
     public static readonly WeaponThumbnailCache Instance = new();
     public const int MaxWorkers = 4;
 
-    private static readonly ConcurrentDictionary<string, Worker> workers = [];
-    private const string CacheLocation = "cache/weapons/";
+    private readonly ConcurrentDictionary<string, Worker> workers = [];
+    private readonly string CacheLocation = "cache/weapons/";
 
     public WeaponThumbnailCache()
     {
-        string cachePath = Path.Combine(Game.Main.AppDataDirectory, CacheLocation);
-        if (!Directory.Exists(cachePath))
-            Directory.CreateDirectory(cachePath);
+        CacheLocation = Path.Combine(Game.Main.AppDataDirectory, CacheLocation);
+        Directory.CreateDirectory(CacheLocation);
     }
 
     public IReadableTexture Load(WeaponInstructions obj)
@@ -38,7 +37,7 @@ public class WeaponThumbnailCache// : Cache<WeaponInstructions, IReadableTexture
             return Textures.UserInterface.ApparelButtonBackground.Value;
         }
 
-        string cachedPath = Path.Combine(Game.Main.AppDataDirectory, CacheLocation, obj.Id + ".png");
+        string cachedPath = Path.Combine(CacheLocation, obj.Id + ".png");
 
         if (File.Exists(cachedPath))
         {
