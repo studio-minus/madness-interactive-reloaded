@@ -104,7 +104,7 @@ public class ArmourEditorSystem : Walgelijk.System
                 if (FileDialog.OpenFile(new[] { ("armor file", "armor"), ("All files", "*") }, out var chosenPath)
                     && !string.IsNullOrWhiteSpace(chosenPath))
                 {
-                    var loaded = ArmourDeserialiser.Load(chosenPath);
+                    var loaded = ArmourDeserialiser.LoadFromPath(chosenPath);
                     if (loaded != null)
                     {
                         editor.CurrentPiecePath = chosenPath;

@@ -502,7 +502,7 @@ public class CharacterCreationSystem : Walgelijk.System
             int i = 0;
             float x = 0;
             float rowHeight = (w) / preferredColumns;
-            foreach (var piece in registry.GetAllValues().OrderBy(static p => p.Order))
+            foreach (var piece in registry.GetAllValues().OrderBy(static p => p.DisplayName).OrderBy(static p => p.Order))
             {
                 if (piece.Hidden)
                     continue;

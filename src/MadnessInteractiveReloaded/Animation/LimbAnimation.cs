@@ -11,5 +11,6 @@ public class LimbAnimation
     public bool AdjustForAim = false;
     public Vec2Curve? TranslationCurve = null;
     public AngleCurve? RotationCurve = null;
+    public Vec2Curve? ScaleCurve = null;
 }
 

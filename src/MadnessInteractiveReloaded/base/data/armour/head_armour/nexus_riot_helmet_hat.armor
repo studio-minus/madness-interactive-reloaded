@@ -1,0 +1,13 @@
+0.50.0
+
+name Nexus riot helmet
+type HeadAccessory
+deflect-chance 0.3
+left textures/bodies/hats/nexus_riot_helmet/nexus_riot_helmet_left.png
+right textures/bodies/hats/nexus_riot_helmet/nexus_riot_helmet_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+damage-size 1
+offset 16 -78

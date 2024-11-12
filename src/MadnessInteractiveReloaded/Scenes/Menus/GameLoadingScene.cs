@@ -35,6 +35,7 @@ public static class GameLoadingScene
         new("Reading cutscenes", Registries.LoadCutscenes, false), // loading videos has to be done on the main thread for... some reason
         new("Assembling reality", Registries.LoadLevels),
         new("Initiating Club N", Registries.LoadDjTracks),
+        new("Incident BGM", Registries.LoadIncidentMusicSet),
         new("Preloading audio", GameLoadingSteps.PreloadAudio),
         new("Warming up material pool", GameLoadingSteps.PrefillMaterialPool),
         new("Ensuring player appearance", GameLoadingSteps.LoadPlayerLook),

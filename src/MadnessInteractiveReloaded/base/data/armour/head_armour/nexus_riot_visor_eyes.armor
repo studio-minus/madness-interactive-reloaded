@@ -1,0 +1,12 @@
+0.50.0
+
+name Nexus riot visor
+type HeadAccessory
+left textures/bodies/eyes/nexus_riot_visor/nexus_riot_visor_left.png
+right textures/bodies/eyes/nexus_riot_visor/nexus_riot_visor_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+damage-size 1
+offset 27 0

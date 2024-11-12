@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using Walgelijk;
 using Walgelijk.AssetManager;
 using Walgelijk.Physics;
-using static System.Formats.Asn1.AsnWriter;
 
 namespace MIR;
 /// <summary>
@@ -45,7 +43,7 @@ public class AiCharacterSystem : Walgelijk.System
                 {
                     if (targetCharacter.CurrentAttackerCount >=
                         (Level.CurrentLevel?.MaxSimultaneousAttackingEnemies ?? 2))
-                        ai.TooBusyToAttack = true;
+                        ai.TooBusyToAttack = ai.WaitsForAttackTurn;
                     else
                     {
                         targetCharacter.CurrentAttackerCount++;
@@ -103,7 +101,7 @@ public class AiCharacterSystem : Walgelijk.System
 
             character.IsIronSighting = character.HasWeaponEquipped && ai.WantsToIronSight.Value;
 
-            var originalPos = character.Positioning.Body.ComputedVisualCenter;
+            var originalPos = character.AimOrigin = character.Positioning.GlobalCenter;
 
             var aimingSource = originalPos;
             if (!experimentMode)
@@ -228,7 +226,7 @@ public class AiCharacterSystem : Walgelijk.System
                         //if (killTargetChar?.Positioning.IsFlying ?? false)
                         //    ai.HasKillTarget = false;
                         //else
-                            MeleeUtils.TryPerformMeleeAttack(Scene, equipped, character);
+                        MeleeUtils.TryPerformMeleeAttack(Scene, equipped, character);
                     }
                 }
 
@@ -589,15 +587,19 @@ public class AiCharacterSystem : Walgelijk.System
                 if (dd.Timer < 1) // TODO convar
                     continue;
 
-            var otherTransform = Scene.GetComponentFrom<TransformComponent>(weapon.Entity);
-            var d = Vector2.DistanceSquared(transform.Position, otherTransform.Position);
-            if (d < minDistance)
+            var weaponTransform = Scene.GetComponentFrom<TransformComponent>(weapon.Entity);
+            // dont pick up weapons outside level bounds
+            if (Level.CurrentLevel?.LevelBounds.ContainsPoint(weaponTransform.Position) ?? true)
             {
-                if (Scene.TryGetComponentFrom<VelocityComponent>(weapon.Entity, out var vel) && vel.Velocity.LengthSquared() > maxSpeedSqrd)
-                    continue;
+                var d = Vector2.DistanceSquared(transform.Position, weaponTransform.Position);
+                if (d < minDistance)
+                {
+                    if (Scene.TryGetComponentFrom<VelocityComponent>(weapon.Entity, out var vel) && vel.Velocity.LengthSquared() > maxSpeedSqrd)
+                        continue;
 
-                minDistance = d;
-                found = weapon.Entity;
+                    minDistance = d;
+                    found = weapon.Entity;
+                }
             }
         }
 

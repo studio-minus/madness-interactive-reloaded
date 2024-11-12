@@ -1,0 +1,12 @@
+0.49.5
+
+name Nexus agent suit
+type Body
+left textures/bodies/body1/nexus_agent_suit/nexus_agent_suit_left.png
+right textures/bodies/body1/nexus_agent_suit/nexus_agent_suit_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+damage-size 1
+offset 0 0

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Metrics;
 using System.Numerics;
 using Walgelijk;
 
@@ -35,10 +36,10 @@ public class MeleeSequenceSystem : Walgelijk.System
                 continue;
             }
 
-            if (comp.LastAnim != null && !comp.LastAnim.IsAlmostOver(0.99f))
+            if (comp.LastAnim != null && comp.AnimationTimer < comp.LastAnim.Animation.TotalDuration * 0.99f)
             {
                 var melee = comp.LastAnim;
-                var currentKeyframe = (int)Math.Ceiling(melee.UnscaledTimer / melee.Animation.TotalDuration * melee.MaxKeyCount);
+                var currentKeyframe = (int)float.Ceiling(comp.AnimationTimer / melee.Animation.TotalDuration * melee.MaxKeyCount);
 
                 if (comp.HitframesSpent < key.HitFrames.Length && currentKeyframe >= key.HitFrames[comp.HitframesSpent])
                 {
@@ -46,7 +47,7 @@ public class MeleeSequenceSystem : Walgelijk.System
                     ProcessHitFrame(comp, ch, keyIndex == comp.Sequence.Keys.Length - 1);
                 }
 
-                if (melee.IsAlmostOver(0.9f))
+                if (comp.AnimationTimer > melee.Animation.TotalDuration * 0.9f) // we have this extra timer because the animation might loop and we could miss the end
                 {
                     if (!comp.CanContinue)
                     {
@@ -71,12 +72,15 @@ public class MeleeSequenceSystem : Walgelijk.System
                         comp.CurrentIndex++;
                     }
                 }
+
+                comp.AnimationTimer += Time.DeltaTime * melee.Speed;
             }
             else
             {
                 comp.CanContinue = false;
                 comp.HitframesSpent = 0;
                 comp.LastAnim = ch.PlayAnimation(key.Animation.Select(!ch.Positioning.IsFlipped), comp.Speed);
+                comp.AnimationTimer = 0;
                 //TODO WTF??? HIER MOET TOCH NIET !phys.IsFlipped staan wtf Oh nee
 
             }
@@ -90,10 +94,10 @@ public class MeleeSequenceSystem : Walgelijk.System
         // TODO "center" should not be the head position, but instead the default, unarmed hand position
         // this fixes issues relating to the character scale and melee "missing" when it really shouldn't 
 
-        var center = ch.Positioning.Head.GlobalPosition;
+        var center = ch.AimOrigin;
         var dir = ch.AimDirection;
 
-        float damageMultiplier =  float.Pow(ch.Positioning.Scale, 8);
+        float damageMultiplier = float.Pow(ch.Positioning.Scale, 8);
 
         if (ch.EquippedWeapon.TryGet(Scene, out var wpn))
         {

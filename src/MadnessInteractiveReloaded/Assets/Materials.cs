@@ -27,6 +27,8 @@ public static class Materials
 
     public static readonly Material AlphaClipDraw = new Material(new Shader(DrawingMaterialCreator.DefaultShader.VertexShader, AlphaClipDrawMat.FragmentShader));
 
+    public static readonly Material BlurDraw = new Material(new Shader(DrawingMaterialCreator.DefaultShader.VertexShader, Assets.LoadNoCache<string>("shaders/blur.frag")));
+
     public static readonly Material BlackToWhiteOutline= new Material(
         new Shader(DrawingMaterialCreator.DefaultShader.VertexShader, Assets.LoadNoCache<string>("shaders/black-to-white-outline.frag")));
 }

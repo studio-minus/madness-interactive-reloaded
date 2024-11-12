@@ -1,0 +1,287 @@
+{
+  "DisplayName": "untitled",
+  "LevelType": "Campaign",
+  "ProgressionType": "BodyCount",
+  "EnemySpawnInterval": 0.4,
+  "MaxEnemyCount": 5,
+  "MaxSimultaneousAttackingEnemies": 2,
+  "BackgroundMusic": "sounds/music/Lothyde/agr3.ogg",
+  "WeaponChance": 0.83,
+  "LevelBounds": {
+    "MinX": -2795.9746,
+    "MinY": -833.6315,
+    "MaxX": 2866.247,
+    "MaxY": 1550.8129
+  },
+  "BodyCountToWin": 14,
+  "TimeLimitInSeconds": -1.0,
+  "FullZoom": false,
+  "Thumbnail": "textures/level_thumbnails/lvl_incident_begin_5.qoi",
+  "OpeningTransition": true,
+  "ExitingTransition": true,
+  "EnemySpawnInstructions": [
+    {
+      "StatsKey": "grunt",
+      "LookKey": "grunt"
+    },
+    {
+      "StatsKey": "agent",
+      "LookKey": "agent"
+    }
+  ],
+  "Weapons": [
+    "baton",
+    "baseball_bat",
+    "usp_match"
+  ],
+  "FloorLine": [
+    {
+      "X": -2185.8738,
+      "Y": -588.8447
+    },
+    {
+      "X": 2868.1262,
+      "Y": -588.8447
+    }
+  ],
+  "Objects": [
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerSpawn, MIR",
+      "Position": {
+        "X": 2254.1262,
+        "Y": -266.3685
+      },
+      "SpawnWeapon": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": 35.13629,
+        "Y": 358.5907
+      },
+      "TexturePath": "textures/backgrounds/incidents/background_begin_5.qoi",
+      "Scale": 2.222222
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -3010.36,
+        "MinY": -900.5596,
+        "MaxX": 3348.9084,
+        "MaxY": -588.8447
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 2288.2966,
+        "MinY": 994.7269,
+        "MaxX": 2380.6262,
+        "MaxY": 1624.5223
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -2588.8296,
+        "MinY": 1323.3456,
+        "MaxX": 3437.0596,
+        "MaxY": 1635.3324
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 3024.0527,
+        "MinY": -783.192,
+        "MaxX": 3633.1611,
+        "MaxY": 1516.8384
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -2819.368,
+        "MinY": -783.1918,
+        "MaxX": -2218.5295,
+        "MaxY": 1516.8381
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -2157.349,
+        "MinY": 1261.5739,
+        "MaxX": 2218.768,
+        "MaxY": 1383.4387
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -2157.349,
+        "MinY": -635.09326,
+        "MaxX": 2218.768,
+        "MaxY": -513.2285
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -2261.3853,
+        "MinY": 767.8291,
+        "MaxX": -2155.6494,
+        "MaxY": 1259.0469
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 2222.3948,
+        "MinY": 1020.0851,
+        "MaxX": 2328.1306,
+        "MaxY": 1284.4609
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": -953.98987,
+          "Y": -437.22495
+        },
+        "FacingDirection": {
+          "X": "NaN",
+          "Y": "NaN"
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": -1209.953,
+          "Y": 289.25797
+        },
+        "TopRight": {
+          "X": -698.36566,
+          "Y": 288.24106
+        },
+        "BottomLeft": {
+          "X": -1210.263,
+          "Y": -437.3244
+        },
+        "BottomRight": {
+          "X": -697.71674,
+          "Y": -437.1255
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Look": "agent",
+        "Stats": "agent",
+        "Weapon": "baton",
+        "Flipped": true,
+        "BottomCenter": {
+          "X": -73.52588,
+          "Y": -539.13934
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": -2408.9856,
+          "Y": -614.36804
+        },
+        "FacingDirection": {
+          "X": 1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": true,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "TopLeft": {
+          "X": -2483.7795,
+          "Y": 754.6904
+        },
+        "TopRight": {
+          "X": -2130.3394,
+          "Y": 701.4176
+        },
+        "BottomLeft": {
+          "X": -2485.8171,
+          "Y": -688.4378
+        },
+        "BottomRight": {
+          "X": -2132.154,
+          "Y": -540.2982
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Look": "grunt",
+        "Stats": "grunt",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": -1534.4645,
+          "Y": -573.6619
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
+      "TexturePath": "textures/begin5Fan_1x7.png",
+      "Angle": 0.0,
+      "Position": {
+        "X": 1088.48,
+        "Y": -331.8962
+      },
+      "Scale": 2.2295487,
+      "Columns": 7,
+      "Rows": 1,
+      "Color": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0
+      },
+      "Duration": 0.20588236,
+      "MaxFrames": 0,
+      "Layer": -100,
+      "AlphaClip": false,
+      "OrderInLayer": 9,
+      "Tag": null
+    }
+  ]
+}

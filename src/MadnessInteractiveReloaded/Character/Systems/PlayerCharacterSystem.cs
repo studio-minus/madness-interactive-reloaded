@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 using Walgelijk;
 using Walgelijk.AssetManager;
 using Walgelijk.Onion;
@@ -38,6 +39,8 @@ public class PlayerCharacterSystem : Walgelijk.System
             return;
         }
 
+        character.EquippedWeapon.TryGet(Scene, out equipped);
+
         bool prevFlipped = character.Positioning.IsFlipped;
 
         character.IsIronSighting =
@@ -46,11 +49,19 @@ public class PlayerCharacterSystem : Walgelijk.System
             player.RespondToUserInput &&
             Input.ActionHeld(GameAction.BlockAim);
 
-        var originalPos = character.Positioning.GlobalCenter;
+        character.AimOrigin = character.Positioning.GlobalCenter;
+        if (equipped != null && equipped.Data.WeaponType is WeaponType.Firearm && Scene.TryGetComponentFrom<TransformComponent>(equipped.Entity, out var equippedTransform))
+        {
+            var a = character.AimDirection;
+            var th = float.Atan2(a.Y, a.X);
 
-        var aimingSource = originalPos;
-        if (character.EquippedWeapon.TryGet(Scene, out equipped))
-            aimingSource.Y += equipped.BarrelEndPoint.Y;
+            // TODO this is fucked up because its actually determined in CharacterPositionSystem.PositionHands
+            // and I just copied the easing and everything to here.
+            var ironSightOffset = CharacterConstants.IronsightOffset.Y * Easings.Quad.InOut(character.Positioning.IronSightProgress) * character.Positioning.Scale;
+            var barrel = equipped.BarrelEndPoint - equippedTransform.LocalPivot;
+            var o = barrel.Y + ironSightOffset;
+            character.AimOrigin += Vector2.TransformNormal(new Vector2(0, o * character.Positioning.FlipScaling), Matrix3x2.CreateRotation(th));
+        }
 
         if (!experimentMode)
         {
@@ -62,16 +73,22 @@ public class PlayerCharacterSystem : Walgelijk.System
                     Utilities.NanFallback(Input.WorldMousePosition) :
                     (character.Positioning.Head.GlobalPosition + new Vector2(character.Positioning.FlipScaling * 10000, 0));
 
-                character.RelativeAimTargetPosition = character.AimTargetPosition - originalPos;
+                //if (equipped != null && equipped.Data.WeaponType is WeaponType.Firearm)
+                //{
+                //    var th = float.Atan2(character.AimDirection.Y, character.AimDirection.X) * character.Positioning.fli;
+                //    character.AimTargetPosition += Vector2.TransformNormal(new Vector2(0, equipped.BarrelEndPoint.Y), Matrix3x2.CreateRotation(th));
+                //}
+
+                character.RelativeAimTargetPosition = character.AimTargetPosition - character.AimOrigin;
             }
             else
-                character.AimTargetPosition = originalPos + character.RelativeAimTargetPosition;
+                character.AimTargetPosition = character.AimOrigin + character.RelativeAimTargetPosition;
 
             if (easterEgg.Detect(Game.State))
             {
                 MadnessUtils.Flash(Colors.Yellow.WithAlpha(0.5f), 0.2f);
                 foreach (var item in Scene.GetAllComponentsOfType<CharacterComponent>())
-                    if (item.Faction.IsEnemiesWith(character.Faction))
+                    if (item.Faction.IsEnemiesWith(character.Faction) && item != character)
                     {
                         item.Kill();
                         MadnessUtils.TurnIntoRagdoll(Scene, item, Utilities.RandomPointInCircle() * 140, Utilities.RandomFloat(-90, 90));
@@ -79,7 +96,7 @@ public class PlayerCharacterSystem : Walgelijk.System
             }
         }
 
-        var targetHandPosition = character.AimTargetPosition - originalPos;
+        var targetHandPosition = character.AimTargetPosition - character.AimOrigin;
         float maxHandRange = CharacterConstants.MaxHandRange * (equipped?.Data.MaxHandRangeMultiplier ?? 1) * character.Positioning.Scale;
         if (targetHandPosition.LengthSquared() > (maxHandRange * maxHandRange))
             targetHandPosition = Vector2.Normalize(targetHandPosition) * maxHandRange;
@@ -111,17 +128,14 @@ public class PlayerCharacterSystem : Walgelijk.System
         }
 
         var shouldBeDirectedRight = character.AimTargetPosition.X > character.Positioning.GlobalCenter.X;
-
         character.WalkAcceleration = Vector2.Zero;
 
         if (!experimentMode && player.RespondToUserInput)
         {
             var nearestWeapon = GetNearestWeapon(character, out var nearestWeaponDistance, out var nearestWeaponEntity);
-
             if (nearestWeapon != null)
             {
                 nearestWeapon.ShouldBeHighlighted = true;
-
                 if (player.LastWeaponHoveredOver != nearestWeaponEntity)
                 {
                     player.LastWeaponHoveredOver = nearestWeaponEntity;
@@ -132,7 +146,7 @@ public class PlayerCharacterSystem : Walgelijk.System
                 }
             }
 
-            if (Input.IsKeyHeld(Key.LeftControl) && MathF.Abs(Input.MouseScrollDelta) > float.Epsilon)
+            if (Input.IsKeyHeld(Key.LeftControl) && float.Abs(Input.MouseScrollDelta) > float.Epsilon)
             {
                 if (Input.MouseScrollDelta > 0)
                     player.ZoomLevel /= 0.9f;

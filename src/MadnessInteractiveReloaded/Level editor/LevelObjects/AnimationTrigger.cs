@@ -7,7 +7,6 @@ using Walgelijk.Onion;
 using Walgelijk.Onion.Controls;
 using Walgelijk.SimpleDrawing;
 using static MIR.AnimationTriggerComponent;
-using static MIR.Textures;
 
 namespace MIR.LevelEditor.Objects;
 

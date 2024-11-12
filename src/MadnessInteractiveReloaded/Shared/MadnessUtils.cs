@@ -1,5 +1,4 @@
 ﻿using MIR.LevelEditor.Objects;
-using OpenTK.Windowing.Common.Input;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -68,18 +67,55 @@ public static class MadnessUtils
         return false;
     }
 
+    public static void OpenExplorer(string path)
+    {
+        string executable;
+
+        if (OperatingSystem.IsWindows())
+            executable = "explorer";
+        else if (OperatingSystem.IsMacOS())
+            executable = "open";
+        else if (OperatingSystem.IsLinux())
+            executable = "xdg-open";
+        else return;
+
+        System.Diagnostics.Process.Start(executable, path);
+    }
+
+    public static void OpenBrowser(string url)
+    {
+        try
+        {
+            System.Diagnostics.Process.Start(url);
+        }
+        catch (Exception)
+        {
+            if (OperatingSystem.IsWindows())
+            {
+                url = url.Replace("&", "^&");
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+            }
+            else if (OperatingSystem.IsMacOS())
+                System.Diagnostics.Process.Start("open", url);
+            else if (OperatingSystem.IsLinux())
+                System.Diagnostics.Process.Start("xdg-open", url);
+            else
+                throw;
+        }
+    }
+
     public static Matrix4x4 Invert(this Matrix4x4 matrix)
     {
         if (Matrix4x4.Invert(matrix, out var inverted))
             return inverted;
-        return matrix * -1; //?????????
+        return matrix;
     }
 
     public static Matrix3x2 Invert(this Matrix3x2 matrix)
     {
         if (Matrix3x2.Invert(matrix, out var inverted))
             return inverted;
-        return matrix * -1; //wtf is dit
+        return matrix;
     }
 
     /// <summary>
@@ -203,6 +239,50 @@ public static class MadnessUtils
         r.MaxY = MathF.Max(r.MaxY, MathF.Max(a.Y, MathF.Max(b.Y, MathF.Max(c.Y, d.Y))));
 
         return r;
+    }
+
+    public static Rect FitImageRect(IReadableTexture texture, Rect rect, ImageContainmentMode containmentMode)
+    {
+        var textureSize = texture.Size;
+        var size = rect.GetSize();
+        var topLeft = rect.BottomLeft;
+
+        Vector2 imageSize;
+        Vector2 imagePos = default;
+
+        switch (containmentMode)
+        {
+            case ImageContainmentMode.Stretch:
+                imageSize = size;
+                break;
+            case ImageContainmentMode.Contain:
+            case ImageContainmentMode.Cover:
+                var aspectRatio = textureSize.X / textureSize.Y;
+
+                imageSize = size;
+                bool a = size.X / aspectRatio > size.Y;
+
+                if (containmentMode == ImageContainmentMode.Contain)
+                    a = !a;
+
+                if (a)
+                    imageSize.Y = size.X / aspectRatio;
+                else
+                    imageSize.X = size.Y * aspectRatio;
+
+                imagePos = size / 2 - imageSize / 2;
+                break;
+            case ImageContainmentMode.Center:
+                imageSize = textureSize;
+                imagePos = size / 2 - imageSize / 2;
+                break;
+            default:
+            case ImageContainmentMode.OriginalSize:
+                imageSize = textureSize;
+                break;
+        }
+
+        return new Rect(topLeft.X + imagePos.X, topLeft.Y + imagePos.Y, topLeft.X + imagePos.X + imageSize.X, topLeft.Y + imagePos.Y + imageSize.Y);
     }
 
     public static bool IsPaused(Scene scene)
@@ -689,6 +769,7 @@ public static class MadnessUtils
         ragdoll.Main = character.Entity;
         ragdoll.ShouldDelete = character.Flags.HasFlag(CharacterFlags.DeleteRagdoll);
 
+        //var visualOffset = new Vector2(0, Utilities.RandomFloat(-5,5));
         foreach (var component in Ragdoll.BuildDefaultRagdoll(scene, character))
         {
             switch (component)
@@ -705,6 +786,7 @@ public static class MadnessUtils
                     break;
                 case VerletTransformComponent tlink:
                     ragdoll.TransformLinks.Add(new ComponentRef<VerletTransformComponent>(tlink.Entity));
+                    //tlink.GlobalOffset += visualOffset;
                     break;
                 default:
                     throw new Exception("Unknown object returned by ragdoll constructor");
@@ -931,6 +1013,29 @@ public static class MadnessUtils
         if (name.Length > length - 3)
             return string.Concat(name.AsSpan(0, length - 3), "...");
         return name;
+    }
+
+    // Straight up from https://learn.microsoft.com/en-us/dotnet/standard/io/how-to-copy-directories
+    public static void CopyDirectory(string sourceDir, string destinationDir, bool recursive)
+    {
+        var dir = new DirectoryInfo(sourceDir);
+        if (!dir.Exists)
+            throw new DirectoryNotFoundException($"Source directory not found: {dir.FullName}");
+
+        Directory.CreateDirectory(destinationDir);
+
+        foreach (var file in dir.GetFiles())
+        {
+            var targetFilePath = Path.Combine(destinationDir, file.Name);
+            file.CopyTo(targetFilePath);
+        }
+
+        if (recursive)
+            foreach (var subDir in dir.GetDirectories())
+            {
+                var newDestinationDir = Path.Combine(destinationDir, subDir.Name);
+                CopyDirectory(subDir.FullName, newDestinationDir, true);
+            }
     }
 
     //public static void PlayerEquipLastWeapon(Scene scene, Entity playerEntity, Level? level = null)

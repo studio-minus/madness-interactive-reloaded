@@ -1,12 +1,12 @@
-﻿namespace MIR.Test.Deserialisation;
-
-using FluentAssertions;
+﻿using FluentAssertions;
 using MIR.Exceptions;
 using System.IO;
 using System.Text;
 using Walgelijk;
 using Walgelijk.AssetManager;
 using Xunit;
+
+namespace MIR.Test.Deserialisation;
 
 [Collection("Registry collection")]
 public class HandArmourDeserialiserTest : global::System.IDisposable
@@ -135,7 +135,7 @@ public class HandArmourDeserialiserTest : global::System.IDisposable
         var p = Path.GetTempFileName();
         File.WriteAllText(p, b.ToString());
 
-        var result = HandArmourDeserialiser.Load(p);
+        var result = HandArmourDeserialiser.LoadFromFile(p);
         result.Should().NotBeNull();
         result.Name.Should().Be(name.Trim());
         result.MenuOrder.Should().Be(order);
@@ -164,7 +164,6 @@ public class HandArmourDeserialiserTest : global::System.IDisposable
             expected.Should().NotBeNullOrWhiteSpace();
 
             id.Id.Should().BeEquivalentTo(new GlobalAssetId(expected));
-            _= id.Value;
         }
     }
 

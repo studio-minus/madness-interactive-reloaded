@@ -4,12 +4,21 @@
   "Table": {
     "main-menu-campaigns": "Campaigns",
     "main-menu-experiment": "Experiment",
+    "main-menu-incident-mode": "Incident mode",
     "main-menu-improbability-disks": "Improbability disks",
     "main-menu-char-customisation": "Character customisation",
     "main-menu-settings": "Settings",
     "main-menu-credits-info": "Credits and information",
     "main-menu-quit": "Quit",
     "main-menu-mod-menu": "Mods",
+
+    "cmpgn-menu-lvl-select": "Level select",
+    "cmpgn-menu-completed-levels": "Completed levels",
+    "cmpgn-menu-time-spent": "Time spent",
+    "cmpgn-menu-play": "Play",
+    "cmpgn-menu-restart": "Restart",
+    "cmpgn-menu-continue": "Continue",
+    "cmpgn-menu-select-campaign": "Select a campaign on the left",
 
     "settings-general-header": "General",
     "settings-video-header": "Video",
@@ -40,6 +49,7 @@
     "character-creation-import": "Import",
     "character-creation-export": "Export",
 
+    "experiment-press-to-toggle": "Press <color=#ffffff>[{0}]</color> to toggle EDIT mode",
     "experiment-open-menu": "Menu",
     "experiment-close-menu": "Stop editing",
     "experiment-main-menu": "Main menu",

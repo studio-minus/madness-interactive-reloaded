@@ -1,0 +1,80 @@
+﻿fps 24
+scale 1
+speed 1
+
+BODY
+0       54.88px  -0.36px  -22.61deg constraints(PreventThrowing PreventIronSight)
+1       49.44px  -1.53px
+2       38.31px  2.98px  -16.19deg
+3       27.19px  7.5px  -14.44deg
+4       26.97px  18.8px  -15.08deg
+5       41.12px  23.55px  -20.6deg
+6       55.27px  19.11px  -22.01deg
+7       58.34px  7.72px
+8       55.43px  5.95px  -18.96deg
+9       50.62px  4.45px
+10      45.82px  6.65px  -14.82deg
+11      30.08px  7.45px
+12      14.35px  5.5px  -4.52deg
+14      4.84px  1.59px  -1.51deg
+15      0.98px  0.34px  -0.31deg
+17      0.0px  0.0px  -0.0deg
+
+HEAD
+0       13.88px  -18.79px  22.87deg
+1       20.59px  -18.28px  20.18deg
+2       27.3px  -15.07px  16.95deg
+3       19.18px  -11.81px
+4       6.55px  -10.97px  15.07deg
+5       2.18px  -19.45px  20.83deg
+6       9.76px  -19.71px  21.86deg
+7       23.36px  -16.48px
+8       23.82px  -15.16px  19.22deg
+9       23.27px  -14.37px
+10      17.59px  -13.57px  15.11deg
+11      9.12px  -8.87px
+12      2.99px  -4.16px  4.55deg
+14      0.83px  -1.4px  1.52deg
+15      0.15px  -0.28px  0.31deg
+17      0.0px  0.0px  0.0deg
+
+HAND
+aim
+0       667.2px  -9.14px  -4.16deg  scale(1.0, 1.0)
+1       570.16px  -34.18px
+2       354.42px  22.76px  -4.05deg
+3       138.68px  79.7px  -3.99deg
+4       74.8px  80.5px
+5       63.05px  68.86px
+6       51.3px  36.07px  -3.32deg
+7       39.56px  22.72px
+8       19.7px  14.36px  -2.54deg
+9       -3.62px  13.77px
+10      -26.94px  0.22px  -1.57deg  scale(1.0, 1.0)
+11      -54.6px  -22.08px
+12      -82.26px  -9.94px  -0.33deg
+14      -93.2px  14.35px  -0.1deg
+15      -94.83px  24.07px
+17      -98.09px  26.76px  -0.0deg  scale(1.0, 1.0)
+
+HAND
+aim
+0       265.94px  -2.28px  0.22deg  scale(1.0, 1.0)
+1       196.66px  56.08px
+2       119.25px  52.86px  1.17deg  scale(1.0, 1.0)
+3       117.3px  34.75px  scale(1.0, 1.0)
+4       154.78px  16.64px  5.76deg  scale(1.01, 1.0)
+5       284.37px  8.0px  scale(1.69, 1.0)
+6       567.11px  -0.64px  8.04deg  scale(1.81, 1.0)
+7       692.81px  32.63px  7.45deg  scale(1.01, 1.0)
+8       668.24px  51.82px  4.3deg  scale(1.0, 1.0)
+9       429.71px  49.13px  1.38deg
+10      254.7px  46.44px  -0.05deg  scale(1.0, 1.0)
+11      193.98px  44.59px  -0.74deg
+12      186.0px  42.74px  -0.57deg
+13      178.01px  41.58px
+14      179.13px  40.42px
+15      180.25px  40.47px  -0.05deg
+16      181.37px  41.28px
+17      181.63px  41.61px  0.0deg  scale(1.0, 1.0)
+

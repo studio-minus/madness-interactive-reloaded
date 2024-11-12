@@ -55,46 +55,6 @@
   ],
   "AnimatedParts": [
     {
-      "OutOfAmmoKeyframeTime": 0.0,
-      "InvisbleWhenOutOfAmmo": false,
-      "Duration": 0.1,
-      "Scale": {
-        "X": 10000.0,
-        "Y": 48.0
-      },
-      "Texture": "textures/white.png",
-      "TranslationCurve": {
-        "MappingFunction": null,
-        "Keys": [
-          {
-            "Value": {
-              "X": 5220.0,
-              "Y": 31.0
-            },
-            "Position": 0.0
-          }
-        ]
-      },
-      "AngleCurve": null,
-      "VisibilityCurve": {
-        "MappingFunction": null,
-        "Keys": [
-          {
-            "Value": 0.0,
-            "Position": 0.0
-          },
-          {
-            "Value": 2.0,
-            "Position": 0.01
-          },
-          {
-            "Value": 0.0,
-            "Position": 1.0
-          }
-        ]
-      }
-    },
-    {
       "OutOfAmmoKeyframeTime": 0.5,
       "InvisbleWhenOutOfAmmo": true,
       "Duration": 1.0,

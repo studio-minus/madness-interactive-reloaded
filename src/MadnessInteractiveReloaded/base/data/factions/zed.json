@@ -1,0 +1,9 @@
+{
+  "Name": "Zed",
+  "Enemies": [
+    "player",
+    "aahw",
+    "civil",
+    "rogue"
+  ]
+}

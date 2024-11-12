@@ -1,0 +1,13 @@
+0.50.0
+
+body
+   default_body
+   tactical_backpack3_over
+   deimos2_over
+
+head
+   default_head
+   bandages5_hat
+   tactical_cap3_hat
+
+blood #FF0000FF

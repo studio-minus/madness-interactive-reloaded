@@ -1,0 +1,12 @@
+0.50.0
+
+name Nexus zed
+type Body
+left base:textures/bodies/body1/nexus_zed/nexus_zed_left.png
+right base:textures/bodies/body1/nexus_zed/nexus_zed_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+damage-size 1
+offset 0 0

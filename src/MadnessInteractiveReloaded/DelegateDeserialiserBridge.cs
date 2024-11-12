@@ -3,6 +3,7 @@ using Walgelijk.AssetManager;
 
 namespace MIR; //👩
 
+[Obsolete]
 public class DelegateDeserialiserBridge<T> : TemporaryDeserialiserBridge<T> where T : notnull
 {
     private readonly Func<string, T> deserialiser;

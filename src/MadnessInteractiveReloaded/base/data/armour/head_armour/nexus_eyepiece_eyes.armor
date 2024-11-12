@@ -1,0 +1,13 @@
+0.49.5
+
+name Nexus eyepiece
+type HeadAccessory
+left textures/bodies/eyes/nexus_eyepiece/nexus_eyepiece_left.png
+right textures/bodies/eyes/nexus_eyepiece/nexus_eyepiece_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+damage-size 1
+offset-left 35 24
+offset-right 8 24

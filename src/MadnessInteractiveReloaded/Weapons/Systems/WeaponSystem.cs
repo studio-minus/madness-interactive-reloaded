@@ -212,7 +212,7 @@ public class WeaponSystem : Walgelijk.System
     /// Get how big a bullethole will be from a weapon.
     /// </summary>
     public static float GetBulletHoleSize(float totalDistance, WeaponComponent weapon) =>
-        0.1f + weapon.GetDamageAtDistance(totalDistance) * 0.05f / weapon.Data.BulletsPerShot;
+        (0.1f + weapon.GetDamageAtDistance(totalDistance) * 0.07f) * float.Lerp(weapon.Data.BulletsPerShot, 1, 0.55f);
 
     private void EmitBulletFrom(WeaponComponent weapon, TransformComponent transform, CharacterComponent wielder, bool isPlayer, float recoilMultiplier = 1)
     {
@@ -356,7 +356,7 @@ public class WeaponSystem : Walgelijk.System
                         && weapon.Data.CanBulletsBeDeflected;
 
                     float armourDeflectChance = bodyPart != null
-                        && bodyPart.Entity == victimChar.Positioning.Head.Entity ? victimChar.Look.GetHeadDeflectionChance() : victimChar.Look.GetBodyDeflectionChance();
+                        && bodyPart.Entity == victimChar.Positioning.Head.Entity ? victimChar.Look.GetHeadDeflectChance() : victimChar.Look.GetBodyDeflectChance();
 
                     bool deflectingArmour = !victimChar.Look.Cosmetic && armourDeflectChance > Utilities.RandomFloat();
 
@@ -495,7 +495,7 @@ public class WeaponSystem : Walgelijk.System
                         var splatter = SoundCache.Instance.LoadSoundEffect(Assets.Load<FixedAudioData>("sounds/splatter.wav"));
                         Audio.PlayOnce(splatter, 1, Utilities.RandomFloat(0.95f, 1.05f));
                     }
-
+                     
                     //damage broken armour
                     if (hit.Entity == victimChar.Positioning.Head.Entity && Utilities.RandomFloat() > 0.5f)
                     {
@@ -562,6 +562,9 @@ public class WeaponSystem : Walgelijk.System
                     var s = GetBulletHoleSize(totalDistance, weapon) / (iteration + 1) * (isExitWound ? 2 : 0.5f);
                     if (isCosmetic)
                         s *= 0.5f;
+
+                    //s *= 0;
+
                     s /= charScaleSqrd;
                     s = damagable.TryAddHole(p.X, p.Y, s);
 

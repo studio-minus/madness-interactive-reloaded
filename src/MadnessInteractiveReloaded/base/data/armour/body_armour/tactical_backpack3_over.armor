@@ -1,0 +1,12 @@
+0.50.0
+
+name Tactical backpack 3
+type BodyAccessory
+left textures/bodies/body2/tactical_backpack3/tactical_backpack3_left.png
+right textures/bodies/body2/tactical_backpack3/tactical_backpack3_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+damage-size 1
+offset -117 -52

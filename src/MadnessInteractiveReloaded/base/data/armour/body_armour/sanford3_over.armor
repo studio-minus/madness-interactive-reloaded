@@ -1,0 +1,13 @@
+0.49.5
+
+name Sanford 3
+type BodyAccessory
+left textures/bodies/body2/sanford3/sanford3_left.png
+right textures/bodies/body2/sanford3/sanford3_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+damage-size 1
+offset-left -6 34
+offset-right 0 13

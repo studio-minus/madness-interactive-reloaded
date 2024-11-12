@@ -1,0 +1,6 @@
+0.7.6
+# animation_id transition_frame [hit,frame,array]
+
+melee_unarmed_zed_1	    13		[5]
+melee_unarmed_zed_2		15		[6]
+melee_unarmed_zed_3		16		[9]

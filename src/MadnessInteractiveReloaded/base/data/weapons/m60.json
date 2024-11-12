@@ -7,7 +7,7 @@
     "MaxHandRangeMultiplier": 0.5,
     "AdditionalComponents": null,
     "EnsureSystems": null,
-    "ThrowableDamage": 25.0,
+    "ThrowableDamage": 2.0,
     "ThrowableHeavy": true,
     "ThrowableSharpBoxes": [],
     "WeaponType": "Firearm",
@@ -29,7 +29,7 @@
     "EjectionParticle": "RifleCasing",
     "CasingSize": 1.2,
     "IsPumpAction": false,
-    "Range": 500.0,
+    "Range": 600.0,
     "CanDeflectBullets": false,
     "SpecialMelee": false,
     "MeleeDamageType": "Firearm",
@@ -39,48 +39,24 @@
   "HoldForGrip": false,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {
-    "X": 466.27585,
-    "Y": 13.1793375
+    "X": 462.94775,
+    "Y": 20.727983
   },
   "CasingEjectionPoint": {
-    "X": -149.95425,
-    "Y": 31.211473
+    "X": -170.27538,
+    "Y": 43.09745
   },
   "HoldPoints": [
     {
-      "X": 183.0,
-      "Y": 51.0
+      "X": 212.42307,
+      "Y": 62.76924
     },
     {
-      "X": 54.43402,
-      "Y": -27.371206
+      "X": 46.097504,
+      "Y": -24.428923
     }
   ],
   "AnimatedParts": [
-    {
-      "OutOfAmmoKeyframeTime": 0.1,
-      "InvisbleWhenOutOfAmmo": false,
-      "Duration": 1.0,
-      "Scale": {
-        "X": 1.0,
-        "Y": 1.0
-      },
-      "Texture": "textures/weapons/m60/ammo_carrier_l1.png",
-      "TranslationCurve": {
-        "MappingFunction": null,
-        "Keys": [
-          {
-            "Value": {
-              "X": -150.0,
-              "Y": 9.0
-            },
-            "Position": 0.0
-          }
-        ]
-      },
-      "AngleCurve": null,
-      "VisibilityCurve": null
-    },
     {
       "OutOfAmmoKeyframeTime": 0.1,
       "InvisbleWhenOutOfAmmo": true,
@@ -95,22 +71,22 @@
         "Keys": [
           {
             "Value": {
-              "X": -148.0,
-              "Y": 14.0
+              "X": -160.0,
+              "Y": 22.0
             },
             "Position": 0.0
           },
           {
             "Value": {
-              "X": -148.0,
-              "Y": 2.0
+              "X": -160.0,
+              "Y": 22.0
             },
             "Position": 0.0
           },
           {
             "Value": {
-              "X": -148.0,
-              "Y": 14.0
+              "X": -160.0,
+              "Y": 10.0
             },
             "Position": 1.0
           }
@@ -133,8 +109,8 @@
         "Keys": [
           {
             "Value": {
-              "X": -147.0,
-              "Y": -49.0
+              "X": -160.0,
+              "Y": -60.0
             },
             "Position": 0.0
           }

@@ -31,9 +31,19 @@ public class CharacterLook
     public HandArmourPiece? Hands;
 
     /// <summary>
+    /// Feet texture. Falls back to default if null.
+    /// </summary>
+    public AssetRef<Texture>? Feet;
+
+    /// <summary>
     /// Inner flesh textures. Falls back to default if null.
     /// </summary>
-    public AssetRef<Texture>? HeadFlesh, BodyFlesh;
+    public AssetRef<Texture>? HeadFlesh, BodyFlesh;  
+    
+    /// <summary>
+    /// Inner gore textures. Falls back to default if null.
+    /// </summary>
+    public AssetRef<Texture>? HeadGore, BodyGore;
 
     /// <summary>
     /// Protective stats have no influence if true
@@ -52,21 +62,7 @@ public class CharacterLook
 
     public CharacterLook(CharacterLook toCopy)
     {
-        Head = toCopy.Head;
-        Body = toCopy.Body;
-
-        HeadLayer1 = toCopy.HeadLayer1;
-        HeadLayer2 = toCopy.HeadLayer2;
-        HeadLayer3 = toCopy.HeadLayer3;
-
-        BodyLayer1 = toCopy.BodyLayer1;
-        BodyLayer2 = toCopy.BodyLayer2;
-
-        Hands = toCopy.Hands;
-        Cosmetic = toCopy.Cosmetic;
-
-        BloodColour = toCopy.BloodColour;
-        Jitter = toCopy.Jitter;
+        toCopy.CopyTo(this);
     }
 
     public void CopyTo(CharacterLook target)
@@ -81,7 +77,13 @@ public class CharacterLook
         target.BodyLayer1 = BodyLayer1;
         target.BodyLayer2 = BodyLayer2;
 
+        target.HeadFlesh = HeadFlesh;
+        target.BodyFlesh = BodyFlesh; 
+        target.HeadGore = HeadGore;
+        target.BodyGore = BodyGore;
+
         target.Hands = Hands;
+        target.Feet = Feet;
         target.Cosmetic = Cosmetic;
 
         target.BloodColour = BloodColour;
@@ -169,10 +171,11 @@ public class CharacterLook
     /// Return the combined chance of head armour bullet deflection
     /// </summary>
     /// <returns></returns>
-    public float GetHeadDeflectionChance()
+    public float GetHeadDeflectChance()
     {
         if (Cosmetic) 
             return 0;
+
         float a = 0;
 
         a = float.Max(a, Head.DeflectChance);
@@ -187,10 +190,11 @@ public class CharacterLook
     /// Return the combined chance of body armour bullet deflection
     /// </summary>
     /// <returns></returns>
-    public float GetBodyDeflectionChance()
+    public float GetBodyDeflectChance()
     {
         if (Cosmetic) 
             return 0;
+
         float a = 0;
 
         a = float.Max(a, Body.DeflectChance);

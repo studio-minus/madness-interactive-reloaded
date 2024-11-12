@@ -1,7 +1,7 @@
-﻿#version 330 core
+﻿#version 330
 #define ANIMATION_DURATION 0.4
 
-smooth in vec2 uv;
+in vec2 uv;
 in vec4 vertexColor;
 
 out vec4 color;

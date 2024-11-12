@@ -16,6 +16,7 @@ public class  MeleeSequenceComponent : Component
     public bool CanContinue = false;
     public float Speed = 1;
     public int HitframesSpent = 0;
+    public float AnimationTimer = 0;
 
     public ActiveCharacterAnimation? LastAnim;
 

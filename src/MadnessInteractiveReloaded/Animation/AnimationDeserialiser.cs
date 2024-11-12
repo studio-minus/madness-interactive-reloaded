@@ -41,6 +41,7 @@ public static class AnimationDeserialiser
     private static readonly Regex IntegerPattern = new(@"-?\d+", RegexOptions.Compiled);
     private static readonly Regex FloatPattern = new(@"-?(\d|\.)+", RegexOptions.Compiled);
     private static readonly Regex ConstraintPattern = new(@"(constraints)\((\w|\ )*\)", RegexOptions.Compiled);
+    private static readonly Regex LimbScalePattern = new(@"(scale)\((\d+\.?\d*),\s*(\d+\.?\d*)\)", RegexOptions.Compiled);
     private static readonly string[] AnimationConstraints;
     private static readonly string[] HandLooks;
 
@@ -78,7 +79,7 @@ public static class AnimationDeserialiser
             }
             line = line.Trim();
 
-            if (line.StartsWith("#"))//comments
+            if (line.StartsWith('#'))//comments
                 continue;
 
             switch (line)
@@ -165,7 +166,9 @@ public static class AnimationDeserialiser
                     {
                         var keyframe = new KeyframeLine();
 
-                        // 0s 0px 0px 0deg openHand
+                        // 0s 0px 0px 0deg openHand scale(1,1) constraints(...)
+
+                        // find time
                         var time = TimePattern.Match(line);
                         if (time == null || !time.Success)
                         {
@@ -186,6 +189,7 @@ public static class AnimationDeserialiser
                                 throw new Exceptions.SerialisationException($"Invalid value at line #{lineNumber}: time specifiers need to be positive");
                         }
 
+                        // find position
                         var pixelPatterns = PixelPattern.Matches(line);
                         if (pixelPatterns != null && pixelPatterns.Count > 0)
                         {
@@ -198,10 +202,12 @@ public static class AnimationDeserialiser
                             );
                         }
 
+                        // find rotation
                         var degreePatterns = DegreePattern.Match(line);
                         if (degreePatterns != null && degreePatterns.Success)
                             keyframe.Angle = DegreeStringToFloat(degreePatterns.Value);
 
+                        // find hand specifier
                         var handPatterns = HandPattern.Matches(line);//TODO dit kan sneller
                         if (writingToHandAnimation)
                             if (handPatterns != null && handPatterns.Any())
@@ -219,6 +225,7 @@ public static class AnimationDeserialiser
                                     }
                             }
 
+                        // find constraints
                         var constraints = ConstraintPattern.Match(line);
                         if (constraints.Success)
                         {
@@ -239,6 +246,25 @@ public static class AnimationDeserialiser
                                     }
                             }
                             anim.Constraints.Add((keyframe.Time, f));
+                        }
+
+                        // find scale
+                        var localScale = LimbScalePattern.Match(line);
+                        if (localScale.Success)
+                        {
+                            var v = localScale.ValueSpan;
+                            var inside = v[(v.IndexOf('(') + 1)..v.IndexOf(')')];
+                            var parts = inside.ToString().Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+                            if (parts.Length != 2)
+                                throw new Exceptions.SerialisationException($"Limb scale is invalid at line #{lineNumber}. Two float parameters are expected, but {parts.Length} are given.");
+
+                            if (!float.TryParse(parts[0], out var scaleX)) 
+                                throw new Exceptions.SerialisationException($"Limb scale X is invalid at line #{lineNumber}. {parts[0]} is not a number.");
+
+                            if (!float.TryParse(parts[1], out var scaleY)) 
+                                throw new Exceptions.SerialisationException($"Limb scale Y is invalid at line #{lineNumber}. {parts[1]} is not a number.");
+
+                            keyframe.Scale = new Vector2(scaleX, scaleY);
                         }
 
                         currentKeyframes.Add(keyframe);
@@ -275,19 +301,22 @@ public static class AnimationDeserialiser
 
                 if (keyframe.Position.HasValue)
                 {
-                    if (animationToWriteTo.TranslationCurve == null)
-                        animationToWriteTo.TranslationCurve = new Vec2Curve();
-
+                    animationToWriteTo.TranslationCurve ??= new Vec2Curve();
                     AppendKey(animationToWriteTo.TranslationCurve, new Curve<Vector2>.Key(keyframe.Position.Value * globalScale, scaledTime));
                 }
 
                 if (keyframe.Angle.HasValue)
                 {
-                    if (animationToWriteTo.RotationCurve == null)
-                        animationToWriteTo.RotationCurve = new AngleCurve();
-
+                    animationToWriteTo.RotationCurve ??= new AngleCurve();
                     AppendKey(animationToWriteTo.RotationCurve, new Curve<float>.Key(keyframe.Angle.Value, scaledTime));
                 }
+
+                if (keyframe.Scale.HasValue)
+                {
+                    animationToWriteTo.ScaleCurve ??= new Vec2Curve();
+                    AppendKey(animationToWriteTo.ScaleCurve, new Curve<Vector2>.Key(keyframe.Scale.Value, scaledTime));
+                }
+
                 if (writingToHandAnimation && keyframe.HandSprite.HasValue && animationToWriteTo is HandLimbAnimation handlimbAnim && handlimbAnim.HandLooks != null)
                 {
                     handlimbAnim.HandLooks[handLookIndex] = (scaledTime, keyframe.HandSprite);
@@ -330,6 +359,7 @@ public static class AnimationDeserialiser
         public Vector2? Position;
         public float? Angle;
         public HandLook? HandSprite;
+        public Vector2? Scale;
     }
 
     private static void AppendKey<T>(Curve<T> curve, Curve<T>.Key key) where T : notnull

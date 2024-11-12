@@ -1,4 +1,5 @@
 ﻿using MIR.Cutscenes;
+using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
@@ -43,16 +44,16 @@ public class MadnessInteractiveReloaded
         AssetDeserialisers.Register(new ConVarsDeserialiser());
         AssetDeserialisers.Register(new ByteArrayDeserialiser());
         AssetDeserialisers.Register(new CutsceneDeserialiser());
+        AssetDeserialisers.Register(new ArmourDeserialiser.AssetDeserialiser());
+        AssetDeserialisers.Register(new HandArmourDeserialiser.AssetDeserialiser());
+        AssetDeserialisers.Register(new MeleeSequenceDeserialiser.AssetDeserialiser());
+        AssetDeserialisers.Register(new CharacterPresetDeserialiser.AssetDeserialiser());
+        AssetDeserialisers.Register(new Campaign.AssetDeserialiser());
+        AssetDeserialisers.Register(new WeaponDeserialiser.AssetDeserialiser());
 
         // "temporary" migration bridge
-        AssetDeserialisers.Register(new DelegateDeserialiserBridge<ArmourPiece>(ArmourDeserialiser.Load, "armor"));
-        AssetDeserialisers.Register(new DelegateDeserialiserBridge<HandArmourPiece>(HandArmourDeserialiser.Load, "hand"));
-        AssetDeserialisers.Register(new DelegateDeserialiserBridge<MeleeSequence>(MeleeSequenceDeserialiser.Load, "seq"));
-        AssetDeserialisers.Register(new DelegateDeserialiserBridge<Video>(p => new Video(p), "mp4"));
-        AssetDeserialisers.Register(new DelegateDeserialiserBridge<ExperimentCharacterPreset>(CharacterPresetDeserialiser.Load, "preset"));
-        AssetDeserialisers.Register(new DelegateDeserialiserBridge<Campaign>(Campaign.Load, "json"));
         AssetDeserialisers.Register(new DelegateDeserialiserBridge<Language>(Language.Load, "json"));
-        AssetDeserialisers.Register(new DelegateDeserialiserBridge<WeaponInstructions>(WeaponReader.ReadWeapon, "json"));
+        AssetDeserialisers.Register(new DelegateDeserialiserBridge<Video>(p => new Video(p), "mp4"));
 
         foreach (var a in Directory.EnumerateFiles("resources", "*.waa"))
             Assets.RegisterPackage(a);
@@ -85,24 +86,22 @@ public class MadnessInteractiveReloaded
         //Resources.SetBasePathForType<Campaign>("data/campaigns");
 
         Resources.RegisterType(typeof(Language), Language.Load);
-        Resources.RegisterType(typeof(CharacterAnimation), static s=>
+        Resources.RegisterType(typeof(CharacterAnimation), static s =>
         {
             using var f = new FileStream(s, FileMode.Open, FileAccess.Read);
             return AnimationDeserialiser.Load(f, Path.GetFileNameWithoutExtension(s), Path.GetDirectoryName(s) ?? string.Empty);
         });
         Resources.RegisterType(typeof(CharacterStats), CharacterStatsDeserialiser.Load);
-        Resources.RegisterType(typeof(ArmourPiece), ArmourDeserialiser.Load);
+        Resources.RegisterType(typeof(ArmourPiece), ArmourDeserialiser.LoadFromPath);
         Resources.RegisterType(typeof(CharacterLook), CharacterLookDeserialiser.Load);
         Resources.RegisterType(typeof(Level), static s =>
         {
             using var f = new FileStream(s, FileMode.Open, FileAccess.Read);
             return LevelDeserialiser.Load(f, Path.GetFileNameWithoutExtension(s));
         });
-        Resources.RegisterType(typeof(HandArmourPiece), HandArmourDeserialiser.Load);
-        Resources.RegisterType(typeof(MeleeSequence), MeleeSequenceDeserialiser.Load);
         Resources.RegisterType(typeof(Video), p => new Video(p));
         Resources.RegisterType(typeof(ExperimentCharacterPreset), CharacterPresetDeserialiser.Load);
-        Resources.RegisterType(typeof(Campaign), Campaign.Load);
+        Resources.RegisterType(typeof(Campaign), Campaign.LoadFromFile);
     }
 
     public MadnessInteractiveReloaded()
@@ -137,7 +136,7 @@ void main()
              new OpenTKWindow("Madness Interactive Reloaded", -Vector2.One, new Vector2(1920, 1080) * 0.8f),
              new OpenALAudioRenderer()
              );
-        
+
         CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
 
         Game.Window.SetIcon(TextureLoader.FromFile("resources/textures/icon.png"));
@@ -185,7 +184,9 @@ void main()
         Directory.CreateDirectory(UserData.Paths.ExperimentDir);
         Directory.CreateDirectory(UserData.Paths.ExperimentCharacterPresets);
         Directory.CreateDirectory(UserData.Paths.CampaignStatsDir);
+        MigrateSaveData();
 
+        ModLoader.AddSource(new LocalModCollectionSource(new DirectoryInfo(Path.Combine(Game.Main.AppDataDirectory, "mods/"))));
         ModLoader.AddSource(new LocalModCollectionSource(new DirectoryInfo("./mods")));
 
 #if DEBUG
@@ -227,7 +228,8 @@ void main()
         foreach (var item in Registries.CampaignStats.GetAllValues())
             try
             {
-                item.Save();
+                if (Registries.Campaigns.Has(item.CampaignId))
+                    item.Save();
             }
             catch (System.Exception e)
             {
@@ -237,5 +239,22 @@ void main()
         Game.Scene.Dispose();
         Resources.UnloadAll();
         Assets.ClearRegistry();
+    }
+
+    private void MigrateSaveData()
+    {
+        var oldFolder = new DirectoryInfo("userdata");
+
+        if (oldFolder.Exists)
+        {
+            Logger.Log($"Old user data folder found at \"{oldFolder.FullName}\"! Migrating to \"{UserData.Paths.BaseDir}\"");
+            if (Directory.Exists(UserData.Paths.BaseDir))
+            {
+                Logger.Warn($"Migration cancelled because the target folder already exists.");
+                return;
+            }
+            MadnessUtils.CopyDirectory(oldFolder.FullName, UserData.Paths.BaseDir, true);
+            oldFolder.Delete(true);
+        }
     }
 }

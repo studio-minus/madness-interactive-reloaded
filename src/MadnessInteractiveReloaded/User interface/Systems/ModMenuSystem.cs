@@ -3,9 +3,7 @@ using System.Numerics;
 using System.Runtime.CompilerServices;
 using Walgelijk;
 using Walgelijk.AssetManager;
-using Walgelijk.Localisation;
 using Walgelijk.Onion;
-using Walgelijk.Onion.Animations;
 using Walgelijk.Onion.Controls;
 using Walgelijk.Onion.Layout;
 using Walgelijk.SimpleDrawing;
@@ -187,22 +185,16 @@ public class ModMenuSystem : Walgelijk.System
 
         // back button
         if (MenuUiUtils.BackButton())
-        {
-            //ModLoader.ApplyActiveMods();
-
             Game.Scene = MainMenuScene.Load(Game);
-            MadnessUtils.Flash(Colors.Black, 0.2f);
-        }
 
-#if WINDOWS // windows only because there is no such thing as a "linux file explorer". its all fucked and unique to each user 
         // folder button
         Ui.Layout.FitWidth().MaxWidth(160).Height(40).StickRight().StickBottom().Move(-10);
         Ui.Theme.OutlineWidth(2).Once();
         if (Ui.Button("Mods folder"))
         {
-            global::System.Diagnostics.Process.Start("explorer.exe", ModLoader.Sources.OfType<LocalModCollectionSource>().First().Directory.FullName);
+            var loc = ModLoader.Sources.OfType<LocalModCollectionSource>().OrderByDescending(s => s.IsValid ? 1 : -1).First().Directory.FullName;
+            MadnessUtils.OpenExplorer(loc);
         }
-#endif
     }
 }
 
@@ -237,11 +229,7 @@ public readonly struct ModViewControl(Mod mod) : IControl
                 Ui.Layout.FitHeight().EnqueueConstraint(new AspectRatio(1)).CenterVertical();
                 Ui.Theme.OutlineWidth(0).ForegroundColor(Colors.Transparent).Image(new(Colors.Red, Colors.White)).Once();
                 if (Ui.ImageButton(folder, ImageContainmentMode.Stretch))
-                {
-                    // TODO windows only :(
-                    // TODO get actual mod directory somehow from the local source
-                    global::System.Diagnostics.Process.Start("explorer", local.GetModDirectory(mod.Id)?.FullName ?? local.Directory.FullName);
-                }
+                    MadnessUtils.OpenExplorer(local.GetModDirectory(mod.Id)?.FullName ?? local.Directory.FullName);
             }
         }
         Ui.End();

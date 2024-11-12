@@ -85,7 +85,7 @@ public class WeaponEditorSystem : Walgelijk.System
             !Scene.FindAnyComponent<WeaponEditorComponent>(out var editor))
             throw new InvalidOperationException("Necessary components (CameraComponent, WeaponEditorComponent) could not be found");
 
-        var w = WeaponReader.ReadWeapon(path);
+        var w = WeaponDeserialiser.LoadFromPath(path);
         editor.Weapon = w;
         editor.File = new FileInfo(path);
         camera.OrthographicSize = 1;
@@ -152,7 +152,7 @@ public class WeaponEditorSystem : Walgelijk.System
                 {
                     if (FileDialog.SaveFile(new[] { ("JSON files", "json"), ("All files", "*") }, (editor.File?.FullName ?? editor.Weapon.Id), null, out var chosenPath) && !string.IsNullOrWhiteSpace(chosenPath))
                     {
-                        WeaponReader.SaveWeapon(editor.Weapon, chosenPath);
+                        WeaponDeserialiser.SaveWeapon(editor.Weapon, chosenPath);
                         editor.File = new FileInfo(chosenPath);
                         Audio.PlayOnce(Sounds.UiConfirm);
                         MadnessUtils.Flash(Colors.Green.WithAlpha(0.2f), 0.25f);

@@ -620,7 +620,7 @@ public static class Prefabs
         var body = CreateBodypartSprite(scene, new BodyPartMaterialParams
         {
             SkinTexture = @params.Look.Body.Right,
-            GoreTexture = Textures.Character.GoreBody,
+            GoreTexture = @params.Look.BodyGore ?? Textures.Character.GoreBody,
             FleshTexture = bodyFlesh,
             BloodColour = @params.Look.BloodColour,
             Scale = scale
@@ -629,7 +629,7 @@ public static class Prefabs
         var head = CreateBodypartSprite(scene, new BodyPartMaterialParams
         {
             SkinTexture = @params.Look.Head.Right,
-            GoreTexture = Textures.Character.GoreHead,
+            GoreTexture = @params.Look.HeadGore ?? Textures.Character.GoreHead,
             FleshTexture = headFlesh,
             BloodColour = @params.Look.BloodColour,
             Scale = scale
@@ -687,6 +687,8 @@ public static class Prefabs
         var foot1pos = @params.Bottom + new Vector2(40, 10) * scale;
         var foot2pos = @params.Bottom + new Vector2(-30, -6) * scale;
 
+        var footTexture = @params.Look.Feet ?? Textures.Character.DefaultFoot;
+
         var charPos = new CharacterPositioning(
             scale,
             bodyCenter,
@@ -709,12 +711,12 @@ public static class Prefabs
             feet: new(
                 new FootLimb
                 {
-                    Entity = CreateSprite(scene, Textures.Character.DefaultFoot, foot1pos, renderOrder.OffsetOrder(-2), xScaleMultiplier: scale, yScaleMultiplier: scale),
+                    Entity = CreateSprite(scene, footTexture, foot1pos, renderOrder.OffsetOrder(-2), xScaleMultiplier: scale, yScaleMultiplier: scale),
                     GlobalPosition = foot1pos
                 },
                 new FootLimb
                 {
-                    Entity = CreateSprite(scene, Textures.Character.DefaultFoot, foot2pos, renderOrder.OffsetOrder(-1), xScaleMultiplier: scale, yScaleMultiplier: scale),
+                    Entity = CreateSprite(scene, footTexture, foot2pos, renderOrder.OffsetOrder(-1), xScaleMultiplier: scale, yScaleMultiplier: scale),
                     GlobalPosition = foot2pos
                 }
             )

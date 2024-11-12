@@ -10,7 +10,6 @@ panic 0.5
 melee 0.4
 accurate_shot_chance 0.25
 can_deflect true
-body_health 0.5
 
 agility_skill_level adept
 jump_dodge_duration 0.25

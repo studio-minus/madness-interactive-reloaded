@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using Walgelijk;
 
 namespace MIR;
 
@@ -10,17 +12,17 @@ public static class UserData
 {
     public static class Paths
     {
-        public const string BaseDir = "userdata/";
-        public const string ExperimentDir = BaseDir + "experiment/";
+        public static string BaseDir = Path.Combine(Game.Main.AppDataDirectory, "userdata/");
+        public static string ExperimentDir => BaseDir + "experiment/";
 
-        public const string Settings = BaseDir + "settings.json";
-        public const string CampaignStatsDir = BaseDir + "campaigns/";
-        public const string PlayerLookFile = BaseDir + "player.look";
-        public const string ExperimentCharacterPresets = ExperimentDir + "character_presets/";
+        public static string Settings => BaseDir + "settings.json";
+        public static string CampaignStatsDir => BaseDir + "campaigns/";
+        public static string PlayerLookFile => BaseDir + "player.look";
+        public static string ExperimentCharacterPresets => ExperimentDir + "character_presets/";
 
-        public const string ArenaModeSaves = BaseDir + "arena.json";
+        public static string ArenaModeSaves => BaseDir + "arena.json";
 
-        public const string UnlockedImprobabilityDisk = BaseDir + "disks.txt";
+        public static string UnlockedImprobabilityDisk => BaseDir + "disks.txt";
     }
 
     /// <summary>
@@ -43,7 +45,7 @@ public static class UserData
         /// </summary>
         public static ArenaModeSaves ArenaMode = new();
 
-        /// <summary>
+        /// <summary> 
         /// All disk IDs unlocked by the player
         /// </summary>
         public static HashSet<string> UnlockedImprobabilityDisks = [];

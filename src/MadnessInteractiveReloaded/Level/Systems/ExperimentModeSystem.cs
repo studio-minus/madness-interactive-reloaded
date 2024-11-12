@@ -38,7 +38,7 @@ public class ExperimentModeSystem : Walgelijk.System
                 return wpn.WeaponData.WeaponType + wpn.WeaponData.Name;
             })];
 
-            exp.FactionCache = [.. Registries.Factions.GetAllKeys().Select(id => new FactionOption(id))];
+            exp.FactionCache = [.. Registries.Factions.GetAllKeys().Order().Select(id => new FactionOption(id))];
         }
 
         if (Scene.FindAnyComponent<EnemySpawningComponent>(out var sp))
@@ -156,6 +156,10 @@ public class ExperimentModeSystem : Walgelijk.System
             exp.CurrentlyPlacing = null;
             if (Input.IsKeyReleased(Key.R) && !playerCharacter.IsAlive)
                 MadnessCommands.Revive();
+
+            Ui.Layout.Move(10).Size(500, 40).PreferredSize().StickBottom();
+            Ui.Theme.Font(Fonts.CascadiaMono).Text(Colors.Red).Once();
+            Ui.TextRect(string.Format(Localisation.Get("experiment-press-to-toggle"), Key.Tab), HorizontalTextAlign.Left, VerticalTextAlign.Top);
         }
     }
 
@@ -275,6 +279,13 @@ public class ExperimentModeSystem : Walgelijk.System
             Draw.Colour = Colors.White.WithAlpha(0.5f);
             Draw.Quad(r.TopLeft, r.GetSize());
         }
+
+        Draw.Reset();
+        Draw.ScreenSpace = true;
+        Draw.BlendMode = BlendMode.Multiply;
+        Draw.Order = RenderOrders.UserInterface.OffsetLayer(-1);
+        Draw.Colour = Vector4.Lerp(Colors.Red, Colors.White, 0.95f);
+        Draw.Quad(new Rect(0, 0, Window.Width, Window.Height));
     }
 
     private void ProcessUi(ExperimentModeComponent exp)
@@ -750,14 +761,14 @@ public class ExperimentModeSystem : Walgelijk.System
         Ui.Layout.FitWidth().Height(32).StickLeft().Move(0, 36);
         Ui.Decorators.Tooltip(Localisation.Get("experiment-npc-faction"));
         Ui.Theme.OutlineWidth(1).Once();
-        if (Ui.Dropdown(exp.FactionCache , ref factionIndex))
+        if (Ui.Dropdown(exp.FactionCache, ref factionIndex))
             exp.SelectedFaction = exp.FactionCache[factionIndex];
 
         Ui.Layout.FitContainer().Scale(0, -64).StickTop().StickLeft().Move(0, 64).VerticalLayout();
         Ui.StartScrollView(false);
         {
             int i = 0;
-            foreach (var preset in Registries.Experiment.CharacterPresets.GetAllValues())
+            foreach (var preset in Registries.Experiment.CharacterPresets.GetAllValues().OrderBy(static k => k.Name)) // TODO slow as hell
             {
                 if (!string.IsNullOrEmpty(exp.NPCFilter) && !preset.Name.Contains(exp.NPCFilter, StringComparison.InvariantCultureIgnoreCase))
                     continue;
@@ -839,6 +850,9 @@ public class ExperimentModeSystem : Walgelijk.System
 
         foreach (var comp in Scene.GetAllComponentsOfType<CharacterComponent>())
         {
+            if (!comp.IsAlive)
+                continue;
+
             var floorLevel = (Level.CurrentLevel?.GetFloorLevelAt(comp.Positioning.GlobalCenter.X) ?? 0) + CharacterConstants.GetFloorOffset(comp.Positioning.Scale);
             comp.Positioning.GlobalTarget.Y = floorLevel + comp.Positioning.FlyingOffset;
         }

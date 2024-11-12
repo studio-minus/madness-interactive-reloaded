@@ -1,3 +1,4 @@
+using MIR.Disks;
 using System.Numerics;
 using Walgelijk;
 using Walgelijk.SimpleDrawing;
@@ -14,6 +15,7 @@ public class SpawnMenuAbilityComponent : CharacterAbilityComponent
     private float progress = 0;
     private float animTime = 0;
     private float seed = 0;
+    private float allyPressTime = 0;
     private WeaponInstructions? chosen = null;
 
     public override AnimationConstraint Constraints => IsUsing ? AnimationConstraint.PreventWorldInteraction | AnimationConstraint.PreventAllAttacking | AnimationConstraint.FaceForwards : default;
@@ -122,10 +124,11 @@ public class SpawnMenuAbilityComponent : CharacterAbilityComponent
                 int rows = int.Max(1, Registries.Weapons.Count / columns);
 
                 bool hoverAlly = Vector2.Distance(allyButtonPos, a.Input.WindowMousePosition) < 100;
+                float allyBtnScale = Utilities.MapRange(0, 1, 0.8f, 1, Easings.Cubic.Out(Utilities.Clamp(allyPressTime)));
                 Draw.Colour = (hoverAlly ? Colors.White : Colors.Red).WithAlpha(0.5f) * progress;
                 Draw.FontSize = 48;
                 Draw.Font = Fonts.Toxigenesis;
-                Draw.TransformMatrix = Matrix3x2.CreateRotation(Noise.GetSimplex(0, 0, -time * 0.02f) * 0.1f, allyButtonPos);
+                Draw.TransformMatrix = Matrix3x2.CreateRotation(Noise.GetSimplex(0, 0, -time * 0.02f) * 0.1f, allyButtonPos) * Matrix3x2.CreateScale(allyBtnScale, allyButtonPos);
                 Draw.Text("ALLY++", allyButtonPos, Vector2.One, HorizontalTextAlign.Center, VerticalTextAlign.Middle);
 
                 Draw.Colour = col;
@@ -203,15 +206,23 @@ public class SpawnMenuAbilityComponent : CharacterAbilityComponent
 
                 chosen = hover;
 
+                allyPressTime += a.Time.DeltaTimeUnscaled;
+
                 if (IsUsing && a.Input.IsButtonReleased(MouseButton.Left))
                 {
                     if (hoverAlly)
                     {
+                        MadnessUtils.Flash(Colors.Red.WithAlpha(0.2f), 1);
+                        MadnessUtils.Flash(Colors.White.WithAlpha(0.3f), 0.2f);
+                        allyPressTime = 0;
+                        var p = a.Character.Positioning.GlobalCenter;
+                        p.X += Utilities.RandomFloat(-300, 300);
+                        p.Y = 99999;
                         var scene = a.Scene;
                         var ally = Prefabs.CreateCharacter(scene, new CharacterPrefabParams
                         {
                             Faction = a.Character.Faction,
-                            Bottom = a.Character.Positioning.GlobalCenter + Utilities.RandomPointInCircle(200, 2000),
+                            Bottom = p,
                             Name = "Ally :)",
                             Stats = Registries.Stats["engineer"],
                             Look = Registries.Looks["agent3"],
@@ -220,6 +231,8 @@ public class SpawnMenuAbilityComponent : CharacterAbilityComponent
                         {
 
                         });
+                        ally.PlayAnimation(Animations.SpawnFromSky);
+                        AuditorDisk.AddAuditorFire(scene, ally);
                     }
                     else if (chosen != null)
                     {

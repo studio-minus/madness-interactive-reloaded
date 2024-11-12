@@ -222,6 +222,6 @@ public class VerletPhysicsSystem : Walgelijk.System
         var angle = Utilities.VectorToAngle(rightVector);
 
         transform.Rotation = Utilities.SmoothAngleApproach(transform.Rotation, link.LocalRotationalOffset + angle, 35, Time.DeltaTime);
-        transform.Position = Utilities.SmoothApproach(transform.Position, center + Vector2.TransformNormal(link.LocalOffset, transform.LocalToWorldMatrix), 35, Time.DeltaTime);
+        transform.Position = Utilities.SmoothApproach(transform.Position, center + Vector2.TransformNormal(link.LocalOffset, transform.LocalToWorldMatrix), 35, Time.DeltaTime) + link.GlobalOffset;
     }
 }
