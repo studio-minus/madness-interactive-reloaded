@@ -35,7 +35,7 @@ public class LocalModCollectionSource : IModCollectionSource
             {
                 dir.Create();
             }
-            catch (System.Exception e) when (e is IOException || e is System.UnauthorizedAccessException)
+            catch (System.Exception e) when (e is IOException or System.UnauthorizedAccessException)
             {
                 IsValid = false;
                 Logger.Error(e);
