@@ -10,7 +10,7 @@ namespace MIR;
 public class LocalModCollectionSource : IModCollectionSource
 {
     public readonly DirectoryInfo Directory;
-
+    public bool IsValid { get; private set; }
     private readonly Dictionary<ModID, DirectoryInfo> modDirs = [];
 
     public readonly static ImmutableArray<string> IgnoredDevFolderNames = [
@@ -29,6 +29,7 @@ public class LocalModCollectionSource : IModCollectionSource
     public LocalModCollectionSource(DirectoryInfo dir)
     {
         Directory = dir;
+
         if (!dir.Exists)
             try
             {
@@ -36,9 +37,12 @@ public class LocalModCollectionSource : IModCollectionSource
             }
             catch (IOException e)
             {
+                IsValid = false;
                 Logger.Error(e);
                 return;
             }
+
+        IsValid = true;
         Logger.Log($"Created local mod source at {dir.FullName}");
     }
 

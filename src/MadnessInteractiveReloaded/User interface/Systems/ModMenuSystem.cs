@@ -191,7 +191,10 @@ public class ModMenuSystem : Walgelijk.System
         Ui.Layout.FitWidth().MaxWidth(160).Height(40).StickRight().StickBottom().Move(-10);
         Ui.Theme.OutlineWidth(2).Once();
         if (Ui.Button("Mods folder"))
-            MadnessUtils.OpenExplorer(ModLoader.Sources.OfType<LocalModCollectionSource>().First().Directory.FullName);
+        {
+            var loc = ModLoader.Sources.OfType<LocalModCollectionSource>().OrderByDescending(s => s.IsValid ? 1 : -1).First().Directory.FullName;
+            MadnessUtils.OpenExplorer(loc);
+        }
     }
 }
 
