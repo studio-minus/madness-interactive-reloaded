@@ -50,4 +50,10 @@ public class AnimatedLimb
     /// Returns true if <see cref="AnimationScale"/> is approximately (1,1)
     /// </summary>
     public bool Unscaled => float.Abs(1 - AnimationScale.X) < 0.001f && float.Abs(1 - AnimationScale.Y) < 0.001f;
+
+    /// <summary>
+    /// offset of the ordering of the limb as decided by the animation
+    /// </summary>
+    public int AnimationOrderOffset = 0;
 }
+

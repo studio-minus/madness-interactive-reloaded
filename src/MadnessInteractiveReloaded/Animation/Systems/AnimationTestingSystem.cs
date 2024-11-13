@@ -281,6 +281,16 @@ public class AnimationTestingSystem : Walgelijk.System
                                     DrawCurve(rr, active, anim, durationRatio, curve, 1);
                                 }
                             }
+                            break;    
+                        case AnimationTestingComponent.Curve.Order:
+                            {
+                                var curve = limb.OrderOffset;
+                                if (curve != null)
+                                {
+                                    Draw.Colour = Colors.Yellow;
+                                    DrawCurve(rr, active, anim, durationRatio, curve, 1);
+                                }
+                            }
                             break;
                     }
 

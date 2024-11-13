@@ -31,6 +31,7 @@ public class AnimationTestingComponent : Component
         PositionY,
         Rotation,
         ScaleX,
-        ScaleY
+        ScaleY,
+        Order
     }
 }

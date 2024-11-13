@@ -12,5 +12,6 @@ public class LimbAnimation
     public Vec2Curve? TranslationCurve = null;
     public AngleCurve? RotationCurve = null;
     public Vec2Curve? ScaleCurve = null;
+    public FloatCurve? OrderOffset = null;
 }
 

@@ -23,6 +23,11 @@ public struct AnimationResult
     public Vector2 BodyScale;
 
     /// <summary>
+    /// The order offset of the body.
+    /// </summary>
+    public int BodyOrderOffset;
+
+    /// <summary>
     /// The position of the head.
     /// </summary>
     public Vector2 HeadPosition;
@@ -36,6 +41,11 @@ public struct AnimationResult
     /// The scale of the head.
     /// </summary>
     public Vector2 HeadScale;
+
+    /// <summary>
+    /// The order offset of the head.
+    /// </summary>
+    public int HeadOrderOffset;
 
     /// <summary>
     /// The position of hand1
@@ -53,6 +63,11 @@ public struct AnimationResult
     public Vector2 Hand1Scale;
 
     /// <summary>
+    /// The order offset of the hand1.
+    /// </summary>
+    public int Hand1OrderOffset;
+
+    /// <summary>
     /// The position of hand2
     /// </summary>
     public Vector2 Hand2Position;
@@ -66,6 +81,11 @@ public struct AnimationResult
     /// The scale of hand2.
     /// </summary>
     public Vector2 Hand2Scale;
+
+    /// <summary>
+    /// The order offset of the hand2.
+    /// </summary>
+    public int Hand2OrderOffset;
 
     /// <summary>
     /// What pose is hand1 in?

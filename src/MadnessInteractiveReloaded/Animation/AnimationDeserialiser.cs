@@ -32,6 +32,7 @@ public static class AnimationDeserialiser
     public const string SecondSuffix = "s";
     public const string DegreeSuffix = "deg";
     public const string PixelSuffix = "px";
+    public const string OrderSuffix = "z";
 
     private static readonly Regex TimePattern = new(@"(\d|\.)+" + SecondSuffix, RegexOptions.Compiled);
     private static readonly Regex FramePattern = new(@"\d+" + FrameSuffix, RegexOptions.Compiled);
@@ -42,6 +43,7 @@ public static class AnimationDeserialiser
     private static readonly Regex FloatPattern = new(@"-?(\d|\.)+", RegexOptions.Compiled);
     private static readonly Regex ConstraintPattern = new(@"(constraints)\((\w|\ )*\)", RegexOptions.Compiled);
     private static readonly Regex LimbScalePattern = new(@"(scale)\((\d+\.?\d*),\s*(\d+\.?\d*)\)", RegexOptions.Compiled);
+    private static readonly Regex OrderPattern = new(@"(-?\d+)" + OrderSuffix, RegexOptions.Compiled);
     private static readonly string[] AnimationConstraints;
     private static readonly string[] HandLooks;
 
@@ -207,6 +209,11 @@ public static class AnimationDeserialiser
                         if (degreePatterns != null && degreePatterns.Success)
                             keyframe.Angle = DegreeStringToFloat(degreePatterns.Value);
 
+                        // find order offset
+                        var orderPattern = OrderPattern.Match(line);
+                        if (orderPattern != null && orderPattern.Success)
+                            keyframe.OrderOffset = OrderStringToInt(orderPattern.Value); 
+
                         // find hand specifier
                         var handPatterns = HandPattern.Matches(line);//TODO dit kan sneller
                         if (writingToHandAnimation)
@@ -317,6 +324,12 @@ public static class AnimationDeserialiser
                     AppendKey(animationToWriteTo.ScaleCurve, new Curve<Vector2>.Key(keyframe.Scale.Value, scaledTime));
                 }
 
+                if (keyframe.OrderOffset.HasValue)
+                {
+                    animationToWriteTo.OrderOffset ??= new FloatCurve();
+                    AppendKey(animationToWriteTo.OrderOffset, new Curve<float>.Key(keyframe.OrderOffset.Value, scaledTime));
+                }
+
                 if (writingToHandAnimation && keyframe.HandSprite.HasValue && animationToWriteTo is HandLimbAnimation handlimbAnim && handlimbAnim.HandLooks != null)
                 {
                     handlimbAnim.HandLooks[handLookIndex] = (scaledTime, keyframe.HandSprite);
@@ -352,6 +365,7 @@ public static class AnimationDeserialiser
     private static float DegreeStringToFloat(string s) => float.Parse(s.AsSpan()[..^(DegreeSuffix.Length)], NumberStyles.Number, CultureInfo.InvariantCulture);
     private static float PixelStringToFloat(string s) => float.Parse(s.AsSpan()[..^(PixelSuffix.Length)], NumberStyles.Number, CultureInfo.InvariantCulture);
     private static int FrameStringToInt(string s) => int.Parse(s.AsSpan()[..^(FrameSuffix.Length)], NumberStyles.Integer, CultureInfo.InvariantCulture);
+    private static int OrderStringToInt(string s) => int.Parse(s.AsSpan()[..^(OrderSuffix.Length)], NumberStyles.Integer, CultureInfo.InvariantCulture);
 
     private struct KeyframeLine
     {
@@ -360,6 +374,7 @@ public static class AnimationDeserialiser
         public float? Angle;
         public HandLook? HandSprite;
         public Vector2? Scale;
+        public int? OrderOffset;
     }
 
     private static void AppendKey<T>(Curve<T> curve, Curve<T>.Key key) where T : notnull

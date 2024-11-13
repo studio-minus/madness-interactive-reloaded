@@ -505,6 +505,12 @@ public static class CharacterUtilities
         else
             result.BodyScale = Vector2.One;
 
+        if(activeAnim.Animation.BodyAnimation?.OrderOffset != null)
+        {
+            result.BodyOrderOffset = (int) activeAnim.Animation.BodyAnimation.OrderOffset.Evaluate(
+                activeAnim.UnscaledTimer / activeAnim.Animation.BodyAnimation.Duration);
+        }
+
         if (activeAnim.Animation.HeadAnimation?.TranslationCurve != null)
         {
             result.HeadPosition = activeAnim.GetHeadPosition();
@@ -518,6 +524,12 @@ public static class CharacterUtilities
             result.HeadScale = activeAnim.GetHeadScale();
         else
             result.HeadScale = Vector2.One;
+
+        if (activeAnim.Animation.HeadAnimation?.OrderOffset != null)
+        {
+            result.HeadOrderOffset = (int)activeAnim.Animation.HeadAnimation.OrderOffset.Evaluate(
+                activeAnim.UnscaledTimer / activeAnim.Animation.HeadAnimation.Duration);
+        }
 
         if (activeAnim.Animation.HandAnimations != null)
         {
@@ -535,6 +547,7 @@ public static class CharacterUtilities
 
                 result.Hand1Rotation = calculateHandRotation(a);
                 result.Hand1Scale = evalScale(a);
+                result.Hand1OrderOffset = (int)evalOrderOffset(a);
 
                 if (a.HandLooks != null && a.HandLooks.Length > 0)
                     result.Hand1Look = evalHandLook(a);
@@ -551,6 +564,7 @@ public static class CharacterUtilities
 
                 result.Hand2Rotation = calculateHandRotation(a);
                 result.Hand2Scale = evalScale(a);
+                result.Hand2OrderOffset = (int)evalOrderOffset(a);
 
                 if (a.HandLooks != null && a.HandLooks.Length > 0)
                     result.Hand2Look = evalHandLook(a);
@@ -607,6 +621,9 @@ public static class CharacterUtilities
 
         Vector2 evalScale(LimbAnimation a)
             => a?.ScaleCurve?.Evaluate(activeAnim.CalculateProgress(a)) ?? Vector2.One;
+
+        float evalOrderOffset(LimbAnimation a)
+            => a?.OrderOffset?.Evaluate(activeAnim.CalculateProgress(a)) ?? 0;
 
         HandLook? evalHandLook(HandLimbAnimation a)
             => a.GetHandLookForTime(activeAnim.UnscaledTimer / a.Duration);

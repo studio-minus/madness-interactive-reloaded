@@ -75,7 +75,7 @@ public class CharacterPositionSystem : Walgelijk.System
         // head renderer
         var headRenderer = Scene.GetComponentFrom<QuadShapeComponent>(charPos.Head.Entity);
         headRenderer.HorizontalFlip = charPos.IsFlipped;
-        headRenderer.RenderOrder = character.BaseRenderOrder.WithOrder(CharacterConstants.RenderOrders.HeadBaseOrder);
+        headRenderer.RenderOrder = character.BaseRenderOrder.WithOrder(CharacterConstants.RenderOrders.HeadBaseOrder + charPos.Head.AnimationOrderOffset);
         if (lookUpdate)
         {
             var tex = charPos.IsFlipped ? character.Look.Head.Left : character.Look.Head.Right;
@@ -107,7 +107,7 @@ public class CharacterPositionSystem : Walgelijk.System
         // body renderer
         var bodyRenderer = Scene.GetComponentFrom<QuadShapeComponent>(charPos.Body.Entity);
         bodyRenderer.HorizontalFlip = charPos.IsFlipped;
-        bodyRenderer.RenderOrder = character.BaseRenderOrder.WithOrder(CharacterConstants.RenderOrders.BodyBaseOrder);
+        bodyRenderer.RenderOrder = character.BaseRenderOrder.WithOrder(CharacterConstants.RenderOrders.BodyBaseOrder + charPos.Body.AnimationOrderOffset);
         if (lookUpdate)
         {
             var tex = charPos.IsFlipped ? character.Look.Body.Left : character.Look.Body.Right;
@@ -148,8 +148,8 @@ public class CharacterPositionSystem : Walgelijk.System
 
             var shouldRenderBackHand = charPos.IsFlipped ^ hand.IsLeftHand;
             var targetHandMaterial = Textures.Character.GetMaterialForHandLook(character.Look.Hands, handLook, shouldRenderBackHand, equipped?.Data.WeaponType ?? WeaponType.Firearm);
-            var isTwoHandedWeapon = equipped != null && equipped.HoldPoints.Length >= 2;
             var targetHandRenderOrder = character.BaseRenderOrder;
+            var isTwoHandedWeapon = equipped != null && equipped.HoldPoints.Length >= 2;
 
             // if the character is holding a melee weapon and ready to block, we should render in front of the body
             if (!hand.IsLeftHand && character.Positioning.MeleeBlockProgress > 0.5f)
@@ -158,6 +158,8 @@ public class CharacterPositionSystem : Walgelijk.System
                 targetHandRenderOrder.OrderInLayer = (charPos.IsFlipped ? CharacterConstants.RenderOrders.OtherHandOrder : CharacterConstants.RenderOrders.MainHandOrder);
             else
                 targetHandRenderOrder.OrderInLayer = (shouldRenderBackHand ? CharacterConstants.RenderOrders.OtherHandOrder : CharacterConstants.RenderOrders.MainHandOrder);
+
+            targetHandRenderOrder = targetHandRenderOrder.OffsetOrder(hand.AnimationOrderOffset);
 
             if (character.IsHandAnimated(hand))
             {
@@ -217,7 +219,7 @@ public class CharacterPositionSystem : Walgelijk.System
             var piece = character.Look.GetBodyLayer(i);
 
             decorationRenderer.Visible = piece != null;
-            decorationRenderer.RenderOrder = character.BaseRenderOrder.WithOrder(CharacterConstants.RenderOrders.BodyDecorOrder);
+            decorationRenderer.RenderOrder = character.BaseRenderOrder.WithOrder(i + CharacterConstants.RenderOrders.BodyDecorOrder + charPos.Body.AnimationOrderOffset);
 
             if (piece != null)
             {
@@ -246,7 +248,7 @@ public class CharacterPositionSystem : Walgelijk.System
             var piece = character.Look.GetHeadLayer(i);
             decorationRenderer.Color = character.Tint;
             decorationRenderer.Visible = piece != null;
-            decorationRenderer.RenderOrder = character.BaseRenderOrder.WithOrder(i + CharacterConstants.RenderOrders.HeadDecorOrder);
+            decorationRenderer.RenderOrder = character.BaseRenderOrder.WithOrder(i + CharacterConstants.RenderOrders.HeadDecorOrder + charPos.Head.AnimationOrderOffset);
             if (piece != null)
             {
                 decorationRenderer.AdditionalTransform = headRenderer.AdditionalTransform;
@@ -364,10 +366,12 @@ public class CharacterPositionSystem : Walgelijk.System
         charPos.Head.AnimationPosition = mixed.HeadPosition * charPos.Scale;
         charPos.Head.AnimationAngle = mixed.HeadRotation;
         charPos.Head.AnimationScale = mixed.HeadScale;
+        charPos.Head.AnimationOrderOffset = mixed.HeadOrderOffset;
 
         charPos.Body.AnimationPosition = mixed.BodyPosition * charPos.Scale;
         charPos.Body.AnimationAngle = mixed.BodyRotation;
         charPos.Body.AnimationScale = mixed.BodyScale;
+        charPos.Body.AnimationOrderOffset = mixed.BodyOrderOffset;
 
         for (int i = 0; i < charPos.Hands.Length; i++)
         {
@@ -380,6 +384,7 @@ public class CharacterPositionSystem : Walgelijk.System
             hand.AnimationPosition = (transformedIndex == 0 ? mixed.Hand1Position : mixed.Hand2Position);
             hand.AnimationScale = transformedIndex == 0 ? mixed.Hand1Scale : mixed.Hand2Scale;
             hand.AnimationAngle = transformedIndex == 0 ? mixed.Hand1Rotation : mixed.Hand2Rotation;
+            hand.AnimationOrderOffset = transformedIndex == 0 ? mixed.Hand1OrderOffset : mixed.Hand2OrderOffset;
             hand.AnimatedHandLook = transformedIndex == 0 ? mixed.Hand1Look : mixed.Hand2Look;
         }
     }
