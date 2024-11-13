@@ -275,7 +275,7 @@
         "Y": -402.58368
       },
       "Name": "untitled",
-      "Code": "/*\r\nthis.Game\r\nthis.Scene\r\nthis.Input\r\nthis.Time\r\nthis.Audio\r\nthis.Window\r\nthis.Graphics\r\nthis.DebugDraw\r\n*/\r\n\r\nvoid Start()\r\n{\r\n    if (Utilities.RandomFloat() <= 0.05f)\r\n        foreach (var item in Scene.GetAllComponentsOfType<DoorComponent>())\r\n            if (Scene.HasTag(item.Entity, new(900)))\r\n                item.Properties.IsPortal = true;\r\n}\r\n\r\nvoid Update()\r\n{\r\n\t\r\n}\r\n\r\nvoid FixedUpdate()\r\n{\r\n\t\r\n}\r\n\r\nvoid Render()\r\n{\r\n\t\r\n}\r\n\r\nvoid End()\r\n{\r\n\t\r\n}",
+      "Code": "/*\r\nthis.Game\r\nthis.Scene\r\nthis.Input\r\nthis.Time\r\nthis.Audio\r\nthis.Window\r\nthis.Graphics\r\nthis.DebugDraw\r\n*/\r\n\r\nvoid Start()\r\n{\r\n    if (Utilities.RandomFloat() <= 0.025f)\r\n        foreach (var item in Scene.GetAllComponentsOfType<DoorComponent>())\r\n            if (Scene.HasTag(item.Entity, new(900)))\r\n                item.Properties.IsPortal = true;\r\n}\r\n\r\nvoid Update()\r\n{\r\n\t\r\n}\r\n\r\nvoid FixedUpdate()\r\n{\r\n\t\r\n}\r\n\r\nvoid Render()\r\n{\r\n\t\r\n}\r\n\r\nvoid End()\r\n{\r\n\t\r\n}",
       "Tag": null
     }
   ]

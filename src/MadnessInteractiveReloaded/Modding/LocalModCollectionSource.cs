@@ -3,7 +3,6 @@ using System.Collections.Immutable;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using Walgelijk;
 
 namespace MIR;
@@ -11,7 +10,7 @@ namespace MIR;
 public class LocalModCollectionSource : IModCollectionSource
 {
     public readonly DirectoryInfo Directory;
-
+    public bool IsValid { get; private set; }
     private readonly Dictionary<ModID, DirectoryInfo> modDirs = [];
 
     public readonly static ImmutableArray<string> IgnoredDevFolderNames = [
@@ -30,12 +29,28 @@ public class LocalModCollectionSource : IModCollectionSource
     public LocalModCollectionSource(DirectoryInfo dir)
     {
         Directory = dir;
+
         if (!dir.Exists)
-            dir.Create();
+            try
+            {
+                dir.Create();
+            }
+            catch (System.Exception e) when (e is IOException or System.UnauthorizedAccessException)
+            {
+                IsValid = false;
+                Logger.Error(e);
+                return;
+            }
+
+        IsValid = true;
+        Logger.Log($"Created local mod source at {dir.FullName}");
     }
 
     public IEnumerable<Mod> ReadAll()
     {
+        if (!Directory.Exists)
+            yield break;
+
         foreach (var file in Directory.GetFiles("meta.json", SearchOption.AllDirectories))
         {
             if (file.Directory == null)
@@ -90,9 +105,10 @@ public class LocalModCollectionSource : IModCollectionSource
 
         var readZip = new ZipArchive(stream);
 
-        if (System.IO.Directory.Exists("./debugout/"))
-            System.IO.Directory.Delete("./debugout/", true);
-        readZip.ExtractToDirectory("./debugout/", true);
+        var debugoutPath = Path.Combine(Game.Main.AppDataDirectory, "debugout/");
+        if (System.IO.Directory.Exists(debugoutPath))
+            System.IO.Directory.Delete(debugoutPath, true);
+        readZip.ExtractToDirectory(debugoutPath, true);
 
         var m = new Mod(readZip);
         modDirs.Add(m.Id, dir);
