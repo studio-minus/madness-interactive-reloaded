@@ -14,3 +14,6 @@ agility_skill_level master
 jump_dodge_duration 0.65
 unarmed_seq
 	unarmed_master
+sword_seq
+	sword_adept
+	sword_adept_2

@@ -14,6 +14,8 @@ hop_duration 0.5
 walk_anim zed_walk
 unarmed_seq
 	unarmed_zed
+sword_seq
+	sword_novice
 
 abilities
 	MIR.NoStunAbilityComponent

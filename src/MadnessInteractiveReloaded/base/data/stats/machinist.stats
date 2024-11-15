@@ -12,6 +12,9 @@ melee 0.35
 accurate_shot_chance 0.5
 unarmed_seq
 	unarmed_adept
+sword_seq
+	sword_adept
+
 
 agility_skill_level adept
 jump_dodge_duration 0.25

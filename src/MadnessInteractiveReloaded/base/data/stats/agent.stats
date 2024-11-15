@@ -13,3 +13,5 @@ agility_skill_level novice
 jump_dodge_duration 0.25
 unarmed_seq
 	unarmed_adept
+sword_seq
+	sword_adept

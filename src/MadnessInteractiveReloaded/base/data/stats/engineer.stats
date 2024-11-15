@@ -14,3 +14,5 @@ agility_skill_level adept
 jump_dodge_duration 0.25
 unarmed_seq
 	unarmed_expert
+sword_seq
+	sword_adept

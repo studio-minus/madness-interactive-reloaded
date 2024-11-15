@@ -17,6 +17,8 @@ scale 1.3
 hop_duration 0.5
 unarmed_seq
 	unarmed_adept
+sword_seq
+	sword_adept
 
 agility_skill_level master
 jump_dodge_duration 0.65

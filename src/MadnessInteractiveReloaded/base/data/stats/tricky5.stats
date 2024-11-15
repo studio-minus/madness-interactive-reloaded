@@ -14,6 +14,8 @@ head_health 200
 body_health 300
 unarmed_seq
 	unarmed_master
+sword_seq
+	sword_master
 
 agility_skill_level master
 jump_dodge_duration 0.65

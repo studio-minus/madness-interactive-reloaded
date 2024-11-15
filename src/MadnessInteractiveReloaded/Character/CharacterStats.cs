@@ -95,12 +95,12 @@ public class CharacterStats
     /// <summary>
     /// Melee sequence ID for the unarmed attack
     /// </summary>
-    public string[] UnarmedSeq = ["unarmed"];
+    public string[] UnarmedSeq = ["unarmed_adept"];
 
     /// <summary>
     /// Melee sequences ID for the sword attack
     /// </summary>
-    public string[] SwordSeq = ["sword_2", "sword"];
+    public string[] SwordSeq = ["sword_adept_2", "sword_adept"];
 
     /// <summary>
     /// Melee sequence ID for the two-handed melee attack

@@ -15,6 +15,8 @@ agility_skill_level adept
 walk_anim zed_walk
 unarmed_seq
 	unarmed_zed
+sword_seq
+	sword_adept
 
 abilities
 	MIR.NoStunAbilityComponent

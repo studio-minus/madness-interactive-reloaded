@@ -12,6 +12,8 @@ accurate_shot_chance 0.7
 hop_duration 0.27
 unarmed_seq
 	unarmed_master
-
+sword_seq
+	sword_master
+	
 agility_skill_level master
 jump_dodge_duration 0.65
