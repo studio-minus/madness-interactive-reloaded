@@ -6,8 +6,8 @@
 public static class Animations
 {
     public static readonly CharacterAnimation[] FistFightAnimations = {
-        Registries.Animations.Get("fist_melee_1"),
-        Registries.Animations.Get("fist_melee_2"),
+        Registries.Animations.Get("melee_unarmed_adept_1"),
+        Registries.Animations.Get("melee_unarmed_adept_2"),
     };
 
     public static readonly CharacterAnimation[] FistMeleeHits = {

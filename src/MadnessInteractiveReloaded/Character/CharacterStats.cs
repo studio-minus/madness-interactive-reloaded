@@ -105,22 +105,22 @@ public class CharacterStats
     /// <summary>
     /// Melee sequence ID for the two-handed melee attack
     /// </summary>
-    public string[] TwoHandedSeq = ["twohanded_blunt"];
+    public string[] TwoHandedSeq = ["twohanded_blunt_adept"];
 
     /// <summary>
     /// Melee sequence ID for the blunt melee attack
     /// </summary>
-    public string[] BluntSeq = ["blunt"];
+    public string[] BluntSeq = ["blunt_adept"];
 
     /// <summary>
     /// Melee sequence ID for the two-handed gun attack
     /// </summary>
-    public string[] TwoHandedGunSeq = ["twohanded_gun"];
+    public string[] TwoHandedGunSeq = ["twohanded_gun_adept"];
 
     /// <summary>
     /// Melee sequence ID for the one-handed gun attack
     /// </summary>
-    public string[] OneHandedGunSeq = ["onehanded_gun"];
+    public string[] OneHandedGunSeq = ["onehanded_gun_adept"];
 
     /// <summary>
     /// Character ability component types
