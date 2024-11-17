@@ -3,52 +3,49 @@ scale 1
 speed 1.2
 
 BODY
-0       -50.48px  8.09px  -46.36deg constraints(PreventThrowing PreventIronSight)
-1       -31.09px  12.34px  -38.07deg
-2       2.24px  42.73px  -29.78deg
-3       28.4px  68.52px  -16.22deg
-4       35.52px  80.78px  -2.66deg
-5       36.54px  86.41px  10.9deg
-6       32.08px  92.04px  13.4deg
-7       15.9deg
-8       19.16px  93.64px  14.43deg
-9       12.7px  84.82px
-10      6.24px  62.18px  6.28deg
-11      -0.22px  39.54px
-12      -1.42px  22.29px  1.25deg
-13      -0.95px  5.05px
-14      -0.47px  0.0px
-15      -0.0px  0.0px  0.0deg
+0       6.23px  12.34px  -38.07deg constraints(PreventThrowing PreventIronSight)
+1       7.89px  42.73px  -29.78deg
+2       8.12px  68.52px  -16.22deg
+3       7.09px  80.78px  -2.66deg
+4       10.9deg
+5       4.09px  92.04px  13.4deg
+6       15.9deg
+7       1.09px  93.64px  14.43deg
+8       -0.41px  84.82px
+9       -0.69px  62.18px  6.28deg
+10      -0.46px  39.54px
+11      -0.23px  22.29px  1.25deg
+12      -0.0px  5.05px
+13      -0.0px  0.0px
+14      -0.0px  0.0px  0.0deg
 
 HEAD
-0       44.73px  -17.28px  46.37deg
-1       42.93px  -16.33px  38.08deg
-2       32.0px  -15.38px  29.79deg
-3       21.06px  -10.16px  16.23deg
-4       7.98px  -5.77px  2.67deg
-5       0.1px  -1.38px  -10.88deg
-6       -2.06px  -0.32px  -13.39deg
-7       -15.89deg
-8       -14.41deg
-9       -3.13px  0.2px
-10      -3.49px  0.17px  -6.27deg
-11      -2.79px  0.13px
-12      -1.24deg
-14      -0.7px  0.03px
-15      -0.0px  0.0px  0.0deg
-
+0       42.93px  -16.33px  38.08deg
+1       32.0px  -15.38px  29.79deg
+2       21.06px  -10.16px  16.23deg
+3       7.98px  -5.77px  2.67deg
+4       0.1px  -1.38px  -10.88deg
+5       -2.06px  -0.32px  -13.39deg
+6       -15.89deg
+7       -14.41deg
+8       -3.13px  0.2px
+9       -3.49px  0.17px  -6.27deg
+10      -2.79px  0.13px
+11      -1.24deg
+13      -0.7px  0.03px
+14      0.0px  0.0px  0.0deg
 HAND
 aim
-0       126.73px  -148.47px  -223.17deg
-1       103.45px  -137.93px  -231.49deg
-2       78.85px  -127.4px  -217.81deg
-3       163.25px  -47.03px  -159.94deg
-4       247.64px  174.82px  -50.03deg
-5       101.43px  396.67px  50.19deg
-6       -55.57px  461.98px  81.4deg
-7       -210.5px  446.28px
-8       -239.07px  430.57px  78.04deg
-9       -267.64px  414.87px
+0       126.73px  -148.47px  -223.17deg 5000z
+1       84.26px  -125.14px  -231.49deg
+2       332.11px  -86.47px  -162.01deg 5000z
+3       444.64px  125.64px  -48.97deg 0z
+4       286.02px  387.78px  12.7deg
+5       60.5px  463.41px  80.43deg
+6       -75.0px  473.27px  81.4deg
+7       -210.5px  457.94px
+8       -248.1px  442.62px  78.04deg
+9       -285.69px  414.87px
 10      -288.91px  362.95px  66.37deg
 11      -221.06px  311.03px
 12      -129.38px  204.27px  14.88deg

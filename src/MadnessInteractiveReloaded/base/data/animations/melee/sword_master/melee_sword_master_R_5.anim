@@ -3,28 +3,27 @@ scale 1
 speed 1.2
 
 BODY
-0       14.96px  53.01px  -54.66deg constraints(PreventThrowing PreventIronSight)
-1       0.33px  41.29px
-2       -11.82px  41.21px
-3       -16.81px  41.14px
-4       -16.82px  41.07px  -51.79deg
-5       -16.84px  45.75px  -49.38deg
-6       -10.26px  75.37px
-7       -21.0deg
-8       18.83px  134.59px
-9       20.9px  159.82px  10.9deg
-10      14.95px  173.42px  19.29deg
-11      -20.35px  148.63px  14.18deg
-12      -39.32px  107.4px
-13      -43.3px  66.17px
-14      -50.08px  37.04px  12.91deg
-15      -56.85px  12.78px
-16      -59.52px  -1.72px  10.11deg
-17      -52.31px  -5.77px  7.37deg
-18      -33.65px  -4.91px  3.91deg
-19      -14.98px  -3.13px  1.67deg
-20      -5.57px  -1.35px  0.59deg
-21      -1.2px  -0.68px
+0       -3.1px  53.01px  -54.66deg constraints(PreventThrowing PreventIronSight)
+1       -4.26px  41.29px
+3       -4.27px  41.14px
+4       -2.74px  41.07px  -51.79deg
+5       0.63px  45.75px  -49.38deg
+6       4.01px  75.37px
+7       4.49px  104.98px  -21.0deg
+8       3.11px  134.59px
+9       -5.08px  159.82px  10.9deg
+10      -9.48px  173.42px  19.29deg
+11      -10.41px  148.63px  14.18deg
+12      -11.82px  107.4px
+13      -13.23px  66.17px
+14      -15.84px  37.04px  12.91deg
+15      -18.52px  12.78px
+16      -19.39px  -1.72px  10.11deg
+17      -17.04px  -5.77px  7.37deg
+18      -10.96px  -4.91px  3.91deg
+19      -4.88px  -3.13px  1.67deg
+20      -1.81px  -1.35px  0.59deg
+21      -0.39px  -0.68px
 22      -0.0px  -0.0px  0.0deg
 
 HEAD
@@ -75,7 +74,7 @@ HAND
 
 HAND
 aim
-0       626.12px  -0.81px  -87.77deg
+0       626.12px  -0.81px  -87.77deg 0z
 1       614.68px  -64.33px  -89.58deg
 2       557.64px  -91.99px
 3       500.61px  -119.65px
@@ -89,7 +88,7 @@ aim
 11      -237.5px  456.61px
 12      -295.63px  378.22px
 13      -286.9px  347.47px
-14      -278.17px  335.99px
+14      -278.17px  335.99px 0z
 15      -233.26px  324.51px  42.2deg
 16      -156.82px  296.87px  36.44deg
 17      -32.22px  247.26px  24.49deg
@@ -97,4 +96,4 @@ aim
 19      155.45px  104.07px  -7.47deg
 20      157.18px  64.2px  -14.08deg
 21      158.9px  44.99px
-22      160.63px  39.61px  -17.76deg
+22      160.63px  39.61px  -17.76deg 0z
