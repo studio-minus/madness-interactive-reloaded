@@ -14,7 +14,7 @@
     "BulletsPerShot": 1,
     "RoundsPerMagazine": 17,
     "BurstFireCount": 0,
-    "Accuracy": 0.98999995,
+    "Accuracy": 1.0,
     "Recoil": 0.25,
     "RotationalRecoilIntensity": 0.2,
     "RecoilHandling": 1.1,
@@ -38,11 +38,11 @@
   "HoldForGrip": false,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {
-    "X": 377.39923,
-    "Y": 11.09339
+    "X": 377.236,
+    "Y": 11.501481
   },
   "CasingEjectionPoint": {
-    "X": 1.3478699,
+    "X": 1.7857056,
     "Y": 32.18594
   },
   "HoldPoints": [
