@@ -1,0 +1,65 @@
+﻿fps 24
+scale 1
+speed 1
+
+BODY
+0       8.29px  -10.96px  -36.57deg constraints(PreventThrowing PreventIronSight)
+1       9.92px  -13.35px  -35.6deg
+2       27.34px  18.68px  -22.93deg
+3       44.76px  104.87px  -0.47deg
+4       48.52px  143.23px  8.77deg
+5       49.19px  181.59px  15.66deg
+6       51.89px  191.49px  18.09deg
+7       48.79px  195.25px  18.27deg
+8       37.18px  189.83px  17.3deg
+9       23.27px  165.26px  13.05deg
+10      15.71px  131.93px  10.27deg
+11      13.59px  70.46px  7.31deg
+12      8.53px  21.88px  3.74deg
+13      0.0px  0.0px  0.0deg
+
+HEAD
+0       25.12px  -23.67px  36.83deg
+1       21.22px  -21.22px  35.6deg
+2       11.38px  -15.25px  22.93deg
+3       1.54px  -7.88px  0.47deg
+5       -13.4px  4.71px  -19.89deg
+6       -15.9px  8.53px
+7       -18.4px  9.92px  -25.7deg
+8       -16.25px  9.84px  -23.49deg
+9       -10.27px  6.7px  -19.85deg
+10      -4.86px  3.27px  -11.71deg
+11      -6.45deg
+13      -0.0px  0.0px  0.0deg
+
+HAND
+0       646.22px  -157.4px  -30.35deg
+1       557.77px  -169.86px  -35.51deg
+2       509.6px  -142.87px  -37.19deg
+3       477.4px  146.15px  -18.44deg
+4       277.82px  501.95px  57.4deg
+5       113.96px  591.93px  98.32deg
+6       93.41px  589.8px  104.89deg
+7       72.87px  553.9px
+8       80.95px  537.4px  99.22deg
+9       137.51px  489.45px  74.41deg
+10      273.35px  314.39px  27.38deg
+11      315.65px  139.32px  11.55deg
+12      317.26px  72.14px  3.42deg
+14      320.48px  43.85px  0.0deg
+
+HAND
+0       646.22px  -157.4px  -30.35deg
+1       557.77px  -169.86px  -35.51deg
+2       509.6px  -142.87px  -37.19deg
+3       477.4px  146.15px  -18.44deg
+4       277.82px  501.95px  57.4deg
+5       113.96px  591.93px  98.32deg
+6       93.41px  589.8px  104.89deg
+7       72.87px  553.9px
+8       80.95px  537.4px  99.22deg
+9       137.51px  489.45px  74.41deg
+10      273.35px  314.39px  27.38deg
+11      315.65px  139.32px  11.55deg
+12      317.26px  72.14px  3.42deg
+14      320.48px  43.85px  0.0deg
