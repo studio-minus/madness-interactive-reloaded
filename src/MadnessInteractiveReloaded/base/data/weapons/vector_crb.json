@@ -2,12 +2,12 @@
   "Id": "vector_crb",
   "WeaponData": {
     "Name": "Vector CRB",
-    "Damage": 0.5,
+    "Damage": 0.65,
     "UseDelay": 0.05,
     "MaxHandRangeMultiplier": 0.7,
     "AdditionalComponents": null,
     "EnsureSystems": null,
-    "ThrowableDamage": 15.0,
+    "ThrowableDamage": 0.5,
     "ThrowableHeavy": false,
     "ThrowableSharpBoxes": [],
     "WeaponType": "Firearm",
@@ -18,7 +18,7 @@
     "Recoil": 0.25,
     "RotationalRecoilIntensity": 0.2,
     "RecoilHandling": 1.1,
-    "Automatic": true,
+    "Automatic": false,
     "ShootSounds": [
       "base:sounds/firearms/mac_10_1.wav",
       "base:sounds/firearms/mac_10_2.wav",
