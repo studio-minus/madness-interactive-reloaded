@@ -20,9 +20,9 @@
     "RecoilHandling": 1.1,
     "Automatic": false,
     "ShootSounds": [
-      "base:sounds/firearms/mac_10_1.wav",
-      "base:sounds/firearms/mac_10_2.wav",
-      "base:sounds/firearms/mac_10_3.wav"
+      "sounds/firearms/mac_10_1.wav",
+      "sounds/firearms/mac_10_2.wav",
+      "sounds/firearms/mac_10_3.wav"
     ],
     "CanBulletsBeDeflected": true,
     "EjectionParticle": "Small",
@@ -34,7 +34,7 @@
     "MeleeDamageType": "Firearm",
     "MeleeSize": "Medium"
   },
-  "BaseTexture": "base:textures/weapons/vector_crb/base.png",
+  "BaseTexture": "textures/weapons/vector_crb/base.png",
   "HoldForGrip": false,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {
