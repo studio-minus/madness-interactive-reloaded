@@ -11,7 +11,9 @@ melee 0.4
 can_deflect false
 unarmed_seq
 	unarmed_novice
-sword_seq
-	sword_novice
 one_handed_gun_seq
 	onehanded_gun_novice
+sword_seq
+	sword_novice
+blunt_seq
+	sword_novice
