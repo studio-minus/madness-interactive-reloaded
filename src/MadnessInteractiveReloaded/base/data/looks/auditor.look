@@ -1,0 +1,13 @@
+﻿0.50.0
+
+name Auditor
+
+body
+   auditor_body
+
+head
+   auditor_head
+
+hands auditor
+feet textures/bodies/feet/auditor.png
+blood #ff0000
