@@ -28,6 +28,7 @@ public static class Sounds
 
     public static readonly Sound DeathSound = new(Assets.Load<FixedAudioData>("sounds/death.ogg").Value, false, spatialParams: null, track: AudioTracks.SoundEffects);
     public static readonly Sound TrainExplosion = new(Assets.Load<FixedAudioData>("sounds/train_explosion.ogg").Value, false, spatialParams: null, track: AudioTracks.SoundEffects);
+    public static readonly Sound TurretExplosion = new(Assets.Load<FixedAudioData>("sounds/turret_death.wav").Value, false, spatialParams: null, track: AudioTracks.SoundEffects);
 
     public static readonly Sound TimeFreezeStart = new(Assets.Load<FixedAudioData>("sounds/ambience/time_freeze_start.wav").Value, false, spatialParams: null, track: AudioTracks.UserInterface);
     public static readonly Sound TimeFreezeLoop = new(Assets.Load<StreamAudioData>("sounds/ambience/time_freeze.ogg").Value, true, spatialParams: null, track: AudioTracks.UserInterface);

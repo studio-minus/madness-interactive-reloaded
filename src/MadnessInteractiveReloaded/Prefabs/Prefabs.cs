@@ -396,6 +396,39 @@ public static class Prefabs
         return ent;
     }
 
+    public static Entity CreateTurretExplosion(Scene scene, Vector2 position)
+    {
+        MadnessUtils.Shake(100);
+        Game.Main.AudioRenderer.Play(Sounds.TurretExplosion, 1);
+
+        var ent = scene.CreateEntity();
+        var tex = Textures.TurretLevelExplosion.Value;
+
+
+        scene.AttachComponent(ent, new TransformComponent
+        {
+            Position = position,
+            Rotation = Utilities.RandomFloat(0, 360),
+            Scale = new Vector2(tex.Width / 5, tex.Height / 4) * MadnessConstants.BackgroundSizeRatio * 2.4f
+        });
+
+        var mat = FlipbookMaterialCreator.LoadMaterialFor(tex, 5, 4, 0, Colors.White, true, 0);
+
+        scene.AttachComponent(ent, new QuadShapeComponent(true)
+        {
+            Material = mat,
+            RenderOrder = RenderOrders.Effects.OffsetLayer(101)
+        });
+
+        scene.AttachComponent(ent, new FlipbookComponent(mat)
+        {
+            DeleteWhenDone = true,
+            Duration = 0.833f //24 fps (20 / 24)
+        });
+
+        return ent;
+    }
+
     /// <summary>
     /// Spawn a muzzleflash for a gun.
     /// </summary>

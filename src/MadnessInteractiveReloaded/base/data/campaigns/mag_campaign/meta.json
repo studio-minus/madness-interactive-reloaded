@@ -21,6 +21,7 @@
         "lvl_mag_railgun",
         "lvl_mag_mowing",
         "lvl_mag_centre",
-        "lvl_mag_lever"
+        "lvl_mag_lever",
+        "lvl_mag_turret"
     ]
 }

@@ -34,6 +34,7 @@ public class TurretSystem : Walgelijk.System
                 if (turret.Health <= 0)
                 {
                     turret.Exploded = true;
+                    Prefabs.CreateTurretExplosion(Scene, turret.Position - new Vector2(0, 90));
                 }
                 else if (turret.Target.TryGet(Scene, out var target) && target.IsAlive)
                 {
@@ -155,6 +156,11 @@ public class TurretSystem : Walgelijk.System
 
         foreach (var turret in Scene.GetAllComponentsOfType<TurretComponent>())
         {
+            if (turret.Exploded)
+                head = Assets.Load<Texture>("textures/turrets/default/head_damaged.png").Value;
+            else
+                head = Assets.Load<Texture>("textures/turrets/default/head.png").Value;
+
             Draw.Order = turret.RenderOrder;
             Draw.Texture = body;
             Draw.Colour = Colors.White;
