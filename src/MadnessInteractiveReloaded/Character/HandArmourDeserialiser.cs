@@ -16,6 +16,7 @@ public static class HandArmourDeserialiser
     public const string FrontIdentifier = "front";
     public const string BackIdentifier = "back";
     public const string MenuOrderIdentifier = "order";
+    public const string HiddenIdentifier = "hidden";
     public static readonly string[] TextureIdentifiers = Enum.GetNames<HandLook>();
 
     /// <summary>
@@ -60,6 +61,11 @@ public static class HandArmourDeserialiser
                 {
                     if (!MadnessUtils.GetValueFromString(d.String, out piece.Name))
                         throw new Exceptions.SerialisationException($"Failed to process line#{d.LineNumber} in {Path.GetFileName(debugPath)}: 'failed to read name: {d.String}'");
+                }
+                else if (d.String.StartsWith(HiddenIdentifier, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    if (!MadnessUtils.GetValueFromString(d.String, out piece.Hidden))
+                        throw new Exceptions.SerialisationException($"Failed to process line#{d.LineNumber} in {Path.GetFileName(debugPath)}: 'failed to read hidden: {d.String}'");
                 }
             }
         }

@@ -13,6 +13,7 @@ public class HandArmourPiece : ICharacterCustomisationItem
 {
     public string Name = string.Empty;
     public int MenuOrder = 0;
+    public bool Hidden;
 
     public DoubleSided<AssetRef<Texture>> Fist;
     public DoubleSided<AssetRef<Texture>> HoldPistol;
@@ -45,8 +46,8 @@ public class HandArmourPiece : ICharacterCustomisationItem
     }
 
     string ICharacterCustomisationItem.DisplayName => Name;
-
-    bool ICharacterCustomisationItem.Hidden => false;
+    int ICharacterCustomisationItem.Order => MenuOrder;
+    bool ICharacterCustomisationItem.Hidden => Hidden;
 
     IReadableTexture ICharacterCustomisationItem.Texture
     {
@@ -63,6 +64,4 @@ public class HandArmourPiece : ICharacterCustomisationItem
             return GetByLook(look).FacingRight.Value;
         }
     }
-
-    int ICharacterCustomisationItem.Order => MenuOrder;
 }
