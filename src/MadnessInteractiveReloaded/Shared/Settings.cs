@@ -91,7 +91,7 @@ public class Settings
         //game.Console.ToggleKey = ControlScheme.ActiveControlScheme.
 
         if (!Registries.Languages.TryGet(General.Language, out Localisation.CurrentLanguage))
-            Logger.Warn($"Language read from settings \"{General.Language}\" is invalid, so no langauge could be set. Choices are {string.Join(", ", )}");
+            Logger.Warn($"Language read from settings \"{General.Language}\" is invalid, so no langauge could be set. Choices are {string.Join(", ", Registries.Languages.GetAllKeys())}");
 
         Task.Run(Save);
     }
