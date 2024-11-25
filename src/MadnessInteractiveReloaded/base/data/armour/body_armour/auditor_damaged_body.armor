@@ -7,6 +7,6 @@ right textures/bodies/body1/auditor_damaged/auditor_damaged_right.png
 texture-scale 1
 category All
 detach False
-hidden False
+hidden True
 damage-size 1
 offset 0 0

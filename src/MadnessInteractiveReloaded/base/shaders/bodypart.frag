@@ -156,7 +156,7 @@ void main()
     // set skin "blood" mask
     if (skin.a < 0.9 && skin.r > max(skin.g, skin.b))
     {
-        skin.rgb = mix(clamp(skin.r * 1.2, 0, 1) * innerBloodColour, vec3(1,1,1), (skin.g + skin.b) / 2.5);
+        skin.rgb = mix(clamp(skin.r * 1.2, 0, 1) * outerBloodColour, vec3(1,1,1), (skin.g + skin.b) / 2.5);
         skin.a = 1;
     }
 

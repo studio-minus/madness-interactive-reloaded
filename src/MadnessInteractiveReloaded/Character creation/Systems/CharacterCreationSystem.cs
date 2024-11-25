@@ -366,6 +366,8 @@ public class CharacterCreationSystem : Walgelijk.System
         Draw.TransformMatrix = Matrix3x2.CreateScale(1.2f, new Vector2(0, Window.Height * 0.88f));
 
         var rect = playerDrawRect = Draw.Image(data.Background.Value, new Rect(0, 0, Window.Width, Window.Height), ImageContainmentMode.Cover);
+
+        Draw.Colour = Colors.White;
         calculatedPlayerRect = Draw.Image(data.PlayerDrawTarget, rect.Scale(0.4f).Translate(0, 45), ImageContainmentMode.Cover);
 
         Draw.ClearMask();
@@ -376,10 +378,18 @@ public class CharacterCreationSystem : Walgelijk.System
 
         Draw.ResetMaterial();
         Draw.TransformMatrix = Matrix3x2.CreateScale(-1, 1, rect.GetCenter()) * Draw.TransformMatrix;
-        Draw.Colour = Colors.Gray.WithAlpha(0.2f);
 
         Draw.InsideMask();
-        Draw.Image(data.PlayerDrawTarget, rect.Scale(0.4f).Translate(-900f * (Window.Height / 1920f), 45), ImageContainmentMode.Cover);
+
+        Draw.Material = Materials.BlurDraw;
+        Draw.Colour = Colors.Gray.WithAlpha(0.2f);
+        rect = rect.Scale(0.4f).Translate(-900f * (Window.Height / 1920f), 45);
+        Draw.Image(data.PlayerDrawTarget, rect, ImageContainmentMode.Cover);
+
+        Draw.Colour = Colors.Gray.WithAlpha(0.02f);
+        Draw.ResetMaterial();
+        Draw.Image(data.PlayerDrawTarget, rect, ImageContainmentMode.Cover);
+
         Draw.DisableMask();
 
         Draw.ResetTransformation();

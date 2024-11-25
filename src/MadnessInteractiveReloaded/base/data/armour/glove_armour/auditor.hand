@@ -1,6 +1,7 @@
 0.35.0
 
-name auditor
+name Auditor
+hidden True
 
 Fist
 	front textures/bodies/hands/auditor/auditor_hand_fist.png
