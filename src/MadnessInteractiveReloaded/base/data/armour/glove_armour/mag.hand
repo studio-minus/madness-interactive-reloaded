@@ -1,6 +1,7 @@
 0.35.0
 
-name mag
+name Mag
+hidden True
 
 Fist
 	front textures/bodies/hands/mag/mag_fist.png
