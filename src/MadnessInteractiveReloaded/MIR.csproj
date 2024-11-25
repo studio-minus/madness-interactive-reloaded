@@ -3,11 +3,9 @@
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
 		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
-		<TargetOperatingSystem>WINDOWS</TargetOperatingSystem>
-		<DefineConstants>$(TargetOperatingSystem)</DefineConstants>
 		<ApplicationIcon>resources\textures\icon.ico</ApplicationIcon>
 		<StartupObject></StartupObject>
-		<Version>0.49.5</Version>
+		<Version>0.50.1</Version>
 		<NeutralLanguage />
 		<Company>Studio Minus</Company>
 		<Authors>Dikkiedik, zooi, Koof</Authors>
@@ -70,13 +68,11 @@
 	<ItemGroup>
 		<Content Include="$(ProjectDir)resources\**" CopyToOutputDirectory="Always" />
 	</ItemGroup>
+	
 	<ItemGroup>
 		<Resource Include="$(ProjectDir)base\**" CopyToOutputDirectory="Never" />
 	</ItemGroup>
-	<ItemGroup>
-	  <None Remove="base\data\incident_music.json" />
-	  <None Remove="base\shaders\blur.frag" />
-	</ItemGroup>
+	
 	<ItemGroup>
 		<None Include="..\.editorconfig" Link=".editorconfig" />
 	</ItemGroup>
@@ -84,41 +80,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\BigGustave\src\BigGustave\BigGustave.csproj" />
 	</ItemGroup>
-	
-	<ItemGroup>
-	  <Resource Include="base\data\incident_music.json" />
-	  <Resource Include="base\data\levels\incident\lvl_incident_1.json" />
-	  <Resource Include="base\data\levels\incident\lvl_incident_10.json" />
-	  <Resource Include="base\data\levels\incident\lvl_incident_11.json" />
-	  <Resource Include="base\data\levels\incident\lvl_incident_12.json" />
-	  <Resource Include="base\data\levels\incident\lvl_incident_13.json" />
-	  <Resource Include="base\data\levels\incident\lvl_incident_14.json" />
-	  <Resource Include="base\data\levels\incident\lvl_incident_15.json" />
-	  <Resource Include="base\data\levels\incident\lvl_incident_16.json" />
-	  <Resource Include="base\data\levels\incident\lvl_incident_2.json" />
-	  <Resource Include="base\data\levels\incident\lvl_incident_3.json" />
-	  <Resource Include="base\data\levels\incident\lvl_incident_4.json" />
-	  <Resource Include="base\data\levels\incident\lvl_incident_5.json" />
-	  <Resource Include="base\data\levels\incident\lvl_incident_6.json" />
-	  <Resource Include="base\data\levels\incident\lvl_incident_7.json" />
-	  <Resource Include="base\data\levels\incident\lvl_incident_8.json" />
-	  <Resource Include="base\data\levels\incident\lvl_incident_9.json" />
-	  <Resource Include="base\data\levels\incident\lvl_incident_begin_1.json" />
-	  <Resource Include="base\data\levels\incident\lvl_incident_begin_2.json" />
-	  <Resource Include="base\data\levels\incident\lvl_incident_begin_3.json" />
-	  <Resource Include="base\data\levels\incident\lvl_incident_begin_4.json" />
-	  <Resource Include="base\data\levels\incident\lvl_incident_begin_5.json" />
-	  <Resource Include="base\data\levels\incident\lvl_incident_end_1.json" />
-	  <Resource Include="base\data\levels\incident\lvl_incident_end_2.json" />
-	  <Resource Include="base\data\levels\incident\lvl_incident_end_3.json" />
-	  <Resource Include="base\data\levels\incident\lvl_incident_end_4.json" />
-	  <Resource Include="base\data\levels\incident\lvl_incident_end_5.json" />
-	  <Resource Include="base\data\levels\incident\lvl_incident_end_6.json" />
-	  <Resource Include="base\shaders\blur.frag">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </Resource>
-	</ItemGroup>
-	
+
 	<ItemGroup>
 		<None Update="avcodec-59.dll">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>

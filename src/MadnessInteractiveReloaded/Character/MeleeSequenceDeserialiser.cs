@@ -14,6 +14,12 @@ public static class MeleeSequenceDeserialiser
 {
     private static readonly string[] delimiters = ["\t", " "];
 
+    public static MeleeSequence Load(string path)
+    {
+        using var s = File.OpenRead(path);
+        return Load(s);
+    }
+
     /// <summary>
     /// Load a <see cref="MeleeSequence"/>.
     /// </summary>
