@@ -101,12 +101,12 @@ public class LevelEditorComponent : Component
 
     public LevelEditorComponent()
     {
-        Looks = Registries.Looks.GetAllKeys().ToArray();
-        Stats = Registries.Stats.GetAllKeys().ToArray();
-        Animations = Registries.Animations.GetAllKeys().ToArray();
-        Weapons = Registries.Weapons.GetAllKeys().ToArray();
-        LevelIds = Registries.Levels.GetAllKeys().ToArray();
-        Factions = Registries.Factions.GetAllKeys().ToArray();
+        Looks = Registries.Looks.GetAllKeys().Order().ToArray();
+        Stats = Registries.Stats.GetAllKeys().Order().ToArray();
+        Animations = Registries.Animations.GetAllKeys().Order().ToArray();
+        Weapons = Registries.Weapons.GetAllKeys().Order().ToArray();
+        LevelIds = Registries.Levels.GetAllKeys().Order().ToArray();
+        Factions = Registries.Factions.GetAllKeys().Order().ToArray();
 
         foreach (var item in typeof(Objects.LevelObject).Assembly.GetTypes().Where(static t => !t.IsAbstract && t.IsAssignableTo(typeof(Objects.LevelObject))))
             if (item != null)

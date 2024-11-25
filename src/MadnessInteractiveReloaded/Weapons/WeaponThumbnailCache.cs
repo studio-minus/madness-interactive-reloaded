@@ -19,13 +19,13 @@ public class WeaponThumbnailCache// : Cache<WeaponInstructions, IReadableTexture
     public static readonly WeaponThumbnailCache Instance = new();
     public const int MaxWorkers = 4;
 
-    private static readonly ConcurrentDictionary<string, Worker> workers = [];
-    private const string CacheLocation = "./cache/weapons/";
+    private readonly ConcurrentDictionary<string, Worker> workers = [];
+    private readonly string CacheLocation = "cache/weapons/";
 
     public WeaponThumbnailCache()
     {
-        if (!Directory.Exists(CacheLocation))
-            Directory.CreateDirectory(CacheLocation);
+        CacheLocation = Path.Combine(Game.Main.AppDataDirectory, CacheLocation);
+        Directory.CreateDirectory(CacheLocation);
     }
 
     public IReadableTexture Load(WeaponInstructions obj)

@@ -1,0 +1,12 @@
+0.50.0
+
+name Auditor damaged
+type Body
+left textures/bodies/body1/auditor_damaged/auditor_damaged_left.png
+right textures/bodies/body1/auditor_damaged/auditor_damaged_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+damage-size 1
+offset 0 0

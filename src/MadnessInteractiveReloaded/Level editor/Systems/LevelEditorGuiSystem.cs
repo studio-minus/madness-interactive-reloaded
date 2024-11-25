@@ -67,6 +67,11 @@ public class LevelEditorGuiSystem : Walgelijk.System
         new("Turret", (editor, pos) => new Turret(editor, pos)),
     ];
 
+    public override void OnActivate()
+    {
+        Creatables = [.. Creatables.OrderBy(s => s.Name)];
+    }
+
     public override void Update()
     {
         if (!Scene.FindAnyComponent<LevelEditorComponent>(out var editor))

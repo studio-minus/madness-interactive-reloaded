@@ -22,17 +22,24 @@ public class AuditorDisk : ImprobabilityDisk
     {
         var ent = character.Entity;
 
-        var headTexture = Assets.Load<Texture>("textures/auditorHead_4x6.png");
-        var bodyTexture = Assets.Load<Texture>("textures/auditorBody_4x6.png");
+        AddAuditorFire(scene, character);
 
+        if (character.TryGetNextAbilitySlot(scene, out var slot))
+            scene.AttachComponent(ent, new SpawnMenuAbilityComponent(slot));
+    }
+
+    public static void AddAuditorFire(Scene scene, CharacterComponent character)
+    {
         if (!scene.HasSystem<AuditorFireSystem>())
             scene.AddSystem(new AuditorFireSystem());
         {
+            var headTexture = Assets.Load<Texture>("textures/auditorHead_4x6.png");
+            var bodyTexture = Assets.Load<Texture>("textures/auditorBody_4x6.png");
             var headFlipbook = new FlipbookComponent(FlipbookMaterialCreator.LoadMaterialFor(
                 headTexture.Value, 6, 4, 24, Colors.White, true, headTexture.Id.GetHashCode()));
             headFlipbook.Duration = 1;
-            scene.AttachComponent(scene.CreateEntity(), headFlipbook);   
-            
+            scene.AttachComponent(scene.CreateEntity(), headFlipbook);
+
             var bodyFlipbook = new FlipbookComponent(FlipbookMaterialCreator.LoadMaterialFor(
                 headTexture.Value, 6, 4, 24, Colors.White, true, bodyTexture.Id.GetHashCode()));
             bodyFlipbook.Duration = 1;
@@ -48,8 +55,5 @@ public class AuditorDisk : ImprobabilityDisk
             };
             scene.AttachComponent(scene.CreateEntity(), fireComponent);
         }
-
-        if (character.TryGetNextAbilitySlot(scene, out var slot))
-            scene.AttachComponent(ent, new SpawnMenuAbilityComponent(slot));
     }
 }

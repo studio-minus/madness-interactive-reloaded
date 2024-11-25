@@ -39,7 +39,7 @@ public class IncidentModeMenuSystem : Walgelijk.System
         const float phase3 = 0.5f;
         const float phase4 = 0.6f;
 
-        if (isBusyWithIntroAnimation || true)
+        if (isBusyWithIntroAnimation)
             introAnimationTimer += Time.DeltaTime / animationDuration;
         else
             introAnimationTimer = 0;
@@ -49,7 +49,7 @@ public class IncidentModeMenuSystem : Walgelijk.System
         var ph3timer = Utilities.Clamp(Utilities.MapRange(phase3, phase4, 0, 1, introAnimationTimer));
         var ph4timer = Utilities.Clamp(Utilities.MapRange(phase4, 1, 0, 1, introAnimationTimer));
 
-#if DEBUG
+#if DEBUG && false
         if (Input.IsKeyPressed(Key.F5))
         {
             if (Input.IsKeyHeld(Key.D4))
@@ -147,11 +147,11 @@ public class IncidentModeMenuSystem : Walgelijk.System
                     var p2 = Utilities.Clamp(Easings.Expo.Out(ph4timer * 4));
                     var p3 = Easings.Cubic.InOut(Utilities.Clamp((ph4timer + 0.17f) * 1.2f));
                     var v = (int)float.Round(IncidentConfig.KillTarget * p);
-                    var pos = bgRect.GetCenter();
-                    //var pos = new Vector2(rect.MaxX - 250, Window.Height * 0.5f - 60);
+                    //var pos = bgRect.GetCenter();
+                    var pos = new Vector2(rect.MaxX - 250, Window.Height * 0.5f - 60);
 
                     var bnds = rect with { MinX = float.Lerp(rect.MaxX, rect.MinX, p3), MaxX = pos.X - Draw.CalculateTextWidth("###") };
-                    //Draw.DrawBounds = new DrawBounds(bnds);
+                    Draw.DrawBounds = new DrawBounds(bnds);
                     Draw.Colour = Vector4.Lerp(Colors.White, Colors.Red, p3);
                     Draw.Image(bgOverlay, rect, ImageContainmentMode.Stretch);
                     Draw.ResetDrawBounds();

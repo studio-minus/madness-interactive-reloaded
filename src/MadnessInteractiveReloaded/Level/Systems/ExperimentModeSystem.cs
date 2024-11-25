@@ -38,7 +38,7 @@ public class ExperimentModeSystem : Walgelijk.System
                 return wpn.WeaponData.WeaponType + wpn.WeaponData.Name;
             })];
 
-            exp.FactionCache = [.. Registries.Factions.GetAllKeys().Select(id => new FactionOption(id))];
+            exp.FactionCache = [.. Registries.Factions.GetAllKeys().Order().Select(id => new FactionOption(id))];
         }
 
         if (Scene.FindAnyComponent<EnemySpawningComponent>(out var sp))
@@ -768,7 +768,7 @@ public class ExperimentModeSystem : Walgelijk.System
         Ui.StartScrollView(false);
         {
             int i = 0;
-            foreach (var preset in Registries.Experiment.CharacterPresets.GetAllValues())
+            foreach (var preset in Registries.Experiment.CharacterPresets.GetAllValues().OrderBy(static k => k.Name)) // TODO slow as hell
             {
                 if (!string.IsNullOrEmpty(exp.NPCFilter) && !preset.Name.Contains(exp.NPCFilter, StringComparison.InvariantCultureIgnoreCase))
                     continue;

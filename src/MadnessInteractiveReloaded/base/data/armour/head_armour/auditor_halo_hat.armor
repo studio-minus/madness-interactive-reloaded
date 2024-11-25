@@ -1,0 +1,10 @@
+0.36.0
+
+name Auditor halo
+type HeadAccessory
+left textures/bodies/hats/auditor_halo/auditor_halo_left.png
+right textures/bodies/hats/auditor_halo/auditor_halo_right.png
+category Hat
+detach true
+hidden False
+offset 0 -137
