@@ -167,7 +167,7 @@ public class Turret : LevelObject, ITagged
                 turret.Health -= e.Params.Damage;
                 Prefabs.CreateDeflectionSpark(scene, e.Point, 
                     Utilities.VectorToAngle(-e.Params.Direction + Utilities.RandomVector2()*0.5f),
-                    Utilities.RandomFloat(1, 2));
+                    Utilities.RandomFloat(0.5f, 1));
             }
         });
 
