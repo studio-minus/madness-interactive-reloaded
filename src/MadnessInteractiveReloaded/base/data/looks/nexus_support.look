@@ -1,0 +1,13 @@
+0.50.0
+
+body
+   nexus_agent_suit_body
+   maniac_tank_over
+   nexus_support_armor_over
+
+head
+   nexus_balaclava_head
+   nexus_support_mask_eyes
+
+hands default
+blood #FF0000FF
