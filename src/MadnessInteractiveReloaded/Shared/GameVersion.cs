@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 
 namespace MIR;
 
@@ -10,5 +11,11 @@ public static class GameVersion
     /// <summary>
     /// Current game version
     /// </summary>
-    public static readonly Version Version = new("0.50.0");
+    public static readonly Version Version;
+
+    static GameVersion()
+    {
+        var v = Assembly.GetExecutingAssembly().GetName()!.Version!;
+        Version = new(v.Major, v.Minor, v.Build);
+    }
 }
