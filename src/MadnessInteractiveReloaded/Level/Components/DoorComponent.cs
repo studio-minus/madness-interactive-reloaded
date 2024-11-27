@@ -43,6 +43,7 @@ public class DoorComponent : Component, IDisposable
     {
         Material = material;
         Properties = properties;
+        Material.SetUniform("mainTex", properties.EffectiveTexture);
 
         Properties.FacingDirection = Vector2.Normalize((Properties.BottomLeft + Properties.BottomRight) / 2 - Properties.SpawnPoint);
         if (float.IsNaN(properties.FacingDirection.X) || float.IsNaN(properties.FacingDirection.Y))

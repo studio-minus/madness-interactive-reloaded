@@ -170,8 +170,9 @@ public class Door : LevelObject, ITagged
         Properties.FacingDirection = Vector2.Normalize(bottomOfDoor - Properties.SpawnPoint);
 
         Draw.Colour = Colors.White;
-        Draw.Texture = Textures.Door.Value;
+        Draw.Texture = Properties.EffectiveTexture;
         Draw.Material = Properties.EnemySpawnerDoor ? Prefabs.Editor.ExampleDoorMaterial : Prefabs.Editor.ExampleStaticDoorMaterial;
+        Draw.Material.SetUniform("mainTex", Properties.EffectiveTexture);
         Draw.Order = RenderOrders.BackgroundBehind.WithOrder(100);
         Draw.Quad(Properties.TopLeft, Properties.TopRight, Properties.BottomLeft, Properties.BottomRight);
 
@@ -251,6 +252,24 @@ public class Door : LevelObject, ITagged
             Ui.Layout.FitWidth(false).Height(32);
             Ui.Checkbox(ref Properties.IsPortal, "Portal door");
         }
+
+        Ui.Spacer(16);
+        Ui.Label("Texture");
+        Ui.Layout.FitWidth(false).Height(32);
+        MadnessUi.AssetPicker(Properties.Texture?.Id ?? default, id =>
+        {
+            if (Textures.Door.Id == id)
+                Properties.Texture = null;
+            else
+                Properties.Texture = new(id);
+        }, static c => c.MimeType.Contains("image"));
+        if (Properties.Texture.HasValue)
+        {
+            Ui.Layout.FitWidth(false).Height(32);
+            if (Ui.Button("Reset texture"))
+                Properties.Texture = null;
+        }
+        Ui.Spacer(16);
 
         Properties.IsPortal &= !Properties.IsLevelProgressionDoor;
 

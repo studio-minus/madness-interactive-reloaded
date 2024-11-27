@@ -2,6 +2,7 @@
 using System;
 using System.Numerics;
 using Walgelijk;
+using Walgelijk.AssetManager;
 
 namespace MIR.LevelEditor;
 
@@ -46,6 +47,16 @@ public struct DoorProperties
     /// If this door is a portal (<see cref="IsPortal"/>, this is the level that will be loaded upon entering it
     /// </summary>
     public string? DestinationLevel;
+
+    /// <summary>
+    /// The texture to use for the door. Will fall back to default if null.
+    /// </summary>
+    public AssetRef<Texture>? Texture;
+
+    /// <summary>
+    /// Returns <see cref="Texture"/> or <see cref="Textures.Door"/>
+    /// </summary>
+    public readonly Texture EffectiveTexture => Texture ?? Textures.Door;
 
     public Vector2 TopLeft;
     public Vector2 TopRight;
