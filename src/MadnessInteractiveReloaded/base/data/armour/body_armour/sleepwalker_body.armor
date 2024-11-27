@@ -1,6 +1,6 @@
 0.49.5
 
-name sleepwalker
+name Sleepwalker
 type Body
 left textures/bodies/body1/sleepwalker/sleepwalker_left.png
 right textures/bodies/body1/sleepwalker/sleepwalker_right.png
