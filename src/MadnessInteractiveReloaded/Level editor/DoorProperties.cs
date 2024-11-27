@@ -51,12 +51,22 @@ public struct DoorProperties
     /// <summary>
     /// The texture to use for the door. Will fall back to default if null.
     /// </summary>
-    public AssetRef<Texture>? Texture;
+    public GlobalAssetId? Texture;
 
     /// <summary>
     /// Returns <see cref="Texture"/> or <see cref="Textures.Door"/>
     /// </summary>
-    public readonly Texture EffectiveTexture => Texture ?? Textures.Door;
+    [JsonIgnore]
+    public readonly Texture EffectiveTexture
+    {
+        get
+        {
+            if (Texture.HasValue && Assets.TryLoad<Texture>(Texture.Value, out var loaded))
+                return loaded;
+
+            return Textures.Door;
+        }
+    }
 
     public Vector2 TopLeft;
     public Vector2 TopRight;

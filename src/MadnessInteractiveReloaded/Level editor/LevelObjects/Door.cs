@@ -256,18 +256,24 @@ public class Door : LevelObject, ITagged
         Ui.Spacer(16);
         Ui.Label("Texture");
         Ui.Layout.FitWidth(false).Height(32);
-        MadnessUi.AssetPicker(Properties.Texture?.Id ?? default, id =>
+        MadnessUi.AssetPicker(Properties.Texture ?? default, id =>
         {
+            Editor.RegisterAction();
+
             if (Textures.Door.Id == id)
                 Properties.Texture = null;
             else
-                Properties.Texture = new(id);
+                Properties.Texture = id;
         }, static c => c.MimeType.Contains("image"));
+
         if (Properties.Texture.HasValue)
         {
             Ui.Layout.FitWidth(false).Height(32);
             if (Ui.Button("Reset texture"))
+            {
+                Editor.RegisterAction();
                 Properties.Texture = null;
+            }
         }
         Ui.Spacer(16);
 
@@ -277,7 +283,6 @@ public class Door : LevelObject, ITagged
         {
             Properties.DestinationLevel ??= Utilities.PickRandom(Editor.LevelIds);
             int selectedIndex = Array.IndexOf(Editor.LevelIds, Properties.DestinationLevel);
-
 
             Ui.Layout.FitWidth(false).Height(32);
             if (Ui.Dropdown(Editor.LevelIds, ref selectedIndex))
@@ -294,6 +299,8 @@ public class Door : LevelObject, ITagged
         Ui.Layout.FitWidth(false).Height(32);
         if (Ui.Button("Horizontal flip"))
         {
+            Editor.RegisterAction();
+
             var original = Properties;
 
             var center = original.TopRight + original.TopLeft + original.BottomLeft + original.BottomRight;

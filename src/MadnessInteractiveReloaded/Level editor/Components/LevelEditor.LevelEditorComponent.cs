@@ -128,7 +128,7 @@ public class LevelEditorComponent : Component
     }
 
     /// <summary>
-    /// We did something that can be un-done or re-done.
+    /// We are about to something that can be un-done or re-done.
     /// Add it to the history.
     /// </summary>
     public void RegisterAction()
@@ -154,10 +154,16 @@ public class LevelEditorComponent : Component
     {
         if (undoStack.TryPop(out var json))
         {
+            if (Level != null)
+                foreach (var item in Level.Objects)
+                    item.Dispose();
+
             Level = JsonConvert.DeserializeObject<Level>(json, LevelDeserialiser.SerializerSettings);
+
             if (Level != null)
                 foreach (var item in Level.Objects)
                     item.Editor = this;
+
             redoStack.Push(json);
             SelectionManager.DeselectAll();
             Dirty = true;
@@ -172,11 +178,18 @@ public class LevelEditorComponent : Component
     {
         if (redoStack.TryPop(out var json))
         {
-            Level = JsonConvert.DeserializeObject<Level>(json, LevelDeserialiser.SerializerSettings);
             if (Level != null)
                 foreach (var item in Level.Objects)
+                    item.Dispose();
+
+            Level = JsonConvert.DeserializeObject<Level>(json, LevelDeserialiser.SerializerSettings);
+            if (Level != null)
+
+                foreach (var item in Level.Objects)
                     item.Editor = this;
+
             undoStack.Push(json);
+            SelectionManager.DeselectAll();
             Dirty = true;
         }
     }
@@ -218,7 +231,7 @@ public class LevelEditorComponent : Component
         if (Level == null)
             throw new Exception("Level is null");
         LevelDeserialiser.Save(Level, path);
-        Level.Id  = Path.GetFileNameWithoutExtension(path);
+        Level.Id = Path.GetFileNameWithoutExtension(path);
         FileName = path;
     }
 
