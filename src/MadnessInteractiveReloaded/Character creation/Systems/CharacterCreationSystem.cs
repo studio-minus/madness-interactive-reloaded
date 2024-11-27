@@ -406,7 +406,6 @@ public class CharacterCreationSystem : Walgelijk.System
 
         var look = UserData.Instances.PlayerLook;
 
-        UnhighlightParts(character);
 
         Ui.Layout.Width(120).Height(40).CenterHorizontal().StickBottom().Move(0, -15);
         Ui.Theme.Foreground(default).Image(new(Colors.White, Colors.Red)).OutlineWidth(0).Once();
@@ -416,85 +415,7 @@ public class CharacterCreationSystem : Walgelijk.System
             character.NeedsLookUpdate = true;
         }
     }
-
-    private void UnhighlightParts(CharacterComponent character)
-    {
-        reset(character.Positioning.Body.Entity);
-        reset(character.Positioning.Head.Entity);
-        reset(character.Positioning.Hands.First.Entity);
-        reset(character.Positioning.Hands.Second.Entity);
-
-        foreach (var e in character.Positioning.BodyDecorations)
-            reset(e);
-
-        foreach (var e in character.Positioning.HeadDecorations)
-            reset(e);
-
-        void reset(Entity ent)
-        {
-            if (Scene.TryGetComponentFrom<QuadShapeComponent>(ent, out var quad))
-            {
-                if (quad.Material.TryGetUniform("tint", out Vector4 c))
-                    quad.Material.SetUniform("tint", Utilities.SmoothApproach(c, Colors.White, 5, Time.DeltaTime));
-                else
-                    quad.Material.SetUniform("tint", Colors.White);
-            }
-        }
-    }
-
-    private void HighlightPart(CharacterComponent character, ArmourPieceType s, int index)
-    {
-        var targetColour = Utilities.Lerp(Colors.White, Colors.Red, (float.Sin(Time.SecondsSinceSceneChange * 8) * 0.5f + 0.5f) * 0.8f);
-
-        if (s is ArmourPieceType.BodyAccessory or ArmourPieceType.HeadAccessory)
-        {
-            var ents = s switch
-            {
-                ArmourPieceType.Body or ArmourPieceType.BodyAccessory => character.Positioning.BodyDecorations,
-                ArmourPieceType.Head or ArmourPieceType.HeadAccessory => character.Positioning.HeadDecorations,
-                _ => null
-            };
-
-            if (ents == null)
-                return;
-
-            if (index < 0 || index >= ents.Length)
-                return;
-
-            var a = ents[index];
-            set(a);
-        }
-        else if (s is ArmourPieceType.Hand)
-        {
-            if (index < 0 || index >= 2)
-                return;
-
-            var a = character.Positioning.Hands[index];
-            set(a.Entity);
-        }
-        else
-        {
-            var a = s switch
-            {
-                ArmourPieceType.Body or ArmourPieceType.BodyAccessory => character.Positioning.Body.Entity,
-                ArmourPieceType.Head or ArmourPieceType.HeadAccessory => character.Positioning.Head.Entity,
-                _ => default
-            };
-            set(a);
-        }
-
-        void set(Entity ent)
-        {
-            if (Scene.TryGetComponentFrom<QuadShapeComponent>(ent, out var quad))
-            {
-                if (quad.Material.TryGetUniform("tint", out Vector4 c))
-                    quad.Material.SetUniform("tint", Utilities.SmoothApproach(c, targetColour, 5, Time.DeltaTime));
-                else
-                    quad.Material.SetUniform("tint", Colors.White);
-            }
-        }
-    }
-
+   
     private bool PieceGrid<T>(CharacterComponent character, Registry<T> registry, ref T? target, T? @default) where T : class, ICharacterCustomisationItem
     {
         const int preferredColumns = 3;
