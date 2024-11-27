@@ -31,7 +31,7 @@
 	</Target>
 	
 	<Target Name="PostBuild" BeforeTargets="PostBuildEvent">
-		<Exec Command="&quot;$(OutDir)MIR&quot; --mode pack --input &quot;$(OutDir)base&quot; --output &quot;$(OutDir)resources/base.waa&quot;" />
+		<Exec Command=".\MIR --mode pack --input &quot;$(SolutionDir)MadnessInteractiveReloaded\base&quot; --output resources/base.waa" WorkingDirectory="$(OutDir)" />
 	</Target>
 
 

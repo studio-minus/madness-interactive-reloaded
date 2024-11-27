@@ -11,8 +11,16 @@ public class ArmourSerialiserTest : global::System.IDisposable
 {
     public ArmourSerialiserTest()
     {
+        try
+        {
+            Assets.RegisterPackage("resources/base.waa");
+        }
+        catch { }
+
         if (Assets.TryGetPackage("base", out _))
             MadnessInteractiveReloaded.PrepareResourceInitialise();
+        else
+            throw new System.Exception("Tests can't continue because the base assets cannot be found");
         Registries.ClearAll();
     }
 
@@ -47,8 +55,8 @@ public class ArmourSerialiserTest : global::System.IDisposable
         ((int)loaded.OffsetLeft.Y).Should().Be(yOffset);
         ((int)loaded.OffsetRight.X).Should().Be(xOffset);
         ((int)loaded.OffsetRight.Y).Should().Be(yOffset);
-        loaded.Left.Id.Should().BeEquivalentTo(new GlobalAssetId("textures/bodies/default/head_left.png"));
-        loaded.Right.Id.Should().BeEquivalentTo(new GlobalAssetId("textures/bodies/default/head_right.png"));
+        loaded.Left.Id.Should().BeEquivalentTo(new GlobalAssetId("base:textures/bodies/default/head_left.png"));
+        loaded.Right.Id.Should().BeEquivalentTo(new GlobalAssetId("base:textures/bodies/default/head_right.png"));
         loaded.BrokenKeys.Should().BeEquivalentTo(testPiece.BrokenKeys);
     }
 
