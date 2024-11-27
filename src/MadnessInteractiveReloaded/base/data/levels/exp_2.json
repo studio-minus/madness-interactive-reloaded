@@ -23,11 +23,11 @@
   "Weapons": null,
   "FloorLine": [
     {
-      "X": -1790.5673,
+      "X": -1824.5673,
       "Y": -700.2442
     },
     {
-      "X": 1895.4327,
+      "X": 1929.4327,
       "Y": -700.2442
     }
   ],
@@ -46,7 +46,7 @@
         "X": 51.00006,
         "Y": 345.5
       },
-      "TexturePath": "textures/backgrounds/experiment_2.qoi",
+      "TexturePath": "base:textures/backgrounds/experiment_2.qoi",
       "Scale": 2.222222
     },
     {
@@ -165,6 +165,7 @@
         "IsPortal": true,
         "PortalID": "portal_0",
         "DestinationLevel": "exp_1",
+        "Texture": "base:textures/doors/door_7.png",
         "TopLeft": {
           "X": -1892.6127,
           "Y": 73.12573
@@ -200,6 +201,7 @@
         "IsPortal": true,
         "PortalID": "portal_1",
         "DestinationLevel": "exp_club",
+        "Texture": "base:textures/doors/door_6.png",
         "TopLeft": {
           "X": 1994.63,
           "Y": 75.10185
