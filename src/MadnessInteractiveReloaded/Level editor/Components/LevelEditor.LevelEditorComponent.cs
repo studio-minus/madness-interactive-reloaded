@@ -138,7 +138,6 @@ public class LevelEditorComponent : Component
             var json = JsonConvert.SerializeObject(Level, LevelDeserialiser.SerializerSettings);
             undoStack.Push(json);
             redoStack.Clear();
-            SelectionManager.DeselectAll();
             Dirty = true;
         }
         catch (Exception e)

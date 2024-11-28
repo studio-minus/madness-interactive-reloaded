@@ -131,6 +131,7 @@ public class LevelEditorSystem : Walgelijk.System
                     editor.RegisterAction();
 
                     lvl.Objects.Remove(selected);
+                    selected.Dispose();
                     editor.SelectionManager.DeselectAll();
                     Audio.Play(Sounds.UiBad);
                     editor.Dirty = true;

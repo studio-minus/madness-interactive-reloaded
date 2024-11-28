@@ -22,6 +22,7 @@ public class Door : LevelObject, ITagged
     public DoorProperties Properties;
 
     private static readonly Vector2[] polygonVertexBuffer = new Vector2[4];
+    private Material previewMaterial;
 
     private TranslateDrag<Vector2> dragTopLeft, dragTopRight, dragBottomleft, dragBottomRight;
     [Flags]
@@ -41,6 +42,7 @@ public class Door : LevelObject, ITagged
     public Door(LevelEditor.LevelEditorComponent editor, DoorProperties properties) : base(editor)
     {
         Properties = properties;
+        previewMaterial = DoorMaterialPool.Instance.ForceCreateNew();
     }
 
     public float GetDistanceFromPolygon(Vector2 worldPoint)
@@ -171,10 +173,14 @@ public class Door : LevelObject, ITagged
 
         Draw.Colour = Colors.White;
         Draw.Texture = Properties.EffectiveTexture;
-        Draw.Material = Properties.EnemySpawnerDoor ? Prefabs.Editor.ExampleDoorMaterial : Prefabs.Editor.ExampleStaticDoorMaterial;
+        Draw.Material = previewMaterial;
 
-        Draw.Material.SetUniform("mainTex", Properties.EffectiveTexture);
-        Draw.Material.SetUniform(DoorComponent.DoorTypeUniform, (float)(int)Properties.Behaviour);
+        var time = scene.Game.State.Time.SecondsSinceLoadUnscaled;
+        previewMaterial.SetUniform(DoorComponent.DoorTypeUniform, (float)(int)Properties.Behaviour);
+        previewMaterial.SetUniform(DoorComponent.TimeUniform, time);
+        previewMaterial.SetUniform(DoorComponent.TimeSinceChangeUniform, float.Floor(time));
+        previewMaterial.SetUniform(DoorComponent.IsOpenUniform, time % 2 > 1 ? 0f : 1f);
+
         Draw.Order = RenderOrders.BackgroundBehind.WithOrder(100);
         Draw.Quad(Properties.TopLeft, Properties.TopRight, Properties.BottomLeft, Properties.BottomRight);
 
@@ -280,7 +286,10 @@ public class Door : LevelObject, ITagged
 
         Ui.Label("Animation");
         Ui.Layout.FitWidth(false).Height(32);
-        Ui.EnumDropdown(ref Properties.Behaviour);
+        if (Ui.EnumDropdown(ref Properties.Behaviour))
+        {
+            Editor.RegisterAction();
+        }
 
         Ui.Spacer(16);
 
@@ -329,4 +338,10 @@ public class Door : LevelObject, ITagged
 
     public override Vector2 GetPosition() => Properties.Center;
     public override void SetPosition(Vector2 pos) => Properties.Center = pos;
+
+    public override void Dispose()
+    {
+        previewMaterial.Dispose();
+        base.Dispose();
+    }
 }

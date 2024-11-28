@@ -29,4 +29,6 @@ public class DoorMaterialPool : Pool<Material, float>
         c.SetUniform(DoorComponent.IsOpenUniform, 0f);
         c.SetUniform(DoorComponent.TimeSinceChangeUniform, 5f);
     }
+
+    public Material ForceCreateNew() => CreateFresh();
 }
