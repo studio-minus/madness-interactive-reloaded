@@ -5,7 +5,7 @@
   "EnemySpawnInterval": 1.4,
   "MaxEnemyCount": 3,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "sounds/music/Lothyde/living_on_the_edge_(feat_monocronic).ogg",
+  "BackgroundMusic": "base:sounds/music/Lothyde/living_on_the_edge_(feat_monocronic).ogg",
   "WeaponChance": 0.96,
   "LevelBounds": {
     "MinX": -3219.782,
@@ -16,7 +16,7 @@
   "BodyCountToWin": 15,
   "TimeLimitInSeconds": -1.0,
   "FullZoom": true,
-  "Thumbnail": "textures/level_thumbnails/mag_campaign/lvl_mag_trap.qoi",
+  "Thumbnail": "base:textures/level_thumbnails/mag_campaign/lvl_mag_trap.qoi",
   "OpeningTransition": true,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [
@@ -49,11 +49,11 @@
   ],
   "FloorLine": [
     {
-      "X": -2884.0,
+      "X": -2868.0,
       "Y": -264.47565
     },
     {
-      "X": 2844.0,
+      "X": 2826.0,
       "Y": -264.47565
     }
   ],
@@ -68,7 +68,7 @@
     },
     {
       "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/backgrounds/mag_campaign/background_mag_trap_layer_1.qoi",
+      "TexturePath": "base:textures/backgrounds/mag_campaign/background_mag_trap_layer_1.qoi",
       "Angle": 0.0,
       "Position": {
         "X": -3032.3162,
@@ -120,7 +120,7 @@
         "X": -19.782135,
         "Y": 704.09216
       },
-      "TexturePath": "textures/backgrounds/mag_campaign/background_mag_trap.qoi",
+      "TexturePath": "base:textures/backgrounds/mag_campaign/background_mag_trap.qoi",
       "Scale": 2.222222
     },
     {
@@ -197,6 +197,8 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
+        "Texture": "base:textures/doors/door_horizontal_1.png",
+        "Behaviour": 1,
         "TopLeft": {
           "X": -481.5431,
           "Y": 1230.9103
@@ -263,6 +265,8 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
+        "Texture": "base:textures/doors/door_6.png",
+        "Behaviour": 0,
         "TopLeft": {
           "X": 3006.579,
           "Y": 548.78845
@@ -298,6 +302,8 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
+        "Texture": "base:textures/doors/door_4.png",
+        "Behaviour": 0,
         "TopLeft": {
           "X": -3044.0906,
           "Y": 548.78845
@@ -404,7 +410,7 @@
     },
     {
       "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/backgrounds/mag_campaign/background_mag_trap_layer_2.qoi",
+      "TexturePath": "base:textures/backgrounds/mag_campaign/background_mag_trap_layer_2.qoi",
       "Angle": 0.0,
       "Position": {
         "X": 2992.4812,

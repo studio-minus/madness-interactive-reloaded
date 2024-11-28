@@ -5,7 +5,7 @@
   "EnemySpawnInterval": 0.90000004,
   "MaxEnemyCount": 2,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "sounds/music/Lothyde/living_on_the_edge_(feat_monocronic).ogg",
+  "BackgroundMusic": "base:sounds/music/Lothyde/living_on_the_edge_(feat_monocronic).ogg",
   "WeaponChance": 0.26,
   "LevelBounds": {
     "MinX": -2420.772,
@@ -16,7 +16,7 @@
   "BodyCountToWin": 3,
   "TimeLimitInSeconds": -1.0,
   "FullZoom": true,
-  "Thumbnail": "textures/level_thumbnails/mag_campaign/lvl_mag_intro.qoi",
+  "Thumbnail": "base:textures/level_thumbnails/mag_campaign/lvl_mag_intro.qoi",
   "OpeningTransition": false,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [
@@ -39,7 +39,7 @@
   ],
   "FloorLine": [
     {
-      "X": -2024.3481,
+      "X": -2002.3481,
       "Y": -538.3013
     },
     {
@@ -87,7 +87,7 @@
       "Y": -538.0967
     },
     {
-      "X": 1885.6519,
+      "X": 1863.6519,
       "Y": -538.3013
     }
   ],
@@ -106,7 +106,7 @@
         "X": -105.21652,
         "Y": 386.8178
       },
-      "TexturePath": "textures/backgrounds/mag_campaign/background_mag_intro.qoi",
+      "TexturePath": "base:textures/backgrounds/mag_campaign/background_mag_intro.qoi",
       "Scale": 2.222222
     },
     {
@@ -213,6 +213,8 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
+        "Texture": "base:textures/doors/door_horizontal_2.png",
+        "Behaviour": 1,
         "TopLeft": {
           "X": 1849.461,
           "Y": 766.9179
@@ -248,6 +250,8 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
+        "Texture": "base:textures/doors/door_4.png",
+        "Behaviour": 0,
         "TopLeft": {
           "X": 843.10846,
           "Y": 319.23785
@@ -316,7 +320,7 @@
     },
     {
       "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "textures/mag_glass_layer.png",
+      "TexturePath": "base:textures/mag_glass_layer.png",
       "Angle": 0.0,
       "Position": {
         "X": -1350.8335,

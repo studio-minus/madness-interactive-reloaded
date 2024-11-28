@@ -48,11 +48,11 @@
   ],
   "FloorLine": [
     {
-      "X": -3843.4402,
+      "X": -3831.4402,
       "Y": -934.3033
     },
     {
-      "X": 3040.5598,
+      "X": 3028.5598,
       "Y": -934.3033
     }
   ],
@@ -139,14 +139,13 @@
       "Tag": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
-      "Rectangle": {
-        "MinX": -3905.5444,
-        "MinY": 1046.8752,
-        "MaxX": -3775.797,
-        "MaxY": 1315.0614
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": -2698.2244,
+        "Y": 1831.6481
       },
-      "Tag": null
+      "TexturePath": "base:textures/black-transparent-gradient.png",
+      "Scale": 2.222222
     },
     {
       "$type": "MIR.LevelEditor.Objects.Door, MIR",
@@ -164,6 +163,8 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
+        "Texture": "base:textures/doors/door_4.png",
+        "Behaviour": 0,
         "TopLeft": {
           "X": -398.6376,
           "Y": -101.878654
@@ -275,6 +276,8 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
+        "Texture": "base:textures/doors/door_7.png",
+        "Behaviour": 0,
         "TopLeft": {
           "X": 729.56757,
           "Y": -101.878654
@@ -321,6 +324,8 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
+        "Texture": "base:textures/doors/door_horizontal_1.png",
+        "Behaviour": 1,
         "TopLeft": {
           "X": -3073.241,
           "Y": 600.636
@@ -433,10 +438,10 @@
     {
       "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
       "Rectangle": {
-        "MinX": 2924.8203,
-        "MinY": 750.38745,
-        "MaxX": 3041.4395,
-        "MaxY": 1178.07
+        "MinX": -3905.5444,
+        "MinY": 1046.8752,
+        "MaxX": -3775.797,
+        "MaxY": 1315.0614
       },
       "Tag": null
     },
@@ -498,6 +503,8 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
+        "Texture": "base:textures/doors/door_horizontal_1.png",
+        "Behaviour": 1,
         "TopLeft": {
           "X": 2933.875,
           "Y": 634.0959
@@ -547,13 +554,14 @@
       "StartAnimation": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.Background, MIR",
-      "Center": {
-        "X": -2698.2244,
-        "Y": 1831.6481
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 2924.8203,
+        "MinY": 750.38745,
+        "MaxX": 3041.4395,
+        "MaxY": 1178.07
       },
-      "TexturePath": "base:textures/black-transparent-gradient.png",
-      "Scale": 2.222222
+      "Tag": null
     },
     {
       "$type": "MIR.LevelEditor.Objects.Background, MIR",

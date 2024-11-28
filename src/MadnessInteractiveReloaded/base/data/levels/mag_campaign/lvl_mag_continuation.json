@@ -5,7 +5,7 @@
   "EnemySpawnInterval": 0.4,
   "MaxEnemyCount": 3,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "sounds/music/Lothyde/living_on_the_edge_(feat_monocronic).ogg",
+  "BackgroundMusic": "base:sounds/music/Lothyde/living_on_the_edge_(feat_monocronic).ogg",
   "WeaponChance": 0.65,
   "LevelBounds": {
     "MinX": -2936.153,
@@ -16,7 +16,7 @@
   "BodyCountToWin": 30,
   "TimeLimitInSeconds": -1.0,
   "FullZoom": false,
-  "Thumbnail": "textures/level_thumbnails/mag_campaign/lvl_mag_continuation.qoi",
+  "Thumbnail": "base:textures/level_thumbnails/mag_campaign/lvl_mag_continuation.qoi",
   "OpeningTransition": true,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [
@@ -44,11 +44,11 @@
   ],
   "FloorLine": [
     {
-      "X": -2491.2095,
+      "X": -2503.2095,
       "Y": -722.0465
     },
     {
-      "X": 2590.7905,
+      "X": 2602.7905,
       "Y": -722.0465
     }
   ],
@@ -96,6 +96,8 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
+        "Texture": "base:textures/doors/door_horizontal_1.png",
+        "Behaviour": 1,
         "TopLeft": {
           "X": 2521.6047,
           "Y": 718.8118
@@ -121,7 +123,7 @@
         "X": 42.735542,
         "Y": 55.80417
       },
-      "TexturePath": "textures/backgrounds/mag_campaign/background_mag_continuation.qoi",
+      "TexturePath": "base:textures/backgrounds/mag_campaign/background_mag_continuation.qoi",
       "Scale": 2.222222
     },
     {
@@ -194,6 +196,8 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
+        "Texture": "base:textures/doors/door_6.png",
+        "Behaviour": 0,
         "TopLeft": {
           "X": -1377.8972,
           "Y": 44.098114
@@ -238,7 +242,7 @@
         "X": -305.3065,
         "Y": 1220.6531
       },
-      "TexturePath": "textures/black-transparent-gradient.png",
+      "TexturePath": "base:textures/black-transparent-gradient.png",
       "Scale": 2.222222
     },
     {
@@ -247,7 +251,7 @@
         "X": -305.3065,
         "Y": -1143.384
       },
-      "TexturePath": "textures/black-transparent-gradient.png",
+      "TexturePath": "base:textures/black-transparent-gradient.png",
       "Scale": 2.222222
     },
     {
