@@ -5,7 +5,7 @@
   "EnemySpawnInterval": 0.4,
   "MaxEnemyCount": 9,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "base:sounds/music/Lothyde/a_casual_trip_through_hell.ogg",
+  "BackgroundMusic": "sounds/music/Lothyde/a_casual_trip_through_hell.ogg",
   "WeaponChance": 0.98999995,
   "LevelBounds": {
     "MinX": -4294.904,
@@ -115,7 +115,7 @@
         "X": -419.99997,
         "Y": 221.50002
       },
-      "TexturePath": "base:textures/backgrounds/mag_campaign/background_mag_lever.qoi",
+      "TexturePath": "textures/backgrounds/mag_campaign/background_mag_lever.qoi",
       "Scale": 2.2212117
     },
     {
@@ -144,7 +144,7 @@
         "X": -2698.2244,
         "Y": 1831.6481
       },
-      "TexturePath": "base:textures/black-transparent-gradient.png",
+      "TexturePath": "textures/black-transparent-gradient.png",
       "Scale": 2.222222
     },
     {
@@ -163,7 +163,7 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
-        "Texture": "base:textures/doors/door_4.png",
+        "Texture": "textures/doors/door_4.png",
         "Behaviour": 0,
         "TopLeft": {
           "X": -398.6376,
@@ -276,7 +276,7 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
-        "Texture": "base:textures/doors/door_7.png",
+        "Texture": "textures/doors/door_7.png",
         "Behaviour": 0,
         "TopLeft": {
           "X": 729.56757,
@@ -324,7 +324,7 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
-        "Texture": "base:textures/doors/door_horizontal_1.png",
+        "Texture": "textures/doors/door_horizontal_1.png",
         "Behaviour": 1,
         "TopLeft": {
           "X": -3073.241,
@@ -503,7 +503,7 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
-        "Texture": "base:textures/doors/door_horizontal_1.png",
+        "Texture": "textures/doors/door_horizontal_1.png",
         "Behaviour": 1,
         "TopLeft": {
           "X": 2933.875,
@@ -569,7 +569,7 @@
         "X": -2698.2244,
         "Y": -1400.8475
       },
-      "TexturePath": "base:textures/black-transparent-gradient.png",
+      "TexturePath": "textures/black-transparent-gradient.png",
       "Scale": 2.222222
     }
   ]

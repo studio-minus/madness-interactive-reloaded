@@ -5,7 +5,7 @@
   "EnemySpawnInterval": 0.4,
   "MaxEnemyCount": 12,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "base:sounds/music/Lothyde/a_casual_trip_through_hell.ogg",
+  "BackgroundMusic": "sounds/music/Lothyde/a_casual_trip_through_hell.ogg",
   "WeaponChance": 0.78,
   "LevelBounds": {
     "MinX": -5404.0854,
@@ -16,7 +16,7 @@
   "BodyCountToWin": 31,
   "TimeLimitInSeconds": -1.0,
   "FullZoom": false,
-  "Thumbnail": "base:textures/level_thumbnails/mag_campaign/lvl_mag_mowing.qoi",
+  "Thumbnail": "textures/level_thumbnails/mag_campaign/lvl_mag_mowing.qoi",
   "OpeningTransition": true,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [
@@ -170,7 +170,7 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
-        "Texture": "base:textures/doors/door_horizontal_1.png",
+        "Texture": "textures/doors/door_horizontal_1.png",
         "Behaviour": 1,
         "TopLeft": {
           "X": 5194.5635,
@@ -273,7 +273,7 @@
         "X": -28.530365,
         "Y": 306.43494
       },
-      "TexturePath": "base:textures/backgrounds/mag_campaign/background_mag_mowing.qoi",
+      "TexturePath": "textures/backgrounds/mag_campaign/background_mag_mowing.qoi",
       "Scale": 2.222222
     },
     {
@@ -292,7 +292,7 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
-        "Texture": "base:textures/doors/door_horizontal_2.png",
+        "Texture": "textures/doors/door_horizontal_2.png",
         "Behaviour": 1,
         "TopLeft": {
           "X": -5242.539,
@@ -715,7 +715,7 @@
         "X": -2884.502,
         "Y": 1701.7882
       },
-      "TexturePath": "base:textures/black-transparent-gradient.png",
+      "TexturePath": "textures/black-transparent-gradient.png",
       "Scale": 2.222222
     },
     {
@@ -724,7 +724,7 @@
         "X": -2884.502,
         "Y": -1084.4644
       },
-      "TexturePath": "base:textures/black-transparent-gradient.png",
+      "TexturePath": "textures/black-transparent-gradient.png",
       "Scale": 2.222222
     }
   ]

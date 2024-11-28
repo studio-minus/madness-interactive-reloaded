@@ -5,7 +5,7 @@
   "EnemySpawnInterval": 1.0,
   "MaxEnemyCount": 4,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "base:sounds/music/Lothyde/living_on_the_edge_(feat_monocronic).ogg",
+  "BackgroundMusic": "sounds/music/Lothyde/living_on_the_edge_(feat_monocronic).ogg",
   "WeaponChance": 0.64,
   "LevelBounds": {
     "MinX": -3587.236,
@@ -16,7 +16,7 @@
   "BodyCountToWin": 20,
   "TimeLimitInSeconds": -1.0,
   "FullZoom": true,
-  "Thumbnail": "base:textures/level_thumbnails/mag_campaign/lvl_mag_crawl.qoi",
+  "Thumbnail": "textures/level_thumbnails/mag_campaign/lvl_mag_crawl.qoi",
   "OpeningTransition": true,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [
@@ -131,7 +131,7 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
-        "Texture": "base:textures/doors/door_6.png",
+        "Texture": "textures/doors/door_6.png",
         "Behaviour": 0,
         "TopLeft": {
           "X": 770.39014,
@@ -168,7 +168,7 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
-        "Texture": "base:textures/doors/door_5.png",
+        "Texture": "textures/doors/door_5.png",
         "Behaviour": 0,
         "TopLeft": {
           "X": -2371.02,
@@ -224,7 +224,7 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
-        "Texture": "base:textures/doors/door_horizontal_1.png",
+        "Texture": "textures/doors/door_horizontal_1.png",
         "Behaviour": 1,
         "TopLeft": {
           "X": -3291.2515,
@@ -475,7 +475,7 @@
         "X": -168.34732,
         "Y": 223.16335
       },
-      "TexturePath": "base:textures/backgrounds/mag_campaign/background_mag_crawl.qoi",
+      "TexturePath": "textures/backgrounds/mag_campaign/background_mag_crawl.qoi",
       "Scale": 2.222222
     },
     {

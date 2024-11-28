@@ -5,7 +5,7 @@
   "EnemySpawnInterval": 0.5,
   "MaxEnemyCount": 6,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "base:sounds/music/Lothyde/living_on_the_edge_(feat_monocronic).ogg",
+  "BackgroundMusic": "sounds/music/Lothyde/living_on_the_edge_(feat_monocronic).ogg",
   "WeaponChance": 0.61,
   "LevelBounds": {
     "MinX": -4922.9126,
@@ -16,7 +16,7 @@
   "BodyCountToWin": 32,
   "TimeLimitInSeconds": -1.0,
   "FullZoom": false,
-  "Thumbnail": "base:textures/level_thumbnails/mag_campaign/lvl_mag_servers.qoi",
+  "Thumbnail": "textures/level_thumbnails/mag_campaign/lvl_mag_servers.qoi",
   "OpeningTransition": true,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [
@@ -85,7 +85,7 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
-        "Texture": "base:textures/doors/door_2.png",
+        "Texture": "textures/doors/door_2.png",
         "Behaviour": 0,
         "TopLeft": {
           "X": 2625.5237,
@@ -343,7 +343,7 @@
         "X": 1027.035,
         "Y": -1328.2319
       },
-      "TexturePath": "base:textures/black-transparent-gradient.png",
+      "TexturePath": "textures/black-transparent-gradient.png",
       "Scale": 2.222222
     },
     {
@@ -352,7 +352,7 @@
         "X": -1.8015747,
         "Y": -37.29956
       },
-      "TexturePath": "base:textures/backgrounds/mag_campaign/background_mag_servers.qoi",
+      "TexturePath": "textures/backgrounds/mag_campaign/background_mag_servers.qoi",
       "Scale": 2.222222
     },
     {
@@ -402,7 +402,7 @@
         "X": 1027.035,
         "Y": 1281.0952
       },
-      "TexturePath": "base:textures/black-transparent-gradient.png",
+      "TexturePath": "textures/black-transparent-gradient.png",
       "Scale": 2.222222
     },
     {
@@ -431,7 +431,7 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
-        "Texture": "base:textures/doors/door_3.png",
+        "Texture": "textures/doors/door_3.png",
         "Behaviour": 0,
         "TopLeft": {
           "X": -1184.6343,
@@ -468,7 +468,7 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
-        "Texture": "base:textures/doors/door_horizontal_1.png",
+        "Texture": "textures/doors/door_horizontal_1.png",
         "Behaviour": 1,
         "TopLeft": {
           "X": 4660.4155,

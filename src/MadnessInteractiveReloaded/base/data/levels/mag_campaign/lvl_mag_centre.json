@@ -5,7 +5,7 @@
   "EnemySpawnInterval": 0.5,
   "MaxEnemyCount": 29,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "base:sounds/music/Lothyde/a_casual_trip_through_hell.ogg",
+  "BackgroundMusic": "sounds/music/Lothyde/a_casual_trip_through_hell.ogg",
   "WeaponChance": 0.96,
   "LevelBounds": {
     "MinX": -6005.8276,
@@ -16,7 +16,7 @@
   "BodyCountToWin": 60,
   "TimeLimitInSeconds": -1.0,
   "FullZoom": false,
-  "Thumbnail": "base:textures/level_thumbnails/mag_campaign/lvl_mag_centre.qoi",
+  "Thumbnail": "textures/level_thumbnails/mag_campaign/lvl_mag_centre.qoi",
   "OpeningTransition": true,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [
@@ -313,7 +313,7 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
-        "Texture": "base:textures/doors/door_horizontal_1.png",
+        "Texture": "textures/doors/door_horizontal_1.png",
         "Behaviour": 1,
         "TopLeft": {
           "X": 5502.0903,
@@ -705,7 +705,7 @@
     },
     {
       "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "base:textures/backgrounds/mag_campaign/background_mag_centre_layer.qoi",
+      "TexturePath": "textures/backgrounds/mag_campaign/background_mag_centre_layer.qoi",
       "Angle": 0.0,
       "Position": {
         "X": 49.4292,
@@ -802,7 +802,7 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
-        "Texture": "base:textures/doors/door_horizontal_1.png",
+        "Texture": "textures/doors/door_horizontal_1.png",
         "Behaviour": 1,
         "TopLeft": {
           "X": -5423.275,
@@ -955,7 +955,7 @@
         "X": 49.727386,
         "Y": 316.83395
       },
-      "TexturePath": "base:textures/backgrounds/mag_campaign/background_mag_centre.qoi",
+      "TexturePath": "textures/backgrounds/mag_campaign/background_mag_centre.qoi",
       "Scale": 2.222222
     },
     {

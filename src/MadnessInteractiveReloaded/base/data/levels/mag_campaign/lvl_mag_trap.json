@@ -5,7 +5,7 @@
   "EnemySpawnInterval": 1.4,
   "MaxEnemyCount": 3,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "base:sounds/music/Lothyde/living_on_the_edge_(feat_monocronic).ogg",
+  "BackgroundMusic": "sounds/music/Lothyde/living_on_the_edge_(feat_monocronic).ogg",
   "WeaponChance": 0.96,
   "LevelBounds": {
     "MinX": -3219.782,
@@ -16,7 +16,7 @@
   "BodyCountToWin": 15,
   "TimeLimitInSeconds": -1.0,
   "FullZoom": true,
-  "Thumbnail": "base:textures/level_thumbnails/mag_campaign/lvl_mag_trap.qoi",
+  "Thumbnail": "textures/level_thumbnails/mag_campaign/lvl_mag_trap.qoi",
   "OpeningTransition": true,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [
@@ -68,7 +68,7 @@
     },
     {
       "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "base:textures/backgrounds/mag_campaign/background_mag_trap_layer_1.qoi",
+      "TexturePath": "textures/backgrounds/mag_campaign/background_mag_trap_layer_1.qoi",
       "Angle": 0.0,
       "Position": {
         "X": -3032.3162,
@@ -120,7 +120,7 @@
         "X": -19.782135,
         "Y": 704.09216
       },
-      "TexturePath": "base:textures/backgrounds/mag_campaign/background_mag_trap.qoi",
+      "TexturePath": "textures/backgrounds/mag_campaign/background_mag_trap.qoi",
       "Scale": 2.222222
     },
     {
@@ -197,7 +197,7 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
-        "Texture": "base:textures/doors/door_horizontal_1.png",
+        "Texture": "textures/doors/door_horizontal_1.png",
         "Behaviour": 1,
         "TopLeft": {
           "X": -481.5431,
@@ -265,7 +265,7 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
-        "Texture": "base:textures/doors/door_6.png",
+        "Texture": "textures/doors/door_6.png",
         "Behaviour": 0,
         "TopLeft": {
           "X": 3006.579,
@@ -302,7 +302,7 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
-        "Texture": "base:textures/doors/door_4.png",
+        "Texture": "textures/doors/door_4.png",
         "Behaviour": 0,
         "TopLeft": {
           "X": -3044.0906,
@@ -410,7 +410,7 @@
     },
     {
       "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "base:textures/backgrounds/mag_campaign/background_mag_trap_layer_2.qoi",
+      "TexturePath": "textures/backgrounds/mag_campaign/background_mag_trap_layer_2.qoi",
       "Angle": 0.0,
       "Position": {
         "X": 2992.4812,

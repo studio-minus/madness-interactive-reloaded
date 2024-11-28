@@ -5,7 +5,7 @@
   "EnemySpawnInterval": 2.0,
   "MaxEnemyCount": 4,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "base:sounds/music/Lothyde/a_casual_trip_through_hell.ogg",
+  "BackgroundMusic": "sounds/music/Lothyde/a_casual_trip_through_hell.ogg",
   "WeaponChance": 0.5,
   "LevelBounds": {
     "MinX": -2685.7327,
@@ -215,7 +215,7 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
-        "Texture": "base:textures/doors/door_horizontal_1.png",
+        "Texture": "textures/doors/door_horizontal_1.png",
         "Behaviour": 1,
         "TopLeft": {
           "X": -2597.229,
@@ -365,7 +365,7 @@
         "X": 109.82279,
         "Y": 220.30948
       },
-      "TexturePath": "base:textures/backgrounds/mag_campaign/background_mag_turret.qoi",
+      "TexturePath": "textures/backgrounds/mag_campaign/background_mag_turret.qoi",
       "Scale": 2.222222
     },
     {
@@ -405,7 +405,7 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
-        "Texture": "base:textures/doors/door_horizontal_2.png",
+        "Texture": "textures/doors/door_horizontal_2.png",
         "Behaviour": 1,
         "TopLeft": {
           "X": 2810.8389,

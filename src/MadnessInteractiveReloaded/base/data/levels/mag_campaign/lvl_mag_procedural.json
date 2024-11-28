@@ -5,7 +5,7 @@
   "EnemySpawnInterval": 1.1,
   "MaxEnemyCount": 3,
   "MaxSimultaneousAttackingEnemies": 2,
-  "BackgroundMusic": "base:sounds/music/Lothyde/living_on_the_edge_(feat_monocronic).ogg",
+  "BackgroundMusic": "sounds/music/Lothyde/living_on_the_edge_(feat_monocronic).ogg",
   "WeaponChance": 0.5,
   "LevelBounds": {
     "MinX": -3629.94,
@@ -16,7 +16,7 @@
   "BodyCountToWin": 18,
   "TimeLimitInSeconds": -1.0,
   "FullZoom": true,
-  "Thumbnail": "base:textures/level_thumbnails/mag_campaign/lvl_mag_procedural.qoi",
+  "Thumbnail": "textures/level_thumbnails/mag_campaign/lvl_mag_procedural.qoi",
   "OpeningTransition": true,
   "ExitingTransition": true,
   "EnemySpawnInstructions": [
@@ -134,7 +134,7 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
-        "Texture": "base:textures/doors/door_horizontal_2.png",
+        "Texture": "textures/doors/door_horizontal_2.png",
         "Behaviour": 1,
         "TopLeft": {
           "X": 3099.0073,
@@ -218,7 +218,7 @@
         "X": -116.60693,
         "Y": 190.12851
       },
-      "TexturePath": "base:textures/backgrounds/mag_campaign/background_mag_procedural.qoi",
+      "TexturePath": "textures/backgrounds/mag_campaign/background_mag_procedural.qoi",
       "Scale": 2.222222
     },
     {
@@ -339,7 +339,7 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
-        "Texture": "base:textures/doors/door_horizontal_2.png",
+        "Texture": "textures/doors/door_horizontal_2.png",
         "Behaviour": 1,
         "TopLeft": {
           "X": -3314.9956,
@@ -505,7 +505,7 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
-        "Texture": "base:textures/doors/door_7.png",
+        "Texture": "textures/doors/door_7.png",
         "Behaviour": 0,
         "TopLeft": {
           "X": -2459.6677,
@@ -542,7 +542,7 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
-        "Texture": "base:textures/doors/door_6.png",
+        "Texture": "textures/doors/door_6.png",
         "Behaviour": 0,
         "TopLeft": {
           "X": -695.9718,
