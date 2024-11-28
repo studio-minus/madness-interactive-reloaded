@@ -172,7 +172,9 @@ public class Door : LevelObject, ITagged
         Draw.Colour = Colors.White;
         Draw.Texture = Properties.EffectiveTexture;
         Draw.Material = Properties.EnemySpawnerDoor ? Prefabs.Editor.ExampleDoorMaterial : Prefabs.Editor.ExampleStaticDoorMaterial;
+
         Draw.Material.SetUniform("mainTex", Properties.EffectiveTexture);
+        Draw.Material.SetUniform(DoorComponent.DoorTypeUniform, (float)(int)Properties.Behaviour);
         Draw.Order = RenderOrders.BackgroundBehind.WithOrder(100);
         Draw.Quad(Properties.TopLeft, Properties.TopRight, Properties.BottomLeft, Properties.BottomRight);
 
@@ -275,6 +277,11 @@ public class Door : LevelObject, ITagged
                 Properties.Texture = null;
             }
         }
+
+        Ui.Label("Animation");
+        Ui.Layout.FitWidth(false).Height(32);
+        Ui.EnumDropdown(ref Properties.Behaviour);
+
         Ui.Spacer(16);
 
         Properties.IsPortal &= !Properties.IsLevelProgressionDoor;

@@ -68,6 +68,11 @@ public struct DoorProperties
         }
     }
 
+    /// <summary>
+    /// Determines the door animation style
+    /// </summary>
+    public DoorBehaviour Behaviour;
+
     public Vector2 TopLeft;
     public Vector2 TopRight;
     public Vector2 BottomLeft;
@@ -91,9 +96,15 @@ public struct DoorProperties
     public Rect GetBoundingBox()
     {
         return new Rect(
-            MathF.Min(BottomLeft.X, TopLeft.X),
-            MathF.Min(BottomLeft.Y, BottomRight.Y),
-            MathF.Max(TopRight.X, BottomRight.X),
-            MathF.Max(TopRight.Y, TopLeft.Y)).SortComponents();
+            float.Min(BottomLeft.X, TopLeft.X),
+            float.Min(BottomLeft.Y, BottomRight.Y),
+            float.Max(TopRight.X, BottomRight.X),
+            float.Max(TopRight.Y, TopLeft.Y)).SortComponents();
+    }
+
+    public enum DoorBehaviour
+    {
+        Vertical,
+        Horizontal
     }
 }
