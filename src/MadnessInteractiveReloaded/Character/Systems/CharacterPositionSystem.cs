@@ -38,8 +38,7 @@ public class CharacterPositionSystem : Walgelijk.System
             SetLimbScale(c);
             ProcessArmour(c);
 
-            if (c.NeedsLookUpdate)
-                c.NeedsLookUpdate = false;
+            c.NeedsLookUpdate = false;
 
             PositionCenter(exp, c);
 
@@ -188,9 +187,9 @@ public class CharacterPositionSystem : Walgelijk.System
         {
             var fr = Scene.GetComponentFrom<QuadShapeComponent>(foot.Entity);
 
-            if (lookUpdate && character.Look.Feet.HasValue)
+            if (lookUpdate)
             {
-                var tex = character.Look.Feet.Value.Value;
+                var tex = character.Look.Feet?.Value ?? Textures.Character.DefaultFoot;
                 fr.Material = SpriteMaterialCreator.Instance.Load(tex);
                 if (Scene.TryGetComponentFrom<TransformComponent>(fr.Entity, out var footTransform))
                     footTransform.Scale = charPos.Scale * tex.Size;

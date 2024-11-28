@@ -1,0 +1,13 @@
+0.50.0
+
+name Nexus support armor
+type BodyAccessory
+left textures/bodies/body2/nexus_support_armor/nexus_support_armor_left.png
+right textures/bodies/body2/nexus_support_armor/nexus_support_armor_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+deflect-chance 0.7
+damage-size 1
+offset 12 4

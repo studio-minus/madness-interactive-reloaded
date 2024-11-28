@@ -56,7 +56,14 @@ public class MadnessInteractiveReloaded
         AssetDeserialisers.Register(new DelegateDeserialiserBridge<Video>(p => new Video(p), "mp4"));
 
         foreach (var a in Directory.EnumerateFiles("resources", "*.waa"))
-            Assets.RegisterPackage(a);
+            try
+            {
+                Assets.RegisterPackage(a);
+            }
+            catch (Exception e)
+            {
+                Logger.Warn(e);
+            }
 
         Assets.Load<FixedAudioData>("sounds/null.wav");
 

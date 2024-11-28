@@ -2,6 +2,7 @@
 using System;
 using System.Numerics;
 using Walgelijk;
+using Walgelijk.AssetManager;
 
 namespace MIR.LevelEditor;
 
@@ -47,6 +48,31 @@ public struct DoorProperties
     /// </summary>
     public string? DestinationLevel;
 
+    /// <summary>
+    /// The texture to use for the door. Will fall back to default if null.
+    /// </summary>
+    public GlobalAssetId? Texture;
+
+    /// <summary>
+    /// Returns <see cref="Texture"/> or <see cref="Textures.Door"/>
+    /// </summary>
+    [JsonIgnore]
+    public readonly Texture EffectiveTexture
+    {
+        get
+        {
+            if (Texture.HasValue && Assets.TryLoad<Texture>(Texture.Value, out var loaded))
+                return loaded;
+
+            return Textures.Door;
+        }
+    }
+
+    /// <summary>
+    /// Determines the door animation style
+    /// </summary>
+    public DoorBehaviour Behaviour;
+
     public Vector2 TopLeft;
     public Vector2 TopRight;
     public Vector2 BottomLeft;
@@ -70,9 +96,15 @@ public struct DoorProperties
     public Rect GetBoundingBox()
     {
         return new Rect(
-            MathF.Min(BottomLeft.X, TopLeft.X),
-            MathF.Min(BottomLeft.Y, BottomRight.Y),
-            MathF.Max(TopRight.X, BottomRight.X),
-            MathF.Max(TopRight.Y, TopLeft.Y)).SortComponents();
+            float.Min(BottomLeft.X, TopLeft.X),
+            float.Min(BottomLeft.Y, BottomRight.Y),
+            float.Max(TopRight.X, BottomRight.X),
+            float.Max(TopRight.Y, TopLeft.Y)).SortComponents();
+    }
+
+    public enum DoorBehaviour
+    {
+        Vertical,
+        Horizontal
     }
 }

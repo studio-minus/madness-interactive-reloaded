@@ -19,7 +19,7 @@ public static class MadnessUi
     public static void AssetPicker(GlobalAssetId asset, Action<GlobalAssetId> action, Func<AssetMetadata, bool> filterFunction,
         int identity = 0, [CallerLineNumber] int site = 0, in string? title = null, in string? startPath = null)
     {
-        var id = IdGen.Create(identity, site, 9275208);
+        //var id = IdGen.Create(identity, site, 9275208);
 
         Ui.StartGroup(false, identity + site);
         {

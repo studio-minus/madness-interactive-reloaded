@@ -23,11 +23,11 @@
   "Weapons": null,
   "FloorLine": [
     {
-      "X": -2322.7605,
+      "X": -2358.7605,
       "Y": -608.53937
     },
     {
-      "X": 489.2395,
+      "X": 525.2395,
       "Y": -608.53937
     }
   ],
@@ -41,81 +41,40 @@
       "SpawnWeapon": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
       "Rectangle": {
-        "MinX": -2230.8867,
-        "MinY": -684.557,
-        "MaxX": 319.25345,
-        "MaxY": -539.75574
+        "MinX": -3149.238,
+        "MinY": -844.8411,
+        "MaxX": -2368.9536,
+        "MaxY": 2212.814
       },
       "Tag": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
-      "Rectangle": {
-        "MinX": 1572.6334,
-        "MinY": 1447.9979,
-        "MaxX": 2324.4355,
-        "MaxY": 1538.9695
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": 8.582649,
+        "Y": 425.85815
       },
-      "Tag": null
+      "TexturePath": "base:textures/backgrounds/experiment_4.qoi",
+      "Scale": 2.222222
     },
     {
-      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
       "Rectangle": {
-        "MinX": -1372.566,
-        "MinY": 1431.6082,
-        "MaxX": 1034.2523,
-        "MaxY": 1553.2158
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
-      "Rectangle": {
-        "MinX": 2308.1956,
-        "MinY": -585.92786,
-        "MaxX": 2433.707,
-        "MaxY": 1447.8083
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
-      "Rectangle": {
-        "MinX": -2258.933,
-        "MinY": 1441.427,
-        "MaxX": -1742.8867,
-        "MaxY": 1535.7601
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
-      "Rectangle": {
-        "MinX": -2419.6492,
-        "MinY": 211.07257,
-        "MaxX": -2310.4841,
-        "MaxY": 1407.4495
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.MovementBlocker, MIR",
-      "Rectangle": {
-        "MinX": 535.4704,
-        "MinY": -1491.2682,
-        "MaxX": 1940.3616,
-        "MaxY": 1993.9764
+        "MinX": 1931.9979,
+        "MinY": -1560.8081,
+        "MaxX": 6263.1797,
+        "MaxY": -631.8862
       },
       "Tag": null
     },
     {
       "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
       "Rectangle": {
-        "MinX": -2535.8752,
-        "MinY": 1495.7712,
-        "MaxX": 1190.6482,
+        "MinX": 1367.7461,
+        "MinY": 1495.2814,
+        "MaxX": 3139.8347,
         "MaxY": 2000.8077
       },
       "Tag": null
@@ -123,10 +82,30 @@
     {
       "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
       "Rectangle": {
-        "MinX": 2385.0857,
-        "MinY": -1477.2678,
-        "MaxX": 3140.083,
-        "MaxY": 1771.8342
+        "MinX": -3155.9626,
+        "MinY": 1975.1567,
+        "MaxX": 3137.3582,
+        "MaxY": 2595.5771
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": -5844.7036,
+        "MinY": -1484.3984,
+        "MaxX": 539.3164,
+        "MaxY": -608.53937
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "Rectangle": {
+        "MinX": -3966.5383,
+        "MinY": -4253.175,
+        "MaxX": 5584.4126,
+        "MaxY": -3940.792
       },
       "Tag": null
     },
@@ -146,6 +125,7 @@
         "IsPortal": true,
         "PortalID": "portal_2",
         "DestinationLevel": "exp_club",
+        "Texture": "base:textures/doors/door_4.png",
         "TopLeft": {
           "X": -2434.0454,
           "Y": 149.4035
@@ -168,69 +148,90 @@
     {
       "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
       "Rectangle": {
-        "MinX": -3966.5383,
-        "MinY": -4253.175,
-        "MaxX": 5584.4126,
-        "MaxY": -3940.792
+        "MinX": 2385.0857,
+        "MinY": -1477.2678,
+        "MaxX": 3140.083,
+        "MaxY": 1771.8342
       },
       "Tag": null
     },
     {
       "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
       "Rectangle": {
-        "MinX": -5844.7036,
-        "MinY": -1484.3984,
-        "MaxX": 539.3164,
-        "MaxY": -608.53937
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
-      "Rectangle": {
-        "MinX": -3155.9626,
-        "MinY": 1975.1567,
-        "MaxX": 3137.3582,
-        "MaxY": 2595.5771
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
-      "Rectangle": {
-        "MinX": 1367.7461,
-        "MinY": 1495.2814,
-        "MaxX": 3139.8347,
+        "MinX": -2535.8752,
+        "MinY": 1495.7712,
+        "MaxX": 1190.6482,
         "MaxY": 2000.8077
       },
       "Tag": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "$type": "MIR.LevelEditor.Objects.MovementBlocker, MIR",
       "Rectangle": {
-        "MinX": 1931.9979,
-        "MinY": -1560.8081,
-        "MaxX": 6263.1797,
-        "MaxY": -631.8862
+        "MinX": 535.4704,
+        "MinY": -1491.2682,
+        "MaxX": 1940.3616,
+        "MaxY": 1993.9764
       },
       "Tag": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.Background, MIR",
-      "Center": {
-        "X": 8.582649,
-        "Y": 425.85815
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -2419.6492,
+        "MinY": 211.07257,
+        "MaxX": -2310.4841,
+        "MaxY": 1407.4495
       },
-      "TexturePath": "textures/backgrounds/experiment_4.qoi",
-      "Scale": 2.222222
+      "Tag": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.AllBlocker, MIR",
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
       "Rectangle": {
-        "MinX": -3149.238,
-        "MinY": -844.8411,
-        "MaxX": -2368.9536,
-        "MaxY": 2212.814
+        "MinX": -2258.933,
+        "MinY": 1441.427,
+        "MaxX": -1742.8867,
+        "MaxY": 1535.7601
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 2308.1956,
+        "MinY": -585.92786,
+        "MaxX": 2433.707,
+        "MaxY": 1447.8083
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -1372.566,
+        "MinY": 1431.6082,
+        "MaxX": 1034.2523,
+        "MaxY": 1553.2158
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 1572.6334,
+        "MinY": 1447.9979,
+        "MaxX": 2324.4355,
+        "MaxY": 1538.9695
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -2230.8867,
+        "MinY": -684.557,
+        "MaxX": 319.25345,
+        "MaxY": -539.75574
       },
       "Tag": null
     },
@@ -250,6 +251,7 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": "exp_club",
+        "Texture": "base:textures/doors/door_7.png",
         "TopLeft": {
           "X": -228.45447,
           "Y": 188.0362

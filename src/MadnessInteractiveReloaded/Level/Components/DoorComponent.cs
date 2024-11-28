@@ -12,6 +12,7 @@ public class DoorComponent : Component, IDisposable
     public const string TimeUniform = "time";
     public const string TimeSinceChangeUniform = "timeSinceChange";
     public const string IsOpenUniform = "isOpen";
+    public const string DoorTypeUniform = "doorType";
 
     /// <summary>
     /// Is the door open? 
@@ -43,6 +44,8 @@ public class DoorComponent : Component, IDisposable
     {
         Material = material;
         Properties = properties;
+        Material.SetUniform("mainTex", properties.EffectiveTexture);
+        Material.SetUniform(DoorTypeUniform, (float)(int)properties.Behaviour);
 
         Properties.FacingDirection = Vector2.Normalize((Properties.BottomLeft + Properties.BottomRight) / 2 - Properties.SpawnPoint);
         if (float.IsNaN(properties.FacingDirection.X) || float.IsNaN(properties.FacingDirection.Y))

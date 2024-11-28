@@ -38,7 +38,7 @@
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
 		<DebugType>portable</DebugType>
 	</PropertyGroup>
-	
+
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
 		<Exec Command=".\MIR --mode pack --input &quot;$(ProjectDir)base&quot; --output resources/base.waa" WorkingDirectory="$(OutDir)" />
 	</Target>
@@ -51,13 +51,14 @@
 		<PackageReference Include="Lib.Harmony" Version="2.3.3" />
 		<PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="4.11.0" />
 		<PackageReference Include="NativeFileDialogExtendedSharp" Version="0.1.0" />
+		<PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="2.88.9" />
 		<PackageReference Include="System.CommandLine.DragonFruit" Version="0.4.0-alpha.22272.1" />
-		<PackageReference Include="Walgelijk" Version="0.29.10" />
+		<PackageReference Include="Walgelijk" Version="0.29.11" />
 		<PackageReference Include="Walgelijk.AssetManager" Version="0.16.14" />
 		<PackageReference Include="Walgelijk.CommonAssetDeserialisers" Version="0.8.3" />
 		<PackageReference Include="Walgelijk.Localisation" Version="1.1.21" />
 		<PackageReference Include="Walgelijk.Onion" Version="0.5.24" />
-		<PackageReference Include="Walgelijk.OpenTK" Version="0.23.0" />
+		<PackageReference Include="Walgelijk.OpenTK" Version="0.23.2" />
 		<PackageReference Include="Walgelijk.OpenTK.MotionTK" Version="1.1.27" />
 		<PackageReference Include="Walgelijk.ParticleSystem" Version="0.2.34" />
 		<PackageReference Include="Walgelijk.Physics" Version="0.3.2" />

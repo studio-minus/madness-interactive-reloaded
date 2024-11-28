@@ -22,6 +22,7 @@ public class Door : LevelObject, ITagged
     public DoorProperties Properties;
 
     private static readonly Vector2[] polygonVertexBuffer = new Vector2[4];
+    private Material previewMaterial;
 
     private TranslateDrag<Vector2> dragTopLeft, dragTopRight, dragBottomleft, dragBottomRight;
     [Flags]
@@ -41,6 +42,7 @@ public class Door : LevelObject, ITagged
     public Door(LevelEditor.LevelEditorComponent editor, DoorProperties properties) : base(editor)
     {
         Properties = properties;
+        previewMaterial = DoorMaterialPool.Instance.ForceCreateNew();
     }
 
     public float GetDistanceFromPolygon(Vector2 worldPoint)
@@ -170,8 +172,15 @@ public class Door : LevelObject, ITagged
         Properties.FacingDirection = Vector2.Normalize(bottomOfDoor - Properties.SpawnPoint);
 
         Draw.Colour = Colors.White;
-        Draw.Texture = Textures.Door.Value;
-        Draw.Material = Properties.EnemySpawnerDoor ? Prefabs.Editor.ExampleDoorMaterial : Prefabs.Editor.ExampleStaticDoorMaterial;
+        Draw.Texture = Properties.EffectiveTexture;
+        Draw.Material = previewMaterial;
+
+        var time = scene.Game.State.Time.SecondsSinceLoadUnscaled;
+        previewMaterial.SetUniform(DoorComponent.DoorTypeUniform, (float)(int)Properties.Behaviour);
+        previewMaterial.SetUniform(DoorComponent.TimeUniform, time);
+        previewMaterial.SetUniform(DoorComponent.TimeSinceChangeUniform, float.Floor(time));
+        previewMaterial.SetUniform(DoorComponent.IsOpenUniform, time % 2 > 1 ? 0f : 1f);
+
         Draw.Order = RenderOrders.BackgroundBehind.WithOrder(100);
         Draw.Quad(Properties.TopLeft, Properties.TopRight, Properties.BottomLeft, Properties.BottomRight);
 
@@ -252,13 +261,44 @@ public class Door : LevelObject, ITagged
             Ui.Checkbox(ref Properties.IsPortal, "Portal door");
         }
 
+        Ui.Spacer(16);
+        Ui.Label("Texture");
+        Ui.Layout.FitWidth(false).Height(32);
+        MadnessUi.AssetPicker(Properties.Texture ?? default, id =>
+        {
+            Editor.RegisterAction();
+
+            if (Textures.Door.Id == id)
+                Properties.Texture = null;
+            else
+                Properties.Texture = id;
+        }, static c => c.MimeType.Contains("image"));
+
+        if (Properties.Texture.HasValue)
+        {
+            Ui.Layout.FitWidth(false).Height(32);
+            if (Ui.Button("Reset texture"))
+            {
+                Editor.RegisterAction();
+                Properties.Texture = null;
+            }
+        }
+
+        Ui.Label("Animation");
+        Ui.Layout.FitWidth(false).Height(32);
+        if (Ui.EnumDropdown(ref Properties.Behaviour))
+        {
+            Editor.RegisterAction();
+        }
+
+        Ui.Spacer(16);
+
         Properties.IsPortal &= !Properties.IsLevelProgressionDoor;
 
         if (Properties.IsPortal)
         {
             Properties.DestinationLevel ??= Utilities.PickRandom(Editor.LevelIds);
             int selectedIndex = Array.IndexOf(Editor.LevelIds, Properties.DestinationLevel);
-
 
             Ui.Layout.FitWidth(false).Height(32);
             if (Ui.Dropdown(Editor.LevelIds, ref selectedIndex))
@@ -275,6 +315,8 @@ public class Door : LevelObject, ITagged
         Ui.Layout.FitWidth(false).Height(32);
         if (Ui.Button("Horizontal flip"))
         {
+            Editor.RegisterAction();
+
             var original = Properties;
 
             var center = original.TopRight + original.TopLeft + original.BottomLeft + original.BottomRight;
@@ -296,4 +338,10 @@ public class Door : LevelObject, ITagged
 
     public override Vector2 GetPosition() => Properties.Center;
     public override void SetPosition(Vector2 pos) => Properties.Center = pos;
+
+    public override void Dispose()
+    {
+        previewMaterial.Dispose();
+        base.Dispose();
+    }
 }
