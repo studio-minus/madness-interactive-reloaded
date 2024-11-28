@@ -122,7 +122,7 @@
         "IsPortal": true,
         "PortalID": "portal_1",
         "DestinationLevel": "exp_2",
-        "Texture": "base:textures/doors/door_3.png",
+        "Texture": "textures/doors/door_3.png",
         "TopLeft": {
           "X": -3224.796,
           "Y": -124.71495
@@ -156,7 +156,7 @@
         "X": -7.6189575,
         "Y": 147.8646
       },
-      "TexturePath": "base:textures/backgrounds/experiment_3.qoi",
+      "TexturePath": "textures/backgrounds/experiment_3.qoi",
       "Scale": 2.222222
     },
     {
@@ -203,7 +203,7 @@
         "IsPortal": true,
         "PortalID": "portal_2",
         "DestinationLevel": "exp_3",
-        "Texture": "base:textures/doors/door_2.png",
+        "Texture": "textures/doors/door_2.png",
         "TopLeft": {
           "X": 3204.4197,
           "Y": -125.68404
@@ -303,7 +303,7 @@
     },
     {
       "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "base:textures/pipin_4x27.png",
+      "TexturePath": "textures/pipin_4x27.png",
       "Angle": 0.0,
       "Position": {
         "X": -130.03195,

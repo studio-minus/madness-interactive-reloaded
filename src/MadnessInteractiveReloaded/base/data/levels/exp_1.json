@@ -153,7 +153,7 @@
         "X": 148.7774,
         "Y": 249.4029
       },
-      "TexturePath": "base:textures/backgrounds/experiment_1.qoi",
+      "TexturePath": "textures/backgrounds/experiment_1.qoi",
       "Scale": 2.96295
     },
     {
@@ -186,7 +186,7 @@
         "IsPortal": true,
         "PortalID": "portal_0",
         "DestinationLevel": "exp_2",
-        "Texture": "base:textures/doors/door_5.png",
+        "Texture": "textures/doors/door_5.png",
         "TopLeft": {
           "X": 5670.7915,
           "Y": -13.939545
@@ -222,7 +222,7 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": null,
-        "Texture": "base:textures/doors/door_4.png",
+        "Texture": "textures/doors/door_4.png",
         "TopLeft": {
           "X": -291.39874,
           "Y": 36.624134
