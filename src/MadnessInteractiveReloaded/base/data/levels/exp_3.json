@@ -56,7 +56,7 @@
         "X": 8.582649,
         "Y": 425.85815
       },
-      "TexturePath": "base:textures/backgrounds/experiment_4.qoi",
+      "TexturePath": "textures/backgrounds/experiment_4.qoi",
       "Scale": 2.222222
     },
     {
@@ -125,7 +125,7 @@
         "IsPortal": true,
         "PortalID": "portal_2",
         "DestinationLevel": "exp_club",
-        "Texture": "base:textures/doors/door_4.png",
+        "Texture": "textures/doors/door_4.png",
         "TopLeft": {
           "X": -2434.0454,
           "Y": 149.4035
@@ -251,7 +251,7 @@
         "IsPortal": false,
         "PortalID": null,
         "DestinationLevel": "exp_club",
-        "Texture": "base:textures/doors/door_7.png",
+        "Texture": "textures/doors/door_7.png",
         "TopLeft": {
           "X": -228.45447,
           "Y": 188.0362

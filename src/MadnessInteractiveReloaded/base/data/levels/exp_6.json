@@ -42,7 +42,7 @@
     },
     {
       "$type": "MIR.LevelEditor.Objects.FlipbookRect, MIR",
-      "TexturePath": "base:textures/shield_exp6.png",
+      "TexturePath": "textures/shield_exp6.png",
       "Angle": 0.0,
       "Position": {
         "X": -696.99335,
@@ -81,7 +81,7 @@
         "X": 3.7044067,
         "Y": 284.5122
       },
-      "TexturePath": "base:textures/backgrounds/experiment_6.qoi",
+      "TexturePath": "textures/backgrounds/experiment_6.qoi",
       "Scale": 2.222222
     },
     {
@@ -157,7 +157,7 @@
         "IsPortal": true,
         "PortalID": "exp5_2",
         "DestinationLevel": "exp_5",
-        "Texture": "base:textures/doors/door_6.png",
+        "Texture": "textures/doors/door_6.png",
         "TopLeft": {
           "X": 1770.9698,
           "Y": 202.02495
