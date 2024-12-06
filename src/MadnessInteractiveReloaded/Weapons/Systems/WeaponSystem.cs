@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Numerics;
 using Walgelijk;
 using Walgelijk.AssetManager;
@@ -365,12 +365,12 @@ public class WeaponSystem : Walgelijk.System
                     if (willDeflect)
                     {
                         if (deflectingWeapon)
-                            victimChar.DrainDodge(ConVars.Instance.DeflectDodgeCost * weapon.Data.Damage); //minder dodge damage met zwaardiaan
+                            victimChar.DrainDodge(ConVars.Instance.DeflectDodgeCost * weapon.Data.Damage);
 
                         if ((victimChar.HasDodge() || victimChar.Stats.DodgeOversaturate))
                         {
-                            var perfectDeflect = deflectingWeapon && wielder.AttacksCannotBeAutoDodged && victimChar.Positioning.MeleeBlockProgress < 1; // TODO convar
-                            if (!wielder.AttacksCannotBeAutoDodged || perfectDeflect) // you are allowed to deflect an accurate shot event if you time it right
+                            var perfectDeflect = deflectingWeapon && wielder.AttacksCannotBeAutoDodged && victimChar.Positioning.MeleeBlockProgress < 1;
+                            if (!wielder.AttacksCannotBeAutoDodged || perfectDeflect)
                             {
                                 var hitPosOnLine = hit.Position;
 
@@ -380,6 +380,7 @@ public class WeaponSystem : Walgelijk.System
                                     victimChar.Positioning.MeleeBlockImpactIntensity += Utilities.RandomFloat(-1, 1);
                                 }
 
+                                Vector2 returnDir;
                                 if (perfectDeflect)
                                 {
                                     wielder.DodgeMeter = -1;
@@ -389,20 +390,49 @@ public class WeaponSystem : Walgelijk.System
                                     victimChar.Positioning.MeleeBlockImpactIntensity += 1;
                                     victimChar.Positioning.CurrentRecoil += 2;
 
-                                    // TODO should be in a system and the sound is not very nice
-                                    Audio.PlayOnce(
-                                        SoundCache.Instance.LoadSoundEffect(
-                                            Assets.Load<FixedAudioData>("sounds/deflection/perfect_deflect_1.wav")), 2);
-                                    const float d = 0.5f;
-                                    MadnessUtils.RoutineForSecondsPausable(d, static (dt) =>
+                                    returnDir = Vector2.Normalize(wielder.Positioning.Head.GlobalPosition - hitPosOnLine);
+
+                                    var deflectSound = SoundCache.Instance.LoadSoundEffect(
+                                        Assets.Load<FixedAudioData>("sounds/deflection/perfect_deflect_1.wav"));
+                                    Audio.PlayOnce(deflectSound, 2f);
+
+                                    var impactSound = Utilities.PickRandom(Sounds.BulletDeflection);
+                                    Audio.PlayOnce(impactSound, 0.8f);
+
+                                    // Add temporary invincibility frames during perfect deflect
+                                    victimChar.Flags |= CharacterFlags.Invincible;
+                                    MadnessUtils.DelayPausable(0.1f, () => 
                                     {
-                                        Game.Main.State.Time.TimeScale = Utilities.SmoothApproach(Game.Main.State.Time.TimeScale, 1, 1, dt);
+                                        if (victimChar.IsAlive)
+                                            victimChar.Flags &= ~CharacterFlags.Invincible;
                                     });
-                                    MadnessUtils.DelayPausable(0.05f, static () => { Game.Main.State.Time.TimeScale = 0.2f; });
-                                    MadnessUtils.DelayPausable(d, static () => { Game.Main.State.Time.TimeScale = 1; });
+
+                                    // Visual feedback
+                                    MadnessUtils.Flash(Colors.White.WithAlpha(0.3f), 0.1f);
+                                    
+                                    Prefabs.CreateDeflectionSpark(
+                                        Scene, 
+                                        hitPosOnLine, 
+                                        Utilities.VectorToAngle(returnDir), 
+                                        2f
+                                    );
                                 }
                                 else
+                                {
+                                    returnDir = Vector2.Normalize(bulletDirection * new Vector2(-1, Utilities.RandomFloat(-12, 12)));
                                     Audio.PlayOnce(Utilities.PickRandom(Sounds.BulletDeflection), 0.5f);
+                                    Prefabs.CreateDeflectionSpark(
+                                        Scene, 
+                                        hitPosOnLine, 
+                                        Utilities.VectorToAngle(returnDir), 
+                                        1f
+                                    );
+                                }
+
+                                // Immediately set up deflected bullet without delay
+                                wielder = victimChar;
+                                CastBulletRay(hitPosOnLine, returnDir, weapon, data, wielder, totalDistance, iteration + 1);
+                                return; // Skip further bullet processing
 
                                 if (deflectingArmour && victimChar.IsAlive && victimChar.Flags.HasFlag(CharacterFlags.StunAnimationOnNonFatalAttack))
                                 {
@@ -411,17 +441,6 @@ public class WeaponSystem : Walgelijk.System
                                     else
                                         victimChar.PlayAnimation(Registries.Animations.Get("stun_light_backwards"), 1.2f);
                                 }
-
-                                var returnDir = perfectDeflect
-                                    ? Vector2.Normalize(wielder.Positioning.Head.GlobalPosition - hitPosOnLine)
-                                    : Vector2.Normalize(bulletDirection * new Vector2(-1, Utilities.RandomFloat(-12, 12)));
-                                wielder = victimChar;
-                                MadnessUtils.DelayPausable(0.05f, () =>
-                                {
-                                    CastBulletRay(hitPosOnLine, returnDir, weapon, data, wielder, totalDistance, iteration + 1);
-                                });
-                                Prefabs.CreateDeflectionSpark(Scene, hitPosOnLine, Utilities.VectorToAngle(returnDir), 1);
-                                return;
                             }
                         }
                     }
