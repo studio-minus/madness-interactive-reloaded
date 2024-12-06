@@ -1,9 +1,10 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 using System;
 using System.IO;
 using System.Linq;
 using Walgelijk;
 using Walgelijk.AssetManager;
+using System.Text;
 
 namespace MIR;
 
@@ -138,27 +139,34 @@ public static class Program
 
             return;
         }
+#endif
     }
 
     private static void WriteLog(string path)
     {
-        // Add a disk logger to the ILogger thing
-
-        //var impl = Logger.Implementations.FirstOrDefault(a => a is DiskLogger);
-        //if (impl == null || impl is not DiskLogger diskLogger)
-        //{
-        //    File.WriteAllText(path, "Disk logger could not be found. No log was recorded. This is catastrophic.");
-        //    return;
-        //}
-        //try
-        //{
-        //    File.Copy(diskLogger.TargetPath, path);
-        //}
-        //catch (Exception e)
-        //{
-        //    File.WriteAllText(path, "Log could not be copied to target location: " + e);
-        //    return;
-        //}
+        try
+        {
+            var logContent = new StringBuilder();
+            logContent.AppendLine($"Crash log generated at {DateTime.Now}");
+            logContent.AppendLine($"Game Version: {GameVersion.Version}");
+            logContent.AppendLine($"OS: {Environment.OSVersion}");
+            logContent.AppendLine($"Runtime: {Environment.Version}");
+            
+            // Add game state info
+            if (MadnessInteractiveReloaded.Game != null)
+            {
+                logContent.AppendLine("\nGame State:");
+                logContent.AppendLine($"Current Scene: {MadnessInteractiveReloaded.Game.Scene?.GetType().Name}");
+                logContent.AppendLine($"Active Systems: {string.Join(", ", MadnessInteractiveReloaded.Game.Scene?.GetSystems().Where(s => s.Enabled).Select(s => s.GetType().Name) ?? Array.Empty<string>())}");
+            }
+            
+            // Write the log content to file
+            File.WriteAllText(path, logContent.ToString());
+        }
+        catch (Exception e)
+        {
+            File.WriteAllText(path, $"Failed to write crash log: {e}");
+        }
     }
 
     private static void WriteComponents(string path)
@@ -219,6 +227,5 @@ public static class Program
             var value = item.GetValue(obj);
             w.WriteLine("\t\tp_{0}: {1}", item.Name, value);
         }
-#endif
     }
 }
