@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using System.Numerics;
 using Walgelijk;
 using Walgelijk.AssetManager;
@@ -17,6 +17,7 @@ public class CampaignMenuSystem : Walgelijk.System
     // TODO maybe use a shared rendertexure for this?
     public static RenderTexture PlayerDrawTarget = new(512, 512, flags: RenderTargetFlags.None);
     private Rect campaignBoxRect;
+    private bool isLoadingCampaign = false;
 
     private static readonly MenuCharacterRenderer menuCharacterRenderer = new();
 
@@ -247,10 +248,9 @@ public class CampaignMenuSystem : Walgelijk.System
                         "cmpgn-menu-play" :
                         (stats.LevelIndex >= campaign.Levels.Length ? "cmpgn-menu-restart" : "cmpgn-menu-continue");
                     Ui.Layout.Size(130, 40).StickRight().StickBottom().Order(1);
-                    if (Ui.Button(Localisation.Get(btnKey)))
+                    if (!isLoadingCampaign && Ui.Button(Localisation.Get(btnKey)))
                     {
-                        // TODO ensure we cant press this button while loading a campaign
-
+                        isLoadingCampaign = true; // prevent double click (easy fix)
                         var i = stats.LevelIndex;
 
                         if (i >= campaign.Levels.Length) // we completed the campaign, restart
