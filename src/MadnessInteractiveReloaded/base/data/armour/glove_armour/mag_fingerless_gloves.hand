@@ -1,0 +1,32 @@
+0.35.0
+
+name Mag fingerless gloves
+hidden True
+
+Fist
+	front textures/bodies/hands/mag_fingerless_gloves/mag_fingerless_gloves_fist.png
+	back  textures/bodies/hands/mag_fingerless_gloves/mag_fingerless_gloves_fist_back.png
+	
+HoldPistol
+	front textures/bodies/hands/mag_fingerless_gloves/mag_fingerless_gloves_pistol.png
+	back  textures/bodies/hands/mag_fingerless_gloves/mag_fingerless_gloves_pistol_back.png
+	
+HoldUnderside
+	front textures/bodies/hands/mag_fingerless_gloves/mag_fingerless_gloves_underside.png
+	back  textures/bodies/hands/mag_fingerless_gloves/mag_fingerless_gloves_underside_back.png
+	
+HoldRifle
+	front textures/bodies/hands/mag_fingerless_gloves/mag_fingerless_gloves_rifle.png
+	back  textures/bodies/hands/mag_fingerless_gloves/mag_fingerless_gloves_rifle_back.png
+	
+Open
+	front textures/bodies/hands/mag_fingerless_gloves/mag_fingerless_gloves_open.png
+	back  textures/bodies/hands/mag_fingerless_gloves/mag_fingerless_gloves_open_back.png	
+
+Point
+	front textures/bodies/hands/mag_fingerless_gloves/mag_fingerless_gloves_point.png
+	back  textures/bodies/hands/mag_fingerless_gloves/mag_fingerless_gloves_point_back.png
+	
+HoldStock
+	front textures/bodies/hands/mag_fingerless_gloves/mag_fingerless_gloves_stock.png
+	back  textures/bodies/hands/mag_fingerless_gloves/mag_fingerless_gloves_stock_back.png

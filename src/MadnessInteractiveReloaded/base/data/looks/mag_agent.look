@@ -9,5 +9,5 @@ head
    mag_head
    mag_agent_mask_eyes
 
-hands fingerless_gloves
+hands mag_fingerless_gloves
 blood #ff0000
