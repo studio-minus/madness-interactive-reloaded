@@ -55,6 +55,8 @@ public class MadnessInteractiveReloaded
         AssetDeserialisers.Register(new DelegateDeserialiserBridge<Language>(Language.Load, "json"));
         AssetDeserialisers.Register(new DelegateDeserialiserBridge<Video>(p => new Video(p), "mp4"));
 
+        // load asset packs
+        IdUtil.VanillaPackageIds.Add(new PackageId("base"));
         foreach (var a in Directory.EnumerateFiles("resources", "*.waa"))
             try
             {
