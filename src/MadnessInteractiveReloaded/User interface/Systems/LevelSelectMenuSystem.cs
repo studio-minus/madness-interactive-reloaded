@@ -237,6 +237,7 @@ public class LevelSelectMenuSystem : Walgelijk.System
     public override void OnActivate()
     {
         currentScreen = Screen.LevelSelect;
+        isLoadingLevel = false;
     }
 
     public override void Update()
@@ -382,9 +383,9 @@ public class LevelSelectMenuSystem : Walgelijk.System
 
             Ui.Theme.FontSize(24).OutlineWidth(2).Padding(12).Once();
             Ui.Layout.FitContainer(0.2f, null).Scale(-12, 0).Height(60).StickBottom().StickRight();
-            if (!isLoadingLevel && Ui.Button("Proceed"))
+            if (Ui.Button("Proceed") && !isLoadingLevel)
             {
-                isLoadingLevel = true; // prevent double click (another easy fix)
+                isLoadingLevel = true; // prevent double click
                 Game.Scene = LevelLoadingScene.Create(Game, Registries.Levels.Get(selectedLevel).Level, SceneCacheSettings.NoCache);
                 MadnessUtils.Flash(Colors.Black, 0.2f);
             }

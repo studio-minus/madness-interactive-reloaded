@@ -21,6 +21,11 @@ public class CampaignMenuSystem : Walgelijk.System
 
     private static readonly MenuCharacterRenderer menuCharacterRenderer = new();
 
+    public override void OnActivate()
+    {
+        isLoadingCampaign = false;
+    }
+
     public override void Render()
     {
         if (!MadnessUtils.FindPlayer(Scene, out _, out var character))
@@ -248,9 +253,9 @@ public class CampaignMenuSystem : Walgelijk.System
                         "cmpgn-menu-play" :
                         (stats.LevelIndex >= campaign.Levels.Length ? "cmpgn-menu-restart" : "cmpgn-menu-continue");
                     Ui.Layout.Size(130, 40).StickRight().StickBottom().Order(1);
-                    if (!isLoadingCampaign && Ui.Button(Localisation.Get(btnKey)))
+                    if (Ui.Button(Localisation.Get(btnKey)) && !isLoadingCampaign)
                     {
-                        isLoadingCampaign = true; // prevent double click (easy fix)
+                        isLoadingCampaign = true; // prevent double click
                         var i = stats.LevelIndex;
 
                         if (i >= campaign.Levels.Length) // we completed the campaign, restart
