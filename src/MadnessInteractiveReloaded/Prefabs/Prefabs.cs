@@ -20,7 +20,7 @@ namespace MIR;
 /// </summary>
 public static class Prefabs
 {
-    private static QueryResult[] buffer = new QueryResult[8];
+    private static readonly QueryResult[] buffer = new QueryResult[8];
 
     /// <summary>
     /// Spawn a piece of text in the world.
@@ -1059,13 +1059,13 @@ public static class Prefabs
     {
         //TODO wat is dit voor bullshit
         public static readonly Material ExampleDoorMaterial = new(new Shader(
-            ShaderDefaults.WorldSpaceVertex,
-            Assets.Load<string>("shaders/door.frag").Value
+            BuiltInShaders.WorldSpaceVertex,
+            Assets.LoadNoCache<string>("shaders/door.frag")
         ));
 
         public static readonly Material ExampleStaticDoorMaterial = new(new Shader(
-            ShaderDefaults.WorldSpaceVertex,
-            Assets.Load<string>("shaders/door.frag").Value
+            BuiltInShaders.WorldSpaceVertex,
+            Assets.LoadNoCache<string>("shaders/door.frag")
         ));
     }
 }
