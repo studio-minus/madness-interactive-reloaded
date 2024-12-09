@@ -14,7 +14,7 @@
     "BulletsPerShot": 1,
     "RoundsPerMagazine": 20,
     "BurstFireCount": 0,
-    "Accuracy": 0.85,
+    "Accuracy": 1.0,
     "Recoil": 0.35,
     "RotationalRecoilIntensity": 1.0,
     "RecoilHandling": 1.0,
@@ -39,21 +39,21 @@
   "HoldForGrip": false,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {
-    "X": 266.07553,
-    "Y": 56.95684
+    "X": 300.94336,
+    "Y": 40.297764
   },
   "CasingEjectionPoint": {
-    "X": -33.921185,
-    "Y": 69.80331
+    "X": -65.30223,
+    "Y": 54.693924
   },
   "HoldPoints": [
     {
-      "X": 106.154755,
-      "Y": 21.372383
+      "X": 139.0855,
+      "Y": 35.70691
     },
     {
-      "X": 83.51048,
-      "Y": 39.861904
+      "X": 54.50155,
+      "Y": 19.55563
     }
   ],
   "AnimatedParts": [
@@ -71,22 +71,22 @@
         "Keys": [
           {
             "Value": {
-              "X": 110.0,
-              "Y": 89.0
+              "X": -110.0,
+              "Y": 85.0
             },
             "Position": 0.0
           },
           {
             "Value": {
-              "X": 65.0,
-              "Y": 89.0
+              "X": -140.0,
+              "Y": 85.0
             },
-            "Position": 0.1
+            "Position": 0.15
           },
           {
             "Value": {
-              "X": 110.0,
-              "Y": 89.0
+              "X": -110.0,
+              "Y": 85.0
             },
             "Position": 1.0
           }
