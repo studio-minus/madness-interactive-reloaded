@@ -52,12 +52,15 @@ public class PlayerCharacterSystem : Walgelijk.System
         character.AimOrigin = character.Positioning.GlobalCenter;
         if (equipped != null && equipped.Data.WeaponType is WeaponType.Firearm && Scene.TryGetComponentFrom<TransformComponent>(equipped.Entity, out var equippedTransform))
         {
+            var a = character.AimDirection;
+            var th = float.Atan2(a.Y, a.X);
+
+            // TODO this is fucked up because its actually determined in CharacterPositionSystem.PositionHands
+            // and I just copied the easing and everything to here.
             var ironSightOffset = CharacterConstants.IronsightOffset.Y * Easings.Quad.InOut(character.Positioning.IronSightProgress) * character.Positioning.Scale;
             var barrel = equipped.BarrelEndPoint - equippedTransform.LocalPivot;
-            var verticalOffset = barrel.Y + ironSightOffset;
-            var aimDirection = character.AimDirection;
-            var aimAngle = float.Atan2(aimDirection.Y, aimDirection.X);
-            character.AimOrigin += Vector2.TransformNormal(new Vector2(0, verticalOffset * character.Positioning.FlipScaling), Matrix3x2.CreateRotation(aimAngle));
+            var o = barrel.Y + ironSightOffset;
+            character.AimOrigin += Vector2.TransformNormal(new Vector2(0, o * character.Positioning.FlipScaling), Matrix3x2.CreateRotation(th));
         }
 
         if (!experimentMode)
