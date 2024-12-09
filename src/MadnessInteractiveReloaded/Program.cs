@@ -151,15 +151,7 @@ public static class Program
             logContent.AppendLine($"Game Version: {GameVersion.Version}");
             logContent.AppendLine($"OS: {Environment.OSVersion}");
             logContent.AppendLine($"Runtime: {Environment.Version}");
-            
-            // Add game state info
-            if (MadnessInteractiveReloaded.Game != null)
-            {
-                logContent.AppendLine("\nGame State:");
-                logContent.AppendLine($"Current Scene: {MadnessInteractiveReloaded.Game.Scene?.GetType().Name}");
-                logContent.AppendLine($"Active Systems: {string.Join(", ", MadnessInteractiveReloaded.Game.Scene?.GetSystems().Where(s => s.Enabled).Select(s => s.GetType().Name) ?? Array.Empty<string>())}");
-            }
-            
+
             // Write the log content to file
             File.WriteAllText(path, logContent.ToString());
         }
