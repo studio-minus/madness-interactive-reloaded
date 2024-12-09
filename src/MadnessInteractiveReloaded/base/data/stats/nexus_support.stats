@@ -1,0 +1,21 @@
+﻿0.50.0
+
+name Nexus support
+
+aiming_randomness 0.3
+shooting_timeout 0.3
+recoil_handling 0.9
+dodge 0.05
+panic 0.1
+melee 0.4
+head_health 2
+body_health 4
+scale 1.15
+accurate_shot_chance 0.02
+hop_duration 0.6
+
+agility_skill_level adept
+jump_dodge_duration 0.25
+
+abilities
+	MIR.NoStunAbilityComponent

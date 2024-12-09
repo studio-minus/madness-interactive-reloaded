@@ -1,0 +1,14 @@
+0.50.0
+
+name Auditor 11
+
+body
+   auditor_damaged_body
+
+head
+   auditor_damaged_head
+   auditor_halo_hat
+
+hands auditor
+feet textures/bodies/feet/auditor.png
+blood #FF0000FF

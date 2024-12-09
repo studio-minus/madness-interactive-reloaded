@@ -38,17 +38,17 @@
   "HoldForGrip": false,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {
-    "X": 297.0,
-    "Y": 35.0
+    "X": 298.2465,
+    "Y": 33.19951
   },
   "CasingEjectionPoint": {
-    "X": -140.0,
+    "X": -135.02106,
     "Y": 38.0
   },
   "HoldPoints": [
     {
-      "X": 21.125805,
-      "Y": 24.900713
+      "X": 17.92305,
+      "Y": 26.273323
     },
     {
       "X": 115.43046,

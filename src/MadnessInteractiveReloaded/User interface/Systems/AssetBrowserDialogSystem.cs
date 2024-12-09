@@ -11,7 +11,7 @@ public class AssetBrowserDialogSystem : Walgelijk.System
         foreach (var item in Scene.GetAllComponentsOfType<AssetBrowserDialogComponent>())
         {
             bool open = true;
-            Ui.Layout.Size(400, 500).Center().Resizable();
+            Ui.Layout.Size(600, 400).Center().Resizable();
             Ui.Theme.OutlineColour(Colors.Red.WithAlpha(0.5f)).OutlineWidth(1).Once();
             Ui.StartDragWindow("Pick asset", ref open, identity: i++);
             {

@@ -1,0 +1,13 @@
+0.50.0
+
+name Nexus Support Mask
+type HeadAccessory
+deflect-chance 0.10
+left textures/bodies/eyes/nexus_support_mask/nexus_support_mask_left.png
+right textures/bodies/eyes/nexus_support_mask/nexus_support_mask_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+damage-size 1
+offset 0 -3

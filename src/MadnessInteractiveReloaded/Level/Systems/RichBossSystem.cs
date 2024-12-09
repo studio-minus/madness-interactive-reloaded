@@ -419,7 +419,7 @@ public class RichBossSystem : Walgelijk.System
         // actually shoot
         var audio = Utilities.PickRandom(Assets.EnumerateFolder("sounds/rich_boss_battle/gun"));
         var snd = SoundCache.Instance.LoadSoundEffect(Assets.Load<FixedAudioData>(audio));
-        Audio.PlayOnce(snd, 10, 1, AudioTracks.SoundEffects);
+        Audio.PlayOnce(snd, 1, 1, AudioTracks.SoundEffects);
         Prefabs.CreateMuzzleFlash(Scene,
             rich.BarrelPosition + character.AimDirection * 300,
             float.Atan2(character.AimDirection.Y, character.AimDirection.X) * Utilities.RadToDeg,

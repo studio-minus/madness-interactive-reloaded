@@ -49,8 +49,8 @@ public class AssetBrowserControl
 
         folderCache =
         [
-            ..package.GetFoldersIn(Path).Select(i => new Entry{ 
-                Name = $"{i}/", 
+            ..package.GetFoldersIn(Path).Select(i => new Entry{
+                Name = $"{i}/",
                 FolderDestination = Path.TrimEnd('/') + '/' + i }),
 
             ..package.EnumerateFolder(Path).Select(i => {
@@ -122,6 +122,8 @@ public class AssetBrowserControl
 
                         Ui.Layout.FitWidth().Height(30).CenterHorizontal().Move(0, i * 30);
                         Ui.Theme.Font(Fonts.CascadiaMono).OutlineWidth(0).FontSize(14).Once();
+                        if (entry.FolderDestination != null)
+                            Ui.Theme.Text(new Color(255,255,150)).Once();
                         if (LeftAlignedButton.Start(entry.Name, identity: i++))
                         {
                             if (entry.Asset.HasValue)
