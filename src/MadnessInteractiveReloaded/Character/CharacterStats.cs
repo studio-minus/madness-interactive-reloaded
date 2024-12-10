@@ -105,7 +105,7 @@ public class CharacterStats
     /// <summary>
     /// Melee sequence ID for the two-handed melee attack
     /// </summary>
-    public string[] TwoHandedSeq = ["twohanded_blunt_adept"];
+    public string[] TwoHandedBluntSeq = ["twohanded_blunt_adept"];
 
     /// <summary>
     /// Melee sequence ID for the blunt melee attack
@@ -157,7 +157,7 @@ public class CharacterStats
         BodyHealth = stats.BodyHealth;
         UnarmedSeq = [..stats.UnarmedSeq];
         SwordSeq = [.. stats.SwordSeq];
-        TwoHandedSeq = [.. stats.TwoHandedSeq];
+        TwoHandedBluntSeq = [.. stats.TwoHandedBluntSeq];
         BluntSeq = [.. stats.BluntSeq];
         TwoHandedGunSeq = [.. stats.TwoHandedGunSeq];
         OneHandedGunSeq = [.. stats.OneHandedGunSeq];

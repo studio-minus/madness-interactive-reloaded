@@ -50,7 +50,7 @@ public static class MeleeUtils
                         meleeSeq = Utilities.PickRandom(equipped.HoldPoints.Length == 2 ? character.Stats.TwoHandedGunSeq : character.Stats.OneHandedGunSeq);
                         break;
                     case MeleeDamageType.Blunt:
-                        meleeSeq = Utilities.PickRandom(equipped.HoldPoints.Length == 2 ? character.Stats.TwoHandedSeq : character.Stats.BluntSeq);
+                        meleeSeq = Utilities.PickRandom(equipped.HoldPoints.Length == 2 ? character.Stats.TwoHandedBluntSeq : character.Stats.BluntSeq);
                         break;
                 }
 

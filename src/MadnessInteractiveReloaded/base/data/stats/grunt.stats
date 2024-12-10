@@ -16,4 +16,6 @@ one_handed_gun_seq
 sword_seq
 	sword_novice
 blunt_seq
-	sword_novice
+	blunt_novice
+two_handed_blunt_seq
+	twohanded_blunt_novice

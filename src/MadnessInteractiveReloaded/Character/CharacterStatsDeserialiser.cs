@@ -40,7 +40,7 @@ public static class CharacterStatsDeserialiser
         deserialiser.RegisterString("name", (s, v) => s.Name = v);
         deserialiser.RegisterStringArray("unarmed_seq", (s, v) => s.UnarmedSeq = [..v]);
         deserialiser.RegisterStringArray("sword_seq", (s, v) => s.SwordSeq = [..v]);
-        deserialiser.RegisterStringArray("two_handed_seq", (s, v) => s.TwoHandedSeq = [..v]);
+        deserialiser.RegisterStringArray("two_handed_blunt_seq", (s, v) => s.TwoHandedBluntSeq = [..v]);
         deserialiser.RegisterStringArray("two_handed_gun_seq", (s, v) => s.TwoHandedGunSeq = [..v]);
         deserialiser.RegisterStringArray("one_handed_gun_seq", (s, v) => s.OneHandedGunSeq = [..v]);
         deserialiser.RegisterStringArray("blunt_seq", (s, v) => s.BluntSeq = [..v]);
@@ -101,7 +101,7 @@ public static class CharacterStatsDeserialiser
 
         writer.AppendKvStringArray("unarmed_seq", stats.UnarmedSeq);
         writer.AppendKvStringArray("sword_seq", stats.SwordSeq);
-        writer.AppendKvStringArray("two_handed_seq", stats.TwoHandedSeq);
+        writer.AppendKvStringArray("two_handed_seq", stats.TwoHandedBluntSeq);
         writer.AppendKvStringArray("two_handed_gun_seq", stats.TwoHandedGunSeq);
         writer.AppendKvStringArray("one_handed_gun_seq", stats.OneHandedGunSeq);
         writer.AppendKvStringArray("blunt_seq", stats.BluntSeq);
