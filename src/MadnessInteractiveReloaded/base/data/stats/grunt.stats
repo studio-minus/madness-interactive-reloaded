@@ -1,4 +1,4 @@
-﻿0.48.2
+﻿0.50.1
 
 name Grunt
 
@@ -19,3 +19,5 @@ blunt_seq
 	blunt_novice
 two_handed_blunt_seq
 	twohanded_blunt_novice
+two_handed_gun_seq
+	twohanded_gun_novice
