@@ -55,8 +55,8 @@ public class ArmourSerialiserTest : global::System.IDisposable
         ((int)loaded.OffsetLeft.Y).Should().Be(yOffset);
         ((int)loaded.OffsetRight.X).Should().Be(xOffset);
         ((int)loaded.OffsetRight.Y).Should().Be(yOffset);
-        loaded.Left.Id.Should().BeEquivalentTo(new GlobalAssetId("base:textures/bodies/default/head_left.png"));
-        loaded.Right.Id.Should().BeEquivalentTo(new GlobalAssetId("base:textures/bodies/default/head_right.png"));
+        Assert.Equal(loaded.Left.Id, new GlobalAssetId("textures/bodies/default/head_left.png"));
+        Assert.Equal(loaded.Right.Id, new GlobalAssetId("textures/bodies/default/head_right.png"));
         loaded.BrokenKeys.Should().BeEquivalentTo(testPiece.BrokenKeys);
     }
 
