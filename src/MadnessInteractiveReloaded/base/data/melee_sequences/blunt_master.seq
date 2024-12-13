@@ -1,0 +1,10 @@
+0.7.6
+# animation_id transition_frame [hit,frame,array]
+
+[melee_blunt_master_R_1,melee_blunt_master_L_1]   16	[12]
+[melee_blunt_master_R_2,melee_blunt_master_L_2]   9		[4]
+[melee_blunt_master_R_3,melee_blunt_master_L_3]   10 	[4]
+[melee_blunt_master_R_4,melee_blunt_master_L_4]   8		[4]
+[melee_blunt_master_R_5,melee_blunt_master_L_5]   9		[7]
+[melee_blunt_master_R_6,melee_blunt_master_L_6]   13 	[9]
+[melee_blunt_master_R_7,melee_blunt_master_L_7]   14	[6]

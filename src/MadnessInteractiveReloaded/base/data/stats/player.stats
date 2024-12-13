@@ -23,6 +23,6 @@ sword_seq
 	sword_master
 	sword_master_2
 blunt_seq
-	sword_master
+	blunt_master
 two_handed_blunt_seq
 	twohanded_blunt_master

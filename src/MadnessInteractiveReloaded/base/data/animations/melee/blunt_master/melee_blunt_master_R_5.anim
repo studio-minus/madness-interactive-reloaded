@@ -1,0 +1,74 @@
+﻿fps 24
+scale 1
+speed 1.2
+
+BODY
+0       10.92px  0.0px  -28.61deg constraints(PreventThrowing PreventIronSight)
+1       5.27px  0.0px
+2       0.63px  0.0px  -23.97deg
+3       -5.35px  0.0px  -9.18deg
+4       -13.54px  0.0px  -3.55deg
+5       -18.25px  0.0px  -3.07deg
+6       -16.01px  0.0px  -28.2deg
+7       -7.99px  0.0px  -41.09deg
+8       5.46px  0.0px  -46.71deg
+9       14.86px  0.0px  -50.4deg
+10      22.13px  0.0px  -50.74deg
+11      25.61px  0.0px  -45.74deg
+12      20.67px  0.0px  -30.96deg
+13      10.31px  0.0px  -14.08deg
+14      3.81px  0.0px  -4.99deg
+16      0.0px  0.0px  0.0deg
+
+HEAD
+0       30.07px  -14.51px  28.61deg
+1       21.39px  -11.56px
+2       12.7px  -9.23px  23.97deg
+3       6.18px  -8.32px  9.18deg
+4       2.59px  -10.08px  3.55deg
+5       1.21px  -13.28px  3.07deg
+6       0.98px  -15.22px  28.2deg
+7       6.29px  -14.8px  41.09deg
+8       20.32px  -13.82px  46.71deg
+9       36.17px  -13.12px  50.4deg
+10      47.8px  -11.79px  50.77deg
+11      52.08px  -9.5px  45.82deg
+12      40.55px  -5.77px  31.16deg
+13      19.88px  -2.44px  14.4deg
+14      7.29px  -0.84px  5.37deg
+16      0.0px  -0.0px  0.41deg
+
+HAND
+0       -4.61px  54.59px
+1       -13.66px  51.6px
+2       -39.32px  45.68px
+4       -101.64px  28.44px
+5       -115.01px  23.93px
+6       -52.32px  33.87px
+7       47.79px  46.71px
+8       81.02px  42.97px
+9       87.49px  33.32px
+10      82.27px  25.96px
+11      58.61px  20.2px
+12      2.69px  18.88px
+13      -56.9px  22.24px
+14      -88.15px  25.0px
+16      -105.09px  26.76px
+
+HAND
+0       121.54px  345.5px  67.83deg
+1       -21.2px  320.5px  36.94deg
+2       -163.93px  274.83px  -16.18deg
+3       -243.12px  229.16px  -58.12deg
+4       -250.09px  183.49px  -71.4deg
+5       -218.49px  154.33px  -73.0deg
+6       150.85px  98.31px
+7       573.39px  71.27px
+8       706.89px  67.15px
+9       729.95px  42.18px  -79.39deg
+10      717.89px  20.51px  -72.15deg
+11      650.28px  5.27px  -60.73deg
+12      484.7px  6.29px  -43.29deg
+13      305.99px  21.71px  -28.4deg
+14      211.82px  32.8px  -21.37deg
+16      160.63px  39.61px  -17.76deg
