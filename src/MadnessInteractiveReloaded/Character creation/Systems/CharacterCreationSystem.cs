@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 using Walgelijk;
 using Walgelijk.AssetManager;
 using Walgelijk.Localisation;
@@ -416,7 +417,7 @@ public class CharacterCreationSystem : Walgelijk.System
         }
     }
    
-    private bool PieceGrid<T>(CharacterComponent character, Registry<T> registry, ref T? target, T? @default) where T : class, ICharacterCustomisationItem
+    private bool PieceGrid<T>(CharacterComponent character, Registry<T> registry, ref T? target, T? @default, [CallerLineNumber] int callsite = 0) where T : class, ICharacterCustomisationItem
     {
         const int preferredColumns = 3;
 
@@ -427,7 +428,7 @@ public class CharacterCreationSystem : Walgelijk.System
         bool returnValue = false;
         Ui.Layout.FitContainer(1, 1, false).StickLeft(false).StickBottom(false).VerticalLayout().Overflow(false, true);
         Ui.Theme.ScrollbarWidth(24).ForegroundColor(Colors.Black).Once();
-        Ui.StartScrollView(false);
+        Ui.StartScrollView(false, identity: callsite);
         {
             float w = Onion.Tree.CurrentNode!.GetInstance().Rects.GetInnerContentRect().Width - padding;
             int i = 0;
@@ -448,7 +449,7 @@ public class CharacterCreationSystem : Walgelijk.System
 
                     // start a row
                     Ui.Layout.FitWidth(true).StickLeft(true).StickTop(false).Height(rowHeight).HorizontalLayout();
-                    Ui.StartGroup(false, identity: i + 428);
+                    Ui.StartGroup(false, identity: i - 9973);
                 }
 
                 Ui.Layout.FitHeight(false).AspectRatio(1, AspectRatioBehaviour.Grow).StickLeft(false).StickTop(false);
