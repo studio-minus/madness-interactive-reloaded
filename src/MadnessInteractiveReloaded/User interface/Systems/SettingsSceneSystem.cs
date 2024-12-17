@@ -10,6 +10,8 @@ using System.Collections.Generic;
 
 using AspectRatioBehaviour = Walgelijk.Onion.Layout.AspectRatio.Behaviour;
 using Walgelijk.AssetManager;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.IO;
 
 namespace MIR;
 
@@ -73,7 +75,7 @@ public class SettingsSceneSystem : Walgelijk.System
                     Ui.Layout.FitContainer(1,1,false);
                     if (Ui.EnumDropdown(ref settings.Video.WindowType))
                         settings.Apply();
-                }),   
+                }),
                 ("settings-vsync", () => {
                     Ui.Layout.FitContainer(1,1,false).AspectRatio(1, AspectRatioBehaviour.Shrink);
                     if (Controls.Toggle.Start(ref settings.Video.Vsync))
@@ -223,6 +225,27 @@ public class SettingsSceneSystem : Walgelijk.System
                         Ui.StartGroup(false);
                         {
                             setting.Item2();
+                        }
+                        Ui.End();
+                    }
+                    Ui.End();
+                }
+
+                if (tab is SettingTab.General)
+                {
+                    Ui.Spacer(16);
+                    Ui.Layout.FitWidth(false).CenterHorizontal().Height(40);
+                    Ui.StartGroup(false, identity: i++);
+                    {
+                        Ui.Layout.FitContainer(0.5f, 1, false);
+                        Ui.TextRect(Localisation.Get("settings-data-folder"), HorizontalTextAlign.Left, VerticalTextAlign.Middle);
+
+                        Ui.Layout.FitContainer(0.5f, 1, false).StickRight(false);
+                        Ui.StartGroup(false);
+                        {
+                            Ui.Layout.FitContainer(1, 1, false);
+                            if (Ui.Button(Localisation.Get("browse")))
+                                MadnessUtils.OpenExplorer(Path.GetDirectoryName(UserData.Paths.BaseDir) ?? "\\");
                         }
                         Ui.End();
                     }
