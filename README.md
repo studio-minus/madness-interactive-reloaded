@@ -10,7 +10,7 @@ To start playing right away:
 
 If you run into any issues you should first make sure you:
 1. Remembered to extract the .exe before trying to run it.
-2. Make sure your .NET runtime is up to date: go to the Microsoft [.NET 9](https://dotnet.microsoft.com/en-us/download/dotnet/9.0) download page. Under ".NET Desktop Runtime 9" on the right hand side and download the correct version for your OS's architecture. You can search online to figure out if your system is x64 or x86. (If your computer was made the last 10~ it's probably safe to assume x64.)
+2. Make sure your .NET runtime is up to date: go to the Microsoft [.NET 9](https://dotnet.microsoft.com/en-us/download/dotnet/9.0) download page. Under ".NET Desktop Runtime 9" on the right hand side and download the correct version for your OS's architecture. You can search online to figure out if your system is x64 or x86. (If your computer was made the last 10 years it's probably safe to assume x64.)
 
 ## Building the game
 <!-- Keep this header at this line since the gettingstarted.md file expects it to be there. If you move it, move it there too. -->
