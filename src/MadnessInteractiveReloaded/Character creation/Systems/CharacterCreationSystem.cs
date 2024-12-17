@@ -35,6 +35,7 @@ public class CharacterCreationSystem : Walgelijk.System
         if (!MadnessUtils.FindPlayer(Scene, out _, out var character))
             return;
 
+        menuCharacterRenderer.Scale = 0.375f;
         menuCharacterRenderer.Render(Window, data.PlayerDrawTarget, character);
     }
 
@@ -369,7 +370,8 @@ public class CharacterCreationSystem : Walgelijk.System
         var rect = playerDrawRect = Draw.Image(data.Background.Value, new Rect(0, 0, Window.Width, Window.Height), ImageContainmentMode.Cover);
 
         Draw.Colour = Colors.White;
-        calculatedPlayerRect = Draw.Image(data.PlayerDrawTarget, rect.Scale(0.4f).Translate(0, 45), ImageContainmentMode.Cover);
+        var drawnRect = rect.Scale(0.8f).Translate(0, rect.Height * -.25f);
+        calculatedPlayerRect = Draw.Image(data.PlayerDrawTarget, drawnRect, ImageContainmentMode.Cover);
 
         Draw.ClearMask();
         Draw.WriteMask();
@@ -384,7 +386,7 @@ public class CharacterCreationSystem : Walgelijk.System
 
         Draw.Material = Materials.BlurDraw;
         Draw.Colour = Colors.Gray.WithAlpha(0.2f);
-        rect = rect.Scale(0.4f).Translate(-900f * (Window.Height / 1920f), 45);
+        rect = drawnRect.Translate(Window.Width * -0.25f, 0 );
         Draw.Image(data.PlayerDrawTarget, rect, ImageContainmentMode.Cover);
 
         Draw.Colour = Colors.Gray.WithAlpha(0.02f);
@@ -416,7 +418,7 @@ public class CharacterCreationSystem : Walgelijk.System
             character.NeedsLookUpdate = true;
         }
     }
-   
+
     private bool PieceGrid<T>(CharacterComponent character, Registry<T> registry, ref T? target, T? @default, [CallerLineNumber] int callsite = 0) where T : class, ICharacterCustomisationItem
     {
         const int preferredColumns = 3;

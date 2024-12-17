@@ -11,7 +11,7 @@ namespace MIR;
 /// </summary>
 public class CharacterCreationComponent : Component, IDisposable
 {
-    private const int PlayerTargetTextureSize = 1024;
+    private const int PlayerTargetTextureSize = 1024 * 2;
 
     public AssetRef<Texture> Background;
     public RenderTexture PlayerDrawTarget = new(PlayerTargetTextureSize, PlayerTargetTextureSize, flags: RenderTargetFlags.None);
