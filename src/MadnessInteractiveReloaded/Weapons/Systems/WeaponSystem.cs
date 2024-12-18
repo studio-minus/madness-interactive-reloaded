@@ -61,16 +61,15 @@ public class WeaponSystem : Walgelijk.System
             {
                 var param = weapon.StuckInsideParams.Value;
 
-                if (!Scene.HasEntity(param.Entity))
+                if (param.Parent.TryGet(Scene, out var parent))
                 {
-                    weapon.StuckInsideParams = null;
-                    weapon.IsAttachedToWall = true;
+                    transform.Position = Vector2.Transform(param.LocalOffset, parent.LocalToWorldMatrix);
+                    transform.Rotation = parent.Rotation + param.LocalRotation;
                 }
                 else
                 {
-                    var attachedTransform = Scene.GetComponentFrom<TransformComponent>(param.Entity);
-                    transform.Position = Vector2.Transform(param.LocalOffset, attachedTransform.LocalToWorldMatrix);
-                    transform.Rotation = attachedTransform.Rotation + param.LocalRotation;
+                    weapon.StuckInsideParams = null;
+                    weapon.IsAttachedToWall = true;
                 }
             }
             else

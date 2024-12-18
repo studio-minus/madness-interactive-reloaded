@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenTK.Graphics.OpenGL;
+using System;
 using System.Collections.Generic;
 using System.Numerics;
 using Walgelijk;
@@ -39,7 +40,7 @@ public class ThrowableProjectileComponent : Component
     /// <summary>
     /// The entity we use as reference for our transform data.
     /// </summary>
-    public Entity TransformEntity;
+    public ComponentRef<TransformComponent> TransformEntity;
 
     public readonly WorldSharpBox[] WorldSharpBoxCache;
 
@@ -50,7 +51,7 @@ public class ThrowableProjectileComponent : Component
         RemoveComponentOnDepletion = removeComponentOnDepletion;
         LayerMask = layerMask;
         SharpHitboxes = sharpHitboxes;
-        TransformEntity = transformEntity;
+        TransformEntity = new(transformEntity);
 
         WorldSharpBoxCache = new WorldSharpBox[sharpHitboxes.Count];
         Thrower = thrower;
@@ -58,17 +59,28 @@ public class ThrowableProjectileComponent : Component
 
     public void UpdateWorldSharpBoxes(Scene scene)
     {
-        var myTransform = scene.GetComponentFrom<TransformComponent>(TransformEntity);
-        var s = myTransform.Scale;
-        var offset = new Vector2(0.5f);
-        //TODO Maak sneller AUB. Dit kan zo toch niet...
+        var transform = TransformEntity.Get(scene);
+        var sR = new Vector2(1 / transform.Scale.X, 1 / transform.Scale.Y);
+        var localToWorld = transform.LocalToWorldMatrix;
+
         for (int i = 0; i < SharpHitboxes.Count; i++)
         {
-            var sharpBox = SharpHitboxes[i];
-            var topLeft = Vector2.Transform(new Vector2(sharpBox.TopLeft.X / s.X, 1 - sharpBox.TopLeft.Y / s.Y) - offset, myTransform.LocalToWorldMatrix);
-            var topRight = Vector2.Transform(new Vector2(sharpBox.TopRight.X / s.X, 1 - sharpBox.TopRight.Y / s.Y) - offset, myTransform.LocalToWorldMatrix);
-            var bottomLeft = Vector2.Transform(new Vector2(sharpBox.BottomLeft.X / s.X, 1 - sharpBox.BottomLeft.Y / s.Y) - offset, myTransform.LocalToWorldMatrix);
-            var bottomRight = Vector2.Transform(new Vector2(sharpBox.BottomRight.X / s.X, 1 - sharpBox.BottomRight.Y / s.Y) - offset, myTransform.LocalToWorldMatrix);
+            var rect = SharpHitboxes[i];
+
+            var s = rect.GetSize();
+            var hS = transform.Scale * 0.5f;
+            var p = new Vector2(rect.TopLeft.X - hS.X, (rect.TopLeft.Y + hS.Y) - s.Y);
+            var r = new Rect(p.X, p.Y - s.Y, p.X + s.X, p.Y);
+
+            var topLeft = r.TopLeft;
+            var topRight = r.TopRight;
+            var bottomLeft = r.BottomLeft;
+            var bottomRight = r.BottomRight;   
+
+            topLeft = Vector2.Transform(topLeft * sR, localToWorld);
+            topRight = Vector2.Transform(topRight * sR, localToWorld);
+            bottomLeft = Vector2.Transform(bottomLeft * sR, localToWorld);
+            bottomRight = Vector2.Transform(bottomRight * sR, localToWorld);
 
             WorldSharpBoxCache[i] = (topLeft, topRight, bottomLeft, bottomRight);
         }
