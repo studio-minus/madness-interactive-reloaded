@@ -73,7 +73,7 @@ public class SettingsSceneSystem : Walgelijk.System
                 }),
                 ("settings-window-display-mode", () => {
                     Ui.Layout.FitContainer(1,1,false);
-                    if (Ui.EnumDropdown(ref settings.Video.WindowType))
+                    if (Ui.EnumDropdown(ref settings.Video.Window))
                         settings.Apply();
                 }),
                 ("settings-vsync", () => {
