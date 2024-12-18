@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using Walgelijk;
@@ -72,12 +72,6 @@ public class PlayerCharacterSystem : Walgelijk.System
                 character.AimTargetPosition = (player.RespondToUserInput) ?
                     Utilities.NanFallback(Input.WorldMousePosition) :
                     (character.Positioning.Head.GlobalPosition + new Vector2(character.Positioning.FlipScaling * 10000, 0));
-
-                //if (equipped != null && equipped.Data.WeaponType is WeaponType.Firearm)
-                //{
-                //    var th = float.Atan2(character.AimDirection.Y, character.AimDirection.X) * character.Positioning.fli;
-                //    character.AimTargetPosition += Vector2.TransformNormal(new Vector2(0, equipped.BarrelEndPoint.Y), Matrix3x2.CreateRotation(th));
-                //}
 
                 character.RelativeAimTargetPosition = character.AimTargetPosition - character.AimOrigin;
             }

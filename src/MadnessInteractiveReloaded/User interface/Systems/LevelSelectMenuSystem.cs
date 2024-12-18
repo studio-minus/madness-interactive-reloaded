@@ -1,4 +1,4 @@
-﻿using Walgelijk.Onion;
+using Walgelijk.Onion;
 using Walgelijk.SimpleDrawing;
 using Walgelijk;
 using Walgelijk.Localisation;
@@ -232,10 +232,12 @@ public class LevelSelectMenuSystem : Walgelijk.System
     // TODO put in component lol
     private string? selectedLevel;
     private Screen currentScreen = Screen.LevelSelect;
+    private bool isLoadingLevel = false;
 
     public override void OnActivate()
     {
         currentScreen = Screen.LevelSelect;
+        isLoadingLevel = false;
     }
 
     public override void Update()
@@ -381,10 +383,9 @@ public class LevelSelectMenuSystem : Walgelijk.System
 
             Ui.Theme.FontSize(24).OutlineWidth(2).Padding(12).Once();
             Ui.Layout.FitContainer(0.2f, null).Scale(-12, 0).Height(60).StickBottom().StickRight();
-            if (Ui.Button("Proceed"))
+            if (Ui.Button("Proceed") && !isLoadingLevel)
             {
-                // TODO ensure we cant press this button while loading a campaign
-
+                isLoadingLevel = true; // prevent double click
                 Game.Scene = LevelLoadingScene.Create(Game, Registries.Levels.Get(selectedLevel).Level, SceneCacheSettings.NoCache);
                 MadnessUtils.Flash(Colors.Black, 0.2f);
             }
