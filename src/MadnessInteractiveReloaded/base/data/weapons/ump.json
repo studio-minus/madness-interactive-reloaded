@@ -7,7 +7,7 @@
     "MaxHandRangeMultiplier": 0.8,
     "AdditionalComponents": null,
     "EnsureSystems": null,
-    "ThrowableDamage": 15.0,
+    "ThrowableDamage": 0.5,
     "ThrowableHeavy": false,
     "ThrowableSharpBoxes": [],
     "WeaponType": "Firearm",
@@ -38,21 +38,21 @@
   "HoldForGrip": false,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {
-    "X": 264.41077,
-    "Y": 68.821144
+    "X": 266.69843,
+    "Y": 76.37049
   },
   "CasingEjectionPoint": {
-    "X": 72.10614,
-    "Y": 74.72188
+    "X": 89.15265,
+    "Y": 77.4338
   },
   "HoldPoints": [
     {
-      "X": 7.8476715,
-      "Y": -2.1788578
+      "X": -0.123931885,
+      "Y": -5.3675413
     },
     {
-      "X": 185.28102,
-      "Y": 55.60881
+      "X": 169.3378,
+      "Y": 56.671684
     }
   ],
   "AnimatedParts": null,

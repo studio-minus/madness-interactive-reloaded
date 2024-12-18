@@ -483,7 +483,8 @@ public class CharacterPositionSystem : Walgelijk.System
         // move the relative offset (as is decided as a constant to make animating easier) multiplied by the body scale to get to the neck
         pos += charPos.Body.Scale * new Vector2(CharacterConstants.HeadOffsetRelativeToBody.X * charPos.FlipScaling, CharacterConstants.HeadOffsetRelativeToBody.Y);
         // not all characters are exactly the same height
-        pos.Y += charPos.RandomHeightOffset * charPos.Scale;
+        if (!Scene.HasComponent<PlayerComponent>(character.Entity)) // except the player lmao
+            pos.Y += charPos.RandomHeightOffset * charPos.Scale;
         // rotate the position to account for body rotation
         pos = Utilities.RotatePoint(pos, charPos.Body.GlobalRotation, charPos.Body.GlobalPosition);
         // apply impact offset )
