@@ -12,20 +12,6 @@ namespace MIR;
 /// </summary>
 public class RichBossSystem : Walgelijk.System
 {
-    public override void Initialise()
-    {
-        //var character = Prefabs.CreateCharacter(Scene, new CharacterPrefabParams
-        //{
-        //    Name = "MAG RICH",
-        //    Bottom = new Vector2(500, 200),
-        //    Faction = Registries.Factions["aahw"],
-        //    Look = Registries.Looks["mag_rich"],
-        //    Stats = Registries.Stats["mag_rich"],
-        //    BodyFleshTexture = Assets.Load<Texture>("textures/bodies/gore/rich_body_flesh.png"),
-        //    HeadFleshTexture = Assets.Load<Texture>("textures/bodies/gore/rich_head_flesh.png"),
-        //});
-    }
-
     public static void RichHandPose(HandPoseParams p)
     {
         var rich = p.Scene.GetComponentFrom<RichCharacterComponent>(p.Character.Entity);
@@ -192,6 +178,7 @@ public class RichBossSystem : Walgelijk.System
 
         foreach (var rich in Scene.GetAllComponentsOfType<RichCharacterComponent>())
         {
+
             var character = Scene.GetComponentFrom<CharacterComponent>(rich.Entity);
             var entity = character.Entity;
 
@@ -227,6 +214,11 @@ public class RichBossSystem : Walgelijk.System
                     var snd = SoundCache.Instance.LoadSoundEffect(Assets.Load<FixedAudioData>("sounds/rich_boss_battle/death.wav"));
                     Audio.PlayOnce(snd);
 
+                    PersistentSoundHandles.LevelMusic = SoundCache.Instance.LoadMusic(Assets.Load<StreamAudioData>("sounds/music/Lothyde/underachiever_(feat_cheshyre).ogg"));
+                    Audio.StopAll(AudioTracks.Music);
+                    Audio.Play(SoundCache.Instance.LoadMusicNonLoop(rich.MusicOnWin));
+                    MadnessUtils.Delay(5, () => Audio.Play(PersistentSoundHandles.LevelMusic));
+
                     // 3.2 is when the animation reaches the floor. yes its hardcoded lol
                     MadnessUtils.DelayPausable(3.2f, () => MadnessUtils.Shake(100));
 
@@ -246,7 +238,7 @@ public class RichBossSystem : Walgelijk.System
                 return;
             }
 
-            rich.ActiveRoutines.RemoveAll(RoutineScheduler.IsOngoing);
+            rich.ActiveRoutines.RemoveAll(s => !RoutineScheduler.IsOngoing(s));
 
             if (!character.IsPlayingAnimation)
             {
@@ -260,17 +252,18 @@ public class RichBossSystem : Walgelijk.System
             {
                 character.AimTargetPosition = Utilities.SmoothApproach(
                     character.AimTargetPosition,
-                    rich.TargetPosition + MadnessUtils.Noise2D(Time * 0.7f, 95829f) * 150,
+                    rich.TargetPosition + MadnessUtils.Noise2D(Time * 0.2f, 95829f) * 150,
                     2, Time.DeltaTime);
 
-                character.RelativeAimTargetPosition = character.AimTargetPosition - character.Positioning.GlobalCenter;
-
-                var flipped = character.AimTargetPosition.X < character.Positioning.GlobalCenter.X;
-                if (flipped != character.Positioning.IsFlipped)
-                {
-                    character.Positioning.IsFlipped = flipped;
-                    character.NeedsLookUpdate = true;
-                }
+                DebugDraw.Cross(character.AimTargetPosition, 100, Colors.Blue, renderOrder: RenderOrders.UserInterface);
+            }
+            character.AimOrigin = character.Positioning.Head.GlobalPosition;
+            character.RelativeAimTargetPosition = character.AimTargetPosition - character.AimOrigin;
+            var flipped = character.AimTargetPosition.X < character.Positioning.GlobalCenter.X;
+            if (flipped != character.Positioning.IsFlipped)
+            {
+                character.Positioning.IsFlipped = flipped;
+                character.NeedsLookUpdate = true;
             }
 
             float maxDistanceToPlayer = rich.VisiblePhase is RichCharacterComponent.Phase.Gun ? 2500 : 1200;

@@ -1,4 +1,5 @@
 ﻿#pragma warning disable IDE1006 // Naming Styles
+using Microsoft.Extensions.Logging.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -246,6 +247,20 @@ public static class MadnessCommands
                         cc++;
                     }
                 spawnPos /= cc;
+            }
+
+            if (Level.CurrentLevel != null && Level.CurrentLevel.FloorLine.Count > 0)
+            {
+                var min = float.MaxValue;
+                var max = float.MinValue;
+
+                foreach (var point in Level.CurrentLevel.FloorLine)
+                {
+                    min = float.Min(point.X, min);
+                    max = float.Max(point.X, max);
+                }
+
+                spawnPos.X = float.Clamp(spawnPos.X, min, max);
             }
 
             game.AudioRenderer.Stop(Sounds.DeathMusic);

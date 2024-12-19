@@ -12,11 +12,13 @@ public class MenuCharacterRenderer
     private readonly TargetRenderTask resetTarget = new(null!);
 
     public bool HorizontalFlip = false;
+    public float Scale = 0.75f;
 
     public void Render(Window window, RenderTarget target, CharacterComponent character)
     {
         characterDrawTask.Target = target;
         characterDrawTask.HorizontalFlip = HorizontalFlip;
+        characterDrawTask.Scale = Scale;
         setTarget.Target = target;
         resetTarget.Target = window.RenderTarget;
 

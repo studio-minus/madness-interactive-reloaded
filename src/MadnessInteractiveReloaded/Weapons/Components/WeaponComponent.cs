@@ -175,11 +175,11 @@ public class WeaponComponent : Component
         var c = Vector2.Transform(center + new Vector2(hs.X, -hs.Y), mainTransform.LocalToWorldMatrix);
         var d = Vector2.Transform(center + new Vector2(-hs.X, -hs.Y), mainTransform.LocalToWorldMatrix);
 
-        r.MinX = MathF.Min(r.MinX, MathF.Min(a.X, MathF.Min(b.X, MathF.Min(c.X, d.X))));
-        r.MaxX = MathF.Max(r.MaxX, MathF.Max(a.X, MathF.Max(b.X, MathF.Max(c.X, d.X))));
+        r.MinX = float.Min(r.MinX, float.Min(a.X, float.Min(b.X, float.Min(c.X, d.X))));
+        r.MaxX = float.Max(r.MaxX, float.Max(a.X, float.Max(b.X, float.Max(c.X, d.X))));
 
-        r.MinY = MathF.Min(r.MinY, MathF.Min(a.Y, MathF.Min(b.Y, MathF.Min(c.Y, d.Y))));
-        r.MaxY = MathF.Max(r.MaxY, MathF.Max(a.Y, MathF.Max(b.Y, MathF.Max(c.Y, d.Y))));
+        r.MinY = float.Min(r.MinY, float.Min(a.Y, float.Min(b.Y, float.Min(c.Y, d.Y))));
+        r.MaxY = float.Max(r.MaxY, float.Max(a.Y, float.Max(b.Y, float.Max(c.Y, d.Y))));
 
         return r;
     }
@@ -204,7 +204,7 @@ public struct StuckInsideParameters
     /// <summary>
     /// The thing it is stuck in.
     /// </summary>
-    public Entity Entity;
+    public ComponentRef<TransformComponent> Parent;
 
     /// <summary>
     /// The offset from the thing.
@@ -219,21 +219,21 @@ public struct StuckInsideParameters
     public override bool Equals(object? obj)
     {
         return obj is StuckInsideParameters parameters &&
-               EqualityComparer<Entity>.Default.Equals(Entity, parameters.Entity) &&
+               Parent.Entity == parameters.Parent.Entity &&
                LocalOffset.Equals(parameters.LocalOffset) &&
-               Math.Abs(LocalRotation - parameters.LocalRotation) < 0.001f;
+               float.Abs(LocalRotation - parameters.LocalRotation) < 0.001f;
     }
 
     public override int GetHashCode()
     {
-        return HashCode.Combine(Entity, LocalOffset, LocalRotation);
+        return HashCode.Combine(Parent, LocalOffset, LocalRotation);
     }
 
     public static bool operator ==(StuckInsideParameters left, StuckInsideParameters right)
     {
-        return left.Entity.Identity == right.Entity.Identity &&
+        return left.Parent == right.Parent &&
                left.LocalOffset == right.LocalOffset &&
-               Math.Abs(left.LocalRotation - right.LocalRotation) < 0.001f;
+               float.Abs(left.LocalRotation - right.LocalRotation) < 0.001f;
     }
 
     public static bool operator !=(StuckInsideParameters left, StuckInsideParameters right)

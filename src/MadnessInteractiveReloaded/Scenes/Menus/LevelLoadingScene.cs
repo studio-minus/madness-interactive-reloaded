@@ -22,6 +22,7 @@ public static class LevelLoadingScene
         scene.AddSystem(new TransformSystem());
         scene.AddSystem(new CameraSystem());
         scene.AddSystem(new LevelLoadingSystem());
+        scene.AddSystem(new AnimationSystem());
 
         RoutineScheduler.Start(LoadLevelRoutine(levelToLoad, scene, sceneCache));
 
@@ -89,7 +90,7 @@ public static class LevelLoadingScene
 
     private static IRoutineCommand AsyncTask(Action action)
     {
-        var t = Task.WhenAll(Task.Run(action), Task.Delay(16));
+        var t = Task.WhenAll(Task.Run(action));
         return new RoutineWaitUntil(() => t.IsCompleted);
     }
 }

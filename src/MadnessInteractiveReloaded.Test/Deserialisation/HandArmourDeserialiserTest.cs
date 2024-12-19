@@ -163,7 +163,7 @@ public class HandArmourDeserialiserTest : global::System.IDisposable
             id.IsValid.Should().BeTrue();
             expected.Should().NotBeNullOrWhiteSpace();
 
-            id.Id.Should().BeEquivalentTo(new GlobalAssetId(expected));
+            id.Id.Should().Be(new GlobalAssetId(expected));
         }
     }
 

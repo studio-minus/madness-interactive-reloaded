@@ -3,7 +3,7 @@
   "WeaponData": {
     "Name": "S&W 500",
     "Damage": 2.0,
-    "UseDelay": 0.7,
+    "UseDelay": 0.4,
     "MaxHandRangeMultiplier": 0.7,
     "AdditionalComponents": null,
     "EnsureSystems": null,
@@ -38,8 +38,8 @@
   "HoldForGrip": false,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {
-    "X": 167.0,
-    "Y": 48.0
+    "X": 158.52711,
+    "Y": 51.954014
   },
   "CasingEjectionPoint": {
     "X": -52.53188,
@@ -47,8 +47,8 @@
   },
   "HoldPoints": [
     {
-      "X": 112.87028,
-      "Y": 28.282433
+      "X": 104.50201,
+      "Y": 22.00621
     }
   ],
   "AnimatedParts": null,

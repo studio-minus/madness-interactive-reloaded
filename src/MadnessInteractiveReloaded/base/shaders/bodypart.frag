@@ -1,4 +1,4 @@
-﻿#version 330 core
+﻿#version 330
 
 #define HOLE_MAX_COUNT 32
 #define THRESHOLD 1

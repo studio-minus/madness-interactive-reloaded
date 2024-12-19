@@ -8,7 +8,6 @@ using Walgelijk.Onion;
 using Walgelijk.Onion.Controls;
 using Walgelijk.Onion.Decorators;
 using Walgelijk.SimpleDrawing;
-using static MIR.AnimationTestingSystem;
 
 namespace MIR;
 

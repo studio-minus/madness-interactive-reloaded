@@ -48,7 +48,7 @@ public static class LevelDeserialiser
             trimmedLevel.DisplayName,
             trimmedLevel.Thumbnail,
             trimmedLevel.LevelType,
-            new Lazy<Level>(() => Assets.Load<Level>(id), true));
+            new Lazy<Level>(() => Assets.Load<Level>(id).Value, true));
 
         return entry;
     }

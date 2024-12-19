@@ -423,19 +423,21 @@ public static class MadnessUtils
 
         if (Level.CurrentLevel == null || Level.CurrentLevel.ExitingTransition)
         {
+            var originalScene = Game.Main.Scene;
             Game.Main.AudioRenderer.Play(Sounds.Scenesweep);
-            var t = Prefabs.CreateSceneTransition(Game.Main.Scene, Transition.Exit);
-            Delay(0.3f, () =>
+            var t = Prefabs.CreateSceneTransition(originalScene, Transition.Exit);
+            WaitUntil(() => t.IsComplete, () =>
             {
-                Game.Main.Scene.RemoveEntity(t.Entity);
-                Game.Main.Scene = creationFunction(Game.Main);
-                if (Game.Main.Scene.FindAnyComponent<BackgroundOffsetAnimationComponent>(out var compo))
+                IsBusyTransitioning = false;
+                originalScene.RemoveEntity(t.Entity);
+
+                var scene = Game.Main.Scene = creationFunction(Game.Main);
+                if (scene.FindAnyComponent<BackgroundOffsetAnimationComponent>(out var compo))
                 {
                     compo.IsPlaying = true;
+                    compo.IsComplete = false;
                     compo.CurrentPlaybackTime = 0;
                 }
-
-                IsBusyTransitioning = false;
             });
         }
         else

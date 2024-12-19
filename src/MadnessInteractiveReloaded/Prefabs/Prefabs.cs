@@ -20,7 +20,7 @@ namespace MIR;
 /// </summary>
 public static class Prefabs
 {
-    private static QueryResult[] buffer = new QueryResult[8];
+    private static readonly QueryResult[] buffer = new QueryResult[8];
 
     /// <summary>
     /// Spawn a piece of text in the world.
@@ -1063,16 +1063,13 @@ public static class Prefabs
     /// <summary>
     /// Spawn the level transition effect.
     /// </summary>
-    /// <param name="scene"></param>
-    /// <param name="type"></param>
-    /// <returns></returns>
-    public static Background.BackgroundComponent CreateSceneTransition(Scene scene, Transition type)
+    public static BackgroundOffsetAnimationComponent CreateSceneTransition(Scene scene, Transition type)
     {
         const float duration = 0.3f;
         var background = Background.CreateBackground(scene, Textures.Black);
         background.RenderOrder = RenderOrders.UserInterfaceTop;
         scene.AttachComponent(background.Entity, new DespawnComponent(duration * 1.5f));
-        scene.AttachComponent(background.Entity, new BackgroundOffsetAnimationComponent
+        var animated = scene.AttachComponent(background.Entity, new BackgroundOffsetAnimationComponent
         {
             IsPlaying = true,
             Duration = duration,
@@ -1087,20 +1084,20 @@ public static class Prefabs
                         new Curve<Vector2>.Key(new Vector2(0, 0), 1)),
         });
 
-        return background;
+        return animated;
     }
 
     public static class Editor
     {
         //TODO wat is dit voor bullshit
         public static readonly Material ExampleDoorMaterial = new(new Shader(
-            ShaderDefaults.WorldSpaceVertex,
-            Assets.Load<string>("shaders/door.frag").Value
+            BuiltInShaders.WorldSpaceVertex,
+            Assets.LoadNoCache<string>("shaders/door.frag")
         ));
 
         public static readonly Material ExampleStaticDoorMaterial = new(new Shader(
-            ShaderDefaults.WorldSpaceVertex,
-            Assets.Load<string>("shaders/door.frag").Value
+            BuiltInShaders.WorldSpaceVertex,
+            Assets.LoadNoCache<string>("shaders/door.frag")
         ));
     }
 }

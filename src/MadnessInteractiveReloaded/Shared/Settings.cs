@@ -47,7 +47,7 @@ public class Settings
     {
         public int FramerateCap = 300;
         public bool Vsync = false;
-        public WindowType WindowType = WindowType.Normal;
+        public Window Window = Window.Windowed;
         public bool StampRagdolls = true;
     }
 
@@ -67,6 +67,22 @@ public class Settings
         public float UiVolume = 1;
     }
 
+    public enum Window
+    {
+        Windowed,
+        Fullscreen
+    }
+
+    public WindowType GetWindowType(Window w)
+    {
+        return w switch
+        {
+            Window.Windowed => WindowType.Normal,
+            Window.Fullscreen => WindowType.BorderlessFullscreen,
+            _ => WindowType.Normal,
+        };
+    }
+
     /// <summary>
     /// Apply the settings and save them to disk.
     /// </summary>
@@ -80,8 +96,8 @@ public class Settings
     {
         game.Window.VSync = Video.Vsync;
         game.UpdateRate = Video.FramerateCap;
-        if (game.Window.WindowType != Video.WindowType)
-            game.Window.WindowType = Video.WindowType;
+        if (game.Window.WindowType != GetWindowType(Video.Window))
+            game.Window.WindowType = GetWindowType(Video.Window);
 
         game.AudioRenderer.Volume = Audio.MasterVolume;
         AudioTracks.Music.Volume = Audio.MusicVolume;

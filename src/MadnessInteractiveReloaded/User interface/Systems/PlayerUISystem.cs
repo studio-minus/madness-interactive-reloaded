@@ -23,7 +23,6 @@ public class PlayerUISystem : Walgelijk.System
     private int lastProgressIndex;
     private float lastProgressIndexFlashCounter = 0;
     private float lowAmmoWarningFade = 0;
-    private static Scene scene => MadnessInteractiveReloaded.Game?.Scene ?? throw new Exception("Game may not be null");
 
     public override void Render()
     {
@@ -80,22 +79,7 @@ public class PlayerUISystem : Walgelijk.System
         var crosshairPos = Input.WorldMousePosition;
 
         // health indicator
-        var head = scene.GetComponentFrom<BodyPartComponent>(character.Positioning.Head.Entity);
-        var body = scene.GetComponentFrom<BodyPartComponent>(character.Positioning.Body.Entity);
-
-        var health = float.Min(head.Health, body.Health);
-        var maxHealth = float.Min(head.MaxHealth, body.MaxHealth);
-        float healthRatio = health / maxHealth;
-        Draw.OutlineWidth = 0;
-        Draw.Texture = healthRatio switch
-        {
-            > 0.7f => Assets.Load<Texture>("textures/low_health_vignette_1.png").Value,
-            > 0.3f and <= 0.7f => Assets.Load<Texture>("textures/low_health_vignette_2.png").Value,
-            > 0.1f and <= 0.3f => Assets.Load<Texture>("textures/low_health_vignette_3.png").Value,
-            _ => Assets.Load<Texture>("textures/low_health_vignette_4.png").Value
-        };
-        Draw.Colour = Utilities.Lerp(Colors.Transparent, Colors.White, (1 - float.Pow((health / maxHealth), 2) - float.Abs(float.Sin(Time * (1 - healthRatio) * 4)) * 0.25f) * 0.8f);
-        Draw.Quad(Vector2.Zero, Window.Size, 0, 0);
+        DrawHealthIndicator(character);
 
         // draw gun icon & process crosshair pos
         {
@@ -357,6 +341,31 @@ public class PlayerUISystem : Walgelijk.System
             Draw.OutlineWidth = 5f;
             Draw.Circle(Window.WorldToWindowPoint(Input.WorldMousePosition), new Vector2(targetCrosshairSize));
         }
+    }
+
+    private void DrawHealthIndicator(CharacterComponent character)
+    {
+        var head = Scene.GetComponentFrom<BodyPartComponent>(character.Positioning.Head.Entity);
+        var body = Scene.GetComponentFrom<BodyPartComponent>(character.Positioning.Body.Entity);
+
+        var health = float.Min(head.Health, body.Health);
+        var maxHealth = float.Min(head.MaxHealth, body.MaxHealth);
+        float healthRatio = health / maxHealth;
+
+        if (healthRatio >= 1)
+            return;
+
+        Draw.OutlineWidth = 0;
+        Draw.Texture = healthRatio switch
+        {
+            > 0.7f => Assets.Load<Texture>("textures/low_health_vignette/1.qoi").Value,
+            > 0.3f and <= 0.7f => Assets.Load<Texture>("textures/low_health_vignette/2.qoi").Value,
+            > 0.1f and <= 0.3f => Assets.Load<Texture>("textures/low_health_vignette/3.qoi").Value,
+            _ => Assets.Load<Texture>("textures/low_health_vignette/4.qoi").Value
+        };
+        Draw.Colour = character.Look.BloodColour;
+        Draw.Colour = Utilities.Lerp(Colors.Transparent, Draw.Colour, (1 - (healthRatio * healthRatio) - float.Abs(float.Sin(Time * (1 - healthRatio) * 4)) * 0.25f) * 0.8f);
+        Draw.Quad(Vector2.Zero, Window.Size, 0, 0);
     }
 
     public override void OnDeactivate()

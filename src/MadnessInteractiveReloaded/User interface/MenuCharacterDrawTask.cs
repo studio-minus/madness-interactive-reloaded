@@ -11,6 +11,7 @@ public class MenuCharacterDrawTask : IRenderTask
     public RenderTarget? Target;
     public bool HorizontalFlip = false;
 
+    public float Scale = 0.75f;
 
     public void Execute(IGraphics g)
     {
@@ -18,7 +19,7 @@ public class MenuCharacterDrawTask : IRenderTask
             return;
 
         var ratio = float.Max(Target.Size.X, Target.Size.Y) / 512;
-        float scale = ratio * 0.75f;
+        float scale = ratio * Scale;
 
         Target.ProjectionMatrix =
             Matrix4x4.CreateScale(scale * (HorizontalFlip ? -1 : 1), scale, 1)
