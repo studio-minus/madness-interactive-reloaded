@@ -488,7 +488,7 @@ public class CharacterCreationSystem : Walgelijk.System
         if (character.Look != UserData.Instances.PlayerLook)
             character.Look = UserData.Instances.PlayerLook;
 
-        if (!character.IsPlayingAnimation || character.MainAnimation!.IsAlmostOver(0.7f))
+        if (!character.IsPlayingAnimation || character.MainAnimation!.IsAlmostOver(0.95f))
             character.PlayAnimation(Animations.CharacterCreationIdleAnimation, 0.5f);
 
         var v3 = UserData.Instances.PlayerLook.BloodColour.RGB;
