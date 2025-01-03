@@ -17,6 +17,8 @@ public static class HandArmourDeserialiser
     public const string BackIdentifier = "back";
     public const string MenuOrderIdentifier = "order";
     public const string HiddenIdentifier = "hidden";
+    public const string TextureScale = "texture-scale";
+
     public static readonly string[] TextureIdentifiers = Enum.GetNames<HandLook>();
 
     /// <summary>
@@ -55,17 +57,26 @@ public static class HandArmourDeserialiser
                 if (d.String.StartsWith(MenuOrderIdentifier, StringComparison.InvariantCultureIgnoreCase))
                 {
                     if (!MadnessUtils.GetValueFromString(d.String, out piece.MenuOrder))
-                        throw new Exceptions.SerialisationException($"Failed to process line#{d.LineNumber} in {Path.GetFileName(debugPath)}: 'failed to read order: {d.String}'");
+                        throw new Exceptions.SerialisationException
+                            ($"Failed to process line#{d.LineNumber} in {Path.GetFileName(debugPath)}: 'failed to read order: {d.String}'");
                 }
                 else if (d.String.StartsWith(NameIdentifier, StringComparison.InvariantCultureIgnoreCase))
                 {
                     if (!MadnessUtils.GetValueFromString(d.String, out piece.Name))
-                        throw new Exceptions.SerialisationException($"Failed to process line#{d.LineNumber} in {Path.GetFileName(debugPath)}: 'failed to read name: {d.String}'");
+                        throw new Exceptions.SerialisationException
+                            ($"Failed to process line#{d.LineNumber} in {Path.GetFileName(debugPath)}: 'failed to read name: {d.String}'");
                 }
                 else if (d.String.StartsWith(HiddenIdentifier, StringComparison.InvariantCultureIgnoreCase))
                 {
                     if (!MadnessUtils.GetValueFromString(d.String, out piece.Hidden))
-                        throw new Exceptions.SerialisationException($"Failed to process line#{d.LineNumber} in {Path.GetFileName(debugPath)}: 'failed to read hidden: {d.String}'");
+                        throw new Exceptions.SerialisationException
+                            ($"Failed to process line#{d.LineNumber} in {Path.GetFileName(debugPath)}: 'failed to read hidden: {d.String}'");
+                }
+                else if (d.String.StartsWith(TextureScale, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    if (!MadnessUtils.GetValueFromString(d.String, out piece.TextureScale))
+                        throw new Exceptions.SerialisationException
+                            ($"Failed to process line#{d.LineNumber} in {Path.GetFileName(debugPath)}: 'failed to read texture scale: {d.String}'");
                 }
             }
         }

@@ -147,7 +147,9 @@ public class CharacterPositionSystem : Walgelijk.System
                 handLook = hand.AnimatedHandLook.Value;
 
             var shouldRenderBackHand = charPos.IsFlipped ^ hand.IsLeftHand;
-            var targetHandMaterial = Textures.Character.GetMaterialForHandLook(character.Look.Hands, handLook, shouldRenderBackHand, equipped?.Data.WeaponType ?? WeaponType.Firearm);
+            var targetHandTexture = Textures.Character.GetTextureForHandLook(
+                character.Look.Hands, handLook, shouldRenderBackHand,equipped?.Data.WeaponType ?? WeaponType.Firearm);
+            var targetHandMaterial = SpriteMaterialCreator.Instance.Load(targetHandTexture);
             var isTwoHandedWeapon = equipped != null && equipped.HoldPoints.Length >= 2;
             var targetHandRenderOrder = character.BaseRenderOrder;
 
@@ -159,7 +161,16 @@ public class CharacterPositionSystem : Walgelijk.System
             else
                 targetHandRenderOrder.OrderInLayer = (shouldRenderBackHand ? CharacterConstants.RenderOrders.OtherHandOrder : CharacterConstants.RenderOrders.MainHandOrder);
 
-            if (character.IsHandAnimated(hand))
+            if (Scene.TryGetComponentFrom<TransformComponent>(hand.Entity, out var handTransform))
+            {
+                var armourScale = character.Look.Hands?.TextureScale ?? 1;
+                handTransform.Scale = new Vector2(
+                    armourScale * charPos.Scale * targetHandTexture.Width,
+                    armourScale * charPos.Scale * targetHandTexture.Height
+                );
+            }
+
+            if (character.IsHandAnimated(hand) && character.IsAlive)
             {
                 if (hand.Unscaled)
                     hr.AdditionalTransform = null;
@@ -172,7 +183,8 @@ public class CharacterPositionSystem : Walgelijk.System
                         * Matrix3x2.CreateRotation(th, hand.GlobalPosition);
                 }
             }
-            else hr.AdditionalTransform = null;
+            else 
+                hr.AdditionalTransform = null;
 
             hr.RenderOrder = targetHandRenderOrder;
             hr.Material = targetHandMaterial;
