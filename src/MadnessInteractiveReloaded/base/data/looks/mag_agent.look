@@ -1,4 +1,4 @@
-﻿0.13.1
+﻿0.51.0
 
 name Mag Agent
 
@@ -7,7 +7,7 @@ body
 
 head
    mag_head
-   mag_agent_mask_eyes
+   real_mag_agent_mask_eyes
 
 hands mag_fingerless_gloves
 blood #ff0000
