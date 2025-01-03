@@ -24,6 +24,7 @@
         "lvl_mag_lever",
         "lvl_mag_turret",
         "lvl_mag_vaults",
-        "lvl_mag_bridge"
+        "lvl_mag_bridge",
+        "lvl_mag_rocket"
     ]
 }
