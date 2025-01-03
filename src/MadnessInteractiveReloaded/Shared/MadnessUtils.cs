@@ -708,11 +708,13 @@ public static class MadnessUtils
         {
             quad.Color = Colors.White;
             quad.RenderOrder = quad.RenderOrder with { Layer = targetRenderOrder };
+            quad.AdditionalTransform = null;
         }
         if (scene.TryGetComponentFrom<QuadShapeComponent>(character.Positioning.Head.Entity, out quad))
         {
             quad.Color = Colors.White;
             quad.RenderOrder = quad.RenderOrder with { Layer = targetRenderOrder };
+            quad.AdditionalTransform = null;
         }
 
         foreach (var item in character.Positioning.BodyDecorations)
@@ -721,6 +723,7 @@ public static class MadnessUtils
             {
                 renderer.RenderOrder = renderer.RenderOrder with { Layer = targetRenderOrder };
                 renderer.Color = Colors.White;
+                renderer.AdditionalTransform = null;
             }
         }
 
@@ -731,6 +734,7 @@ public static class MadnessUtils
             {
                 renderer.RenderOrder = renderer.RenderOrder with { Layer = targetRenderOrder };
                 renderer.Color = Colors.White;
+                renderer.AdditionalTransform = null;
             }
         }
 
@@ -743,6 +747,7 @@ public static class MadnessUtils
                 character.Positioning.IsFlipped ^ hand.IsLeftHand, WeaponType.Firearm);
             renderer.RenderOrder = renderer.RenderOrder with { Layer = targetRenderOrder };
             renderer.Color = Colors.White;
+            renderer.AdditionalTransform = null;
         }
 
         foreach (var foot in character.Positioning.Feet)
@@ -762,6 +767,7 @@ public static class MadnessUtils
             var renderer = scene.GetComponentFrom<QuadShapeComponent>(foot.Entity);
             renderer.Color = Colors.White;
             renderer.RenderOrder = renderer.RenderOrder with { Layer = targetRenderOrder };
+            renderer.AdditionalTransform = null;
         }
 
         if (Utilities.RandomFloat() > 0.8f)
