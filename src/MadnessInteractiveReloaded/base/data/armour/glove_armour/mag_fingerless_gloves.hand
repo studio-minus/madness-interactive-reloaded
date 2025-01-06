@@ -2,6 +2,7 @@
 
 name Mag fingerless gloves
 hidden True
+texture-scale 0.463
 
 Fist
 	front textures/bodies/hands/mag_fingerless_gloves/mag_fingerless_gloves_fist.png
