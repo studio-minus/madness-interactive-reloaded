@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -8,12 +8,47 @@ namespace MIR;
 public class Registry<T> : IRegistry<string, T> where T : class
 {
     private readonly ConcurrentDictionary<string, T> dict = new();
+    private readonly bool disposeOnRemove;
+
+    public Registry(bool disposeOnRemove = true)
+    {
+        this.disposeOnRemove = disposeOnRemove;
+    }
 
     public int Count => dict.Count;
 
-    public void Clear() => dict.Clear();
+    public void Clear()
+    {
+        if (disposeOnRemove)
+        {
+            foreach (var item in dict.Values)
+            {
+                if (item is IDisposable disposable)
+                {
+                    try
+                    {
+                        disposable.Dispose();
+                    }
+                    catch (Exception e)
+                    {
+                        Logger.Error($"Error disposing item in registry: {e}");
+                    }
+                }
+            }
+        }
+        dict.Clear();
+    }
 
-    public T Get(string key) => dict[key];
+    public T Get(string key) 
+    {
+        if (key == null)
+            throw new ArgumentNullException(nameof(key));
+            
+        if (dict.TryGetValue(key, out var value))
+            return value;
+            
+        throw new KeyNotFoundException($"Key '{key}' not found in registry");
+    }
 
     public IEnumerable<string> GetAllKeys() => dict.Keys;
 
@@ -41,17 +76,53 @@ public class Registry<T> : IRegistry<string, T> where T : class
 
     public void Unregister(string key)
     {
-        dict.TryRemove(key, out _); //👍👍
+        if (key == null)
+            throw new ArgumentNullException(nameof(key));
+
+        if (dict.TryRemove(key, out var value) && disposeOnRemove && value is IDisposable disposable)
+        {
+            try
+            {
+                disposable.Dispose();
+            }
+            catch (Exception e)
+            {
+                Logger.Error($"Error disposing value for key '{key}': {e}");
+            }
+        }
     }
 
     public void Register(string key, T val)
     {
-        if (!dict.TryAdd(key, val))
+        if (key == null)
+            throw new ArgumentNullException(nameof(key));
+        if (val == null)
+            throw new ArgumentNullException(nameof(val));
+            
+        if (dict.TryGetValue(key, out var oldValue))
         {
-            dict[key] = val;
-            Logger.Log($"Registry {this} replaced {key}");
+            if (disposeOnRemove && oldValue is IDisposable disposable)
+            {
+                try
+                {
+                    disposable.Dispose();
+                }
+                catch (Exception e)
+                {
+                    Logger.Error($"Error disposing old value for key '{key}': {e}");
+                }
+            }
+                
+            if (!dict.TryUpdate(key, val, oldValue))
+            {
+                throw new InvalidOperationException($"Concurrent modification detected while updating key '{key}'");
+            }
+            Logger.Log($"Registry {GetType().Name} replaced value at key '{key}'");
         }
-            //throw new Exception($"Already registered a value at {key}");
+        else if (!dict.TryAdd(key, val))
+        {
+            throw new InvalidOperationException($"Failed to add value at key '{key}' - concurrent modification detected");
+        }
     }
 
     public T this[string key] => Get(key);

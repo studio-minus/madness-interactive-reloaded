@@ -1,4 +1,4 @@
-﻿using MIR.LevelEditor.Objects;
+using MIR.LevelEditor.Objects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,18 +14,71 @@ namespace MIR;
 public class EnemySpawningSystem : Walgelijk.System
 {
     private readonly List<Routine> routines = [];
+    private readonly HashSet<Entity> liveEnemies = new();
+    private int cachedEnemyCount = 0;
+
+    public override void OnActivate()
+    {
+        // Force initial count
+        _ = GetLiveEnemyCount();
+    }
 
     public override void OnDeactivate()
     {
         foreach (var r in routines)
             RoutineScheduler.Stop(r);
+            
         routines.Clear();
+        liveEnemies.Clear();
+        cachedEnemyCount = 0;
+    }
+
+    private void UpdateEnemyStatus(Entity entity, CharacterComponent character)
+    {
+        if (!MadnessUtils.FindPlayer(Scene, out _, out var player))
+        {
+            // No player found, clear everything
+            if (liveEnemies.Count > 0)
+            {
+                liveEnemies.Clear();
+                cachedEnemyCount = 0;
+            }
+            return;
+        }
+
+        bool isEnemy = character.IsAlive 
+            && !Scene.HasTag(entity, Tags.Player)
+            && character.Faction.IsEnemiesWith(player.Faction);
+
+        bool wasEnemy = liveEnemies.Contains(entity);
+
+        if (isEnemy && !wasEnemy)
+        {
+            liveEnemies.Add(entity);
+            cachedEnemyCount++;
+        }
+        else if (!isEnemy && wasEnemy)
+        {
+            liveEnemies.Remove(entity);
+            cachedEnemyCount--;
+        }
     }
 
     public override void Update()
     {
         if (MadnessUtils.IsPaused(Scene) || MadnessUtils.EditingInExperimentMode(Scene) || MadnessUtils.IsCutscenePlaying(Scene))
             return;
+
+        // Check for character state changes
+        foreach (var character in Scene.GetAllComponentsOfType<CharacterComponent>())
+        {
+            bool isCurrentlyEnemy = liveEnemies.Contains(character.Entity);
+            if (character.IsAlive != isCurrentlyEnemy)
+            {
+                // Character state changed (died or revived)
+                UpdateEnemyStatus(character.Entity, character);
+            }
+        }
 
         if (!Scene.FindAnyComponent<EnemySpawningComponent>(out var spawningComponent) || !spawningComponent.Enabled)
             return;
@@ -120,12 +173,21 @@ public class EnemySpawningSystem : Walgelijk.System
         if (!MadnessUtils.FindPlayer(Scene, out _, out var player))
             return 0;
 
-        // TODO improve speed
-        return Scene.GetAllComponentsOfType<CharacterComponent>().Count(c =>
-            c.IsAlive
-            && !Scene.HasTag(c.Entity, Tags.Player)
-            && c.Faction.IsEnemiesWith(player.Faction)
-        );
+        // Perform full recount
+        liveEnemies.Clear();
+        
+        foreach (var character in Scene.GetAllComponentsOfType<CharacterComponent>())
+        {
+            if (character.IsAlive 
+                && !Scene.HasTag(character.Entity, Tags.Player)
+                && character.Faction.IsEnemiesWith(player.Faction))
+            {
+                liveEnemies.Add(character.Entity);
+            }
+        }
+        
+        cachedEnemyCount = liveEnemies.Count;
+        return cachedEnemyCount;
     }
 
     private int GetMaxEnemyCount(EnemySpawningComponent spawningComponent, int liveEnemyCount, LevelProgressComponent? lvlProgress)

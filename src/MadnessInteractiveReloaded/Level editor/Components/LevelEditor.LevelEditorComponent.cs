@@ -1,4 +1,4 @@
-﻿using MIR.LevelEditor.Objects;
+using MIR.LevelEditor.Objects;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

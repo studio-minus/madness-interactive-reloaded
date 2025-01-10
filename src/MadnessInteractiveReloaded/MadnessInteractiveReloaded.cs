@@ -1,4 +1,4 @@
-﻿using MIR.Cutscenes;
+using MIR.Cutscenes;
 using System;
 using System.Diagnostics;
 using System.Globalization;
