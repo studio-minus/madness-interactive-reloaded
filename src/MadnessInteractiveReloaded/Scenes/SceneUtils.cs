@@ -307,10 +307,12 @@ public static class SceneUtils
             //    scene.AttachComponent(scene.CreateEntity(), new CutsceneComponent(Resources.Load<Cutscene>(level.OpeningCutscene)));
 
             //TODO stamp canvas moet een LevelObject zijn :)
-            scene.AttachComponent(scene.CreateEntity(), new StampCanvasComponent(
-                (int)level.LevelBounds.Width,
-                (int)level.LevelBounds.Height,
-                level.LevelBounds.GetCenter()));
+            var c = scene.AttachComponent(scene.CreateEntity(), new StampCanvasComponent(
+                 (int)level.LevelBounds.Width,
+                 (int)level.LevelBounds.Height,
+                 level.LevelBounds.GetCenter()));
+
+            c.Clear(game.RenderQueue);
 
             foreach (var item in level.Objects)
             {
