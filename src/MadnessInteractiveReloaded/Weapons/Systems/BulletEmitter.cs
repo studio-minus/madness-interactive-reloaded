@@ -206,6 +206,7 @@ public static class BulletEmitter
                                         OriginCharacter = victimChar,
                                         EnemyCollisionLayer = victimChar.EnemyCollisionLayer,
                                         IgnoreCollisionSet = victimChar.AttackIgnoreCollision,
+                                        CanBeAutoDodged = true
                                     },
                                     totalDistance, iteration + 1);
                                 });
