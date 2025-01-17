@@ -19,7 +19,7 @@ public static class CharacterLookDeserialiser
     public const string BloodIdentifier = "blood";
     public const string HandsIdentifier = "hands";
     public const string FeetIdentifier = "feet";
-    public const string JitterIdentifier = "jitter"; 
+    public const string JitterIdentifier = "jitter";
     public const string HeadFleshIdentifier = "head_flesh";
     public const string BodyFleshIdentifier = "body_flesh";   
     public const string HeadGoreIdentifier = "head_gore";
@@ -187,23 +187,21 @@ public static class CharacterLookDeserialiser
 
         // Write feet
         if (look.Feet.HasValue && Assets.HasAsset(look.Feet.Value.Id))
-            writer.AppendFormat("{0} {1}\n", FeetIdentifier, look.Feet.Value.Id);
+            writer.AppendFormat("{0} {1}\n", FeetIdentifier, look.Feet.Value);
 
         // Write flesh
         if (look.HeadFlesh.HasValue)
-            writer.AppendFormat("{0} {1}\n", HeadFleshIdentifier, look.HeadFlesh.Value.Id);
+            writer.AppendFormat("{0} {1}\n", HeadFleshIdentifier, look.HeadFlesh.Value);
         if (look.BodyFlesh.HasValue)
-            writer.AppendFormat("{0} {1}\n", BodyFleshIdentifier, look.BodyFlesh.Value.Id);  
+            writer.AppendFormat("{0} {1}\n", BodyFleshIdentifier, look.BodyFlesh.Value);  
         
         // Write gore
         if (look.HeadGore.HasValue)
-            writer.AppendFormat("{0} {1}\n", HeadGoreIdentifier, look.HeadGore.Value.Id);
+            writer.AppendFormat("{0} {1}\n", HeadGoreIdentifier, look.HeadGore.Value);
         if (look.BodyGore.HasValue)
-            writer.AppendFormat("{0} {1}\n", BodyGoreIdentifier, look.BodyGore.Value.Id);
+            writer.AppendFormat("{0} {1}\n", BodyGoreIdentifier, look.BodyGore.Value);
 
-        writer.Append(BloodIdentifier);
-        writer.Append(' ');
-        writer.AppendLine(look.BloodColour.ToHexCode());
+        writer.AppendLineFormat("{0} {1}", BloodIdentifier, look.BloodColour.ToHexCode());
 
         if (look.BodyFlesh.HasValue && Assets.HasAsset(look.BodyFlesh.Value.Id))
             writer.AppendFormat("{0} {1}\n", BodyFleshIdentifier, look.BodyFlesh.Value.Id);

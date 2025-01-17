@@ -163,36 +163,8 @@ public class HandArmourDeserialiserTest : global::System.IDisposable
             id.IsValid.Should().BeTrue();
             expected.Should().NotBeNullOrWhiteSpace();
 
-            id.Id.Should().BeEquivalentTo(new GlobalAssetId(expected));
+            id.Id.Should().Be(new GlobalAssetId(expected));
         }
-    }
-
-    [Fact()]
-    public void InvalidPathTest()
-    {
-        Assert.ThrowsAny<global::System.Exception>(static () =>
-        {
-            Load("Default", -1, new HandTextures
-            {
-                FistFront = "textures/bodies/default/hand_fist.png",
-                FistBack = "textures/bodies/default/hand-dwdwdw_back.png",
-
-                HoldPistolFront = "textures/wrg.png",
-                HoldPistolBack = "textures/bodies/d/hand_pistol_back.png",
-
-                HoldUndersideFront = "textures/bodies/default/hand_underside.png",
-                HoldUndersideBack = "textures/bodies/w/hand_underside_back.png",
-
-                HoldRifleFront = "textures/bodies/default/hand_rifle.png",
-                HoldRifleBack = "textures/wdwdwd/default/hand_rifle_back.png",
-
-                OpenFront = "textures/bodies/default/hand_open.png",
-                OpenBack = "textures/bodies5464565default/hand_open_back.png",
-
-                PointFront = "textures/bodies/43344/hand_point.png",
-                PointBack = "textures/bodies/default/hand_point_back.png",
-            });
-        });
     }
 
     [Fact]

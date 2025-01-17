@@ -11,8 +11,16 @@ public class AnimationTest : global::System.IDisposable
 {
     public AnimationTest()
     {
+        try
+        {
+            Assets.RegisterPackage("resources/base.waa");
+        }
+        catch { }
+
         if (Assets.TryGetPackage("base", out _))
             MadnessInteractiveReloaded.PrepareResourceInitialise();
+        else
+            throw new System.Exception("Tests can't continue because the base assets cannot be found");
         Registries.ClearAll();
     }
 

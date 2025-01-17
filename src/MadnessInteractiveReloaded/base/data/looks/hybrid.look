@@ -1,0 +1,18 @@
+0.50.0
+
+body
+   hybrid_body
+
+head
+   hybrid_head
+
+hands hybrid
+feet textures/bodies/feet/hybrid.png
+
+head_flesh textures/bodies/gore/hybrid_flesh_head.png
+head_gore textures/bodies/gore/hybrid_gore_head.png
+
+body_flesh textures/bodies/gore/hybrid_flesh_body.png
+body_gore textures/bodies/gore/hybrid_gore_body.png
+
+blood #41BB3CFF

@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System;
+using System.Numerics;
 using Walgelijk;
 using Walgelijk.AssetManager;
 using Walgelijk.Physics;
@@ -37,8 +38,7 @@ public class CharacterPositionSystem : Walgelijk.System
             SetLimbScale(c);
             ProcessArmour(c);
 
-            if (c.NeedsLookUpdate)
-                c.NeedsLookUpdate = false;
+            c.NeedsLookUpdate = false;
 
             PositionCenter(exp, c);
 
@@ -147,7 +147,9 @@ public class CharacterPositionSystem : Walgelijk.System
                 handLook = hand.AnimatedHandLook.Value;
 
             var shouldRenderBackHand = charPos.IsFlipped ^ hand.IsLeftHand;
-            var targetHandMaterial = Textures.Character.GetMaterialForHandLook(character.Look.Hands, handLook, shouldRenderBackHand, equipped?.Data.WeaponType ?? WeaponType.Firearm);
+            var targetHandTexture = Textures.Character.GetTextureForHandLook(
+                character.Look.Hands, handLook, shouldRenderBackHand,equipped?.Data.WeaponType ?? WeaponType.Firearm);
+            var targetHandMaterial = SpriteMaterialCreator.Instance.Load(targetHandTexture);
             var isTwoHandedWeapon = equipped != null && equipped.HoldPoints.Length >= 2;
             var targetHandRenderOrder = character.BaseRenderOrder;
 
@@ -159,7 +161,16 @@ public class CharacterPositionSystem : Walgelijk.System
             else
                 targetHandRenderOrder.OrderInLayer = (shouldRenderBackHand ? CharacterConstants.RenderOrders.OtherHandOrder : CharacterConstants.RenderOrders.MainHandOrder);
 
-            if (character.IsHandAnimated(hand))
+            if (Scene.TryGetComponentFrom<TransformComponent>(hand.Entity, out var handTransform))
+            {
+                var armourScale = character.Look.Hands?.TextureScale ?? 1;
+                handTransform.Scale = new Vector2(
+                    armourScale * charPos.Scale * targetHandTexture.Width,
+                    armourScale * charPos.Scale * targetHandTexture.Height
+                );
+            }
+
+            if (character.IsHandAnimated(hand) && character.IsAlive)
             {
                 if (hand.Unscaled)
                     hr.AdditionalTransform = null;
@@ -172,7 +183,8 @@ public class CharacterPositionSystem : Walgelijk.System
                         * Matrix3x2.CreateRotation(th, hand.GlobalPosition);
                 }
             }
-            else hr.AdditionalTransform = null;
+            else 
+                hr.AdditionalTransform = null;
 
             hr.RenderOrder = targetHandRenderOrder;
             hr.Material = targetHandMaterial;
@@ -187,9 +199,9 @@ public class CharacterPositionSystem : Walgelijk.System
         {
             var fr = Scene.GetComponentFrom<QuadShapeComponent>(foot.Entity);
 
-            if (lookUpdate && character.Look.Feet.HasValue)
+            if (lookUpdate)
             {
-                var tex = character.Look.Feet.Value.Value;
+                var tex = character.Look.Feet?.Value ?? Textures.Character.DefaultFoot;
                 fr.Material = SpriteMaterialCreator.Instance.Load(tex);
                 if (Scene.TryGetComponentFrom<TransformComponent>(fr.Entity, out var footTransform))
                     footTransform.Scale = charPos.Scale * tex.Size;
@@ -479,7 +491,8 @@ public class CharacterPositionSystem : Walgelijk.System
         // move the relative offset (as is decided as a constant to make animating easier) multiplied by the body scale to get to the neck
         pos += charPos.Body.Scale * new Vector2(CharacterConstants.HeadOffsetRelativeToBody.X * charPos.FlipScaling, CharacterConstants.HeadOffsetRelativeToBody.Y);
         // not all characters are exactly the same height
-        pos.Y += charPos.RandomHeightOffset * charPos.Scale;
+        if (!Scene.HasComponent<PlayerComponent>(character.Entity)) // except the player lmao
+            pos.Y += charPos.RandomHeightOffset * charPos.Scale;
         // rotate the position to account for body rotation
         pos = Utilities.RotatePoint(pos, charPos.Body.GlobalRotation, charPos.Body.GlobalPosition);
         // apply impact offset )
@@ -610,6 +623,7 @@ public class CharacterPositionSystem : Walgelijk.System
             // base position
             pos = charPos.GlobalCenter + hand.PosePosition;
             pos.X += charPos.TiltIntensity * -5;
+
             animatedPos = hand.AnimationPosition;
 
             // base rotation
@@ -656,6 +670,7 @@ public class CharacterPositionSystem : Walgelijk.System
 
             pos = Utilities.Lerp(pos, animatedPos, character.AnimationTransitionFactorEased);
             rot = Utilities.LerpAngle(rot, animatedRot, character.AnimationTransitionFactorEased);
+            pos.Y -= Math.Max((354 - charPos.Body.Scale.Y) * 0.7f, 0);
 
             if (character.Look.Jitter)
                 pos += MadnessUtils.Noise2D(Time * 2, (character.Entity.Identity % 1000) * index) * 12;

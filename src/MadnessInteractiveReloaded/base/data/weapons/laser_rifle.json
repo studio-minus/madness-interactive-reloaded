@@ -1,0 +1,105 @@
+{
+  "Id": "laser_rifle",
+  "WeaponData": {
+    "Name": "Laser rifle",
+    "Damage": 1.0,
+    "UseDelay": 0.2,
+    "MaxHandRangeMultiplier": 0.6,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 15.0,
+    "ThrowableHeavy": false,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 2,
+    "RoundsPerMagazine": 4,
+    "BurstFireCount": 0,
+    "Accuracy": 1.0,
+    "Recoil": 2.0,
+    "RotationalRecoilIntensity": 0.7,
+    "RecoilHandling": 2.0,
+    "Automatic": false,
+    "ShootSounds": [
+      "sounds/firearms/laser_rifle_1.wav",
+      "sounds/firearms/laser_rifle_2.wav",
+      "sounds/firearms/laser_rifle_3.wav"
+    ],
+    "CanBulletsBeDeflected": false,
+    "EjectionParticle": "None",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/laser_rifle/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 319.69864,
+    "Y": 8.88989
+  },
+  "CasingEjectionPoint": {
+    "X": -52.671753,
+    "Y": 14.644213
+  },
+  "HoldPoints": [
+    {
+      "X": 124.23816,
+      "Y": 68.050934
+    },
+    {
+      "X": 101.0395,
+      "Y": -44.764763
+    }
+  ],
+  "AnimatedParts": [
+    {
+      "OutOfAmmoKeyframeTime": 0.5,
+      "InvisbleWhenOutOfAmmo": true,
+      "Duration": 0.6,
+      "Scale": {
+        "X": 1.0,
+        "Y": 1.0
+      },
+      "Texture": "textures/weapons/laser_rifle/glow.png",
+      "TranslationCurve": {
+        "MappingFunction": null,
+        "Keys": [
+          {
+            "Value": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "Position": 0.45000002
+          }
+        ]
+      },
+      "AngleCurve": null,
+      "VisibilityCurve": {
+        "MappingFunction": null,
+        "Keys": [
+          {
+            "Value": 1.0,
+            "Position": 0.0
+          },
+          {
+            "Value": 0.0,
+            "Position": 0.01
+          },
+          {
+            "Value": 0.0,
+            "Position": 0.99
+          },
+          {
+            "Value": 1.0,
+            "Position": 1.0
+          }
+        ]
+      }
+    }
+  ],
+  "OnFloorAngle": 0.0
+}

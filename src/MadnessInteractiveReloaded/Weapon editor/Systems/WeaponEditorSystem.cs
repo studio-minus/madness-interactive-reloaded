@@ -794,9 +794,9 @@ public class WeaponEditorSystem : Walgelijk.System
         for (int i = 0; i < weapon.WeaponData.ThrowableSharpBoxes.Count; i++)
         {
             var rect = weapon.WeaponData.ThrowableSharpBoxes[i];
+
             var s = rect.GetSize();
             var p = new Vector2(rect.TopLeft.X - hS.X, (rect.TopLeft.Y + hS.Y) - s.Y);
-
             var r = new Rect(p.X, p.Y - s.Y, p.X + s.X, p.Y);
 
             Draw.OutlineWidth = 2;

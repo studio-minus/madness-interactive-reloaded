@@ -97,4 +97,5 @@ public class AiComponent : Component
     }
 
     public static float LastAccurateShotTime = 10000;
+    public bool AllowPickup = true;
 }

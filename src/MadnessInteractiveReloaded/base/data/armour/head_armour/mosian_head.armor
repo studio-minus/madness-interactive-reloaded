@@ -1,0 +1,12 @@
+0.50.0
+
+name Mosian
+type Head
+left textures/bodies/skin/mosian/mosian_left.png
+right textures/bodies/skin/mosian/mosian_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+damage-size 1
+offset 0 0

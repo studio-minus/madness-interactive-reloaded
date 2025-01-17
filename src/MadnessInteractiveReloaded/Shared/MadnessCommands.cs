@@ -1,4 +1,5 @@
 ﻿#pragma warning disable IDE1006 // Naming Styles
+using Microsoft.Extensions.Logging.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -100,22 +101,7 @@ public static class MadnessCommands
         else if (!Registries.Levels.TryGet(levelKey, out instance) || instance == null)
             return CommandResult.Error($"There is no level {levelKey}. Invoke \"{nameof(Levels)}\" to see your options");
 
-        switch (instance.LevelType)
-        {
-            case LevelType.Unknown:
-                break;
-            case LevelType.Campaign:
-                //MadnessUtils.StoreCurrentPlayerWeaponForNextLevel(game.Scene);
-                MadnessUtils.TransitionScene(game => LevelLoadingScene.Create(game, instance.Level, SceneCacheSettings.NoCache));
-                //game.Scene = CampaignScene.Create(game, Level.CurrentLevel, true);
-                break;
-            case LevelType.Experiment:
-                MadnessUtils.TransitionScene(game => LevelLoadingScene.Create(game, instance.Level, SceneCacheSettings.NoCache));
-                //game.Scene = ExperimentScene.Create(game, Level.CurrentLevel);
-                break;
-            default:
-                break;
-        }
+        MadnessUtils.TransitionScene(game => LevelLoadingScene.Create(game, instance.Level, SceneCacheSettings.NoCache));
 
         var stats = CampaignProgress.GetCurrentStats();
         if (stats != null)
@@ -246,6 +232,20 @@ public static class MadnessCommands
                         cc++;
                     }
                 spawnPos /= cc;
+            }
+
+            if (Level.CurrentLevel != null && Level.CurrentLevel.FloorLine.Count > 0)
+            {
+                var min = float.MaxValue;
+                var max = float.MinValue;
+
+                foreach (var point in Level.CurrentLevel.FloorLine)
+                {
+                    min = float.Min(point.X, min);
+                    max = float.Max(point.X, max);
+                }
+
+                spawnPos.X = float.Clamp(spawnPos.X, min, max);
             }
 
             game.AudioRenderer.Stop(Sounds.DeathMusic);

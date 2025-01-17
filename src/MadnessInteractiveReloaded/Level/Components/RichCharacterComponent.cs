@@ -27,6 +27,8 @@ public class RichCharacterComponent : Component
         Texture = new("textures/weapons/mag_automag/slide.png")
     };
 
+    public AssetRef<StreamAudioData> MusicOnWin = new("sounds/music/Lothyde/strenuous_end.ogg");
+
     public Vector2 BarrelPosition;
     public float GunRecoil;
     public float GunRecoilVel;
@@ -40,13 +42,12 @@ public class RichCharacterComponent : Component
 
     public FixedIntervalDistributor AttackClock = new(4);
 
-
     public enum Phase
     {
         Sword,
         Gun,
         Dying
-    } // 👩👩
+    } 
 
     public struct SubSprite
     {

@@ -1,4 +1,5 @@
 ﻿using MIR.Cutscenes;
+using OpenTK.Graphics.OpenGL4;
 using System;
 using System.Diagnostics;
 using System.Globalization;
@@ -55,8 +56,17 @@ public class MadnessInteractiveReloaded
         AssetDeserialisers.Register(new DelegateDeserialiserBridge<Language>(Language.Load, "json"));
         AssetDeserialisers.Register(new DelegateDeserialiserBridge<Video>(p => new Video(p), "mp4"));
 
+        // load asset packs
+        IdUtil.VanillaPackageIds.Add(new PackageId("base"));
         foreach (var a in Directory.EnumerateFiles("resources", "*.waa"))
-            Assets.RegisterPackage(a);
+            try
+            {
+                Assets.RegisterPackage(a);
+            }
+            catch (Exception e)
+            {
+                Logger.Warn(e);
+            }
 
         Assets.Load<FixedAudioData>("sounds/null.wav");
 
@@ -106,6 +116,7 @@ public class MadnessInteractiveReloaded
 
     public MadnessInteractiveReloaded()
     {
+        // TODO this is fucked up
         BuiltInShaders.TexturedFragment = @"#version 330 core
 
 in vec2 uv;
@@ -129,13 +140,25 @@ void main()
         }
         catch (global::System.Exception e)
         {
-            Logger.Warn($"Failed to set process priority: {e}");
+            Console.Error.WriteLine($"Failed to set process priority: {e}");
+        }
+
+        AudioRenderer? audioRenderer = null;
+
+        try
+        {
+            audioRenderer = new OpenALAudioRenderer();
+        }
+        catch (Exception e)
+        {
+            audioRenderer = null;
+            Console.Error.WriteLine("Audio renderer failed to initialise: " + e.Message);
         }
 
         Game = new Game(
              new OpenTKWindow("Madness Interactive Reloaded", -Vector2.One, new Vector2(1920, 1080) * 0.8f),
-             new OpenALAudioRenderer()
-             );
+             audioRenderer
+        );
 
         CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
 
@@ -214,6 +237,8 @@ void main()
 
         Game.Compositor.Flags = RenderTargetFlags.HDR;
         Game.Compositor.Enabled = false;
+
+        Logger.Log("GPU: " + GL.GetString(StringName.Renderer));
 
         Game.Start();
 

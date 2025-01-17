@@ -85,7 +85,7 @@ public class ArmourPiece : ICharacterCustomisationItem
 
     bool ICharacterCustomisationItem.Hidden => Hidden;
 
-    IReadableTexture ICharacterCustomisationItem.Texture => Right.Value;
+    IReadableTexture ICharacterCustomisationItem.Texture => Assets.Async.Load<Texture>(Right.Id) ?? Textures.Transparent;
 
     int ICharacterCustomisationItem.Order => MenuOrder;
 

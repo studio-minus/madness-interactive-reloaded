@@ -1,0 +1,13 @@
+﻿0.51.0
+
+name Mag Agent
+
+body
+   real_mag_agent_body
+
+head
+   mag_head
+   real_mag_agent_mask_eyes
+
+hands mag_fingerless_gloves
+blood #ff0000

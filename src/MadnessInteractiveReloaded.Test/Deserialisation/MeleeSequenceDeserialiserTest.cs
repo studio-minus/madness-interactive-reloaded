@@ -1,15 +1,24 @@
-﻿namespace MIR.Test.Deserialisation;
-using System.IO;
+﻿using System.IO;
 using Walgelijk.AssetManager;
 using Xunit;
+
+namespace MIR.Test.Deserialisation;
 
 [Collection("Registry collection")]
 public class MeleeSequenceDeserialiserTest : global::System.IDisposable
 {
     public MeleeSequenceDeserialiserTest()
     {
+        try
+        {
+            Assets.RegisterPackage("resources/base.waa");
+        }
+        catch { }
+
         if (Assets.TryGetPackage("base", out _))
             MadnessInteractiveReloaded.PrepareResourceInitialise();
+        else
+            throw new System.Exception("Tests can't continue because the base assets cannot be found");
         Registries.ClearAll();
         Registries.LoadAnimations();
     }

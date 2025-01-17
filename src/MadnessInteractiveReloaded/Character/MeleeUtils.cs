@@ -96,7 +96,17 @@ public static class MeleeUtils
         var localPoint = Vector2.Transform(point, hitTransform.WorldToLocalMatrix);
 
         if (scene.TryGetComponentFrom<IsMeleeHitTriggerComponent>(hit.Entity, out var trigger))
-            trigger.Event.Dispatch(new HitEvent(weapon, hit.Position, hit.Normal, direction));
+            trigger.Event.Dispatch(new HitEvent
+            {
+                Normal = hit.Normal,
+                Point = hit.Position,
+                Params = new BulletEmitter.BulletParameters(weapon)
+                {
+                    Origin = hit.Position,
+                    Direction = direction,
+                }
+            });
+            //trigger.Event.Dispatch(new HitEvent(weapon, hit.Position, hit.Normal, direction));
 
         var hasBodyPart = scene.TryGetComponentFrom<BodyPartComponent>(hit.Entity, out var bodyPart);
 

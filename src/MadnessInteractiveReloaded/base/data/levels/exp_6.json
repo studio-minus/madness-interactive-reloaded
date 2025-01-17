@@ -23,11 +23,11 @@
   "Weapons": [],
   "FloorLine": [
     {
-      "X": -309.6173,
+      "X": -343.6173,
       "Y": -722.2636
     },
     {
-      "X": 1732.3827,
+      "X": 1766.3827,
       "Y": -722.2636
     }
   ],
@@ -157,6 +157,7 @@
         "IsPortal": true,
         "PortalID": "exp5_2",
         "DestinationLevel": "exp_5",
+        "Texture": "textures/doors/door_6.png",
         "TopLeft": {
           "X": 1770.9698,
           "Y": 202.02495

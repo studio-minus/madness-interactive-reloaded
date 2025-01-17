@@ -26,6 +26,7 @@ public static class CharacterCreationScene
 
         {
             Level.CurrentLevel = null;
+            CampaignProgress.SetCampaign(null);
 
             var player = Prefabs.CreatePlayer(scene, default);
 

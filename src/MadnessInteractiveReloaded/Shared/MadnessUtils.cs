@@ -6,6 +6,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Numerics;
+using System.Reflection;
 using Walgelijk;
 using Walgelijk.Physics;
 using Walgelijk.SimpleDrawing;
@@ -163,6 +164,46 @@ public static class MadnessUtils
     public static float GetAimAccuracy(float distanceFromTargetToImpact)
     {
         return 1 - Utilities.Clamp(distanceFromTargetToImpact / ConVars.Instance.InaccuracyMaxDistance);
+    }
+
+    public static float LerpRadians(float startAngle, float endAngle, float t)
+    {
+        float delta = endAngle - startAngle;
+        if (delta > float.Pi)
+            delta -= float.Tau;
+        else if (delta < -float.Pi)
+            delta += float.Tau;
+        return startAngle + delta * t;
+    }
+
+    public static float ClampRadians(float angle, float min, float max)
+    {
+        angle = NormaliseRadians(angle, float.Tau);
+        min = NormaliseRadians(min, float.Tau);
+        max = NormaliseRadians(max, float.Tau);
+
+        if (max < min)
+            max += float.Tau;
+
+        if (angle < min)
+            angle += float.Tau;
+        else if (angle > max)
+            angle -= float.Tau;
+
+        return float.Clamp(angle, min, max);
+    }
+
+    public static float NormaliseRadians(float angle)
+    {
+        return float.DegreesToRadians(float.RadiansToDegrees(angle));
+    }
+
+    private static float NormaliseRadians(float angle, float modulus)
+    {
+        angle %= modulus;
+        if (angle < 0)
+            angle += modulus;
+        return angle;
     }
 
     /// <summary>
@@ -382,19 +423,21 @@ public static class MadnessUtils
 
         if (Level.CurrentLevel == null || Level.CurrentLevel.ExitingTransition)
         {
+            var originalScene = Game.Main.Scene;
             Game.Main.AudioRenderer.Play(Sounds.Scenesweep);
-            var t = Prefabs.CreateSceneTransition(Game.Main.Scene, Transition.Exit);
-            Delay(0.3f, () =>
+            var t = Prefabs.CreateSceneTransition(originalScene, Transition.Exit);
+            WaitUntil(() => t.IsComplete, () =>
             {
-                Game.Main.Scene.RemoveEntity(t.Entity);
-                Game.Main.Scene = creationFunction(Game.Main);
-                if (Game.Main.Scene.FindAnyComponent<BackgroundOffsetAnimationComponent>(out var compo))
+                IsBusyTransitioning = false;
+                originalScene.RemoveEntity(t.Entity);
+
+                var scene = Game.Main.Scene = creationFunction(Game.Main);
+                if (scene.FindAnyComponent<BackgroundOffsetAnimationComponent>(out var compo))
                 {
                     compo.IsPlaying = true;
+                    compo.IsComplete = false;
                     compo.CurrentPlaybackTime = 0;
                 }
-
-                IsBusyTransitioning = false;
             });
         }
         else
@@ -706,11 +749,13 @@ public static class MadnessUtils
         {
             quad.Color = Colors.White;
             quad.RenderOrder = quad.RenderOrder with { Layer = targetRenderOrder };
+            quad.AdditionalTransform = null;
         }
         if (scene.TryGetComponentFrom<QuadShapeComponent>(character.Positioning.Head.Entity, out quad))
         {
             quad.Color = Colors.White;
             quad.RenderOrder = quad.RenderOrder with { Layer = targetRenderOrder };
+            quad.AdditionalTransform = null;
         }
 
         foreach (var item in character.Positioning.BodyDecorations)
@@ -719,6 +764,7 @@ public static class MadnessUtils
             {
                 renderer.RenderOrder = renderer.RenderOrder with { Layer = targetRenderOrder };
                 renderer.Color = Colors.White;
+                renderer.AdditionalTransform = null;
             }
         }
 
@@ -729,6 +775,7 @@ public static class MadnessUtils
             {
                 renderer.RenderOrder = renderer.RenderOrder with { Layer = targetRenderOrder };
                 renderer.Color = Colors.White;
+                renderer.AdditionalTransform = null;
             }
         }
 
@@ -741,6 +788,7 @@ public static class MadnessUtils
                 character.Positioning.IsFlipped ^ hand.IsLeftHand, WeaponType.Firearm);
             renderer.RenderOrder = renderer.RenderOrder with { Layer = targetRenderOrder };
             renderer.Color = Colors.White;
+            renderer.AdditionalTransform = null;
         }
 
         foreach (var foot in character.Positioning.Feet)
@@ -760,6 +808,7 @@ public static class MadnessUtils
             var renderer = scene.GetComponentFrom<QuadShapeComponent>(foot.Entity);
             renderer.Color = Colors.White;
             renderer.RenderOrder = renderer.RenderOrder with { Layer = targetRenderOrder };
+            renderer.AdditionalTransform = null;
         }
 
         if (Utilities.RandomFloat() > 0.8f)

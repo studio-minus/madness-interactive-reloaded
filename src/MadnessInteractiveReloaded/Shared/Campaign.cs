@@ -59,6 +59,11 @@ public class Campaign
     public bool Temporary;
 
     /// <summary>
+    /// If true, this campaign won't show up in the campaign list UI.
+    /// </summary>
+    public bool Hidden;
+
+    /// <summary>
     /// Order in displayed lists.
     /// </summary>
     public int Order = 0;

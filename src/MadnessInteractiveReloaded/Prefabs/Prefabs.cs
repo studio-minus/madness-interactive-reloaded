@@ -20,7 +20,7 @@ namespace MIR;
 /// </summary>
 public static class Prefabs
 {
-    private static QueryResult[] buffer = new QueryResult[8];
+    private static readonly QueryResult[] buffer = new QueryResult[8];
 
     /// <summary>
     /// Spawn a piece of text in the world.
@@ -396,6 +396,39 @@ public static class Prefabs
         return ent;
     }
 
+    public static Entity CreateTurretExplosion(Scene scene, Vector2 position)
+    {
+        MadnessUtils.Shake(100);
+        Game.Main.AudioRenderer.Play(Sounds.TurretExplosion, 1);
+
+        var ent = scene.CreateEntity();
+        var tex = Textures.TurretLevelExplosion.Value;
+
+
+        scene.AttachComponent(ent, new TransformComponent
+        {
+            Position = position,
+            Rotation = Utilities.RandomFloat(0, 360),
+            Scale = new Vector2(tex.Width / 5, tex.Height / 4) * MadnessConstants.BackgroundSizeRatio * 2.4f
+        });
+
+        var mat = FlipbookMaterialCreator.LoadMaterialFor(tex, 5, 4, 0, Colors.White, true, 0);
+
+        scene.AttachComponent(ent, new QuadShapeComponent(true)
+        {
+            Material = mat,
+            RenderOrder = RenderOrders.Effects.OffsetLayer(101)
+        });
+
+        scene.AttachComponent(ent, new FlipbookComponent(mat)
+        {
+            DeleteWhenDone = true,
+            Duration = 0.833f //24 fps (20 / 24)
+        });
+
+        return ent;
+    }
+
     /// <summary>
     /// Spawn a muzzleflash for a gun.
     /// </summary>
@@ -442,7 +475,9 @@ public static class Prefabs
             transform.RecalculateModelMatrix(Matrix3x2.Identity);
             var flipbook = scene.GetComponentFrom<FlipbookComponent>(entity);
             flipbook.CurrentTime = 0;
-            scene.GetComponentFrom<QuadShapeComponent>(entity).Visible = true;
+            var v = scene.GetComponentFrom<QuadShapeComponent>(entity);
+            v.RenderOrder = RenderOrders.BackgroundInFront;
+            v.Visible = true;
         }
     }
 
@@ -1028,16 +1063,13 @@ public static class Prefabs
     /// <summary>
     /// Spawn the level transition effect.
     /// </summary>
-    /// <param name="scene"></param>
-    /// <param name="type"></param>
-    /// <returns></returns>
-    public static Background.BackgroundComponent CreateSceneTransition(Scene scene, Transition type)
+    public static BackgroundOffsetAnimationComponent CreateSceneTransition(Scene scene, Transition type)
     {
         const float duration = 0.3f;
         var background = Background.CreateBackground(scene, Textures.Black);
         background.RenderOrder = RenderOrders.UserInterfaceTop;
         scene.AttachComponent(background.Entity, new DespawnComponent(duration * 1.5f));
-        scene.AttachComponent(background.Entity, new BackgroundOffsetAnimationComponent
+        var animated = scene.AttachComponent(background.Entity, new BackgroundOffsetAnimationComponent
         {
             IsPlaying = true,
             Duration = duration,
@@ -1052,20 +1084,20 @@ public static class Prefabs
                         new Curve<Vector2>.Key(new Vector2(0, 0), 1)),
         });
 
-        return background;
+        return animated;
     }
 
     public static class Editor
     {
         //TODO wat is dit voor bullshit
         public static readonly Material ExampleDoorMaterial = new(new Shader(
-            ShaderDefaults.WorldSpaceVertex,
-            Assets.Load<string>("shaders/door.frag").Value
+            BuiltInShaders.WorldSpaceVertex,
+            Assets.LoadNoCache<string>("shaders/door.frag")
         ));
 
         public static readonly Material ExampleStaticDoorMaterial = new(new Shader(
-            ShaderDefaults.WorldSpaceVertex,
-            Assets.Load<string>("shaders/door.frag").Value
+            BuiltInShaders.WorldSpaceVertex,
+            Assets.LoadNoCache<string>("shaders/door.frag")
         ));
     }
 }

@@ -3,7 +3,7 @@
   "WeaponData": {
     "Name": "Colt Revolver",
     "Damage": 1.5,
-    "UseDelay": 0.2,
+    "UseDelay": 0.1,
     "MaxHandRangeMultiplier": 1.0,
     "AdditionalComponents": null,
     "EnsureSystems": null,
@@ -15,8 +15,8 @@
     "RoundsPerMagazine": 6,
     "BurstFireCount": 0,
     "Accuracy": 1.0,
-    "Recoil": 2.0,
-    "RotationalRecoilIntensity": 2.0,
+    "Recoil": 1.6,
+    "RotationalRecoilIntensity": 1.5,
     "RecoilHandling": 0.2,
     "Automatic": false,
     "ShootSounds": [

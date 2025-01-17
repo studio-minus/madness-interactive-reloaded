@@ -22,6 +22,14 @@ public class MainMenuSystem : Walgelijk.System
     private static readonly string versionString = "Madness Interactive Reloaded " + GameVersion.Version;
     private static readonly MenuCharacterRenderer menuCharacterRenderer = new();
 
+    private record Link(AssetRef<Texture> Image, Color Bg, Color Fg, string Url, string? Tooltip);
+
+    private static readonly Link[] links = [
+        new(new("textures/ui/discord.png"), new(0x5865F2), Colors.White, "https://discord.gg/studio-minus-779898133064056862", "Join our Discord"),
+        new(new("textures/ui/github.png"), Color.White, new(0x171515), "https://github.com/studio-minus/madness-interactive-reloaded", "Contribute"),
+        new(new("textures/ui/studiominus-small.png"), Color.White, new(0xFF0061), "https://studiominus.nl", "Visit our website"),
+    ];
+
     public override void Initialise()
     {
         Scene.OnActive += () =>
@@ -73,16 +81,23 @@ public class MainMenuSystem : Walgelijk.System
         if (PersistentSoundHandles.MainMenuMusic == null || !Audio.IsPlaying(PersistentSoundHandles.MainMenuMusic))
         {
             PersistentSoundHandles.MainMenuMusic = Utilities.PickRandom(
-                SoundCache.Instance.LoadMusic(Assets.Load<StreamAudioData>("sounds/music/Lothyde/unusual_tranquillity.ogg")),
-                SoundCache.Instance.LoadMusic(Assets.Load<StreamAudioData>("sounds/music/splitmek.ogg")));
+                SoundCache.Instance.LoadMusicNonLoop(Assets.Load<StreamAudioData>("sounds/music/Lothyde/unusual_tranquillity.ogg")),
+                SoundCache.Instance.LoadMusicNonLoop(Assets.Load<StreamAudioData>("sounds/music/splitmek.ogg")));
             Audio.Play(PersistentSoundHandles.MainMenuMusic);
         }
 
-        Ui.Theme.FontSize(24).ForegroundColor(new Color(0x5865F2)).Rounding(10).OutlineColour(Colors.White).OutlineWidth(new(0, 5)).Once();
-        Ui.Layout.Size(80, 80).StickRight().StickTop().Move(-10, 10);
-        if (Ui.ImageButton(Assets.Load<Texture>("textures/ui/discord.png").Value, ImageContainmentMode.Contain))
+        for (int i = 0; i < links.Length; i++)
         {
-            MadnessUtils.OpenBrowser("https://discord.gg/studio-minus-779898133064056862");
+            const int gap = 10;
+            const int s = 60;
+
+            var l = links[i];
+            Ui.Theme.ForegroundColor(l.Bg).Rounding(10).OutlineColour(l.Fg).OutlineWidth(new(0, 5)).Once();
+            Ui.Layout.Size(s, s).StickRight().StickTop().Move(-gap, gap + (s + gap) * i);
+            if (l.Tooltip != null)
+                Ui.Decorators.Tooltip(l.Tooltip);
+            if (Ui.ImageButton(l.Image.Value, ImageContainmentMode.Contain, identity: i))
+                MadnessUtils.OpenBrowser(l.Url);
         }
     }
 

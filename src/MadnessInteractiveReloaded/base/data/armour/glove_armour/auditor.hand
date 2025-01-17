@@ -1,0 +1,32 @@
+0.35.0
+
+name Auditor
+hidden True
+
+Fist
+	front textures/bodies/hands/auditor/auditor_hand_fist.png
+	back  textures/bodies/hands/auditor/auditor_hand_fist_back.png
+	
+HoldPistol
+	front textures/bodies/hands/auditor/auditor_hand_pistol.png
+	back  textures/bodies/hands/auditor/auditor_hand_pistol_back.png
+	
+HoldUnderside
+	front textures/bodies/hands/auditor/auditor_hand_underside.png
+	back  textures/bodies/hands/auditor/auditor_hand_underside_back.png
+	
+HoldRifle
+	front textures/bodies/hands/auditor/auditor_hand_rifle.png
+	back  textures/bodies/hands/auditor/auditor_hand_rifle_back.png
+	
+Open
+	front textures/bodies/hands/auditor/auditor_hand_open.png
+	back  textures/bodies/hands/auditor/auditor_hand_open_back.png	
+
+Point
+	front textures/bodies/hands/auditor/auditor_hand_point.png
+	back  textures/bodies/hands/auditor/auditor_hand_point_back.png
+	
+HoldStock
+	front textures/bodies/hands/auditor/auditor_hand_stock.png
+	back  textures/bodies/hands/auditor/auditor_hand_stock_back.png

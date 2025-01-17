@@ -38,6 +38,7 @@
     "settings-sfx-volume": "Sound effects",
     "settings-ui-volume": "User interface",
     "settings-screenshake": "Screenshake",
+    "settings-data-folder": "Save data",
 
     "improbability-no-ability": "This disk grants no special abilities.",
     "disk-unlocked": "IMPROBABILITY DISK UNLOCKED",
@@ -109,6 +110,7 @@
     "base-layer": "Base layer",
     "blood-colour": "Blood colour",
     "save": "Save",
+    "browse": "Browse",
 
     "god-mode": "God mode",
     "inf-ammo": "Infinite ammo",

@@ -20,9 +20,7 @@ public class AiCharacterSystem : Walgelijk.System
     public static bool DisableAI = false;
     public static bool AutoSpawn = false;
 
-    // maak het zo dat enemies elkaar ontwijken
-    // maak het zo dat enemies langzamer achteruit lopen dan vooruit
-    // maak het zo dat enemies een beetje rondlopen als ze geen target hebben
+    // TODO prevent NCPs from bunching up
 
     public override void Update()
     {
@@ -64,6 +62,7 @@ public class AiCharacterSystem : Walgelijk.System
             var entity = ai.Entity;
             var character = Scene.GetComponentFrom<CharacterComponent>(entity);
             var transform = Scene.GetComponentFrom<TransformComponent>(entity);
+            var lifetime = Scene.GetComponentFrom<LifetimeComponent>(entity);
 
             if (!character.IsAlive)
             {
@@ -104,11 +103,12 @@ public class AiCharacterSystem : Walgelijk.System
             var originalPos = character.AimOrigin = character.Positioning.GlobalCenter;
 
             var aimingSource = originalPos;
+            var eq = character.EquippedWeapon.TryGet(Scene, out equipped);
             if (!experimentMode)
             {
-                if (character.EquippedWeapon.TryGet(Scene, out equipped))
+                if (eq)
                 {
-                    aimingSource.Y += equipped.BarrelEndPoint.Y;
+                    aimingSource.Y += equipped!.BarrelEndPoint.Y;
 
                     if (equipped.Data.WeaponType == WeaponType.Firearm)
                         originalPos.Y += 100 * character.Positioning.IronSightProgress;
@@ -137,9 +137,9 @@ public class AiCharacterSystem : Walgelijk.System
             if (!experimentMode)
                 character.AimTargetPosition = ai.AimingPosition;
 
-            if (!experimentMode && !ai.IsDocile && character.HasWeaponEquipped && equipped != null)
+            if (character.HasWeaponEquipped && equipped != null)
             {
-                if (!equipped.HasRoundsLeft)
+                if (!equipped.HasRoundsLeft && !ai.IsDocile && !experimentMode)
                 {
                     equipped = null;
                     character.DropWeapon(Scene);
@@ -173,6 +173,7 @@ public class AiCharacterSystem : Walgelijk.System
                 PickupNearestWeapon(transform.Position, character, ai);
             character.EquippedWeapon.TryGet(Scene, out equipped);
 
+            // basically, if the NPC is available to shoot its target
             if (!experimentMode && !ai.IsDocile &&
                 !ai.IsDoingAccurateShot &&
                 character.HasWeaponEquipped &&
@@ -298,23 +299,25 @@ public class AiCharacterSystem : Walgelijk.System
 
             if (!experimentMode)
             {
-
                 if (ai.HasKillTarget && killTargetChar != null)
                 {
+                    // this is where we do aiming
+                    var newAimPos = ai.AimingPosition;
                     if (character.AnimationConstrainsAny(AnimationConstraint.FaceForwards))
-                        ai.AimingPosition = (character.Positioning.Head.GlobalPosition + new Vector2(character.Positioning.FlipScaling * 10000, 0));
+                        newAimPos = (character.Positioning.Head.GlobalPosition + new Vector2(character.Positioning.FlipScaling * 10000, 0));
                     else if (!character.AnimationConstrainsAny(AnimationConstraint.PreventAiming))
                     {
-                        ai.AimingPosition = Noise.GetValue(-113.234f, Time.SecondsSinceLoad * 0.05f, ai.Seed) > -30
+                        newAimPos = Noise.GetValue(-113.234f, Time.SecondsSinceLoad * 0.05f, ai.Seed) > -30
                             ? killTargetChar.Positioning.Head.GlobalPosition
                             : killTargetChar.Positioning.Body.ComputedVisualCenter;
+                        //ai.AimingPosition = Utilities.SmoothApproach(ai.AimingPosition, newAimTarget, 125, Time.DeltaTime);
 
-                        var nonRandomAimingPos = ai.AimingPosition;
+                        var nonRandomAimingPos = newAimPos;
 
                         if (character.HasWeaponEquipped)
                         {
                             var aimRandom = MadnessUtils.Noise2D(Time.SecondsSinceLoad * 0.343f, ai.Seed);
-                            ai.AimingPosition += aimRandom *
+                            newAimPos += aimRandom *
                                                  (character.Stats.AimingRandomness / 2) *
                                                  Vector2.Distance(ai.AimingPosition, transform.Position);
                         }
@@ -322,7 +325,12 @@ public class AiCharacterSystem : Walgelijk.System
                         character.RelativeAimTargetPosition = ai.AimingPosition - originalPos;
                     }
                     else
-                        ai.AimingPosition = originalPos + character.RelativeAimTargetPosition;
+                        newAimPos = originalPos + character.RelativeAimTargetPosition;
+
+                    if (lifetime.Lifetime < 1)
+                        ai.AimingPosition = newAimPos;
+                    else
+                        ai.AimingPosition = Utilities.SmoothApproach(ai.AimingPosition, newAimPos, character.Stats.AimingSpeed, Time.DeltaTime);
 
                     if (!character.AnimationConstrainsAny(AnimationConstraint.PreventBlock))
                     {
@@ -569,6 +577,9 @@ public class AiCharacterSystem : Walgelijk.System
 
     private void FindItemTarget(AiComponent ai, TransformComponent transform)
     {
+        if (!ai.AllowPickup)
+            return;
+
         const float maxSpeedSqrd = 25 * 25;
         float minDistance = ConVars.Instance.EnemyWeaponSearchRange * ConVars.Instance.EnemyWeaponSearchRange;
         Entity? found = null;

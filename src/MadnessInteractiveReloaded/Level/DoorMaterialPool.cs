@@ -15,7 +15,7 @@ public class DoorMaterialPool : Pool<Material, float>
     protected override Material CreateFresh()
     {
         var mat = new Material(new Shader(
-            ShaderDefaults.WorldSpaceVertex,
+            BuiltInShaders.WorldSpaceVertex,
             Assets.Load<string>("shaders/door.frag").Value
             ));
         return mat;
@@ -29,4 +29,6 @@ public class DoorMaterialPool : Pool<Material, float>
         c.SetUniform(DoorComponent.IsOpenUniform, 0f);
         c.SetUniform(DoorComponent.TimeSinceChangeUniform, 5f);
     }
+
+    public Material ForceCreateNew() => CreateFresh();
 }

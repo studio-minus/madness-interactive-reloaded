@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.InteropServices;
 using Walgelijk;
 using Walgelijk.AssetManager;
 using Walgelijk.Localisation;
@@ -13,7 +14,7 @@ namespace MIR;
 /// </summary>
 public class InformationGuiSystem : Walgelijk.System
 {
-    private static string startText = $"<color=#ff0000>Madness Interactive Reloaded v{GameVersion.Version} for {BuildInfo.Runtime}</color>\n<color=#ff0061>Studio Minus</color>";
+    private static string startText = $"<color=#ff0000>Madness Interactive Reloaded v{GameVersion.Version}</color>\n<color=#ff0061>Studio Minus</color>";
     private static string infoText => Assets.Load<string>("base:data/credits.txt");
 
     public override void Update()

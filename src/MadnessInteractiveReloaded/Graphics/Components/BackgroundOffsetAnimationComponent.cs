@@ -31,7 +31,7 @@ public class BackgroundOffsetAnimationComponent : Component
     /// <summary>
     /// If the animation speed is affected by the <see cref="Time.TimeScale"/>. If off, also plays while the scene is paused.
     /// </summary>
-    public bool AffectedByTimeScale = true;
+    public bool AffectedByTimeScale = false;
 
     /// <summary>
     /// How long the animation has played.
@@ -47,4 +47,9 @@ public class BackgroundOffsetAnimationComponent : Component
     /// The curve to animate along.
     /// </summary>
     public Vec2Curve? OffsetCurve;
+
+    /// <summary>
+    /// Set to true once the animation is over
+    /// </summary>
+    public bool IsComplete;
 }

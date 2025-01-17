@@ -1,0 +1,10 @@
+0.36.2
+
+name Hybrid
+type Head
+left textures/bodies/skin/hybrid/hybrid_left.png
+right textures/bodies/skin/hybrid/hybrid_right.png
+category All
+detach False
+hidden True
+offset 0 0

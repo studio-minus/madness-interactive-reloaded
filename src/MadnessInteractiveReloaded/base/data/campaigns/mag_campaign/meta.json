@@ -1,0 +1,31 @@
+{
+    "id": "mag_campaign",
+    "name": "Mag campaign",
+    "author": "Studio Minus",
+    "thumbnail": "data/campaigns/mag_campaign/thumb.png",
+    "look": "mag_agent",
+    "stats": "mag",
+    "description": "mag campaign!! ONLY MAGS ALLOWED",
+	"hidden": true,
+    "levels": [
+        "lvl_cutscene_mag_intro",
+        "lvl_mag_intro",
+        "lvl_mag_procedural",
+        "lvl_mag_crawl",
+        "lvl_mag_specimen",
+        "lvl_mag_storage_1",
+        "lvl_mag_storage_2",
+        "lvl_mag_servers",
+        "lvl_mag_trap",
+        "lvl_mag_continuation",
+        "lvl_mag_singular",
+        "lvl_mag_railgun",
+        "lvl_mag_mowing",
+        "lvl_mag_centre",
+        "lvl_mag_lever",
+        "lvl_mag_turret",
+        "lvl_mag_vaults",
+        "lvl_mag_bridge",
+        "lvl_mag_rocket"
+    ]
+}

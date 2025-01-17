@@ -4,8 +4,6 @@ using Walgelijk.Onion;
 using Walgelijk.SimpleDrawing;
 using Walgelijk;
 using Walgelijk.Onion.Layout;
-using NativeFileDialogExtendedSharp;
-using System;
 using System.Numerics;
 using Walgelijk.AssetManager;
 
@@ -46,9 +44,9 @@ public readonly struct FileUploadControl : IControl
 
         if (p.Instance.IsActive)
         {
-            var r = Nfd.FileOpen(Array.Empty<NfdFilter>(), null);
-            if (r.Status == NfdStatus.Ok)
-                controlState.SetValue(p.Identity, r.Path);
+            var r = FileDialog.OpenFile([], out var path);
+            if (r)
+                controlState.SetValue(p.Identity, path);
 
             Onion.Navigator.ActiveControl = null;
         }

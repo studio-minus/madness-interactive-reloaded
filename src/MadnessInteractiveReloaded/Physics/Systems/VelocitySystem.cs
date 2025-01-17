@@ -49,7 +49,7 @@ public class VelocitySystem : Walgelijk.System
             v.LastPosition = v.Position;
             v.LastRotation = v.Rotation;
 
-                v.Acceleration.Y += projectile != null && !projectile.IsHeavy ? -10 : -120; // gravity
+            v.Acceleration.Y += projectile != null && !projectile.IsHeavy ? -10 : -120; // gravity
 
             if (v.OverrideVelocity.HasValue)
             {
@@ -93,9 +93,9 @@ public class VelocitySystem : Walgelijk.System
                     isProjectile = false;
 
                 floorNormal = raycastHit.Normal;
-               // v.Position = raycastHit.Position + raycastHit.Normal;
+                // v.Position = raycastHit.Position + raycastHit.Normal;
                 v.RotationalVelocity *= -1;
-                v.Velocity =  Vector2.Reflect(v.Velocity, raycastHit.Normal) * Utilities.RandomFloat(0.1f, 0.4f);
+                v.Velocity = Vector2.Reflect(v.Velocity, raycastHit.Normal) * Utilities.RandomFloat(0.1f, 0.4f);
 
                 if (v.CollideSounds.Length > 0 && !v.WasOnFloor && velMagnitude > 20) // TODO this threshold should not be hardcoded
                 {
@@ -162,6 +162,7 @@ public class VelocitySystem : Walgelijk.System
                 continue;
 
             var transform = Scene.GetComponentFrom<TransformComponent>(entity);
+
             transform.Position = Utilities.Lerp(component.LastPosition, component.Position, Time.Interpolation);
             transform.Rotation = Utilities.Lerp(component.LastRotation, component.Rotation, Time.Interpolation);
         }
@@ -191,26 +192,19 @@ public class VelocitySystem : Walgelijk.System
                 projectile.UpdateWorldSharpBoxes(Scene);
                 foreach ((Vector2 topLeft, Vector2 topRight, Vector2 bottomLeft, Vector2 bottomRight) in projectile.WorldSharpBoxCache)
                 {
-                    polygonBuffer[0] = topLeft;
-                    polygonBuffer[1] = topRight;
-                    polygonBuffer[2] = bottomLeft;
-                    polygonBuffer[3] = bottomRight;
-                    var center = (topLeft + topRight + bottomLeft + bottomRight) / 4;
-                    var closestPoint = raycastHit.Collider.GetNearestPoint(center);
-                    var d = MadnessUtils.DistanceToPolygon(polygonBuffer, closestPoint);
-                    var isNear = d < 120;
-                    if (isNear)
+                    if (raycastHit.Collider.OverlapsQuad(topLeft, topRight, bottomLeft, bottomRight, out var contact))
                     {
                         var hitTransform = Scene.GetComponentFrom<TransformComponent>(raycastHit.Entity);
                         for (int i = 0; i < 4; i++)
-                            Prefabs.CreateBloodSpurt(Scene, closestPoint, Utilities.VectorToAngle(raycastHit.Normal), character.Look.BloodColour, 1.5f);
-                        Audio.PlayOnce(Utilities.PickRandom(Sounds.LivingSwordHit)); //TODO should it always be LivingSwordHit? What if they are dead? 
+                            Prefabs.CreateBloodSpurt(Scene, contact, Utilities.VectorToAngle(raycastHit.Normal), character.Look.BloodColour, 1.5f);
+                        Audio.PlayOnce(Utilities.PickRandom(Sounds.LivingSwordHit));
+                        //TODO should it always be LivingSwordHit? What if they are dead? 
                         stuckInBodyBecauseSharp = true;
                         if (Scene.TryGetComponentFrom<WeaponComponent>(ent, out var wpn))
                         {
                             wpn.StuckInsideParams = new StuckInsideParameters
                             {
-                                Entity = raycastHit.Entity,
+                                Parent = new ComponentRef<TransformComponent>(raycastHit.Entity),
                                 LocalOffset = Vector2.Transform(v.Position, hitTransform.WorldToLocalMatrix),
                                 LocalRotation = v.Rotation - hitTransform.Rotation
                             };
