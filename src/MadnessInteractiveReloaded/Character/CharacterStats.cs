@@ -23,6 +23,11 @@ public class CharacterStats
     public float AimingRandomness = 1;
 
     /// <summary>
+    /// The higher this number, the faster the character will aim towards its target
+    /// </summary>
+    public float AimingSpeed = 40;
+
+    /// <summary>
     /// The amount of time in seconds this character will wait to start shooting after spawning
     /// </summary>
     public float ShootingTimeout = 1;

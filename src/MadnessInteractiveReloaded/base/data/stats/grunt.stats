@@ -1,8 +1,9 @@
-﻿0.48.2
+﻿0.51.0
 
 name Grunt
 
 aiming_randomness 1.25
+aiming_speed 2
 shooting_timeout 1
 recoil_handling 0.4
 dodge 0

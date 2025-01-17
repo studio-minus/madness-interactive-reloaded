@@ -619,16 +619,16 @@ public static class CharacterUtilities
     /// </summary>
     /// <param name="scene"></param>
     /// <param name="character"></param>
-    public static void TryThrowWeapon(Scene scene, CharacterComponent character)
+    public static bool TryThrowWeapon(Scene scene, CharacterComponent character)
     {
         if (!character.IsAlive)
-            return;
+            return false;
 
         if (!character.EquippedWeapon.TryGet(scene, out var wpn))
-            return;
+            return false;
 
         if (character.IsPlayingAnimation && character.AnimationConstrainsAny(AnimationConstraint.PreventThrowing))
-            return;
+            return false;
 
         var vel = scene.GetComponentFrom<VelocityComponent>(character.EquippedWeapon.Entity);
         var wpnTransform = scene.GetComponentFrom<TransformComponent>(character.EquippedWeapon.Entity);
@@ -719,6 +719,8 @@ public static class CharacterUtilities
                     break;
             }
         });
+
+        return true;
     }
 
     public static void ApplyActiveModifiers(Scene scene, CharacterComponent character)

@@ -21,6 +21,7 @@ public static class CharacterStatsDeserialiser
         deserialiser.RegisterFloat("scale", (s, v) => s.Scale = float.Clamp(v, 0.1f, 4));
         deserialiser.RegisterFloat("hop_duration", (s, v) => s.WalkHopDuration = v);
         deserialiser.RegisterFloat("aiming_randomness", (s, v) => s.AimingRandomness = v);
+        deserialiser.RegisterFloat("aiming_speed", (s, v) => s.AimingSpeed = v);
         deserialiser.RegisterFloat("shooting_timeout", (s, v) => s.ShootingTimeout = v);
         deserialiser.RegisterFloat("recoil_handling", (s, v) => s.RecoilHandlingAbility = v);
         deserialiser.RegisterFloat("accurate_shot_chance", (s, v) => s.AccurateShotChance = v);
@@ -75,6 +76,7 @@ public static class CharacterStatsDeserialiser
         writer.AppendLineFormat("scale {0}", stats.Scale);
         writer.AppendLineFormat("hop_duration {0}", stats.WalkHopDuration);
         writer.AppendLineFormat("aiming_randomness {0}", stats.AimingRandomness);
+        writer.AppendLineFormat("aiming_speed {0}", stats.AimingSpeed);
         writer.AppendLineFormat("shooting_timeout {0}", stats.ShootingTimeout);
         writer.AppendLineFormat("recoil_handling {0}", stats.RecoilHandlingAbility);
         writer.AppendLineFormat("accurate_shot_chance {0}", stats.AccurateShotChance);
