@@ -3,6 +3,7 @@
 name Zed
 
 aiming_randomness 1.25
+aiming_speed 1
 shooting_timeout 1
 recoil_handling 0.2
 dodge 0
@@ -18,3 +19,4 @@ unarmed_seq
 abilities
 	MIR.NoStunAbilityComponent
 	MIR.NoWaitForAttackTurn
+	MIR.NoWeapons

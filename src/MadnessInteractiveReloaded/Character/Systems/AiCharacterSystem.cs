@@ -577,6 +577,9 @@ public class AiCharacterSystem : Walgelijk.System
 
     private void FindItemTarget(AiComponent ai, TransformComponent transform)
     {
+        if (!ai.AllowPickup)
+            return;
+
         const float maxSpeedSqrd = 25 * 25;
         float minDistance = ConVars.Instance.EnemyWeaponSearchRange * ConVars.Instance.EnemyWeaponSearchRange;
         Entity? found = null;
