@@ -101,22 +101,7 @@ public static class MadnessCommands
         else if (!Registries.Levels.TryGet(levelKey, out instance) || instance == null)
             return CommandResult.Error($"There is no level {levelKey}. Invoke \"{nameof(Levels)}\" to see your options");
 
-        switch (instance.LevelType)
-        {
-            case LevelType.Unknown:
-                break;
-            case LevelType.Campaign:
-                //MadnessUtils.StoreCurrentPlayerWeaponForNextLevel(game.Scene);
-                MadnessUtils.TransitionScene(game => LevelLoadingScene.Create(game, instance.Level, SceneCacheSettings.NoCache));
-                //game.Scene = CampaignScene.Create(game, Level.CurrentLevel, true);
-                break;
-            case LevelType.Experiment:
-                MadnessUtils.TransitionScene(game => LevelLoadingScene.Create(game, instance.Level, SceneCacheSettings.NoCache));
-                //game.Scene = ExperimentScene.Create(game, Level.CurrentLevel);
-                break;
-            default:
-                break;
-        }
+        MadnessUtils.TransitionScene(game => LevelLoadingScene.Create(game, instance.Level, SceneCacheSettings.NoCache));
 
         var stats = CampaignProgress.GetCurrentStats();
         if (stats != null)
