@@ -204,6 +204,8 @@ public static class BulletEmitter
                                         Origin = hitPosOnLine,
                                         Direction = returnDir,
                                         OriginCharacter = victimChar,
+                                        EnemyCollisionLayer = victimChar.EnemyCollisionLayer,
+                                        IgnoreCollisionSet = victimChar.AttackIgnoreCollision,
                                     },
                                     totalDistance, iteration + 1);
                                 });
