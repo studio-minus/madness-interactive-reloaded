@@ -1,4 +1,5 @@
 ﻿using MIR.Cutscenes;
+using OpenTK.Graphics.OpenGL4;
 using System;
 using System.Diagnostics;
 using System.Globalization;
@@ -115,6 +116,7 @@ public class MadnessInteractiveReloaded
 
     public MadnessInteractiveReloaded()
     {
+        // TODO this is fucked up
         BuiltInShaders.TexturedFragment = @"#version 330 core
 
 in vec2 uv;
@@ -138,13 +140,25 @@ void main()
         }
         catch (global::System.Exception e)
         {
-            Logger.Warn($"Failed to set process priority: {e}");
+            Console.Error.WriteLine($"Failed to set process priority: {e}");
+        }
+
+        AudioRenderer? audioRenderer = null;
+
+        try
+        {
+            audioRenderer = new OpenALAudioRenderer();
+        }
+        catch (Exception e)
+        {
+            audioRenderer = null;
+            Console.Error.WriteLine("Audio renderer failed to initialise: " + e.Message);
         }
 
         Game = new Game(
              new OpenTKWindow("Madness Interactive Reloaded", -Vector2.One, new Vector2(1920, 1080) * 0.8f),
-             new OpenALAudioRenderer()
-             );
+             audioRenderer
+        );
 
         CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
 
@@ -223,6 +237,8 @@ void main()
 
         Game.Compositor.Flags = RenderTargetFlags.HDR;
         Game.Compositor.Enabled = false;
+
+        Logger.Log("GPU: " + GL.GetString(StringName.Renderer));
 
         Game.Start();
 
