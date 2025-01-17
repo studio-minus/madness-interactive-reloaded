@@ -192,20 +192,11 @@ public class VelocitySystem : Walgelijk.System
                 projectile.UpdateWorldSharpBoxes(Scene);
                 foreach ((Vector2 topLeft, Vector2 topRight, Vector2 bottomLeft, Vector2 bottomRight) in projectile.WorldSharpBoxCache)
                 {
-                    polygonBuffer[0] = topLeft;
-                    polygonBuffer[1] = topRight;
-                    polygonBuffer[2] = bottomLeft;
-                    polygonBuffer[3] = bottomRight;
-
-                    var center = (topLeft + topRight + bottomLeft + bottomRight) / 4;
-                    var closestPoint = raycastHit.Collider.GetNearestPoint(center);
-                    var d = MadnessUtils.DistanceToPolygon(polygonBuffer, closestPoint);
-                    var isNear = d < 40;
-                    if (isNear)
+                    if (raycastHit.Collider.OverlapsQuad(topLeft, topRight, bottomLeft, bottomRight, out var contact))
                     {
                         var hitTransform = Scene.GetComponentFrom<TransformComponent>(raycastHit.Entity);
                         for (int i = 0; i < 4; i++)
-                            Prefabs.CreateBloodSpurt(Scene, closestPoint, Utilities.VectorToAngle(raycastHit.Normal), character.Look.BloodColour, 1.5f);
+                            Prefabs.CreateBloodSpurt(Scene, contact, Utilities.VectorToAngle(raycastHit.Normal), character.Look.BloodColour, 1.5f);
                         Audio.PlayOnce(Utilities.PickRandom(Sounds.LivingSwordHit));
                         //TODO should it always be LivingSwordHit? What if they are dead? 
                         stuckInBodyBecauseSharp = true;
