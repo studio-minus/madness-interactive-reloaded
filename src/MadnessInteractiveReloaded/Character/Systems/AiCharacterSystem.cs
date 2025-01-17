@@ -20,9 +20,7 @@ public class AiCharacterSystem : Walgelijk.System
     public static bool DisableAI = false;
     public static bool AutoSpawn = false;
 
-    // maak het zo dat enemies elkaar ontwijken
-    // maak het zo dat enemies langzamer achteruit lopen dan vooruit
-    // maak het zo dat enemies een beetje rondlopen als ze geen target hebben
+    // TODO prevent NCPs from bunching up
 
     public override void Update()
     {
@@ -104,11 +102,12 @@ public class AiCharacterSystem : Walgelijk.System
             var originalPos = character.AimOrigin = character.Positioning.GlobalCenter;
 
             var aimingSource = originalPos;
+            var eq = character.EquippedWeapon.TryGet(Scene, out equipped);
             if (!experimentMode)
             {
-                if (character.EquippedWeapon.TryGet(Scene, out equipped))
+                if (eq)
                 {
-                    aimingSource.Y += equipped.BarrelEndPoint.Y;
+                    aimingSource.Y += equipped!.BarrelEndPoint.Y;
 
                     if (equipped.Data.WeaponType == WeaponType.Firearm)
                         originalPos.Y += 100 * character.Positioning.IronSightProgress;
@@ -137,9 +136,9 @@ public class AiCharacterSystem : Walgelijk.System
             if (!experimentMode)
                 character.AimTargetPosition = ai.AimingPosition;
 
-            if (!experimentMode && !ai.IsDocile && character.HasWeaponEquipped && equipped != null)
+            if (character.HasWeaponEquipped && equipped != null)
             {
-                if (!equipped.HasRoundsLeft)
+                if (!equipped.HasRoundsLeft && !ai.IsDocile && !experimentMode)
                 {
                     equipped = null;
                     character.DropWeapon(Scene);
