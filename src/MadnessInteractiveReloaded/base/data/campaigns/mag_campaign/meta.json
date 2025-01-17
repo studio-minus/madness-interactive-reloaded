@@ -6,6 +6,7 @@
     "look": "mag_agent",
     "stats": "mag",
     "description": "mag campaign!! ONLY MAGS ALLOWED",
+	"hidden": true,
     "levels": [
         "lvl_cutscene_mag_intro",
         "lvl_mag_intro",
