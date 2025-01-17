@@ -4,7 +4,7 @@
 		<TargetFramework>net9.0</TargetFramework>
 		<ApplicationIcon>resources\textures\icon.ico</ApplicationIcon>
 		<StartupObject></StartupObject>
-		<Version>0.51.1</Version>
+		<Version>0.51.2</Version>
 		<NeutralLanguage />
 		<Company>Studio Minus</Company>
 		<Authors>Dikkiedik, zooi, Koof</Authors>

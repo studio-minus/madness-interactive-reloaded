@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;  
@@ -549,7 +549,7 @@ public class WeaponEditorSystem : Walgelijk.System
             {
                 var item = weapon.AnimatedParts[i];
 
-                Ui.Layout.Height(210).FitWidth().VerticalLayout();
+                Ui.Layout.Height(246).FitWidth().VerticalLayout();
                 if (editor.CurrentSelectedAnimatedPart == item)
                     Ui.Theme.OutlineWidth(2).OutlineColour(Colors.White).Once();
                 Ui.StartGroup(true, i);
