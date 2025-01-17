@@ -663,7 +663,10 @@ public static class CharacterUtilities
                 wpn.BaseSpriteEntity,
                 new ComponentRef<CharacterComponent>(character.Entity)
             ));
+
             character.DropWeapon(scene);
+            wpn.Wielder = default;
+            character.EquippedWeapon = default;
 
             var targetPosition = character.AimTargetPosition;
             var delta = character.AimTargetPosition - character.Positioning.Head.GlobalPosition;

@@ -30,7 +30,7 @@ public class WeaponComponent : Component
     public bool IsBeingWielded => Wielder.IsValid(Game.Main.Scene);
 
     /// <summary>
-    /// The character whom is holding this weapon.
+    /// The character holding this weapon.
     /// </summary>
     public ComponentRef<CharacterComponent> Wielder;
 

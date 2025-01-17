@@ -103,6 +103,9 @@ public class CampaignMenuSystem : Walgelijk.System
             int i = 0;
             foreach (var c in Registries.Campaigns.GetAllValues().OrderBy(static c => c.Order))
             {
+                if (c.Hidden)
+                    continue;
+
                 Ui.Layout.FitWidth().Height(40).CenterHorizontal();
                 Ui.Theme.Padding(10).Once();
                 if (selectedCampaign == c.Id)
