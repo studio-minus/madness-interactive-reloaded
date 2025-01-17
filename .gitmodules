@@ -1,3 +1,6 @@
 [submodule "src/BigGustave"]
 	path = src/BigGustave
 	url = https://github.com/mestiez/BigGustave
+[submodule "src/Harmony"]
+	path = src/Harmony
+	url = https://github.com/pardeike/Harmony

@@ -4,7 +4,7 @@
 		<TargetFramework>net9.0</TargetFramework>
 		<ApplicationIcon>resources\textures\icon.ico</ApplicationIcon>
 		<StartupObject></StartupObject>
-		<Version>0.51.0</Version>
+		<Version>0.51.1</Version>
 		<NeutralLanguage />
 		<Company>Studio Minus</Company>
 		<Authors>Dikkiedik, zooi, Koof</Authors>
@@ -47,7 +47,6 @@
 	</Target>
 
 	<ItemGroup>
-		<PackageReference Include="Lib.Harmony" Version="2.3.3" />
 		<PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="4.12.0" />
 		<PackageReference Include="NativeFileDialogExtendedSharp" Version="0.1.0" />
 		<PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="3.116.1" />
@@ -80,6 +79,7 @@
 	
 	<ItemGroup>
 		<ProjectReference Include="..\BigGustave\src\BigGustave\BigGustave.csproj" />
+		<ProjectReference Include="..\Harmony\Harmony\Harmony.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
