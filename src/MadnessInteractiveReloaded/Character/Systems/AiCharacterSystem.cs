@@ -62,6 +62,7 @@ public class AiCharacterSystem : Walgelijk.System
             var entity = ai.Entity;
             var character = Scene.GetComponentFrom<CharacterComponent>(entity);
             var transform = Scene.GetComponentFrom<TransformComponent>(entity);
+            var lifetime = Scene.GetComponentFrom<LifetimeComponent>(entity);
 
             if (!character.IsAlive)
             {
@@ -172,6 +173,7 @@ public class AiCharacterSystem : Walgelijk.System
                 PickupNearestWeapon(transform.Position, character, ai);
             character.EquippedWeapon.TryGet(Scene, out equipped);
 
+            // basically, if the NPC is available to shoot its target
             if (!experimentMode && !ai.IsDocile &&
                 !ai.IsDoingAccurateShot &&
                 character.HasWeaponEquipped &&
@@ -297,23 +299,25 @@ public class AiCharacterSystem : Walgelijk.System
 
             if (!experimentMode)
             {
-
                 if (ai.HasKillTarget && killTargetChar != null)
                 {
+                    // this is where we do aiming
+                    var newAimPos = ai.AimingPosition;
                     if (character.AnimationConstrainsAny(AnimationConstraint.FaceForwards))
-                        ai.AimingPosition = (character.Positioning.Head.GlobalPosition + new Vector2(character.Positioning.FlipScaling * 10000, 0));
+                        newAimPos = (character.Positioning.Head.GlobalPosition + new Vector2(character.Positioning.FlipScaling * 10000, 0));
                     else if (!character.AnimationConstrainsAny(AnimationConstraint.PreventAiming))
                     {
-                        ai.AimingPosition = Noise.GetValue(-113.234f, Time.SecondsSinceLoad * 0.05f, ai.Seed) > -30
+                        newAimPos = Noise.GetValue(-113.234f, Time.SecondsSinceLoad * 0.05f, ai.Seed) > -30
                             ? killTargetChar.Positioning.Head.GlobalPosition
                             : killTargetChar.Positioning.Body.ComputedVisualCenter;
+                        //ai.AimingPosition = Utilities.SmoothApproach(ai.AimingPosition, newAimTarget, 125, Time.DeltaTime);
 
-                        var nonRandomAimingPos = ai.AimingPosition;
+                        var nonRandomAimingPos = newAimPos;
 
                         if (character.HasWeaponEquipped)
                         {
                             var aimRandom = MadnessUtils.Noise2D(Time.SecondsSinceLoad * 0.343f, ai.Seed);
-                            ai.AimingPosition += aimRandom *
+                            newAimPos += aimRandom *
                                                  (character.Stats.AimingRandomness / 2) *
                                                  Vector2.Distance(ai.AimingPosition, transform.Position);
                         }
@@ -321,7 +325,12 @@ public class AiCharacterSystem : Walgelijk.System
                         character.RelativeAimTargetPosition = ai.AimingPosition - originalPos;
                     }
                     else
-                        ai.AimingPosition = originalPos + character.RelativeAimTargetPosition;
+                        newAimPos = originalPos + character.RelativeAimTargetPosition;
+
+                    if (lifetime.Lifetime < 1)
+                        ai.AimingPosition = newAimPos;
+                    else
+                        ai.AimingPosition = Utilities.SmoothApproach(ai.AimingPosition, newAimPos, character.Stats.AimingSpeed, Time.DeltaTime);
 
                     if (!character.AnimationConstrainsAny(AnimationConstraint.PreventBlock))
                     {

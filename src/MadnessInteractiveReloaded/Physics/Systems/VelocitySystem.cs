@@ -200,7 +200,7 @@ public class VelocitySystem : Walgelijk.System
                     var center = (topLeft + topRight + bottomLeft + bottomRight) / 4;
                     var closestPoint = raycastHit.Collider.GetNearestPoint(center);
                     var d = MadnessUtils.DistanceToPolygon(polygonBuffer, closestPoint);
-                    var isNear = d < 20;
+                    var isNear = d < 40;
                     if (isNear)
                     {
                         var hitTransform = Scene.GetComponentFrom<TransformComponent>(raycastHit.Entity);
