@@ -26,6 +26,7 @@ public class CharacterCreationSystem : Walgelijk.System
     private static readonly MenuCharacterRenderer menuCharacterRenderer = new();
 
     private const float ButtonBarHeight = 50;
+    private const float FilterBoxHeight = 42;
 
     public override void Render()
     {
@@ -427,8 +428,20 @@ public class CharacterCreationSystem : Walgelijk.System
 
         float padding = Onion.Tree.CurrentNode!.GetInstance().Theme.Padding;
 
+        if (!Scene.FindAnyComponent<CharacterCreationComponent>(out var data))
+            return false;
+
+        // Add filter controls
+        Ui.Layout.FitWidth().Scale(-32, 0).Height(32).StickTop().StickLeft().Move(0, 5);
+        Ui.StringInputBox(ref data.PieceFilter, new TextBoxOptions(Localisation.Get("experiment-filter")));
+
+        Ui.Layout.Size(32, 32).StickRight().StickTop().Move(0, 5);
+        if (Ui.ImageButton(Textures.UserInterface.SmallExitClose.Value, ImageContainmentMode.Center))
+            data.PieceFilter = string.Empty;
+
         bool returnValue = false;
-        Ui.Layout.FitContainer(1, 1, false).StickLeft(false).StickBottom(false).VerticalLayout().Overflow(false, true);
+        // Offset filter box height
+        Ui.Layout.FitContainer(1, 1, false).StickLeft(false).StickBottom(false).Scale(0, -FilterBoxHeight).Move(0, FilterBoxHeight).VerticalLayout().Overflow(false, true);
         Ui.Theme.ScrollbarWidth(24).ForegroundColor(Colors.Black).Once();
         Ui.StartScrollView(false, identity: callsite);
         {
@@ -436,11 +449,12 @@ public class CharacterCreationSystem : Walgelijk.System
             int i = 0;
             float x = 0;
             float rowHeight = (w) / preferredColumns;
-            foreach (var piece in registry.GetAllValues().OrderBy(static p => p.DisplayName).OrderBy(static p => p.Order))
+            foreach (var piece in registry.GetAllValues()
+                .Where(p => !p.Hidden && (string.IsNullOrEmpty(data.PieceFilter) || 
+                    p.DisplayName.Contains(data.PieceFilter, StringComparison.InvariantCultureIgnoreCase)))
+                .OrderBy(static p => p.DisplayName)
+                .OrderBy(static p => p.Order))
             {
-                if (piece.Hidden)
-                    continue;
-
                 if (x > w || i == 0)
                 {
                     x = rowHeight;
@@ -471,7 +485,8 @@ public class CharacterCreationSystem : Walgelijk.System
                 x += rowHeight;
             }
 
-            Ui.End(); // end the last row
+            if (i > 0) // Only end the last row if we actually created any rows
+                Ui.End();
         }
         Ui.End();
 
