@@ -15,6 +15,7 @@
 		<DebugType>embedded</DebugType>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<Platforms>AnyCPU;x64</Platforms>
+		<RuntimeIdentifiers>win-x64;linux-x64</RuntimeIdentifiers>
 	</PropertyGroup>
 	
 	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
@@ -37,13 +38,17 @@
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
 		<DebugType>portable</DebugType>
 	</PropertyGroup>
+	<PropertyGroup>
+		<CommandPrefix Condition="'$(OS)' != 'Unix'">.\</CommandPrefix>
+ 		<CommandPrefix Condition="'$(OS)' == 'Unix'">./</CommandPrefix>
+	</PropertyGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Exec Command=".\MIR --mode pack --input &quot;$(ProjectDir)base&quot; --output resources/base.waa" WorkingDirectory="$(OutDir)" />
-	</Target>
+  		<Exec Command="$(CommandPrefix)MIR  --mode pack --input &quot;$(ProjectDir)base&quot; --output resources/base.waa" WorkingDirectory="$(OutDir)" />
+  	</Target>
 	
 	<Target Name="PostPublish" AfterTargets="Publish">
-		<Exec Command=".\MIR --mode pack --input &quot;$(ProjectDir)base&quot; --output resources/base.waa" WorkingDirectory="$(PublishDir)" />
+		<Exec Command="$(CommandPrefix)MIR --mode pack --input &quot;$(ProjectDir)base&quot; --output resources/base.waa" WorkingDirectory="$(PublishDir)" />
 	</Target>
 
 	<ItemGroup>
