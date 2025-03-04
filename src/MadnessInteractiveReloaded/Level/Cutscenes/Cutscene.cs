@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Numerics;
 using Walgelijk;
 using Walgelijk.AssetManager;
@@ -127,7 +127,7 @@ public class VideoSlide : ISlide
     public float Duration { get; set; }
     public AssetRef<Video> Video;
 
-    public bool IsReady => vid.IsReady;
+    public bool IsReady => vid?.IsReady ?? false;
 
     private Video? vid;
 
@@ -144,14 +144,27 @@ public class VideoSlide : ISlide
 
     public void OnStart()
     {
-        vid = Video.Value;
-
-        vid.Restart();
+        try
+        {
+            vid = Video.Value;
+            vid.Restart();
+        }
+        catch (Exception ex)
+        {
+            Logger.Error($"Error initializing video: {ex.Message}");
+        }
     }
 
     public void OnStop()
     {
-        vid?.Stop();
+        try
+        {
+            vid?.Stop();
+        }
+        catch (Exception ex)
+        {
+            Logger.Error($"Error stopping video: {ex.Message}");
+        }
     }
 
     public void OnUpdate(Window window, Time time)
@@ -159,24 +172,45 @@ public class VideoSlide : ISlide
         if (vid == null)
             return;
 
-        Draw.Reset();
-        Draw.ScreenSpace = true;
-        Draw.Order = RenderOrders.UserInterface;
-        Draw.Image(vid.Texture, new Rect(0, 0, window.Width, window.Height), ImageContainmentMode.Contain);
+        try
+        {
+            Draw.Reset();
+            Draw.ScreenSpace = true;
+            Draw.Order = RenderOrders.UserInterface;
+            Draw.Image(vid.Texture, new Rect(0, 0, window.Width, window.Height), ImageContainmentMode.Contain);
+        }
+        catch (Exception ex)
+        {
+            Logger.Error($"Error updating video: {ex.Message}");
+        }
     }
 
     void IRenderTask.Execute(IGraphics g)
     {
         if (vid == null)
-
             return;
-        var ot = g.CurrentTarget;
-        vid.UpdateAndRender(g);
-        g.CurrentTarget = ot;
+
+        try
+        {
+            var ot = g.CurrentTarget;
+            vid.UpdateAndRender(g);
+            g.CurrentTarget = ot;
+        }
+        catch (Exception ex)
+        {
+            Logger.Error($"Error executing render task: {ex.Message}");
+        }
     }
 
     public void Dispose()
     {
-        //vid?.Stop();
+        try
+        {
+            vid?.Dispose();
+        }
+        catch (Exception ex)
+        {
+            Logger.Error($"Error disposing video: {ex.Message}");
+        }
     }
 }
