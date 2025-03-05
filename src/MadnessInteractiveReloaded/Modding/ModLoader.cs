@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using Walgelijk;
 using Walgelijk.AssetManager;
@@ -30,6 +31,33 @@ public static class ModLoader
 
     private static readonly SemaphoreSlim modLoadingSemaphore = new(1);
     private static bool needsAssetRefresh = false;
+
+    [Command(Alias = "ModSources", HelpString = "List mod sources and their status")]
+    private static void ModSourcesCmd()
+    {
+        var str = new StringBuilder();
+        foreach (var src in sources)
+        {
+            int l = mods.Values.Count(m => m.Source == src);
+
+            str.Append(src.GetType().Name);
+            str.Append(" | ");
+            str.Append(src.IsValid ? "valid" : "invalid");
+            str.Append(" | ");
+            str.AppendFormat("{0} loaded", l);
+
+            switch (src)
+            {
+                case LocalModCollectionSource local:
+                    str.Append(" | ");
+                    str.Append(local.Directory.FullName);
+                    break;
+            }
+
+            str.AppendLine();
+        }
+        Game.Main.Console.WriteLine(str.ToString(), ConsoleMessageType.Plain);
+    }
 
     public static void AddSource(IModCollectionSource source)
     {
