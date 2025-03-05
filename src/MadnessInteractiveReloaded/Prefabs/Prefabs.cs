@@ -965,38 +965,38 @@ public static class Prefabs
     /// <exception cref="Exception"></exception>
     public static DoorComponent CreateDoor(Scene scene, in LevelEditor.DoorProperties properties)
     {
-        int horizontalDivisions = 5;
-        int numVerticesPerRow = horizontalDivisions + 1;
-        int vertexCount = numVerticesPerRow * 2;
+        int verticalDivisions = 64; // is this too much???
+        int numVerticesPerColumn = verticalDivisions + 1;
+        int vertexCount = numVerticesPerColumn * 2;
         var vertices = new Vertex[vertexCount];
 
-        for (int i = 0; i <= horizontalDivisions; i++)
+        for (int i = 0; i <= verticalDivisions; i++)
         {
-            var t = (float)i / horizontalDivisions;
-            var bottom = Vector2.Lerp(properties.BottomLeft, properties.BottomRight, t);
-            var top = Vector2.Lerp(properties.TopLeft, properties.TopRight, t);
+            var t = (float)i / verticalDivisions;
+            var left = Vector2.Lerp(properties.BottomLeft, properties.TopLeft, t);
+            var right = Vector2.Lerp(properties.BottomRight, properties.TopRight, t);
 
-            vertices[i * 2] = new Vertex(new(bottom, 0), new Vector2(t, 0), Colors.White);
-            vertices[i * 2 + 1] = new Vertex(new(top, 0), new Vector2(t, 1), Colors.White);
+            vertices[i * 2] = new Vertex(new(left, 0), new Vector2(0, t), Colors.White);
+            vertices[i * 2 + 1] = new Vertex(new(right, 0), new Vector2(1, t), Colors.White);
         }
 
-        var indices = new uint[horizontalDivisions * 6];
+        var indices = new uint[verticalDivisions * 6];
         int index = 0;
 
-        for (int i = 0; i < horizontalDivisions; i++)
+        for (int i = 0; i < verticalDivisions; i++)
         {
             var bottomLeft = (uint)(i * 2);
-            var bottomRight = (uint)(i * 2 + 2);
-            var topLeft = (uint)(i * 2 + 1);
+            var bottomRight = (uint)(i * 2 + 1);
+            var topLeft = (uint)(i * 2 + 2);
             var topRight = (uint)(i * 2 + 3);
 
             indices[index++] = bottomLeft;
-            indices[index++] = bottomRight;
+            indices[index++] = topLeft;
             indices[index++] = topRight;
 
             indices[index++] = bottomLeft;
             indices[index++] = topRight;
-            indices[index++] = topLeft;
+            indices[index++] = bottomRight;
         }
 
 

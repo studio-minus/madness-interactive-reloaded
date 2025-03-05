@@ -56,12 +56,12 @@ public record DoorProperties
     /// <summary>
     /// The sound to use when opening the door. Will fall back to default if null.
     /// </summary>
-    public AssetRef<FixedAudioData>? OpenSound;
+    public GlobalAssetId? OpenSound;
 
     /// <summary>
     /// The sound to use when closing the door. Will fall back to default if null.
     /// </summary>
-    public AssetRef<FixedAudioData>? CloseSound;
+    public GlobalAssetId? CloseSound;
 
     /// <summary>
     /// Duration of the door opening/closing animation in seconds

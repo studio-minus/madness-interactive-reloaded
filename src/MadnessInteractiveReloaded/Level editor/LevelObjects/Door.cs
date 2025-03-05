@@ -290,10 +290,10 @@ public class Door : LevelObject, ITagged
             Ui.Spacer(16);
             Ui.Label("Close sound");
             Ui.Layout.FitWidth(false).Height(32);
-            MadnessUi.AssetPicker((Properties.CloseSound ?? default).Id, id =>
+            MadnessUi.AssetPicker(Properties.CloseSound ?? default, id =>
             {
                 Editor.RegisterAction();
-                Properties.CloseSound = new(id);
+                Properties.CloseSound = id;
             }, static c => c.MimeType.Contains("audio"));
 
             if (Properties.CloseSound.HasValue)
@@ -311,10 +311,10 @@ public class Door : LevelObject, ITagged
             Ui.Spacer(16);
             Ui.Label("Open sound");
             Ui.Layout.FitWidth(false).Height(32);
-            MadnessUi.AssetPicker((Properties.OpenSound ?? default).Id, id =>
+            MadnessUi.AssetPicker(Properties.OpenSound ?? default, id =>
             {
                 Editor.RegisterAction();
-                Properties.OpenSound = new(id);
+                Properties.OpenSound = id;
             }, static c => c.MimeType.Contains("audio"));
 
             if (Properties.OpenSound.HasValue)

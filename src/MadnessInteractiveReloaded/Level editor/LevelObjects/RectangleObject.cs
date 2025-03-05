@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Numerics;
 using Walgelijk;
 using Walgelijk.SimpleDrawing;
@@ -65,6 +65,8 @@ public abstract class RectangleObject : LevelObject, ITagged
         var mousePos = input.WorldMousePosition;
         if (input.IsKeyPressed(DragKey))
         {
+            Editor.RegisterAction();
+
             targetDragSide = Side.None;
 
             if (MathF.Abs(mousePos.Y - Rectangle.MaxY) <= scaledDragEdgeWidth)

@@ -1,6 +1,7 @@
 using System;
 using System.Numerics;
 using Walgelijk;
+using Walgelijk.AssetManager;
 
 namespace MIR;
 
@@ -64,7 +65,7 @@ public class DoorComponent : Component, IDisposable
         MadnessUtils.DelayPausable(Properties.AnimationDuration, () => IsBusyWithAnimation = false);
 
         var snd = Sounds.DoorOpen;
-        if (Properties.OpenSound.TryGetValue(out var data))
+        if (Properties.OpenSound.HasValue && Assets.TryLoad<FixedAudioData>(Properties.OpenSound.Value, out var data))
             snd = SoundCache.Instance.LoadSoundEffect(data);
         scene.Game.AudioRenderer.PlayOnce(snd, 0.25f);
     }
@@ -82,7 +83,7 @@ public class DoorComponent : Component, IDisposable
         MadnessUtils.DelayPausable(Properties.AnimationDuration, () => IsBusyWithAnimation = false);
 
         var snd = Sounds.DoorClose;
-        if (Properties.CloseSound.TryGetValue(out var data))
+        if (Properties.CloseSound.HasValue && Assets.TryLoad<FixedAudioData>(Properties.CloseSound.Value, out var data))
             snd = SoundCache.Instance.LoadSoundEffect(data);
         scene.Game.AudioRenderer.PlayOnce(snd, 0.25f);
     }
