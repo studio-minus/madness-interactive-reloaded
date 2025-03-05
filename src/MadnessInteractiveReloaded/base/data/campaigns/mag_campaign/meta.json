@@ -6,7 +6,7 @@
     "look": "mag_agent",
     "stats": "mag",
     "description": "mag campaign!! ONLY MAGS ALLOWED",
-	"hidden": true,
+	"hidden": false,
     "levels": [
         "lvl_cutscene_mag_intro",
         "lvl_mag_intro",
@@ -25,7 +25,7 @@
         "lvl_mag_lever",
         "lvl_mag_turret",
         "lvl_mag_vaults",
-        "lvl_mag_bridge",
-        "lvl_mag_rocket"
+        "lvl_mag_rocket",
+        "lvl_mag_busstop"
     ]
 }

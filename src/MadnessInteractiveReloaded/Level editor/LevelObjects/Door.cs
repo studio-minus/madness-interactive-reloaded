@@ -331,7 +331,7 @@ public class Door : LevelObject, ITagged
         Ui.Spacer(16);
         Ui.Label("Duration");
         Ui.Layout.FitWidth(false).Height(32);
-        if (Ui.FloatInputBox(ref Properties.AnimationDuration, (0, 1)))
+        if (Ui.FloatInputBox(ref Properties.AnimationDuration, (0, 2)))
         {
             Editor.RegisterAction();
         }
