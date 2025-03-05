@@ -1,0 +1,18 @@
+{
+  "waves": [
+    {
+      "targetCount": 20,
+      "instructions": [
+        {
+          "statsKey": "grunt",
+          "lookKey": "grunt",
+          "factionKey": "aahw",
+          "weapon": {
+            "key": "1911a1_custom",
+            "infiniteAmmo": true
+          }
+        }
+      ]
+    }
+  ]
+}
