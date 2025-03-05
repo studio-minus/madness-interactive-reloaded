@@ -1,4 +1,4 @@
-﻿using OpenTK.Graphics.OpenGL;
+using OpenTK.Graphics.OpenGL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -965,18 +965,41 @@ public static class Prefabs
     /// <exception cref="Exception"></exception>
     public static DoorComponent CreateDoor(Scene scene, in LevelEditor.DoorProperties properties)
     {
-        var vertices = new Vertex[4]
+        int horizontalDivisions = 5;
+        int numVerticesPerRow = horizontalDivisions + 1;
+        int vertexCount = numVerticesPerRow * 2;
+        var vertices = new Vertex[vertexCount];
+
+        for (int i = 0; i <= horizontalDivisions; i++)
         {
-            new Vertex(new Vector3(properties.BottomLeft, 0), new Vector2(0, 0), Colors.White),
-            new Vertex(new Vector3(properties.BottomRight, 0), new Vector2(1, 0), Colors.White),
-            new Vertex(new Vector3(properties.TopRight, 0), new Vector2(1, 1), Colors.White),
-            new Vertex(new Vector3(properties.TopLeft, 0), new Vector2(0, 1), Colors.White),
-        };
-        var indices = new uint[]
+            var t = (float)i / horizontalDivisions;
+            var bottom = Vector2.Lerp(properties.BottomLeft, properties.BottomRight, t);
+            var top = Vector2.Lerp(properties.TopLeft, properties.TopRight, t);
+
+            vertices[i * 2] = new Vertex(new(bottom, 0), new Vector2(t, 0), Colors.White);
+            vertices[i * 2 + 1] = new Vertex(new(top, 0), new Vector2(t, 1), Colors.White);
+        }
+
+        var indices = new uint[horizontalDivisions * 6];
+        int index = 0;
+
+        for (int i = 0; i < horizontalDivisions; i++)
         {
-            0u, 1u, 2u,
-            0u, 3u, 2u
-        };
+            var bottomLeft = (uint)(i * 2);
+            var bottomRight = (uint)(i * 2 + 2);
+            var topLeft = (uint)(i * 2 + 1);
+            var topRight = (uint)(i * 2 + 3);
+
+            indices[index++] = bottomLeft;
+            indices[index++] = bottomRight;
+            indices[index++] = topRight;
+
+            indices[index++] = bottomLeft;
+            indices[index++] = topRight;
+            indices[index++] = topLeft;
+        }
+
+
         var mesh = new VertexBuffer(vertices, indices);
         mesh.PrimitiveType = Primitive.Triangles;
 
@@ -984,7 +1007,7 @@ public static class Prefabs
         var entity = scene.CreateEntity();
         scene.AttachComponent(entity, new TransformComponent());
         var door = scene.AttachComponent(entity, new DoorComponent(mat, properties));
-        scene.AttachComponent(entity, new CustomShapeComponent(mesh, mat) //wordt automatisch gedisposed :)
+        scene.AttachComponent(entity, new CustomShapeComponent(mesh, mat) // wordt automatisch gedisposed :)
         {
             RenderOrder = RenderOrders.BackgroundBehind.WithOrder(1)
         });

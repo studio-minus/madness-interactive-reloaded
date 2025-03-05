@@ -1,4 +1,4 @@
-﻿using MIR.LevelEditor.Objects;
+using MIR.LevelEditor.Objects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -97,7 +97,7 @@ public class EnemySpawningSystem : Walgelijk.System
         var wasPortal = door.Properties.IsPortal;
         door.Properties.IsPortal = false;
         door.Open(Scene);
-        yield return new GameSafeRoutineDelay(DoorComponent.AnimationTime * 1.5f);
+        yield return new GameSafeRoutineDelay(door.Properties.AnimationDuration * 1.5f);
 
         for (int i = 0; i < amount; i++)
         {
@@ -109,7 +109,7 @@ public class EnemySpawningSystem : Walgelijk.System
                 yield return new GameSafeRoutineDelay(Utilities.RandomFloat(0.1f, .4f));
         }
 
-        yield return new GameSafeRoutineDelay(DoorComponent.AnimationTime * 0.5f);
+        yield return new GameSafeRoutineDelay(door.Properties.AnimationDuration * 0.5f);
         door.Close(Scene);
         door.Properties.IsPortal = wasPortal;
     }
