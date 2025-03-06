@@ -47,7 +47,7 @@ public class Level
 
     // heavy stuff beyond this point!
 
-    public AssetRef<WaveSequence>? WaveSequence;
+    public AssetRef<WaveSequence> WaveSequence;
     public List<EnemySpawnInstructions> EnemySpawnInstructions = new();
     public List<string> Weapons = new();
     public List<Vector2> FloorLine = new();

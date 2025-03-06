@@ -13,13 +13,12 @@ namespace MIR;
 /// </summary>
 public class EnemySpawningSystem : Walgelijk.System
 {
-    private readonly List<Routine> routines = [];
+    private readonly Stack<Routine> routines = [];
 
     public override void OnDeactivate()
     {
-        foreach (var r in routines)
+        while (routines.TryPop(out var r))
             RoutineScheduler.Stop(r);
-        routines.Clear();
     }
 
     public override void Update()
@@ -27,12 +26,76 @@ public class EnemySpawningSystem : Walgelijk.System
         if (MadnessUtils.IsPaused(Scene) || MadnessUtils.EditingInExperimentMode(Scene) || MadnessUtils.IsCutscenePlaying(Scene))
             return;
 
+        ProcessSpawners();
+        ProcessWaves();
+    }
+
+    private void ProcessWaves()
+    {
+        if (!Scene.FindAnyComponent<WaveSpawningComponent>(out var waveComponent) || !waveComponent.Enabled)
+            return;
+
+        if (waveComponent.WaveIndex == -1 || waveComponent.RemainingEnemiesThisWave == 0)
+        {
+            waveComponent.WaveIndex++;
+            waveComponent.RemainingEnemiesThisWave = waveComponent.Sequence.Waves[waveComponent.WaveIndex].TargetCount;
+        }
+
+        var currentWave = waveComponent.Sequence.Waves[waveComponent.WaveIndex];
+
+        var hasLevelProgress = Scene.FindAnyComponent<LevelProgressComponent>(out var lvlProgress);
+        if (!CanSpawnAnotherEnemy(currentWave.MaxEnemyCount, lvlProgress, 1, out var liveEnemyCount))
+            return;
+
+        CharacterComponent? playerChar = null;
+        var hasPlayer = Scene.FindAnyComponent<PlayerComponent>(out var player) && Scene.TryGetComponentFrom(player.Entity, out playerChar);
+
+        if (Time.SecondsSinceSceneChange > 1)
+            waveComponent.SpawnTimer += Time.DeltaTime;
+
+        bool hasWon = hasLevelProgress && (lvlProgress?.GoalReached ?? false);
+
+        if (!hasWon &&
+            AiCharacterSystem.AutoSpawn &&
+            waveComponent.SpawnTimer > currentWave.SpawnInterval &&
+            (!hasPlayer || (playerChar != null && playerChar.IsAlive)))
+        {
+            var weapons = currentWave.Weapons ?? Registries.Weapons.GetAllKeys();
+            var enemies = currentWave.Instructions ?? [];
+            var spawnPoint = GetRandomSpawnPoint(waveComponent.SpawnPoints ?? [], waveComponent.Doors ?? [], out var isDoor);
+            waveComponent.SpawnTimer = Utilities.RandomFloat(-1, 1);
+
+            if (enemies.Length == 0)
+                return;
+
+            float weaponChance = currentWave.WeaponChance;
+
+            if (isDoor)
+            {
+                var door = GetDoorNearest(spawnPoint);
+                if (door != null && !door.IsOpen && !door.IsBusyWithAnimation)
+                {
+                    int amountToSpawn = GetNumberOfEnemiesToSpawn(currentWave.MaxEnemyCount, liveEnemyCount, lvlProgress);
+                    routines.Push(RoutineScheduler.Start(DoorSpawnRoutine(amountToSpawn, weaponChance, door, enemies, weapons, spawnPoint)));
+                }
+            }
+            else
+            {
+                var instr = GetEnemySpawnInstructions(enemies);
+                if (instr != null)
+                    Spawn(weaponChance, weapons, instr, spawnPoint);
+            }
+        }
+    }
+
+    private void ProcessSpawners()
+    {
         if (!Scene.FindAnyComponent<EnemySpawningComponent>(out var spawningComponent) || !spawningComponent.Enabled)
             return;
 
         var hasLevelProgress = Scene.FindAnyComponent<LevelProgressComponent>(out var lvlProgress);
 
-        if (!CanSpawnAnotherEnemy(spawningComponent, lvlProgress, 1, out var liveEnemyCount))
+        if (!CanSpawnAnotherEnemy(spawningComponent.MaxEnemyCount, lvlProgress, 1, out var liveEnemyCount))
             return;
 
         CharacterComponent? playerChar = null;
@@ -50,7 +113,7 @@ public class EnemySpawningSystem : Walgelijk.System
         {
             var weapons = spawningComponent.WeaponsToSpawnWith ?? Registries.Weapons.GetAllKeys();
             var enemies = spawningComponent.SpawnInstructions ?? [];
-            var spawnPoint = GetRandomSpawnPoint(spawningComponent, out var isDoor);
+            var spawnPoint = GetRandomSpawnPoint(spawningComponent.SpawnPoints ?? [], spawningComponent.Doors ?? [], out var isDoor);
             spawningComponent.SpawnTimer = Utilities.RandomFloat(-1, 1);
 
             if (enemies.Count == 0)
@@ -65,8 +128,8 @@ public class EnemySpawningSystem : Walgelijk.System
                 var door = GetDoorNearest(spawnPoint);
                 if (door != null && !door.IsOpen && !door.IsBusyWithAnimation)
                 {
-                    int amountToSpawn = GetNumberOfEnemiesToSpawn(spawningComponent, liveEnemyCount, lvlProgress);
-                    routines.Add(RoutineScheduler.Start(DoorSpawnRoutine(amountToSpawn, weaponChance, door, enemies, weapons, spawnPoint)));
+                    int amountToSpawn = GetNumberOfEnemiesToSpawn(spawningComponent.MaxEnemyCount, liveEnemyCount, lvlProgress);
+                    routines.Push(RoutineScheduler.Start(DoorSpawnRoutine(amountToSpawn, weaponChance, door, enemies, weapons, spawnPoint)));
                 }
             }
             else
@@ -78,10 +141,8 @@ public class EnemySpawningSystem : Walgelijk.System
         }
     }
 
-    private static ISpawnInstructions? GetEnemySpawnInstructions(IList<ISpawnInstructions>? enemies)
-    {
-        return (enemies == null || enemies.Count == 0) ? null : Utilities.PickRandom(enemies);
-    }
+    private static ISpawnInstructions? GetEnemySpawnInstructions(IList<ISpawnInstructions>? enemies) 
+        => (enemies == null || enemies.Count == 0) ? null : Utilities.PickRandom(enemies);
 
     private IEnumerator<IRoutineCommand> DoorSpawnRoutine(
         int amount,
@@ -114,6 +175,7 @@ public class EnemySpawningSystem : Walgelijk.System
         door.Properties.IsPortal = wasPortal;
     }
 
+    Weet je wat? Fuck deze hele class. Dit zuigt, en het is een oneindige rotzooi. Maak alles opnieuw.
 
     private int GetLiveEnemyCount()
     {
@@ -128,12 +190,12 @@ public class EnemySpawningSystem : Walgelijk.System
         );
     }
 
-    private int GetMaxEnemyCount(EnemySpawningComponent spawningComponent, int liveEnemyCount, LevelProgressComponent? lvlProgress)
+    private int GetRemainingEnemyCount(int maxEnemyCount, int liveEnemyCount, int targetBodyCount, int currentBodyCount)
     {
-        if (lvlProgress != null && Level.CurrentLevel?.ProgressionType == ProgressionType.BodyCount)
-            return int.Min(spawningComponent.MaxEnemyCount, lvlProgress.BodyCount.Target - lvlProgress.BodyCount.Current- liveEnemyCount);
+        if (targetBodyCount > 0 && Level.CurrentLevel?.ProgressionType == ProgressionType.BodyCount)
+            return int.Min(maxEnemyCount, targetBodyCount - currentBodyCount - liveEnemyCount);
         else
-            return spawningComponent.MaxEnemyCount;
+            return maxEnemyCount;
     }
 
     private int GetOpenDoorCount()
@@ -141,22 +203,20 @@ public class EnemySpawningSystem : Walgelijk.System
         return Scene.GetAllComponentsOfType<DoorComponent>().Count(static d => d.IsOpen || d.IsBusyWithAnimation);
     }
 
-    private bool CanSpawnAnotherEnemy(EnemySpawningComponent spawningComponent, LevelProgressComponent? lvlProgress, int requestedAmount, out int liveEnemyCount)
+    private bool CanSpawnAnotherEnemy(int maxEnemyCount, LevelProgressComponent? lvlProgress, int requestedAmount, out int liveEnemyCount)
     {
         var enemyCount = GetLiveEnemyCount();
-        var maxEnemyCount = GetMaxEnemyCount(spawningComponent, enemyCount, lvlProgress);
+        var remainingEnemyCount = GetRemainingEnemyCount(maxEnemyCount, enemyCount, lvlProgress?.BodyCount.Target ?? 0, lvlProgress?.BodyCount.Current ?? 0);
         var openDoors = GetOpenDoorCount();
         enemyCount += openDoors;
         liveEnemyCount = enemyCount;
-        return enemyCount - maxEnemyCount - 1 < -requestedAmount; //-1 omdat uhhh
+        return enemyCount - remainingEnemyCount - 1 < -requestedAmount; // Why -1? There was a reason for this but I forgot completely
     }
 
-    private int GetNumberOfEnemiesToSpawn(EnemySpawningComponent spawningComponent, int liveEnemyCount, LevelProgressComponent? lvlProgress)
+    private int GetNumberOfEnemiesToSpawn(int maxEnemyCount, int liveEnemyCount, LevelProgressComponent? lvlProgress)
     {
-        var max = GetMaxEnemyCount(spawningComponent, liveEnemyCount, lvlProgress);
-        if (max == 0)
-            return 0;
-        return Utilities.RandomInt(1, Math.Min(max, 3));
+        var max = GetRemainingEnemyCount(maxEnemyCount, liveEnemyCount, lvlProgress?.BodyCount.Target ?? 0, lvlProgress?.BodyCount.Current ?? 0);
+        return max == 0 ? 0 : Utilities.RandomInt(1, int.Min(max, 3));
     }
 
     /// <summary>
@@ -239,13 +299,10 @@ public class EnemySpawningSystem : Walgelijk.System
         return nearest;
     }
 
-    private static Vector2 GetRandomSpawnPoint(EnemySpawningComponent spawningComponent, out bool isDoor)
+    private static Vector2 GetRandomSpawnPoint(IList<Vector2> points, IList<Door> doors, out bool isDoor)
     {
-        var additionalSpawnPoints = spawningComponent.SpawnPoints ?? Array.Empty<Vector2>();
-        var doors = spawningComponent.Doors ?? [];
-
         isDoor = false;
-        bool hasAdditionalSpawnPoints = additionalSpawnPoints.Any();
+        bool hasAdditionalSpawnPoints = points.Any();
         bool hasDoors = doors.Any(static d => d.Properties.EnemySpawnerDoor);
 
         //geen spawnpoints en geen deuren
@@ -254,7 +311,7 @@ public class EnemySpawningSystem : Walgelijk.System
 
         //alleen spawnpoints
         if (hasAdditionalSpawnPoints && !hasDoors)
-            return MadnessUtils.PickRandom(additionalSpawnPoints);
+            return MadnessUtils.PickRandom(points);
 
         //alleen deuren
         if (!hasAdditionalSpawnPoints && hasDoors)
@@ -266,16 +323,16 @@ public class EnemySpawningSystem : Walgelijk.System
 
         // spawnpoints en deuren
         // Dit moet zo omdat nullable foutjes
-        if (additionalSpawnPoints.Any() && hasDoors)
+        if (points.Any() && hasDoors)
         {
-            float ratio = doors.Count / (float)(additionalSpawnPoints.Count + doors.Count);
+            float ratio = doors.Count / (float)(points.Count + doors.Count);
             if (Utilities.RandomFloat() < ratio) // make sure we weigh the selection appropriately
             {
                 isDoor = true;
                 return Utilities.PickRandom(doors).Properties.SpawnPoint;
             }
             else
-                return Utilities.PickRandom(additionalSpawnPoints);
+                return Utilities.PickRandom(points);
         }
 
         return default;

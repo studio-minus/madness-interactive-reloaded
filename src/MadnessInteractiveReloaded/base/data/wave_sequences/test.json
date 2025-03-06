@@ -1,7 +1,7 @@
 {
   "waves": [
     {
-      "targetCount": 20,
+      "targetCount": 5,
       "instructions": [
         {
           "statsKey": "grunt",
@@ -11,6 +11,22 @@
             "key": "1911a1_custom",
             "infiniteAmmo": true
           }
+        }
+      ]
+    },
+    {
+      "targetCount": 2,
+      "weapons": [
+        "fal",
+        "l22",
+        "deagle"
+      ],
+      "spawnInterval": 0,
+      "instructions": [
+        {
+          "statsKey": "engineer",
+          "lookKey": "engineer",
+          "factionKey": "aahw"
         }
       ]
     }

@@ -1,4 +1,4 @@
-﻿using Walgelijk;
+using Walgelijk;
 
 namespace MIR;
 
@@ -16,6 +16,7 @@ public class ExperimentCharacterPreset : ISpawnInstructions
     CharacterStats ISpawnInstructions.Stats => Stats;
     CharacterLook ISpawnInstructions.Look => Look;
     Faction ISpawnInstructions.Faction => Registries.Factions["aahw"];
+    PersistentEquippedWeapon? ISpawnInstructions.Weapon => null;
 
     public ExperimentCharacterPreset(bool mutable, string name, CharacterLook look, CharacterStats stats)
     {
@@ -33,8 +34,5 @@ public class ExperimentCharacterPreset : ISpawnInstructions
         Mutable = false;
     }
 
-    public object Clone()
-    {
-        throw new System.NotImplementedException();
-    }
+    public object Clone() => new ExperimentCharacterPreset(Mutable, Name, Look, Stats);
 }

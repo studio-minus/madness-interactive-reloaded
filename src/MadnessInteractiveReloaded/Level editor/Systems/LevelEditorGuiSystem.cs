@@ -1,4 +1,4 @@
-﻿using MIR.LevelEditor.Objects;
+using MIR.LevelEditor.Objects;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -108,15 +108,6 @@ public class LevelEditorGuiSystem : Walgelijk.System
 
             Ui.Layout.FitWidth().Height(32).StickBottom().StickLeft();
             Ui.TextRect(editor.Level.Id, HorizontalTextAlign.Left, VerticalTextAlign.Bottom);
-
-            // Ui.Layout.Size(400, 250).Center().Resizable();
-            // Ui.Theme.Foreground((Appearance)new Color(25, 25, 25, 250)).Once();
-            // Ui.StartDragWindow("Select sound");
-            // {
-            //     Ui.Layout.FitContainer(1, 1, false);
-            //     MadnessUi.ResourceBrowser();
-            // }
-            // Ui.End();
         }
 
         // task bar
@@ -269,47 +260,63 @@ public class LevelEditorGuiSystem : Walgelijk.System
 
                     Ui.Spacer(8);
 
+                    Ui.Label("Wave sequence");
                     Ui.Layout.FitWidth().Height(32).StickLeft();
-                    if (Ui.Button("Add new spawn instructions"))
-                        editor.Level.EnemySpawnInstructions.Add(new EnemySpawnInstructions("grunt", "grunt", "aahw")); // TODO what if grunt does not exist?
+                    MadnessUi.AssetPicker(
+                        editor.Level.WaveSequence.Id,
+                        c => editor.Level.WaveSequence = new(c),
+                        static c => c.MimeType.Contains("json"));
 
-                    for (int i = 0; i < editor.Level.EnemySpawnInstructions.Count; i++)
+                    if (editor.Level.WaveSequence.IsValid)
                     {
-                        var item = editor.Level.EnemySpawnInstructions[i];
-                        Ui.Layout.FitWidth().Height(108).StickLeft();
-                        Ui.Theme.Foreground((Appearance)Colors.Black.WithAlpha(0.5f)).Once();
-                        Ui.StartGroup(true, i);
+                        Ui.Layout.FitWidth().Height(32).StickLeft();
+                        if (Ui.Button("Reset wave sequence"))
+                            editor.Level.WaveSequence = default;
+                    }
+                    else
+                    {
+                        Ui.Layout.FitWidth().Height(32).StickLeft();
+                        if (Ui.Button("Add new spawn instructions"))
+                            editor.Level.EnemySpawnInstructions.Add(new EnemySpawnInstructions("grunt", "grunt", "aahw")); // TODO what if grunt does not exist?
+
+                        for (int i = 0; i < editor.Level.EnemySpawnInstructions.Count; i++)
                         {
-                            Ui.Layout.FitContainer(0.8f, null).Height(32).StickLeft().StickTop();
-                            int ii = Array.IndexOf(editor.Stats, item.StatsKey);
-                            Ui.Decorators.Tooltip("NPC stats");
-                            if (Ui.Dropdown(editor.Stats, ref ii))
-                                item.StatsKey = editor.Stats[ii];
-                            Ui.Decorators.Clear(); // TODO why is this necessary
-
-                            Ui.Layout.FitContainer(0.8f, null).Height(32).StickLeft().StickTop().Move(0, 35);
-                            ii = Array.IndexOf(editor.Looks, item.LookKey);
-                            Ui.Decorators.Tooltip("NPC look");
-                            if (Ui.Dropdown(editor.Looks, ref ii))
-                                item.LookKey = editor.Looks[ii];
-
-                            Ui.Layout.FitContainer(0.8f, null).Height(32).StickLeft().StickTop().Move(0, 35 * 2);
-                            ii = Array.IndexOf(editor.Factions, item.FactionKey);
-                            Ui.Decorators.Tooltip("NPC faction");
-                            if (Ui.Dropdown(editor.Factions, ref ii))
-                                item.FactionKey = editor.Factions[ii];
-
-                            Ui.Layout.Size(32, 32).StickRight().StickTop();
-                            Ui.Theme.Text(Colors.Red).Once();
-                            Ui.Decorators.Tooltip("Remove");
-                            if (Ui.ImageButton(BuiltInAssets.Icons.Exit, ImageContainmentMode.Center))
+                            var item = editor.Level.EnemySpawnInstructions[i];
+                            Ui.Layout.FitWidth().Height(108).StickLeft();
+                            Ui.Theme.Foreground((Appearance)Colors.Black.WithAlpha(0.5f)).Once();
+                            Ui.StartGroup(true, i);
                             {
-                                editor.Level.EnemySpawnInstructions.RemoveAt(i);
-                                Ui.End();
-                                break;
+                                Ui.Layout.FitContainer(0.8f, null).Height(32).StickLeft().StickTop();
+                                int ii = Array.IndexOf(editor.Stats, item.StatsKey);
+                                Ui.Decorators.Tooltip("NPC stats");
+                                if (Ui.Dropdown(editor.Stats, ref ii))
+                                    item.StatsKey = editor.Stats[ii];
+                                Ui.Decorators.Clear(); // TODO why is this necessary
+
+                                Ui.Layout.FitContainer(0.8f, null).Height(32).StickLeft().StickTop().Move(0, 35);
+                                ii = Array.IndexOf(editor.Looks, item.LookKey);
+                                Ui.Decorators.Tooltip("NPC look");
+                                if (Ui.Dropdown(editor.Looks, ref ii))
+                                    item.LookKey = editor.Looks[ii];
+
+                                Ui.Layout.FitContainer(0.8f, null).Height(32).StickLeft().StickTop().Move(0, 35 * 2);
+                                ii = Array.IndexOf(editor.Factions, item.FactionKey);
+                                Ui.Decorators.Tooltip("NPC faction");
+                                if (Ui.Dropdown(editor.Factions, ref ii))
+                                    item.FactionKey = editor.Factions[ii];
+
+                                Ui.Layout.Size(32, 32).StickRight().StickTop();
+                                Ui.Theme.Text(Colors.Red).Once();
+                                Ui.Decorators.Tooltip("Remove");
+                                if (Ui.ImageButton(BuiltInAssets.Icons.Exit, ImageContainmentMode.Center))
+                                {
+                                    editor.Level.EnemySpawnInstructions.RemoveAt(i);
+                                    Ui.End();
+                                    break;
+                                }
                             }
+                            Ui.End();
                         }
-                        Ui.End();
                     }
                 }
                 Ui.End();

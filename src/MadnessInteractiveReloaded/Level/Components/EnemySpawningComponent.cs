@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Numerics;
 using Walgelijk;
@@ -67,8 +67,5 @@ public class EnemySpawningComponent : Component, ICloneable
     /// </summary>
     public float SpawnTimer = 0;
 
-    public object Clone()
-    {
-        return MemberwiseClone();
-    }
+    public object Clone() => MemberwiseClone();
 }
