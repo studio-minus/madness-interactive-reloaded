@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Numerics;
 using Walgelijk;
 using Walgelijk.AssetManager;
@@ -53,7 +53,7 @@ public class GameLoadingSystem : Walgelijk.System, IDisposable
         if (data.FlashTime < 1)
         {
             Draw.Colour = Colors.Red * (1 - Utilities.Clamp(data.FlashTime));
-            Draw.Image(Assets.Load<Texture>("textures/red_vignette.png").Value, new Rect(0, 0, Window.Width, Window.Height), ImageContainmentMode.Stretch);
+            Draw.Image(Assets.Load<Texture>("textures/red_vignette.qoi").Value, new Rect(0, 0, Window.Width, Window.Height), ImageContainmentMode.Stretch);
             data.FlashTime += Time.DeltaTime * 0.5f;
         }
 

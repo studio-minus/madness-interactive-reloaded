@@ -26,11 +26,7 @@ If you run into any issues you should first make sure you:
     - OpenAL
 - Clone this repository
 - Open a terminal inside the repository directory
-- Initialise the submodules
-    ```shell
-    git submodule init
-    git submodule update --remote
-    ```
+
  - **If you DON'T have Visual Studio**
     - Navigate to the `src\MadnessInteractiveReloaded` directory and build:
         ```shell

@@ -33,7 +33,7 @@ Visit the [issue page](https://github.com/studio-minus/madness-interactive-reloa
 
 It's also possible to fix [bugs](https://github.com/studio-minus/madness-interactive-reloaded/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22bug%22), most of which are also self-contained.
 
-It's best to involve maintainers if it's suspected that the bug requires changes that touch core parts of the codebase. If the implementation touches too many unrelated parts of the codebase, it should be discussed beforehand.
+It's best to involve maintainers if it's suspected that the implementation requires changes that touch core parts of the codebase.
 
 ### 3. Fork the repo
 
