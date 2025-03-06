@@ -36,7 +36,7 @@
             }
 
             // The Adler-32 checksum is stored as s2*65536 + s1.
-            return s2 * 65536 + s1;
+            return (s2 << 16) + s1;
         }
     }
 }
