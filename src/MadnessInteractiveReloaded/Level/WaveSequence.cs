@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,6 +22,8 @@ public class WaveSequence
         public string[] Weapons = [];
         public float WeaponChance = 0.1f;
         public float SpawnInterval = 1;
+        [JsonConverter(typeof(StringEnumConverter))]
+        public WaveMode Mode = WaveMode.Random;
         public EnemySpawnInstructions[] Instructions = [];
     }
 
@@ -34,7 +37,13 @@ public class WaveSequence
             return obj;
         }
 
-        public bool IsCandidate(in AssetMetadata assetMetadata) 
+        public bool IsCandidate(in AssetMetadata assetMetadata)
             => assetMetadata.Path.EndsWith(".json", StringComparison.InvariantCultureIgnoreCase);
     }
+}
+
+public enum WaveMode
+{
+    Random,
+    Sequential
 }

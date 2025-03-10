@@ -45,6 +45,7 @@ public class EnemySpawningSystem : Walgelijk.System
             {
                 waveComponent.WaveIndex++;
                 waveComponent.ActiveWaveBodyCount = 0;
+                waveComponent.WaveInstrSeqIndex = 0;
                 if (waveComponent.WaveIndex >= waveComponent.Sequence.Waves.Length)
                 {
                     // we reached the end of the waves, but sometimes the level progress is set up such that
@@ -84,15 +85,24 @@ public class EnemySpawningSystem : Walgelijk.System
             if (waveComponent.SpawnTimer > wave.SpawnInterval && wave.Instructions.Length > 0)
             {
                 waveComponent.SpawnTimer = Utilities.RandomFloat(-1, 1);
-                TrySpawn(new SpawnParams
+                var spawnInstr = wave.Mode switch
+                {
+                    WaveMode.Sequential => wave.Instructions[waveComponent.WaveInstrSeqIndex % wave.Instructions.Length],
+                    _ => Utilities.PickRandom(wave.Instructions),
+                };
+
+                bool success = TrySpawn(new SpawnParams
                 {
                     WaveComponent = waveComponent,
-                    SpawnInstructions = Utilities.PickRandom(wave.Instructions),
+                    SpawnInstructions = spawnInstr,
                     Weapon = wave.Weapons.Length > 0 ? Registries.Weapons[Utilities.PickRandom(wave.Weapons)] : null,
                     WeaponChance = wave.WeaponChance,
                     SpawnProvider = waveComponent,
                     Player = playerCharacterComponent
                 });
+
+                if (success)
+                    waveComponent.WaveInstrSeqIndex++;
             }
 
             if (Game.DevelopmentMode)
@@ -108,10 +118,10 @@ public class EnemySpawningSystem : Walgelijk.System
         routines.RemoveAll(static r => !RoutineScheduler.IsOngoing(r));
     }
 
-    private void TrySpawn(SpawnParams spawnParams)
+    private bool TrySpawn(SpawnParams spawnParams)
     {
         if (!FindSpawnPoint(spawnParams.SpawnProvider.SpawnPoints, out var door, out var position))
-            return;
+            return false;
 
         spawnParams.Door = door;
         spawnParams.Point = position;
@@ -132,6 +142,8 @@ public class EnemySpawningSystem : Walgelijk.System
             for (int i = 0; i < amountToSpawn; i++)
                 SpawnEnemy(spawnParams);
         }
+
+        return true;
     }
 
     private int GetNextSpawnCount(in SpawnParams spawnParams)
@@ -218,7 +230,8 @@ public class EnemySpawningSystem : Walgelijk.System
             if (character.EquippedWeapon.TryGet(Scene, out var eq))
             {
                 eq.InfiniteAmmo = wpn.InfiniteAmmo;
-                eq.RemainingRounds = wpn.Ammo;
+                if (wpn.Ammo > 0)
+                    eq.RemainingRounds = wpn.Ammo;
             }
         }
         else if (spawnParams.Weapon == null)
@@ -258,7 +271,7 @@ public class EnemySpawningSystem : Walgelijk.System
             direction.X = Utilities.NanFallback(direction.X);
             if (direction.Y < 0) // this door is facing the camera
                 Scene.AttachComponent(character.Entity, new ExitDoorComponent(finalSpawnPoint, charOnFloorPos, 0.3f) { IsVertical = true });
-            else if (MathF.Abs(direction.X) >= 0.01f)
+            else if (float.Abs(direction.X) >= 0.01f)
             {
                 character.Positioning.IsFlipped = direction.X < 0;
                 float speed = Utilities.RandomFloat(150, 350);

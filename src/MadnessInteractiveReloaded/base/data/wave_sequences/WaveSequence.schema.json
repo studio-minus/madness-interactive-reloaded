@@ -29,6 +29,14 @@
             "minimum": 0,
             "default": 1
           },
+          "mode": {
+            "type": "string",
+            "default": "Random",
+            "enum": [
+              "Random",
+              "Sequential"
+            ]
+          },
           "instructions": {
             "type": "array",
             "items": {
@@ -58,17 +66,17 @@
                       "type": "boolean"
                     }
                   },
-                  "required": ["key", "infiniteAmmo"],
+                  "required": [ "key" ],
                   "nullable": true
                 }
               },
-              "required": ["statsKey", "lookKey", "factionKey"]
+              "required": [ "statsKey", "lookKey", "factionKey" ]
             }
           }
         },
-        "required": ["targetCount", "instructions"]
+        "required": [ "targetCount", "instructions" ]
       }
     }
   },
-  "required": ["waves"]
+  "required": [ "waves" ]
 }

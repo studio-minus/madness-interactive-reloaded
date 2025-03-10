@@ -19,6 +19,11 @@ public class WaveSpawningComponent(WaveSequence sequence) : Component, IEnemySpa
     public float SpawnTimer = 0;
 
     /// <summary>
+    /// If the wave mode (<see cref="WaveSequence.Wave.Mode"/> is set to <see cref="WaveMode.Sequential"/>, this value keeps track of the instruction array index
+    /// </summary>
+    public int WaveInstrSeqIndex = 0;
+
+    /// <summary>
     /// Amount of enemies to kill this wave
     /// </summary>
     public int ActiveWaveEnemyCount;    
