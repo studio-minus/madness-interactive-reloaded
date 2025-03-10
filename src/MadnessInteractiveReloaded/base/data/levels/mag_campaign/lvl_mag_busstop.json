@@ -47,11 +47,11 @@
   ],
   "FloorLine": [
     {
-      "X": -3518.0835,
+      "X": -3502.0835,
       "Y": -1167.8846
     },
     {
-      "X": 3099.9165,
+      "X": 3083.9165,
       "Y": -1167.8846
     }
   ],
@@ -63,6 +63,35 @@
         "Y": -1089.6112
       },
       "SpawnWeapon": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -3282.1372,
+        "MinY": 1690.4517,
+        "MaxX": 3079.471,
+        "MaxY": 1832.7496
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -3359.6616,
+        "MinY": 296.42303,
+        "MaxX": -3225.822,
+        "MaxY": 1689.447
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": -131.03616,
+        "Y": 299.27393
+      },
+      "TexturePath": "textures/backgrounds/mag_campaign/background_mag_busstop.qoi",
+      "Scale": 2.399205
     },
     {
       "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
@@ -145,6 +174,46 @@
       "$type": "MIR.LevelEditor.Objects.Door, MIR",
       "Properties": {
         "SpawnPoint": {
+          "X": 3151.454,
+          "Y": -1092.646
+        },
+        "FacingDirection": {
+          "X": -1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": true,
+        "IsPortal": false,
+        "PortalID": "",
+        "DestinationLevel": "lvl_window",
+        "Texture": "textures/doors/door_garage_1.png",
+        "OpenSound": "sounds/doors/garage_door_open.wav",
+        "CloseSound": "sounds/doors/garage_door_close.wav",
+        "AnimationDuration": 1.45,
+        "Behaviour": 0,
+        "TopLeft": {
+          "X": 2553.004,
+          "Y": 253.17972
+        },
+        "TopRight": {
+          "X": 3547.8467,
+          "Y": 234.75302
+        },
+        "BottomLeft": {
+          "X": 2553.004,
+          "Y": -872.4314
+        },
+        "BottomRight": {
+          "X": 3549.9045,
+          "Y": -1312.8607
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
           "X": -141.66806,
           "Y": -690.9692
         },
@@ -182,25 +251,6 @@
       "Tag": {
         "Value": 0
       }
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "grunt",
-        "Stats": "grunt",
-        "Faction": "aahw",
-        "Weapon": null,
-        "Flipped": false,
-        "BottomCenter": {
-          "X": 2132.0635,
-          "Y": -1147.1743
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
     },
     {
       "$type": "MIR.LevelEditor.Objects.EnemySpawner, MIR",
@@ -343,51 +393,41 @@
       "StartAnimation": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.Background, MIR",
-      "Center": {
-        "X": -131.03616,
-        "Y": 299.27393
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "grunt",
+        "Stats": "grunt",
+        "Faction": "aahw",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": 2132.0635,
+          "Y": -1147.1743
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
       },
-      "TexturePath": "textures/backgrounds/mag_campaign/background_mag_busstop.qoi",
-      "Scale": 2.399205
+      "StartAnimation": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.Door, MIR",
-      "Properties": {
-        "SpawnPoint": {
-          "X": 3151.454,
-          "Y": -1092.646
-        },
-        "FacingDirection": {
-          "X": -1.0,
-          "Y": 0.0
-        },
-        "EnemySpawnerDoor": true,
-        "IsLevelProgressionDoor": true,
-        "IsPortal": false,
-        "PortalID": "",
-        "DestinationLevel": "lvl_window",
-        "Texture": "textures/doors/door_garage_1.png",
-        "OpenSound": "sounds/doors/garage_door_open.wav",
-        "CloseSound": "sounds/doors/garage_door_close.wav",
-        "AnimationDuration": 1.45,
-        "Behaviour": 0,
-        "TopLeft": {
-          "X": 2553.004,
-          "Y": 253.17972
-        },
-        "TopRight": {
-          "X": 3547.8467,
-          "Y": 234.75302
-        },
-        "BottomLeft": {
-          "X": 2553.004,
-          "Y": -872.4314
-        },
-        "BottomRight": {
-          "X": 3549.9045,
-          "Y": -1312.8607
-        }
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 3041.2446,
+        "MinY": 296.42316,
+        "MaxX": 3175.0845,
+        "MaxY": 1689.4469
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -3496.6294,
+        "MinY": -1217.8859,
+        "MaxX": 3092.392,
+        "MaxY": -1106.5985
       },
       "Tag": null
     }

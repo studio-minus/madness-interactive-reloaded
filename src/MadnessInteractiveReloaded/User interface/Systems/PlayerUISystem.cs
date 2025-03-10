@@ -56,7 +56,7 @@ public class PlayerUISystem : Walgelijk.System
         if (character.Stats.DodgeAbility > 0.01f && dodgeSmooth < 1)
         {
             Draw.OutlineWidth = 0;
-            Draw.Texture = Assets.Load<Texture>("textures/red_vignette.png").Value;
+            Draw.Texture = Assets.Load<Texture>("textures/red_vignette.qoi").Value;
             Draw.Colour = Utilities.Lerp(Colors.White, Colors.Transparent, dodgeSmooth);
             Draw.Quad(Vector2.Zero, Window.Size, 0, 0);
         }
