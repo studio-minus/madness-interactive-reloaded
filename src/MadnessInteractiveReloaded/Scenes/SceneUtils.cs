@@ -1,6 +1,7 @@
-﻿using MIR.LevelEditor;
+using MIR.LevelEditor;
 using MIR.LevelEditor.Objects;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using Walgelijk;
@@ -326,16 +327,52 @@ public static class SceneUtils
                 }
             }
 
-            var spawner = scene.AttachComponent(scene.CreateEntity(), new EnemySpawningComponent
+            EnemySpawningComponent? spawner = null;
+            List<Door> doors = [.. level.Objects.OfType<Door>().Where(d => d.Properties.EnemySpawnerDoor)];
+            List<Vector2> spawnPoints = [.. level.Objects.OfType<EnemySpawner>().Select(static e => e.Position)];
+
+
+            if (level.WaveSequence.IsValid)
             {
-                Doors = [.. level.Objects.OfType<Door>().Where(d => d.Properties.EnemySpawnerDoor)],
-                SpawnPoints = [.. level.Objects.OfType<EnemySpawner>().Select(static e => e.Position)],
-                SpawnInstructions = [.. level.EnemySpawnInstructions.Cast<ISpawnInstructions>()],
-                MaxEnemyCount = level.MaxEnemyCount,
-                Interval = level.EnemySpawnInterval,
-                WeaponsToSpawnWith = level.Weapons,
-                WeaponChance = level.WeaponChance
-            });
+                scene.AttachComponent(scene.CreateEntity(), new WaveSpawningComponent(level.WaveSequence.Value)
+                {
+                    SpawnPoints = spawnPoints
+                });
+            }
+            else
+            {
+                var existingEnemyNPCs = 0;
+                foreach (var npc in level.Objects.OfType<NPC>())
+                    if (Registries.Factions[npc.Instructions.Faction ?? "aahw"].IsEnemiesWith(Registries.Factions["player"]))
+                        existingEnemyNPCs++;
+
+                var singleWaveSeq = new WaveSequence
+                {
+                    Waves = [new WaveSequence.Wave {
+                        Instructions = [.. (level.EnemySpawnInstructions ?? [])],
+                        SpawnInterval = level.EnemySpawnInterval,
+                        TargetCount = level.ProgressionType == ProgressionType.BodyCount ? level.BodyCountToWin - existingEnemyNPCs : int.MaxValue,
+                        WeaponChance = level.WeaponChance,
+                        Weapons = [..(level.Weapons ?? [])],
+                    }] 
+                };
+
+                scene.AttachComponent(scene.CreateEntity(), new WaveSpawningComponent(singleWaveSeq)
+                {
+                    SpawnPoints = spawnPoints
+                });
+
+                //spawner = scene.AttachComponent(scene.CreateEntity(), new EnemySpawningComponent
+                //{
+                //    Doors = doors,
+                //    SpawnPoints = spawnPoints,
+                //    SpawnInstructions = [.. level.EnemySpawnInstructions.Cast<ISpawnInstructions>()],
+                //    MaxEnemyCount = level.MaxEnemyCount,
+                //    Interval = level.EnemySpawnInterval,
+                //    WeaponsToSpawnWith = level.Weapons,
+                //    WeaponChance = level.WeaponChance
+                //});
+            }
 
             if (mode == GameMode.Campaign)
             {
@@ -347,24 +384,20 @@ public static class SceneUtils
                 {
                     if (ImprobabilityDisks.IsEnabled("fewer_enemies"))
                     {
-                        if (level.ProgressionType == ProgressionType.BodyCount)
-                        {
-                            if (level.MaxEnemyCount > 1)
-                                level.MaxEnemyCount--;
-                        }
-                        spawner.Interval *= 1.4f;
+                        if (spawner != null) 
+                            spawner.Interval *= 1.4f;
+                        if (level.ProgressionType == ProgressionType.BodyCount && level.MaxEnemyCount > 1)
+                            level.MaxEnemyCount--;
                         if (level.ProgressionType is ProgressionType.BodyCount && p.BodyCount.Target > 5)
                             p.BodyCount.Target /= 2;
                     }
 
                     if (ImprobabilityDisks.IsEnabled("more_enemies"))
                     {
-                        if (level.ProgressionType == ProgressionType.BodyCount)
-                        {
-                            if (level.MaxEnemyCount > 1)
-                                level.MaxEnemyCount += 4;
-                        }
-                        spawner.Interval *= 0.1f;
+                        if (spawner != null)
+                            spawner.Interval *= 0.1f;
+                        if (level.ProgressionType == ProgressionType.BodyCount && level.MaxEnemyCount > 1)
+                            level.MaxEnemyCount += 4;
                         if (level.ProgressionType is ProgressionType.BodyCount && p.BodyCount.Target > 1)
                             p.BodyCount.Target *= 2;
                     }

@@ -1,4 +1,4 @@
-﻿using MIR.LevelEditor.Objects;
+using MIR.LevelEditor.Objects;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -1052,10 +1052,10 @@ public static class MadnessUtils
         return a + ab * distance;
     }
 
-    public static T PickRandom<T>(IEnumerable<T> enumerable)
-    {
-        return enumerable.ElementAt(Utilities.RandomInt(0, enumerable.Count()));
-    }
+    public static T PickRandom<T>(Span<T> span) => span[Utilities.RandomInt(0, span.Length)];
+    public static T PickRandom<T>(ReadOnlySpan<T> span) => span[Utilities.RandomInt(0, span.Length)];
+    public static T PickRandom<T>(IList<T> list) => list[Utilities.RandomInt(0, list.Count)];
+    public static T PickRandom<T>(IEnumerable<T> enumerable) => enumerable.ElementAt(Utilities.RandomInt(0, enumerable.Count()));
 
     public static string Ellipsis(in string name, int length)
     {

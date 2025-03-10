@@ -911,10 +911,11 @@ public static class Prefabs
 
         character.OnDeath.AddListener(e =>
         {
-            if (Level.CurrentLevel != null
-                && Game.Main.Scene.Id == c
-                && Game.Main.Scene.FindAnyComponent<LevelProgressComponent>(out var progress))
-                progress.BodyCount.Current++;
+            if (Level.CurrentLevel != null && Game.Main.Scene.Id == c)
+            {
+                if (Game.Main.Scene.FindAnyComponent<LevelProgressComponent>(out var progress))
+                    progress.BodyCount.Current++;   
+            }
         });
 
         return character;

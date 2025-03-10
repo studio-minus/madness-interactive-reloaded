@@ -51,6 +51,7 @@ public class MadnessInteractiveReloaded
         AssetDeserialisers.Register(new CharacterPresetDeserialiser.AssetDeserialiser());
         AssetDeserialisers.Register(new Campaign.AssetDeserialiser());
         AssetDeserialisers.Register(new WeaponDeserialiser.AssetDeserialiser());
+        AssetDeserialisers.Register(new WaveSequence.AssetDeserialiser());
 
         // "temporary" migration bridge
         AssetDeserialisers.Register(new DelegateDeserialiserBridge<Language>(Language.Load, "json"));

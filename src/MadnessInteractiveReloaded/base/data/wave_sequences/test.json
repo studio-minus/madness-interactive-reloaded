@@ -1,0 +1,34 @@
+{
+  "waves": [
+    {
+      "targetCount": 5,
+      "instructions": [
+        {
+          "statsKey": "grunt",
+          "lookKey": "grunt",
+          "factionKey": "aahw",
+          "weapon": {
+            "key": "1911a1_custom",
+            "infiniteAmmo": true
+          }
+        }
+      ]
+    },
+    {
+      "targetCount": 2,
+      "weapons": [
+        "fbi_10",
+        "l22",
+        "deagle"
+      ],
+      "spawnInterval": 0,
+      "instructions": [
+        {
+          "statsKey": "engineer",
+          "lookKey": "engineer",
+          "factionKey": "aahw"
+        }
+      ]
+    }
+  ]
+}

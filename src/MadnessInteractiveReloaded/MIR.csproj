@@ -81,6 +81,10 @@
 	<ItemGroup>
 		<ProjectReference Include="..\BigGustave\src\BigGustave\BigGustave.csproj" />
 	</ItemGroup>
+	
+	<ItemGroup>
+	  <Resource Include="base\data\weapons\fn_fal.json" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<None Update="avcodec-59.dll">
