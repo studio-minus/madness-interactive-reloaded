@@ -47,7 +47,7 @@ public class EnemySpawnInstructions: ISpawnInstructions
     public string StatsKey = "grunt";
     public string LookKey = "grunt";
     public string FactionKey = "aahw";
-    public PersistentEquippedWeapon? Weapon { get; }
+    public PersistentEquippedWeapon? Weapon;
 
     public EnemySpawnInstructions(string stats, string look, string factionKey)
     {
@@ -73,4 +73,7 @@ public class EnemySpawnInstructions: ISpawnInstructions
 
     [JsonIgnore]
     public Faction Faction => Registries.Factions.Get(FactionKey ?? "aahw");
+
+    [JsonIgnore]
+    PersistentEquippedWeapon? ISpawnInstructions.Weapon => Weapon;
 }

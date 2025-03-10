@@ -204,7 +204,24 @@ public class EnemySpawningSystem : Walgelijk.System
         var floorPos = new Vector2(spawnPoint.X, Level.CurrentLevel.GetFloorLevelAt(spawnPoint.X));
 
         CharacterComponent character;
-        if (spawnParams.Weapon == null)
+        if (spawnParams.SpawnInstructions.Weapon.HasValue)
+        {
+            var wpn = spawnParams.SpawnInstructions.Weapon.Value;
+            character = Prefabs.CreateEnemyWithWeapon(
+                Scene,
+                spawnPoint,
+                Registries.Weapons[wpn.Key],
+                spawnParams.SpawnInstructions.Stats,
+                spawnParams.SpawnInstructions.Look,
+                spawnParams.SpawnInstructions.Faction);
+
+            if (character.EquippedWeapon.TryGet(Scene, out var eq))
+            {
+                eq.InfiniteAmmo = wpn.InfiniteAmmo;
+                eq.RemainingRounds = wpn.Ammo;
+            }
+        }
+        else if (spawnParams.Weapon == null)
         {
             character = Prefabs.CreateEnemy(
                 Scene,
