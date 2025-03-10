@@ -343,7 +343,7 @@ public static class SceneUtils
             {
                 var existingEnemyNPCs = 0;
                 foreach (var npc in level.Objects.OfType<NPC>())
-                    if (Registries.Factions[npc.Instructions.Faction].IsEnemiesWith(Registries.Factions["player"]))
+                    if (Registries.Factions[npc.Instructions.Faction ?? "aahw"].IsEnemiesWith(Registries.Factions["player"]))
                         existingEnemyNPCs++;
 
                 var singleWaveSeq = new WaveSequence

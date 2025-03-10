@@ -22,23 +22,15 @@ public class WaveSpawningComponent(WaveSequence sequence) : Component, IEnemySpa
     /// Amount of enemies to kill this wave
     /// </summary>
     public int ActiveWaveEnemyCount;    
-    
+
     /// <summary>
-    /// Amount of enemies that have already been killed, in total, since the start of the wave
+    /// Amount of wave-spawned enemies killed during the active wave
     /// </summary>
-    public int BodyCountOnWaveStart;
+    public int ActiveWaveBodyCount;
 
     public List<Vector2> SpawnPoints = [];
 
     public WaveSequence.Wave? ActiveWave => WaveIndex < 0 || WaveIndex >= Sequence.Waves.Length ? null : Sequence.Waves[WaveIndex];
-
-    public int GetBodyCountThisWave(Scene scene)
-    {
-        if (scene.FindAnyComponent<LevelProgressComponent>(out var lvlProgress))
-            return lvlProgress.BodyCount.Current - BodyCountOnWaveStart;
-
-        return 0;
-    }
 
     IList<ISpawnInstructions> IEnemySpawnProvider.SpawnInstructions => ActiveWave?.Instructions ?? [];
     IList<string> IEnemySpawnProvider.Weapons => ActiveWave?.Weapons ?? [];

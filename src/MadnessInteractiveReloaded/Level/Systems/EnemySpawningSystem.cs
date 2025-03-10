@@ -41,18 +41,37 @@ public class EnemySpawningSystem : Walgelijk.System
             if (waveComponent.Sequence.Waves.Length == 0 || waveComponent.IsFinished || !waveComponent.Enabled)
                 return;
 
-            if (waveComponent.WaveIndex == -1 ||
-                (waveComponent.ActiveWave != null && waveComponent.GetBodyCountThisWave(Scene) == waveComponent.ActiveWave.TargetCount))
+            if (waveComponent.WaveIndex == -1 || (waveComponent.ActiveWave != null && waveComponent.ActiveWaveBodyCount == waveComponent.ActiveWave.TargetCount))
             {
                 waveComponent.WaveIndex++;
-                waveComponent.BodyCountOnWaveStart = 0;
+                waveComponent.ActiveWaveBodyCount = 0;
                 if (waveComponent.WaveIndex >= waveComponent.Sequence.Waves.Length)
-                    waveComponent.IsFinished = true;
+                {
+                    // we reached the end of the waves, but sometimes the level progress is set up such that
+                    // the player has to kill more enemies than the wave are configured to spawn.
+                    // in this situation, we should just keep spawning them
+
+                    if (Level.CurrentLevel != null)
+                        switch (Level.CurrentLevel.ProgressionType)
+                        {
+                            case ProgressionType.BodyCount:
+                                if (Scene.FindAnyComponent<LevelProgressComponent>(out var lvlProgress))
+                                {
+                                    int stillRemaining = lvlProgress.BodyCount.Target - lvlProgress.BodyCount.Current;
+                                    if (stillRemaining > 0)
+                                    {
+                                        waveComponent.ActiveWaveEnemyCount = stillRemaining;
+                                        waveComponent.WaveIndex--;
+                                    }
+                                }
+                                break;
+                            default:
+                                waveComponent.IsFinished = true;
+                                break;
+                        }
+                }
                 else
                     waveComponent.ActiveWaveEnemyCount = waveComponent.ActiveWave!.TargetCount;
-
-                if (Scene.FindAnyComponent<LevelProgressComponent>(out var lvl))
-                    waveComponent.BodyCountOnWaveStart = lvl.BodyCount.Current;
 
                 waveComponent.SpawnTimer = -1; // give them some time... christ
             }
@@ -122,15 +141,13 @@ public class EnemySpawningSystem : Walgelijk.System
         remainingToSpawn -= activeSpawnRoutines;
         remainingToSpawn -= livingEnemies;
 
+        remainingToSpawn -= spawnParams.WaveComponent.ActiveWaveBodyCount;
+
+        int maxLivingEnemies = 4;
         if (Level.CurrentLevel != null)
-        {
-            var lvl = Level.CurrentLevel;
+            maxLivingEnemies = Level.CurrentLevel.MaxEnemyCount;
 
-            if (lvl.ProgressionType == ProgressionType.BodyCount && Scene.FindAnyComponent<LevelProgressComponent>(out var lvlProgress))
-                remainingToSpawn -= (lvlProgress.BodyCount.Current - spawnParams.WaveComponent.BodyCountOnWaveStart);
-
-            remainingToSpawn = int.Min(remainingToSpawn, lvl.MaxEnemyCount - livingEnemies - activeSpawnRoutines);
-        }
+        remainingToSpawn = int.Min(remainingToSpawn, maxLivingEnemies - livingEnemies - activeSpawnRoutines);
 
         return int.Max(0, remainingToSpawn);
     }
@@ -226,6 +243,9 @@ public class EnemySpawningSystem : Walgelijk.System
                     charOnFloorPos + new Vector2(direction.X * speed, 0), 0.2f));
             }
         }
+
+        var waveComponent = spawnParams.WaveComponent;
+        character.OnDeath.AddListener(c => waveComponent.ActiveWaveBodyCount++);
     }
 
     private bool FindSpawnPoint(IList<Vector2> points, out DoorComponent? door, out Vector2 position)
