@@ -40,7 +40,7 @@ public struct InstancedSpawnInstructions : ISpawnInstructions
 
 /// <summary>
 /// What the <see cref="EnemySpawningSystem"/> will use for spawning enemies.
-/// Read from: <see cref="EnemySpawningComponent.SpawnInstructions"/>
+/// Read from: <see cref="WaveSequence.Wave.Instructions"/>
 /// </summary>
 public class EnemySpawnInstructions: ISpawnInstructions
 {
