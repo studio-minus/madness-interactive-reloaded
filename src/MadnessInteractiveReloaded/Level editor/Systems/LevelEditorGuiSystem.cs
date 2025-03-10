@@ -19,7 +19,6 @@ namespace MIR.LevelEditor;
 public class LevelEditorGuiSystem : Walgelijk.System
 {
     public delegate LevelObject CreateDelegate(LevelEditorComponent editor, Vector2 position);
-    private readonly AssetBrowserControl browserControl = new();
 
     public readonly struct Creatable
     {
@@ -252,7 +251,11 @@ public class LevelEditorGuiSystem : Walgelijk.System
                 {
                     Ui.Label("Max attacking enemy count");
                     Ui.Layout.FitWidth().Height(32).StickLeft();
-                    Ui.IntStepper(ref editor.Level.MaxSimultaneousAttackingEnemies, (0, 50));
+                    Ui.IntStepper(ref editor.Level.MaxSimultaneousAttackingEnemies, (0, int.MaxValue));
+
+                    Ui.Label("Max simultaneous enemy count");
+                    Ui.Layout.FitWidth().Height(32).StickLeft();
+                    Ui.IntStepper(ref editor.Level.MaxEnemyCount, (0, int.MaxValue));
 
                     Ui.Label("Wave sequence");
                     Ui.Layout.FitWidth().Height(32).StickLeft();
@@ -275,10 +278,6 @@ public class LevelEditorGuiSystem : Walgelijk.System
                             Audio.Play(Sounds.UiBad);
                             editor.Level.WaveSequence = default;
                         }
-
-                        Ui.Label("Max enemy count");
-                        Ui.Layout.FitWidth().Height(32).StickLeft();
-                        Ui.IntStepper(ref editor.Level.MaxEnemyCount, (0, 50));
 
                         Ui.Label("Enemy spawn interval");
                         Ui.Layout.FitWidth().Height(32).StickLeft();
