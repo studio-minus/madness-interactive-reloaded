@@ -84,7 +84,7 @@ public class EnemySpawningSystem : Walgelijk.System
             waveComponent.SpawnTimer += Time.DeltaTime;
             if (waveComponent.SpawnTimer > wave.SpawnInterval && wave.Instructions.Length > 0)
             {
-                waveComponent.SpawnTimer = Utilities.RandomFloat(-1, 1);
+                waveComponent.SpawnTimer = 0;
                 var spawnInstr = wave.Mode switch
                 {
                     WaveMode.Sequential => wave.Instructions[waveComponent.WaveInstrSeqIndex % wave.Instructions.Length],
