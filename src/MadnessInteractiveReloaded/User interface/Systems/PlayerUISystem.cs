@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Numerics;
 using Walgelijk;
 using Walgelijk.AssetManager;
@@ -81,10 +81,18 @@ public class PlayerUISystem : Walgelijk.System
         // health indicator
         DrawHealthIndicator(character);
 
+        const float skewIntensity = 0.5f;
+        var leftSkew = Matrix3x2.CreateSkew(-0.05f * skewIntensity, -0.1f * skewIntensity)
+            * Matrix3x2.CreateTranslation(0, 10 * skewIntensity);
+        var rightSkew = Matrix3x2.CreateSkew(0.05f * skewIntensity, 0.1f * skewIntensity, new Vector2(Window.Width, 0))
+            * Matrix3x2.CreateTranslation(0, 30 * skewIntensity);
+
         // draw gun icon & process crosshair pos
         {
             if (character.EquippedWeapon.TryGet(Scene, out var eq))
             {
+                float recoilEffect = 0;
+                Draw.TransformMatrix = leftSkew;
                 Draw.Colour = Colors.White;
                 // draw weapon silhouette
                 if (eq.RegistryKey != null && Registries.Weapons.TryGet(eq.RegistryKey, out var wpn))
@@ -117,7 +125,7 @@ public class PlayerUISystem : Walgelijk.System
                         }
                     }
 
-                    float recoilEffect = 1 - float.Clamp(lastAmmoFlashCounter * 4f, 0, 1);
+                    recoilEffect = 1 - float.Clamp(lastAmmoFlashCounter * 4f, 0, 1);
                     float rot = recoilEffect * -0.06f * (Noise.GetSimplex(Time * 2, 452.123f, 0)) * wpn.WeaponData.Recoil;
 
                     wpnRect = wpnRect.Translate(0, cursor.Y);
@@ -126,7 +134,7 @@ public class PlayerUISystem : Walgelijk.System
                     Draw.Material = Materials.BlackToWhiteOutline;
                     if (flipped)
                     {
-                        Draw.TransformMatrix = Matrix3x2.CreateRotation(float.Pi / 2, wpnRect.BottomLeft);
+                        Draw.TransformMatrix *= Matrix3x2.CreateRotation(float.Pi / 2, wpnRect.BottomLeft);
                         wpnRect = wpnRect.Translate(0, -wpnRect.Height);
                     }
 
@@ -161,17 +169,24 @@ public class PlayerUISystem : Walgelijk.System
                         }
                     }
                     Draw.ResetMaterial();
-                    Draw.ResetTransformation();
+                    Draw.TransformMatrix = leftSkew;
                 }
 
                 cursor.Y += wpnHeight + padding * 2;
 
-
                 Draw.FontSize = 55;
-                Draw.Text(eq.Data.Name, cursor, new Vector2(0.6f), HorizontalTextAlign.Left, VerticalTextAlign.Top);
+                {
+                    Draw.BlendMode = BlendMode.Addition;
+                    Draw.Colour = Colors.Cyan * (1 - recoilEffect * 0.1f);
+                    Draw.Text(eq.Data.Name, cursor, new Vector2(0.6f), HorizontalTextAlign.Left, VerticalTextAlign.Top);
+                    Draw.Colour = Colors.Red;
+                    Draw.Text(eq.Data.Name, cursor, new Vector2(0.6f + (recoilEffect * recoilEffect * recoilEffect) * 0.05f),
+                        HorizontalTextAlign.Left, VerticalTextAlign.Top);
+                    Draw.BlendMode = BlendMode.AlphaBlend;
+                }
                 cursor.Y += 40;
 
-                Draw.FontSize = 24;
+                Draw.FontSize = 24 + recoilEffect * recoilEffect * 2;
 
                 switch (eq.Data.WeaponType)
                 {
@@ -230,6 +245,7 @@ public class PlayerUISystem : Walgelijk.System
             Draw.Colour = Colors.White;
             Draw.Font = Fonts.Toxigenesis;
             Draw.FontSize = 24;
+            Draw.TransformMatrix = rightSkew;
 
             if (Level.CurrentLevel != null && Scene.FindAnyComponent<LevelProgressComponent>(out var progress))
             {
