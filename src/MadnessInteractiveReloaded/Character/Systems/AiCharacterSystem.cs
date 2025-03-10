@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Numerics;
 using Walgelijk;
@@ -17,6 +17,7 @@ public class AiCharacterSystem : Walgelijk.System
     public const int MaxAiCount = 128;
     private readonly AiComponent[] aiBuffer = new AiComponent[MaxAiCount];
 
+    // TODO this really, really doesn't belong here
     public static bool DisableAI = false;
     public static bool AutoSpawn = false;
 

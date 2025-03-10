@@ -336,22 +336,42 @@ public static class SceneUtils
             {
                 scene.AttachComponent(scene.CreateEntity(), new WaveSpawningComponent(level.WaveSequence.Value)
                 {
-                    Doors = doors,
                     SpawnPoints = spawnPoints
                 });
             }
             else
             {
-                spawner = scene.AttachComponent(scene.CreateEntity(), new EnemySpawningComponent
+                var existingEnemyNPCs = 0;
+                foreach (var npc in level.Objects.OfType<NPC>())
+                    if (Registries.Factions[npc.Instructions.Faction].IsEnemiesWith(Registries.Factions["player"]))
+                        existingEnemyNPCs++;
+
+                var singleWaveSeq = new WaveSequence
                 {
-                    Doors = doors,
-                    SpawnPoints = spawnPoints,
-                    SpawnInstructions = [.. level.EnemySpawnInstructions.Cast<ISpawnInstructions>()],
-                    MaxEnemyCount = level.MaxEnemyCount,
-                    Interval = level.EnemySpawnInterval,
-                    WeaponsToSpawnWith = level.Weapons,
-                    WeaponChance = level.WeaponChance
+                    Waves = [new WaveSequence.Wave {
+                        Instructions = [.. level.EnemySpawnInstructions],
+                        SpawnInterval = level.EnemySpawnInterval,
+                        TargetCount = level.BodyCountToWin - existingEnemyNPCs,
+                        WeaponChance = level.WeaponChance,
+                        Weapons = [..level.Weapons],
+                    }] 
+                };
+
+                scene.AttachComponent(scene.CreateEntity(), new WaveSpawningComponent(singleWaveSeq)
+                {
+                    SpawnPoints = spawnPoints
                 });
+
+                //spawner = scene.AttachComponent(scene.CreateEntity(), new EnemySpawningComponent
+                //{
+                //    Doors = doors,
+                //    SpawnPoints = spawnPoints,
+                //    SpawnInstructions = [.. level.EnemySpawnInstructions.Cast<ISpawnInstructions>()],
+                //    MaxEnemyCount = level.MaxEnemyCount,
+                //    Interval = level.EnemySpawnInterval,
+                //    WeaponsToSpawnWith = level.Weapons,
+                //    WeaponChance = level.WeaponChance
+                //});
             }
 
             if (mode == GameMode.Campaign)

@@ -1,3 +1,4 @@
+using MIR.LevelEditor.Objects;
 using System.Collections.Generic;
 using System.Numerics;
 using Walgelijk;
@@ -8,15 +9,53 @@ namespace MIR;
 /// Handles spawning enemies according to a <see cref="WaveSequence"/>
 /// </summary>
 [SingleInstance]
-public class WaveSpawningComponent(WaveSequence sequence) : Component
+public class WaveSpawningComponent(WaveSequence sequence) : Component, IEnemySpawnProvider
 {
     public WaveSequence Sequence = sequence;
     public int WaveIndex = -1;
+
     public bool IsFinished;
     public bool Enabled = true;
     public float SpawnTimer = 0;
-    public int RemainingEnemiesThisWave;
 
-    public List<Vector2>? SpawnPoints;
-    public List<LevelEditor.Objects.Door>? Doors;
+    /// <summary>
+    /// Amount of enemies to kill this wave
+    /// </summary>
+    public int ActiveWaveEnemyCount;    
+    
+    /// <summary>
+    /// Amount of enemies that have already been killed, in total, since the start of the wave
+    /// </summary>
+    public int BodyCountOnWaveStart;
+
+    public List<Vector2> SpawnPoints = [];
+
+    public WaveSequence.Wave? ActiveWave => WaveIndex < 0 || WaveIndex >= Sequence.Waves.Length ? null : Sequence.Waves[WaveIndex];
+
+    public int GetBodyCountThisWave(Scene scene)
+    {
+        if (scene.FindAnyComponent<LevelProgressComponent>(out var lvlProgress))
+            return lvlProgress.BodyCount.Current - BodyCountOnWaveStart;
+
+        return 0;
+    }
+
+    IList<ISpawnInstructions> IEnemySpawnProvider.SpawnInstructions => ActiveWave?.Instructions ?? [];
+    IList<string> IEnemySpawnProvider.Weapons => ActiveWave?.Weapons ?? [];
+    IList<Vector2> IEnemySpawnProvider.SpawnPoints => SpawnPoints;
+    float IEnemySpawnProvider.Interval => ActiveWave?.SpawnInterval ?? 1;
+    float IEnemySpawnProvider.WeaponChance => ActiveWave?.WeaponChance ?? 0.5f;
+    int IEnemySpawnProvider.TotalEnemies => ActiveWave?.TargetCount ?? 0;
+    bool IEnemySpawnProvider.Enabled => Enabled;
+}
+
+public interface IEnemySpawnProvider
+{
+    IList<ISpawnInstructions> SpawnInstructions { get; }
+    IList<string> Weapons { get; }
+    IList<Vector2> SpawnPoints { get; }
+    float Interval { get; }
+    float WeaponChance { get; }
+    int TotalEnemies { get; }
+    bool Enabled { get; }
 }

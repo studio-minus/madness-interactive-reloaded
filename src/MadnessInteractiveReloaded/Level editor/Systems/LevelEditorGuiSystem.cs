@@ -250,15 +250,9 @@ public class LevelEditorGuiSystem : Walgelijk.System
                 Ui.Layout.FitContainer().StickLeft().StickTop().VerticalLayout();
                 Ui.StartScrollView();
                 {
-                    Ui.Label("Enemy spawn interval");
+                    Ui.Label("Max attacking enemy count");
                     Ui.Layout.FitWidth().Height(32).StickLeft();
-                    Ui.FloatSlider(ref editor.Level.EnemySpawnInterval, Direction.Horizontal, (0, 10), 0.1f, "{0:0.0} seconds");
-
-                    Ui.Label("Max enemy count");
-                    Ui.Layout.FitWidth().Height(32).StickLeft();
-                    Ui.IntStepper(ref editor.Level.MaxEnemyCount, (0, 50));
-
-                    Ui.Spacer(8);
+                    Ui.IntStepper(ref editor.Level.MaxSimultaneousAttackingEnemies, (0, 50));
 
                     Ui.Label("Wave sequence");
                     Ui.Layout.FitWidth().Height(32).StickLeft();
@@ -267,14 +261,31 @@ public class LevelEditorGuiSystem : Walgelijk.System
                         c => editor.Level.WaveSequence = new(c),
                         static c => c.MimeType.Contains("json"));
 
-                    if (editor.Level.WaveSequence.IsValid)
+                    if (editor.Level.WaveSequence.TryLoad(out var waveSeq))
                     {
                         Ui.Layout.FitWidth().Height(32).StickLeft();
-                        if (Ui.Button("Reset wave sequence"))
+                        if (Ui.Button("Clear wave sequence"))
                             editor.Level.WaveSequence = default;
                     }
                     else
                     {
+                        // we do this to make sure its set to "none" even if its technically populated, but cant be loaded
+                        if (editor.Level.WaveSequence.IsValid)
+                        {
+                            Audio.Play(Sounds.UiBad);
+                            editor.Level.WaveSequence = default;
+                        }
+
+                        Ui.Label("Max enemy count");
+                        Ui.Layout.FitWidth().Height(32).StickLeft();
+                        Ui.IntStepper(ref editor.Level.MaxEnemyCount, (0, 50));
+
+                        Ui.Label("Enemy spawn interval");
+                        Ui.Layout.FitWidth().Height(32).StickLeft();
+                        Ui.FloatSlider(ref editor.Level.EnemySpawnInterval, Direction.Horizontal, (0, 10), 0.1f, "{0:0.0} seconds");
+
+                        Ui.Spacer(8);
+
                         Ui.Layout.FitWidth().Height(32).StickLeft();
                         if (Ui.Button("Add new spawn instructions"))
                             editor.Level.EnemySpawnInstructions.Add(new EnemySpawnInstructions("grunt", "grunt", "aahw")); // TODO what if grunt does not exist?

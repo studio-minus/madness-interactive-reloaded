@@ -915,9 +915,6 @@ public static class Prefabs
             {
                 if (Game.Main.Scene.FindAnyComponent<LevelProgressComponent>(out var progress))
                     progress.BodyCount.Current++;   
-                
-                if (Game.Main.Scene.FindAnyComponent<WaveSpawningComponent>(out var wave))
-                    wave.RemainingEnemiesThisWave--;
             }
         });
 

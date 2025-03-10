@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics.CodeAnalysis;
 using Walgelijk;
 using Walgelijk.AssetManager;
@@ -21,6 +21,26 @@ public static class AssetExtensions
         {
             value = asset.Value;
             return true;
+        }
+        value = default;
+        return false;
+    }
+
+    public static bool TryLoad<T>(this AssetRef<T> asset, [NotNullWhen(true)] out T? value)
+    {
+        if (asset.IsValid && Assets.HasAsset(asset.Id))
+        {
+            try
+            {
+                value = asset.Value;
+                return value != null;
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e);
+                value = default;
+                return false;
+            }
         }
         value = default;
         return false;

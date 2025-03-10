@@ -19,7 +19,6 @@ public class WaveSequence
     {
         public int TargetCount = 10;
         public string[] Weapons = [];
-        public int MaxEnemyCount = 10;
         public float WeaponChance = 0.1f;
         public float SpawnInterval = 1;
         public EnemySpawnInstructions[] Instructions = [];
