@@ -349,11 +349,11 @@ public static class SceneUtils
                 var singleWaveSeq = new WaveSequence
                 {
                     Waves = [new WaveSequence.Wave {
-                        Instructions = [.. level.EnemySpawnInstructions],
+                        Instructions = [.. (level.EnemySpawnInstructions ?? [])],
                         SpawnInterval = level.EnemySpawnInterval,
-                        TargetCount = level.BodyCountToWin - existingEnemyNPCs,
+                        TargetCount = level.ProgressionType == ProgressionType.BodyCount ? level.BodyCountToWin - existingEnemyNPCs : int.MaxValue,
                         WeaponChance = level.WeaponChance,
-                        Weapons = [..level.Weapons],
+                        Weapons = [..(level.Weapons ?? [])],
                     }] 
                 };
 

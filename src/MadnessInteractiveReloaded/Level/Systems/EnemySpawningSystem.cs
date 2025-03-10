@@ -113,18 +113,24 @@ public class EnemySpawningSystem : Walgelijk.System
         if (!FindSpawnPoint(spawnParams.SpawnProvider.SpawnPoints, out var door, out var position))
             return;
 
+        spawnParams.Door = door;
+        spawnParams.Point = position;
+
         if (door != null)
         {
-            spawnParams.Door = door;
-            spawnParams.Point = door.Properties.SpawnPoint;
-
             if (!door.IsOpen && !door.IsBusyWithAnimation)
             {
                 int amountToSpawn = GetNextSpawnCount(spawnParams);
-                Logger.Log(amountToSpawn);
                 if (amountToSpawn > 0)
                     routines.Add(RoutineScheduler.Start(DoorSpawnRoutine(spawnParams, amountToSpawn)));
             }
+        }
+        else
+        {
+            spawnParams.Point = position;
+            int amountToSpawn = GetNextSpawnCount(spawnParams);
+            for (int i = 0; i < amountToSpawn; i++)
+                SpawnEnemy(spawnParams);
         }
     }
 
@@ -149,7 +155,9 @@ public class EnemySpawningSystem : Walgelijk.System
 
         remainingToSpawn = int.Min(remainingToSpawn, maxLivingEnemies - livingEnemies - activeSpawnRoutines);
 
-        return int.Max(0, remainingToSpawn);
+        return remainingToSpawn > 0 ? 1 : 0; // TODO normally we could spawn more than 1, but since the spawninstructions are set only once, we would spawn a bunch of clones. until that is resolved (easy fix actually lol), we'll just stick to 1
+
+        //return int.Max(0, remainingToSpawn > 1 ? Utilities.RandomInt(1, remainingToSpawn + 1 /*because exclusive*/) : remainingToSpawn);
     }
 
     private IEnumerator<IRoutineCommand> DoorSpawnRoutine(SpawnParams spawnParams, int amount)
