@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "waves": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "targetCount": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "weapons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "default": []
+          },
+          "weaponChance": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "default": 0.1
+          },
+          "spawnInterval": {
+            "type": "number",
+            "minimum": 0,
+            "default": 1
+          },
+          "instructions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "statsKey": {
+                  "type": "string"
+                },
+                "lookKey": {
+                  "type": "string"
+                },
+                "factionKey": {
+                  "type": "string"
+                },
+                "weapon": {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string"
+                    },
+                    "ammo": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "default": 0
+                    },
+                    "infiniteAmmo": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": ["key", "infiniteAmmo"],
+                  "nullable": true
+                }
+              },
+              "required": ["statsKey", "lookKey", "factionKey"]
+            }
+          }
+        },
+        "required": ["targetCount", "instructions"]
+      }
+    }
+  },
+  "required": ["waves"]
+}
