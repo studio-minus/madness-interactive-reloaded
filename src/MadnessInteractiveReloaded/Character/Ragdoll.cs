@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Numerics;
 using Walgelijk;
 
@@ -9,7 +9,7 @@ namespace MIR;
 /// </summary>
 public static class Ragdoll
 {
-    //TODO wat the fuck man
+    //TODO what the fuck man
     public static IEnumerable<Component> BuildDefaultRagdoll(Scene scene, CharacterComponent character)
     {
         var charPos = character.Positioning;
@@ -27,7 +27,7 @@ public static class Ragdoll
 
         var impactStrength = 1;// Noise.GetValue(23.16f, -5913.34f, scene.Game.State.Time.SecondsSinceLoad) * 0.5f + 0.5f;
 
-        //Create node on an existing entity
+        // create node on an existing entity
         VerletNodeComponent createNodeFor(Entity speedOrigin, Vector2 localPosition, TransformComponent transform, Entity entity, float radius, float mass = 1)
         {
             var node = new VerletNodeComponent(Vector2.Transform(localPosition, transform.LocalToWorldMatrix), 17 * scale)
@@ -40,7 +40,7 @@ public static class Ragdoll
             //if (node.Position.Y < (Level.CurrentLevel?.FloorLevel ?? Level.DefaultFloorLevel))
             //    node.FloorOffset = node.Position.Y - (Level.CurrentLevel?.FloorLevel ?? Level.DefaultFloorLevel) - 10;
             //else
-            // TODO mooier maken
+            // TODO make this prettier
             {
                 if (scene.TryGetComponentFrom<ImpactOffsetComponent>(speedOrigin, out var impact))
                 {
@@ -56,7 +56,7 @@ public static class Ragdoll
             return scene.AttachComponent(entity, node);
         }
 
-        //Create node with a new entity
+        // create node with a new entity
         VerletNodeComponent createNode(Entity speedOrigin, Vector2 localPosition, TransformComponent transform, float radius, float mass = 1)
             => createNodeFor(speedOrigin, localPosition, transform, scene.CreateEntity(), radius, mass);
 
@@ -72,7 +72,7 @@ public static class Ragdoll
         yield return scene.AttachComponent(head, new VerletTransformComponent(charPos.Head.Entity, headTransform, headNode2, headNode1));
 
         var e = scene.CreateEntity();
-        yield return scene.AttachComponent(e, new VerletLinkComponent(headNode1, headNode2)); //connect all head nodes to form a triangle
+        yield return scene.AttachComponent(e, new VerletLinkComponent(headNode1, headNode2)); // connect all head nodes to form a triangle
         e = scene.CreateEntity();
         yield return scene.AttachComponent(e, new VerletLinkComponent(headNode2, noseJoint));
         e = scene.CreateEntity();
@@ -90,43 +90,43 @@ public static class Ragdoll
         var bottomNode = createNode(body, new Vector2(0, -0.32f), bodyTransform, 70 * scale, 5);
         yield return bottomNode;
 
-        yield return scene.AttachComponent(body, new VerletTransformComponent(body, bodyTransform, neckNode, bottomNode)); //link bodytransform to body nodes
+        yield return scene.AttachComponent(body, new VerletTransformComponent(body, bodyTransform, neckNode, bottomNode)); // link bodytransform to body nodes
 
         e = scene.CreateEntity();
-        yield return scene.AttachComponent(e, new VerletLinkComponent(neckNode, headNode2));  //connect head to neck
+        yield return scene.AttachComponent(e, new VerletLinkComponent(neckNode, headNode2));  // connect head to neck
 
         e = scene.CreateEntity();
         yield return scene.AttachComponent(e, new VerletLinkComponent(neckNode, noseJoint));
 
         e = scene.CreateEntity();
-        yield return scene.AttachComponent(e, new VerletLinkComponent(headNode1, neckNode, VerletLinkMode.MaxDistanceOnly) { /*TargetDistance = 50*/ }); //connect neck to head node with special joint
+        yield return scene.AttachComponent(e, new VerletLinkComponent(headNode1, neckNode, VerletLinkMode.MaxDistanceOnly)); // connect neck to head node with special joint
 
         e = scene.CreateEntity();
-        yield return scene.AttachComponent(e, new VerletLinkComponent(bodyNode2, noseJoint, VerletLinkMode.MinMaxDistance) { MinMaxDistance = new Vector2(107, 260) * scale }); //connect nose joint to body 1
+        yield return scene.AttachComponent(e, new VerletLinkComponent(bodyNode2, noseJoint, VerletLinkMode.MinMaxDistance) { MinMaxDistance = new Vector2(107, 260) * scale }); // connect nose joint to body 1
 
         e = scene.CreateEntity();
-        yield return scene.AttachComponent(e, new VerletLinkComponent(bottomNode, noseJoint, VerletLinkMode.MinMaxDistance) { MinMaxDistance = new Vector2(300, 400) * scale }); //connect nose joint to body 2
+        yield return scene.AttachComponent(e, new VerletLinkComponent(bottomNode, noseJoint, VerletLinkMode.MinMaxDistance) { MinMaxDistance = new Vector2(300, 400) * scale }); // connect nose joint to body 2
 
         e = scene.CreateEntity();
-        yield return scene.AttachComponent(e, new VerletLinkComponent(bottomNode, noseJoint, VerletLinkMode.MinDistanceOnly) { TargetDistance = 230 * scale }); //nog een link to prevent opvouwen
+        yield return scene.AttachComponent(e, new VerletLinkComponent(bottomNode, noseJoint, VerletLinkMode.MinDistanceOnly) { TargetDistance = 230 * scale }); // another link to prevent folding
 
         e = scene.CreateEntity();
-        yield return scene.AttachComponent(e, new VerletLinkComponent(bodyNode1, headNode2, VerletLinkMode.MinDistanceOnly) { TargetDistance = 190 * scale }); //NOG een link to prevent opvouwen
+        yield return scene.AttachComponent(e, new VerletLinkComponent(bodyNode1, headNode2, VerletLinkMode.MinDistanceOnly) { TargetDistance = 190 * scale }); // ANOTHER link to prevent folding
 
         e = scene.CreateEntity();
-        yield return scene.AttachComponent(e, new VerletLinkComponent(bodyNode1, bodyNode2)); //connect two sides
+        yield return scene.AttachComponent(e, new VerletLinkComponent(bodyNode1, bodyNode2)); // connect two sides
 
         e = scene.CreateEntity();
-        yield return scene.AttachComponent(e, new VerletLinkComponent(bodyNode1, neckNode));  //connect side nodes to neck
+        yield return scene.AttachComponent(e, new VerletLinkComponent(bodyNode1, neckNode));  // connect side nodes to neck
 
         e = scene.CreateEntity();
         yield return scene.AttachComponent(e, new VerletLinkComponent(bodyNode2, neckNode));
 
         e = scene.CreateEntity();
-        yield return scene.AttachComponent(e, new VerletLinkComponent(bodyNode1, bottomNode)); //connect bottom to sides
+        yield return scene.AttachComponent(e, new VerletLinkComponent(bodyNode1, bottomNode)); // connect bottom to sides
 
         e = scene.CreateEntity();
-        yield return scene.AttachComponent(e, new VerletLinkComponent(neckNode, bottomNode)); //connect bottom to neck
+        yield return scene.AttachComponent(e, new VerletLinkComponent(neckNode, bottomNode)); // connect bottom to neck
 
         e = scene.CreateEntity();
         yield return scene.AttachComponent(e, new VerletLinkComponent(bodyNode2, bottomNode));
@@ -145,7 +145,7 @@ public static class Ragdoll
             scene.GetComponentFrom<TransformComponent>(hand1),
             neckNode,
             handNode1)
-        { LocalRotationalOffset = -90 }); //link hands to hands
+        { LocalRotationalOffset = -90 }); // link hands to hands
 
         yield return scene.AttachComponent(hand2, new VerletTransformComponent(
             hand2,
@@ -155,7 +155,7 @@ public static class Ragdoll
         { LocalRotationalOffset = -90 });
 
         e = scene.CreateEntity();
-        yield return scene.AttachComponent(e, new VerletLinkComponent(handNode1, neckNode, VerletLinkMode.MaxDistanceOnly) { TargetDistance = 280 * scale });  //connect neck to hands
+        yield return scene.AttachComponent(e, new VerletLinkComponent(handNode1, neckNode, VerletLinkMode.MaxDistanceOnly) { TargetDistance = 280 * scale });  // connect neck to hands
 
         e = scene.CreateEntity();
         yield return scene.AttachComponent(e, new VerletLinkComponent(handNode2, neckNode, VerletLinkMode.MaxDistanceOnly) { TargetDistance = 280 * scale });

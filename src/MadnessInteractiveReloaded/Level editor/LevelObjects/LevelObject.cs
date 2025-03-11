@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System;
 using System.Numerics;
 using Walgelijk;
@@ -84,7 +84,7 @@ public abstract class LevelObject : ICloneable, ISelectable, IDisposable
         Horizontal
     }
 
-    [NonSerialized] //TODO moet dit hier??? weet je het zeker?
+    [NonSerialized] // TODO are you sure these values should live here?
     public static LevelObject? DraggingObject, RotatingObject, ScalingObject;
     [NonSerialized]
     public static Axis AxisConstraint = Axis.Unconstrained;
@@ -357,7 +357,9 @@ public abstract class LevelObject : ICloneable, ISelectable, IDisposable
             {
                 IsBeingRotated = false;
                 Editor.Dirty = true;
-                //TODO dit is niet al te best
+                // TODO this is definitely not the proper way to do it.
+                // we do it this way because we're still in the loop that
+                // this operation will edit, so it's deferred using a routine.. terrible
                 MadnessUtils.Delay(0.1f, () => Editor.SelectionManager.Select(this));
             }
             else if (input.IsButtonPressed(MouseButton.Right))
@@ -416,7 +418,9 @@ public abstract class LevelObject : ICloneable, ISelectable, IDisposable
             {
                 IsBeingScaled = false;
                 Editor.Dirty = true;
-                //TODO dit is niet al te best
+                // TODO this is definitely not the proper way to do it.
+                // we do it this way because we're still in the loop that
+                // this operation will edit, so it's deferred using a routine.. terrible
                 MadnessUtils.Delay(0.1f, () => Editor.SelectionManager.Select(this));
             }
             else if (input.IsButtonPressed(MouseButton.Right))

@@ -152,7 +152,9 @@ public abstract class RectangleObject : LevelObject, ITagged
             if (input.IsButtonPressed(MouseButton.Left))
             {
                 currentDragSide ^= side;
-                //TODO dit is niet al te best
+                // TODO this is definitely not the proper way to do it.
+                // we do it this way because we're still in the loop that
+                // this operation will edit, so it's deferred using a routine.. terrible
                 MadnessUtils.Delay(0.1f, () => Editor.SelectionManager.Select(this));
             }
             else if (input.IsButtonPressed(MouseButton.Right))

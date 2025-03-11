@@ -230,7 +230,7 @@ public static class MeleeUtils
                     damagable.AddSlash(localPos, Utilities.RandomFloat(0, float.Tau));
 
                     //TODO dismemberment??
-                    //TODO stukkies eraf snijden?
+                    //TODO dynamic cutting-off-bits-of-the-bodypart?
                     for (int i = 0; i < Utilities.RandomInt(1, 3); i++)
                         Prefabs.CreateBloodSpurt(scene,
                             hit.Position,
@@ -270,7 +270,7 @@ public static class MeleeUtils
                 {
                     // TODO what the fuck
                     if (!victim.IsPlayingAnimation || victim.IsPlayingAnimationGroup(Animations.FistMeleeHits[0].Group)) // TODO find way to get animation group without doing... this
-                        victim.PlayAnimation(Utilities.PickRandom(Animations.FistMeleeHits)); //isBlade ? Animations.FistMeleeHits : Animations.SwordMeleeHits));
+                        victim.PlayAnimation(Utilities.PickRandom(Animations.FistMeleeHits));
                 }
             }
             else

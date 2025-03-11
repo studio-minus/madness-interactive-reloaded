@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Numerics;
 using Walgelijk;
@@ -522,7 +522,7 @@ public static class CharacterUtilities
         if (activeAnim.Animation.HandAnimations != null)
         {
             var handAnims = activeAnim.Animation.HandAnimations;
-            //TODO dit kan mooier want het is allemaal hetzeldfe
+            //TODO this could be prettier because it's all the same
 
             if (handAnims.Length >= 1)
             {

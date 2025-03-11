@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics.Metrics;
 using System.Numerics;
 using Walgelijk;
@@ -64,7 +64,7 @@ public class MeleeSequenceSystem : Walgelijk.System
                         continue;
                     }
 
-                    //TODO je mag nog continueen proberen tot iets na de transitionframe
+                    //TODO the player may continue trying until a little after the TransitionFrame
 
                     if (comp.CanContinue)
                     {
@@ -81,8 +81,7 @@ public class MeleeSequenceSystem : Walgelijk.System
                 comp.HitframesSpent = 0;
                 comp.LastAnim = ch.PlayAnimation(key.Animation.Select(!ch.Positioning.IsFlipped), comp.Speed);
                 comp.AnimationTimer = 0;
-                //TODO WTF??? HIER MOET TOCH NIET !phys.IsFlipped staan wtf Oh nee
-
+                //TODO WTF??? WHY IS IT "!ch.Positioning.IsFlipped"?? Inverted?? WHY. VERY CONCERNING :(
             }
         }
     }

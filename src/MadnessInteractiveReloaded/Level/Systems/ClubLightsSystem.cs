@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Numerics;
 using Walgelijk;
 using Walgelijk.Onion.Controls;
@@ -11,7 +11,7 @@ namespace MIR;
 /// </summary>
 public class ClubLightsSystem : Walgelijk.System
 {
-    private int lastFlashIndex = 0; //TODO stateful systeem 💀
+    private int lastFlashIndex = 0; // TODO stateful system 💀
 
     public override void Render()
     {
