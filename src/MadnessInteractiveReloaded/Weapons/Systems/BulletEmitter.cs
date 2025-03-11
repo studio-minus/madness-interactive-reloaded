@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Numerics;
 using Walgelijk;
@@ -287,7 +287,7 @@ public static class BulletEmitter
                     if (victimChar.IsAlive && totalDistance < 300 && Utilities.RandomFloat() > 0.95f)
                     {
                         var splatter = SoundCache.Instance.LoadSoundEffect(Assets.Load<FixedAudioData>("sounds/splatter.wav"));
-                        Audio.PlayOnce(splatter, 1, Utilities.RandomFloat(0.95f, 1.05f));
+                        Audio.PlayOnce(splatter, 1, Utilities.RandomFloat(0.9f, 1.11f));
                     }
 
                     //damage broken armour
