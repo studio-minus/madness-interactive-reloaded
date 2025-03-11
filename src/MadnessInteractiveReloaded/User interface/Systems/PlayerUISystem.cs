@@ -42,8 +42,8 @@ public class PlayerUISystem : Walgelijk.System
 
         Window.CursorStack.Fallthrough = DefaultCursor.Invisible;
 
-        lastAmmoFlashCounter += Time.DeltaTimeUnscaled;
-        lastProgressIndexFlashCounter += Time.DeltaTimeUnscaled;
+        lastAmmoFlashCounter += Time.DeltaTime;
+        lastProgressIndexFlashCounter += Time.DeltaTime;
         var gameMode = gm.Mode;
 
         Draw.Reset();
@@ -92,6 +92,7 @@ public class PlayerUISystem : Walgelijk.System
             if (character.EquippedWeapon.TryGet(Scene, out var eq))
             {
                 float recoilEffect = 0;
+                float recoilRot = 0;
                 Draw.TransformMatrix = leftSkew;
                 Draw.Colour = Colors.White;
                 // draw weapon silhouette
@@ -126,7 +127,7 @@ public class PlayerUISystem : Walgelijk.System
                     }
 
                     recoilEffect = 1 - float.Clamp(lastAmmoFlashCounter * 4f, 0, 1);
-                    float rot = recoilEffect * -0.06f * (Noise.GetSimplex(Time * 2, 452.123f, 0)) * wpn.WeaponData.Recoil;
+                    float rot = recoilRot = recoilEffect * -0.06f * (Noise.GetSimplex(Time * 2, 452.123f, 0)) * wpn.WeaponData.Recoil;
 
                     wpnRect = wpnRect.Translate(0, cursor.Y);
                     wpnRect = wpnRect.Translate((MadnessUtils.Noise2D(Time * 2, 452.123f) + new Vector2(-0.5f, 0)) * 15 * recoilEffect);
@@ -176,12 +177,14 @@ public class PlayerUISystem : Walgelijk.System
 
                 Draw.FontSize = 55;
                 {
+                    var recoilEffect4 = recoilEffect * recoilEffect * recoilEffect * recoilEffect;
                     Draw.BlendMode = BlendMode.Addition;
+
                     Draw.Colour = Colors.Cyan * (1 - recoilEffect * 0.1f);
-                    Draw.Text(eq.Data.Name, cursor, new Vector2(0.6f), HorizontalTextAlign.Left, VerticalTextAlign.Top);
+                    Draw.Text(eq.Data.Name, cursor, new Vector2(0.6f), HorizontalTextAlign.Left, VerticalTextAlign.Top, degrees: recoilRot * 25);
+
                     Draw.Colour = Colors.Red;
-                    Draw.Text(eq.Data.Name, cursor, new Vector2(0.6f + (recoilEffect * recoilEffect * recoilEffect) * 0.05f),
-                        HorizontalTextAlign.Left, VerticalTextAlign.Top);
+                    Draw.Text(eq.Data.Name, cursor + recoilEffect4 * 4 * Utilities.RandomVector2(), new Vector2(0.6f), HorizontalTextAlign.Left, VerticalTextAlign.Top);
                     Draw.BlendMode = BlendMode.AlphaBlend;
                 }
                 cursor.Y += 40;
