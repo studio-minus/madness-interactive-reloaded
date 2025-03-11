@@ -1,4 +1,4 @@
-﻿using OpenTK.Graphics.ES20;
+using OpenTK.Graphics.ES20;
 using System;
 using System.Numerics;
 using Walgelijk;
@@ -122,7 +122,7 @@ public class LevelEditorSystem : Walgelijk.System
 
         if (lvl != null)
         {
-            if (editor.SelectionManager.SelectedObject != null)
+            if (editor.SelectionManager.SelectedObject != null && !Ui.IsBeingUsed)
             {
                 var selected = editor.SelectionManager.SelectedObject;
 

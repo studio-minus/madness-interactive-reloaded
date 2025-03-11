@@ -1,4 +1,4 @@
-﻿using System.Numerics;
+using System.Numerics;
 using Walgelijk;
 using Walgelijk.AssetManager;
 using Walgelijk.Onion;
@@ -81,8 +81,9 @@ public class TurretSystem : Walgelijk.System
                         turret.FindTargetClock = 0;
                         foreach (var potentialVictim in Scene.GetAllComponentsOfType<CharacterComponent>())
                         {
-                            if (Utilities.RandomFloat() > 0.5f)
+                            if (Utilities.RandomFloat() > 0.5f || Vector2.DistanceSquared(potentialVictim.Positioning.GlobalCenter, turret.Position) > turret.MaxTargetDistanceSqrd)
                                 continue;
+
                             if (potentialVictim.IsAlive)
                                 if (faction.IsEnemiesWith(potentialVictim.Faction))
                                     turret.Target = potentialVictim;
