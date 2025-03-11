@@ -19,11 +19,12 @@
   "Thumbnail": "0",
   "OpeningTransition": true,
   "ExitingTransition": true,
+  "WaveSequence": "0",
   "EnemySpawnInstructions": [],
   "Weapons": [],
   "FloorLine": [
     {
-      "X": -5679.1924,
+      "X": -5681.1924,
       "Y": -561.0773
     },
     {
@@ -107,7 +108,7 @@
       "Y": -1406.8065
     },
     {
-      "X": 5114.8076,
+      "X": 5116.8076,
       "Y": -1406.8065
     }
   ],
@@ -228,8 +229,8 @@
         "Layer": 300,
         "OrderInLayer": 0
       },
-      "MinAngle": -80.0,
-      "MaxAngle": 80.0,
+      "MinAngle": -46.0,
+      "MaxAngle": 63.0,
       "Tag": null
     },
     {
@@ -249,6 +250,9 @@
         "PortalID": null,
         "DestinationLevel": null,
         "Texture": "textures/doors/door_horizontal_2.png",
+        "OpenSound": null,
+        "CloseSound": null,
+        "AnimationDuration": 0.4,
         "Behaviour": 1,
         "TopLeft": {
           "X": 5378.3438,
@@ -281,6 +285,17 @@
       "Tag": null
     },
     {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -568.63196,
+        "MinY": 1450.5472,
+        "MaxX": 1752.653,
+        "MaxY": 1818.7571
+      },
+      "Tag": null
+    },
+    {
       "$type": "MIR.LevelEditor.Objects.NPC, MIR",
       "Instructions": {
         "Name": "Unnamed NPC",
@@ -298,22 +313,6 @@
         "IsProgressionRequirement": false
       },
       "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.Turret, MIR",
-      "Position": {
-        "X": 534.8811,
-        "Y": 1412.065
-      },
-      "Angle": 90.0,
-      "Faction": "aahw",
-      "RenderOrder": {
-        "Layer": 300,
-        "OrderInLayer": 0
-      },
-      "MinAngle": -80.0,
-      "MaxAngle": 80.0,
-      "Tag": null
     },
     {
       "$type": "MIR.LevelEditor.Objects.NPC, MIR",
@@ -409,7 +408,7 @@
         "OrderInLayer": 0
       },
       "MinAngle": -80.0,
-      "MaxAngle": 80.0,
+      "MaxAngle": 64.0,
       "Tag": null
     },
     {
@@ -467,6 +466,22 @@
       "Tag": null
     },
     {
+      "$type": "MIR.LevelEditor.Objects.Turret, MIR",
+      "Position": {
+        "X": 534.8811,
+        "Y": 1412.065
+      },
+      "Angle": 90.0,
+      "Faction": "aahw",
+      "RenderOrder": {
+        "Layer": 300,
+        "OrderInLayer": 0
+      },
+      "MinAngle": -53.0,
+      "MaxAngle": 60.0,
+      "Tag": null
+    },
+    {
       "$type": "MIR.LevelEditor.Objects.NPC, MIR",
       "Instructions": {
         "Name": "Unnamed NPC",
@@ -486,17 +501,6 @@
       "StartAnimation": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
-      "BlockerType": 0,
-      "Rectangle": {
-        "MinX": -568.63196,
-        "MinY": 1450.5472,
-        "MaxX": 1752.653,
-        "MaxY": 1818.7571
-      },
-      "Tag": null
-    },
-    {
       "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
       "Rectangle": {
         "MinX": -5547.7725,
@@ -507,23 +511,42 @@
       "Tag": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
-      "Rectangle": {
-        "MinX": -5761.746,
-        "MinY": 856.92145,
-        "MaxX": -5677.703,
-        "MaxY": 1192.3579
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
-      "BlockerType": 0,
-      "Rectangle": {
-        "MinX": -6227.7607,
-        "MinY": -1147.4315,
-        "MaxX": -5727.814,
-        "MaxY": 1582.1866
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": -5868.406,
+          "Y": -552.94104
+        },
+        "FacingDirection": {
+          "X": 1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": false,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "Texture": "textures/doors/door_horizontal_2.png",
+        "OpenSound": null,
+        "CloseSound": null,
+        "AnimationDuration": 0.4,
+        "Behaviour": 1,
+        "TopLeft": {
+          "X": -5927.4595,
+          "Y": 842.50287
+        },
+        "TopRight": {
+          "X": -5605.086,
+          "Y": 796.7908
+        },
+        "BottomLeft": {
+          "X": -5930.289,
+          "Y": -569.5761
+        },
+        "BottomRight": {
+          "X": -5606.5225,
+          "Y": -536.306
+        }
       },
       "Tag": null
     },
@@ -583,7 +606,7 @@
         "OrderInLayer": 0
       },
       "MinAngle": -80.0,
-      "MaxAngle": 80.0,
+      "MaxAngle": 50.0,
       "Tag": null
     },
     {
@@ -666,55 +689,23 @@
       "StartAnimation": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.Turret, MIR",
-      "Position": {
-        "X": 2779.5244,
-        "Y": 460.43286
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -5761.746,
+        "MinY": 856.92145,
+        "MaxX": -5677.703,
+        "MaxY": 1192.3579
       },
-      "Angle": 128.64069,
-      "Faction": "aahw",
-      "RenderOrder": {
-        "Layer": 300,
-        "OrderInLayer": 0
-      },
-      "MinAngle": -80.0,
-      "MaxAngle": 80.0,
       "Tag": null
     },
     {
-      "$type": "MIR.LevelEditor.Objects.Door, MIR",
-      "Properties": {
-        "SpawnPoint": {
-          "X": -5868.406,
-          "Y": -552.94104
-        },
-        "FacingDirection": {
-          "X": 1.0,
-          "Y": 0.0
-        },
-        "EnemySpawnerDoor": false,
-        "IsLevelProgressionDoor": false,
-        "IsPortal": false,
-        "PortalID": null,
-        "DestinationLevel": null,
-        "Texture": "textures/doors/door_horizontal_2.png",
-        "Behaviour": 1,
-        "TopLeft": {
-          "X": -5927.4595,
-          "Y": 842.50287
-        },
-        "TopRight": {
-          "X": -5605.086,
-          "Y": 796.7908
-        },
-        "BottomLeft": {
-          "X": -5930.289,
-          "Y": -569.5761
-        },
-        "BottomRight": {
-          "X": -5606.5225,
-          "Y": -536.306
-        }
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -6227.7607,
+        "MinY": -1147.4315,
+        "MaxX": -5727.814,
+        "MaxY": 1582.1866
       },
       "Tag": null
     },
@@ -835,17 +826,17 @@
     {
       "$type": "MIR.LevelEditor.Objects.Turret, MIR",
       "Position": {
-        "X": 3586.709,
-        "Y": 297.86847
+        "X": 2779.5244,
+        "Y": 460.43286
       },
-      "Angle": 90.17706,
+      "Angle": 128.64069,
       "Faction": "aahw",
       "RenderOrder": {
         "Layer": 300,
         "OrderInLayer": 0
       },
-      "MinAngle": -80.0,
-      "MaxAngle": 80.0,
+      "MinAngle": -55.0,
+      "MaxAngle": 56.0,
       "Tag": null
     },
     {
@@ -860,8 +851,8 @@
         "Layer": 300,
         "OrderInLayer": 0
       },
-      "MinAngle": -80.0,
-      "MaxAngle": 80.0,
+      "MinAngle": -71.0,
+      "MaxAngle": 4.0,
       "Tag": null
     }
   ]

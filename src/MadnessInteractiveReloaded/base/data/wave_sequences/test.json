@@ -1,6 +1,8 @@
 {
+
   "waves": [
     {
+      "weapons": [ "1911a1_custom" ],
       "mode": "Sequential",
       "targetCount": 2,
       "instructions": [
