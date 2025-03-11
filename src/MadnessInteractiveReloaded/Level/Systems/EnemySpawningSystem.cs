@@ -1,5 +1,7 @@
 using System;
+using System.Buffers;
 using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
 using Walgelijk;
 
@@ -11,7 +13,6 @@ namespace MIR;
 public class EnemySpawningSystem : Walgelijk.System
 {
     private readonly List<Routine> routines = [];
-    private readonly DoorComponent[] doorBuffer = new DoorComponent[32];
     private int currentlySpawning = 0;
 
     public override void OnDeactivate()
@@ -25,6 +26,8 @@ public class EnemySpawningSystem : Walgelijk.System
 
     public override void Update()
     {
+        routines.RemoveAll(static r => !RoutineScheduler.IsOngoing(r));
+
         if (MadnessUtils.IsPaused(Scene) ||
             MadnessUtils.EditingInExperimentMode(Scene) ||
             MadnessUtils.IsCutscenePlaying(Scene))
@@ -36,86 +39,81 @@ public class EnemySpawningSystem : Walgelijk.System
         if (!MadnessUtils.FindPlayer(Scene, out var playerComponent, out var playerCharacterComponent) || !playerCharacterComponent.IsAlive)
             return;
 
-        if (Scene.FindAnyComponent<WaveSpawningComponent>(out var waveComponent))
+        if (!Scene.FindAnyComponent<WaveSpawningComponent>(out var waveComponent))
+            return;
+
+        if (waveComponent.Sequence.Waves.Length == 0 || waveComponent.IsFinished || !waveComponent.Enabled)
+            return;
+
+        if (waveComponent.WaveIndex == -1 || (waveComponent.ActiveWave != null && waveComponent.ActiveWaveBodyCount == waveComponent.ActiveWave.TargetCount))
         {
-            if (waveComponent.Sequence.Waves.Length == 0 || waveComponent.IsFinished || !waveComponent.Enabled)
-                return;
+            waveComponent.WaveIndex++;
+            waveComponent.ActiveWaveBodyCount = 0;
+            waveComponent.WaveInstrSeqIndex = 0;
 
-            if (waveComponent.WaveIndex == -1 || (waveComponent.ActiveWave != null && waveComponent.ActiveWaveBodyCount == waveComponent.ActiveWave.TargetCount))
+            if (waveComponent.WaveIndex >= waveComponent.Sequence.Waves.Length)
             {
-                waveComponent.WaveIndex++;
-                waveComponent.ActiveWaveBodyCount = 0;
-                waveComponent.WaveInstrSeqIndex = 0;
-                if (waveComponent.WaveIndex >= waveComponent.Sequence.Waves.Length)
-                {
-                    // we reached the end of the waves, but sometimes the level progress is set up such that
-                    // the player has to kill more enemies than the wave are configured to spawn.
-                    // in this situation, we should just keep spawning them
+                // we reached the end of the waves, but sometimes the level progress is set up such that
+                // the player has to kill more enemies than the wave are configured to spawn.
+                // in this situation, we should just keep spawning them
 
-                    if (Level.CurrentLevel != null)
-                        switch (Level.CurrentLevel.ProgressionType)
-                        {
-                            case ProgressionType.BodyCount:
-                                if (Scene.FindAnyComponent<LevelProgressComponent>(out var lvlProgress))
+                if (Level.CurrentLevel != null)
+                    switch (Level.CurrentLevel.ProgressionType)
+                    {
+                        case ProgressionType.BodyCount:
+                            if (Scene.FindAnyComponent<LevelProgressComponent>(out var lvlProgress))
+                            {
+                                int stillRemaining = lvlProgress.BodyCount.Target - lvlProgress.BodyCount.Current;
+                                if (stillRemaining > 0)
                                 {
-                                    int stillRemaining = lvlProgress.BodyCount.Target - lvlProgress.BodyCount.Current;
-                                    if (stillRemaining > 0)
-                                    {
-                                        waveComponent.ActiveWaveEnemyCount = stillRemaining;
-                                        waveComponent.WaveIndex--;
-                                    }
+                                    waveComponent.ActiveWaveEnemyCount = stillRemaining;
+                                    waveComponent.WaveIndex--;
                                 }
-                                break;
-                            default:
-                                waveComponent.IsFinished = true;
-                                break;
-                        }
-                }
-                else
-                    waveComponent.ActiveWaveEnemyCount = waveComponent.ActiveWave!.TargetCount;
-
-                waveComponent.SpawnTimer = -1; // give them some time... christ
+                            }
+                            break;
+                        default:
+                            waveComponent.IsFinished = true;
+                            break;
+                    }
             }
+            else
+                waveComponent.ActiveWaveEnemyCount = waveComponent.ActiveWave!.TargetCount;
 
-            var wave = waveComponent.ActiveWave;
-            if (wave == null)
-                return;
-
-            waveComponent.SpawnTimer += Time.DeltaTime;
-            if (waveComponent.SpawnTimer > wave.SpawnInterval && wave.Instructions.Length > 0)
-            {
-                waveComponent.SpawnTimer = 0;
-                var spawnInstr = wave.Mode switch
-                {
-                    WaveMode.Sequential => wave.Instructions[waveComponent.WaveInstrSeqIndex % wave.Instructions.Length],
-                    _ => Utilities.PickRandom(wave.Instructions),
-                };
-
-                bool success = TrySpawn(new SpawnParams
-                {
-                    WaveComponent = waveComponent,
-                    SpawnInstructions = spawnInstr,
-                    Weapon = wave.Weapons.Length > 0 ? Registries.Weapons[Utilities.PickRandom(wave.Weapons)] : null,
-                    WeaponChance = wave.WeaponChance,
-                    SpawnProvider = waveComponent,
-                    Player = playerCharacterComponent
-                });
-
-                if (success)
-                    waveComponent.WaveInstrSeqIndex++;
-            }
-
-            if (Game.DevelopmentMode)
-                DebugDraw.Text(default,
-                    $"Wave {waveComponent.WaveIndex}/{waveComponent.Sequence.Waves.Length}\n" +
-                    $"{waveComponent.ActiveWaveEnemyCount} enemies remain", 4);
+            waveComponent.SpawnTimer = -1; // give them some time... christ
         }
-        else if (Scene.FindAnyComponent<EnemySpawningComponent>(out var spawningComponent))
+
+        var wave = waveComponent.ActiveWave;
+        if (wave == null)
+            return;
+
+        waveComponent.SpawnTimer += Time.DeltaTime;
+        if (waveComponent.SpawnTimer > wave.SpawnInterval && wave.Instructions.Length > 0)
         {
+            waveComponent.SpawnTimer = 0;
+            var spawnInstr = wave.Mode switch
+            {
+                WaveMode.Sequential => wave.Instructions[waveComponent.WaveInstrSeqIndex % wave.Instructions.Length],
+                _ => Utilities.PickRandom(wave.Instructions),
+            };
 
+            bool success = TrySpawn(new SpawnParams
+            {
+                WaveComponent = waveComponent,
+                SpawnInstructions = spawnInstr,
+                Weapon = wave.Weapons.Length > 0 ? Registries.Weapons[Utilities.PickRandom(wave.Weapons)] : null,
+                WeaponChance = wave.WeaponChance,
+                SpawnProvider = waveComponent,
+                Player = playerCharacterComponent
+            });
+
+            if (success)
+                waveComponent.WaveInstrSeqIndex++;
         }
 
-        routines.RemoveAll(static r => !RoutineScheduler.IsOngoing(r));
+        if (Game.DevelopmentMode)
+            DebugDraw.Text(default,
+                $"Wave {waveComponent.WaveIndex}/{waveComponent.Sequence.Waves.Length}\n" +
+                $"{waveComponent.ActiveWaveEnemyCount} enemies remain", 4);
     }
 
     private bool TrySpawn(SpawnParams spawnParams)
@@ -290,58 +288,66 @@ public class EnemySpawningSystem : Walgelijk.System
     {
         door = null;
         position = default;
-        var doors = Scene.GetAllComponentsOfType(doorBuffer); // TODO this is kind of slow... 
+        var doorsBuffer = ArrayPool<DoorComponent>.Shared.Rent(32); // TODO this is slow as hell hhuh? 
 
-        bool hasAdditionalSpawnPoints = points.Count > 0;
-        bool hasDoors = false;
-        foreach (var d in doors)
-            if (d.Properties.EnemySpawnerDoor)
+        try
+        {
+            int doorCount = 0;
+            foreach (var d in Scene.GetAllComponentsOfType<DoorComponent>())
+                if (d.Properties.EnemySpawnerDoor)
+                    doorsBuffer[doorCount++] = d;
+
+            var doors = doorsBuffer.AsSpan(0, doorCount);
+
+            bool hasAdditionalSpawnPoints = points.Count > 0;
+            bool hasDoors = doorCount > 0;
+
+            // there are no spawnpoints and no doors!! 
+            if (!hasAdditionalSpawnPoints && !hasDoors)
             {
-                hasDoors = true;
-                break;
+                Logger.Error("Attempt to spawn enemy without existing spawners!");
+                return false;
             }
 
-        // there are no spawnpoints and no doors!! 
-        if (!hasAdditionalSpawnPoints && !hasDoors)
-        {
-            Logger.Error("Attempt to spawn enemy without existing spawners!");
-            return false;
-        }
+            // only spawnpoints are available
+            if (hasAdditionalSpawnPoints && !hasDoors)
+            {
+                position = MadnessUtils.PickRandom(points);
+                return true;
+            }
 
-        // only spawnpoints are available
-        if (hasAdditionalSpawnPoints && !hasDoors)
-        {
-            position = MadnessUtils.PickRandom(points);
-            return true;
-        }
-
-        // only doors are available
-        if (!hasAdditionalSpawnPoints && hasDoors)
-        {
-            door = MadnessUtils.PickRandom(doors);
-            position = door.Properties.SpawnPoint;
-            return true;
-        }
-
-        // there are both spawnpoints AND doors
-        // this code looks weird because of nullability
-        if (points.Count > 0 && hasDoors)
-        {
-            var ratio = doors.Length / (float)(points.Count + doors.Length);
-            if (Utilities.RandomFloat() < ratio) // make sure we weigh the selection appropriately
+            // only doors are available
+            if (!hasAdditionalSpawnPoints && hasDoors)
             {
                 door = MadnessUtils.PickRandom(doors);
                 position = door.Properties.SpawnPoint;
                 return true;
             }
-            else
-            {
-                position = MadnessUtils.PickRandom(points);
-                return true;
-            }
-        }
 
-        return default;
+            // there are both spawnpoints AND doors
+            // this code looks weird because of nullability
+            if (points.Count > 0 && hasDoors)
+            {
+                var ratio = doors.Length / (float)(points.Count + doors.Length);
+                if (Utilities.RandomFloat() < ratio) // make sure we weigh the selection appropriately
+                {
+                    door = MadnessUtils.PickRandom(doors);
+                    position = door.Properties.SpawnPoint;
+                    return true;
+                }
+                else
+                {
+                    position = MadnessUtils.PickRandom(points);
+                    return true;
+                }
+            }
+
+            return default;
+        }
+        finally
+        {
+            ArrayPool<DoorComponent>.Shared.Return(doorsBuffer, true);
+        }
     }
 
     private record struct SpawnParams
