@@ -1,4 +1,4 @@
-﻿using Walgelijk;
+using Walgelijk;
 using Walgelijk.AssetManager;
 
 namespace MIR;
@@ -202,14 +202,14 @@ public static class Textures
 
         public static Texture GetTextureForHandLook(HandArmourPiece? gloves, HandLook look, bool back, WeaponType weaponType)
         {
-            //TODO is dit fucked?
+            // TODO is this fucked?
             if (look == HandLook.HoldPistol && weaponType == WeaponType.Melee)
                 look = HandLook.Fist;
 
             if (gloves != null)
                 return gloves.GetByLook(look).Select(back).Value;
 
-            //TODO misschien moet dit weg? 
+            // TODO maybe this should be removed? 
             //fallback :) ?
             switch (look)
             {

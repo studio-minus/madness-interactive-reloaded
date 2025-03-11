@@ -1,4 +1,4 @@
-﻿using Walgelijk;
+using Walgelijk;
 
 namespace MIR;
 
@@ -11,13 +11,12 @@ public struct DoubleSidedMultiple<T>
     public T[] FromFront;
     public T[] FromBehind;
 
-    public DoubleSidedMultiple(T[] right, T[] left)
+    public DoubleSidedMultiple(T[] front, T[] behind)
     {
-        FromBehind = left;
-        FromFront = right;
+        FromBehind = behind;
+        FromFront = front;
     }
 
-    //TODO wtf is dit??? waarom is flipped niet correct waarom moet ik het inverten wtf wat doe jij sukkel
     public T[] Select(bool front) => front ? FromFront : FromBehind;
     public T PickRandom(bool front) => front ? Utilities.PickRandom(FromFront) : Utilities.PickRandom(FromBehind);
 }

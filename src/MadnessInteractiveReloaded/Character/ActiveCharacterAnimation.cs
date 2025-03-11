@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Numerics;
 using Walgelijk;
 
@@ -26,27 +26,21 @@ public class ActiveCharacterAnimation
         Animation = animation;
         Speed = speed;
 
-        //TODO this code is not pretty
-
         MaxKeyCount = 0;
+
         if (animation.HandAnimations != null)
             foreach (var item in animation.HandAnimations)
             {
-                MaxKeyCount = int.Max(MaxKeyCount, item.TranslationCurve?.Keys.Length ?? 0);
-                MaxKeyCount = int.Max(MaxKeyCount, item.RotationCurve?.Keys.Length ?? 0);
+                AdjustMax(ref MaxKeyCount, item.TranslationCurve);
+                AdjustMax(ref MaxKeyCount, item.RotationCurve);
             }
 
-        if (animation.HeadAnimation != null)
-        {
-            MaxKeyCount = int.Max(MaxKeyCount, animation.HeadAnimation.TranslationCurve?.Keys.Length ?? 0);
-            MaxKeyCount = int.Max(MaxKeyCount, animation.HeadAnimation.RotationCurve?.Keys.Length ?? 0);
-        }
+        AdjustMax(ref MaxKeyCount, animation.HeadAnimation?.TranslationCurve);
+        AdjustMax(ref MaxKeyCount, animation.HeadAnimation?.RotationCurve);
+        AdjustMax(ref MaxKeyCount, animation.BodyAnimation?.TranslationCurve);
+        AdjustMax(ref MaxKeyCount, animation.BodyAnimation?.RotationCurve);
 
-        if (animation.BodyAnimation != null)
-        {
-            MaxKeyCount = int.Max(MaxKeyCount, animation.BodyAnimation.TranslationCurve?.Keys.Length ?? 0);
-            MaxKeyCount = int.Max(MaxKeyCount, animation.BodyAnimation.RotationCurve?.Keys.Length ?? 0);
-        }
+        void AdjustMax<T>(ref int m, Curve<T>? curve) where T : notnull => m = int.Max(m, curve?.Keys.Length ?? 0);
     }
 
     public float ScaledTimer => UnscaledTimer * Speed;
