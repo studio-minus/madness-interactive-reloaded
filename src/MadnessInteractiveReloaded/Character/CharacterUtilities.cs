@@ -246,13 +246,12 @@ public static class CharacterUtilities
             }
 
             float speed = 1f / character.Positioning.Scale;
-            float duration = anim.TotalDuration * speed;
             character.StopAllAnimations();
             var a = character.PlayAnimation(anim, speed);
 
             // during the animation, check if the body is above a flat ground. if it isnt, turn into a ragdoll MID ANIMATION 
             // TODO this should be in a system, not in a routine
-            MadnessUtils.RoutineForSecondsPausable(duration, dt =>
+            MadnessUtils.RoutineForSecondsPausable(a.ScaledDuration, dt =>
             {
                 var isFlatUnderMe = Level.CurrentLevel?.IsFlatAt(character.Positioning.Body.ComputedVisualCenter.X) ?? true;
                 if (!isFlatUnderMe && !character.AnimationConstrainsAny(AnimationConstraint.PreventRagdoll))
@@ -261,7 +260,7 @@ public static class CharacterUtilities
             });
             // if the animation is over stamp it onto the background immediately
             //a.OnEnd += () => // OnEnd is invoked at an unfortunate time, where the rendertasks are off by a few frames??
-            MadnessUtils.DelayPausable(duration, () =>
+            MadnessUtils.DelayPausable(a.ScaledDuration, () =>
             {
                 if (!character.HasBeenRagdolled && scene.HasEntity(entity))
                 {
