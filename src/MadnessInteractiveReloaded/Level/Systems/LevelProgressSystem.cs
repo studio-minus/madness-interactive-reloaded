@@ -1,5 +1,8 @@
-﻿using MIR.LevelEditor;
+using MIR.LevelEditor;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Walgelijk;
 
@@ -120,13 +123,13 @@ public class LevelProgressSystem : Walgelijk.System
             else if (Level.CurrentLevel != null)
                 eqwt = stats.ByLevel[Level.CurrentLevel.Id].EquippedWeapon; // propagate current equipped weapon stat if no player was found
 
-            {
-                var nextLevelStats = stats.ByLevel.Ensure(nextLvl.Id);
-                nextLevelStats.EquippedWeapon = eqwt;
-                if (!CampaignProgress.CurrentCampaign.Temporary)
-                    stats.Save();
-                Logger.Debug($"Equipped weapon for next level: {(eqwt?.Key ?? "None")} with {(eqwt?.Ammo ?? 0)} rounds");
-            }
+            var nextLevelStats = stats.ByLevel.Ensure(nextLvl.Id);
+            nextLevelStats.EquippedWeapon = eqwt;
+            IPersistentLevelData.SetBuddies(Scene, nextLevelStats.Buddies);
+
+            if (!CampaignProgress.CurrentCampaign.Temporary)
+                stats.Save();
+            Logger.Debug($"Equipped weapon for next level: {(eqwt?.Key ?? "None")} with {(eqwt?.Ammo ?? 0)} rounds");
 
             if (nextLvl != null)
                 MadnessUtils.TransitionScene(game => LevelLoadingScene.Create(game, nextLvl.Level, SceneCacheSettings.NoCache));
@@ -136,4 +139,6 @@ public class LevelProgressSystem : Walgelijk.System
         else
             Logger.Error("Campaign is missing a stats entry");
     }
+
+
 }

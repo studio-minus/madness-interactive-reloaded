@@ -23,7 +23,7 @@ public static class MadnessUtils
     public static void EquipStoredWeapon(Level level, Scene scene, CharacterComponent charComponent)
     {
         if (!TryGetStartWeaponForLevel(level, out var wpn))
-            wpn = SharedLevelData.EquippedWeaponPortal;
+            wpn = PersistentPortalData.Shared.EquippedWeapon;
 
         if (wpn.HasValue)
         {
@@ -41,7 +41,7 @@ public static class MadnessUtils
             }
         }
 
-        SharedLevelData.EquippedWeaponPortal = default;
+        PersistentPortalData.Shared.EquippedWeapon = default;
     }
 
     public static bool TryGetStartWeaponForLevel(Level level, out PersistentEquippedWeapon? weapon)

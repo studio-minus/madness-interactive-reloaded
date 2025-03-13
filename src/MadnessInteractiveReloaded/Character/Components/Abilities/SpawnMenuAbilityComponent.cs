@@ -227,10 +227,8 @@ public class SpawnMenuAbilityComponent : CharacterAbilityComponent
                             Stats = Registries.Stats["engineer"],
                             Look = Registries.Looks["agent3"],
                         });
-                        scene.AttachComponent(ally.Entity, new AiComponent()
-                        {
-
-                        });
+                        scene.AttachComponent(ally.Entity, new PersistentBuddyComponent());
+                        scene.AttachComponent(ally.Entity, new AiComponent());
                         ally.PlayAnimation(Animations.SpawnFromSky);
                         AuditorDisk.AddAuditorFire(scene, ally);
                     }

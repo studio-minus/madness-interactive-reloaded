@@ -276,13 +276,13 @@ public static class SceneUtils
             var position = playerSpawn?.Position ?? default;
 
             // find portal ID in case we got here by walking through a door
-            if (!string.IsNullOrWhiteSpace(SharedLevelData.TargetPortalID) && level != null)
+            if (!string.IsNullOrWhiteSpace(PersistentPortalData.Shared.TargetPortalID) && level != null)
             {
-                var foundDoor = level.Objects.OfType<Door>().FirstOrDefault(d => d.Properties.PortalID == SharedLevelData.TargetPortalID);
+                var foundDoor = level.Objects.OfType<Door>().FirstOrDefault(d => d.Properties.PortalID == PersistentPortalData.Shared.TargetPortalID);
                 if (foundDoor != null)
                     position = foundDoor.Properties.SpawnPoint;
             }
-            SharedLevelData.TargetPortalID = null;
+            PersistentPortalData.Shared.TargetPortalID = null;
 
             var player = Prefabs.CreatePlayer(scene, position);
             var playerEntity = player.Entity;
@@ -298,16 +298,18 @@ public static class SceneUtils
             }
 
             cameraMovement.Targets.Add(new PlayerTarget());
+
+            // spawn buddies wherever the player is
+            //IPersistentLevelData.SpawnBuddies(scene, position, PersistentPortalData.Shared.Buddies);
+            if (level != null && CampaignProgress.TryGetCurrentStats(out var stats) && stats.ByLevel.TryGetValue(level.Id, out var lvlStats))
+                IPersistentLevelData.SpawnBuddies(scene, position, lvlStats.Buddies);
         }
 
         scene.UpdateSystems();
 
         if (level != null)
         {
-            //if (level.OpeningCutscene != null)
-            //    scene.AttachComponent(scene.CreateEntity(), new CutsceneComponent(Resources.Load<Cutscene>(level.OpeningCutscene)));
-
-            //TODO stamp canvas moet een LevelObject zijn :)
+            // TODO stamp canvas should be LevelObject... maybe
             var c = scene.AttachComponent(scene.CreateEntity(), new StampCanvasComponent(
                  (int)level.LevelBounds.Width,
                  (int)level.LevelBounds.Height,
@@ -327,10 +329,8 @@ public static class SceneUtils
                 }
             }
 
-            EnemySpawningComponent? spawner = null;
             List<Door> doors = [.. level.Objects.OfType<Door>().Where(d => d.Properties.EnemySpawnerDoor)];
             List<Vector2> spawnPoints = [.. level.Objects.OfType<EnemySpawner>().Select(static e => e.Position)];
-
 
             if (level.WaveSequence.IsValid)
             {
@@ -354,24 +354,13 @@ public static class SceneUtils
                         TargetCount = level.ProgressionType == ProgressionType.BodyCount ? level.BodyCountToWin - existingEnemyNPCs : int.MaxValue,
                         WeaponChance = level.WeaponChance,
                         Weapons = [..(level.Weapons ?? [])],
-                    }] 
+                    }]
                 };
 
                 scene.AttachComponent(scene.CreateEntity(), new WaveSpawningComponent(singleWaveSeq)
                 {
                     SpawnPoints = spawnPoints
                 });
-
-                //spawner = scene.AttachComponent(scene.CreateEntity(), new EnemySpawningComponent
-                //{
-                //    Doors = doors,
-                //    SpawnPoints = spawnPoints,
-                //    SpawnInstructions = [.. level.EnemySpawnInstructions.Cast<ISpawnInstructions>()],
-                //    MaxEnemyCount = level.MaxEnemyCount,
-                //    Interval = level.EnemySpawnInterval,
-                //    WeaponsToSpawnWith = level.Weapons,
-                //    WeaponChance = level.WeaponChance
-                //});
             }
 
             if (mode == GameMode.Campaign)
@@ -380,31 +369,34 @@ public static class SceneUtils
                 var p = scene.AttachComponent(scene.CreateEntity(), new LevelProgressComponent());
                 p.BodyCount.Target = level.ProgressionType is ProgressionType.BodyCount ? level.BodyCountToWin : int.MaxValue;
 
-                if (level.EnemySpawnInstructions.Count > 0)
-                {
-                    if (ImprobabilityDisks.IsEnabled("fewer_enemies"))
-                    {
-                        if (spawner != null) 
-                            spawner.Interval *= 1.4f;
-                        if (level.ProgressionType == ProgressionType.BodyCount && level.MaxEnemyCount > 1)
-                            level.MaxEnemyCount--;
-                        if (level.ProgressionType is ProgressionType.BodyCount && p.BodyCount.Target > 5)
-                            p.BodyCount.Target /= 2;
-                    }
+                // TODO Fix `fewer_enemies` and `more_enemies` disks to work with wave seq.
+                //if (level.EnemySpawnInstructions.Count > 0)
+                //{
+                //    if (ImprobabilityDisks.IsEnabled("fewer_enemies"))
+                //    {
+                //        if (spawner != null) 
+                //            spawner.Interval *= 1.4f;
+                //        if (level.ProgressionType == ProgressionType.BodyCount && level.MaxEnemyCount > 1)
+                //            level.MaxEnemyCount--;
+                //        if (level.ProgressionType is ProgressionType.BodyCount && p.BodyCount.Target > 5)
+                //            p.BodyCount.Target /= 2;
+                //    }
 
-                    if (ImprobabilityDisks.IsEnabled("more_enemies"))
-                    {
-                        if (spawner != null)
-                            spawner.Interval *= 0.1f;
-                        if (level.ProgressionType == ProgressionType.BodyCount && level.MaxEnemyCount > 1)
-                            level.MaxEnemyCount += 4;
-                        if (level.ProgressionType is ProgressionType.BodyCount && p.BodyCount.Target > 1)
-                            p.BodyCount.Target *= 2;
-                    }
-                }
+                //    if (ImprobabilityDisks.IsEnabled("more_enemies"))
+                //    {
+                //        if (spawner != null)
+                //            spawner.Interval *= 0.1f;
+                //        if (level.ProgressionType == ProgressionType.BodyCount && level.MaxEnemyCount > 1)
+                //            level.MaxEnemyCount += 4;
+                //        if (level.ProgressionType is ProgressionType.BodyCount && p.BodyCount.Target > 1)
+                //            p.BodyCount.Target *= 2;
+                //    }
+                //}
             }
         }
 
         return scene;
     }
+
+
 }

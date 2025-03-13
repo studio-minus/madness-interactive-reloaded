@@ -1,4 +1,4 @@
-﻿using System.Numerics;
+using System.Numerics;
 
 namespace MIR;
 
@@ -17,6 +17,7 @@ public class NpcInstructions
     public bool ScaleOverride = false;
     public float Scale;
     public bool IsProgressionRequirement;
+    public bool IsBuddy;
 
     public NpcInstructions(string look, string stats, string faction, string? weapon = null, bool flipped = false, float scale = 1)
     {
