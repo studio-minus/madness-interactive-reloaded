@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,13 +19,15 @@ public class WaveSequence
 
     public record Wave
     {
+        public int MaxSimultaneousEnemyCount = 4;
         public int TargetCount = 10;
-        public string[] Weapons = [];
+        public List<string> Weapons = [];
         public float WeaponChance = 0.1f;
         public float SpawnInterval = 1;
         [JsonConverter(typeof(StringEnumConverter))]
         public WaveMode Mode = WaveMode.Random;
-        public EnemySpawnInstructions[] Instructions = [];
+        [JsonConverter(typeof(DefaultSpawnInstructionsConverter))]
+        public List<ISpawnInstructions> Instructions = [];
     }
 
     public class AssetDeserialiser : IAssetDeserialiser<WaveSequence>
@@ -39,6 +42,26 @@ public class WaveSequence
 
         public bool IsCandidate(in AssetMetadata assetMetadata)
             => assetMetadata.Path.EndsWith(".json", StringComparison.InvariantCultureIgnoreCase);
+    }
+}
+
+public class DefaultSpawnInstructionsConverter : JsonConverter<ISpawnInstructions>
+{
+    public override ISpawnInstructions? ReadJson(JsonReader reader, Type objectType, ISpawnInstructions? existingValue, bool hasExistingValue, JsonSerializer serializer)
+    {
+        var jsonObject = JToken.Load(reader);
+        return new EnemySpawnInstructions
+        {
+            FactionKey = jsonObject[nameof(EnemySpawnInstructions.FactionKey)]?.ToObject<string?>() ?? "aahw",
+            LookKey = jsonObject[nameof(EnemySpawnInstructions.LookKey)]?.ToObject<string?>() ?? throw new Exception("No look provided"),
+            StatsKey = jsonObject[nameof(EnemySpawnInstructions.StatsKey)]?.ToObject<string?>() ?? throw new Exception("No stats provided"),
+            Weapon = jsonObject[nameof(EnemySpawnInstructions.Weapon)]?.ToObject<PersistentEquippedWeapon?>() ?? new()
+        };
+    }
+
+    public override void WriteJson(JsonWriter writer, ISpawnInstructions value, JsonSerializer serializer)
+    {
+        throw new NotImplementedException();
     }
 }
 

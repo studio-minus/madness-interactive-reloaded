@@ -1,4 +1,5 @@
 using MIR.LevelEditor.Objects;
+using System;
 using System.Collections.Generic;
 using System.Numerics;
 using Walgelijk;
@@ -17,6 +18,9 @@ public class WaveSpawningComponent(WaveSequence sequence) : Component, IEnemySpa
     public bool IsFinished;
     public bool Enabled = true;
     public float SpawnTimer = 0;
+
+    public float AmountMultiplier = 1;
+    public float SpeedMultiplier = 1;
 
     /// <summary>
     /// If the wave mode (<see cref="WaveSequence.Wave.Mode"/> is set to <see cref="WaveMode.Sequential"/>, this value keeps track of the instruction array index

@@ -86,13 +86,13 @@ public class EnemySpawningSystem : Walgelijk.System
         if (wave == null)
             return;
 
-        waveComponent.SpawnTimer += Time.DeltaTime;
-        if (waveComponent.SpawnTimer > wave.SpawnInterval && wave.Instructions.Length > 0)
+        waveComponent.SpawnTimer += Time.DeltaTime * waveComponent.SpeedMultiplier;
+        if (waveComponent.SpawnTimer > wave.SpawnInterval && wave.Instructions.Count > 0)
         {
             waveComponent.SpawnTimer = 0;
             var spawnInstr = wave.Mode switch
             {
-                WaveMode.Sequential => wave.Instructions[waveComponent.WaveInstrSeqIndex % wave.Instructions.Length],
+                WaveMode.Sequential => wave.Instructions[waveComponent.WaveInstrSeqIndex % wave.Instructions.Count],
                 _ => Utilities.PickRandom(wave.Instructions),
             };
 
@@ -100,7 +100,7 @@ public class EnemySpawningSystem : Walgelijk.System
             {
                 WaveComponent = waveComponent,
                 SpawnInstructions = spawnInstr,
-                Weapon = wave.Weapons.Length > 0 ? Registries.Weapons[Utilities.PickRandom(wave.Weapons)] : null,
+                Weapon = wave.Weapons.Count > 0 ? Registries.Weapons[Utilities.PickRandom(wave.Weapons)] : null,
                 WeaponChance = wave.WeaponChance,
                 SpawnProvider = waveComponent,
                 Player = playerCharacterComponent
@@ -123,12 +123,12 @@ public class EnemySpawningSystem : Walgelijk.System
 
         spawnParams.Door = door;
         spawnParams.Point = position;
+        int amountToSpawn = GetNextSpawnCount(spawnParams); ;
 
         if (door != null)
         {
             if (!door.IsOpen && !door.IsBusyWithAnimation)
             {
-                int amountToSpawn = GetNextSpawnCount(spawnParams);
                 if (amountToSpawn > 0)
                     routines.Add(RoutineScheduler.Start(DoorSpawnRoutine(spawnParams, amountToSpawn)));
             }
@@ -136,12 +136,11 @@ public class EnemySpawningSystem : Walgelijk.System
         else
         {
             spawnParams.Point = position;
-            int amountToSpawn = GetNextSpawnCount(spawnParams);
             for (int i = 0; i < amountToSpawn; i++)
                 SpawnEnemy(spawnParams);
         }
 
-        return true;
+        return amountToSpawn > 0;
     }
 
     private int GetNextSpawnCount(in SpawnParams spawnParams)
@@ -160,8 +159,8 @@ public class EnemySpawningSystem : Walgelijk.System
         remainingToSpawn -= spawnParams.WaveComponent.ActiveWaveBodyCount;
 
         int maxLivingEnemies = 4;
-        if (Level.CurrentLevel != null)
-            maxLivingEnemies = Level.CurrentLevel.MaxEnemyCount;
+        if (spawnParams.WaveComponent.ActiveWave != null)
+            maxLivingEnemies = spawnParams.WaveComponent.ActiveWave.MaxSimultaneousEnemyCount;
 
         remainingToSpawn = int.Min(remainingToSpawn, maxLivingEnemies - livingEnemies - activeSpawnRoutines);
 

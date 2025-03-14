@@ -457,13 +457,10 @@ public class LevelEditorGuiSystem : Walgelijk.System
 
                     Ui.Spacer(8);
 
+                    Ui.Decorators.Tooltip("Determines the amount of enemies that ");
                     Ui.Label("Max attacking enemy count");
                     Ui.Layout.FitWidth().Height(32).StickLeft();
                     Ui.IntStepper(ref editor.Level.MaxSimultaneousAttackingEnemies, (0, int.MaxValue));
-
-                    Ui.Label("Max simultaneous enemy count");
-                    Ui.Layout.FitWidth().Height(32).StickLeft();
-                    Ui.IntStepper(ref editor.Level.MaxEnemyCount, (0, int.MaxValue));
 
                     Ui.Label("Wave sequence");
                     Ui.Layout.FitWidth().Height(32).StickLeft();
@@ -483,6 +480,10 @@ public class LevelEditorGuiSystem : Walgelijk.System
                         Ui.Spacer(8);
                         Ui.Theme.FontSize(24).Once();
                         Ui.Label("Legacy enemy spawning");
+
+                        Ui.Label("Max simultaneous enemy count");
+                        Ui.Layout.FitWidth().Height(32).StickLeft();
+                        Ui.IntStepper(ref editor.Level.MaxEnemyCount, (0, int.MaxValue));
 
                         Ui.Layout.FitWidth().Height(32).StickLeft();
                         if (Ui.Button("Autospawn settings"))

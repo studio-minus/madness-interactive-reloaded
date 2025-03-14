@@ -7,6 +7,7 @@ using System.Numerics;
 using Walgelijk;
 using Walgelijk.AssetManager;
 using Walgelijk.Onion;
+using Walgelijk.Onion.Controls;
 using Walgelijk.ParticleSystem;
 using Walgelijk.Physics;
 using static MIR.CameraMovementComponent;
@@ -331,10 +332,11 @@ public static class SceneUtils
 
             List<Door> doors = [.. level.Objects.OfType<Door>().Where(d => d.Properties.EnemySpawnerDoor)];
             List<Vector2> spawnPoints = [.. level.Objects.OfType<EnemySpawner>().Select(static e => e.Position)];
+            WaveSpawningComponent? waveComp = null;
 
             if (level.WaveSequence.IsValid)
             {
-                scene.AttachComponent(scene.CreateEntity(), new WaveSpawningComponent(level.WaveSequence.Value)
+                waveComp = scene.AttachComponent(scene.CreateEntity(), new WaveSpawningComponent(level.WaveSequence.Value)
                 {
                     SpawnPoints = spawnPoints
                 });
@@ -357,7 +359,7 @@ public static class SceneUtils
                     }]
                 };
 
-                scene.AttachComponent(scene.CreateEntity(), new WaveSpawningComponent(singleWaveSeq)
+                waveComp = scene.AttachComponent(scene.CreateEntity(), new WaveSpawningComponent(singleWaveSeq)
                 {
                     SpawnPoints = spawnPoints
                 });
@@ -369,27 +371,21 @@ public static class SceneUtils
                 var p = scene.AttachComponent(scene.CreateEntity(), new LevelProgressComponent());
                 p.BodyCount.Target = level.ProgressionType is ProgressionType.BodyCount ? level.BodyCountToWin : int.MaxValue;
 
-                // TODO Fix `fewer_enemies` and `more_enemies` disks to work with wave seq.
-                //if (level.EnemySpawnInstructions.Count > 0)
+                // TODO these disks make no sense anymore with the wave system...
+                // What if a dev makes a level with a very specific wave sequence? Do we ignore it? This is dumb as hell.
+                // Think about something. For now, I'll disable these disks
+                //if (waveComp != null)
                 //{
                 //    if (ImprobabilityDisks.IsEnabled("fewer_enemies"))
                 //    {
-                //        if (spawner != null) 
-                //            spawner.Interval *= 1.4f;
-                //        if (level.ProgressionType == ProgressionType.BodyCount && level.MaxEnemyCount > 1)
-                //            level.MaxEnemyCount--;
-                //        if (level.ProgressionType is ProgressionType.BodyCount && p.BodyCount.Target > 5)
-                //            p.BodyCount.Target /= 2;
+                //        waveComp.SpeedMultiplier = 0.7f;
+                //        waveComp.AmountMultiplier = 0.5f;
                 //    }
 
                 //    if (ImprobabilityDisks.IsEnabled("more_enemies"))
                 //    {
-                //        if (spawner != null)
-                //            spawner.Interval *= 0.1f;
-                //        if (level.ProgressionType == ProgressionType.BodyCount && level.MaxEnemyCount > 1)
-                //            level.MaxEnemyCount += 4;
-                //        if (level.ProgressionType is ProgressionType.BodyCount && p.BodyCount.Target > 1)
-                //            p.BodyCount.Target *= 2;
+                //        waveComp.SpeedMultiplier = 10f;
+                //        waveComp.AmountMultiplier = 2f;
                 //    }
                 //}
             }

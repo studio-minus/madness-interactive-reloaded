@@ -34,6 +34,7 @@ public class Level
 
     [Obsolete($"Use a {nameof(WaveSequence)} with a single wave instead")]
     public float EnemySpawnInterval = 2f;
+    [Obsolete($"Use a {nameof(WaveSequence)} with a single wave instead")]
     public int MaxEnemyCount = 4;
     public int MaxSimultaneousAttackingEnemies = 2;
     public AssetRef<StreamAudioData> BackgroundMusic;
@@ -46,14 +47,15 @@ public class Level
     public AssetRef<Texture> Thumbnail;
     public bool OpeningTransition = true;
     public bool ExitingTransition = true;
+    public AssetRef<WaveSequence> WaveSequence;
 
     // heavy stuff beyond this point!
 
-    public AssetRef<WaveSequence> WaveSequence;
     [Obsolete($"Use a {nameof(WaveSequence)} with a single wave instead")]
     public List<EnemySpawnInstructions> EnemySpawnInstructions = new();
     [Obsolete($"Use a {nameof(WaveSequence)} with a single wave instead")]
     public List<string> Weapons = new();
+
     public List<Vector2> FloorLine = new();
     public List<LevelObject> Objects = new();
 
