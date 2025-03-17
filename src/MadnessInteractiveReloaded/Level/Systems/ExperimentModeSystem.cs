@@ -1,4 +1,4 @@
-﻿using System.Numerics;
+using System.Numerics;
 using Walgelijk;
 using Walgelijk.Onion;
 using Walgelijk.SimpleDrawing;
@@ -10,6 +10,7 @@ using static MIR.ExperimentModeComponent;
 using Walgelijk.AssetManager;
 using Walgelijk.Localisation;
 using Icons = MIR.Textures.UserInterface.ExperimentMode.MusicPlayer;
+using System.Data.SqlTypes;
 
 namespace MIR;
 
@@ -41,18 +42,12 @@ public class ExperimentModeSystem : Walgelijk.System
             exp.FactionCache = [.. Registries.Factions.GetAllKeys().Order().Select(id => new FactionOption(id))];
         }
 
-        if (Scene.FindAnyComponent<EnemySpawningComponent>(out var sp))
+        if (Scene.FindAnyComponent<WaveSpawningComponent>(out var sp))
         {
-            var old = ExperimentModePersistentData.SpawningComponent;
-            if (old != null)
+            sp.Sequence = new()
             {
-                sp.SpawnInstructions = [.. old.SpawnInstructions];
-                sp.Enabled = old.Enabled;
-                sp.Interval = old.Interval;
-                sp.WeaponChance = old.WeaponChance;
-                sp.WeaponsToSpawnWith = [.. (old.WeaponsToSpawnWith ?? [])];
-                sp.MaxEnemyCount = old.MaxEnemyCount;
-            }
+                Waves = [ExperimentModePersistentData.AutoSpawnWave]
+            };
         }
 
         AiCharacterSystem.AutoSpawn = ExperimentModePersistentData.AutoSpawn;
@@ -66,8 +61,8 @@ public class ExperimentModeSystem : Walgelijk.System
             ExperimentModePersistentData.SelectedFaction = exp.SelectedFaction;
         }
 
-        if (Scene.FindAnyComponent<EnemySpawningComponent>(out var sp))
-            ExperimentModePersistentData.SpawningComponent = sp.Clone() as EnemySpawningComponent;
+        //if (Scene.FindAnyComponent<WaveSpawningComponent>(out var sp))
+        //    ExperimentModePersistentData.AutoSpawnWave = sp.Sequence;
 
         ExperimentModePersistentData.AutoSpawn = AiCharacterSystem.AutoSpawn;
     }
@@ -87,7 +82,7 @@ public class ExperimentModeSystem : Walgelijk.System
         // (duston): Set this here because we want the campaign's AI disabled parameter completely split from this
         // while also having a persistent experiment mode parameter so it's not reset every time you go back to exp mode.
         // But it also needs to change when the persistentdata's paramter changes :)
-        AiCharacterSystem.DisableAI = ExperimentModePersistentData.AIDisabled;
+        AiCharacterSystem.DisableAI = ExperimentModePersistentData.DisableAI;
 
         if (Input.IsKeyReleased(Key.Tab) && playerCharacter.IsAlive)
             if (exp.IsEditMode)
@@ -344,8 +339,16 @@ public class ExperimentModeSystem : Walgelijk.System
             }
             Ui.End();
 
-            if (AiCharacterSystem.AutoSpawn && exp.AutoSpawnSettingsOpen && Scene.FindAnyComponent<EnemySpawningComponent>(out var spawning))
-                ProcessAutospawnWindow(exp, spawning);
+            if (AiCharacterSystem.AutoSpawn && exp.AutoSpawnSettingsOpen && Scene.FindAnyComponent<WaveSpawningComponent>(out var spawning))
+            {
+                if (spawning.ActiveWave != null)
+                    ProcessAutospawnWindow(exp, spawning.ActiveWave);
+                else
+                {
+                    ExperimentModePersistentData.AutoSpawnWave ??= new();
+                    spawning.Sequence = new WaveSequence() { Waves = [ExperimentModePersistentData.AutoSpawnWave] };
+                }
+            }
 
             if (exp.ImprobabilityDisksOpen)
                 ProcessModifiersWindow(exp);
@@ -527,7 +530,7 @@ public class ExperimentModeSystem : Walgelijk.System
         Ui.End();
     }
 
-    private static void ProcessAutospawnWindow(ExperimentModeComponent exp, EnemySpawningComponent spawning)
+    private static void ProcessAutospawnWindow(ExperimentModeComponent exp, WaveSequence.Wave wave)
     {
         Ui.Layout.Size(MenuWidth + 100, 593 + 40).Center().Resizable().MaxHeight(593 + 40).MinSize(100, 100);
         Ui.Theme.Background((Appearance)Colors.Red.WithAlpha(0.2f)).OutlineWidth(1).OutlineColour(new(Colors.Red, Colors.White)).Text(Colors.White).Once();
@@ -538,28 +541,28 @@ public class ExperimentModeSystem : Walgelijk.System
             {
                 Ui.Label(Localisation.Get("experiment-max-enemies"));
                 Ui.Layout.Height(32).FitWidth().StickLeft();
-                Ui.IntStepper(ref spawning.MaxEnemyCount, (0, 30), 1);
+                Ui.IntStepper(ref wave.MaxSimultaneousEnemyCount, (0, 30), 1);
                 Ui.Spacer(5);
                 Ui.Label(Localisation.Get("experiment-spawn-interval"));
                 Ui.Layout.Height(32).FitWidth().StickLeft();
-                Ui.FloatStepper(ref spawning.Interval, (0.1f, 60), 0.1f);
+                Ui.FloatStepper(ref wave.SpawnInterval, (0.1f, 60), 0.1f);
                 const float size = 40;
-                spawning.SpawnInstructions ??= [];
-                spawning.WeaponsToSpawnWith ??= [];
-                if (spawning.SpawnInstructions != null)
+                wave.Instructions ??= [];
+                wave.Weapons ??= [];
+                if (wave.Instructions != null)
                 {
                     Ui.Layout.FitWidth().StickLeft().StickTop().Height(216).VerticalLayout();
                     Ui.StartScrollView(true);
-                    if (spawning.SpawnInstructions.Count == 0)
+                    if (wave.Instructions.Count == 0)
                     {
                         Ui.Layout.PreferredSize().FitWidth().StickLeft().StickTop();
                         Ui.Theme.Text(Colors.White.WithAlpha(0.5f)).Once();
                         Ui.TextRect(Localisation.Get("experiment-autospawn-help"), HorizontalTextAlign.Left, VerticalTextAlign.Top);
                     }
                     else
-                        for (int i = 0; i < spawning.SpawnInstructions.Count; i++)
+                        for (int i = 0; i < wave.Instructions.Count; i++)
                         {
-                            var item = spawning.SpawnInstructions[i];
+                            var item = wave.Instructions[i];
                             if (item is not ExperimentCharacterPreset preset)
                                 continue;
                             Ui.Layout.Height(size).FitWidth().StickLeft();
@@ -574,7 +577,7 @@ public class ExperimentModeSystem : Walgelijk.System
                                 Ui.Theme.Image(new(Colors.White, Colors.Red)).OutlineWidth(0).Once();
                                 if (Ui.ClickImageButton(Textures.UserInterface.SmallExitClose.Value))
                                 {
-                                    MadnessUtils.Delay(0, () => spawning.SpawnInstructions.Remove(item));
+                                    MadnessUtils.Delay(0, () => wave.Instructions.Remove(item));
                                 }
                             }
                             Ui.End();
@@ -582,7 +585,7 @@ public class ExperimentModeSystem : Walgelijk.System
                     Ui.End();
                 }
 
-                if (spawning.WeaponsToSpawnWith != null)
+                if (wave.Weapons != null)
                 {
                     Ui.Layout.FitWidth().Height(35).StickLeft().StickTop().EnqueueLayout(new DistributeChildrenLayout());
                     Ui.StartGroup();
@@ -593,50 +596,50 @@ public class ExperimentModeSystem : Walgelijk.System
                         var meleeSet = Registries.Weapons.GetAllValues().Where(t => t.WeaponData.WeaponType is WeaponType.Melee).Select(t => t.Id);
                         var firearmSet = Registries.Weapons.GetAllValues().Where(t => t.WeaponData.WeaponType is WeaponType.Firearm).Select(t => t.Id);
 
-                        bool melee = spawning.WeaponsToSpawnWith.Intersect(meleeSet).Count() == meleeSet.Count();
+                        bool melee = wave.Weapons.Intersect(meleeSet).Count() == meleeSet.Count();
                         Ui.Layout.FitContainer(1 / 3f, 1).StickLeft().StickTop();
                         if (Ui.Checkbox(ref melee, Localisation.Get("experiment-melee")))
                         {
                             if (!melee)
-                                spawning.WeaponsToSpawnWith = [.. spawning.WeaponsToSpawnWith.Concat(meleeSet).Distinct()];
+                                wave.Weapons = [.. wave.Weapons.Concat(meleeSet).Distinct()];
                             else
-                                spawning.WeaponsToSpawnWith = [.. spawning.WeaponsToSpawnWith.Except(meleeSet).Distinct()];
+                                wave.Weapons = [.. wave.Weapons.Except(meleeSet).Distinct()];
                         }
 
-                        bool firearms = spawning.WeaponsToSpawnWith.Intersect(firearmSet).Count() == firearmSet.Count();
+                        bool firearms = wave.Weapons.Intersect(firearmSet).Count() == firearmSet.Count();
                         Ui.Layout.FitContainer(1 / 3f, 1).StickLeft().StickTop();
                         if (Ui.Checkbox(ref firearms, Localisation.Get("experiment-firearms")))
                         {
                             if (!firearms)
-                                spawning.WeaponsToSpawnWith = [.. spawning.WeaponsToSpawnWith.Concat(firearmSet).Distinct()];
+                                wave.Weapons = [.. wave.Weapons.Concat(firearmSet).Distinct()];
                             else
-                                spawning.WeaponsToSpawnWith = [.. spawning.WeaponsToSpawnWith.Except(firearmSet).Distinct()];
+                                wave.Weapons = [.. wave.Weapons.Except(firearmSet).Distinct()];
                         }
 
-                        bool all = spawning.WeaponsToSpawnWith.Count == Registries.Weapons.Count;
+                        bool all = wave.Weapons.Count == Registries.Weapons.Count;
                         Ui.Layout.FitContainer(1 / 3f, 1).StickLeft().StickTop();
                         if (Ui.Checkbox(ref all, Localisation.Get("experiment-all")))
                         {
                             if (!all)
-                                spawning.WeaponsToSpawnWith = [.. Registries.Weapons.GetAllValues().Select(d => d.Id)];
+                                wave.Weapons = [.. Registries.Weapons.GetAllValues().Select(d => d.Id)];
                             else
-                                spawning.WeaponsToSpawnWith = [];
+                                wave.Weapons = [];
                         }
                     }
                     Ui.End();
 
                     Ui.Layout.FitWidth().StickLeft().StickTop().Height(216).VerticalLayout();
                     Ui.StartScrollView(true);
-                    if (spawning.WeaponsToSpawnWith.Count == 0)
+                    if (wave.Weapons.Count == 0)
                     {
                         Ui.Layout.PreferredSize().FitWidth().StickLeft().StickTop();
                         Ui.Theme.Text(Colors.White.WithAlpha(0.5f)).Once();
                         Ui.TextRect(Localisation.Get("experiment-autospawn-help-weapon"), HorizontalTextAlign.Left, VerticalTextAlign.Top);
                     }
                     else
-                        for (int i = 0; i < spawning.WeaponsToSpawnWith.Count; i++)
+                        for (int i = 0; i < wave.Weapons.Count; i++)
                         {
-                            var item = spawning.WeaponsToSpawnWith[i];
+                            var item = wave.Weapons[i];
                             var wpn = Registries.Weapons.Get(item);
                             Ui.Layout.Height(size).FitWidth().StickLeft();
                             Ui.Theme.OutlineColour(Colors.Gray * 0.5f).OutlineWidth(1).Once();
@@ -650,7 +653,7 @@ public class ExperimentModeSystem : Walgelijk.System
                                 Ui.Theme.Image(new(Colors.White, Colors.Red)).OutlineWidth(0).Once();
                                 if (Ui.ClickImageButton(Textures.UserInterface.SmallExitClose.Value))
                                 {
-                                    MadnessUtils.Delay(0, () => spawning.WeaponsToSpawnWith.Remove(item));
+                                    MadnessUtils.Delay(0, () => wave.Weapons.Remove(item));
                                 }
                             }
                             Ui.End();
@@ -677,7 +680,7 @@ public class ExperimentModeSystem : Walgelijk.System
             //Ui.Checkbox(ref GameModifiers.InfiniteAmmoPlayer, "Infinite ammo");
 
             Ui.Layout.Height(controlHeight).FitWidth().StickLeft();
-            Ui.Checkbox(ref ExperimentModePersistentData.AIDisabled, "AI disabled");
+            Ui.Checkbox(ref ExperimentModePersistentData.DisableAI, "AI disabled");
 
             Ui.Layout.Height(controlHeight).FitWidth().StickLeft();
             Ui.Checkbox(ref AiCharacterSystem.AutoSpawn, Localisation.Get("experiment-autospawn"));
@@ -794,6 +797,11 @@ public class ExperimentModeSystem : Walgelijk.System
                         if (preset.Mutable)
                             scene.AttachComponent(character.Entity, new CharacterPresetComponent(preset));
                         scene.AttachComponent(character.Entity, new AiComponent());
+
+                        if (MadnessUtils.FindPlayer(scene, out _, out var playerChar) && playerChar.Faction.IsAlliedTo(faction))
+                        {
+                            scene.AttachComponent(character.Entity, new PersistentBuddyComponent());
+                        }
 
                         RoutineScheduler.Start(ExperimentSelectableCharacter.FallToGroundRoutine(character).GetEnumerator());
 

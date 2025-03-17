@@ -1,4 +1,4 @@
-﻿using OpenTK.Graphics.OpenGL;
+using OpenTK.Graphics.OpenGL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -396,6 +396,39 @@ public static class Prefabs
         return ent;
     }
 
+    public static Entity CreateTurretExplosion(Scene scene, Vector2 position)
+    {
+        MadnessUtils.Shake(100);
+        Game.Main.AudioRenderer.Play(Sounds.TurretExplosion, 1);
+
+        var ent = scene.CreateEntity();
+        var tex = Textures.TurretLevelExplosion.Value;
+
+
+        scene.AttachComponent(ent, new TransformComponent
+        {
+            Position = position,
+            Rotation = Utilities.RandomFloat(0, 360),
+            Scale = new Vector2(tex.Width / 5, tex.Height / 4) * MadnessConstants.BackgroundSizeRatio * 2.4f
+        });
+
+        var mat = FlipbookMaterialCreator.LoadMaterialFor(tex, 5, 4, 0, Colors.White, true, 0);
+
+        scene.AttachComponent(ent, new QuadShapeComponent(true)
+        {
+            Material = mat,
+            RenderOrder = RenderOrders.Effects.OffsetLayer(101)
+        });
+
+        scene.AttachComponent(ent, new FlipbookComponent(mat)
+        {
+            DeleteWhenDone = true,
+            Duration = 0.833f //24 fps (20 / 24)
+        });
+
+        return ent;
+    }
+
     /// <summary>
     /// Spawn a muzzleflash for a gun.
     /// </summary>
@@ -442,7 +475,9 @@ public static class Prefabs
             transform.RecalculateModelMatrix(Matrix3x2.Identity);
             var flipbook = scene.GetComponentFrom<FlipbookComponent>(entity);
             flipbook.CurrentTime = 0;
-            scene.GetComponentFrom<QuadShapeComponent>(entity).Visible = true;
+            var v = scene.GetComponentFrom<QuadShapeComponent>(entity);
+            v.RenderOrder = RenderOrders.BackgroundInFront;
+            v.Visible = true;
         }
     }
 
@@ -876,10 +911,11 @@ public static class Prefabs
 
         character.OnDeath.AddListener(e =>
         {
-            if (Level.CurrentLevel != null
-                && Game.Main.Scene.Id == c
-                && Game.Main.Scene.FindAnyComponent<LevelProgressComponent>(out var progress))
-                progress.BodyCount.Current++;
+            if (Level.CurrentLevel != null && Game.Main.Scene.Id == c)
+            {
+                if (Game.Main.Scene.FindAnyComponent<LevelProgressComponent>(out var progress))
+                    progress.BodyCount.Current++;   
+            }
         });
 
         return character;
@@ -930,18 +966,41 @@ public static class Prefabs
     /// <exception cref="Exception"></exception>
     public static DoorComponent CreateDoor(Scene scene, in LevelEditor.DoorProperties properties)
     {
-        var vertices = new Vertex[4]
+        int verticalDivisions = 64; // is this too much???
+        int numVerticesPerColumn = verticalDivisions + 1;
+        int vertexCount = numVerticesPerColumn * 2;
+        var vertices = new Vertex[vertexCount];
+
+        for (int i = 0; i <= verticalDivisions; i++)
         {
-            new Vertex(new Vector3(properties.BottomLeft, 0), new Vector2(0, 0), Colors.White),
-            new Vertex(new Vector3(properties.BottomRight, 0), new Vector2(1, 0), Colors.White),
-            new Vertex(new Vector3(properties.TopRight, 0), new Vector2(1, 1), Colors.White),
-            new Vertex(new Vector3(properties.TopLeft, 0), new Vector2(0, 1), Colors.White),
-        };
-        var indices = new uint[]
+            var t = (float)i / verticalDivisions;
+            var left = Vector2.Lerp(properties.BottomLeft, properties.TopLeft, t);
+            var right = Vector2.Lerp(properties.BottomRight, properties.TopRight, t);
+
+            vertices[i * 2] = new Vertex(new(left, 0), new Vector2(0, t), Colors.White);
+            vertices[i * 2 + 1] = new Vertex(new(right, 0), new Vector2(1, t), Colors.White);
+        }
+
+        var indices = new uint[verticalDivisions * 6];
+        int index = 0;
+
+        for (int i = 0; i < verticalDivisions; i++)
         {
-            0u, 1u, 2u,
-            0u, 3u, 2u
-        };
+            var bottomLeft = (uint)(i * 2);
+            var bottomRight = (uint)(i * 2 + 1);
+            var topLeft = (uint)(i * 2 + 2);
+            var topRight = (uint)(i * 2 + 3);
+
+            indices[index++] = bottomLeft;
+            indices[index++] = topLeft;
+            indices[index++] = topRight;
+
+            indices[index++] = bottomLeft;
+            indices[index++] = topRight;
+            indices[index++] = bottomRight;
+        }
+
+
         var mesh = new VertexBuffer(vertices, indices);
         mesh.PrimitiveType = Primitive.Triangles;
 
@@ -949,7 +1008,7 @@ public static class Prefabs
         var entity = scene.CreateEntity();
         scene.AttachComponent(entity, new TransformComponent());
         var door = scene.AttachComponent(entity, new DoorComponent(mat, properties));
-        scene.AttachComponent(entity, new CustomShapeComponent(mesh, mat) //wordt automatisch gedisposed :)
+        scene.AttachComponent(entity, new CustomShapeComponent(mesh, mat) // wordt automatisch gedisposed :)
         {
             RenderOrder = RenderOrders.BackgroundBehind.WithOrder(1)
         });

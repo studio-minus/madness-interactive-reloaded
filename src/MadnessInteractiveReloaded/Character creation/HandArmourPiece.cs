@@ -23,6 +23,8 @@ public class HandArmourPiece : ICharacterCustomisationItem
     public DoubleSided<AssetRef<Texture>> Point;
     public DoubleSided<AssetRef<Texture>> HoldStock;
 
+    public float TextureScale = 1;
+
     public static ArmourPieceType Type => ArmourPieceType.Hand;
     public static CharacterCreationCategory Category => CharacterCreationCategory.Hands;
 

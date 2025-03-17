@@ -1,0 +1,13 @@
+0.51.0
+
+name City survival gear
+type BodyAccessory
+left textures/bodies/body2/city_survival_gear/city_survival_gear_left.png
+right textures/bodies/body2/city_survival_gear/city_survival_gear_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+damage-size 1
+offset-left -9 -5
+offset-right -6 -6

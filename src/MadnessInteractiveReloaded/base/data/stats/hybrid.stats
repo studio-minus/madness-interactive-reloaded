@@ -1,0 +1,15 @@
+﻿0.48.1
+
+name Hybrid
+
+aiming_randomness 0.1
+recoil_handling 0.2
+dodge 50
+melee 0.4
+can_deflect true
+dodge_oversaturate true
+accurate_shot_chance 0.25
+scale 0.76
+
+agility_skill_level master
+jump_dodge_duration 0.65

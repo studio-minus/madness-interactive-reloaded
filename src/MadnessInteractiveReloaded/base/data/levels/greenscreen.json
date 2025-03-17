@@ -1,0 +1,64 @@
+{
+  "DisplayName": "untitled",
+  "LevelType": "Unknown",
+  "ProgressionType": "BodyCount",
+  "EnemySpawnInterval": 2.0,
+  "MaxEnemyCount": 4,
+  "MaxSimultaneousAttackingEnemies": 2,
+  "BackgroundMusic": "0",
+  "WeaponChance": 0.5,
+  "LevelBounds": {
+    "MinX": -1222.1891,
+    "MinY": -536.21893,
+    "MaxX": 1287.9935,
+    "MaxY": 1973.9636
+  },
+  "BodyCountToWin": 50,
+  "TimeLimitInSeconds": -1.0,
+  "FullZoom": false,
+  "Thumbnail": "0",
+  "OpeningTransition": true,
+  "ExitingTransition": true,
+  "EnemySpawnInstructions": [],
+  "Weapons": [],
+  "FloorLine": [
+    {
+      "X": -1224.0,
+      "Y": -147.18005
+    },
+    {
+      "X": 1288.0,
+      "Y": -147.18005
+    }
+  ],
+  "Objects": [
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerSpawn, MIR",
+      "Position": {
+        "X": 0.0,
+        "Y": 0.0
+      },
+      "SpawnWeapon": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": 32.90222,
+        "Y": 718.8724
+      },
+      "TexturePath": "base:textures/green.png",
+      "Scale": 27.890919
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -1712.8843,
+        "MinY": -564.96497,
+        "MaxX": 1821.396,
+        "MaxY": -147.18005
+      },
+      "Tag": null
+    }
+  ]
+}

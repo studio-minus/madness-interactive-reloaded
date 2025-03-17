@@ -1,4 +1,4 @@
-﻿using Walgelijk;
+using Walgelijk;
 using Walgelijk.AssetManager;
 
 namespace MIR;
@@ -29,6 +29,7 @@ public static class Textures
     /// </summary>
     public static readonly AssetRef<Texture> Door = Assets.Load<Texture>("textures/doors/door_1.png");
     public static readonly AssetRef<Texture> TrainLevelExplosion = Assets.Load<Texture>("textures/explosion_1x15.png");
+    public static readonly AssetRef<Texture> TurretLevelExplosion = Assets.Load<Texture>("textures/explosion_20_5x4.png");
 
     public static readonly AssetRef<Texture>[] Muzzleflashes = {
             Assets.Load<Texture>("textures/muzzle_flashes/muzzle_flash_1.png"),
@@ -201,14 +202,14 @@ public static class Textures
 
         public static Texture GetTextureForHandLook(HandArmourPiece? gloves, HandLook look, bool back, WeaponType weaponType)
         {
-            //TODO is dit fucked?
+            // TODO is this fucked?
             if (look == HandLook.HoldPistol && weaponType == WeaponType.Melee)
                 look = HandLook.Fist;
 
             if (gloves != null)
                 return gloves.GetByLook(look).Select(back).Value;
 
-            //TODO misschien moet dit weg? 
+            // TODO maybe this should be removed? 
             //fallback :) ?
             switch (look)
             {

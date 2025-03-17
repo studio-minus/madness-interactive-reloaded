@@ -1,0 +1,39 @@
+{
+  "waves": [
+    {
+      "targetCount": 30,
+      "mode": "Random",
+      "weaponChance": 0.88,
+      "weapons": [
+        "p90",
+        "tec_9",
+        "ump",
+        "wolf_thompson"
+      ],
+      "instructions": [
+        {
+          "factionKey": "aahw",
+          "lookKey": "soldat",
+          "statsKey": "soldat"
+        },
+        {
+          "factionKey": "aahw",
+          "lookKey": "engineer",
+          "statsKey": "engineer"
+        },
+        {
+          "factionKey": "aahw",
+          "lookKey": "zealot",
+          "statsKey": "zealot",
+          "weapon": { "key": "laser_rifle" }
+        },
+        {
+          "factionKey": "aahw",
+          "lookKey": "zealot",
+          "statsKey": "zealot",
+          "weapon": { "key": "laser_rifle" }
+        }
+      ]
+    }
+  ]
+}

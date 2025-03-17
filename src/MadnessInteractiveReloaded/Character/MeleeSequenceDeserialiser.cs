@@ -28,12 +28,12 @@ public static class MeleeSequenceDeserialiser
         using var s = new StreamReader(stream);
 
         var keyIndex = 0;
-        var keys = new MeleeSequenceKey[16]; //TODO maak het duidelijk dat je er maar 16 kan hebben
+        var keys = new MeleeSequenceKey[16]; //TODO make it clear somehow that you can only have 16 of these
 
         foreach (var line in BaseDeserialiser.Read(s))
         {
             var text = line.String.AsSpan().Trim();
-            var parts = text.ToString().Split(delimiters, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries); //TODO had beter gekund
+            var parts = text.ToString().Split(delimiters, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries); //TODO could be faster...
             if (parts.Length == 3)
             {
                 var animId = parts[0];

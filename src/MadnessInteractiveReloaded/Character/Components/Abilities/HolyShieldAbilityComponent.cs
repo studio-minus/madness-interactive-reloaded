@@ -39,8 +39,16 @@ public class HolyShieldAbilityComponent : CharacterAbilityComponent, IDisposable
 
         Scene.AttachComponent(blocker, new IsShotTriggerComponent()).Event.AddListener(e =>
         {
-            var reflected = Vector2.Normalize(Vector2.Reflect(e.Incoming, e.Normal) + Utilities.RandomPointInCircle(0, 0.2f));
-            Scene.GetSystem<BulletTracerSystem>().ShowTracer(e.Point, e.Point + reflected * 5000); // fake deflect!
+            var reflected = Vector2.Normalize(Vector2.Reflect(e.Params.Direction, e.Normal) + Utilities.RandomPointInCircle(0, 0.2f));
+            BulletEmitter.CastBulletRay(e.Params with
+            {
+                Origin = e.Point,
+                Direction = reflected,
+                EnemyCollisionLayer = a.Character.EnemyCollisionLayer,
+                IgnoreCollisionSet = a.Character.AttackIgnoreCollision,
+                CanBeAutoDodged = false,
+                ClusterSize = 1
+            }); // real deflect!
             flashTimer = 1;
         });
 

@@ -1,4 +1,4 @@
-﻿using MIR.LevelEditor.Objects;
+using MIR.LevelEditor.Objects;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,7 +19,6 @@ namespace MIR.LevelEditor;
 public class LevelEditorGuiSystem : Walgelijk.System
 {
     public delegate LevelObject CreateDelegate(LevelEditorComponent editor, Vector2 position);
-    private readonly AssetBrowserControl browserControl = new();
 
     public readonly struct Creatable
     {
@@ -64,6 +63,7 @@ public class LevelEditorGuiSystem : Walgelijk.System
         new("GameSystem", (editor, pos) => new GameSystem(editor){ Position = pos }),
         new("Script", (editor, pos) => new LevelScript(editor, pos)),
         new("Improbability disk", (editor, pos) => new Disk(editor, pos)),
+        new("Turret", (editor, pos) => new Turret(editor, pos)),
     ];
 
     public override void OnActivate()
@@ -107,15 +107,6 @@ public class LevelEditorGuiSystem : Walgelijk.System
 
             Ui.Layout.FitWidth().Height(32).StickBottom().StickLeft();
             Ui.TextRect(editor.Level.Id, HorizontalTextAlign.Left, VerticalTextAlign.Bottom);
-
-            // Ui.Layout.Size(400, 250).Center().Resizable();
-            // Ui.Theme.Foreground((Appearance)new Color(25, 25, 25, 250)).Once();
-            // Ui.StartDragWindow("Select sound");
-            // {
-            //     Ui.Layout.FitContainer(1, 1, false);
-            //     MadnessUi.ResourceBrowser();
-            // }
-            // Ui.End();
         }
 
         // task bar
@@ -258,13 +249,16 @@ public class LevelEditorGuiSystem : Walgelijk.System
                 Ui.Layout.FitContainer().StickLeft().StickTop().VerticalLayout();
                 Ui.StartScrollView();
                 {
+                    // we do this to make sure its set to "none" even if its technically populated, but cant be loaded
+                    if (editor.Level.WaveSequence.IsValid)
+                    {
+                        Audio.Play(Sounds.UiBad);
+                        editor.Level.WaveSequence = default;
+                    }
+
                     Ui.Label("Enemy spawn interval");
                     Ui.Layout.FitWidth().Height(32).StickLeft();
                     Ui.FloatSlider(ref editor.Level.EnemySpawnInterval, Direction.Horizontal, (0, 10), 0.1f, "{0:0.0} seconds");
-
-                    Ui.Label("Max enemy count");
-                    Ui.Layout.FitWidth().Height(32).StickLeft();
-                    Ui.IntStepper(ref editor.Level.MaxEnemyCount, (0, 15));
 
                     Ui.Spacer(8);
 
@@ -412,6 +406,24 @@ public class LevelEditorGuiSystem : Walgelijk.System
                             Ui.Label("Winning body count");
                             Ui.Layout.FitWidth().Height(32).StickLeft();
                             Ui.IntStepper(ref editor.Level.BodyCountToWin, (0, int.MaxValue));
+
+                            Ui.Decorators.Tooltip("Set automatically based on wave sequence and NPCs");
+                            Ui.Layout.FitWidth().Height(32).StickLeft();
+                            if (Ui.Button("Set automatically"))
+                            {
+                                editor.Level.BodyCountToWin = 0;
+                                if (editor.Level.WaveSequence.IsValid && editor.Level.WaveSequence.TryLoad(out var ws))
+                                    editor.Level.BodyCountToWin += ws.TotalTargetCount;
+                                foreach (var obj in editor.Level.Objects)
+                                {
+                                    if (obj is NPC npc && Registries.Factions.TryGet(npc.Instructions.Faction, out var faction))
+                                    {
+                                        if (faction.IsEnemiesWith(Registries.Factions["player"]))
+                                            editor.Level.BodyCountToWin++;
+                                    }
+                                }
+                            }
+
                             Ui.Spacer(8);
                         }
 
@@ -445,13 +457,42 @@ public class LevelEditorGuiSystem : Walgelijk.System
 
                     Ui.Spacer(8);
 
+                    Ui.Decorators.Tooltip("Determines the amount of enemies that ");
+                    Ui.Label("Max attacking enemy count");
                     Ui.Layout.FitWidth().Height(32).StickLeft();
-                    if (Ui.Button("Autospawn settings"))
-                        editor.AutospawnMenuOpen = !editor.AutospawnMenuOpen;
+                    Ui.IntStepper(ref editor.Level.MaxSimultaneousAttackingEnemies, (0, int.MaxValue));
 
+                    Ui.Label("Wave sequence");
                     Ui.Layout.FitWidth().Height(32).StickLeft();
-                    if (Ui.Button("Weapon spawn settings"))
-                        editor.WeaponSpawnMenuOpen = !editor.WeaponSpawnMenuOpen;
+                    MadnessUi.AssetPicker(
+                        editor.Level.WaveSequence.Id,
+                        c => editor.Level.WaveSequence = new(c),
+                        static c => c.MimeType.Contains("json"));
+
+                    if (editor.Level.WaveSequence.TryLoad(out var waveSeq))
+                    {
+                        Ui.Layout.FitWidth().Height(32).StickLeft();
+                        if (Ui.Button("Clear wave sequence"))
+                            editor.Level.WaveSequence = default;
+                    }
+                    else
+                    {
+                        Ui.Spacer(8);
+                        Ui.Theme.FontSize(24).Once();
+                        Ui.Label("Legacy enemy spawning");
+
+                        Ui.Label("Max simultaneous enemy count");
+                        Ui.Layout.FitWidth().Height(32).StickLeft();
+                        Ui.IntStepper(ref editor.Level.MaxEnemyCount, (0, int.MaxValue));
+
+                        Ui.Layout.FitWidth().Height(32).StickLeft();
+                        if (Ui.Button("Autospawn settings"))
+                            editor.AutospawnMenuOpen = !editor.AutospawnMenuOpen;
+
+                        Ui.Layout.FitWidth().Height(32).StickLeft();
+                        if (Ui.Button("Weapon spawn settings"))
+                            editor.WeaponSpawnMenuOpen = !editor.WeaponSpawnMenuOpen;
+                    }
                 }
                 Ui.End();
             }

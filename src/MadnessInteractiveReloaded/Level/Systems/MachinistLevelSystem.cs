@@ -71,7 +71,9 @@ public class MachinistLevelSystem : Walgelijk.System
                     return;
 
 
-                if (e.Weapon != null && e.Weapon.Data.WeaponType is WeaponType.Firearm && e.Weapon.HasRoundsLeft)
+                if (e.Params.OriginWeapon != null 
+                    && e.Params.OriginWeapon.Data.WeaponType is WeaponType.Firearm 
+                    && e.Params.OriginWeapon.HasRoundsLeft)
                 {
                     Prefabs.CreateTrainEngineBulletHole(Scene, e.Point, e.Normal);
                     engine.Health -= 1;

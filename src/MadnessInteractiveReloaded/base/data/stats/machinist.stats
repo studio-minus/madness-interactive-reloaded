@@ -3,6 +3,7 @@
 name Machinist
 
 aiming_randomness 0.2
+aiming_speed 5
 shooting_timeout 0.75
 recoil_handling 0.9
 can_deflect true

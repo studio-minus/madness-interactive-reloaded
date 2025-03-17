@@ -1,0 +1,203 @@
+{
+  "DisplayName": "untitled",
+  "LevelType": "Campaign",
+  "ProgressionType": "BodyCount",
+  "EnemySpawnInterval": 0.8,
+  "MaxEnemyCount": 3,
+  "MaxSimultaneousAttackingEnemies": 2,
+  "BackgroundMusic": "0",
+  "WeaponChance": 1.0,
+  "LevelBounds": {
+    "MinX": -3273.426,
+    "MinY": -697.6676,
+    "MaxX": 3257.6848,
+    "MaxY": 1555.6656
+  },
+  "BodyCountToWin": 30,
+  "TimeLimitInSeconds": -1.0,
+  "FullZoom": false,
+  "Thumbnail": "0",
+  "OpeningTransition": true,
+  "ExitingTransition": true,
+  "EnemySpawnInstructions": [
+    {
+      "StatsKey": "agent",
+      "LookKey": "agent",
+      "FactionKey": "aahw"
+    },
+    {
+      "StatsKey": "zealot",
+      "LookKey": "zealot",
+      "FactionKey": "aahw"
+    }
+  ],
+  "Weapons": [
+    "laser_rifle"
+  ],
+  "FloorLine": [
+    {
+      "X": -2899.5415,
+      "Y": -569.9648
+    },
+    {
+      "X": 2886.4585,
+      "Y": -569.9648
+    }
+  ],
+  "Objects": [
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerSpawn, MIR",
+      "Position": {
+        "X": -2821.5415,
+        "Y": -398.73712
+      },
+      "SpawnWeapon": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": -7.870575,
+        "Y": 428.99902
+      },
+      "TexturePath": "textures/backgrounds/mag_campaign/background_mag_buddy.qoi",
+      "Scale": 2.222222
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -3402.9712,
+        "MinY": -992.12866,
+        "MaxX": -2922.9185,
+        "MaxY": 1773.4132
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 2908.9414,
+        "MinY": -992.1288,
+        "MaxX": 3388.9941,
+        "MaxY": 1773.4133
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -3221.5283,
+        "MinY": 1430.3453,
+        "MaxX": 3388.9941,
+        "MaxY": 1773.4133
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -3221.5283,
+        "MinY": -913.03314,
+        "MaxX": 3388.9941,
+        "MaxY": -569.9648
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "hybrid",
+        "Stats": "hybrid",
+        "Faction": "player",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": 7.6347046,
+          "Y": -527.31006
+        },
+        "ScaleOverride": true,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": -3051.794,
+          "Y": -558.4978
+        },
+        "FacingDirection": {
+          "X": 1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "Texture": "textures/doors/door_horizontal_2.png",
+        "Behaviour": 1,
+        "TopLeft": {
+          "X": -3082.9963,
+          "Y": 749.7633
+        },
+        "TopRight": {
+          "X": -2821.0952,
+          "Y": 721.30536
+        },
+        "BottomLeft": {
+          "X": -3082.2175,
+          "Y": -603.0917
+        },
+        "BottomRight": {
+          "X": -2821.3706,
+          "Y": -513.904
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": 3038.6196,
+          "Y": -557.0394
+        },
+        "FacingDirection": {
+          "X": -1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": true,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "Texture": "textures/doors/door_horizontal_2.png",
+        "Behaviour": 1,
+        "TopLeft": {
+          "X": 3065.9897,
+          "Y": 749.7633
+        },
+        "TopRight": {
+          "X": 2811.2546,
+          "Y": 721.30536
+        },
+        "BottomLeft": {
+          "X": 3065.7095,
+          "Y": -600.1748
+        },
+        "BottomRight": {
+          "X": 2811.53,
+          "Y": -513.904
+        }
+      },
+      "Tag": null
+    }
+  ]
+}

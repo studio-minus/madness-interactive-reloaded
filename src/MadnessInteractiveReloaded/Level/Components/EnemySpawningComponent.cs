@@ -1,4 +1,5 @@
-﻿using System;
+using MIR.LevelEditor.Objects;
+using System;
 using System.Collections.Generic;
 using System.Numerics;
 using Walgelijk;
@@ -8,8 +9,8 @@ namespace MIR;
 /// <summary>
 /// Handles spawning enemies for a level.
 /// </summary>
-[SingleInstance]
-public class EnemySpawningComponent : Component, ICloneable
+[SingleInstance, Obsolete($"Use {nameof(WaveSpawningComponent)} with a single wave instead")]
+public class EnemySpawningComponent : Component, ICloneable, IEnemySpawnProvider
 {
     /// <summary>
     /// The list of ways to spawn enemies.
@@ -67,8 +68,13 @@ public class EnemySpawningComponent : Component, ICloneable
     /// </summary>
     public float SpawnTimer = 0;
 
-    public object Clone()
-    {
-        return MemberwiseClone();
-    }
+    public object Clone() => MemberwiseClone();
+
+    IList<ISpawnInstructions> IEnemySpawnProvider.SpawnInstructions => SpawnInstructions ?? [];
+    IList<string> IEnemySpawnProvider.Weapons => WeaponsToSpawnWith ?? [];
+    IList<Vector2> IEnemySpawnProvider.SpawnPoints => SpawnPoints ?? [];
+    float IEnemySpawnProvider.Interval => Interval;
+    float IEnemySpawnProvider.WeaponChance => WeaponChance;
+    int IEnemySpawnProvider.TotalEnemies => MaxEnemyCount;
+    bool IEnemySpawnProvider.Enabled => Enabled;
 }

@@ -1,4 +1,4 @@
-﻿using MIR.LevelEditor.Objects;
+using MIR.LevelEditor.Objects;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -6,6 +6,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Numerics;
+using System.Reflection;
 using Walgelijk;
 using Walgelijk.Physics;
 using Walgelijk.SimpleDrawing;
@@ -22,7 +23,7 @@ public static class MadnessUtils
     public static void EquipStoredWeapon(Level level, Scene scene, CharacterComponent charComponent)
     {
         if (!TryGetStartWeaponForLevel(level, out var wpn))
-            wpn = SharedLevelData.EquippedWeaponPortal;
+            wpn = PersistentPortalData.Shared.EquippedWeapon;
 
         if (wpn.HasValue)
         {
@@ -40,7 +41,7 @@ public static class MadnessUtils
             }
         }
 
-        SharedLevelData.EquippedWeaponPortal = default;
+        PersistentPortalData.Shared.EquippedWeapon = default;
     }
 
     public static bool TryGetStartWeaponForLevel(Level level, out PersistentEquippedWeapon? weapon)
@@ -163,6 +164,46 @@ public static class MadnessUtils
     public static float GetAimAccuracy(float distanceFromTargetToImpact)
     {
         return 1 - Utilities.Clamp(distanceFromTargetToImpact / ConVars.Instance.InaccuracyMaxDistance);
+    }
+
+    public static float LerpRadians(float startAngle, float endAngle, float t)
+    {
+        float delta = endAngle - startAngle;
+        if (delta > float.Pi)
+            delta -= float.Tau;
+        else if (delta < -float.Pi)
+            delta += float.Tau;
+        return startAngle + delta * t;
+    }
+
+    public static float ClampRadians(float angle, float min, float max)
+    {
+        angle = NormaliseRadians(angle, float.Tau);
+        min = NormaliseRadians(min, float.Tau);
+        max = NormaliseRadians(max, float.Tau);
+
+        if (max < min)
+            max += float.Tau;
+
+        if (angle < min)
+            angle += float.Tau;
+        else if (angle > max)
+            angle -= float.Tau;
+
+        return float.Clamp(angle, min, max);
+    }
+
+    public static float NormaliseRadians(float angle)
+    {
+        return float.DegreesToRadians(float.RadiansToDegrees(angle));
+    }
+
+    private static float NormaliseRadians(float angle, float modulus)
+    {
+        angle %= modulus;
+        if (angle < 0)
+            angle += modulus;
+        return angle;
     }
 
     /// <summary>
@@ -708,11 +749,13 @@ public static class MadnessUtils
         {
             quad.Color = Colors.White;
             quad.RenderOrder = quad.RenderOrder with { Layer = targetRenderOrder };
+            quad.AdditionalTransform = null;
         }
         if (scene.TryGetComponentFrom<QuadShapeComponent>(character.Positioning.Head.Entity, out quad))
         {
             quad.Color = Colors.White;
             quad.RenderOrder = quad.RenderOrder with { Layer = targetRenderOrder };
+            quad.AdditionalTransform = null;
         }
 
         foreach (var item in character.Positioning.BodyDecorations)
@@ -721,6 +764,7 @@ public static class MadnessUtils
             {
                 renderer.RenderOrder = renderer.RenderOrder with { Layer = targetRenderOrder };
                 renderer.Color = Colors.White;
+                renderer.AdditionalTransform = null;
             }
         }
 
@@ -731,6 +775,7 @@ public static class MadnessUtils
             {
                 renderer.RenderOrder = renderer.RenderOrder with { Layer = targetRenderOrder };
                 renderer.Color = Colors.White;
+                renderer.AdditionalTransform = null;
             }
         }
 
@@ -743,6 +788,7 @@ public static class MadnessUtils
                 character.Positioning.IsFlipped ^ hand.IsLeftHand, WeaponType.Firearm);
             renderer.RenderOrder = renderer.RenderOrder with { Layer = targetRenderOrder };
             renderer.Color = Colors.White;
+            renderer.AdditionalTransform = null;
         }
 
         foreach (var foot in character.Positioning.Feet)
@@ -762,6 +808,7 @@ public static class MadnessUtils
             var renderer = scene.GetComponentFrom<QuadShapeComponent>(foot.Entity);
             renderer.Color = Colors.White;
             renderer.RenderOrder = renderer.RenderOrder with { Layer = targetRenderOrder };
+            renderer.AdditionalTransform = null;
         }
 
         if (Utilities.RandomFloat() > 0.8f)
@@ -1005,10 +1052,10 @@ public static class MadnessUtils
         return a + ab * distance;
     }
 
-    public static T PickRandom<T>(IEnumerable<T> enumerable)
-    {
-        return enumerable.ElementAt(Utilities.RandomInt(0, enumerable.Count()));
-    }
+    public static T PickRandom<T>(Span<T> span) => span[Utilities.RandomInt(0, span.Length)];
+    public static T PickRandom<T>(ReadOnlySpan<T> span) => span[Utilities.RandomInt(0, span.Length)];
+    public static T PickRandom<T>(IList<T> list) => list[Utilities.RandomInt(0, list.Count)];
+    public static T PickRandom<T>(IEnumerable<T> enumerable) => enumerable.ElementAt(Utilities.RandomInt(0, enumerable.Count()));
 
     public static string Ellipsis(in string name, int length)
     {

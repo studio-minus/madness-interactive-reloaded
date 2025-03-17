@@ -1,18 +1,18 @@
-﻿using System;
+using System;
 using System.Numerics;
 using Walgelijk;
+using Walgelijk.AssetManager;
 
 namespace MIR;
 
 public class DoorComponent : Component, IDisposable
 {
-    public static readonly float AnimationTime = 0.4f; // if you want to change this you have to do that in door.frag as well
-
     // door.frag shader uniform names
     public const string TimeUniform = "time";
     public const string TimeSinceChangeUniform = "timeSinceChange";
     public const string IsOpenUniform = "isOpen";
     public const string DoorTypeUniform = "doorType";
+    public const string AnimationDurationUniform = "animationDuration";
 
     /// <summary>
     /// Is the door open? 
@@ -58,11 +58,16 @@ public class DoorComponent : Component, IDisposable
             return;
 
         IsOpen = true;
+        Material.SetUniform(AnimationDurationUniform, Properties.AnimationDuration);
         Material.SetUniform(IsOpenUniform, 1f);
         Material.SetUniform(TimeSinceChangeUniform, scene.Game.State.Time.SecondsSinceLoad);
         IsBusyWithAnimation = true;
-        MadnessUtils.DelayPausable(AnimationTime, () => IsBusyWithAnimation = false);
-        scene.Game.AudioRenderer.PlayOnce(Sounds.DoorOpen, 0.25f);
+        MadnessUtils.DelayPausable(Properties.AnimationDuration, () => IsBusyWithAnimation = false);
+
+        var snd = Sounds.DoorOpen;
+        if (Properties.OpenSound.HasValue && Assets.TryLoad<FixedAudioData>(Properties.OpenSound.Value, out var data))
+            snd = SoundCache.Instance.LoadSoundEffect(data);
+        scene.Game.AudioRenderer.PlayOnce(snd, 0.25f);
     }
 
     public void Close(Scene scene)
@@ -71,11 +76,16 @@ public class DoorComponent : Component, IDisposable
             return;
 
         IsOpen = false;
+        Material.SetUniform(AnimationDurationUniform, Properties.AnimationDuration);
         Material.SetUniform(IsOpenUniform, 0f);
         Material.SetUniform(TimeSinceChangeUniform, scene.Game.State.Time.SecondsSinceLoad);
         IsBusyWithAnimation = true;
-        MadnessUtils.DelayPausable(AnimationTime, () => IsBusyWithAnimation = false);
-        scene.Game.AudioRenderer.PlayOnce(Sounds.DoorClose, 0.25f);
+        MadnessUtils.DelayPausable(Properties.AnimationDuration, () => IsBusyWithAnimation = false);
+
+        var snd = Sounds.DoorClose;
+        if (Properties.CloseSound.HasValue && Assets.TryLoad<FixedAudioData>(Properties.CloseSound.Value, out var data))
+            snd = SoundCache.Instance.LoadSoundEffect(data);
+        scene.Game.AudioRenderer.PlayOnce(snd, 0.25f);
     }
 
     public void Dispose()

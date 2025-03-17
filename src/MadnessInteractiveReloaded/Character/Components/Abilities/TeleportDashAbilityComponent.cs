@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Numerics;
 using Walgelijk;
 using Walgelijk.Physics;
@@ -11,11 +11,11 @@ public class TeleportDashAbilityComponent : CharacterAbilityComponent
     {
     }
 
-    //TODO idk if this ability makes any sense ³¤
+    //TODO idk if this ability makes any sense
     public override string DisplayName => "Teleport";
     public float Distance = 1500;
+
     private bool flipFlop = false;
-    private QueryResult[] buffer = new QueryResult[4];
     private bool routine = false;
 
     public override AnimationConstraint Constraints => routine ?
@@ -58,26 +58,6 @@ public class TeleportDashAbilityComponent : CharacterAbilityComponent
             if (Distance < 500) // just go forwards
                 Distance = 1500;
             RoutineScheduler.Start(Teleport());
-
-            //var charBounds = a.Character.GetBoundingBox(Scene);
-            //var overlapRect = new Rect(float.MaxValue, float.MaxValue, float.MinValue, float.MinValue);
-            //overlapRect = overlapRect.StretchToContain(charBounds);
-            //overlapRect = overlapRect.StretchToContain(charBounds.Translate(sign * Distance, 0));
-
-            //// we stun/kill enemies in our way
-            //foreach (var c in Scene.GetAllComponentsOfType<CharacterComponent>())
-            //{
-            //    if (c.Entity == a.Character.Entity)
-            //        continue;
-
-            //    if (overlapRect.IntersectsRectangle(c.GetBoundingBox(Scene)))
-            //    {
-            //        if (c.IsPlayingAnimationGroup("stun"))
-            //            c.Kill();
-            //        else
-            //            CharacterUtilities.StunHeavy(Scene, c, c.Positioning.IsFlipped == sign > 0);
-            //    }
-            //}
 
             IEnumerator<IRoutineCommand> Teleport()
             {
@@ -143,10 +123,6 @@ public class TeleportDashAbilityComponent : CharacterAbilityComponent
         foreach (var b in p.HeadDecorations)
             if (Scene.TryGetComponentFrom(b, out q))
                 q.AdditionalTransform = transform;
-
-        //foreach (var b in p.Hands)
-        //    if (Scene.TryGetComponentFrom(b.Entity, out q))
-        //        q.AdditionalTransform = transform;
 
         foreach (var b in p.Feet)
             if (Scene.TryGetComponentFrom(b.Entity, out q))

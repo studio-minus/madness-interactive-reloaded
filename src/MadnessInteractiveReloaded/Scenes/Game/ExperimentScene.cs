@@ -1,4 +1,4 @@
-﻿using Walgelijk;
+using Walgelijk;
 
 namespace MIR;
 
@@ -28,7 +28,10 @@ public static class ExperimentScene
             {
                 character.DeleteHeldWeapon(cached);
                 MadnessUtils.EquipStoredWeapon(lvl, cached, character);
+
+                IPersistentLevelData.SpawnBuddies(cached, character.Positioning.GlobalCenter, PersistentPortalData.Shared.Buddies);
             }
+
             return cached;
         }
 

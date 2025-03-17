@@ -1,4 +1,4 @@
-﻿using MIR.Disks;
+using MIR.Disks;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -32,8 +32,8 @@ public static class ImprobabilityDisks
         {"telekinesis", new TelekinesisDisk()},
         {"jebus", new JebusDisk()},
         {"god", L("Willis.png", "Willis", "You will be invincible.")},
-        {"more_enemies", L("Menagerie.png", "Menagerie", "Increases enemy count.")},
-        {"fewer_enemies", L("GhostProtocol.png", "Ghost Protocol", "Decreases enemy count.")},
+        //{"more_enemies", L("Menagerie.png", "Menagerie", "Increases enemy count.")},
+        //{"fewer_enemies", L("GhostProtocol.png", "Ghost Protocol", "Decreases enemy count.")},
         {"everyone_evil", L("STATEOFEMERGENCY.png", "STATEOFEMERGENCY", "There is no allegiance.")},
     };
 
@@ -42,7 +42,7 @@ public static class ImprobabilityDisks
         SetIncompatible("grunt", "agent", "engineer", "soldat");
         SetIncompatible("auditor", "jebus", "tricky");
         SetIncompatible("jebus", "telekinesis");
-        SetIncompatible("more_enemies", "fewer_enemies");
+        //SetIncompatible("more_enemies", "fewer_enemies");
     }
 
     /// <summary>

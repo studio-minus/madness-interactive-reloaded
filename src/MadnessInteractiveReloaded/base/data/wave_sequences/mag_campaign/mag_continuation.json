@@ -1,0 +1,42 @@
+{
+  "waves": [
+    {
+      "targetCount": 30,
+      "mode": "Random",
+      "weapons": [
+        "ak_74u",
+        "fn_fal",
+        "luger",
+        "mp5k"
+      ],
+      "instructions": [
+        {
+          "factionKey": "aahw",
+          "lookKey": "engineer",
+          "statsKey": "engineer"
+        },
+        {
+          "factionKey": "aahw",
+          "lookKey": "soldat",
+          "statsKey": "soldat"
+        },
+        {
+          "factionKey": "aahw",
+          "lookKey": "engineer",
+          "statsKey": "engineer"
+        },
+        {
+          "factionKey": "aahw",
+          "lookKey": "soldat",
+          "statsKey": "soldat"
+        },
+        {
+          "factionKey": "aahw",
+          "lookKey": "zealot",
+          "statsKey": "zealot",
+          "weapon": { "key": "laser_rifle" }
+        }
+      ]
+    }
+  ]
+}

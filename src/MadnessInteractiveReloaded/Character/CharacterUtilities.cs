@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Numerics;
 using Walgelijk;
@@ -245,12 +245,13 @@ public static class CharacterUtilities
                 return;
             }
 
+            float speed = 1f / character.Positioning.Scale;
             character.StopAllAnimations();
-            var a = character.PlayAnimation(anim, 1);
+            var a = character.PlayAnimation(anim, speed);
 
             // during the animation, check if the body is above a flat ground. if it isnt, turn into a ragdoll MID ANIMATION 
             // TODO this should be in a system, not in a routine
-            MadnessUtils.RoutineForSecondsPausable(anim.TotalDuration, dt =>
+            MadnessUtils.RoutineForSecondsPausable(a.ScaledDuration, dt =>
             {
                 var isFlatUnderMe = Level.CurrentLevel?.IsFlatAt(character.Positioning.Body.ComputedVisualCenter.X) ?? true;
                 if (!isFlatUnderMe && !character.AnimationConstrainsAny(AnimationConstraint.PreventRagdoll))
@@ -259,7 +260,7 @@ public static class CharacterUtilities
             });
             // if the animation is over stamp it onto the background immediately
             //a.OnEnd += () => // OnEnd is invoked at an unfortunate time, where the rendertasks are off by a few frames??
-            MadnessUtils.DelayPausable(anim.TotalDuration, () =>
+            MadnessUtils.DelayPausable(a.ScaledDuration, () =>
             {
                 if (!character.HasBeenRagdolled && scene.HasEntity(entity))
                 {
@@ -420,7 +421,7 @@ public static class CharacterUtilities
             return;
 
         var anim = Animations.Dodge[character.AnimationFlipFlop % Animations.Dodge.Length];
-        character.PlayAnimation(anim, 1 / float.Max(0.85f, character.Stats.DodgeAbility));
+        character.PlayAnimation(anim, 1 / ((character.Stats.Scale + 1) / 2));
         character.AnimationFlipFlop++;
     }
 
@@ -534,7 +535,7 @@ public static class CharacterUtilities
         if (activeAnim.Animation.HandAnimations != null)
         {
             var handAnims = activeAnim.Animation.HandAnimations;
-            //TODO dit kan mooier want het is allemaal hetzeldfe
+            //TODO this could be prettier because it's all the same
 
             if (handAnims.Length >= 1)
             {
@@ -636,16 +637,16 @@ public static class CharacterUtilities
     /// </summary>
     /// <param name="scene"></param>
     /// <param name="character"></param>
-    public static void TryThrowWeapon(Scene scene, CharacterComponent character)
+    public static bool TryThrowWeapon(Scene scene, CharacterComponent character)
     {
         if (!character.IsAlive)
-            return;
+            return false;
 
         if (!character.EquippedWeapon.TryGet(scene, out var wpn))
-            return;
+            return false;
 
         if (character.IsPlayingAnimation && character.AnimationConstrainsAny(AnimationConstraint.PreventThrowing))
-            return;
+            return false;
 
         var vel = scene.GetComponentFrom<VelocityComponent>(character.EquippedWeapon.Entity);
         var wpnTransform = scene.GetComponentFrom<TransformComponent>(character.EquippedWeapon.Entity);
@@ -680,7 +681,10 @@ public static class CharacterUtilities
                 wpn.BaseSpriteEntity,
                 new ComponentRef<CharacterComponent>(character.Entity)
             ));
+
             character.DropWeapon(scene);
+            wpn.Wielder = default;
+            character.EquippedWeapon = default;
 
             var targetPosition = character.AimTargetPosition;
             var delta = character.AimTargetPosition - character.Positioning.Head.GlobalPosition;
@@ -736,6 +740,8 @@ public static class CharacterUtilities
                     break;
             }
         });
+
+        return true;
     }
 
     public static void ApplyActiveModifiers(Scene scene, CharacterComponent character)

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Numerics;
 using Walgelijk;
@@ -24,7 +24,7 @@ public class TelekinesisAbilityComponent : CharacterAbilityComponent
 
     public override void StartAbility(AbilityParams a)
     {
-        // TODO use square distance comparison (does it really matter? its not 1998) 👩
+        // TODO use square distance comparison (does it really matter? its not 1998)
         const float radius = 400;
 
         affectedVels = [.. a.Scene.GetAllComponentsOfType<VelocityComponent>().Where(s => Vector2.Distance(s.Position, a.Character.AimTargetPosition) < radius).Where(IsValidWeapon)];

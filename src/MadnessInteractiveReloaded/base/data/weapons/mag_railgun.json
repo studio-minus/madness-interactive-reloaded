@@ -1,0 +1,99 @@
+{
+  "Id": "mag_railgun",
+  "WeaponData": {
+    "Name": "MAG RAILGUN",
+    "Damage": 3.0,
+    "UseDelay": 0.18,
+    "MaxHandRangeMultiplier": 0.6,
+    "AdditionalComponents": null,
+    "EnsureSystems": null,
+    "ThrowableDamage": 20.0,
+    "ThrowableHeavy": true,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 4,
+    "RoundsPerMagazine": 480,
+    "BurstFireCount": 0,
+    "Accuracy": 1.0,
+    "Recoil": 1.0,
+    "RotationalRecoilIntensity": 0.1,
+    "RecoilHandling": 1.0,
+    "Automatic": false,
+    "ShootSounds": [
+      "sounds/firearms/railgun.wav"
+    ],
+    "CanBulletsBeDeflected": false,
+    "EjectionParticle": "None",
+    "CasingSize": 1.0,
+    "IsPumpAction": false,
+    "Range": 500.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Large"
+  },
+  "BaseTexture": "textures/weapons/mag_railgun/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": true,
+  "BarrelEndPoint": {
+    "X": 307.87744,
+    "Y": 28.070724
+  },
+  "CasingEjectionPoint": {
+    "X": 115.26316,
+    "Y": 100.52848
+  },
+  "HoldPoints": [
+    {
+      "X": 159.18558,
+      "Y": -9.594666
+    }
+  ],
+  "AnimatedParts": [
+    {
+      "OutOfAmmoKeyframeTime": 0.5,
+      "InvisbleWhenOutOfAmmo": true,
+      "Duration": 0.1,
+      "Scale": {
+        "X": 1.0,
+        "Y": 1.0
+      },
+      "Texture": "textures/weapons/mag_railgun/glow.png",
+      "TranslationCurve": {
+        "MappingFunction": null,
+        "Keys": [
+          {
+            "Value": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "Position": 0.0
+          }
+        ]
+      },
+      "AngleCurve": null,
+      "VisibilityCurve": {
+        "MappingFunction": null,
+        "Keys": [
+          {
+            "Value": 1.0,
+            "Position": 0.0
+          },
+          {
+            "Value": 0.0,
+            "Position": 0.01
+          },
+          {
+            "Value": 0.0,
+            "Position": 0.99
+          },
+          {
+            "Value": 1.0,
+            "Position": 1.0
+          }
+        ]
+      }
+    }
+  ],
+  "OnFloorAngle": 0.0
+}

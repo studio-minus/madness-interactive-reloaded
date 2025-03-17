@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Numerics;
 using Walgelijk;
 using Walgelijk.Onion;
@@ -22,11 +22,11 @@ public class Door : LevelObject, ITagged
     public DoorProperties Properties;
 
     private static readonly Vector2[] polygonVertexBuffer = new Vector2[4];
-    private Material previewMaterial;
+    private readonly Material previewMaterial;
 
     private TranslateDrag<Vector2> dragTopLeft, dragTopRight, dragBottomleft, dragBottomRight;
     [Flags]
-    private enum Corner : byte
+    private enum Corner
     {
         None = 0,
         TopRight = 1,
@@ -111,7 +111,7 @@ public class Door : LevelObject, ITagged
             {
                 targetDragCorner = Corner.None;
 
-                if (MathF.Abs(GetDistanceFromPolygon(mousePos)) > dragRadius)
+                if (float.Abs(GetDistanceFromPolygon(mousePos)) > dragRadius)
                     targetDragCorner = (Corner)byte.MaxValue;
                 else
                 {
@@ -261,29 +261,82 @@ public class Door : LevelObject, ITagged
             Ui.Checkbox(ref Properties.IsPortal, "Portal door");
         }
 
-        Ui.Spacer(16);
-        Ui.Label("Texture");
-        Ui.Layout.FitWidth(false).Height(32);
-        MadnessUi.AssetPicker(Properties.Texture ?? default, id =>
         {
-            Editor.RegisterAction();
-
-            if (Textures.Door.Id == id)
-                Properties.Texture = null;
-            else
-                Properties.Texture = id;
-        }, static c => c.MimeType.Contains("image"));
-
-        if (Properties.Texture.HasValue)
-        {
+            Ui.Spacer(16);
+            Ui.Label("Texture");
             Ui.Layout.FitWidth(false).Height(32);
-            if (Ui.Button("Reset texture"))
+            MadnessUi.AssetPicker(Properties.Texture ?? default, id =>
             {
                 Editor.RegisterAction();
-                Properties.Texture = null;
+
+                if (Textures.Door.Id == id)
+                    Properties.Texture = null;
+                else
+                    Properties.Texture = id;
+            }, static c => c.MimeType.Contains("image"));
+
+            if (Properties.Texture.HasValue)
+            {
+                Ui.Layout.FitWidth(false).Height(32);
+                if (Ui.Button("Reset texture"))
+                {
+                    Editor.RegisterAction();
+                    Properties.Texture = null;
+                }
             }
         }
 
+        {
+            Ui.Spacer(16);
+            Ui.Label("Close sound");
+            Ui.Layout.FitWidth(false).Height(32);
+            MadnessUi.AssetPicker(Properties.CloseSound ?? default, id =>
+            {
+                Editor.RegisterAction();
+                Properties.CloseSound = id;
+            }, static c => c.MimeType.Contains("audio"));
+
+            if (Properties.CloseSound.HasValue)
+            {
+                Ui.Layout.FitWidth(false).Height(32);
+                if (Ui.Button("Reset close sound"))
+                {
+                    Editor.RegisterAction();
+                    Properties.CloseSound = null;
+                }
+            }
+        }
+
+        {
+            Ui.Spacer(16);
+            Ui.Label("Open sound");
+            Ui.Layout.FitWidth(false).Height(32);
+            MadnessUi.AssetPicker(Properties.OpenSound ?? default, id =>
+            {
+                Editor.RegisterAction();
+                Properties.OpenSound = id;
+            }, static c => c.MimeType.Contains("audio"));
+
+            if (Properties.OpenSound.HasValue)
+            {
+                Ui.Layout.FitWidth(false).Height(32);
+                if (Ui.Button("Reset open sound"))
+                {
+                    Editor.RegisterAction();
+                    Properties.OpenSound = null;
+                }
+            }
+        }
+
+        Ui.Spacer(16);
+        Ui.Label("Duration");
+        Ui.Layout.FitWidth(false).Height(32);
+        if (Ui.FloatInputBox(ref Properties.AnimationDuration, (0, 2)))
+        {
+            Editor.RegisterAction();
+        }
+
+        Ui.Spacer(16);
         Ui.Label("Animation");
         Ui.Layout.FitWidth(false).Height(32);
         if (Ui.EnumDropdown(ref Properties.Behaviour))
@@ -297,6 +350,7 @@ public class Door : LevelObject, ITagged
 
         if (Properties.IsPortal)
         {
+            Ui.Label("Portal destination");
             Properties.DestinationLevel ??= Utilities.PickRandom(Editor.LevelIds);
             int selectedIndex = Array.IndexOf(Editor.LevelIds, Properties.DestinationLevel);
 

@@ -1,4 +1,4 @@
-﻿using System.Numerics;
+using System.Numerics;
 using Walgelijk;
 
 namespace MIR;
@@ -86,7 +86,8 @@ public class CharacterPickupSystem : Walgelijk.System
             }
             else if (wpn.HoldPoints.Length < 2 || p.Equipped == null)
             {
-                // TODO this is already done somewhere else so... its kind of ugly. but it works :)
+                // TODO this is already done somewhere else (HandPosingFunctions.FistFight) so... its kind of ugly. but it works :)
+                
                 var direction = p.Character.AimDirection;
                 float flipScaling = charPos.FlipScaling;
                 var clampedDir = Vector2.Normalize(new Vector2(

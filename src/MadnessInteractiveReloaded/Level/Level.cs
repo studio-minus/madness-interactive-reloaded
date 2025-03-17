@@ -1,5 +1,6 @@
-﻿using MIR.LevelEditor.Objects;
+using MIR.LevelEditor.Objects;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Numerics;
 using Walgelijk;
@@ -31,24 +32,30 @@ public class Level
     [JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public ProgressionType ProgressionType = ProgressionType.BodyCount;
 
+    [Obsolete($"Use a {nameof(WaveSequence)} with a single wave instead")]
     public float EnemySpawnInterval = 2f;
+    [Obsolete($"Use a {nameof(WaveSequence)} with a single wave instead")]
     public int MaxEnemyCount = 4;
     public int MaxSimultaneousAttackingEnemies = 2;
     public AssetRef<StreamAudioData> BackgroundMusic;
+    [Obsolete($"Use a {nameof(WaveSequence)} with a single wave instead")]
     public float WeaponChance = 0.5f;
     public Rect LevelBounds;
-    //public bool EquipWeaponFromLastLevel = true;
     public int BodyCountToWin = 50;
     public float TimeLimitInSeconds = -1;
     public bool FullZoom = false;
     public AssetRef<Texture> Thumbnail;
     public bool OpeningTransition = true;
     public bool ExitingTransition = true;
+    public AssetRef<WaveSequence> WaveSequence;
 
     // heavy stuff beyond this point!
 
+    [Obsolete($"Use a {nameof(WaveSequence)} with a single wave instead")]
     public List<EnemySpawnInstructions> EnemySpawnInstructions = new();
+    [Obsolete($"Use a {nameof(WaveSequence)} with a single wave instead")]
     public List<string> Weapons = new();
+
     public List<Vector2> FloorLine = new();
     public List<LevelObject> Objects = new();
 

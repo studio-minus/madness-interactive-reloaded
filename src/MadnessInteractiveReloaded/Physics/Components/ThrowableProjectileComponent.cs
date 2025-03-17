@@ -65,7 +65,7 @@ public class ThrowableProjectileComponent : Component
 
         for (int i = 0; i < SharpHitboxes.Count; i++)
         {
-            var rect = SharpHitboxes[i];
+            var rect = SharpHitboxes[i].Expand(10);
 
             var s = rect.GetSize();
             var hS = transform.Scale * 0.5f;

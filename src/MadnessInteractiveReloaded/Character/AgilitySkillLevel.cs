@@ -1,11 +1,11 @@
-﻿namespace MIR;
+namespace MIR;
 
 /// <summary>
 /// The agility level used to decide what animations a character will play when being agile.
 /// These don't necessarily map to <see cref="CharacterStats.DodgeAbility"/>, it just determines how cool they look while
 /// doing it
-/// TODO this should be gone and the stats object should have an assetref to a animations
 /// </summary>
+// TODO this should be gone and the stats object should have an assetref to a set of animations
 public enum AgilitySkillLevel
 {
     /// <summary>

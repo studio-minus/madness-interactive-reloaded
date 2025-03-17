@@ -1,4 +1,4 @@
-﻿using System.Numerics;
+using System.Numerics;
 using Walgelijk;
 using Walgelijk.SimpleDrawing;
 
@@ -20,7 +20,7 @@ public class StampSystem : Walgelijk.System
         if (Level.CurrentLevel != null && Scene.FindAnyComponent<StampCanvasComponent>(out var canvas))
         {
 #if DEBUG
-            //TODO dit mag niet
+            //TODO this is not allowed
             if (Input.IsKeyReleased(Key.F7))
                 canvas.Clear(RenderQueue);
 #endif

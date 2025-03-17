@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using Walgelijk;
@@ -134,17 +134,7 @@ public class PlayerCharacterSystem : Walgelijk.System
         {
             var nearestWeapon = GetNearestWeapon(character, out var nearestWeaponDistance, out var nearestWeaponEntity);
             if (nearestWeapon != null)
-            {
                 nearestWeapon.ShouldBeHighlighted = true;
-                if (player.LastWeaponHoveredOver != nearestWeaponEntity)
-                {
-                    player.LastWeaponHoveredOver = nearestWeaponEntity;
-                    // Prefabs.CreateNotification(
-                    //     Scene,
-                    //     Scene.GetComponentFrom<TransformComponent>(phys.Head.Entity).Position + new Vector2(0, 250),
-                    //     nearestWeapon.Stats.Name, 0.4f);
-                }
-            }
 
             if (Input.IsKeyHeld(Key.LeftControl) && float.Abs(Input.MouseScrollDelta) > float.Epsilon)
             {

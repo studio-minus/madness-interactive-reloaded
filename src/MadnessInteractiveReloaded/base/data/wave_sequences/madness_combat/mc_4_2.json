@@ -1,0 +1,65 @@
+{
+  "waves": [
+    {
+      "targetCount": 9,
+      "spawnInterval": 1,
+      "mode": "Sequential",
+      "instructions": [
+        {
+          "factionKey": "aahw",
+          "lookKey": "grunt",
+          "statsKey": "grunt",
+          "weapon": { "key": "mp5k" }
+        },
+        {
+          "factionKey": "aahw",
+          "lookKey": "grunt",
+          "statsKey": "grunt",
+          "weapon": { "key": "walther_ppk" }
+        },
+        {
+          "factionKey": "aahw",
+          "lookKey": "grunt",
+          "statsKey": "grunt",
+          "weapon": { "key": "g36c" }
+        },
+        {
+          "factionKey": "aahw",
+          "lookKey": "grunt",
+          "statsKey": "grunt"
+        },
+        {
+          "factionKey": "aahw",
+          "lookKey": "grunt",
+          "statsKey": "grunt",
+          "weapon": { "key": "baseball_bat" }
+        },
+        {
+          "factionKey": "aahw",
+          "lookKey": "grunt",
+          "statsKey": "grunt",
+          "weapon": { "key": "mossberg_500" }
+        },
+        {
+          "factionKey": "aahw",
+          "lookKey": "grunt",
+          "statsKey": "grunt",
+          "weapon": { "key": "trench_knife" }
+        },
+        {
+          "factionKey": "aahw",
+          "lookKey": "grunt",
+          "statsKey": "grunt",
+          "weapon": { "key": "throwing_knife" }
+        },
+        {
+          "factionKey": "aahw",
+          "lookKey": "grunt",
+          "statsKey": "grunt",
+          "weapon": { "key": "deagle" }
+
+        }
+      ]
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -150,7 +150,7 @@ public class CharacterComponent : Component
     /// The <see cref="CharacterLook"/> preset for this character. 
     /// What do they look like? Grunt, clown, conductor, agent, etc.
     /// </summary>
-    public CharacterLook Look = Registries.Looks.Get("grunt"); // TODO game crash if "grunt" does not exist
+    public CharacterLook Look = Registries.Looks.Get("grunt"); // TODO prevent game crash if "grunt" does not exist
 
     /// <summary>
     /// What layer to render this character on.
@@ -215,7 +215,8 @@ public class CharacterComponent : Component
     /// <summary>
     /// Does this character have a weapon equipped?
     /// </summary>
-    public bool HasWeaponEquipped => EquippedWeapon.IsValid(Game.Main.Scene); // TODO Ideally, "HasWeaponEquipped" should not be used, but instead EquippedWeapon.IsValid(Scene). The inconvenience is the Scene parameter.
+    public bool HasWeaponEquipped => EquippedWeapon.IsValid(Game.Main.Scene); 
+    // TODO Ideally, "HasWeaponEquipped" should not be used, but instead EquippedWeapon.IsValid(Scene). The inconvenience is the Scene parameter.
 
     /// <summary>
     /// The line segment that is used to position deflected bullets and effects. This usually follows the sword blade.

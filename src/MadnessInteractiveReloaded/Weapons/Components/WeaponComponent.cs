@@ -30,7 +30,7 @@ public class WeaponComponent : Component
     public bool IsBeingWielded => Wielder.IsValid(Game.Main.Scene);
 
     /// <summary>
-    /// The character whom is holding this weapon.
+    /// The character holding this weapon.
     /// </summary>
     public ComponentRef<CharacterComponent> Wielder;
 
@@ -189,9 +189,9 @@ public class WeaponComponent : Component
     /// </summary>
     /// <param name="bulletTravelDistance"></param>
     /// <returns></returns>
-    public float GetDamageAtDistance(float bulletTravelDistance)
+    public static float GetDamageAtDistance(float damage, float bulletTravelDistance)
     {
-        return float.Max((2 * Data.Damage) / float.Pow(bulletTravelDistance, 0.1f), Data.Damage);
+        return float.Max((2 * damage) / float.Pow(bulletTravelDistance, 0.1f), damage);
     }
 }
 

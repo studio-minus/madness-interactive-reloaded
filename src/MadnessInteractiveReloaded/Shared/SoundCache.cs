@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using Walgelijk;
+using Walgelijk.AssetManager;
 
 /// <summary>
 /// Caches sounds instead of always loading them immediately.
@@ -31,6 +32,7 @@ public class SoundCache : Cache<CachedSoundProfile, Sound>
     }
 
     public Sound LoadSoundEffect(AudioData data) => LoadSoundEffect(data, out _);
+    public Sound LoadSoundEffect(string s) => LoadSoundEffect(Assets.Load<FixedAudioData>(s), out _);
 
     public Sound LoadSoundEffect(AudioData data, out CachedSoundProfile b)
     {

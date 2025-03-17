@@ -1,0 +1,12 @@
+0.51.2
+
+name Mag V3
+
+body
+   real_mag_v3_body
+
+head
+   real_mag_v3_head
+   
+hands mag
+blood #FF0000FF

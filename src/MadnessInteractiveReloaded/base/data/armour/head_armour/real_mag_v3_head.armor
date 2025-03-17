@@ -1,0 +1,12 @@
+0.51.0
+
+name Real mag v3 head
+type Head
+left textures/bodies/skin/real_mag_v3_head/mag_v3_head_left.png
+right textures/bodies/skin/real_mag_v3_head/mag_v3_head_right.png
+texture-scale 0.405
+category All
+detach False
+hidden true
+damage-size 1
+offset 0 0

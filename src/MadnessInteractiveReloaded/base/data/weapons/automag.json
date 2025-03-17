@@ -38,17 +38,17 @@
   "HoldForGrip": false,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {
-    "X": 131.1381,
-    "Y": 46.907906
+    "X": 130.8243,
+    "Y": 54.125565
   },
   "CasingEjectionPoint": {
-    "X": -35.447586,
-    "Y": 53.907944
+    "X": -20.698502,
+    "Y": 54.849365
   },
   "HoldPoints": [
     {
-      "X": 68.74337,
-      "Y": 6.95393
+      "X": 71.20882,
+      "Y": 9.273731
     }
   ],
   "AnimatedParts": [
@@ -67,21 +67,45 @@
           {
             "Value": {
               "X": 6.0,
-              "Y": 53.0
+              "Y": 52.0
             },
             "Position": 0.0
           },
           {
             "Value": {
-              "X": -50.0,
-              "Y": 53.0
+              "X": -40.0,
+              "Y": 52.0
             },
-            "Position": 0.1
+            "Position": 0.15
           },
           {
             "Value": {
               "X": 6.0,
-              "Y": 53.0
+              "Y": 52.0
+            },
+            "Position": 1.0
+          }
+        ]
+      },
+      "AngleCurve": null,
+      "VisibilityCurve": null
+    },
+    {
+      "OutOfAmmoKeyframeTime": 0.1,
+      "InvisbleWhenOutOfAmmo": false,
+      "Duration": 0.15,
+      "Scale": {
+        "X": 1.0,
+        "Y": 1.0
+      },
+      "Texture": "textures/weapons/automag/part.png",
+      "TranslationCurve": {
+        "MappingFunction": null,
+        "Keys": [
+          {
+            "Value": {
+              "X": 11.0,
+              "Y": 30.0
             },
             "Position": 1.0
           }

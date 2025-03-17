@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System;
 
 namespace MIR;
@@ -14,6 +14,8 @@ public interface ISpawnInstructions : ICloneable
     public CharacterLook Look { get; }  
     [JsonIgnore]
     public Faction Faction { get; }
+    [JsonIgnore]
+    public PersistentEquippedWeapon? Weapon { get; }
 }
 
 public struct InstancedSpawnInstructions : ISpawnInstructions
@@ -21,6 +23,7 @@ public struct InstancedSpawnInstructions : ISpawnInstructions
     public CharacterStats Stats { get; }
     public CharacterLook Look { get; }
     public Faction Faction { get; }
+    public PersistentEquippedWeapon? Weapon { get; }
 
     public InstancedSpawnInstructions(CharacterStats stats, CharacterLook look, Faction faction)
     {
@@ -37,13 +40,14 @@ public struct InstancedSpawnInstructions : ISpawnInstructions
 
 /// <summary>
 /// What the <see cref="EnemySpawningSystem"/> will use for spawning enemies.
-/// Read from: <see cref="EnemySpawningComponent.SpawnInstructions"/>
+/// Read from: <see cref="WaveSequence.Wave.Instructions"/>
 /// </summary>
 public class EnemySpawnInstructions: ISpawnInstructions
 {
     public string StatsKey = "grunt";
     public string LookKey = "grunt";
     public string FactionKey = "aahw";
+    public PersistentEquippedWeapon? Weapon;
 
     public EnemySpawnInstructions(string stats, string look, string factionKey)
     {
@@ -69,4 +73,7 @@ public class EnemySpawnInstructions: ISpawnInstructions
 
     [JsonIgnore]
     public Faction Faction => Registries.Factions.Get(FactionKey ?? "aahw");
+
+    [JsonIgnore]
+    PersistentEquippedWeapon? ISpawnInstructions.Weapon => Weapon;
 }

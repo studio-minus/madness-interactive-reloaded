@@ -3,6 +3,7 @@
 name Mag Rich
 
 aiming_randomness 0
+aiming_speed 15
 recoil_handling 1
 dodge 0
 melee 1

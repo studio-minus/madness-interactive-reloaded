@@ -1,0 +1,11 @@
+0.48.7
+
+name Mag
+type Head
+left textures/bodies/skin/mag/mag_left.png
+right textures/bodies/skin/mag/mag_right.png
+category All
+texture-scale 0.4051172707889126
+detach False
+hidden true
+offset 0 0

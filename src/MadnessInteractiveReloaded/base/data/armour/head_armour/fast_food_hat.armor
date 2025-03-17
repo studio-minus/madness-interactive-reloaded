@@ -1,0 +1,12 @@
+0.51.0
+
+name Fast food hat
+type HeadAccessory
+left textures/bodies/hats/fast_food_hat/fast_food_hat_left.png
+right textures/bodies/hats/fast_food_hat/fast_food_hat_right.png
+texture-scale 1
+category All
+detach False
+hidden False
+damage-size 1
+offset -7 -125

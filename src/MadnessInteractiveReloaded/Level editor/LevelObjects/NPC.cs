@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -89,6 +89,9 @@ public class NPC : LevelObject
         if (Instructions.IsProgressionRequirement)
             scene.AttachComponent(character.Entity, new NeedsToDieComponent());
 
+        if (Instructions.IsBuddy)
+            scene.AttachComponent(character.Entity, new PersistentBuddyComponent());
+
         if (StartAnimation != null && scene.TryGetComponentFrom<CharacterComponent>(character.Entity, out var cc) && Registries.Animations.TryGet(StartAnimation, out var s))
         {
             MadnessUtils.Delay(0, () =>
@@ -108,7 +111,6 @@ public class NPC : LevelObject
         Ui.Layout.Height(32).FitWidth(false);
         if (Ui.StringInputBox(ref Instructions.Name, default))
             Editor.Dirty = true;
-        
         Ui.Spacer(5);
         Ui.Label("Look");
         selectedIndex = Array.IndexOf(Editor.Looks, Instructions.Look);
@@ -138,6 +140,15 @@ public class NPC : LevelObject
             Instructions.Faction = Editor.Factions[selectedIndex];
             Editor.Dirty = true;
         }
+
+        if (Registries.Factions.TryGet(Instructions.Faction, out var f) && f.IsAlliedTo(Registries.Factions["player"]))
+        {
+            Ui.Spacer(5);
+            Ui.Layout.Height(32).FitWidth(false);
+            if (Ui.Checkbox(ref Instructions.IsBuddy, "Persistent buddy"))
+                Editor.Dirty = true;
+        }
+        else Instructions.IsBuddy = false;
 
         Ui.Spacer(5);
         Ui.Layout.Height(32).FitWidth(false);

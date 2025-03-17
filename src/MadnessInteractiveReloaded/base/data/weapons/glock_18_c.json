@@ -38,17 +38,17 @@
   "HoldForGrip": false,
   "HoldStockHandPose": false,
   "BarrelEndPoint": {
-    "X": 105.55207,
-    "Y": 94.18311
+    "X": 108.13489,
+    "Y": 103.22295
   },
   "CasingEjectionPoint": {
-    "X": -13.599318,
-    "Y": 95.13809
+    "X": 1.4670277,
+    "Y": 107.19113
   },
   "HoldPoints": [
     {
-      "X": 35.01327,
-      "Y": -35.026543
+      "X": 28.986721,
+      "Y": -41.91401
     }
   ],
   "AnimatedParts": [
@@ -67,23 +67,23 @@
           {
             "Value": {
               "X": 11.0,
-              "Y": 94.0
+              "Y": 105.0
             },
             "Position": 0.0
           },
           {
             "Value": {
-              "X": -20.0,
-              "Y": 94.0
+              "X": -30.0,
+              "Y": 105.0
             },
-            "Position": 0.1
+            "Position": 0.05
           },
           {
             "Value": {
               "X": 11.0,
-              "Y": 94.0
+              "Y": 105.0
             },
-            "Position": 1.0
+            "Position": 0.5
           }
         ]
       },
