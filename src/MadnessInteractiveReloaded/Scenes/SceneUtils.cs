@@ -301,9 +301,17 @@ public static class SceneUtils
             cameraMovement.Targets.Add(new PlayerTarget());
 
             // spawn buddies wherever the player is
-            //IPersistentLevelData.SpawnBuddies(scene, position, PersistentPortalData.Shared.Buddies);
-            if (level != null && CampaignProgress.TryGetCurrentStats(out var stats) && stats.ByLevel.TryGetValue(level.Id, out var lvlStats))
-                IPersistentLevelData.SpawnBuddies(scene, position, lvlStats.Buddies);
+            if (level != null)
+                switch (level.LevelType)
+                {
+                    case LevelType.Campaign:
+                        if (CampaignProgress.TryGetCurrentStats(out var stats) && stats.ByLevel.TryGetValue(level.Id, out var lvlStats))
+                            IPersistentLevelData.SpawnBuddies(scene, position, lvlStats.Buddies);
+                        break;
+                    default:
+                            IPersistentLevelData.SpawnBuddies(scene, position, PersistentPortalData.Shared.Buddies);
+                        break;
+                }
         }
 
         scene.UpdateSystems();

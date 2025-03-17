@@ -798,6 +798,11 @@ public class ExperimentModeSystem : Walgelijk.System
                             scene.AttachComponent(character.Entity, new CharacterPresetComponent(preset));
                         scene.AttachComponent(character.Entity, new AiComponent());
 
+                        if (MadnessUtils.FindPlayer(scene, out _, out var playerChar) && playerChar.Faction.IsAlliedTo(faction))
+                        {
+                            scene.AttachComponent(character.Entity, new PersistentBuddyComponent());
+                        }
+
                         RoutineScheduler.Start(ExperimentSelectableCharacter.FallToGroundRoutine(character).GetEnumerator());
 
                     }, preset.Look.Head.Right.Value);

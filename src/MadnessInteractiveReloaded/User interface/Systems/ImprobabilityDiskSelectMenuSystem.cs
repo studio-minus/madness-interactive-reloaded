@@ -1,4 +1,4 @@
-﻿using Walgelijk.Onion;
+using Walgelijk.Onion;
 using Walgelijk.SimpleDrawing;
 using Walgelijk;
 using Walgelijk.Localisation;
@@ -36,7 +36,7 @@ public class ImprobabilityDiskSelectMenuSystem : Walgelijk.System
             {
                 Ui.Layout.FitContainer(0.5f, 1, false);
                 Ui.Theme.FontSize(40).Once();
-                Ui.TextRect("Improbability Disks", HorizontalTextAlign.Left, VerticalTextAlign.Middle);
+                Ui.TextRect(Localisation.Get("main-menu-improbability-disks"), HorizontalTextAlign.Left, VerticalTextAlign.Middle);
             }
             Ui.End();
 

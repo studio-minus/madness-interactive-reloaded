@@ -78,7 +78,6 @@ public class DoorSystem : Walgelijk.System
                             else
                                 PersistentPortalData.Shared.EquippedWeapon = default;
 
-                            PersistentPortalData.Shared.Buddies.Clear();
                             IPersistentLevelData.SetBuddies(Scene, PersistentPortalData.Shared.Buddies);
                         }
 

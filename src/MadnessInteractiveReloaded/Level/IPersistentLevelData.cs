@@ -29,6 +29,8 @@ public interface IPersistentLevelData
         // then we spawn new ones!
         foreach (var buddy in buddies)
         {
+            Logger.Log($"Respawned buddy: {buddy.Name}");
+
             var buddyChar = Prefabs.CreateCharacter(scene, new CharacterPrefabParams
             {
                 Bottom = position,
@@ -108,6 +110,7 @@ public interface IPersistentLevelData
             }
 
             buddies.Add(serialised);
+            Logger.Log($"Saved buddy: {serialised.Name}");
         }
     }
 }
