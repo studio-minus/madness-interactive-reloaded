@@ -45,21 +45,29 @@ public class WaveSequence
     }
 }
 
-public class DefaultSpawnInstructionsConverter : JsonConverter<ISpawnInstructions>
+public class DefaultSpawnInstructionsConverter : JsonConverter<List<ISpawnInstructions>>
 {
-    public override ISpawnInstructions? ReadJson(JsonReader reader, Type objectType, ISpawnInstructions? existingValue, bool hasExistingValue, JsonSerializer serializer)
+    public override List<ISpawnInstructions>? ReadJson(JsonReader reader, Type objectType, List<ISpawnInstructions>? existingValue, bool hasExistingValue, JsonSerializer serializer)
     {
-        var jsonObject = JToken.Load(reader);
-        return new EnemySpawnInstructions
+        var array = JArray.Load(reader);
+        var created = new List<ISpawnInstructions>();
+        
+        for (int i = 0; i < array.Count; i++)
         {
-            FactionKey = jsonObject[nameof(EnemySpawnInstructions.FactionKey)]?.ToObject<string?>() ?? "aahw",
-            LookKey = jsonObject[nameof(EnemySpawnInstructions.LookKey)]?.ToObject<string?>() ?? throw new Exception("No look provided"),
-            StatsKey = jsonObject[nameof(EnemySpawnInstructions.StatsKey)]?.ToObject<string?>() ?? throw new Exception("No stats provided"),
-            Weapon = jsonObject[nameof(EnemySpawnInstructions.Weapon)]?.ToObject<PersistentEquippedWeapon?>() ?? new()
-        };
+            var obj = array.Children().ElementAt(i);
+            created.Add(new EnemySpawnInstructions
+            {
+                FactionKey = obj["factionKey"]?.ToObject<string?>() ?? "aahw",
+                LookKey = obj["lookKey"]?.ToObject<string?>() ?? throw new Exception("No look provided"),
+                StatsKey = obj["statsKey"]?.ToObject<string?>() ?? throw new Exception("No stats provided"),
+                Weapon = obj["weapon"]?.ToObject<PersistentEquippedWeapon?>() ?? null
+            });
+        }
+
+        return created;
     }
 
-    public override void WriteJson(JsonWriter writer, ISpawnInstructions value, JsonSerializer serializer)
+    public override void WriteJson(JsonWriter writer, List<ISpawnInstructions>? value, JsonSerializer serializer)
     {
         throw new NotImplementedException();
     }
