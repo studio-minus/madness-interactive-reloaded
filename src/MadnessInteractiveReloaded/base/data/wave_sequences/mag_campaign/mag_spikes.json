@@ -1,0 +1,65 @@
+{
+  "waves": [
+    {
+      "targetCount": 30,
+      "mode": "Random",
+      "weapons": [
+        "k6_92",
+        "g36c",
+        "norinco_97k",
+        "sabre",
+        "scimitar",
+        "mac_10",
+        "silenced_mac_10"
+      ],
+      "instructions": [
+        {
+          "factionKey": "aahw",
+          "lookKey": "engineer",
+          "statsKey": "engineer"
+        },
+        {
+          "factionKey": "aahw",
+          "lookKey": "grunt",
+          "statsKey": "grunt"
+        },
+        {
+          "factionKey": "aahw",
+          "lookKey": "engineer",
+          "statsKey": "engineer"
+        },
+        {
+          "factionKey": "aahw",
+          "lookKey": "soldat",
+          "statsKey": "soldat"
+        },
+        {
+          "factionKey": "aahw",
+          "lookKey": "engineer",
+          "statsKey": "engineer"
+        },
+        {
+          "factionKey": "aahw",
+          "lookKey": "grunt",
+          "statsKey": "grunt"
+        },
+        {
+          "factionKey": "aahw",
+          "lookKey": "engineer",
+          "statsKey": "engineer"
+        },
+        {
+          "factionKey": "aahw",
+          "lookKey": "soldat",
+          "statsKey": "soldat"
+        },
+        {
+          "factionKey": "aahw",
+          "lookKey": "zealot",
+          "statsKey": "zealot",
+          "weapon": { "key": "laser_rifle" }
+        }
+      ]
+    }
+  ]
+}

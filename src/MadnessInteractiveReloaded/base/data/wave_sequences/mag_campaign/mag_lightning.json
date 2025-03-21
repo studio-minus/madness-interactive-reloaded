@@ -1,13 +1,14 @@
 {
     "waves": [
         {
-            "targetCount": 30,
+            "targetCount": 40,
             "mode": "Random",
             "weapons": [
-                "ak_74u",
-                "fn_fal",
-                "luger",
-                "mp5k"
+                "silenced_beretta_92",
+                "qbz_95",
+                "mp9",
+                "machete",
+                "hk_sl8"
             ],
             "instructions": [
                 {
@@ -17,8 +18,8 @@
                 },
                 {
                     "factionKey": "aahw",
-                    "lookKey": "soldat",
-                    "statsKey": "soldat"
+                    "lookKey": "grunt",
+                    "statsKey": "grunt"
                 },
                 {
                     "factionKey": "aahw",

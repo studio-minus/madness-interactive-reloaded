@@ -24,7 +24,7 @@
   "Weapons": [],
   "FloorLine": [
     {
-      "X": -5681.1924,
+      "X": -5687.1924,
       "Y": -561.0773
     },
     {
@@ -108,7 +108,7 @@
       "Y": -1406.8065
     },
     {
-      "X": 5116.8076,
+      "X": 5120.8076,
       "Y": -1406.8065
     }
   ],
@@ -120,435 +120,6 @@
         "Y": -444.01483
       },
       "SpawnWeapon": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
-      "BlockerType": 0,
-      "Rectangle": {
-        "MinX": 2060.5952,
-        "MinY": -1775.0165,
-        "MaxX": 5753.9937,
-        "MaxY": -1406.8065
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
-      "BlockerType": 0,
-      "A": {
-        "X": 2239.492,
-        "Y": -1455.6255
-      },
-      "B": {
-        "X": 1295.3054,
-        "Y": -383.70612
-      },
-      "Radius": 29.0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
-      "BlockerType": 0,
-      "A": {
-        "X": -535.4411,
-        "Y": -909.479
-      },
-      "B": {
-        "X": -243.71893,
-        "Y": -537.75165
-      },
-      "Radius": 134.0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "grunt",
-        "Stats": "grunt",
-        "Faction": "aahw",
-        "Weapon": null,
-        "Flipped": false,
-        "BottomCenter": {
-          "X": 118.058716,
-          "Y": -318.33624
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
-      "BlockerType": 0,
-      "A": {
-        "X": -2807.4102,
-        "Y": -737.5325
-      },
-      "B": {
-        "X": -2629.0417,
-        "Y": -893.93475
-      },
-      "Radius": 134.0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
-      "BlockerType": 0,
-      "A": {
-        "X": 2115.3662,
-        "Y": -1536.8314
-      },
-      "B": {
-        "X": 1255.1278,
-        "Y": -543.2934
-      },
-      "Radius": 134.0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
-      "Rectangle": {
-        "MinX": 3111.7383,
-        "MinY": 330.3005,
-        "MaxX": 5102.6377,
-        "MaxY": 406.88885
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.Turret, MIR",
-      "Position": {
-        "X": 1862.6503,
-        "Y": 1204.1635
-      },
-      "Angle": 128.64069,
-      "Faction": "aahw",
-      "RenderOrder": {
-        "Layer": 300,
-        "OrderInLayer": 0
-      },
-      "MinAngle": -46.0,
-      "MaxAngle": 63.0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.Door, MIR",
-      "Properties": {
-        "SpawnPoint": {
-          "X": 5314.66,
-          "Y": -1397.6301
-        },
-        "FacingDirection": {
-          "X": -1.0,
-          "Y": 0.0
-        },
-        "EnemySpawnerDoor": false,
-        "IsLevelProgressionDoor": true,
-        "IsPortal": false,
-        "PortalID": null,
-        "DestinationLevel": null,
-        "Texture": "textures/doors/door_horizontal_2.png",
-        "OpenSound": null,
-        "CloseSound": null,
-        "AnimationDuration": 0.4,
-        "Behaviour": 1,
-        "TopLeft": {
-          "X": 5378.3438,
-          "Y": -17.958572
-        },
-        "TopRight": {
-          "X": 5050.5884,
-          "Y": -17.882393
-        },
-        "BottomLeft": {
-          "X": 5377.7236,
-          "Y": -1440.3429
-        },
-        "BottomRight": {
-          "X": 5051.597,
-          "Y": -1354.9174
-        }
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
-      "BlockerType": 0,
-      "Rectangle": {
-        "MinX": 5162.4355,
-        "MinY": -1857.3604,
-        "MaxX": 5662.382,
-        "MaxY": 872.2578
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
-      "BlockerType": 0,
-      "Rectangle": {
-        "MinX": -568.63196,
-        "MinY": 1450.5472,
-        "MaxX": 1752.653,
-        "MaxY": 1818.7571
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "agent",
-        "Stats": "agent",
-        "Faction": "aahw",
-        "Weapon": "deagle",
-        "Flipped": false,
-        "BottomCenter": {
-          "X": 3009.5874,
-          "Y": -1357.139
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "agent",
-        "Stats": "agent",
-        "Faction": "aahw",
-        "Weapon": "deagle",
-        "Flipped": false,
-        "BottomCenter": {
-          "X": 4374.156,
-          "Y": -1357.139
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "grunt",
-        "Stats": "grunt",
-        "Faction": "aahw",
-        "Weapon": null,
-        "Flipped": false,
-        "BottomCenter": {
-          "X": -3052.895,
-          "Y": -531.65894
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
-      "Rectangle": {
-        "MinX": -473.6139,
-        "MinY": 1402.2992,
-        "MaxX": 1582.2576,
-        "MaxY": 1507.5935
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
-      "BlockerType": 0,
-      "A": {
-        "X": -732.3646,
-        "Y": -937.9677
-      },
-      "B": {
-        "X": -292.08896,
-        "Y": -394.45502
-      },
-      "Radius": 29.0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "agent",
-        "Stats": "agent",
-        "Faction": "aahw",
-        "Weapon": "deagle",
-        "Flipped": false,
-        "BottomCenter": {
-          "X": -1454.7429,
-          "Y": -777.6182
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.Turret, MIR",
-      "Position": {
-        "X": -2819.227,
-        "Y": 1180.7493
-      },
-      "Angle": 90.0,
-      "Faction": "aahw",
-      "RenderOrder": {
-        "Layer": 300,
-        "OrderInLayer": 0
-      },
-      "MinAngle": -80.0,
-      "MaxAngle": 64.0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
-      "Rectangle": {
-        "MinX": -2479.0073,
-        "MinY": -795.9846,
-        "MaxX": -666.4121,
-        "MaxY": -707.57324
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
-      "BlockerType": 0,
-      "Rectangle": {
-        "MinX": 3004.0017,
-        "MinY": 375.92783,
-        "MaxX": 5795.886,
-        "MaxY": 744.1376
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "agent",
-        "Stats": "agent",
-        "Faction": "aahw",
-        "Weapon": "deagle",
-        "Flipped": false,
-        "BottomCenter": {
-          "X": -3695.3315,
-          "Y": -531.65894
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
-      "BlockerType": 0,
-      "A": {
-        "X": -919.28,
-        "Y": 1394.2922
-      },
-      "B": {
-        "X": -550.9573,
-        "Y": 1665.8474
-      },
-      "Radius": 163.0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.Turret, MIR",
-      "Position": {
-        "X": 534.8811,
-        "Y": 1412.065
-      },
-      "Angle": 90.0,
-      "Faction": "aahw",
-      "RenderOrder": {
-        "Layer": 300,
-        "OrderInLayer": 0
-      },
-      "MinAngle": -53.0,
-      "MaxAngle": 60.0,
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
-      "Instructions": {
-        "Name": "Unnamed NPC",
-        "Look": "agent",
-        "Stats": "agent",
-        "Faction": "aahw",
-        "Weapon": "deagle",
-        "Flipped": false,
-        "BottomCenter": {
-          "X": 3845.1753,
-          "Y": -1357.139
-        },
-        "ScaleOverride": false,
-        "Scale": 1.0,
-        "IsProgressionRequirement": false
-      },
-      "StartAnimation": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
-      "Rectangle": {
-        "MinX": -5547.7725,
-        "MinY": -609.6114,
-        "MaxX": -2851.5344,
-        "MaxY": -521.2
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.Door, MIR",
-      "Properties": {
-        "SpawnPoint": {
-          "X": -5868.406,
-          "Y": -552.94104
-        },
-        "FacingDirection": {
-          "X": 1.0,
-          "Y": 0.0
-        },
-        "EnemySpawnerDoor": false,
-        "IsLevelProgressionDoor": false,
-        "IsPortal": false,
-        "PortalID": null,
-        "DestinationLevel": null,
-        "Texture": "textures/doors/door_horizontal_2.png",
-        "OpenSound": null,
-        "CloseSound": null,
-        "AnimationDuration": 0.4,
-        "Behaviour": 1,
-        "TopLeft": {
-          "X": -5927.4595,
-          "Y": 842.50287
-        },
-        "TopRight": {
-          "X": -5605.086,
-          "Y": 796.7908
-        },
-        "BottomLeft": {
-          "X": -5930.289,
-          "Y": -569.5761
-        },
-        "BottomRight": {
-          "X": -5606.5225,
-          "Y": -536.306
-        }
-      },
-      "Tag": null
     },
     {
       "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
@@ -579,7 +150,8 @@
         },
         "ScaleOverride": false,
         "Scale": 1.0,
-        "IsProgressionRequirement": false
+        "IsProgressionRequirement": false,
+        "IsBuddy": false
       },
       "StartAnimation": null
     },
@@ -607,6 +179,7 @@
       },
       "MinAngle": -80.0,
       "MaxAngle": 50.0,
+      "MaxTargetDistance": 3000.0,
       "Tag": null
     },
     {
@@ -665,7 +238,8 @@
         },
         "ScaleOverride": false,
         "Scale": 1.0,
-        "IsProgressionRequirement": false
+        "IsProgressionRequirement": false,
+        "IsBuddy": false
       },
       "StartAnimation": null
     },
@@ -684,9 +258,50 @@
         },
         "ScaleOverride": false,
         "Scale": 1.0,
-        "IsProgressionRequirement": false
+        "IsProgressionRequirement": false,
+        "IsBuddy": false
       },
       "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": -5868.406,
+          "Y": -552.94104
+        },
+        "FacingDirection": {
+          "X": 1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": false,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "Texture": "textures/doors/door_horizontal_2.png",
+        "OpenSound": null,
+        "CloseSound": null,
+        "AnimationDuration": 0.4,
+        "Behaviour": 1,
+        "TopLeft": {
+          "X": -5927.4595,
+          "Y": 842.50287
+        },
+        "TopRight": {
+          "X": -5605.086,
+          "Y": 796.7908
+        },
+        "BottomLeft": {
+          "X": -5930.289,
+          "Y": -569.5761
+        },
+        "BottomRight": {
+          "X": -5606.5225,
+          "Y": -536.306
+        }
+      },
+      "Tag": null
     },
     {
       "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
@@ -695,17 +310,6 @@
         "MinY": 856.92145,
         "MaxX": -5677.703,
         "MaxY": 1192.3579
-      },
-      "Tag": null
-    },
-    {
-      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
-      "BlockerType": 0,
-      "Rectangle": {
-        "MinX": -6227.7607,
-        "MinY": -1147.4315,
-        "MaxX": -5727.814,
-        "MaxY": 1582.1866
       },
       "Tag": null
     },
@@ -824,6 +428,17 @@
       "Tag": null
     },
     {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -6227.7607,
+        "MinY": -1147.4315,
+        "MaxX": -5727.814,
+        "MaxY": 1582.1866
+      },
+      "Tag": null
+    },
+    {
       "$type": "MIR.LevelEditor.Objects.Turret, MIR",
       "Position": {
         "X": 2779.5244,
@@ -837,7 +452,407 @@
       },
       "MinAngle": -55.0,
       "MaxAngle": 56.0,
+      "MaxTargetDistance": 3000.0,
       "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -5547.7725,
+        "MinY": -609.6114,
+        "MaxX": -2851.5344,
+        "MaxY": -521.2
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Turret, MIR",
+      "Position": {
+        "X": 534.8811,
+        "Y": 1412.065
+      },
+      "Angle": 90.0,
+      "Faction": "aahw",
+      "RenderOrder": {
+        "Layer": 300,
+        "OrderInLayer": 0
+      },
+      "MinAngle": -53.0,
+      "MaxAngle": 60.0,
+      "MaxTargetDistance": 3000.0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 2060.5952,
+        "MinY": -1775.0165,
+        "MaxX": 5753.9937,
+        "MaxY": -1406.8065
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": 2239.492,
+        "Y": -1455.6255
+      },
+      "B": {
+        "X": 1295.3054,
+        "Y": -383.70612
+      },
+      "Radius": 29.0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": -535.4411,
+        "Y": -909.479
+      },
+      "B": {
+        "X": -243.71893,
+        "Y": -537.75165
+      },
+      "Radius": 134.0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "grunt",
+        "Stats": "grunt",
+        "Faction": "aahw",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": 118.058716,
+          "Y": -318.33624
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false,
+        "IsBuddy": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": -2807.4102,
+        "Y": -737.5325
+      },
+      "B": {
+        "X": -2629.0417,
+        "Y": -893.93475
+      },
+      "Radius": 134.0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": 2115.3662,
+        "Y": -1536.8314
+      },
+      "B": {
+        "X": 1255.1278,
+        "Y": -543.2934
+      },
+      "Radius": 134.0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 3111.7383,
+        "MinY": 330.3005,
+        "MaxX": 5102.6377,
+        "MaxY": 406.88885
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Turret, MIR",
+      "Position": {
+        "X": 1862.6503,
+        "Y": 1204.1635
+      },
+      "Angle": 128.64069,
+      "Faction": "aahw",
+      "RenderOrder": {
+        "Layer": 300,
+        "OrderInLayer": 0
+      },
+      "MinAngle": -46.0,
+      "MaxAngle": 63.0,
+      "MaxTargetDistance": 3000.0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": 5314.66,
+          "Y": -1397.6301
+        },
+        "FacingDirection": {
+          "X": -1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": false,
+        "IsLevelProgressionDoor": true,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "Texture": "textures/doors/door_horizontal_2.png",
+        "OpenSound": null,
+        "CloseSound": null,
+        "AnimationDuration": 0.4,
+        "Behaviour": 1,
+        "TopLeft": {
+          "X": 5378.3438,
+          "Y": -17.958572
+        },
+        "TopRight": {
+          "X": 5050.5884,
+          "Y": -17.882393
+        },
+        "BottomLeft": {
+          "X": 5377.7236,
+          "Y": -1440.3429
+        },
+        "BottomRight": {
+          "X": 5051.597,
+          "Y": -1354.9174
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 5162.4355,
+        "MinY": -1857.3604,
+        "MaxX": 5662.382,
+        "MaxY": 872.2578
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "agent",
+        "Stats": "agent",
+        "Faction": "aahw",
+        "Weapon": "deagle",
+        "Flipped": false,
+        "BottomCenter": {
+          "X": 3845.1753,
+          "Y": -1357.139
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false,
+        "IsBuddy": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -568.63196,
+        "MinY": 1450.5472,
+        "MaxX": 1752.653,
+        "MaxY": 1818.7571
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "agent",
+        "Stats": "agent",
+        "Faction": "aahw",
+        "Weapon": "deagle",
+        "Flipped": false,
+        "BottomCenter": {
+          "X": 4374.156,
+          "Y": -1357.139
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false,
+        "IsBuddy": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "grunt",
+        "Stats": "grunt",
+        "Faction": "aahw",
+        "Weapon": null,
+        "Flipped": false,
+        "BottomCenter": {
+          "X": -3052.895,
+          "Y": -531.65894
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false,
+        "IsBuddy": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -473.6139,
+        "MinY": 1402.2992,
+        "MaxX": 1582.2576,
+        "MaxY": 1507.5935
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": -732.3646,
+        "Y": -937.9677
+      },
+      "B": {
+        "X": -292.08896,
+        "Y": -394.45502
+      },
+      "Radius": 29.0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "agent",
+        "Stats": "agent",
+        "Faction": "aahw",
+        "Weapon": "deagle",
+        "Flipped": false,
+        "BottomCenter": {
+          "X": -1454.7429,
+          "Y": -777.6182
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false,
+        "IsBuddy": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Turret, MIR",
+      "Position": {
+        "X": -2819.227,
+        "Y": 1180.7493
+      },
+      "Angle": 90.0,
+      "Faction": "aahw",
+      "RenderOrder": {
+        "Layer": 300,
+        "OrderInLayer": 0
+      },
+      "MinAngle": -80.0,
+      "MaxAngle": 64.0,
+      "MaxTargetDistance": 3000.0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -2479.0073,
+        "MinY": -795.9846,
+        "MaxX": -666.4121,
+        "MaxY": -707.57324
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 3004.0017,
+        "MinY": 375.92783,
+        "MaxX": 5795.886,
+        "MaxY": 744.1376
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "agent",
+        "Stats": "agent",
+        "Faction": "aahw",
+        "Weapon": "deagle",
+        "Flipped": false,
+        "BottomCenter": {
+          "X": -3695.3315,
+          "Y": -531.65894
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false,
+        "IsBuddy": false
+      },
+      "StartAnimation": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": -919.28,
+        "Y": 1394.2922
+      },
+      "B": {
+        "X": -550.9573,
+        "Y": 1665.8474
+      },
+      "Radius": 163.0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.NPC, MIR",
+      "Instructions": {
+        "Name": "Unnamed NPC",
+        "Look": "agent",
+        "Stats": "agent",
+        "Faction": "aahw",
+        "Weapon": "deagle",
+        "Flipped": false,
+        "BottomCenter": {
+          "X": 3009.5874,
+          "Y": -1357.139
+        },
+        "ScaleOverride": false,
+        "Scale": 1.0,
+        "IsProgressionRequirement": false,
+        "IsBuddy": false
+      },
+      "StartAnimation": null
     },
     {
       "$type": "MIR.LevelEditor.Objects.Turret, MIR",
@@ -853,6 +868,7 @@
       },
       "MinAngle": -71.0,
       "MaxAngle": 4.0,
+      "MaxTargetDistance": 3000.0,
       "Tag": null
     }
   ]

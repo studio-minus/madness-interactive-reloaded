@@ -2,9 +2,9 @@
   "DisplayName": "untitled",
   "LevelType": "Campaign",
   "ProgressionType": "BodyCount",
-  "EnemySpawnInterval": 2.0,
-  "MaxEnemyCount": 5,
-  "MaxSimultaneousAttackingEnemies": 2,
+  "EnemySpawnInterval": 0.1,
+  "MaxEnemyCount": 16,
+  "MaxSimultaneousAttackingEnemies": 5,
   "BackgroundMusic": "sounds/music/Lothyde/a_casual_trip_through_hell.ogg",
   "WeaponChance": 0.84999996,
   "LevelBounds": {

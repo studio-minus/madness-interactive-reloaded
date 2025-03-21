@@ -22,10 +22,12 @@
         "lvl_mag_railgun",
         "lvl_mag_mowing",
         "lvl_mag_centre",
+        "lvl_mag_busstop",
         "lvl_mag_lever",
         "lvl_mag_turret",
         "lvl_mag_vaults",
+        "lvl_mag_lightning",
         "lvl_mag_rocket",
-        "lvl_mag_busstop"
+        "lvl_mag_spikes"
     ]
 }

@@ -1,0 +1,564 @@
+{
+  "DisplayName": "untitled",
+  "LevelType": "Campaign",
+  "ProgressionType": "BodyCount",
+  "EnemySpawnInterval": 0.1,
+  "MaxEnemyCount": 16,
+  "MaxSimultaneousAttackingEnemies": 7,
+  "BackgroundMusic": "sounds/music/Lothyde/a_casual_trip_through_hell.ogg",
+  "WeaponChance": 0.5,
+  "LevelBounds": {
+    "MinX": -5941.15,
+    "MinY": -2067.2256,
+    "MaxX": 6658.849,
+    "MaxY": 2566.1074
+  },
+  "BodyCountToWin": 40,
+  "TimeLimitInSeconds": -1.0,
+  "FullZoom": false,
+  "Thumbnail": "0",
+  "OpeningTransition": true,
+  "ExitingTransition": true,
+  "WaveSequence": "data/wave_sequences/mag_campaign/mag_lightning.json",
+  "EnemySpawnInstructions": [],
+  "Weapons": [],
+  "FloorLine": [
+    {
+      "X": -5174.3223,
+      "Y": -1788.4795
+    },
+    {
+      "X": 5929.6777,
+      "Y": -1788.4795
+    }
+  ],
+  "Objects": [
+    {
+      "$type": "MIR.LevelEditor.Objects.PlayerSpawn, MIR",
+      "Position": {
+        "X": -5130.3223,
+        "Y": -1643.4683
+      },
+      "SpawnWeapon": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": -2805.8088,
+        "Y": 2165.1409
+      },
+      "B": {
+        "X": -2468.3774,
+        "Y": 2296.328
+      },
+      "Radius": 43.0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 5872.97,
+        "MinY": -220.66492,
+        "MaxX": 6051.1284,
+        "MaxY": -14.703125
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 2945.6729,
+        "MinY": 552.1642,
+        "MaxX": 5898.2305,
+        "MaxY": 758.12634
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": 2650.997,
+        "MinY": 763.4415,
+        "MaxX": 3040.4326,
+        "MaxY": 1836.7507
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -3089.6216,
+        "MinY": 1716.9673,
+        "MaxX": 2948.6938,
+        "MaxY": 2512.2808
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -5283.01,
+        "MinY": -979.5919,
+        "MaxX": -5132.6484,
+        "MaxY": 555.18896
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": 5726.639,
+          "Y": -1638.6046
+        },
+        "FacingDirection": {
+          "X": -1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": true,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "Texture": "textures/doors/door_garage_1.png",
+        "OpenSound": "sounds/doors/garage_door_open.wav",
+        "CloseSound": "sounds/doors/garage_door_close.wav",
+        "AnimationDuration": 1.45,
+        "Behaviour": 0,
+        "TopLeft": {
+          "X": 5093.406,
+          "Y": -226.2608
+        },
+        "TopRight": {
+          "X": 6154.061,
+          "Y": -329.43024
+        },
+        "BottomLeft": {
+          "X": 5093.4053,
+          "Y": -1447.5225
+        },
+        "BottomRight": {
+          "X": 6159.873,
+          "Y": -1829.6868
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": 3658.2698,
+          "Y": -1378.4745
+        },
+        "FacingDirection": {
+          "X": "NaN",
+          "Y": "NaN"
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "Texture": "textures/doors/door_horizontal_1.png",
+        "OpenSound": null,
+        "CloseSound": null,
+        "AnimationDuration": 0.4,
+        "Behaviour": 1,
+        "TopLeft": {
+          "X": 3465.621,
+          "Y": -816.9062
+        },
+        "TopRight": {
+          "X": 3852.0005,
+          "Y": -818.9166
+        },
+        "BottomLeft": {
+          "X": 3464.539,
+          "Y": -1380.0195
+        },
+        "BottomRight": {
+          "X": 3852.0005,
+          "Y": -1376.9294
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": -4238.005,
+          "Y": -1582.9998
+        },
+        "FacingDirection": {
+          "X": "NaN",
+          "Y": "NaN"
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "Texture": "textures/doors/door_horizontal_2.png",
+        "OpenSound": null,
+        "CloseSound": null,
+        "AnimationDuration": 0.4,
+        "Behaviour": 1,
+        "TopLeft": {
+          "X": -4455.0317,
+          "Y": -953.54034
+        },
+        "TopRight": {
+          "X": -4026.6997,
+          "Y": -953.54034
+        },
+        "BottomLeft": {
+          "X": -4455.0317,
+          "Y": -1581.9028
+        },
+        "BottomRight": {
+          "X": -4020.9778,
+          "Y": -1584.0968
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": -5342.611,
+          "Y": -1772.7285
+        },
+        "FacingDirection": {
+          "X": 1.0,
+          "Y": 0.0
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "Texture": "textures/doors/door_horizontal_1.png",
+        "OpenSound": null,
+        "CloseSound": null,
+        "AnimationDuration": 0.4,
+        "Behaviour": 1,
+        "TopLeft": {
+          "X": -5338.4097,
+          "Y": -1106.5171
+        },
+        "TopRight": {
+          "X": -5147.4575,
+          "Y": -1063.2816
+        },
+        "BottomLeft": {
+          "X": -5338.4097,
+          "Y": -1807.2524
+        },
+        "BottomRight": {
+          "X": -5146.812,
+          "Y": -1738.2047
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 2854.2034,
+        "MinY": 676.41016,
+        "MaxX": 6070.212,
+        "MaxY": 2603.697
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -3176.779,
+        "MinY": 2310.9517,
+        "MaxX": 2982.4053,
+        "MaxY": 2566.9517
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": -2308.2769,
+        "Y": 2327.7683
+      },
+      "B": {
+        "X": -1948.489,
+        "Y": 2368.0413
+      },
+      "Radius": 43.0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": -2546.945,
+        "Y": 2278.416
+      },
+      "B": {
+        "X": -2193.06,
+        "Y": 2354.8057
+      },
+      "Radius": 43.0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -5102.3125,
+        "MinY": 732.8626,
+        "MaxX": -3278.4138,
+        "MaxY": 1839.53
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Turret, MIR",
+      "Position": {
+        "X": -4739.5703,
+        "Y": 1447.4608
+      },
+      "Angle": 45.0,
+      "Faction": "aahw",
+      "RenderOrder": {
+        "Layer": 300,
+        "OrderInLayer": 0
+      },
+      "MinAngle": -65.0,
+      "MaxAngle": 29.0,
+      "MaxTargetDistance": 4000.0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": -3008.2205,
+        "Y": 2024.5093
+      },
+      "B": {
+        "X": -2702.6274,
+        "Y": 2218.63
+      },
+      "Radius": 43.0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": -3134.1204,
+        "Y": 1883.7296
+      },
+      "B": {
+        "X": -2879.4795,
+        "Y": 2141.0776
+      },
+      "Radius": 43.0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": -3144.3882,
+        "Y": 1792.683
+      },
+      "B": {
+        "X": -3011.85,
+        "Y": 2029.8038
+      },
+      "Radius": 31.0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": -5171.4478,
+        "Y": 1346.2316
+      },
+      "B": {
+        "X": -4585.3936,
+        "Y": 1932.282
+      },
+      "Radius": 169.0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -5281.4087,
+        "MinY": 667.2537,
+        "MaxX": -5023.402,
+        "MaxY": 2689.0288
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": 5957.996,
+        "MinY": -1844.9177,
+        "MaxX": 6914.3096,
+        "MaxY": 2696.2617
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -6159.2114,
+        "MinY": -1844.9175,
+        "MaxX": -5202.897,
+        "MaxY": 2696.2615
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -8165.162,
+        "MinY": -2209.61,
+        "MaxX": 8815.943,
+        "MaxY": -1788.4795
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Background, MIR",
+      "Center": {
+        "X": 358.8496,
+        "Y": 249.44081
+      },
+      "TexturePath": "textures/backgrounds/mag_campaign/background_mag_lightning.qoi",
+      "Scale": 2.222222
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.RectWall, MIR",
+      "BlockerType": 0,
+      "Rectangle": {
+        "MinX": -5094.305,
+        "MinY": 1765.1461,
+        "MaxX": -3123.442,
+        "MaxY": 2674.2166
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.LineWall, MIR",
+      "BlockerType": 0,
+      "A": {
+        "X": -3267.0842,
+        "Y": 2072.148
+      },
+      "B": {
+        "X": -2632.921,
+        "Y": 2474.9795
+      },
+      "Radius": 196.0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Door, MIR",
+      "Properties": {
+        "SpawnPoint": {
+          "X": 4406.6006,
+          "Y": -1374.3896
+        },
+        "FacingDirection": {
+          "X": "NaN",
+          "Y": "NaN"
+        },
+        "EnemySpawnerDoor": true,
+        "IsLevelProgressionDoor": false,
+        "IsPortal": false,
+        "PortalID": null,
+        "DestinationLevel": null,
+        "Texture": "textures/doors/door_horizontal_2.png",
+        "OpenSound": null,
+        "CloseSound": null,
+        "AnimationDuration": 0.4,
+        "Behaviour": 1,
+        "TopLeft": {
+          "X": 4216.8755,
+          "Y": -820.8503
+        },
+        "TopRight": {
+          "X": 4596.325,
+          "Y": -819.41724
+        },
+        "BottomLeft": {
+          "X": 4216.8755,
+          "Y": -1374.7479
+        },
+        "BottomRight": {
+          "X": 4596.325,
+          "Y": -1374.0315
+        }
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.DecalZone, MIR",
+      "Rectangle": {
+        "MinX": -5066.337,
+        "MinY": -1888.6409,
+        "MaxX": 5828.7314,
+        "MaxY": -1702.8606
+      },
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Turret, MIR",
+      "Position": {
+        "X": 4273.0005,
+        "Y": 600.2807
+      },
+      "Angle": 90.0,
+      "Faction": "aahw",
+      "RenderOrder": {
+        "Layer": 300,
+        "OrderInLayer": 0
+      },
+      "MinAngle": -65.0,
+      "MaxAngle": 59.0,
+      "MaxTargetDistance": 3000.0,
+      "Tag": null
+    },
+    {
+      "$type": "MIR.LevelEditor.Objects.Turret, MIR",
+      "Position": {
+        "X": 2786.8982,
+        "Y": 1990.0538
+      },
+      "Angle": -180.0,
+      "Faction": "aahw",
+      "RenderOrder": {
+        "Layer": 300,
+        "OrderInLayer": 0
+      },
+      "MinAngle": 4.0,
+      "MaxAngle": 93.0,
+      "MaxTargetDistance": 4000.0,
+      "Tag": null
+    }
+  ]
+}
