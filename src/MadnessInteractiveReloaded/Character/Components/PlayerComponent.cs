@@ -1,4 +1,4 @@
-﻿using Walgelijk;
+using Walgelijk;
 
 namespace MIR;
 
@@ -23,9 +23,4 @@ public class PlayerComponent : Component
     /// Zoom multiplier 0 - 1
     /// </summary>
     public float ZoomLevel = 1;
-
-    /// <summary>
-    /// The last weapon we moused over. 
-    /// </summary>
-    public Entity? LastWeaponHoveredOver; // TODO this is probably a completely unnnecessary field. what do we even use it for
 }

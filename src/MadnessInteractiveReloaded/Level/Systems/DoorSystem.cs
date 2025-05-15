@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Walgelijk;
 
 namespace MIR;
@@ -64,22 +64,23 @@ public class DoorSystem : Walgelijk.System
                     var sceneCacheId = door.Properties.DestinationLevel;
                     if (MadnessUtils.TransitionScene(game => LevelLoadingScene.Create(game, dest.Level, new SceneCacheSettings(sceneCacheId))))
                     {
-                        SharedLevelData.TargetPortalID = door.Properties.PortalID;
+                        PersistentPortalData.Shared.TargetPortalID = door.Properties.PortalID;
 
                         if (playerChar != null)
                         {
                             if (playerChar.EquippedWeapon.TryGet(Scene, out var wpn) && wpn.RegistryKey != null)
-                                SharedLevelData.EquippedWeaponPortal = new PersistentEquippedWeapon
+                                PersistentPortalData.Shared.EquippedWeapon = new PersistentEquippedWeapon
                                 {
                                     Key = wpn.RegistryKey,
                                     Ammo = wpn.RemainingRounds,
                                     InfiniteAmmo = wpn.InfiniteAmmo
                                 };
                             else
-                                SharedLevelData.EquippedWeaponPortal = default;
+                                PersistentPortalData.Shared.EquippedWeapon = default;
+
+                            IPersistentLevelData.SetBuddies(Scene, PersistentPortalData.Shared.Buddies);
                         }
 
-                        Logger.Log($"Equipped weapon for portal destination: {SharedLevelData.EquippedWeaponPortal} rounds");
                         Logger.Log($"Entered portal '{door.Properties.PortalID}', traveling to '{sceneCacheId}'");
                     }
                 }

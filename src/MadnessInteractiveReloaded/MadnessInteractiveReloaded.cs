@@ -1,4 +1,4 @@
-﻿using MIR.Cutscenes;
+using MIR.Cutscenes;
 using OpenTK.Graphics.OpenGL4;
 using System;
 using System.Diagnostics;
@@ -51,6 +51,7 @@ public class MadnessInteractiveReloaded
         AssetDeserialisers.Register(new CharacterPresetDeserialiser.AssetDeserialiser());
         AssetDeserialisers.Register(new Campaign.AssetDeserialiser());
         AssetDeserialisers.Register(new WeaponDeserialiser.AssetDeserialiser());
+        AssetDeserialisers.Register(new WaveSequence.AssetDeserialiser());
 
         // "temporary" migration bridge
         AssetDeserialisers.Register(new DelegateDeserialiserBridge<Language>(Language.Load, "json"));
@@ -85,15 +86,6 @@ public class MadnessInteractiveReloaded
         Resources.SetBasePathForType<FixedAudioData>("sounds");
         Resources.SetBasePathForType<StreamAudioData>("sounds");
         Resources.SetBasePathForType<Font>("fonts");
-        //Resources.SetBasePathForType<CharacterAnimation>("data/animations");
-        //Resources.SetBasePathForType<CharacterStats>("data/stats");
-        //Resources.SetBasePathForType<CharacterLook>("data/looks");
-        //Resources.SetBasePathForType<Level>("data/levels");
-        //Resources.SetBasePathForType<Language>("locale");
-        //Resources.SetBasePathForType<MeleeSequence>("data/melee_sequences");
-        //Resources.SetBasePathForType<Cutscene>("data/cutscenes");
-        //Resources.SetBasePathForType<Video>("video");
-        //Resources.SetBasePathForType<Campaign>("data/campaigns");
 
         Resources.RegisterType(typeof(Language), Language.Load);
         Resources.RegisterType(typeof(CharacterAnimation), static s =>

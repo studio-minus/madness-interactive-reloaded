@@ -1,4 +1,4 @@
-﻿using Walgelijk;
+using Walgelijk;
 
 namespace MIR;
 
@@ -8,6 +8,8 @@ namespace MIR;
 public class NoWeapons : CharacterAbilityComponent
 {
     public override string DisplayName => "No weapons allowed"; // 🎗
+
+    public float ThrowChance = 0.5f;
 
     public NoWeapons() : base(AbilitySlot.None, AbilityBehaviour.Toggle)
     {
@@ -27,7 +29,7 @@ public class NoWeapons : CharacterAbilityComponent
     {
         if (a.Character.HasWeaponEquipped)
         {
-            if (Utilities.RandomFloat() > 0.5f)
+            if (Utilities.RandomFloat() > ThrowChance)
                 CharacterUtilities.TryThrowWeapon(Scene, a.Character);
             else if (!a.Character.AnimationConstrainsAny(AnimationConstraint.PreventThrowing))
                 a.Character.DropWeapon(a.Scene);

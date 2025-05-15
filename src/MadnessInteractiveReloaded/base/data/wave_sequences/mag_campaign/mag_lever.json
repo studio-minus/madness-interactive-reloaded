@@ -1,0 +1,43 @@
+{
+    "waves": [
+        {
+            "targetCount": 55,
+            "mode": "Random",
+            "weapons": [
+                "silenced_beretta_92",
+                "qbz_95",
+                "mp9",
+                "machete",
+                "hk_sl8"
+            ],
+            "instructions": [
+                {
+                    "factionKey": "aahw",
+                    "lookKey": "engineer",
+                    "statsKey": "engineer"
+                },
+                {
+                    "factionKey": "aahw",
+                    "lookKey": "grunt",
+                    "statsKey": "grunt"
+                },
+                {
+                    "factionKey": "aahw",
+                    "lookKey": "engineer",
+                    "statsKey": "engineer"
+                },
+                {
+                    "factionKey": "aahw",
+                    "lookKey": "soldat",
+                    "statsKey": "soldat"
+                },
+                {
+                    "factionKey": "aahw",
+                    "lookKey": "zealot",
+                    "statsKey": "zealot",
+                    "weapon": { "key": "laser_rifle" }
+                }
+            ]
+        }
+    ]
+}

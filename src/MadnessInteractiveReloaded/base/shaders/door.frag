@@ -1,5 +1,4 @@
 ﻿#version 330
-#define ANIMATION_DURATION 0.4
 
 in vec2 uv;
 in vec4 vertexColor;
@@ -12,6 +11,7 @@ uniform float isOpen;
 uniform sampler2D mainTex;
 uniform vec4 tint = vec4(1, 1, 1, 1);
 uniform float doorType = 0;
+uniform float animationDuration = 0.4;
 
 float easeInOutQuad(float x) {
     float z = -2.0 * x + 2.0;
@@ -38,7 +38,7 @@ float clampToZeroOrOne(float value) {
 
 void main()
 {
-    float progress = easeInOutQuad(clamp(time - timeSinceChange, 0.0, ANIMATION_DURATION) / ANIMATION_DURATION);
+    float progress = easeInOutQuad(clamp(time - timeSinceChange, 0.0, animationDuration) / animationDuration);
     progress = (isOpen > 0.5 ? progress : 1.0 - progress);
 	vec2 tUv = mix(verticalDoor(uv, progress), horizontalDoor(uv, progress), doorType);
     color = texture(mainTex, tUv) * tint * clampToZeroOrOne(tUv.x) * clampToZeroOrOne(tUv.y);

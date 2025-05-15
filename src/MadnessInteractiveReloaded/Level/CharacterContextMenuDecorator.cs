@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using Walgelijk;
 using Walgelijk.SimpleDrawing;
@@ -10,6 +10,7 @@ using static MIR.ExperimentModeComponent;
 using System.Linq;
 using System.Collections.Generic;
 using Walgelijk.Localisation;
+using System.Net.Http.Headers;
 
 namespace MIR;
 
@@ -27,8 +28,8 @@ public readonly struct CharacterContextMenuDecorator : IDecorator
     public void RenderAfter(in ControlParams p)
     {
         var s = Game.Main.Scene;
-        if (!s.FindAnyComponent<EnemySpawningComponent>(out var spawn))
-            return;
+
+        var wave = ExperimentModePersistentData.AutoSpawnWave;
 
         var preset = this.preset;
         var exp = this.exp;
@@ -54,19 +55,19 @@ public readonly struct CharacterContextMenuDecorator : IDecorator
                     // TODO cache this, probably
                     // makes everything so messy though
                     // is there a more elegant way to speed this up? keep a hashmap?
-                    bool autospawn = spawn.SpawnInstructions?.Contains(preset) ?? false;
+                    bool autospawn = wave.Instructions?.Contains(preset) ?? false;
                     bool c = autospawn;
                     Ui.Layout.FitWidth().Height(32).StickLeft();
                     if (Ui.Checkbox(ref c, Localisation.Get("experiment-autospawn")))
                     {
                         if (autospawn)
                         {
-                            spawn.SpawnInstructions?.Remove(preset);
+                            wave.Instructions?.Remove(preset);
                         }
                         else
                         {
-                            spawn.SpawnInstructions ??= [];
-                            spawn.SpawnInstructions.Add(preset);
+                            wave.Instructions ??= [];
+                            wave.Instructions.Add(preset);
                         }
                     }
 

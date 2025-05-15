@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Numerics;
 using Walgelijk;
 using Walgelijk.AssetManager;
@@ -17,6 +17,7 @@ public class Turret : LevelObject, ITagged
     public RenderOrder RenderOrder = RenderOrders.BackgroundInFront;
     public float MinAngle = -80;
     public float MaxAngle = 80;
+    public float MaxTargetDistance = 2000;
 
     public Turret(LevelEditorComponent editor, Vector2 pos) : base(editor)
     {
@@ -47,6 +48,7 @@ public class Turret : LevelObject, ITagged
 
         ProcessDraggable(input);
         ProcessRotatable(input, ref Angle, Position);
+        ProcessScalable(input, ref MaxTargetDistance, Position);
 
         var body = Assets.Load<Texture>("textures/turrets/default/body.png").Value;
         var head = Assets.Load<Texture>("textures/turrets/default/head.png").Value;
@@ -88,6 +90,12 @@ public class Turret : LevelObject, ITagged
                 Draw.Line(a, b, 5);
             }
             Draw.Line(default, Utilities.RotatePoint(d, MaxAngle), 5);
+
+            Draw.ResetTransformation();
+            Draw.OutlineWidth = 5;
+            Draw.OutlineColour = Colors.Orange;
+            Draw.Colour = Draw.OutlineColour.WithAlpha(0.05f);
+            Draw.Circle(Position, new(MaxTargetDistance));
         }
 
         float EaseOutElastic(float x)
@@ -114,6 +122,10 @@ public class Turret : LevelObject, ITagged
 
         Ui.Layout.FitWidth(false).Height(32);
         Ui.FloatSlider(ref Angle, Direction.Horizontal, (-180, 180), 1, "Angle: {0:0.#} deg");
+
+        Ui.Label("Max target distance");
+        Ui.Layout.FitWidth(false).Height(32);
+        Ui.FloatInputBox(ref MaxTargetDistance, (0, 5000));
 
         Ui.Label("Faction");
         int selectedIndex = Array.IndexOf(Editor.Factions, Faction);
@@ -148,6 +160,7 @@ public class Turret : LevelObject, ITagged
             Position = Position,
             RenderOrder = RenderOrder,
             AngleRads = float.DegreesToRadians(Angle),
+            MaxTargetDistanceSqrd = MaxTargetDistance * MaxTargetDistance,
             Health = 2
         });
         var t = scene.AttachComponent(entity, new TransformComponent

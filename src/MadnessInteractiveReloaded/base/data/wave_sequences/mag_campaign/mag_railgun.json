@@ -1,0 +1,27 @@
+{
+    "waves": [
+        {
+            "targetCount": 15,
+            "mode": "Random",
+            "weapons": [
+                "qbz_95",
+                "famas",
+                "vigneron_m2"
+            ],
+            "instructions": [
+
+                {
+                    "factionKey": "aahw",
+                    "lookKey": "soldat",
+                    "statsKey": "soldat",
+                },
+                {
+                    "factionKey": "aahw",
+                    "lookKey": "zealot",
+                    "statsKey": "zealot",
+                    "weapon": { "key": "laser_rifle" }
+                }
+            ]
+        }
+    ]
+}

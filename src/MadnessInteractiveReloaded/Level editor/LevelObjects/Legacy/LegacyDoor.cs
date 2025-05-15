@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Numerics;
 using Walgelijk;
 using Walgelijk.SimpleDrawing;
@@ -208,7 +208,9 @@ public class LegacyDoor : LevelObject, ITagged
             if (input.IsButtonPressed(MouseButton.Left))
             {
                 currentDragCorner ^= corner;
-                //TODO dit is niet al te best
+                // TODO this is definitely not the proper way to do it.
+                // we do it this way because we're still in the loop that
+                // this operation will edit, so it's deferred using a routine.. terrible
                 MadnessUtils.Delay(0.1f, () => Editor.SelectionManager.Select(this));
             }
             else if (input.IsButtonPressed(MouseButton.Right))

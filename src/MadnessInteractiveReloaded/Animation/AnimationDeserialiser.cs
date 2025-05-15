@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -208,15 +208,15 @@ public static class AnimationDeserialiser
                             keyframe.Angle = DegreeStringToFloat(degreePatterns.Value);
 
                         // find hand specifier
-                        var handPatterns = HandPattern.Matches(line);//TODO dit kan sneller
+                        var handPatterns = HandPattern.Matches(line);// TODO this can be sped up
                         if (writingToHandAnimation)
                             if (handPatterns != null && handPatterns.Any())
                             {
                                 if (!writingToHandAnimation)
                                     throw new Exceptions.SerialisationException($"Hand sprite specifiers are only valid inside {HandIdentifier} animations #{lineNumber}.");
 
-                                // TODO dit is helemaal shit en langzaam
-                                // Note: maakt dat uit? dit is een deserialiser. het is niet alsof dit elke frame gebeurt
+                                // TODO this is slow as shit
+                                // Note: does it matter? this doesn't happen every frame forever, just during loading
                                 for (int i = 0; i < HandLooks.Length; i++)
                                     if (handPatterns.Any(v => v.Value.Equals(HandLooks[i], StringComparison.InvariantCultureIgnoreCase)))
                                     {

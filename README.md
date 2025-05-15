@@ -1,6 +1,10 @@
 # Madness Interactive Reloaded
 
-Game based on "Madness Interactive"
+Game based on "Madness Interactive".
+
+## Contributing
+
+We would really appreciate your help! Visit the [contributors guide](contributors_guide.md) for more information :)
 
 ## Downloading the game
 To start playing right away: 
@@ -19,13 +23,10 @@ If you run into any issues you should first make sure you:
     - git
     - [.NET 9 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
     - NuGet
+    - OpenAL
 - Clone this repository
 - Open a terminal inside the repository directory
-- Initialise the submodules
-    ```shell
-    git submodule init
-    git submodule update --remote
-    ```
+
  - **If you DON'T have Visual Studio**
     - Navigate to the `src\MadnessInteractiveReloaded` directory and build:
         ```shell

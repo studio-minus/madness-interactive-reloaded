@@ -1,4 +1,4 @@
-﻿using System.Numerics;
+using System.Numerics;
 using Walgelijk;
 using Walgelijk.AssetManager;
 
@@ -11,6 +11,7 @@ public class TurretComponent : Component
     public RenderOrder RenderOrder;
     public string Faction = "aahw";
     public float AngleRads;
+    public float MaxTargetDistanceSqrd;
 
     public Sound[] ShootSounds = [
         SoundCache.Instance.LoadSoundEffect("sounds/firearms/cqb_1.wav"),

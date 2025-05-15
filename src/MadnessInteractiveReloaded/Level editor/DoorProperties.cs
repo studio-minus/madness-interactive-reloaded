@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System;
 using System.Numerics;
 using Walgelijk;
@@ -9,7 +9,7 @@ namespace MIR.LevelEditor;
 /// <summary>
 /// Properties shared across the <see cref="DoorComponent"/> and the <see cref="LevelObjects.Door"/>
 /// </summary>
-public struct DoorProperties
+public record DoorProperties
 {
     /// <summary>
     /// The point to spawn the entities at
@@ -54,10 +54,25 @@ public struct DoorProperties
     public GlobalAssetId? Texture;
 
     /// <summary>
+    /// The sound to use when opening the door. Will fall back to default if null.
+    /// </summary>
+    public GlobalAssetId? OpenSound;
+
+    /// <summary>
+    /// The sound to use when closing the door. Will fall back to default if null.
+    /// </summary>
+    public GlobalAssetId? CloseSound;
+
+    /// <summary>
+    /// Duration of the door opening/closing animation in seconds
+    /// </summary>
+    public float AnimationDuration = 0.4f;
+
+    /// <summary>
     /// Returns <see cref="Texture"/> or <see cref="Textures.Door"/>
     /// </summary>
     [JsonIgnore]
-    public readonly Texture EffectiveTexture
+    public Texture EffectiveTexture
     {
         get
         {

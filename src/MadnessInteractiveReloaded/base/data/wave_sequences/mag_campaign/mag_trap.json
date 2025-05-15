@@ -1,0 +1,32 @@
+{
+  "waves": [
+    {
+      "targetCount": 15,
+      "mode": "Random",
+      "weapons": [
+        "spectre_m4",
+        "qbz_95",
+        "thompson"
+      ],
+      "instructions": [
+        {
+          "factionKey": "aahw",
+          "lookKey": "soldat",
+          "statsKey": "soldat"
+        },
+        {
+          "factionKey": "aahw",
+          "lookKey": "zealot",
+          "statsKey": "zealot",
+          "weapon": { "key": "laser_rifle" }
+        },
+        {
+          "factionKey": "aahw",
+          "lookKey": "zealot",
+          "statsKey": "zealot",
+          "weapon": { "key": "laser_rifle" }
+        }
+      ]
+    }
+  ]
+}

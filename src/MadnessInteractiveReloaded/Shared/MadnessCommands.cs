@@ -1,4 +1,4 @@
-﻿#pragma warning disable IDE1006 // Naming Styles
+#pragma warning disable IDE1006 // Naming Styles
 using Microsoft.Extensions.Logging.Abstractions;
 using System;
 using System.Collections.Generic;
@@ -76,6 +76,21 @@ public static class MadnessCommands
         });
 
         return "Well done!";
+    }
+
+    [Command(HelpString = "Set the campaign. Pass ?? to list campaigns")]
+    public static void SetCampaign(string id)
+    {
+        if (id == "??")
+        {
+            foreach (var item in Registries.Campaigns.GetAllKeys())
+                game.Console.WriteLine($"\"{item}\"\n", ConsoleMessageType.Plain);
+        }
+        else
+        {
+            var c = Registries.Campaigns[id];
+            CampaignProgress.SetCampaign(c);;
+        }
     }
 
     [Command(HelpString = "Lists all levels")]
