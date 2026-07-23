@@ -1,0 +1,65 @@
+{
+  "Id": "grenade_launcher",
+  "WeaponData": {
+    "Name": "Grenade Launcher",
+    "Damage": 0.5,
+    "UseDelay": 0.7,
+    "MaxHandRangeMultiplier": 0.5,
+    "AdditionalComponents": [
+      "MIR.ExplosiveWeaponComponent"
+    ],
+    "EnsureSystems": [
+      "MIR.ExplosiveWeaponSystem"
+    ],
+    "ThrowableDamage": 2.0,
+    "ThrowableHeavy": true,
+    "ThrowableSharpBoxes": [],
+    "WeaponType": "Firearm",
+    "BulletsPerShot": 1,
+    "RoundsPerMagazine": 4,
+    "BurstFireCount": 0,
+    "Accuracy": 0.9,
+    "Recoil": 3.0,
+    "RotationalRecoilIntensity": 1.5,
+    "RecoilHandling": 0.4,
+    "Automatic": false,
+    "ShootSounds": [
+      "sounds/firearms/m60_1.wav",
+      "sounds/firearms/m60_2.wav",
+      "sounds/firearms/m60_3.wav",
+      "sounds/firearms/m60_4.wav"
+    ],
+    "CanBulletsBeDeflected": false,
+    "EjectionParticle": "RifleCasing",
+    "CasingSize": 1.2,
+    "IsPumpAction": false,
+    "Range": 600.0,
+    "CanDeflectBullets": false,
+    "SpecialMelee": false,
+    "MeleeDamageType": "Firearm",
+    "MeleeSize": "Medium"
+  },
+  "BaseTexture": "textures/weapons/m60/base.png",
+  "HoldForGrip": false,
+  "HoldStockHandPose": false,
+  "BarrelEndPoint": {
+    "X": 462.94775,
+    "Y": 20.727983
+  },
+  "CasingEjectionPoint": {
+    "X": -170.27538,
+    "Y": 43.09745
+  },
+  "HoldPoints": [
+    {
+      "X": 212.42307,
+      "Y": 62.76924
+    },
+    {
+      "X": 46.097504,
+      "Y": -24.428923
+    }
+  ],
+  "AnimatedParts": null,
+  "OnFloorAngle": 0.0
+}

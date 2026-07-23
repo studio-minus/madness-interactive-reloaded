@@ -451,6 +451,15 @@ public static class MadnessUtils
         return true;
     }
 
+    /// <summary>
+    /// Briefly slow down time for dramatic effect. The timescale is restored after the given duration.
+    /// </summary>
+    public static void SlowMotion(float timeScale, float durationInSeconds)
+    {
+        Game.Main.State.Time.TimeScale = timeScale;
+        Delay(durationInSeconds, static () => Game.Main.State.Time.TimeScale = 1);
+    }
+
     public static Routine Delay(float seconds, Action action)
     {
         return RoutineScheduler.Start(delay());
@@ -739,6 +748,7 @@ public static class MadnessUtils
 
         if (character.HasWeaponEquipped)
             character.DropWeapon(scene);
+        character.DropHolsteredWeapon(scene);
 
         var targetRenderOrder = isPlayer ? RenderOrders.PlayerRagdoll.Layer : Utilities.RandomInt(RenderOrders.RagdollsLower.Layer, RenderOrders.RagdollsUpper.Layer);
         //var offset = Utilities.MapRange(RenderOrders.CharacterLower.Layer, RenderOrders.CharacterUpper.Layer, 0, 80, character.BaseRenderOrder.Layer);

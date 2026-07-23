@@ -185,7 +185,14 @@ public class ModMenuSystem : Walgelijk.System
 
         // back button
         if (MenuUiUtils.BackButton())
-            Game.Scene = MainMenuScene.Load(Game);
+        {
+            // if the player toggled any mods, run a content reload on the way out (rebuilds the asset
+            // registry + content registries for the active-mod set) so changes apply without a restart
+            if (ModLoader.ConsumeAssetRefresh())
+                Game.Scene = GameLoadingScene.Create(Game, reloadOnly: true);
+            else
+                Game.Scene = MainMenuScene.Load(Game);
+        }
 
         // folder button
         Ui.Layout.FitWidth().MaxWidth(160).Height(40).StickRight().StickBottom().Move(-10);
@@ -223,6 +230,14 @@ public readonly struct ModViewControl(Mod mod) : IControl
         Ui.Layout.FitWidth().Height(32).Scale(-instance.Rects.Intermediate.Height, 0).StickRight(false).StickBottom().HorizontalLayout();
         Ui.StartGroup(false);
         {
+            // enable/disable toggle
+            bool active = ModLoader.IsActive(mod.Id);
+            Ui.Layout.FitHeight().EnqueueConstraint(new AspectRatio(1)).CenterVertical();
+            Ui.Theme.OutlineWidth(0).ForegroundColor(Colors.Transparent)
+                .Image(active ? new(Colors.Green.Brightness(1.2f), Colors.White) : new(Colors.White.WithAlpha(0.35f), Colors.White)).Once();
+            if (Ui.ImageButton(active ? check : cog, ImageContainmentMode.Stretch))
+                ModLoader.SetModEnabled(mod.Id, !active);
+
             var source = ModLoader.GetSourceFor(mod.Id);
             if (source is LocalModCollectionSource local)
             {

@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -31,6 +32,19 @@ public static class ModLoader
 
     private static readonly SemaphoreSlim modLoadingSemaphore = new(1);
     private static bool needsAssetRefresh = false;
+
+    /// <summary>
+    /// Mod IDs the player has explicitly disabled. Persisted between sessions.
+    /// A disabled mod is loaded (so it shows in the menu) but never activated.
+    /// </summary>
+    private static readonly HashSet<string> disabled = [];
+    private static bool disabledLoaded = false;
+
+    /// <summary>
+    /// Full paths of asset packages we already registered with <see cref="Assets"/>. There is no unregister API,
+    /// so re-activating a mod must not register its packages again.
+    /// </summary>
+    private static readonly HashSet<string> registeredPackages = [];
 
     [Command(Alias = "ModSources", HelpString = "List mod sources and their status")]
     private static void ModSourcesCmd()
@@ -63,6 +77,105 @@ public static class ModLoader
     {
         Logger.Log($"Mod source added {source}");
         sources.Add(source);
+    }
+
+    /// <summary>
+    /// Returns true if the player has persistently disabled the given mod.
+    /// </summary>
+    public static bool IsDisabled(ModID id)
+    {
+        EnsureDisabledListLoaded();
+        return disabled.Contains(id.Value);
+    }
+
+    private static void EnsureDisabledListLoaded()
+    {
+        if (disabledLoaded)
+            return;
+        disabledLoaded = true;
+
+        try
+        {
+            var path = UserData.Paths.DisabledMods;
+            if (File.Exists(path))
+                foreach (var line in File.ReadAllLines(path))
+                {
+                    var id = line.Trim();
+                    if (!string.IsNullOrEmpty(id))
+                        disabled.Add(id);
+                }
+        }
+        catch (Exception e)
+        {
+            Logger.Warn($"Failed to read disabled mods list: {e}");
+        }
+    }
+
+    private static void SaveDisabledList()
+    {
+        try
+        {
+            var path = UserData.Paths.DisabledMods;
+            Directory.CreateDirectory(Path.GetDirectoryName(path)!);
+            lock (disabled)
+                File.WriteAllLines(path, disabled);
+        }
+        catch (Exception e)
+        {
+            Logger.Error($"Failed to save disabled mods list: {e}");
+        }
+    }
+
+    /// <summary>
+    /// Enable or disable a mod, persisting the choice. Enabling activates the mod immediately.
+    /// Disabling deactivates script mods immediately; asset changes from data mods fully apply on the next launch.
+    /// </summary>
+    public static void SetModEnabled(ModID id, bool enabled)
+    {
+        EnsureDisabledListLoaded();
+
+        if (enabled)
+        {
+            if (disabled.Remove(id.Value))
+                SaveDisabledList();
+            ActivateMod(id);
+        }
+        else
+        {
+            bool changed;
+            lock (disabled)
+                changed = disabled.Add(id.Value);
+            if (changed)
+                SaveDisabledList();
+            DeactivateMod(id);
+        }
+    }
+
+    /// <summary>
+    /// Deactivate a loaded mod without unloading it. Script mods get <see cref="IModEntry.OnUnload"/> called.
+    /// </summary>
+    public static void DeactivateMod(ModID id)
+    {
+        if (!mods.TryGetValue(id, out var loaded) || !loaded.Active)
+            return;
+
+        loaded.Active = false;
+        needsAssetRefresh = true;
+        var mod = loaded.Mod;
+
+        if (mod.ModType is ModType.Script && mod.Assembly != null)
+        {
+            try
+            {
+                mod.Assembly.ModEntry.OnUnload();
+            }
+            catch (Exception e)
+            {
+                Logger.Error($"Mod {mod.Name} threw " + e);
+            }
+        }
+
+        OnModListChange?.Invoke();
     }
 
     public static void LoadModsFromSources()
@@ -141,14 +254,16 @@ public static class ModLoader
                     // be executed on my thread as well and thats really confusing!! and bad
                     // solution is to set a flag and let others poll
                     OnModListChange?.Invoke();
-                }
-                else
-                {
-                    Logger.Log($"Mod {mod.Name} (\"{mod.Id}\") loaded from {source}");
+
+                    // the duplicate must not be listed or activated again
+                    return;
                 }
 
+                Logger.Log($"Mod {mod.Name} (\"{mod.Id}\") loaded from {source}");
+
                 sortedMods.Add(mod.Id);
-                if (loaded != null)
+                // don't activate mods the player has disabled; they still appear in the menu as inactive
+                if (!IsDisabled(mod.Id))
                     ActivateMod(mod.Id);
             }
             finally
@@ -160,6 +275,65 @@ public static class ModLoader
     public static bool IsActive(ModID id)
     {
         return mods.TryGetValue(id, out var m) && m.Active;
+    }
+
+    /// <summary>
+    /// Set by the game to re-register the vanilla asset packages (resources/*.waa) during a
+    /// <see cref="RefreshAssetRegistry"/>. Needed because <see cref="Assets"/> has no per-package
+    /// unregister, so disabling a mod means clearing and rebuilding the whole registry.
+    /// </summary>
+    public static Action? RegisterBaseAssets;
+
+    /// <summary>
+    /// Returns true (and clears the flag) if a mod was enabled or disabled since the last check,
+    /// meaning the asset registry should be rebuilt.
+    /// </summary>
+    public static bool ConsumeAssetRefresh()
+    {
+        if (!needsAssetRefresh)
+            return false;
+        needsAssetRefresh = false;
+        return true;
+    }
+
+    /// <summary>
+    /// Rebuild the asset registry from scratch: vanilla packages plus every currently active mod.
+    /// This is how disabling a mod actually takes its assets out of circulation.
+    /// <br></br>
+    /// Only rebuilds the package registry (not the loaded-asset cache), so it is safe to call while a
+    /// minimal scene is live. Rerun the content registries (weapons, looks, etc.) afterwards so their
+    /// contents reflect the new set - see <see cref="GameLoadingScene"/>'s reload path.
+    /// </summary>
+    public static void RefreshAssetRegistry()
+    {
+        modLoadingSemaphore.Wait();
+        try
+        {
+            Assets.ClearRegistry();
+            registeredPackages.Clear();
+
+            RegisterBaseAssets?.Invoke();
+
+            foreach (var loaded in mods.Values)
+            {
+                if (!loaded.Active)
+                    continue;
+                foreach (var p in loaded.Mod.AssetPackages)
+                    if (registeredPackages.Add(p.FullName))
+                        try
+                        {
+                            Assets.RegisterPackage(p.FullName);
+                        }
+                        catch (Exception e)
+                        {
+                            Logger.Error($"Failed to register asset package \"{p.FullName}\" for mod {loaded.Mod.Name}: {e}");
+                        }
+            }
+        }
+        finally
+        {
+            modLoadingSemaphore.Release();
+        }
     }
 
     public static void ActivateMod(ModID id)
@@ -181,7 +355,15 @@ public static class ModLoader
         var mod = loaded.Mod;
 
         foreach (var p in mod.AssetPackages)
-            Assets.RegisterPackage(p.FullName);
+            if (registeredPackages.Add(p.FullName)) // asset packages can't be unregistered, so never register twice
+                try
+                {
+                    Assets.RegisterPackage(p.FullName);
+                }
+                catch (Exception e)
+                {
+                    Logger.Error($"Failed to register asset package \"{p.FullName}\" for mod {mod.Name}: {e}");
+                }
 
         if (mod.ModType is ModType.Script && mod.Assembly != null)
         {

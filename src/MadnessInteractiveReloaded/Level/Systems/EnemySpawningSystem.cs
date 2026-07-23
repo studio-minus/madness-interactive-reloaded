@@ -201,9 +201,6 @@ public class EnemySpawningSystem : Walgelijk.System
 
         var spawnPoint = spawnParams.Point;
 
-        DebugDraw.Cross(spawnPoint, 320, Colors.Magenta, 1, RenderOrders.Effects);
-        DebugDraw.Circle(spawnPoint, 320, Colors.Magenta, 1, RenderOrders.Effects);
-
         // (duston) IMPORTANT: always set the initial position to spawnPoint first no matter what,
         // i don't care if its in the sky. only then, afterwards will we set the position to onGround.
         // this ensures that the matrices are being calculated at the right location first.

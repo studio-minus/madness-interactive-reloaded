@@ -12,12 +12,14 @@ public class ControlScheme
         { GameAction.Right, new(Key.D) },
         { GameAction.Left, new(Key.A) },
         { GameAction.JumpDodge, new(Key.Space) },
+        { GameAction.JumpDodgeAlt, new(Key.W) },
         { GameAction.Interact, new(Key.E) },
 
         { GameAction.Attack, new(MouseButton.Left) },
         { GameAction.Melee, new(MouseButton.Middle) },
         { GameAction.BlockAim, new(MouseButton.Right) },
         { GameAction.Throw, new(Key.F) },
+        { GameAction.SwitchWeapon, new(Key.X) },
 
         { GameAction.Ability1, new(Key.LeftShift) },
         { GameAction.Ability2, new(Key.Q) },

@@ -11,12 +11,14 @@ public enum GameAction
     Right,
     Left,
     JumpDodge,
+    JumpDodgeAlt,
     Interact,
 
     Attack,
     Melee,
     BlockAim,
     Throw,
+    SwitchWeapon,
 
     Ability1,
     Ability2,

@@ -60,7 +60,12 @@ public static class GameLoadingScene
         }, false),
     ];
 
-    public static Scene Create(Game game)
+    /// <param name="reloadOnly">
+    /// When true, this is a post-mod-toggle content reload rather than a cold start: the asset registry is
+    /// rebuilt for the current set of active mods and the content registries are re-run, but mods themselves
+    /// are NOT reloaded (that would re-extract them and throw on duplicate ids).
+    /// </param>
+    public static Scene Create(Game game, bool reloadOnly = false)
     {
         var scene = new Scene(game);
         game.AudioRenderer.StopAll();
@@ -81,8 +86,22 @@ public static class GameLoadingScene
         {
             gameLoadingComponent.Progress = 0;
 
+            // on a reload, rebuild the package registry for the current active-mod set before re-running content
+            if (reloadOnly)
+            {
+                yield return show("Rebuilding asset registry");
+                ModLoader.RefreshAssetRegistry();
+            }
+
             foreach (var item in LoadingSteps)
             {
+                // re-running the mod load would re-extract mods and throw on duplicate ids; skip it on reload
+                if (reloadOnly && item.Task == ModLoader.LoadModsFromSources)
+                {
+                    gameLoadingComponent.Progress += 1f / LoadingSteps.Count;
+                    continue;
+                }
+
                 yield return show(item.Title);
 
                 if (item.Async)

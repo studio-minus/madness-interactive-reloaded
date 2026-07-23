@@ -398,18 +398,42 @@ public static class Prefabs
 
     public static Entity CreateTurretExplosion(Scene scene, Vector2 position)
     {
+        var ent = CreateExplosionVisual(scene, position, 2.4f);
+        // a dying turret now actually hurts anyone standing next to it
+        ApplyExplosionDamage(scene, position, radius: 500, epicentreDamage: 8, knockback: 2200);
+        return ent;
+    }
+
+    /// <summary>
+    /// Spawn a generic explosion: the turret explosion visual, sound and screen shake, plus radial damage and
+    /// knockback to every character within <paramref name="radius"/>.
+    /// </summary>
+    /// <param name="scene"></param>
+    /// <param name="position">World-space centre of the blast.</param>
+    /// <param name="radius">How far the blast reaches.</param>
+    /// <param name="epicentreDamage">Damage dealt at the very centre, falling off linearly to zero at the edge.</param>
+    /// <param name="knockback">Ragdoll launch force at the centre.</param>
+    /// <param name="source">Character responsible, exempt from the blast. Optional.</param>
+    public static Entity CreateExplosion(Scene scene, Vector2 position, float radius = 500, float epicentreDamage = 8, float knockback = 2200, CharacterComponent? source = null)
+    {
+        var ent = CreateExplosionVisual(scene, position, radius / 210f);
+        ApplyExplosionDamage(scene, position, radius, epicentreDamage, knockback, source);
+        return ent;
+    }
+
+    private static Entity CreateExplosionVisual(Scene scene, Vector2 position, float scaleMultiplier)
+    {
         MadnessUtils.Shake(100);
         Game.Main.AudioRenderer.Play(Sounds.TurretExplosion, 1);
 
         var ent = scene.CreateEntity();
         var tex = Textures.TurretLevelExplosion.Value;
 
-
         scene.AttachComponent(ent, new TransformComponent
         {
             Position = position,
             Rotation = Utilities.RandomFloat(0, 360),
-            Scale = new Vector2(tex.Width / 5, tex.Height / 4) * MadnessConstants.BackgroundSizeRatio * 2.4f
+            Scale = new Vector2(tex.Width / 5, tex.Height / 4) * MadnessConstants.BackgroundSizeRatio * scaleMultiplier
         });
 
         var mat = FlipbookMaterialCreator.LoadMaterialFor(tex, 5, 4, 0, Colors.White, true, 0);
@@ -427,6 +451,63 @@ public static class Prefabs
         });
 
         return ent;
+    }
+
+    /// <summary>
+    /// Apply radial explosion damage and knockback to all characters within range, without any visual.
+    /// Damage falls off linearly from <paramref name="epicentreDamage"/> at the centre to zero at <paramref name="radius"/>.
+    /// </summary>
+    public static void ApplyExplosionDamage(Scene scene, Vector2 position, float radius, float epicentreDamage, float knockback, CharacterComponent? source = null)
+    {
+        float radiusSqrd = radius * radius;
+
+        foreach (var character in scene.GetAllComponentsOfType<CharacterComponent>())
+        {
+            if (character == source || !character.IsAlive || character.HasBeenRagdolled)
+                continue;
+
+            if (character.AnimationConstrainsAny(AnimationConstraint.PreventDying))
+                continue;
+
+            var centre = character.Positioning.GlobalCenter;
+            float distSqrd = Vector2.DistanceSquared(centre, position);
+            if (distSqrd > radiusSqrd)
+                continue;
+
+            // player cheats
+            bool isPlayer = scene.HasTag(character.Entity, Tags.Player);
+            if (isPlayer && ImprobabilityDisks.IsEnabled("god"))
+                continue;
+
+            float falloff = 1 - float.Sqrt(distSqrd) / radius;
+            float damage = epicentreDamage * falloff;
+
+            var head = scene.GetComponentFrom<BodyPartComponent>(character.Positioning.Head.Entity);
+            var body = scene.GetComponentFrom<BodyPartComponent>(character.Positioning.Body.Entity);
+            head.Damage(damage);
+            body.Damage(damage * 0.5f);
+
+            CharacterUtilities.UpdateAliveStatus(scene, character);
+
+            var dir = distSqrd > 0.01f ? Vector2.Normalize(centre - position) : new Vector2(0, 1);
+
+            if (!character.IsAlive)
+            {
+                if (!character.AnimationConstrainsAny(AnimationConstraint.PreventRagdoll))
+                {
+                    var vel = dir * knockback * falloff;
+                    vel.Y -= knockback * falloff * 0.35f; // bias upwards so bodies fly
+                    MadnessUtils.TurnIntoRagdoll(scene, character, vel, Utilities.RandomFloat(-90, 90));
+                }
+            }
+            else
+            {
+                // survivors get staggered
+                character.DrainDodge(1);
+                if (character.HasFlag(CharacterFlags.StunAnimationOnNonFatalAttack))
+                    CharacterUtilities.StunHeavy(scene, character, dir.X < 0 == character.Positioning.IsFlipped);
+            }
+        }
     }
 
     /// <summary>

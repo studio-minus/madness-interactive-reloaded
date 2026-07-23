@@ -144,6 +144,7 @@ public class AiCharacterSystem : Walgelijk.System
                 {
                     equipped = null;
                     character.DropWeapon(Scene);
+                    character.UnholsterWeapon(Scene); // draw our secondary if we're carrying one
                     continue;
                 }
 
@@ -350,6 +351,21 @@ public class AiCharacterSystem : Walgelijk.System
                             ai.WantsToIronSight.Value = killTargetChar.IsPlayingAnimationGroup("melee");
                     }
 
+                    // agile enemies leap away from an incoming melee swing instead of eating it
+                    if (character.Stats.AgilitySkillLevel is not AgilitySkillLevel.None &&
+                        character.DodgeMeter > character.Stats.DodgeAbility * 0.5f &&
+                        !Scene.HasComponent<JumpDodgeComponent>(entity) &&
+                        killTargetChar.IsPlayingAnimationGroup("melee") &&
+                        Vector2.Distance(killTargetChar.Positioning.GlobalCenter, character.Positioning.GlobalCenter) < 600 &&
+                        MadnessUtils.TimeSafeRandom(ai.Seed * 3.77f) > 0.7f)
+                    {
+                        var away = float.Sign(character.Positioning.GlobalCenter.X - killTargetChar.Positioning.GlobalCenter.X);
+                        if (away == 0)
+                            away = character.Positioning.IsFlipped ? -1 : 1;
+                        character.WalkAcceleration = new Vector2(character.Positioning.TopWalkSpeed * away, 0);
+                        CharacterUtilities.TryJumpDodge(Scene, character);
+                    }
+
                     if (!character.AnimationConstrainsAll(AnimationConstraint.PreventAllAttacking))
                         if (equipped != null)
                         {
@@ -372,7 +388,7 @@ public class AiCharacterSystem : Walgelijk.System
                                 {
                                     if (ai.HasKillTarget && MadnessUtils.TimeSafeRandom(ai.Seed * 0.932f) > 0.1f)
                                     {
-                                        if (!ai.TooBusyToAttack)
+                                        if (!ai.TooBusyToAttack && !(character.IsLowOnDodge(0.35f) && !character.Stats.DodgeOversaturate))
                                         {
                                             ai.WantsToShoot.Value = MathF.Abs(transform.Position.X - ai.AimingPosition.X) < CharacterConstants.MaxHandRange * 2;
                                             //if (!ai.WantsToShoot.Value)
@@ -527,15 +543,19 @@ public class AiCharacterSystem : Walgelijk.System
                 }
                 break;
             case WeaponType.Melee:
+                // back off to recover when nearly out of dodge instead of trading blows until death
+                bool wantsToRetreat = character.IsLowOnDodge(0.35f) && !character.Stats.DodgeOversaturate;
+
                 //if (!character.AnimationConstrainsAny(AnimationConstraint.PreventMelee))
                 ai.WantsToShoot.Value =
+                    !wantsToRetreat &&
                     Noise.GetValue(ai.Seed, 512.534f, Time.SecondsSinceLoad * 0.4f) > 0 &&
                     MathF.Abs(character.Positioning.GlobalCenter.X - killTargetChar.Positioning.GlobalCenter.X) < equipped.Data.Range + 200;
 
                 // if (Noise.GetValue(ai.Seed, -512.534f, Time.SecondsSinceLoad * 0.1f) > 0.5f)
                 //if (false)
                 {
-                    if (!ai.TooBusyToAttack)
+                    if (!ai.TooBusyToAttack && !wantsToRetreat)
                         WalkTowards(ai.AimingPosition.X, equipped.Data.Range, ConVars.Instance.EnemyMeleeDistance.Y, ai);
                     else
                         WalkTowards(ai.AimingPosition.X, ConVars.Instance.EnemySafeDistanceFromPlayer, Level.CurrentLevel?.LevelBounds.Width ?? 6000, ai);

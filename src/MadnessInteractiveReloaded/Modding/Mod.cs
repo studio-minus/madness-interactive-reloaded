@@ -194,7 +194,15 @@ public sealed class Mod : IDisposable
         // read assembly
         if (!string.IsNullOrWhiteSpace(BinaryPath))
         {
-            if (!ExtractedFolder.TryGetFile(BinaryPath, out var assemblyFile))
+            ModType = ModType.Script;
+
+            // A disabled script mod must not load its assembly: OnLoad runs at load time (not activation) and
+            // its side effects (Harmony patches, scene-change listeners, etc.) can't be cleanly undone. Skipping
+            // the assembly entirely is the only way to truly keep a disabled script mod dormant. It still shows
+            // in the mod menu as inactive; re-enabling it takes effect after a restart.
+            if (ModLoader.IsDisabled(Id))
+                Logger.Log($"Mod \"{Id}\" is disabled: skipping assembly load so its code does not run");
+            else if (!ExtractedFolder.TryGetFile(BinaryPath, out var assemblyFile))
                 Errors.Add(new FileNotFoundException($"Binary path not found \"{BinaryPath}\""));
             else
             {
@@ -210,7 +218,6 @@ public sealed class Mod : IDisposable
                 }
                 // TODO maybe get some kind of unique ID for this assembly so that you can detect later which assembly belongs to which mod
             }
-            ModType = ModType.Script;
         }
         else
             ModType = ModType.Data;

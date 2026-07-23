@@ -23,6 +23,8 @@ public class CharacterCreationComponent : Component, IDisposable
 
     public List<Color> Swatches = [Colors.Black, Colors.Black, Colors.Black, Colors.Black, Colors.Black, Colors.Black, Colors.Black, Colors.Black];
 
+    public string PieceFilter = string.Empty;
+
     public CharacterCreationComponent()
     {
         Background = Assets.Load<Texture>("textures/backgrounds/character_creation_1.qoi");

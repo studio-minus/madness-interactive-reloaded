@@ -46,15 +46,16 @@ public class WeaponSystem : Walgelijk.System
                 weapon.Timer += Time.DeltaTime;
                 weapon.IsAttachedToWall = false;
 
-                switch (data.WeaponType)
-                {
-                    case WeaponType.Firearm:
-                        ProcessFirearm(weapon, transform, wielder);
-                        break;
-                    case WeaponType.Melee:
-                    default:
-                        break;
-                }
+                if (!weapon.IsHolstered)
+                    switch (data.WeaponType)
+                    {
+                        case WeaponType.Firearm:
+                            ProcessFirearm(weapon, transform, wielder);
+                            break;
+                        case WeaponType.Melee:
+                        default:
+                            break;
+                    }
             }
             else if (weapon.StuckInsideParams.HasValue)
             {
@@ -73,6 +74,7 @@ public class WeaponSystem : Walgelijk.System
             }
             else
             {
+                weapon.IsHolstered = false; // wielder is gone, so we can't be in anyone's holster
                 transform.LocalPivot = default;
                 if (!weapon.HasRoundsLeft && velocityComponent.MeasuredSpeed <= float.Epsilon)
                     transform.Scale = new Vector2(1, weapon.IsFlipped ? -0.5f : 0.5f);

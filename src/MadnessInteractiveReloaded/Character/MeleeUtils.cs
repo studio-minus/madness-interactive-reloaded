@@ -140,23 +140,49 @@ public static class MeleeUtils
             if (victimIsPlayer && ImprobabilityDisks.IsEnabled("god"))
                 return;
 
-            // blocking
-            if (victim.IsMeleeBlocking && CharacterUtilities.CanDodge(victim))
+            // counters earned from a perfect parry can't be blocked or dodged and hit much harder
+            bool isCounterAttack = actor.CounterWindowTimer > 0 && !victimIsPlayer && scene.HasTag(actor.Entity, Tags.Player);
+            if (isCounterAttack)
             {
-                if (victim.HasWeaponEquipped && victim.Positioning.MeleeBlockProgress < 1 && !scene.HasTag(actor.Entity, Tags.Player))
+                actor.CounterWindowTimer = 0;
+                damage *= 2;
+            }
+
+            // blocking
+            if (!isCounterAttack && victim.IsMeleeBlocking && CharacterUtilities.CanDodge(victim))
+            {
+                if ((victim.HasWeaponEquipped || victimIsPlayer) && victim.Positioning.MeleeBlockProgress < 1 && !scene.HasTag(actor.Entity, Tags.Player))
                 {
                     // perfect block! parry the attack
                     actor.DodgeMeter = 0;
                     actor.DodgeRegenCooldownTimer = 1; // TODO convar
-                    if (Utilities.RandomFloat() > actor.Stats.MeleeSkill)
+
+                    // only disarm some of the time; more skilled attackers keep their grip more often
+                    const float parryDisarmChance = 0.35f; // TODO convar
+                    if (actor.HasWeaponEquipped && Utilities.RandomFloat() < parryDisarmChance * (1 - float.Clamp(actor.Stats.MeleeSkill, 0, 0.9f)))
                         actor.DropWeapon(scene);
+
                     actor.PlayAnimation(Registries.Animations.Get(!actor.Positioning.IsFlipped ? "melee_stun_sword_L" : "melee_stun_sword_R")); // TODO this should be in Animations.cs
-                    scene.Game.AudioRenderer.PlayOnce(Sounds.MeleeClash.Parry, 1, Utilities.RandomFloat(0.9f, 1.11f));
+
+                    // metal clang when the parry is made with a melee weapon, a fleshier hit when barehanded
+                    bool weaponParry = victim.EquippedWeapon.TryGet(scene, out var parryWeapon) && parryWeapon.Data.WeaponType == WeaponType.Melee;
+                    var parrySound = weaponParry
+                        ? Sounds.MeleeClash.Parry
+                        : Sounds.MeleeClash.GetClashFor(scene, victim.EquippedWeapon, actor.EquippedWeapon);
+                    scene.Game.AudioRenderer.PlayOnce(parrySound, 1, Utilities.RandomFloat(0.9f, 1.11f));
 
                     victim.Positioning.MeleeBlockImpactIntensity -= 3;
                     victim.Positioning.MeleeBlockProgress = float.Lerp(victim.Positioning.MeleeBlockProgress, 1f, 0.8f);
                     victim.Positioning.TiltIntensity -= 7;
                     //  Prefabs.CreateDeflectionSpark(scene, hitPosOnLine, Utilities.VectorToAngle(returnDir), 1);
+
+                    if (victimIsPlayer)
+                    {
+                        // reward the player with a counter window, Arkham style
+                        victim.CounterWindowTimer = 1.5f; // TODO convar
+                        MadnessUtils.Shake(15);
+                        MadnessUtils.SlowMotion(0.5f, 0.25f);
+                    }
                     return;
                 }
                 else
@@ -246,7 +272,14 @@ public static class MeleeUtils
             CharacterUtilities.UpdateAliveStatus(scene, victim);
             if (victim.IsAlive)
             {
-                if (!actor.HasWeaponEquipped && !scene.HasTag(victim.Entity, Tags.Player) && finalAttack)
+                if (isCounterAttack)
+                {
+                    // a counter always staggers the victim
+                    scene.DetachComponent<MeleeSequenceComponent>(victim.Entity);
+                    if (!victim.IsPlayingAnimationGroup("stun"))
+                        CharacterUtilities.StunHeavy(scene, victim, true);
+                }
+                else if (!actor.HasWeaponEquipped && !scene.HasTag(victim.Entity, Tags.Player) && finalAttack)
                 {
                     if (victim.EquippedWeapon.TryGet(scene, out var victimWep))
                     {

@@ -23,6 +23,11 @@ public static class UserData
         public static string ArenaModeSaves => BaseDir + "arena.json";
 
         public static string UnlockedImprobabilityDisk => BaseDir + "disks.txt";
+
+        /// <summary>
+        /// Newline-separated list of mod IDs the player has disabled. See <see cref="ModLoader"/>.
+        /// </summary>
+        public static string DisabledMods => BaseDir + "disabled_mods.txt";
     }
 
     /// <summary>
