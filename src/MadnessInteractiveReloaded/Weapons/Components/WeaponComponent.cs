@@ -80,6 +80,12 @@ public class WeaponComponent : Component
     public bool IsAttachedToWall;
 
     /// <summary>
+    /// True if this weapon is being carried in its wielder's holster (on their back) instead of their hands.
+    /// A holstered weapon can't fire and isn't positioned by the hand positioning code.
+    /// </summary>
+    public bool IsHolstered;
+
+    /// <summary>
     /// How many bullets left.
     /// </summary>
     public int RemainingRounds = 12;

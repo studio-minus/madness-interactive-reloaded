@@ -140,10 +140,18 @@ public static class MeleeUtils
             if (victimIsPlayer && ImprobabilityDisks.IsEnabled("god"))
                 return;
 
-            // blocking
-            if (victim.IsMeleeBlocking && CharacterUtilities.CanDodge(victim))
+            // counters earned from a perfect parry can't be blocked or dodged and hit much harder
+            bool isCounterAttack = actor.CounterWindowTimer > 0 && !victimIsPlayer && scene.HasTag(actor.Entity, Tags.Player);
+            if (isCounterAttack)
             {
-                if (victim.HasWeaponEquipped && victim.Positioning.MeleeBlockProgress < 1 && !scene.HasTag(actor.Entity, Tags.Player))
+                actor.CounterWindowTimer = 0;
+                damage *= 2;
+            }
+
+            // blocking
+            if (!isCounterAttack && victim.IsMeleeBlocking && CharacterUtilities.CanDodge(victim))
+            {
+                if ((victim.HasWeaponEquipped || victimIsPlayer) && victim.Positioning.MeleeBlockProgress < 1 && !scene.HasTag(actor.Entity, Tags.Player))
                 {
                     // perfect block! parry the attack
                     actor.DodgeMeter = 0;
@@ -157,6 +165,14 @@ public static class MeleeUtils
                     victim.Positioning.MeleeBlockProgress = float.Lerp(victim.Positioning.MeleeBlockProgress, 1f, 0.8f);
                     victim.Positioning.TiltIntensity -= 7;
                     //  Prefabs.CreateDeflectionSpark(scene, hitPosOnLine, Utilities.VectorToAngle(returnDir), 1);
+
+                    if (victimIsPlayer)
+                    {
+                        // reward the player with a counter window, Arkham style
+                        victim.CounterWindowTimer = 1.5f; // TODO convar
+                        MadnessUtils.Shake(15);
+                        MadnessUtils.SlowMotion(0.5f, 0.25f);
+                    }
                     return;
                 }
                 else
@@ -246,7 +262,14 @@ public static class MeleeUtils
             CharacterUtilities.UpdateAliveStatus(scene, victim);
             if (victim.IsAlive)
             {
-                if (!actor.HasWeaponEquipped && !scene.HasTag(victim.Entity, Tags.Player) && finalAttack)
+                if (isCounterAttack)
+                {
+                    // a counter always staggers the victim
+                    scene.DetachComponent<MeleeSequenceComponent>(victim.Entity);
+                    if (!victim.IsPlayingAnimationGroup("stun"))
+                        CharacterUtilities.StunHeavy(scene, victim, true);
+                }
+                else if (!actor.HasWeaponEquipped && !scene.HasTag(victim.Entity, Tags.Player) && finalAttack)
                 {
                     if (victim.EquippedWeapon.TryGet(scene, out var victimWep))
                     {

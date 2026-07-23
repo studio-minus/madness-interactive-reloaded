@@ -69,6 +69,7 @@ public static class SceneUtils
         scene.AddSystem(new CharacterPositionSystem());
         scene.AddSystem(new CharacterMovementSystem());
         scene.AddSystem(new WeaponSystem());
+        scene.AddSystem(new WeaponHolsterSystem());
         scene.AddSystem(new TransformSystem());
         scene.AddSystem(new VelocitySystem());
         scene.AddSystem(new DestructibleBodyPartSystem());
@@ -220,6 +221,7 @@ public static class SceneUtils
         scene.AddSystem(new VelocitySystem());
         scene.AddSystem(new CameraSystem());
         scene.AddSystem(new WeaponSystem());
+        scene.AddSystem(new WeaponHolsterSystem());
         scene.AddSystem(new PlayerDeathSequenceSystem());
         scene.AddSystem(new DestructibleBodyPartSystem());
         scene.AddSystem(new AccurateShotSystem());

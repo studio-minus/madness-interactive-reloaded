@@ -142,6 +142,18 @@ public class CharacterComponent : Component
     public ComponentRef<WeaponComponent> EquippedWeapon;
 
     /// <summary>
+    /// A <see cref="ComponentRef{T}"/> to the character's holstered secondary weapon, carried on their back.
+    /// See <see cref="WeaponHolsterSystem"/>.
+    /// </summary>
+    public ComponentRef<WeaponComponent> HolsteredWeapon;
+
+    /// <summary>
+    /// Time in seconds remaining in which this character's melee attacks are empowered counters,
+    /// granted by a perfect parry. Ticks down in <see cref="CharacterSystem"/>.
+    /// </summary>
+    public float CounterWindowTimer;
+
+    /// <summary>
     /// The range this character can pick up things in
     /// </summary>
     public float HandPickupRange = 400;
@@ -329,8 +341,12 @@ public class CharacterComponent : Component
         if (!IsAlive)
             return false;
 
-        if (EquippedWeapon.IsValid(scene))
-            DropWeapon(scene);
+        if (EquippedWeapon.TryGet(scene, out var current))
+        {
+            // keep a still-useful weapon in the holster instead of dropping it, if there's room
+            if (!current.HasRoundsLeft || !HolsterEquippedWeapon(scene))
+                DropWeapon(scene);
+        }
 
         if (scene.HasComponent<ThrowableProjectileComponent>(weapon.Entity))
             scene.DetachComponent<ThrowableProjectileComponent>(weapon.Entity);
@@ -370,6 +386,91 @@ public class CharacterComponent : Component
         }
 
         EquippedWeapon = default;
+    }
+
+    /// <summary>
+    /// Move the equipped weapon into the holster. Fails if the holster is occupied or nothing is equipped.
+    /// </summary>
+    public bool HolsterEquippedWeapon(Scene scene)
+    {
+        if (HolsteredWeapon.IsValid(scene) || !EquippedWeapon.TryGet(scene, out var weapon))
+            return false;
+
+        weapon.IsHolstered = true;
+        weapon.IsFiring = false;
+        HolsteredWeapon = EquippedWeapon;
+        EquippedWeapon = default;
+        return true;
+    }
+
+    /// <summary>
+    /// Take the holstered weapon out of the holster and equip it. Drops the currently equipped weapon if there is one.
+    /// </summary>
+    public bool UnholsterWeapon(Scene scene)
+    {
+        if (!IsAlive || !HolsteredWeapon.TryGet(scene, out var weapon))
+            return false;
+
+        if (EquippedWeapon.IsValid(scene))
+            DropWeapon(scene);
+
+        weapon.IsHolstered = false;
+        weapon.Wielder = new ComponentRef<CharacterComponent>(Entity);
+        weapon.Timer = float.MaxValue;
+        EquippedWeapon = HolsteredWeapon;
+        HolsteredWeapon = default;
+        return true;
+    }
+
+    /// <summary>
+    /// Swap the equipped and holstered weapons. Works if either slot is empty, fails if both are.
+    /// </summary>
+    public bool TrySwapWeapons(Scene scene)
+    {
+        if (!IsAlive)
+            return false;
+
+        if (!HolsteredWeapon.IsValid(scene))
+            return HolsterEquippedWeapon(scene);
+
+        if (!EquippedWeapon.IsValid(scene))
+            return UnholsterWeapon(scene);
+
+        var equipped = EquippedWeapon;
+        var holstered = HolsteredWeapon;
+        var equippedWpn = equipped.Get(scene);
+        var holsteredWpn = holstered.Get(scene);
+
+        equippedWpn.IsHolstered = true;
+        equippedWpn.IsFiring = false;
+        holsteredWpn.IsHolstered = false;
+        holsteredWpn.Timer = float.MaxValue;
+
+        EquippedWeapon = holstered;
+        HolsteredWeapon = equipped;
+        return true;
+    }
+
+    /// <summary>
+    /// Drop the holstered weapon onto the ground, e.g. when the character dies.
+    /// </summary>
+    public void DropHolsteredWeapon(Scene scene)
+    {
+        if (!HolsteredWeapon.TryGet(scene, out var weapon))
+            return;
+
+        weapon.IsHolstered = false;
+        weapon.Wielder = default;
+
+        if (!weapon.HasRoundsLeft && !weapon.IsAttachedToWall)
+        {
+            if (scene.TryGetComponentFrom<DespawnComponent>(HolsteredWeapon.Entity, out var despawn))
+                despawn.DespawnTime = 5;
+            else
+                scene.AttachComponent(HolsteredWeapon.Entity, new DespawnComponent(5));
+        }
+
+        HolsteredWeapon = default;
     }
 
     /// <summary>

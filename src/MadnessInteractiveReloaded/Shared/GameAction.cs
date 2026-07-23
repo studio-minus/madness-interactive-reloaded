@@ -17,6 +17,7 @@ public enum GameAction
     Melee,
     BlockAim,
     Throw,
+    SwitchWeapon,
 
     Ability1,
     Ability2,

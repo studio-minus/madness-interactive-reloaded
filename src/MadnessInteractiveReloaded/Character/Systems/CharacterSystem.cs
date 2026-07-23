@@ -18,6 +18,9 @@ public class CharacterSystem : Walgelijk.System
         {
             character.CurrentAttackerCount = 0;
 
+            if (character.CounterWindowTimer > 0)
+                character.CounterWindowTimer -= Time.DeltaTime;
+
             character.DodgeMeter = float.Min(character.Stats.DodgeAbility, character.DodgeMeter);
             if (character.DodgeRegenCooldownTimer <= float.Epsilon && character.Stats.DodgeAbility > float.Epsilon)
             {

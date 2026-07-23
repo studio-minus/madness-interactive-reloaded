@@ -186,7 +186,11 @@ public class PlayerCharacterSystem : Walgelijk.System
             character.IsMeleeBlocking = false;
             if (!character.HasWeaponEquipped || equipped?.Data.WeaponType == WeaponType.Melee)
             {
-                character.IsMeleeBlocking = character.HasWeaponEquipped && character.IsIronSighting && !character.AnimationConstrainsAny(AnimationConstraint.PreventBlock);
+                // unarmed characters can also raise their guard, which enables barehanded parries
+                var wantsToBlock = character.HasWeaponEquipped
+                    ? character.IsIronSighting
+                    : Input.ActionHeld(GameAction.BlockAim);
+                character.IsMeleeBlocking = wantsToBlock && !character.AnimationConstrainsAny(AnimationConstraint.PreventBlock);
 
                 if (!uiBlock && (Input.ActionPressed(GameAction.Attack) || Input.ActionPressed(GameAction.Melee)))
                     MeleeUtils.TryPerformMeleeAttack(Scene, equipped, character);
@@ -206,6 +210,17 @@ public class PlayerCharacterSystem : Walgelijk.System
 
             if (Input.ActionPressed(GameAction.Throw))
                 CharacterUtilities.TryThrowWeapon(Scene, character);
+
+            if (Input.ActionPressed(GameAction.SwitchWeapon) && !character.AnimationConstrainsAny(AnimationConstraint.PreventWorldInteraction))
+            {
+                if (character.TrySwapWeapons(Scene))
+                {
+                    var pickupAssets = Assets.EnumerateFolder("sounds/pickup");
+                    var data = Assets.Load<FixedAudioData>(Utilities.PickRandom(pickupAssets));
+                    Audio.PlayOnce(SoundCache.Instance.LoadSoundEffect(data));
+                    character.EquippedWeapon.TryGet(Scene, out equipped);
+                }
+            }
 
             if (character.AllowWalking && (!character.AnimationConstrainsAny(AnimationConstraint.PreventWalking) || character.Stats.AgilitySkillLevel is AgilitySkillLevel.Master)) // TODO this is not pretty
             {
