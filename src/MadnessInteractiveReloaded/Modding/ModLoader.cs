@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -31,6 +32,13 @@ public static class ModLoader
 
     private static readonly SemaphoreSlim modLoadingSemaphore = new(1);
     private static bool needsAssetRefresh = false;
+
+    /// <summary>
+    /// Mod IDs the player has explicitly disabled. Persisted between sessions.
+    /// A disabled mod is loaded (so it shows in the menu) but never activated.
+    /// </summary>
+    private static readonly HashSet<string> disabled = [];
+    private static bool disabledLoaded = false;
 
     [Command(Alias = "ModSources", HelpString = "List mod sources and their status")]
     private static void ModSourcesCmd()
@@ -63,6 +71,105 @@ public static class ModLoader
     {
         Logger.Log($"Mod source added {source}");
         sources.Add(source);
+    }
+
+    /// <summary>
+    /// Returns true if the player has persistently disabled the given mod.
+    /// </summary>
+    public static bool IsDisabled(ModID id)
+    {
+        EnsureDisabledListLoaded();
+        return disabled.Contains(id.Value);
+    }
+
+    private static void EnsureDisabledListLoaded()
+    {
+        if (disabledLoaded)
+            return;
+        disabledLoaded = true;
+
+        try
+        {
+            var path = UserData.Paths.DisabledMods;
+            if (File.Exists(path))
+                foreach (var line in File.ReadAllLines(path))
+                {
+                    var id = line.Trim();
+                    if (!string.IsNullOrEmpty(id))
+                        disabled.Add(id);
+                }
+        }
+        catch (Exception e)
+        {
+            Logger.Warn($"Failed to read disabled mods list: {e}");
+        }
+    }
+
+    private static void SaveDisabledList()
+    {
+        try
+        {
+            var path = UserData.Paths.DisabledMods;
+            Directory.CreateDirectory(Path.GetDirectoryName(path)!);
+            lock (disabled)
+                File.WriteAllLines(path, disabled);
+        }
+        catch (Exception e)
+        {
+            Logger.Error($"Failed to save disabled mods list: {e}");
+        }
+    }
+
+    /// <summary>
+    /// Enable or disable a mod, persisting the choice. Enabling activates the mod immediately.
+    /// Disabling deactivates script mods immediately; asset changes from data mods fully apply on the next launch.
+    /// </summary>
+    public static void SetModEnabled(ModID id, bool enabled)
+    {
+        EnsureDisabledListLoaded();
+
+        if (enabled)
+        {
+            if (disabled.Remove(id.Value))
+                SaveDisabledList();
+            ActivateMod(id);
+        }
+        else
+        {
+            bool changed;
+            lock (disabled)
+                changed = disabled.Add(id.Value);
+            if (changed)
+                SaveDisabledList();
+            DeactivateMod(id);
+        }
+    }
+
+    /// <summary>
+    /// Deactivate a loaded mod without unloading it. Script mods get <see cref="IModEntry.OnUnload"/> called.
+    /// </summary>
+    public static void DeactivateMod(ModID id)
+    {
+        if (!mods.TryGetValue(id, out var loaded) || !loaded.Active)
+            return;
+
+        loaded.Active = false;
+        needsAssetRefresh = true;
+        var mod = loaded.Mod;
+
+        if (mod.ModType is ModType.Script && mod.Assembly != null)
+        {
+            try
+            {
+                mod.Assembly.ModEntry.OnUnload();
+            }
+            catch (Exception e)
+            {
+                Logger.Error($"Mod {mod.Name} threw " + e);
+            }
+        }
+
+        OnModListChange?.Invoke();
     }
 
     public static void LoadModsFromSources()
@@ -148,7 +255,8 @@ public static class ModLoader
                 }
 
                 sortedMods.Add(mod.Id);
-                if (loaded != null)
+                // don't activate mods the player has disabled; they still appear in the menu as inactive
+                if (loaded != null && !IsDisabled(mod.Id))
                     ActivateMod(mod.Id);
             }
             finally

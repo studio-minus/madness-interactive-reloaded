@@ -316,12 +316,20 @@ public static class CharacterUtilities
     /// Try to perform a jump dodge that makes
     /// the character invulnerable for a short time while dodging.
     /// </summary>
-    public static void TryJumpDodge(Scene scene, CharacterComponent character)
+    /// <param name="forcedDirection">If non-zero, forces a directional (forward/backward) jump in this direction
+    /// (-1 left, +1 right) even when the character isn't currently walking. Lets the player jump-dodge on demand
+    /// while aiming or standing still, e.g. holding a movement key + jump.</param>
+    public static void TryJumpDodge(Scene scene, CharacterComponent character, float forcedDirection = 0)
     {
         if (character.AnimationConstrainsAny(AnimationConstraint.PreventDodge))
             return;
 
         scene.DetachComponent<MeleeSequenceComponent>(character.Entity);
+
+        // if a direction is requested but we aren't already moving that way, seed the acceleration so this becomes a directional jump
+        if (forcedDirection != 0 && float.Abs(character.WalkAcceleration.X) <= 0.1f)
+            character.WalkAcceleration = new Vector2(float.Sign(forcedDirection) * character.Positioning.TopWalkSpeed, 0);
+
         var oldAcc = character.WalkAcceleration;
         bool isWalking = float.Abs(character.WalkAcceleration.X) > 0.1f;
         CharacterAnimation? anim;

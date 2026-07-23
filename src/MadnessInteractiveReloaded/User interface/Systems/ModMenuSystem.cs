@@ -223,6 +223,14 @@ public readonly struct ModViewControl(Mod mod) : IControl
         Ui.Layout.FitWidth().Height(32).Scale(-instance.Rects.Intermediate.Height, 0).StickRight(false).StickBottom().HorizontalLayout();
         Ui.StartGroup(false);
         {
+            // enable/disable toggle
+            bool active = ModLoader.IsActive(mod.Id);
+            Ui.Layout.FitHeight().EnqueueConstraint(new AspectRatio(1)).CenterVertical();
+            Ui.Theme.OutlineWidth(0).ForegroundColor(Colors.Transparent)
+                .Image(active ? new(Colors.Green.Brightness(1.2f), Colors.White) : new(Colors.White.WithAlpha(0.35f), Colors.White)).Once();
+            if (Ui.ImageButton(active ? check : cog, ImageContainmentMode.Stretch))
+                ModLoader.SetModEnabled(mod.Id, !active);
+
             var source = ModLoader.GetSourceFor(mod.Id);
             if (source is LocalModCollectionSource local)
             {

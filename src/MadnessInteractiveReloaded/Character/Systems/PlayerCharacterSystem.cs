@@ -256,7 +256,11 @@ public class PlayerCharacterSystem : Walgelijk.System
 
             //dit moet hier beneden zijn want Acceleration moet al aangepast zijn door de controls :)
             if (Input.ActionPressed(GameAction.JumpDodge))
-                CharacterUtilities.TryJumpDodge(Scene, character);
+            {
+                // holding a movement key while jumping does a directional (forward/backward) jump, even when aiming or standing still
+                float jumpDir = (Input.ActionHeld(GameAction.Right) ? 1 : 0) - (Input.ActionHeld(GameAction.Left) ? 1 : 0);
+                CharacterUtilities.TryJumpDodge(Scene, character, jumpDir);
+            }
         }
 
         if (character.IsIronSighting && !character.IsPlayingAnimation)

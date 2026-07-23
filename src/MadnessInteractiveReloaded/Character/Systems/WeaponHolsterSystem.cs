@@ -34,10 +34,15 @@ public class WeaponHolsterSystem : Walgelijk.System
             float flip = character.Positioning.FlipScaling;
             var scale = character.Positioning.Scale;
 
+            // melee weapons (swords, axes) hang almost upright across the back; firearms sit at a shallower slung angle
+            bool isMelee = weapon.Data.WeaponType == WeaponType.Melee;
+            float angle = isMelee ? 82 : 60;
+            var offset = isMelee ? new Vector2(-24, 55) : new Vector2(-30, 40);
+
             weapon.IsFlipped = character.Positioning.IsFlipped;
             transform.LocalPivot = default;
-            transform.Position = body.ComputedVisualCenter + new Vector2(-30 * flip * scale, 40 * scale);
-            transform.Rotation = bodyTransform.Rotation + 65 * flip;
+            transform.Position = body.ComputedVisualCenter + new Vector2(offset.X * flip * scale, offset.Y * scale);
+            transform.Rotation = bodyTransform.Rotation + angle * flip;
             transform.Scale = new Vector2(1, weapon.IsFlipped ? -1 : 1);
 
             // render behind the body but in front of whatever is behind the character

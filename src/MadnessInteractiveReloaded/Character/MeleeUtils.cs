@@ -156,10 +156,20 @@ public static class MeleeUtils
                     // perfect block! parry the attack
                     actor.DodgeMeter = 0;
                     actor.DodgeRegenCooldownTimer = 1; // TODO convar
-                    if (Utilities.RandomFloat() > actor.Stats.MeleeSkill)
+
+                    // only disarm some of the time; more skilled attackers keep their grip more often
+                    const float parryDisarmChance = 0.35f; // TODO convar
+                    if (actor.HasWeaponEquipped && Utilities.RandomFloat() < parryDisarmChance * (1 - float.Clamp(actor.Stats.MeleeSkill, 0, 0.9f)))
                         actor.DropWeapon(scene);
+
                     actor.PlayAnimation(Registries.Animations.Get(!actor.Positioning.IsFlipped ? "melee_stun_sword_L" : "melee_stun_sword_R")); // TODO this should be in Animations.cs
-                    scene.Game.AudioRenderer.PlayOnce(Sounds.MeleeClash.Parry, 1, Utilities.RandomFloat(0.9f, 1.11f));
+
+                    // metal clang when the parry is made with a melee weapon, a fleshier hit when barehanded
+                    bool weaponParry = victim.EquippedWeapon.TryGet(scene, out var parryWeapon) && parryWeapon.Data.WeaponType == WeaponType.Melee;
+                    var parrySound = weaponParry
+                        ? Sounds.MeleeClash.Parry
+                        : Sounds.MeleeClash.GetClashFor(scene, victim.EquippedWeapon, actor.EquippedWeapon);
+                    scene.Game.AudioRenderer.PlayOnce(parrySound, 1, Utilities.RandomFloat(0.9f, 1.11f));
 
                     victim.Positioning.MeleeBlockImpactIntensity -= 3;
                     victim.Positioning.MeleeBlockProgress = float.Lerp(victim.Positioning.MeleeBlockProgress, 1f, 0.8f);
