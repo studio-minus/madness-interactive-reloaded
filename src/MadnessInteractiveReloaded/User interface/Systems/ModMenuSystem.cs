@@ -185,7 +185,14 @@ public class ModMenuSystem : Walgelijk.System
 
         // back button
         if (MenuUiUtils.BackButton())
-            Game.Scene = MainMenuScene.Load(Game);
+        {
+            // if the player toggled any mods, run a content reload on the way out (rebuilds the asset
+            // registry + content registries for the active-mod set) so changes apply without a restart
+            if (ModLoader.ConsumeAssetRefresh())
+                Game.Scene = GameLoadingScene.Create(Game, reloadOnly: true);
+            else
+                Game.Scene = MainMenuScene.Load(Game);
+        }
 
         // folder button
         Ui.Layout.FitWidth().MaxWidth(160).Height(40).StickRight().StickBottom().Move(-10);

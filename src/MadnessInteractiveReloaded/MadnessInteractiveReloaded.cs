@@ -59,15 +59,23 @@ public class MadnessInteractiveReloaded
 
         // load asset packs
         IdUtil.VanillaPackageIds.Add(new PackageId("base"));
-        foreach (var a in Directory.EnumerateFiles("resources", "*.waa"))
-            try
-            {
-                Assets.RegisterPackage(a);
-            }
-            catch (Exception e)
-            {
-                Logger.Warn(e);
-            }
+        RegisterVanillaAssetPackages();
+
+        // let ModLoader rebuild the vanilla packages when it refreshes the registry after a mod toggle
+        ModLoader.RegisterBaseAssets = RegisterVanillaAssetPackages;
+
+        static void RegisterVanillaAssetPackages()
+        {
+            foreach (var a in Directory.EnumerateFiles("resources", "*.waa"))
+                try
+                {
+                    Assets.RegisterPackage(a);
+                }
+                catch (Exception e)
+                {
+                    Logger.Warn(e);
+                }
+        }
 
         Assets.Load<FixedAudioData>("sounds/null.wav");
 

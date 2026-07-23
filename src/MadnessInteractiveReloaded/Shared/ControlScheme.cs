@@ -12,6 +12,7 @@ public class ControlScheme
         { GameAction.Right, new(Key.D) },
         { GameAction.Left, new(Key.A) },
         { GameAction.JumpDodge, new(Key.Space) },
+        { GameAction.JumpDodgeAlt, new(Key.W) },
         { GameAction.Interact, new(Key.E) },
 
         { GameAction.Attack, new(MouseButton.Left) },

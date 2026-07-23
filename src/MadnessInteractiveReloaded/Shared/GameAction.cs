@@ -11,6 +11,7 @@ public enum GameAction
     Right,
     Left,
     JumpDodge,
+    JumpDodgeAlt,
     Interact,
 
     Attack,

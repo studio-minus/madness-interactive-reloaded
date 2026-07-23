@@ -40,6 +40,12 @@ public static class ModLoader
     private static readonly HashSet<string> disabled = [];
     private static bool disabledLoaded = false;
 
+    /// <summary>
+    /// Full paths of asset packages we already registered with <see cref="Assets"/>. There is no unregister API,
+    /// so re-activating a mod must not register its packages again.
+    /// </summary>
+    private static readonly HashSet<string> registeredPackages = [];
+
     [Command(Alias = "ModSources", HelpString = "List mod sources and their status")]
     private static void ModSourcesCmd()
     {
@@ -248,15 +254,16 @@ public static class ModLoader
                     // be executed on my thread as well and thats really confusing!! and bad
                     // solution is to set a flag and let others poll
                     OnModListChange?.Invoke();
+
+                    // the duplicate must not be listed or activated again
+                    return;
                 }
-                else
-                {
-                    Logger.Log($"Mod {mod.Name} (\"{mod.Id}\") loaded from {source}");
-                }
+
+                Logger.Log($"Mod {mod.Name} (\"{mod.Id}\") loaded from {source}");
 
                 sortedMods.Add(mod.Id);
                 // don't activate mods the player has disabled; they still appear in the menu as inactive
-                if (loaded != null && !IsDisabled(mod.Id))
+                if (!IsDisabled(mod.Id))
                     ActivateMod(mod.Id);
             }
             finally
@@ -268,6 +275,65 @@ public static class ModLoader
     public static bool IsActive(ModID id)
     {
         return mods.TryGetValue(id, out var m) && m.Active;
+    }
+
+    /// <summary>
+    /// Set by the game to re-register the vanilla asset packages (resources/*.waa) during a
+    /// <see cref="RefreshAssetRegistry"/>. Needed because <see cref="Assets"/> has no per-package
+    /// unregister, so disabling a mod means clearing and rebuilding the whole registry.
+    /// </summary>
+    public static Action? RegisterBaseAssets;
+
+    /// <summary>
+    /// Returns true (and clears the flag) if a mod was enabled or disabled since the last check,
+    /// meaning the asset registry should be rebuilt.
+    /// </summary>
+    public static bool ConsumeAssetRefresh()
+    {
+        if (!needsAssetRefresh)
+            return false;
+        needsAssetRefresh = false;
+        return true;
+    }
+
+    /// <summary>
+    /// Rebuild the asset registry from scratch: vanilla packages plus every currently active mod.
+    /// This is how disabling a mod actually takes its assets out of circulation.
+    /// <br></br>
+    /// Only rebuilds the package registry (not the loaded-asset cache), so it is safe to call while a
+    /// minimal scene is live. Rerun the content registries (weapons, looks, etc.) afterwards so their
+    /// contents reflect the new set - see <see cref="GameLoadingScene"/>'s reload path.
+    /// </summary>
+    public static void RefreshAssetRegistry()
+    {
+        modLoadingSemaphore.Wait();
+        try
+        {
+            Assets.ClearRegistry();
+            registeredPackages.Clear();
+
+            RegisterBaseAssets?.Invoke();
+
+            foreach (var loaded in mods.Values)
+            {
+                if (!loaded.Active)
+                    continue;
+                foreach (var p in loaded.Mod.AssetPackages)
+                    if (registeredPackages.Add(p.FullName))
+                        try
+                        {
+                            Assets.RegisterPackage(p.FullName);
+                        }
+                        catch (Exception e)
+                        {
+                            Logger.Error($"Failed to register asset package \"{p.FullName}\" for mod {loaded.Mod.Name}: {e}");
+                        }
+            }
+        }
+        finally
+        {
+            modLoadingSemaphore.Release();
+        }
     }
 
     public static void ActivateMod(ModID id)
@@ -289,7 +355,15 @@ public static class ModLoader
         var mod = loaded.Mod;
 
         foreach (var p in mod.AssetPackages)
-            Assets.RegisterPackage(p.FullName);
+            if (registeredPackages.Add(p.FullName)) // asset packages can't be unregistered, so never register twice
+                try
+                {
+                    Assets.RegisterPackage(p.FullName);
+                }
+                catch (Exception e)
+                {
+                    Logger.Error($"Failed to register asset package \"{p.FullName}\" for mod {mod.Name}: {e}");
+                }
 
         if (mod.ModType is ModType.Script && mod.Assembly != null)
         {

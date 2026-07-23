@@ -422,6 +422,14 @@ public static class MadnessCommands
         return CommandResult.Error($"\"{scene}\" is not valid. The following scenes are available:\n" + string.Join("\n", dict.Keys));
     }
 
+    [Command(HelpString = "Spawn an explosion at the cursor. Args: radius, damage")]
+    public static CommandResult Explode(float radius = 500, float damage = 8)
+    {
+        var pos = game.State.Input.WorldMousePosition;
+        Prefabs.CreateExplosion(scene, pos, radius, damage, knockback: radius * 4.4f);
+        return $"Explosion at {pos} (radius {radius}, damage {damage})";
+    }
+
     [Command(HelpString = "Sets or gets the global time scale. This determines the speed of time-dependent operations")]
     public static CommandResult Timescale(float speed = float.NegativeInfinity)
     {
