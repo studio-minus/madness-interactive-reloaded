@@ -61,7 +61,7 @@
       "$type": "MIR.LevelEditor.Objects.NPC, MIR",
       "Instructions": {
         "Name": "Unnamed NPC",
-        "Look": "mag",
+        "Look": "mag_agent",
         "Stats": "end_soldat",
         "Faction": "aahw",
         "Weapon": "true_dragon_sword",
